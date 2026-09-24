@@ -2,7 +2,7 @@
 
 [![Survey Paper](https://img.shields.io/badge/Paper-PDF-red.svg)](paper/main.pdf) 
 [![PRISMA 2020](https://img.shields.io/badge/PRISMA-2020%20Compliant-blue.svg)](docs/PROTOCOL.md) 
-[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%201-brightgreen.svg)](docs/STATE.md) 
+[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%202-brightgreen.svg)](docs/STATE.md) 
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) 
 
 > **Bilingual Repository** / **中英文双语前沿综述与开源精选仓库**  
@@ -37,10 +37,10 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
 
 ### 🔍 PRISMA 2020 Systematic Review Counts
 
-- **Total Records Identified:** 190 (Databases: 142, Snowballing: 48)
-- **Deduplicated & Screened:** 154 (Duplicates removed: 36)
-- **Full-Text Assessed:** 36 (Excluded with documented rationale: 10)
-- **Included in Systematic Synthesis:** **26** studies
+- **Total Records Identified:** 276 (Databases: 184, Snowballing: 92)
+- **Deduplicated & Screened:** 226 (Duplicates removed: 50)
+- **Full-Text Assessed:** 52 (Excluded with documented rationale: 14)
+- **Included in Systematic Synthesis:** **38** studies
 
 ![PRISMA 2020 Flow](paper/figures/prisma_flow.png)
 
@@ -48,7 +48,12 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
 
 ## 📚 Curated Papers by Taxonomy Category
 
-### Cross-Modal Reprogramming & Adaptation
+### Cross-Modal Reprogramming & Decoupled Text Alignment
+
+- **[Semantics or Structure? Auditing Text Sensitivity in Multimodal Time-Series Forecasting](https://arxiv.org/abs/2608.22321)** (arXiv 2026 2026) • [Code](https://github.com/auditing-ts/text-sensitivity)  
+  *Authors:* Karthik Sridhar, Atharva Gupta, Nishant Pradhan et al.  
+  *Modality:* `TS+Text` | *Fusion:* `cross_modal_loss` | *Role:* `context_condition`  
+  *Highlight:* Rigorous audit of text sensitivity across multimodal time-series forecasters (Time-LLM, Time-MMD), analyzing syntactic vs semantic contributions.  
 
 - **[CALF: Aligning LLMs for Time Series Forecasting via Cross-modal Fine-Tuning](https://arxiv.org/abs/2403.07300)** (arXiv 2024 2024) • [Code](https://github.com/Hank0626/CALF)  
   *Authors:* Peiyuan Liu, Hang Guo, Tao Dai et al.  
@@ -64,6 +69,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Yong Liu, Guo Qin, Xiangdong Huang et al.  
   *Modality:* `TS+Text` | *Fusion:* `reprogramming_patching` | *Role:* `context_condition`  
   *Highlight:* Repurposes decoder-only LLMs as autoregressive time series forecasters with chronological timestamp prompts and in-context forecasting.  
+
+- **[TimeCMA: Towards LLM-Empowered Multivariate Time Series Forecasting via Cross-Modality Alignment](https://arxiv.org/abs/2406.01638)** (arXiv 2024 2024) • [Code](https://github.com/alanturing-lab/TimeCMA)  
+  *Authors:* Chenxi Liu, Qianxiong Xu, Hao Miao et al.  
+  *Modality:* `TS+Text` | *Fusion:* `cross_attention` | *Role:* `context_condition`  
+  *Highlight:* Cross-modality alignment framework dynamically injecting textual semantic embeddings into multivariate channel representations.  
 
 - **[Time-LLM: Time Series Forecasting by Reprogramming Large Language Models](https://arxiv.org/abs/2310.01728)** (ICLR 2024 2023) • [Code](https://github.com/KimMeen/Time-LLM)  
   *Authors:* Ming Jin, Shiyu Wang, Lintao Ma et al.  
@@ -95,19 +105,90 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Text` | *Fusion:* `text_serialization` | *Role:* `text_serialization`  
   *Highlight:* Demonstrates that LLMs zero-shot forecast numerical sequences by tokenizing formatted numerical strings without any weight fine-tuning.  
 
-### Vision-Language & Visual Rendering
+- **[UniTime: A Language-Empowered Unified Model for Cross-Domain Time Series Forecasting](https://arxiv.org/abs/2310.09751)** (WWW 2024 2023) • [Code](https://github.com/liuxu7/UniTime)  
+  *Authors:* Xu Liu, Junfeng Hu, Yuan Li et al.  
+  *Modality:* `TS+Text` | *Fusion:* `reprogramming_patching` | *Role:* `context_condition`  
+  *Highlight:* Language-empowered cross-domain foundation model masking and learning domain-specific language prompts to unify multi-source forecasting.  
+
+### Vision-Language & Visual Transcoding
 
 - **[Time-VLM: Exploring Multimodal Vision-Language Models for Augmented Time Series Forecasting](https://arxiv.org/abs/2502.04395)** (ICML 2025 2025) • [Code](https://github.com/decisionintelligence/Time-VLM)  
   *Authors:* Siru Zhong, Weilin Ruan, Ming Jin et al.  
   *Modality:* `TS+Vision+Text` | *Fusion:* `cross_attention` | *Role:* `context_condition`  
   *Highlight:* Augments forecasting using dual vision-augmented and text-augmented learners fused through multimodal vision-language architectures.  
 
+- **[VisionTS++: Cross-Modal Time Series Foundation Model with Continual Pre-trained Vision Backbones](https://arxiv.org/abs/2508.04379)** (arXiv 2025 2025) • [Code](https://github.com/Keytoyze/VisionTS)  
+  *Authors:* Lefei Shen, Mouxiang Chen, Xu Liu et al.  
+  *Modality:* `TS+Vision` | *Fusion:* `visual_rendering` | *Role:* `modality_transcoding`  
+  *Highlight:* Continual pre-trained vision backbone extending VisionTS with multi-channel patch projection and multi-quantile probabilistic forecasting.  
+
 - **[VisionTS: Visual Masked Autoencoders Are Free-Lunch Zero-Shot Time Series Forecasters](https://arxiv.org/abs/2408.17253)** (NeurIPS 2024 2024) • [Code](https://github.com/Keytoyze/VisionTS)  
   *Authors:* Mouxiang Chen, Lefei Shen, Zhuo Li et al.  
   *Modality:* `TS+Vision` | *Fusion:* `visual_rendering` | *Role:* `modality_transcoding`  
   *Highlight:* Reformulates time series forecasting as visual masked image reconstruction; shows vision MAE acts as zero-shot forecaster.  
 
-### Multimodal Time Series Foundation Models & Multi-Task
+- **[MedFuse: Multi-modal fusion with clinical time-series data and chest X-ray images](https://arxiv.org/abs/2207.07027)** (NeurIPS 2022 2022) • [Code](https://github.com/nyuad-cai/MedFuse)  
+  *Authors:* Nasir Hayat, Krzysztof J. Geras, Farah E. Shamout  
+  *Modality:* `TS+Vision` | *Fusion:* `cross_attention` | *Role:* `joint_representation`  
+  *Highlight:* Landmark clinical multimodal fusion framework combining EHR longitudinal physiological time-series with chest X-ray radiograph images under partial modality presence.  
+
+### Acoustic & Seismic Waveform Reprogramming
+
+- **[SeisT: A foundational deep learning model for earthquake monitoring tasks](https://arxiv.org/abs/2310.01037)** (IEEE TGRS 2024 2023) • [Code](https://github.com/eiting/SeisT)  
+  *Authors:* Sen Li, Xu Yang, Anye Cao et al.  
+  *Modality:* `TS+AcousticWaveform` | *Fusion:* `masked_autoencoding` | *Role:* `joint_representation`  
+  *Highlight:* Foundational deep learning model for multimodal seismic and acoustic waveform time series integrating physical wave arrival constraints.  
+
+- **[Voice2Series: Reprogramming Acoustic Models for Time Series Classification](https://arxiv.org/abs/2106.09296)** (ICML 2021 2021) • [Code](https://github.com/hportuguez/Voice2Series)  
+  *Authors:* Chao-Han Huck Yang, Yun-Yun Tsai, Pin-Yu Chen  
+  *Modality:* `TS+Audio` | *Fusion:* `acoustic_reprogramming` | *Role:* `reprogramming_substrate`  
+  *Highlight:* Pioneered reprogramming pre-trained acoustic speech models for universal time-series classification via input noise perturbation and label mapping.  
+
+### Physics-Informed & Planetary Earth Foundation Models
+
+- **[Prithvi WxC: Foundation Model for Weather and Climate](https://arxiv.org/abs/2409.13598)** (arXiv 2024 2024) • [Code](https://github.com/NASA-IMPACT/Prithvi-WxC)  
+  *Authors:* Johannes Schmude, Sujit Roy, Will Trojak et al.  
+  *Modality:* `TS+SpatioTemporal+Physics` | *Fusion:* `scalable_patch_transformer` | *Role:* `joint_representation`  
+  *Highlight:* 2.3-billion parameter open-source weather and climate foundation model pre-trained on NASA MERRA-2 gridded time-series spanning 40+ atmospheric variables.  
+
+- **[A Foundation Model for the Earth System](https://arxiv.org/abs/2405.13063)** (arXiv 2024 2024) • [Code](https://github.com/microsoft/aurora)  
+  *Authors:* Cristian Bodnar, Wessel P. Bruinsma, Ana Lucic et al.  
+  *Modality:* `TS+SpatioTemporal+Physics` | *Fusion:* `3d_perceiver_transformer` | *Role:* `joint_representation`  
+  *Highlight:* Planetary-scale foundation model for the Earth system capturing multi-level atmospheric variables, air pollution, and climate dynamics.  
+
+- **[ClimaX: A foundation model for weather and climate](https://arxiv.org/abs/2301.10343)** (ICML 2023 2023) • [Code](https://github.com/microsoft/ClimaX)  
+  *Authors:* Tung Nguyen, Johannes Brandstetter, Ashish Kapoor et al.  
+  *Modality:* `TS+SpatioTemporal+Physics` | *Fusion:* `variable_tokenization` | *Role:* `joint_representation`  
+  *Highlight:* First foundation model for weather and climate unifying heterogeneous multi-variable spatio-temporal atmospheric fields with variable-agnostic tokenization.  
+
+### Conversational TS-MLLMs & Temporal Reasoning
+
+- **[TimeOmni-1: Incentivizing Complex Reasoning with Time Series in Large Language Models](https://arxiv.org/abs/2509.24803)** (arXiv 2025 2025) • [Code](https://github.com/time-series-foundation-models/TimeOmni)  
+  *Authors:* Tong Guan, Zijie Meng, Dianqi Li et al.  
+  *Modality:* `TS+Text` | *Fusion:* `early_tokenization` | *Role:* `conversational_interface`  
+  *Highlight:* Time Series Reasoning Suite (TSR-Suite) incentivizing perception, extrapolation, and decision-making via RL and supervised fine-tuning.  
+
+- **[Time-MQA: Time Series Multi-Task Question Answering with Context Enhancement](https://arxiv.org/abs/2503.01875)** (ACL 2025 2025) • [Code](https://github.com/shen-lab/Time-MQA)  
+  *Authors:* Yaxuan Kong, Yiyuan Yang, Yoontae Hwang et al.  
+  *Modality:* `TS+Text` | *Fusion:* `early_tokenization` | *Role:* `conversational_interface`  
+  *Highlight:* Multi-task question answering framework over complex temporal sequences trained via contrastive instruction tuning.  
+
+- **[ChatTS: Aligning Time Series with LLMs via Synthetic Data for Enhanced Understanding and Reasoning](https://arxiv.org/abs/2412.03104)** (VLDB 2025 2024) • [Code](https://github.com/Time-Series-Library/ChatTS)  
+  *Authors:* Zhe Xie, Zeyan Li, Xiao He et al.  
+  *Modality:* `TS+Text` | *Fusion:* `early_tokenization` | *Role:* `conversational_interface`  
+  *Highlight:* Native time series multimodal LLM trained with Time Series Evol-Instruct for complex interactive temporal reasoning and Q&A.  
+
+- **[ChatTime: A Unified Multimodal Time Series Foundation Model Bridging Numerical and Textual Data](https://arxiv.org/abs/2412.11376)** (AAAI 2025 2024) • [Code](https://github.com/ChatTime/ChatTime)  
+  *Authors:* Chengsen Wang, Qi Qi, Jingyu Wang et al.  
+  *Modality:* `TS+Text` | *Fusion:* `early_tokenization` | *Role:* `conversational_interface`  
+  *Highlight:* Unified multimodal foundation model bridging numerical and textual time series data with bimodal input/output capabilities.  
+
+- **[PromptCast: A New Prompt-based Learning Paradigm for Time Series Forecasting](https://arxiv.org/abs/2210.08964)** (IEEE TKDE 2023 2022) • [Code](https://github.com/cruiseresearchgroup/PISA-PromptCast)  
+  *Authors:* Hao Xue, Flora D. Salim  
+  *Modality:* `TS+Text` | *Fusion:* `text_serialization` | *Role:* `conversational_interface`  
+  *Highlight:* First work casting numerical time series forecasting as a prompt-based question answering task via numerical token serialization.  
+
+### Unified Multi-Task Architectures & Cross-Modal Retrieval
 
 - **[TRACE: Grounding Time Series in Context for Multimodal Embedding and Retrieval](https://arxiv.org/abs/2506.09114)** (NeurIPS 2025 2025) • [Code](https://github.com/Guuuli/TRACE)  
   *Authors:* Jialin Chen, Ziyu Zhao, Gaukhar Nurbek et al.  
@@ -141,29 +222,12 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Text` | *Fusion:* `early_tokenization` | *Role:* `context_condition`  
   *Highlight:* First large-scale multi-domain multimodal dataset covering 9 distinct domains with fine-grained numerical-textual alignment.  
 
-### Conversational TS-MLLMs & Reasoning Frameworks
+### Foundational Baselines & Reference Surveys
 
-- **[TimeOmni-1: Incentivizing Complex Reasoning with Time Series in Large Language Models](https://arxiv.org/abs/2509.24803)** (arXiv 2025 2025) • [Code](https://github.com/time-series-foundation-models/TimeOmni)  
-  *Authors:* Tong Guan, Zijie Meng, Dianqi Li et al.  
-  *Modality:* `TS+Text` | *Fusion:* `early_tokenization` | *Role:* `conversational_interface`  
-  *Highlight:* Time Series Reasoning Suite (TSR-Suite) incentivizing perception, extrapolation, and decision-making via RL and supervised fine-tuning.  
-
-- **[ChatTS: Aligning Time Series with LLMs via Synthetic Data for Enhanced Understanding and Reasoning](https://arxiv.org/abs/2412.03104)** (VLDB 2025 2024) • [Code](https://github.com/Time-Series-Library/ChatTS)  
-  *Authors:* Zhe Xie, Zeyan Li, Xiao He et al.  
-  *Modality:* `TS+Text` | *Fusion:* `early_tokenization` | *Role:* `conversational_interface`  
-  *Highlight:* Native time series multimodal LLM trained with Time Series Evol-Instruct for complex interactive temporal reasoning and Q&A.  
-
-- **[ChatTime: A Unified Multimodal Time Series Foundation Model Bridging Numerical and Textual Data](https://arxiv.org/abs/2412.11376)** (AAAI 2025 2024) • [Code](https://github.com/ChatTime/ChatTime)  
-  *Authors:* Chengsen Wang, Qi Qi, Jingyu Wang et al.  
-  *Modality:* `TS+Text` | *Fusion:* `early_tokenization` | *Role:* `conversational_interface`  
-  *Highlight:* Unified multimodal foundation model bridging numerical and textual time series data with bimodal input/output capabilities.  
-
-- **[PromptCast: A New Prompt-based Learning Paradigm for Time Series Forecasting](https://arxiv.org/abs/2210.08964)** (IEEE TKDE 2023 2022) • [Code](https://github.com/cruiseresearchgroup/PISA-PromptCast)  
-  *Authors:* Hao Xue, Flora D. Salim  
-  *Modality:* `TS+Text` | *Fusion:* `text_serialization` | *Role:* `conversational_interface`  
-  *Highlight:* First work casting numerical time series forecasting as a prompt-based question answering task via numerical token serialization.  
-
-### Time Series Pre-trained Baselines & Reference Surveys
+- **[How Can Time Series Analysis Benefit From Multiple Modalities? A Survey and Outlook](https://arxiv.org/abs/2503.11835)** (arXiv 2025 2025) • [Code](https://github.com/multimodal-ts/awesome-multimodal-time-series)  
+  *Authors:* Haoxin Liu, Harshavardhan Kamarthi, Zhiyuan Zhao et al.  
+  *Modality:* `TS+Text+Vision+Audio` | *Fusion:* `systematic_review` | *Role:* `survey_reference`  
+  *Highlight:* Survey investigating the advantages of multiple modalities (vision, language, acoustic) for time-series analysis and emerging benchmarks.  
 
 - **[MOMENT: A Family of Open Time-series Foundation Models](https://arxiv.org/abs/2402.03885)** (ICML 2024 2024) • [Code](https://github.com/monash-moment/moment)  
   *Authors:* Mononito Goswami, Konrad Szafer, Arjun Choudhry et al.  

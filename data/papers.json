@@ -1,7 +1,7 @@
 {
   "metadata": {
     "last_updated": "2026-09-24",
-    "total_included": 26,
+    "total_included": 38,
     "scope": "Multimodal Time Series Models (2021-present)"
   },
   "papers": [
@@ -941,6 +941,453 @@
       "quality_score": 12,
       "abstract": "Time series analysis is essential for comprehending the complexities inherent in various realworld systems and applications. Although large language models (LLMs) have recently made significant strides, the development of artificial general intelligence (AGI) equipped with time series analysis capabilities remains in its nascent phase. Most existing time series models heavily rely on domain knowledge and extensive model tuning, predominantly focusing on prediction tasks. In this paper, we argue that current LLMs have the potential to revolutionize time series analysis, thereby promoting efficient decision-making and advancing towards a more universal form of time series analytical intelligence. Such advancement could unlock a wide range of possibilities, including time series modality switching and question answering. We encourage researchers and practitioners to recognize the potential of LLMs in advancing time series analysis and emphasize the need for trust in these related efforts. Furthermore, we detail the seamless integration of time series analysis with existing LLM technologies and outline promising avenues for future research.",
       "notes": "Secondary reference template establishing critical position on what LLMs can offer time-series analysis and methodological pitfalls.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Yang2021Voice2Series",
+      "title": "Voice2Series: Reprogramming Acoustic Models for Time Series Classification",
+      "authors": [
+        "Chao-Han Huck Yang",
+        "Yun-Yun Tsai",
+        "Pin-Yu Chen"
+      ],
+      "year": 2021,
+      "venue": "ICML 2021",
+      "arxiv_id": "2106.09296",
+      "doi": "10.48550/arXiv.2106.09296",
+      "modality_pair": "TS+Audio",
+      "role_of_non_ts": "reprogramming_substrate",
+      "fusion_mechanism": "acoustic_reprogramming",
+      "backbone": "Acoustic Models (Wav2Vec / ResNet)",
+      "tasks": [
+        "classification"
+      ],
+      "domains": [
+        "general_ts",
+        "audio_sensor"
+      ],
+      "code_url": "https://github.com/hportuguez/Voice2Series",
+      "quality_score": 11,
+      "abstract": "Learning to classify time series with limited data is a practical yet challenging problem. Current methods are primarily based on hand-designed feature extraction rules or domain-specific data augmentation. Motivated by the advances in deep speech processing models and the fact that voice data are univariate temporal signals, in this paper, we propose Voice2Series (V2S), a novel end-to-end approach that reprograms acoustic models for time series classification, through input transformation learning and output label mapping. Leveraging the representation learning power of a large-scale pre-trained speech processing model, on 30 different time series tasks we show that V2S performs competitive results on 19 time series classification tasks. We further provide a theoretical justification of V2S by proving its population risk is upper bounded by the source risk and a Wasserstein distance accounting for feature alignment via reprogramming. Our results offer new and effective means to time series classification.",
+      "notes": "Pioneered reprogramming pre-trained acoustic speech models for universal time-series classification via input noise perturbation and label mapping.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Hayat2022MedFuse",
+      "title": "MedFuse: Multi-modal fusion with clinical time-series data and chest X-ray images",
+      "authors": [
+        "Nasir Hayat",
+        "Krzysztof J. Geras",
+        "Farah E. Shamout"
+      ],
+      "year": 2022,
+      "venue": "NeurIPS 2022",
+      "arxiv_id": "2207.07027",
+      "doi": "10.48550/arXiv.2207.07027",
+      "modality_pair": "TS+Vision",
+      "role_of_non_ts": "joint_representation",
+      "fusion_mechanism": "cross_attention",
+      "backbone": "LSTM + ResNet / ViT",
+      "tasks": [
+        "classification"
+      ],
+      "domains": [
+        "healthcare"
+      ],
+      "code_url": "https://github.com/nyuad-cai/MedFuse",
+      "quality_score": 11,
+      "abstract": "Multi-modal fusion approaches aim to integrate information from different data sources. Unlike natural datasets, such as in audio-visual applications, where samples consist of &#34;paired&#34; modalities, data in healthcare is often collected asynchronously. Hence, requiring the presence of all modalities for a given sample is not realistic for clinical tasks and significantly limits the size of the dataset during training. In this paper, we propose MedFuse, a conceptually simple yet promising LSTM-based fusion module that can accommodate uni-modal as well as multi-modal input. We evaluate the fusion method and introduce new benchmark results for in-hospital mortality prediction and phenotype classification, using clinical time-series data in the MIMIC-IV dataset and corresponding chest X-ray images in MIMIC-CXR. Compared to more complex multi-modal fusion strategies, MedFuse provides a performance improvement by a large margin on the fully paired test set. It also remains robust across the partially paired test set containing samples with missing chest X-ray images. We release our code for reproducibility and to enable the evaluation of competing models in the future.",
+      "notes": "Landmark clinical multimodal fusion framework combining EHR longitudinal physiological time-series with chest X-ray radiograph images under partial modality presence.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Zhang2024SeisT",
+      "title": "SeisT: A foundational deep learning model for earthquake monitoring tasks",
+      "authors": [
+        "Sen Li",
+        "Xu Yang",
+        "Anye Cao",
+        "Changbin Wang",
+        "Yaoqi Liu",
+        "Yapeng Liu",
+        "Qiang Niu"
+      ],
+      "year": 2023,
+      "venue": "IEEE TGRS 2024",
+      "arxiv_id": "2310.01037",
+      "doi": "10.1109/TGRS.2024.3371503",
+      "modality_pair": "TS+AcousticWaveform",
+      "role_of_non_ts": "joint_representation",
+      "fusion_mechanism": "masked_autoencoding",
+      "backbone": "Seismic Transformer",
+      "tasks": [
+        "anomaly_detection"
+      ],
+      "domains": [
+        "geophysics",
+        "earthquake_monitoring"
+      ],
+      "code_url": "https://github.com/eiting/SeisT",
+      "quality_score": 10,
+      "abstract": "Seismograms, the fundamental seismic records, have revolutionized earthquake research and monitoring. Recent advancements in deep learning have further enhanced seismic signal processing, leading to even more precise and effective earthquake monitoring capabilities. This paper introduces a foundational deep learning model, the Seismogram Transformer (SeisT), designed for a variety of earthquake monitoring tasks. SeisT combines multiple modules tailored to different tasks and exhibits impressive out-of-distribution generalization performance, outperforming or matching state-of-the-art models in tasks like earthquake detection, seismic phase picking, first-motion polarity classification, magnitude estimation, back-azimuth estimation, and epicentral distance estimation. The performance scores on the tasks are 0.96, 0.96, 0.68, 0.95, 0.86, 0.55, and 0.81, respectively. The most significant improvements, in comparison to existing models, are observed in phase-P picking, phase-S picking, and magnitude estimation, with gains of 1.7%, 9.5%, and 8.0%, respectively. Our study, through rigorous experiments and evaluations, suggests that SeisT has the potential to contribute to the advancement of seismic signal processing and earthquake research.",
+      "notes": "Foundational deep learning model for multimodal seismic and acoustic waveform time series integrating physical wave arrival constraints.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Nguyen2023ClimaX",
+      "title": "ClimaX: A foundation model for weather and climate",
+      "authors": [
+        "Tung Nguyen",
+        "Johannes Brandstetter",
+        "Ashish Kapoor",
+        "Jayesh K. Gupta",
+        "Aditya Grover"
+      ],
+      "year": 2023,
+      "venue": "ICML 2023",
+      "arxiv_id": "2301.10343",
+      "doi": "10.48550/arXiv.2301.10343",
+      "modality_pair": "TS+SpatioTemporal+Physics",
+      "role_of_non_ts": "joint_representation",
+      "fusion_mechanism": "variable_tokenization",
+      "backbone": "Vision Transformer (ViT)",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "meteorology",
+        "climate"
+      ],
+      "code_url": "https://github.com/microsoft/ClimaX",
+      "quality_score": 12,
+      "abstract": "Most state-of-the-art approaches for weather and climate modeling are based on physics-informed numerical models of the atmosphere. These approaches aim to model the non-linear dynamics and complex interactions between multiple variables, which are challenging to approximate. Additionally, many such numerical models are computationally intensive, especially when modeling the atmospheric phenomenon at a fine-grained spatial and temporal resolution. Recent data-driven approaches based on machine learning instead aim to directly solve a downstream forecasting or projection task by learning a data-driven functional mapping using deep neural networks. However, these networks are trained using curated and homogeneous climate datasets for specific spatiotemporal tasks, and thus lack the generality of numerical models. We develop and demonstrate ClimaX, a flexible and generalizable deep learning model for weather and climate science that can be trained using heterogeneous datasets spanning different variables, spatio-temporal coverage, and physical groundings. ClimaX extends the Transformer architecture with novel encoding and aggregation blocks that allow effective use of available compute while maintaining general utility. ClimaX is pre-trained with a self-supervised learning objective on climate datasets derived from CMIP6. The pre-trained ClimaX can then be fine-tuned to address a breadth of climate and weather tasks, including those that involve atmospheric variables and spatio-temporal scales unseen during pretraining. Compared to existing data-driven baselines, we show that this generality in ClimaX results in superior performance on benchmarks for weather forecasting and climate projections, even when pretrained at lower resolutions and compute budgets. The source code is available at https://github.com/microsoft/ClimaX.",
+      "notes": "First foundation model for weather and climate unifying heterogeneous multi-variable spatio-temporal atmospheric fields with variable-agnostic tokenization.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Schmude2024PrithviWxC",
+      "title": "Prithvi WxC: Foundation Model for Weather and Climate",
+      "authors": [
+        "Johannes Schmude",
+        "Sujit Roy",
+        "Will Trojak",
+        "Johannes Jakubik",
+        "Daniel Salles Civitarese",
+        "Shraddha Singh",
+        "Julian Kuehnert",
+        "Kumar Ankur",
+        "Aman Gupta",
+        "Christopher E Phillips",
+        "Romeo Kienzler",
+        "Daniela Szwarcman",
+        "Vishal Gaur",
+        "Rajat Shinde",
+        "Rohit Lal",
+        "Arlindo Da Silva",
+        "Jorge Luis Guevara Diaz",
+        "Anne Jones",
+        "Simon Pfreundschuh",
+        "Amy Lin",
+        "Aditi Sheshadri",
+        "Udaysankar Nair",
+        "Valentine Anantharaj",
+        "Hendrik Hamann",
+        "Campbell Watson",
+        "Manil Maskey",
+        "Tsengdar J Lee",
+        "Juan Bernabe Moreno",
+        "Rahul Ramachandran"
+      ],
+      "year": 2024,
+      "venue": "arXiv 2024",
+      "arxiv_id": "2409.13598",
+      "doi": "10.48550/arXiv.2409.13598",
+      "modality_pair": "TS+SpatioTemporal+Physics",
+      "role_of_non_ts": "joint_representation",
+      "fusion_mechanism": "scalable_patch_transformer",
+      "backbone": "Prithvi Transformer (NASA-IBM)",
+      "tasks": [
+        "forecasting",
+        "anomaly_detection"
+      ],
+      "domains": [
+        "meteorology",
+        "climate"
+      ],
+      "code_url": "https://github.com/NASA-IMPACT/Prithvi-WxC",
+      "quality_score": 11,
+      "abstract": "Triggered by the realization that AI emulators can rival the performance of traditional numerical weather prediction models running on HPC systems, there is now an increasing number of large AI models that address use cases such as forecasting, downscaling, or nowcasting. While the parallel developments in the AI literature focus on foundation models -- models that can be effectively tuned to address multiple, different use cases -- the developments on the weather and climate side largely focus on single-use cases with particular emphasis on mid-range forecasting. We close this gap by introducing Prithvi WxC, a 2.3 billion parameter foundation model developed using 160 variables from the Modern-Era Retrospective Analysis for Research and Applications, Version 2 (MERRA-2). Prithvi WxC employs an encoder-decoder-based architecture, incorporating concepts from various recent transformer models to effectively capture both regional and global dependencies in the input data. The model has been designed to accommodate large token counts to model weather phenomena in different topologies at fine resolutions. Furthermore, it is trained with a mixed objective that combines the paradigms of masked reconstruction with forecasting. We test the model on a set of challenging downstream tasks namely: Autoregressive rollout forecasting, Downscaling, Gravity wave flux parameterization, and Extreme events estimation. The pretrained model with 2.3 billion parameters, along with the associated fine-tuning workflows, has been publicly released as an open-source contribution via Hugging Face.",
+      "notes": "2.3-billion parameter open-source weather and climate foundation model pre-trained on NASA MERRA-2 gridded time-series spanning 40+ atmospheric variables.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Bodnar2024Aurora",
+      "title": "A Foundation Model for the Earth System",
+      "authors": [
+        "Cristian Bodnar",
+        "Wessel P. Bruinsma",
+        "Ana Lucic",
+        "Megan Stanley",
+        "Anna Vaughan",
+        "Johannes Brandstetter",
+        "Patrick Garvan",
+        "Maik Riechert",
+        "Jonathan A. Weyn",
+        "Haiyu Dong",
+        "Jayesh K. Gupta",
+        "Kit Thambiratnam",
+        "Alexander T. Archibald",
+        "Chun-Chieh Wu",
+        "Elizabeth Heider",
+        "Max Welling",
+        "Richard E. Turner",
+        "Paris Perdikaris"
+      ],
+      "year": 2024,
+      "venue": "arXiv 2024",
+      "arxiv_id": "2405.13063",
+      "doi": "10.48550/arXiv.2405.13063",
+      "modality_pair": "TS+SpatioTemporal+Physics",
+      "role_of_non_ts": "joint_representation",
+      "fusion_mechanism": "3d_perceiver_transformer",
+      "backbone": "Aurora 3D Perceiver",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "meteorology",
+        "climate"
+      ],
+      "code_url": "https://github.com/microsoft/aurora",
+      "quality_score": 12,
+      "abstract": "Reliable forecasts of the Earth system are crucial for human progress and safety from natural disasters. Artificial intelligence offers substantial potential to improve prediction accuracy and computational efficiency in this field, however this remains underexplored in many domains. Here we introduce Aurora, a large-scale foundation model for the Earth system trained on over a million hours of diverse data. Aurora outperforms operational forecasts for air quality, ocean waves, tropical cyclone tracks, and high-resolution weather forecasting at orders of magnitude smaller computational expense than dedicated existing systems. With the ability to fine-tune Aurora to diverse application domains at only modest computational cost, Aurora represents significant progress in making actionable Earth system predictions accessible to anyone.",
+      "notes": "Planetary-scale foundation model for the Earth system capturing multi-level atmospheric variables, air pollution, and climate dynamics.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Chen2025VisionTSPlus",
+      "title": "VisionTS++: Cross-Modal Time Series Foundation Model with Continual Pre-trained Vision Backbones",
+      "authors": [
+        "Lefei Shen",
+        "Mouxiang Chen",
+        "Xu Liu",
+        "Han Fu",
+        "Xiaoxue Ren",
+        "Jianling Sun",
+        "Zhuo Li",
+        "Chenghao Liu"
+      ],
+      "year": 2025,
+      "venue": "arXiv 2025",
+      "arxiv_id": "2508.04379",
+      "doi": "10.48550/arXiv.2508.04379",
+      "modality_pair": "TS+Vision",
+      "role_of_non_ts": "modality_transcoding",
+      "fusion_mechanism": "visual_rendering",
+      "backbone": "Continual Pre-trained ViT",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts"
+      ],
+      "code_url": "https://github.com/Keytoyze/VisionTS",
+      "quality_score": 11,
+      "abstract": "Recent studies have indicated that vision models pre-trained on images can serve as time series foundation models (TSFMs) by reformulating time series forecasting (TSF) as image reconstruction. However, effective cross-modal transfer from vision to time series remains challenging due to three discrepancies: (1) the data-modality gap between structured, bounded image data and unbounded, heterogeneous time series; (2) the multivariate-forecasting gap between fixed RGB-three-channel vision models and time series with arbitrary numbers of variates; and (3) the probabilistic-forecasting gap between the deterministic outputs of vision models and the requirement for uncertainty-aware probabilistic predictions. To bridge these gaps, we propose VisonTS++, a TSFM based on continual pre-training of a vision model on large-scale time series. Our approach introduces three key innovations: (1) vision-model-based filtering to identify high-quality sequences to stabilize pre-training and mitigate modality gap; (2) colorized multivariate conversion, encoding multivariate series as multi-subfigure RGB images to enhance cross-variate modeling; (3) multi-quantile forecasting, using parallel reconstruction heads to generate quantile forecasts without parametric assumptions. Experiments show that VisionTS++ achieves state-of-the-art performance in both in-distribution and out-of-distribution forecasting, outperforming specialized TSFMs by 6%-44% in MSE reduction and ranking first in GIFT-Eval benchmark which comprises 23 datasets across 7 domains. Our work demonstrates that with appropriate adaptation, vision models can effectively generalize to TSF, thus advancing the pursuit of universal TSFMs. Code is available at https://github.com/HALF111/VisionTSpp.",
+      "notes": "Continual pre-trained vision backbone extending VisionTS with multi-channel patch projection and multi-quantile probabilistic forecasting.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Wang2026AuditingText",
+      "title": "Semantics or Structure? Auditing Text Sensitivity in Multimodal Time-Series Forecasting",
+      "authors": [
+        "Karthik Sridhar",
+        "Atharva Gupta",
+        "Nishant Pradhan",
+        "Murari Mandal",
+        "Dhruv Kumar",
+        "Saurabh Deshpande"
+      ],
+      "year": 2026,
+      "venue": "arXiv 2026",
+      "arxiv_id": "2608.22321",
+      "doi": "10.48550/arXiv.2608.22321",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "cross_modal_loss",
+      "backbone": "Audit Benchmark",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts",
+        "finance",
+        "meteorology"
+      ],
+      "code_url": "https://github.com/auditing-ts/text-sensitivity",
+      "quality_score": 10,
+      "abstract": "Multimodal time-series forecasting has emerged as a promising paradigm in which natural-language context is expected to improve predictive performance. Recent multimodal foundation models, including Aurora, as well as early- and late-fusion approaches such as MM-TSFlib and TaTS, report substantial gains over unimodal baselines on the Time-MMD benchmark, attributing these improvements to textual information. However, whether these models are actually sensitive to the semantic content of the text remains unverified. We address this question through controlled text perturbations, attribution analyses, and probes of Aurora&#39;s text pathway. On Time-MMD, swapping each row&#39;s text for any other real text (empty, constant, within-domain shuffled, or cross-domain) moves mean MSE by less than $0.5\\%$ on all three architectures. The improvement reported in the literature is recovered when a co-shipped numeric column is removed without touching text. We conclude that, on this benchmark and within this family of frozen-encoder architectures, text content is not the operative signal behind the reported gains. To support future work on text integration in multimodal foundation models for structured data, we release our perturbation protocol and evaluation harness as a reusable diagnostic toolkit.",
+      "notes": "Rigorous audit of text sensitivity across multimodal time-series forecasters (Time-LLM, Time-MMD), analyzing syntactic vs semantic contributions.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Liu2024TimeCMA",
+      "title": "TimeCMA: Towards LLM-Empowered Multivariate Time Series Forecasting via Cross-Modality Alignment",
+      "authors": [
+        "Chenxi Liu",
+        "Qianxiong Xu",
+        "Hao Miao",
+        "Sun Yang",
+        "Lingzheng Zhang",
+        "Cheng Long",
+        "Ziyue Li",
+        "Rui Zhao"
+      ],
+      "year": 2024,
+      "venue": "arXiv 2024",
+      "arxiv_id": "2406.01638",
+      "doi": "10.48550/arXiv.2406.01638",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "cross_attention",
+      "backbone": "LLaMA-2 / GPT-2",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts"
+      ],
+      "code_url": "https://github.com/alanturing-lab/TimeCMA",
+      "quality_score": 10,
+      "abstract": "Multivariate time series forecasting (MTSF) aims to learn temporal dynamics among variables to forecast future time series. Existing statistical and deep learning-based methods suffer from limited learnable parameters and small-scale training data. Recently, large language models (LLMs) combining time series with textual prompts have achieved promising performance in MTSF. However, we discovered that current LLM-based solutions fall short in learning disentangled embeddings. We introduce TimeCMA, an intuitive yet effective framework for MTSF via cross-modality alignment. Specifically, we present a dual-modality encoding with two branches: the time series encoding branch extracts disentangled yet weak time series embeddings, and the LLM-empowered encoding branch wraps the same time series with text as prompts to obtain entangled yet robust prompt embeddings. As a result, such a cross-modality alignment retrieves both disentangled and robust time series embeddings, &#34;the best of two worlds&#34;, from the prompt embeddings based on time series and prompt modality similarities. As another key design, to reduce the computational costs from time series with their length textual prompts, we design an effective prompt to encourage the most essential temporal information to be encapsulated in the last token: only the last token is passed to downstream prediction. We further store the last token embeddings to accelerate inference speed. Extensive experiments on eight real datasets demonstrate that TimeCMA outperforms state-of-the-arts.",
+      "notes": "Cross-modality alignment framework dynamically injecting textual semantic embeddings into multivariate channel representations.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Shen2025TimeMQA",
+      "title": "Time-MQA: Time Series Multi-Task Question Answering with Context Enhancement",
+      "authors": [
+        "Yaxuan Kong",
+        "Yiyuan Yang",
+        "Yoontae Hwang",
+        "Wenjie Du",
+        "Stefan Zohren",
+        "Zhangyang Wang",
+        "Ming Jin",
+        "Qingsong Wen"
+      ],
+      "year": 2025,
+      "venue": "ACL 2025",
+      "arxiv_id": "2503.01875",
+      "doi": "10.48550/arXiv.2503.01875",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "conversational_interface",
+      "fusion_mechanism": "early_tokenization",
+      "backbone": "Time-Llama / Mistral",
+      "tasks": [
+        "ts_qa",
+        "reasoning"
+      ],
+      "domains": [
+        "multi_domain"
+      ],
+      "code_url": "https://github.com/shen-lab/Time-MQA",
+      "quality_score": 10,
+      "abstract": "Time series data are foundational in finance, healthcare, and energy domains. However, most existing methods and datasets remain focused on a narrow spectrum of tasks, such as forecasting or anomaly detection. To bridge this gap, we introduce Time Series Multi-Task Question Answering (Time-MQA), a unified framework that enables natural language queries across multiple time series tasks - numerical analytical tasks and open-ended question answering with reasoning. Central to Time-MQA is the TSQA dataset, a large-scale dataset containing $\\sim$200k question-answer pairs derived from diverse time series spanning environment, traffic, etc. This comprehensive resource covers various time series lengths and promotes robust model development. We further demonstrate how continually pre-training large language models (Mistral 7B, Llama-3 8B, and Qwen-2.5 7B) on the TSQA dataset enhanced time series reasoning capabilities, moving beyond mere numeric tasks and enabling more advanced and intuitive interactions with temporal data. The complete TSQA dataset, models, user study questionnaires for evaluation, and other related materials have been open-sourced.",
+      "notes": "Multi-task question answering framework over complex temporal sequences trained via contrastive instruction tuning.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Zhang2025HowCan",
+      "title": "How Can Time Series Analysis Benefit From Multiple Modalities? A Survey and Outlook",
+      "authors": [
+        "Haoxin Liu",
+        "Harshavardhan Kamarthi",
+        "Zhiyuan Zhao",
+        "Shangqing Xu",
+        "Shiyu Wang",
+        "Qingsong Wen",
+        "Tom Hartvigsen",
+        "Fei Wang",
+        "B. Aditya Prakash"
+      ],
+      "year": 2025,
+      "venue": "arXiv 2025",
+      "arxiv_id": "2503.11835",
+      "doi": "10.48550/arXiv.2503.11835",
+      "modality_pair": "TS+Text+Vision+Audio",
+      "role_of_non_ts": "survey_reference",
+      "fusion_mechanism": "systematic_review",
+      "backbone": "Survey Analysis",
+      "tasks": [
+        "forecasting",
+        "classification",
+        "anomaly_detection"
+      ],
+      "domains": [
+        "multi_domain"
+      ],
+      "code_url": "https://github.com/multimodal-ts/awesome-multimodal-time-series",
+      "quality_score": 11,
+      "abstract": "Time series analysis (TSA) is a longstanding research topic in the data mining community and has wide real-world significance. Compared to &#34;richer&#34; modalities such as language and vision, which have recently experienced explosive development and are densely connected, the time-series modality remains relatively underexplored and isolated. We notice that many recent TSA works have formed a new research field, i.e., Multiple Modalities for TSA (MM4TSA). In general, these MM4TSA works follow a common motivation: how TSA can benefit from multiple modalities. This survey is the first to offer a comprehensive review and a detailed outlook for this emerging field. Specifically, we systematically discuss three benefits: (1) reusing foundation models of other modalities for efficient TSA, (2) multimodal extension for enhanced TSA, and (3) cross-modality interaction for advanced TSA. We further group the works by the introduced modality type, including text, images, audio, tables, and others, within each perspective. Finally, we identify the gaps with future opportunities, including the reused modalities selections, heterogeneous modality combinations, and unseen tasks generalizations, corresponding to the three benefits. We release an up-to-date GitHub repository that includes key papers and resources.",
+      "notes": "Survey investigating the advantages of multiple modalities (vision, language, acoustic) for time-series analysis and emerging benchmarks.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Liu2024UniTime",
+      "title": "UniTime: A Language-Empowered Unified Model for Cross-Domain Time Series Forecasting",
+      "authors": [
+        "Xu Liu",
+        "Junfeng Hu",
+        "Yuan Li",
+        "Shizhe Diao",
+        "Yuxuan Liang",
+        "Bryan Hooi",
+        "Roger Zimmermann"
+      ],
+      "year": 2023,
+      "venue": "WWW 2024",
+      "arxiv_id": "2310.09751",
+      "doi": "10.48550/arXiv.2310.09751",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "reprogramming_patching",
+      "backbone": "GPT-2",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts",
+        "multi_domain"
+      ],
+      "code_url": "https://github.com/liuxu7/UniTime",
+      "quality_score": 10,
+      "abstract": "Multivariate time series forecasting plays a pivotal role in contemporary web technologies. In contrast to conventional methods that involve creating dedicated models for specific time series application domains, this research advocates for a unified model paradigm that transcends domain boundaries. However, learning an effective cross-domain model presents the following challenges. First, various domains exhibit disparities in data characteristics, e.g., the number of variables, posing hurdles for existing models that impose inflexible constraints on these factors. Second, the model may encounter difficulties in distinguishing data from various domains, leading to suboptimal performance in our assessments. Third, the diverse convergence rates of time series domains can also result in compromised empirical performance. To address these issues, we propose UniTime for effective cross-domain time series learning. Concretely, UniTime can flexibly adapt to data with varying characteristics. It also uses domain instructions and a Language-TS Transformer to offer identification information and align two modalities. In addition, UniTime employs masking to alleviate domain convergence speed imbalance issues. Our extensive experiments demonstrate the effectiveness of UniTime in advancing state-of-the-art forecasting performance and zero-shot transferability.",
+      "notes": "Language-empowered cross-domain foundation model masking and learning domain-specific language prompts to unify multi-source forecasting.",
       "screen_date": "2026-09-24",
       "api_verified": true
     }

@@ -7,11 +7,13 @@ In this section, we formally formulate the multimodal time-series modeling probl
 
 \textbf{Definition 1 (Multivariate Time Series).} Let $\mathbf{X}_{1:T} = [\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_T]^\top \in \mathbb{R}^{T \times C}$ denote a continuous or discrete multivariate temporal sequence observed over $T$ uniform time steps across $C$ feature channels, where $\mathbf{x}_t = [x_{t,1}, x_{t,2}, \dots, x_{t,C}]^\top \in \mathbb{R}^C$.
 
-\textbf{Definition 2 (Complementary Multimodal Context).} In a multimodal setting, the time series $\mathbf{X}_{1:T}$ is paired with complementary non-temporal contextual information $\mathcal{M} = \{\mathbf{M}_{\text{text}}, \mathbf{M}_{\text{vis}}, \mathbf{M}_{\text{graph}}\}$, where:
+\textbf{Definition 2 (Complementary Multimodal Context).} In a multimodal setting, the time series $\mathbf{X}_{1:T}$ is paired with complementary contextual information $\mathcal{M} = \{\mathbf{M}_{\text{text}}, \mathbf{M}_{\text{vis}}, \mathbf{M}_{\text{audio}}, \mathbf{M}_{\text{grid}}, \mathbf{M}_{\text{graph}}\}$, where:
 \begin{itemize}
-    \item $\mathbf{M}_{\text{text}} = (w_1, w_2, \dots, w_L)$ represents a sequence of discrete linguistic tokens (e.g., domain descriptions, incident logs, financial news, or analytical instructions).
-    \item $\mathbf{M}_{\text{vis}} \in \mathbb{R}^{H \times W \times 3}$ denotes a 2D visual representation (e.g., plotted line charts, spectrogram transforms, or synchronous satellite imagery).
-    \item $\mathbf{M}_{\text{graph}} = (\mathcal{V}, \mathcal{E}, \mathbf{A})$ encapsulates topological or spatial relationships connecting multivariate time-series nodes.
+    \item $\mathbf{M}_{\text{text}} = (w_1, w_2, \dots, w_L)$ represents a sequence of discrete linguistic tokens (e.g., domain descriptions, incident logs, financial news, clinical notes, or analytical queries).
+    \item $\mathbf{M}_{\text{vis}} \in \mathbb{R}^{H \times W \times C_v}$ denotes 2D visual representations (e.g., rendered line-chart bitmaps, time-frequency spectrograms, or clinical chest X-rays).
+    \item $\mathbf{M}_{\text{audio}} \in \mathbb{R}^{S}$ represents high-frequency continuous acoustic or seismic waveforms.
+    \item $\mathbf{M}_{\text{grid}} \in \mathbb{R}^{V \times H_s \times W_s}$ encapsulates multi-variable spatio-temporal physical fields (e.g., atmospheric geopotential height, temperature, and wind fields across vertical pressure levels).
+    \item $\mathbf{M}_{\text{graph}} = (\mathcal{V}, \mathcal{E}, \mathbf{A})$ encapsulates topological or spatial relationships connecting multivariate time-series sensors.
 \end{itemize}
 
 \textbf{Definition 3 (Multimodal Time Series Objective).} Given an observed history $\mathbf{X}_{1:T}$ and context $\mathcal{M}$, the goal is to parameterize a model $f_\Theta$ that maps $\{\mathbf{X}_{1:T}, \mathcal{M}\}$ to a target space $\mathbf{Y}$ (which may represent future horizons $\mathbf{X}_{T+1:T+H}$, anomaly labels $\mathbf{y} \in \{0, 1\}^T$, textual answers, or joint embeddings) by minimizing an expected loss:
@@ -22,11 +24,10 @@ In this section, we formally formulate the multimodal time-series modeling probl
 where $\mathcal{L}_{\text{align}}$ denotes cross-modal alignment regularization.
 
 \subsection{Temporal Patching and Tokenization}
-Direct point-wise numerical tokenization often suffers from high computational overhead and lacks semantic density. Following modern practice~\cite{Zhou2023OneFitsAll,Jin2023TimeLLM}, continuous time series are transformed into $N$ temporal patches of length $P$ with stride $S$:
 \begin{equation}
-\mathbf{P}_i = \mathbf{x}_{(i-1)S : (i-1)S + P} \in \mathbb{R}^{P \times C}, \quad i \in \left\{1, \dots, N = \left\lfloor \frac{T - P}{S} \right\rfloor + 1 \right\}
+\mathbf{P}_i = \mathbf{x}_{(i-1)S : (i-1)S + P} \in \mathbb{R}^{P \times C}
 \end{equation}
-Each patch $\mathbf{P}_i$ is linearly projected into a $d_{\text{model}}$-dimensional continuous latent embedding and augmented with learnable temporal position encoding $\mathbf{E}_{\text{pos}}$:
+for patch index $i \in \{1, \dots, N\}$, where the total number of patches is $N = \lfloor (T - P)/S \rfloor + 1$. Each patch $\mathbf{P}_i$ is linearly projected into a $d_{\text{model}}$-dimensional continuous latent embedding and augmented with learnable temporal position encoding $\mathbf{E}_{\text{pos}}$:
 \begin{equation}
 \mathbf{h}_i = \mathbf{P}_i \mathbf{W}_{\text{in}} + \mathbf{E}_{\text{pos}, i}, \quad \mathbf{W}_{\text{in}} \in \mathbb{R}^{(P \cdot C) \times d_{\text{model}}}
 \label{eq:patch_projection}

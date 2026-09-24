@@ -21,38 +21,46 @@ def main():
 
     # Group papers by taxonomy categories
     categories = {
-        "Cross-Modal Reprogramming & Adaptation": [],
-        "Vision-Language & Visual Rendering": [],
-        "Multimodal Time Series Foundation Models & Multi-Task": [],
+        "Cross-Modal Reprogramming & Decoupled Text Alignment": [],
+        "Vision-Language & Visual Transcoding": [],
+        "Acoustic & Seismic Waveform Reprogramming": [],
+        "Physics-Informed & Planetary Earth Foundation Models": [],
+        "Conversational TS-MLLMs & Temporal Reasoning": [],
+        "Unified Multi-Task Architectures & Cross-Modal Retrieval": [],
         "Multimodal Datasets & Evaluation Benchmarks": [],
-        "Conversational TS-MLLMs & Reasoning Frameworks": [],
-        "Time Series Pre-trained Baselines & Reference Surveys": []
+        "Foundational Baselines & Reference Surveys": []
     }
 
     for p in papers:
         mech = p.get("fusion_mechanism", "")
         role = p.get("role_of_non_ts", "")
         tasks = p.get("tasks", [])
+        mod = p.get("modality_pair", "")
+        aid = p.get("arxiv_id", "")
         
-        if role == "survey_reference" or role == "position_analysis" or role == "baseline_context":
-            categories["Time Series Pre-trained Baselines & Reference Surveys"].append(p)
-        elif role == "benchmark" or p.get("arxiv_id") == "2406.08627":
+        if role in ["survey_reference", "position_analysis", "baseline_context"]:
+            categories["Foundational Baselines & Reference Surveys"].append(p)
+        elif role == "benchmark" or aid == "2406.08627":
             categories["Multimodal Datasets & Evaluation Benchmarks"].append(p)
-        elif mech == "visual_rendering" or "Vision" in p.get("modality_pair", ""):
-            categories["Vision-Language & Visual Rendering"].append(p)
+        elif "Audio" in mod or "Waveform" in mod:
+            categories["Acoustic & Seismic Waveform Reprogramming"].append(p)
+        elif "Grid" in mod or "Planetary" in mod or aid in ["2301.10343", "2409.13598", "2405.13063"]:
+            categories["Physics-Informed & Planetary Earth Foundation Models"].append(p)
+        elif mech == "visual_rendering" or "Vision" in mod or "CXR" in mod:
+            categories["Vision-Language & Visual Transcoding"].append(p)
         elif "reasoning" in tasks or "ts_qa" in tasks or role == "conversational_interface":
-            categories["Conversational TS-MLLMs & Reasoning Frameworks"].append(p)
-        elif mech in ["reprogramming_patching", "text_serialization", "cross_modal_loss", "semantic_anchor", "contrastive_prototype"]:
-            categories["Cross-Modal Reprogramming & Adaptation"].append(p)
+            categories["Conversational TS-MLLMs & Temporal Reasoning"].append(p)
+        elif aid in ["2403.00131", "2506.09114", "2403.07815"]:
+            categories["Unified Multi-Task Architectures & Cross-Modal Retrieval"].append(p)
         else:
-            categories["Multimodal Time Series Foundation Models & Multi-Task"].append(p)
+            categories["Cross-Modal Reprogramming & Decoupled Text Alignment"].append(p)
 
     lines = []
     lines.append("# Awesome Multimodal Time Series Models: A Survey and Outlook")
     lines.append("")
     lines.append("[![Survey Paper](https://img.shields.io/badge/Paper-PDF-red.svg)](paper/main.pdf) ")
     lines.append("[![PRISMA 2020](https://img.shields.io/badge/PRISMA-2020%20Compliant-blue.svg)](docs/PROTOCOL.md) ")
-    lines.append("[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%201-brightgreen.svg)](docs/STATE.md) ")
+    lines.append("[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%202-brightgreen.svg)](docs/STATE.md) ")
     lines.append("[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) ")
     lines.append("")
     lines.append("> **Bilingual Repository** / **中英文双语前沿综述与开源精选仓库**  ")

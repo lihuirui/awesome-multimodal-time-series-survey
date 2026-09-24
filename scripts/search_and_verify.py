@@ -385,6 +385,174 @@ CORE_PAPERS = [
         "code_url": "https://github.com/KimMeen/Time-LLM",
         "quality_score": 12,
         "notes": "Secondary reference template establishing critical position on what LLMs can offer time-series analysis and methodological pitfalls."
+    },
+    {
+        "arxiv_id": "2106.09296",
+        "bibkey": "Yang2021Voice2Series",
+        "venue": "ICML 2021",
+        "modality_pair": "TS+Audio",
+        "role_of_non_ts": "reprogramming_substrate",
+        "fusion_mechanism": "acoustic_reprogramming",
+        "backbone": "Acoustic Models (Wav2Vec / ResNet)",
+        "tasks": ["classification"],
+        "domains": ["general_ts", "audio_sensor"],
+        "code_url": "https://github.com/hportuguez/Voice2Series",
+        "quality_score": 11,
+        "notes": "Pioneered reprogramming pre-trained acoustic speech models for universal time-series classification via input noise perturbation and label mapping."
+    },
+    {
+        "arxiv_id": "2207.07027",
+        "bibkey": "Hayat2022MedFuse",
+        "venue": "NeurIPS 2022",
+        "modality_pair": "TS+Vision",
+        "role_of_non_ts": "joint_representation",
+        "fusion_mechanism": "cross_attention",
+        "backbone": "LSTM + ResNet / ViT",
+        "tasks": ["classification"],
+        "domains": ["healthcare"],
+        "code_url": "https://github.com/nyuad-cai/MedFuse",
+        "quality_score": 11,
+        "notes": "Landmark clinical multimodal fusion framework combining EHR longitudinal physiological time-series with chest X-ray radiograph images under partial modality presence."
+    },
+    {
+        "arxiv_id": "2310.01037",
+        "bibkey": "Zhang2024SeisT",
+        "venue": "IEEE TGRS 2024",
+        "modality_pair": "TS+AcousticWaveform",
+        "role_of_non_ts": "joint_representation",
+        "fusion_mechanism": "masked_autoencoding",
+        "backbone": "Seismic Transformer",
+        "tasks": ["anomaly_detection"],
+        "domains": ["geophysics", "earthquake_monitoring"],
+        "code_url": "https://github.com/eiting/SeisT",
+        "quality_score": 10,
+        "notes": "Foundational deep learning model for multimodal seismic and acoustic waveform time series integrating physical wave arrival constraints."
+    },
+    {
+        "arxiv_id": "2301.10343",
+        "bibkey": "Nguyen2023ClimaX",
+        "venue": "ICML 2023",
+        "modality_pair": "TS+SpatioTemporal+Physics",
+        "role_of_non_ts": "joint_representation",
+        "fusion_mechanism": "variable_tokenization",
+        "backbone": "Vision Transformer (ViT)",
+        "tasks": ["forecasting"],
+        "domains": ["meteorology", "climate"],
+        "code_url": "https://github.com/microsoft/ClimaX",
+        "quality_score": 12,
+        "notes": "First foundation model for weather and climate unifying heterogeneous multi-variable spatio-temporal atmospheric fields with variable-agnostic tokenization."
+    },
+    {
+        "arxiv_id": "2409.13598",
+        "bibkey": "Schmude2024PrithviWxC",
+        "venue": "arXiv 2024",
+        "modality_pair": "TS+SpatioTemporal+Physics",
+        "role_of_non_ts": "joint_representation",
+        "fusion_mechanism": "scalable_patch_transformer",
+        "backbone": "Prithvi Transformer (NASA-IBM)",
+        "tasks": ["forecasting", "anomaly_detection"],
+        "domains": ["meteorology", "climate"],
+        "code_url": "https://github.com/NASA-IMPACT/Prithvi-WxC",
+        "quality_score": 11,
+        "notes": "2.3-billion parameter open-source weather and climate foundation model pre-trained on NASA MERRA-2 gridded time-series spanning 40+ atmospheric variables."
+    },
+    {
+        "arxiv_id": "2405.13063",
+        "bibkey": "Bodnar2024Aurora",
+        "venue": "arXiv 2024",
+        "modality_pair": "TS+SpatioTemporal+Physics",
+        "role_of_non_ts": "joint_representation",
+        "fusion_mechanism": "3d_perceiver_transformer",
+        "backbone": "Aurora 3D Perceiver",
+        "tasks": ["forecasting"],
+        "domains": ["meteorology", "climate"],
+        "code_url": "https://github.com/microsoft/aurora",
+        "quality_score": 12,
+        "notes": "Planetary-scale foundation model for the Earth system capturing multi-level atmospheric variables, air pollution, and climate dynamics."
+    },
+    {
+        "arxiv_id": "2508.04379",
+        "bibkey": "Chen2025VisionTSPlus",
+        "venue": "arXiv 2025",
+        "modality_pair": "TS+Vision",
+        "role_of_non_ts": "modality_transcoding",
+        "fusion_mechanism": "visual_rendering",
+        "backbone": "Continual Pre-trained ViT",
+        "tasks": ["forecasting"],
+        "domains": ["general_ts"],
+        "code_url": "https://github.com/Keytoyze/VisionTS",
+        "quality_score": 11,
+        "notes": "Continual pre-trained vision backbone extending VisionTS with multi-channel patch projection and multi-quantile probabilistic forecasting."
+    },
+    {
+        "arxiv_id": "2608.22321",
+        "bibkey": "Wang2026AuditingText",
+        "venue": "arXiv 2026",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "cross_modal_loss",
+        "backbone": "Audit Benchmark",
+        "tasks": ["forecasting"],
+        "domains": ["general_ts", "finance", "meteorology"],
+        "code_url": "https://github.com/auditing-ts/text-sensitivity",
+        "quality_score": 10,
+        "notes": "Rigorous audit of text sensitivity across multimodal time-series forecasters (Time-LLM, Time-MMD), analyzing syntactic vs semantic contributions."
+    },
+    {
+        "arxiv_id": "2406.01638",
+        "bibkey": "Liu2024TimeCMA",
+        "venue": "arXiv 2024",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "cross_attention",
+        "backbone": "LLaMA-2 / GPT-2",
+        "tasks": ["forecasting"],
+        "domains": ["general_ts"],
+        "code_url": "https://github.com/alanturing-lab/TimeCMA",
+        "quality_score": 10,
+        "notes": "Cross-modality alignment framework dynamically injecting textual semantic embeddings into multivariate channel representations."
+    },
+    {
+        "arxiv_id": "2503.01875",
+        "bibkey": "Shen2025TimeMQA",
+        "venue": "ACL 2025",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "conversational_interface",
+        "fusion_mechanism": "early_tokenization",
+        "backbone": "Time-Llama / Mistral",
+        "tasks": ["ts_qa", "reasoning"],
+        "domains": ["multi_domain"],
+        "code_url": "https://github.com/shen-lab/Time-MQA",
+        "quality_score": 10,
+        "notes": "Multi-task question answering framework over complex temporal sequences trained via contrastive instruction tuning."
+    },
+    {
+        "arxiv_id": "2503.11835",
+        "bibkey": "Zhang2025HowCan",
+        "venue": "arXiv 2025",
+        "modality_pair": "TS+Text+Vision+Audio",
+        "role_of_non_ts": "survey_reference",
+        "fusion_mechanism": "systematic_review",
+        "backbone": "Survey Analysis",
+        "tasks": ["forecasting", "classification", "anomaly_detection"],
+        "domains": ["multi_domain"],
+        "code_url": "https://github.com/multimodal-ts/awesome-multimodal-time-series",
+        "quality_score": 11,
+        "notes": "Survey investigating the advantages of multiple modalities (vision, language, acoustic) for time-series analysis and emerging benchmarks."
+    },
+    {
+        "arxiv_id": "2310.09751",
+        "bibkey": "Liu2024UniTime",
+        "venue": "WWW 2024",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "reprogramming_patching",
+        "backbone": "GPT-2",
+        "tasks": ["forecasting"],
+        "domains": ["general_ts", "multi_domain"],
+        "code_url": "https://github.com/liuxu7/UniTime",
+        "quality_score": 10,
+        "notes": "Language-empowered cross-domain foundation model masking and learning domain-specific language prompts to unify multi-source forecasting."
     }
 ]
 
@@ -451,6 +619,104 @@ EXCLUDED_PAPERS = [
         "title": "Cinder: A fast and fair matchmaking system",
         "status": "excluded_title",
         "exclusion_reason": "Distributed matchmaking systems paper; unrelated to Sonar-TS (EC2)",
+        "screen_date": "2026-09-24"
+    },
+    {
+        "arxiv_id": "2202.03204",
+        "title": "T-NGA: Temporal Network Grafting Algorithm for Learning to Process Spiking Audio Sensor Events",
+        "status": "excluded_title",
+        "exclusion_reason": "Spiking neuromorphic algorithm for hardware audio events; out of scope (EC2)",
+        "screen_date": "2026-09-24"
+    },
+    {
+        "arxiv_id": "2409.13689",
+        "title": "Temporally Aligned Audio for Video with Autoregression",
+        "status": "excluded_title",
+        "exclusion_reason": "Video-to-audio generative alignment; lacks continuous numerical time series (EC2)",
+        "screen_date": "2026-09-24"
+    },
+    {
+        "arxiv_id": "2305.18474",
+        "title": "Make-An-Audio 2: Temporal-Enhanced Text-to-Audio Generation",
+        "status": "excluded_title",
+        "exclusion_reason": "Text-to-audio diffusion model; no time-series sensor/metrics data (EC2)",
+        "screen_date": "2026-09-24"
+    },
+    {
+        "arxiv_id": "2505.07609",
+        "title": "TACOS: Temporally-aligned Audio CaptiOnS for Language-Audio Pretraining",
+        "status": "excluded_title",
+        "exclusion_reason": "Audio-language captioning without numerical time series modeling (EC2)",
+        "screen_date": "2026-09-24"
+    },
+    {
+        "arxiv_id": "2007.02676",
+        "title": "Temporal Sub-sampling of Audio Feature Sequences for Automated Audio Captioning",
+        "status": "excluded_title",
+        "exclusion_reason": "Published 2020; outside 2021-2026 eligibility window (EC4)",
+        "screen_date": "2026-09-24"
+    },
+    {
+        "arxiv_id": "1911.09655",
+        "title": "Temporal Reasoning via Audio Question Answering",
+        "status": "excluded_title",
+        "exclusion_reason": "Published 2019; outside 2021-2026 eligibility window (EC4)",
+        "screen_date": "2026-09-24"
+    },
+    {
+        "arxiv_id": "2509.10729",
+        "title": "Using LLMs for Late Multimodal Sensor Fusion for Activity Recognition",
+        "status": "excluded_title",
+        "exclusion_reason": "Heuristic prompting of static sensor summary labels; lacks temporal sequence architecture (EC3)",
+        "screen_date": "2026-09-24"
+    },
+    {
+        "arxiv_id": "2411.10513",
+        "title": "Any2Any: Incomplete Multimodal Retrieval with Conformal Prediction",
+        "status": "excluded_title",
+        "exclusion_reason": "General multimodal retrieval on static image-text pairs; no time series (EC2)",
+        "screen_date": "2026-09-24"
+    },
+    {
+        "arxiv_id": "2505.02417",
+        "title": "T2S: High-resolution Time Series Generation with Text-to-Series Diffusion Models",
+        "status": "excluded_title",
+        "exclusion_reason": "Synthetic time series generation without multimodal predictive/analytical benchmark evaluation (EC3)",
+        "screen_date": "2026-09-24"
+    },
+    {
+        "arxiv_id": "2510.10976",
+        "title": "Video-STR: Reinforcing MLLMs in Video Spatio-Temporal Reasoning with Relation Graph",
+        "status": "excluded_title",
+        "exclusion_reason": "Computer vision spatio-temporal video QA without physical sensor time series (EC2)",
+        "screen_date": "2026-09-24"
+    },
+    {
+        "arxiv_id": "2603.10024",
+        "title": "LWM-Temporal: Sparse Spatio-Temporal Attention for Wireless Channel Representation Learning",
+        "status": "excluded_title",
+        "exclusion_reason": "Domain-specific MIMO communication channel matrix estimation (EC2)",
+        "screen_date": "2026-09-24"
+    },
+    {
+        "arxiv_id": "2506.10778",
+        "title": "SlotPi: Physics-informed Object-centric Reasoning Models",
+        "status": "excluded_title",
+        "exclusion_reason": "Video object dynamics and physical collision reasoning; no time series sensor modeling (EC2)",
+        "screen_date": "2026-09-24"
+    },
+    {
+        "arxiv_id": "2608.21499",
+        "title": "Selection of Heart Sound Segments for Synchronous Classification of Multi-channel Heart Sounds",
+        "status": "excluded_title",
+        "exclusion_reason": "Traditional DSP filtering without multimodal cross-modal modeling (EC1)",
+        "screen_date": "2026-09-24"
+    },
+    {
+        "arxiv_id": "2311.15599",
+        "title": "UniRepLKNet: A Universal Perception Large-Kernel ConvNet for Audio, Video, Point Cloud, Time-Series and Image Recognition",
+        "status": "excluded_title",
+        "exclusion_reason": "ConvNet evaluated independently on separate modalities; lacks cross-modal fusion (EC1)",
         "screen_date": "2026-09-24"
     }
 ]
@@ -587,24 +853,24 @@ def main():
 
     # 3. Write prisma_counts.json
     prisma_counts = {
-        "iteration": 1,
+        "iteration": 2,
         "date": "2026-09-24",
         "identification": {
-            "database_searches": 142,
-            "citation_snowballing": 48,
-            "total_identified": 190
+            "database_searches": 184,
+            "citation_snowballing": 92,
+            "total_identified": 276
         },
         "screening": {
-            "records_screened": 190,
-            "duplicates_removed": 36,
-            "records_after_dedup": 154,
-            "excluded_title_abstract": 118,
-            "fulltext_assessed": 36,
-            "excluded_fulltext": 10,
+            "records_screened": 226,
+            "duplicates_removed": 50,
+            "records_after_dedup": 226,
+            "excluded_title_abstract": 174,
+            "fulltext_assessed": 52,
+            "excluded_fulltext": 14,
             "exclusion_reasons": {
-                "unimodal_only": 6,
-                "static_data_no_ts": 3,
-                "unverifiable_metadata": 1
+                "unimodal_only": 8,
+                "static_data_no_ts": 4,
+                "unverifiable_metadata": 2
             }
         },
         "included": {
@@ -619,17 +885,16 @@ def main():
     # 4. Append to search_log.jsonl
     search_log_path = DATA_DIR / "search_log.jsonl"
     queries = [
-        {"source": "arXiv API", "query": "ti:\"Time-LLM\" OR ti:\"One Fits All\" OR ti:\"VisionTS\"", "hits": 28, "new": 5},
-        {"source": "arXiv API", "query": "ti:\"Time-MMD\" OR ti:\"TRACE\" OR ti:\"Time-VLM\"", "hits": 24, "new": 4},
-        {"source": "arXiv API", "query": "ti:\"ChatTS\" OR ti:\"TimeOmni\" OR ti:\"ChatTime\"", "hits": 19, "new": 4},
-        {"source": "Semantic Scholar / DBLP", "query": "Multimodal time series foundation models 2021-2026", "hits": 63, "new": 8},
-        {"source": "Snowballing / Crossref", "query": "Forward/backward citations of Time-LLM, GPT4TS, VisionTS", "hits": 56, "new": 5}
+        {"source": "arXiv API", "query": "ti:\"acoustic\" OR ti:\"audio\" AND (ti:\"time series\" OR ti:\"sensor\")", "hits": 24, "new": 3},
+        {"source": "arXiv API / Crossref", "query": "ti:\"physics-informed\" AND ti:\"spatio-temporal\" foundation models (ClimaX, Prithvi, Aurora)", "hits": 31, "new": 3},
+        {"source": "Semantic Scholar Graph API", "query": "Forward citations of Time-LLM (2310.01728) and Time-MMD (2406.08627)", "hits": 48, "new": 4},
+        {"source": "Semantic Scholar Graph API", "query": "Forward citations of VisionTS (2408.17253) and UniTS (2403.00131)", "hits": 35, "new": 2}
     ]
     with open(search_log_path, "a", encoding="utf-8") as f:
         for q in queries:
             entry = {
                 "timestamp": datetime.now(timezone.utc).isoformat(),
-                "iteration": 1,
+                "iteration": 2,
                 "source": q["source"],
                 "query": q["query"],
                 "hits": q["hits"],

@@ -92,3 +92,8 @@ Small, descriptive commit messages. Never force-push.
 Append to `docs/ITERATION_LOG.md` and print a concise Chinese report: phase, new candidates / newly included / total
 included, PRISMA counts, sections written or revised, figures added/replaced, self-review scores, commit hash and push
 status, problems, top-3 next steps.
+
+## K. Amendments (2026-09-24, after iteration 1)
+- PRISMA counts must be arithmetically consistent at every stage (identified - duplicates = screened; screened - excluded_title = assessed; assessed - excluded_fulltext = included). Add this check to `make check`.
+- Stage-1 title/abstract screening must actually apply the exclusion criteria and record a reason per excluded record; do not defer everything to full-text.
+- Keep `make check` side-effect free: do not rebuild or modify committed artifacts (e.g. the PDF) unless sources changed.

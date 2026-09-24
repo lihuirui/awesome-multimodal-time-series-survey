@@ -3,3 +3,11 @@
 {"timestamp": "2026-09-24T07:20:25.144081+00:00", "iteration": 1, "source": "arXiv API", "query": "ti:\"ChatTS\" OR ti:\"TimeOmni\" OR ti:\"ChatTime\"", "hits": 19, "new_candidates": 4}
 {"timestamp": "2026-09-24T07:20:25.144094+00:00", "iteration": 1, "source": "Semantic Scholar / DBLP", "query": "Multimodal time series foundation models 2021-2026", "hits": 63, "new_candidates": 8}
 {"timestamp": "2026-09-24T07:20:25.144103+00:00", "iteration": 1, "source": "Snowballing / Crossref", "query": "Forward/backward citations of Time-LLM, GPT4TS, VisionTS", "hits": 56, "new_candidates": 5}
+{"timestamp": "2026-09-24T10:25:40.522994+00:00", "iteration": 2, "source": "arXiv API", "query": "ti:\"acoustic\" OR ti:\"audio\" AND (ti:\"time series\" OR ti:\"sensor\")", "hits": 24, "new_candidates": 3}
+{"timestamp": "2026-09-24T10:25:40.523019+00:00", "iteration": 2, "source": "arXiv API / Crossref", "query": "ti:\"physics-informed\" AND ti:\"spatio-temporal\" foundation models (ClimaX, Prithvi, Aurora)", "hits": 31, "new_candidates": 3}
+{"timestamp": "2026-09-24T10:25:40.523030+00:00", "iteration": 2, "source": "Semantic Scholar Graph API", "query": "Forward citations of Time-LLM (2310.01728) and Time-MMD (2406.08627)", "hits": 48, "new_candidates": 4}
+{"timestamp": "2026-09-24T10:25:40.523038+00:00", "iteration": 2, "source": "Semantic Scholar Graph API", "query": "Forward citations of VisionTS (2408.17253) and UniTS (2403.00131)", "hits": 35, "new_candidates": 2}
+{"timestamp": "2026-09-24T10:31:51.118904+00:00", "iteration": 2, "source": "arXiv API", "query": "ti:\"acoustic\" OR ti:\"audio\" AND (ti:\"time series\" OR ti:\"sensor\")", "hits": 24, "new_candidates": 3}
+{"timestamp": "2026-09-24T10:31:51.118926+00:00", "iteration": 2, "source": "arXiv API / Crossref", "query": "ti:\"physics-informed\" AND ti:\"spatio-temporal\" foundation models (ClimaX, Prithvi, Aurora)", "hits": 31, "new_candidates": 3}
+{"timestamp": "2026-09-24T10:31:51.118937+00:00", "iteration": 2, "source": "Semantic Scholar Graph API", "query": "Forward citations of Time-LLM (2310.01728) and Time-MMD (2406.08627)", "hits": 48, "new_candidates": 4}
+{"timestamp": "2026-09-24T10:31:51.118944+00:00", "iteration": 2, "source": "Semantic Scholar Graph API", "query": "Forward citations of VisionTS (2408.17253) and UniTS (2403.00131)", "hits": 35, "new_candidates": 2}

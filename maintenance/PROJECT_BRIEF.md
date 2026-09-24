@@ -15,3 +15,11 @@
 - Extra figures: modality-pair × task heatmap; fusion-strategy evolution timeline; dataset landscape (size vs. modalities).
 - Must cover representative lines of work (verify each via API; do not include if unverifiable): Time-LLM, GPT4TS,
   Time-MMD, TimeOmni, ChatTS, Time-VLM, VisionTS, TRACE, Sonar-TS, and newer multimodal TSFMs and reasoning models.
+
+
+## Iteration 2 focus (read docs/STATE.md first)
+Prioritize the Top-3 backlog in `docs/STATE.md`. Persistent weakness: **Depth of Analysis** and quantitative tables.
+1. Build an empirical benchmark meta-table (MSE/MAE etc. only when stated in papers) for Time-MMD / Weather / Monash-style results into Section 5.
+2. Expand audio-TS and physics-informed spatio-temporal coverage via verified search + snowballing.
+3. Forward-snowball Time-LLM, VisionTS, Time-MMD via Semantic Scholar; add at most ~15 new verified papers.
+Stay within ~90 minutes; pass `make check`; commit and push; print Chinese report.

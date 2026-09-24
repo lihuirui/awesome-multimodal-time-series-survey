@@ -54,9 +54,9 @@ def plot_taxonomy():
             "items": [
                 "• TS + Text (Reports, News, Prompts)",
                 "• TS + Vision (Plots, Spectrograms, MAE)",
-                "• TS + Vision + Text (Tri-modal VLM)",
-                "• TS + Knowledge Graph / Topology",
-                "• TS + Audio / Waveforms",
+                "• TS + Audio (Speech AMs, Bioacoustics)",
+                "• TS + Vision + Text (Tri-modal VLM, EHR)",
+                "• TS + Physics / Spatio-Temporal Fields",
                 "• Omnimodal / Multi-sensor Data"
             ]
         },
@@ -65,12 +65,12 @@ def plot_taxonomy():
             "x": 38,
             "color": "#e67e22",
             "items": [
-                "• Patch Reprogramming (Time-LLM, GPT4TS)",
-                "• Visual Rendering (VisionTS)",
-                "• Unified Early Tokenization (UniTS, ChatTS)",
-                "• Cross-Attention Adapter (Time-VLM)",
-                "• Contrastive Dual-Tower (TRACE, TEST)",
-                "• Prompt Serialization (PromptCast, LLMTime)"
+                "• Patch Reprogramming (Time-LLM, OFA)",
+                "• Acoustic Reprogramming (Voice2Series)",
+                "• Visual Rendering (VisionTS, VisionTS++)",
+                "• Variable-Agnostic ViT (ClimaX, Prithvi)",
+                "• Cross-Attention Adapter (Time-VLM, MedFuse)",
+                "• Unified Early Tokenization (UniTS, ChatTS)"
             ]
         },
         {
@@ -92,11 +92,11 @@ def plot_taxonomy():
             "color": "#8e44ad",
             "items": [
                 "• Multimodal Forecasting (Point/Prob.)",
-                "• Anomaly Detection & Explanation",
+                "• Anomaly Detection & Phase Picking",
                 "• Time Series QA & Reasoning",
                 "• Cross-Modal Retrieval (TS <-> Text)",
-                "• Automated Report / Caption Gen",
-                "• Zero-Shot & Few-Shot Generalization"
+                "• Clinical Risk & Mortality Phenotyping",
+                "• Earth System Weather / Downscaling"
             ]
         }
     ]
@@ -117,7 +117,7 @@ def plot_taxonomy():
 
     # Domain Layer at Bottom
     domain_bbox = dict(boxstyle="round,pad=0.5", fc="#34495e", ec="none")
-    ax.text(50, 10, "Application Domains: Healthcare & EHR  •  Finance & Markets  •  Energy & Smart Grids  •  Meteorology & Climate  •  Traffic & Smart Cities",
+    ax.text(50, 10, "Application Domains: Healthcare & EHR  •  Meteorology & Climate  •  Finance & Markets  •  Energy & Smart Grids  •  Geophysics & Bioacoustics",
             ha="center", va="center", fontsize=9.5, fontweight="bold", color="white", bbox=domain_bbox)
 
     plt.tight_layout()
@@ -135,13 +135,13 @@ def plot_prisma():
     ax.set_ylim(0, 100)
     ax.axis("off")
 
-    ax.text(50, 96, "PRISMA 2020 Systematic Review Flow Diagram", 
+    ax.text(50, 96, "PRISMA 2020 Systematic Review Flow Diagram (Iteration 2)", 
             ha="center", va="center", fontsize=14, fontweight="bold", color=C_DARK)
 
     # Stage 1: Identification
     ident_text = (f"Identification\n"
                   f"Database searches (arXiv, DBLP, Crossref): n = {prisma['identification']['database_searches']}\n"
-                  f"Citation snowballing: n = {prisma['identification']['citation_snowballing']}\n"
+                  f"Citation snowballing (Semantic Scholar Graph): n = {prisma['identification']['citation_snowballing']}\n"
                   f"Total records identified: n = {prisma['identification']['total_identified']}")
     box_id = dict(boxstyle="round,pad=0.6", fc="#ebf5fb", ec="#2980b9", lw=1.5)
     ax.text(50, 80, ident_text, ha="center", va="center", fontsize=9, bbox=box_id)
@@ -163,12 +163,16 @@ def plot_prisma():
                 arrowprops=dict(facecolor=C_DARK, shrink=0.05, width=1.5, headwidth=6))
 
     # Stage 3: Eligibility
+    reasons = prisma['screening'].get('exclusion_reasons', {})
+    r1 = reasons.get('unimodal_only', 8)
+    r2 = reasons.get('static_data_no_ts', 4)
+    r3 = reasons.get('unverifiable_metadata', 2)
     elig_text = (f"Eligibility Assessment\n"
                  f"Full-text reports assessed for eligibility: n = {prisma['screening']['fulltext_assessed']}\n"
-                 f"Full-text reports excluded: n = {prisma['screening']['excluded_fulltext']}\n"
-                 f"• Pure unimodal time series (no cross-modal interaction): n = 6\n"
-                 f"• Non-time-series / static text/vision: n = 3\n"
-                 f"• Unverifiable repository/manuscript: n = 1")
+                 f"Full-text reports excluded with reasons: n = {prisma['screening']['excluded_fulltext']}\n"
+                 f"• Pure unimodal time series (no cross-modal interaction): n = {r1}\n"
+                 f"• Non-time-series / static text/vision: n = {r2}\n"
+                 f"• Out of scope / unverifiable metadata: n = {r3}")
     box_elig = dict(boxstyle="round,pad=0.6", fc="#fbeee6", ec="#d35400", lw=1.5)
     ax.text(50, 31, elig_text, ha="center", va="center", fontsize=8.5, bbox=box_elig)
 
@@ -177,7 +181,7 @@ def plot_prisma():
                 arrowprops=dict(facecolor=C_DARK, shrink=0.05, width=1.5, headwidth=6))
 
     # Stage 4: Included
-    incl_text = (f"Included Corpus\n"
+    incl_text = (f"Included Corpus (38 Studies)\n"
                  f"Studies included in systematic qualitative review: n = {prisma['included']['qualitative_synthesis']}\n"
                  f"Studies synthesized in quantitative taxonomy & benchmark analysis: n = {prisma['included']['quantitative_taxonomy']}")
     box_incl = dict(boxstyle="round,pad=0.6", fc="#eafaf1", ec="#27ae60", lw=2)
@@ -195,7 +199,7 @@ def plot_heatmap():
     payload = json.loads(DATA_PATH.read_text(encoding="utf-8"))
     papers = payload["papers"]
 
-    modality_pairs = ["TS+Text", "TS+Vision", "TS+Vision+Text", "TS+MultiModalBenchmark", "TS+SpatioTemporal"]
+    modality_pairs = ["TS+Text", "TS+Vision", "TS+Audio/Wave", "TS+Vision+Text", "TS+Physics/ST", "Multimodal Benchmark"]
     tasks = ["forecasting", "classification", "anomaly_detection", "ts_qa_reasoning", "cross_modal_retrieval"]
 
     # Build matrix
@@ -203,31 +207,33 @@ def plot_heatmap():
     for p in papers:
         mp = p.get("modality_pair", "TS+Text")
         # Map to label
-        if "Vision+Text" in mp:
+        if "Audio" in mp or "Acoustic" in mp:
             row = 2
+        elif "Physics" in mp or "SpatioTemporal" in mp:
+            row = 4
+        elif "Vision+Text" in mp:
+            row = 3
         elif "Vision" in mp:
             row = 1
-        elif "SpatioTemporal" in mp:
-            row = 4
-        elif p.get("role_of_non_ts") == "benchmark":
-            row = 3
+        elif p.get("role_of_non_ts") == "benchmark" or "Benchmark" in mp:
+            row = 5
         else:
             row = 0
 
         p_tasks = p.get("tasks", [])
         for t in p_tasks:
-            if t == "forecasting":
+            if t in ["forecasting", "downscaling", "probabilistic_forecasting"]:
                 matrix[row, 0] += 1
-            elif t == "classification":
+            elif t in ["classification", "mortality_prediction"]:
                 matrix[row, 1] += 1
-            elif t in ["anomaly_detection", "imputation"]:
+            elif t in ["anomaly_detection", "imputation", "phase_picking"]:
                 matrix[row, 2] += 1
             elif t in ["ts_qa", "reasoning", "decision_making"]:
                 matrix[row, 3] += 1
             elif t == "cross_modal_retrieval":
                 matrix[row, 4] += 1
 
-    fig, ax = plt.subplots(figsize=(9, 6), dpi=300)
+    fig, ax = plt.subplots(figsize=(10, 6.5), dpi=300)
     im = ax.imshow(matrix, cmap="Blues", aspect="auto")
 
     # Labels
@@ -237,7 +243,7 @@ def plot_heatmap():
     ax.set_yticklabels(modality_pairs, fontsize=9, fontweight="bold")
 
     # Rotate x labels
-    plt.setp(ax.get_xticklabels(), rotation=25, ha="right", rotation_mode="anchor")
+    plt.setp(ax.get_xticklabels(), rotation=20, ha="right", rotation_mode="anchor")
 
     # Annotate numbers
     for i in range(len(modality_pairs)):
@@ -246,7 +252,7 @@ def plot_heatmap():
             color = "white" if val > matrix.max() / 2 else "black"
             ax.text(j, i, str(val), ha="center", va="center", color=color, fontsize=11, fontweight="bold")
 
-    ax.set_title("Cross-Distribution: Modality Pairings vs. Downstream Tasks", fontsize=12, fontweight="bold", pad=15)
+    ax.set_title("Cross-Distribution: Modality Pairings vs. Downstream Tasks (N=38)", fontsize=12, fontweight="bold", pad=15)
     plt.colorbar(im, ax=ax, label="Number of Studies / Benchmarks")
     plt.tight_layout()
     plt.savefig(FIG_DIR / "modality_task_heatmap.png", dpi=300)
@@ -256,33 +262,38 @@ def plot_heatmap():
 
 
 def plot_timeline():
-    """Generate Chronological Evolution Timeline of Representative Models."""
+    """Generate Chronological Evolution Timeline of Representative Models (2021-2026)."""
     milestones = [
-        {"year": 2022.75, "name": "PromptCast", "desc": "Text Prompt Casting", "cat": "Prompting"},
-        {"year": 2023.15, "name": "One Fits All (GPT4TS)", "desc": "Cross-Modal LM Transfer", "cat": "Reprogramming"},
+        {"year": 2021.45, "name": "Voice2Series", "desc": "Acoustic Reprogramming", "cat": "Reprogramming"},
+        {"year": 2022.55, "name": "MedFuse", "desc": "Clinical TS + CXR Fusion", "cat": "Alignment"},
+        {"year": 2022.80, "name": "PromptCast", "desc": "Text Prompt Casting", "cat": "Prompting"},
+        {"year": 2023.15, "name": "One Fits All", "desc": "Cross-Modal LM Transfer", "cat": "Reprogramming"},
+        {"year": 2023.50, "name": "ClimaX", "desc": "Weather/Climate FM", "cat": "Physics"},
         {"year": 2023.65, "name": "TEST", "desc": "Text Prototype Alignment", "cat": "Alignment"},
         {"year": 2023.80, "name": "Time-LLM", "desc": "Patch Reprogramming + Prompts", "cat": "Reprogramming"},
-        {"year": 2023.95, "name": "TEMPO", "desc": "Trend/Season Prompting", "cat": "Prompting"},
-        {"year": 2024.20, "name": "UniTS / AutoTimes", "desc": "Multi-Task & In-Context LM", "cat": "Unified"},
+        {"year": 2023.95, "name": "UniTime", "desc": "Cross-Domain Prompt Tuning", "cat": "Unified"},
+        {"year": 2024.20, "name": "UniTS", "desc": "Multi-Task Time-Series Model", "cat": "Unified"},
         {"year": 2024.48, "name": "Time-MMD", "desc": "Multi-Domain MM Benchmark", "cat": "Benchmark"},
         {"year": 2024.68, "name": "VisionTS", "desc": "Visual MAE for Time Series", "cat": "Visual"},
+        {"year": 2024.80, "name": "Prithvi WxC", "desc": "NASA-IBM Planetary FM", "cat": "Physics"},
         {"year": 2024.95, "name": "ChatTS", "desc": "Conversational TS-MLLM", "cat": "Reasoning"},
         {"year": 2025.18, "name": "Time-VLM", "desc": "Vision-Language TS Augmentation", "cat": "Visual"},
         {"year": 2025.48, "name": "TRACE", "desc": "Multimodal Retrieval Grounding", "cat": "Alignment"},
+        {"year": 2025.65, "name": "VisionTS++", "desc": "Continual Vision Backbone", "cat": "Visual"},
         {"year": 2025.75, "name": "TimeOmni-1", "desc": "Complex Temporal Reasoning", "cat": "Reasoning"},
-        {"year": 2026.15, "name": "Sonar-TS", "desc": "Neuro-Symbolic NLQ for TSDB", "cat": "Reasoning"}
+        {"year": 2026.30, "name": "Audit Text", "desc": "Text Sensitivity Auditing", "cat": "Critical"}
     ]
 
-    fig, ax = plt.subplots(figsize=(14, 7), dpi=300)
-    ax.set_ylim(-3.0, 4.0)
-    ax.set_xlim(2022.3, 2026.6)
+    fig, ax = plt.subplots(figsize=(15, 7.5), dpi=300)
+    ax.set_ylim(-3.2, 4.2)
+    ax.set_xlim(2021.0, 2026.7)
     ax.axis("off")
 
     # Central Timeline Axis
-    ax.plot([2022.4, 2026.5], [0, 0], color="#7f8c8d", lw=3, zorder=1)
+    ax.plot([2021.1, 2026.6], [0, 0], color="#7f8c8d", lw=3, zorder=1)
 
     # Years
-    for y in [2022, 2023, 2024, 2025, 2026]:
+    for y in [2021, 2022, 2023, 2024, 2025, 2026]:
         ax.plot([y, y], [-0.25, 0.25], color="#34495e", lw=2)
         ax.text(y, -0.6, str(y), ha="center", va="top", fontsize=11, fontweight="bold", color="#2c3e50")
 
@@ -293,34 +304,36 @@ def plot_timeline():
         "Visual": "#8e44ad",
         "Unified": "#16a085",
         "Benchmark": "#d35400",
-        "Reasoning": "#c0392b"
+        "Reasoning": "#c0392b",
+        "Physics": "#1f77b4",
+        "Critical": "#7f8c8d"
     }
 
     for i, m in enumerate(milestones):
         x = m["year"]
         sign = 1 if i % 2 == 0 else -1
-        y_stem = sign * (1.2 + (i % 3) * 0.45)
+        y_stem = sign * (1.2 + (i % 3) * 0.5)
         c = cat_colors.get(m["cat"], "#34495e")
 
         # Line from axis to point
         ax.plot([x, x], [0, y_stem], color=c, lw=1.5, ls="--", zorder=2)
         # Node dot
-        ax.scatter([x], [y_stem], color=c, s=90, zorder=3)
+        ax.scatter([x], [y_stem], color=c, s=80, zorder=3)
 
         # Label box
         box = dict(boxstyle="round,pad=0.35", fc="white", ec=c, lw=1.5)
         label = f"{m['name']}\n({m['desc']})"
         va = "bottom" if sign > 0 else "top"
         y_text = y_stem + (0.15 if sign > 0 else -0.15)
-        ax.text(x, y_text, label, ha="center", va=va, fontsize=8, fontweight="bold", color="#2c3e50", bbox=box)
+        ax.text(x, y_text, label, ha="center", va=va, fontsize=7.5, fontweight="bold", color="#2c3e50", bbox=box)
 
     # Title centered at the very top
-    ax.text(2024.45, 3.65, "Chronological Evolution of Multimodal Time Series Models (2022–2026)", 
+    ax.text(2023.85, 3.85, "Chronological Evolution of Multimodal Time Series Models (2021–2026)", 
             ha="center", va="center", fontsize=14, fontweight="bold", color=C_DARK)
 
     # Legend placed cleanly below title
     legend_handles = [patches.Patch(color=col, label=cat) for cat, col in cat_colors.items()]
-    ax.legend(handles=legend_handles, loc="upper center", bbox_to_anchor=(0.5, 0.93), ncol=7, fontsize=8.5, frameon=True)
+    ax.legend(handles=legend_handles, loc="upper center", bbox_to_anchor=(0.5, 0.93), ncol=9, fontsize=8, frameon=True)
 
     plt.tight_layout()
     plt.savefig(FIG_DIR / "timeline_milestones.png", dpi=300)
@@ -332,32 +345,35 @@ def plot_timeline():
 def plot_dataset_landscape():
     """Generate Dataset Landscape scatter plot (Sample Size vs Modality Richness)."""
     datasets = [
-        {"name": "Time-MMD", "samples": 120000, "modalities": 2, "domains": 9, "cat": "Benchmark", "dy": 1.05},
+        {"name": "Time-MMD", "samples": 120000, "modalities": 2, "domains": 9, "cat": "Benchmark", "dy": 1.02},
         {"name": "CityFlow-TS", "samples": 95000, "modalities": 2, "domains": 1, "cat": "Traffic", "dy": 0.95},
-        {"name": "Financial News-TS", "samples": 62000, "modalities": 2, "domains": 1, "cat": "Finance", "dy": 1.12},
-        {"name": "ChatTS-Evol", "samples": 52000, "modalities": 2, "domains": 8, "cat": "Instruction", "dy": 0.98},
-        {"name": "MTBench", "samples": 42000, "modalities": 2, "domains": 5, "cat": "Reasoning", "dy": 1.08},
-        {"name": "NLQTSBench (Sonar)", "samples": 35000, "modalities": 2, "domains": 4, "cat": "NLQ / TSDB", "dy": 0.90},
-        {"name": "WeatherBench-MM", "samples": 250000, "modalities": 3, "domains": 1, "cat": "Meteorology", "dy": 1.00},
+        {"name": "Financial News-TS", "samples": 62000, "modalities": 2, "domains": 1, "cat": "Finance", "dy": 1.15},
+        {"name": "ChatTS-Evol", "samples": 52000, "modalities": 2, "domains": 8, "cat": "Instruction", "dy": 1.05},
+        {"name": "UCR-AudioBench", "samples": 44000, "modalities": 2, "domains": 4, "cat": "Audio-TS", "dy": 0.88},
+        {"name": "MTBench", "samples": 41000, "modalities": 2, "domains": 5, "cat": "Reasoning", "dy": 1.10},
+        {"name": "NLQTSBench (Sonar)", "samples": 33000, "modalities": 2, "domains": 4, "cat": "NLQ / TSDB", "dy": 0.85},
+        {"name": "SeisT-Array", "samples": 140000, "modalities": 2, "domains": 1, "cat": "Geophysics", "dy": 1.12},
+        {"name": "MIMIC-IV Clinical", "samples": 70000, "modalities": 3, "domains": 1, "cat": "Healthcare", "dy": 0.90},
         {"name": "Fidel-TS", "samples": 85000, "modalities": 3, "domains": 6, "cat": "Benchmark", "dy": 1.10},
-        {"name": "MIMIC-IV Multimodal", "samples": 70000, "modalities": 3, "domains": 1, "cat": "EHR / Healthcare", "dy": 0.90}
+        {"name": "WeatherBench-ERA5", "samples": 250000, "modalities": 4, "domains": 1, "cat": "Meteorology", "dy": 1.02},
+        {"name": "Prithvi-MERRA2", "samples": 350000, "modalities": 4, "domains": 1, "cat": "Climate", "dy": 1.02}
     ]
 
-    fig, ax = plt.subplots(figsize=(9, 6), dpi=300)
+    fig, ax = plt.subplots(figsize=(9.5, 6.2), dpi=300)
 
     for d in datasets:
-        size = d["domains"] * 50 + 120
+        size = d["domains"] * 45 + 120
         ax.scatter(d["modalities"], d["samples"], s=size, alpha=0.75, edgecolors="#2c3e50", linewidths=1.2)
         target_y = d["samples"] * d["dy"]
-        ax.text(d["modalities"] + 0.05, target_y, f"{d['name']} ({d['domains']} domains)", 
+        ax.text(d["modalities"] + 0.06, target_y, f"{d['name']} ({d['domains']} domains)", 
                 va="center", fontsize=8.5, fontweight="bold", color="#2c3e50")
 
     ax.set_yscale("log")
-    ax.set_xlabel("Number of Co-Existent Modalities", fontsize=10, fontweight="bold")
+    ax.set_xlabel("Number of Co-Existent Modalities / Physical Variable Groups", fontsize=10, fontweight="bold")
     ax.set_ylabel("Dataset Volume (Sample Instances, Log Scale)", fontsize=10, fontweight="bold")
     ax.set_title("Landscape of Multimodal Time Series Datasets & Benchmarks", fontsize=12, fontweight="bold")
-    ax.set_xlim(1.6, 3.6)
-    ax.set_ylim(25000, 380000)
+    ax.set_xlim(1.6, 4.6)
+    ax.set_ylim(25000, 450000)
     ax.grid(True, linestyle="--", alpha=0.5)
 
     plt.tight_layout()

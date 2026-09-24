@@ -55,6 +55,25 @@ def main():
     except Exception as e:
         check_gate("JSON Schemas Valid", False, str(e))
 
+    # 1b. PRISMA Arithmetic Consistency (COMMON_METHOD.md Amendment K)
+    try:
+        ident = prisma_data["identification"]["total_identified"]
+        dups = prisma_data["screening"]["duplicates_removed"]
+        screened = prisma_data["screening"]["records_after_dedup"]
+        excl_title = prisma_data["screening"]["excluded_title_abstract"]
+        assessed = prisma_data["screening"]["fulltext_assessed"]
+        excl_full = prisma_data["screening"]["excluded_fulltext"]
+        incl = prisma_data["included"]["qualitative_synthesis"]
+
+        assert ident - dups == screened, f"PRISMA error: identified ({ident}) - duplicates ({dups}) != screened ({screened})"
+        assert screened - excl_title == assessed, f"PRISMA error: screened ({screened}) - excluded_title ({excl_title}) != assessed ({assessed})"
+        assert assessed - excl_full == incl, f"PRISMA error: assessed ({assessed}) - excluded_fulltext ({excl_full}) != included ({incl})"
+        assert incl == len(papers_data["papers"]), f"PRISMA error: included ({incl}) != papers.json count ({len(papers_data['papers'])})"
+        check_gate("PRISMA Arithmetic Consistency (Amendment K)", True,
+                   f"{ident} - {dups} = {screened} | {screened} - {excl_title} = {assessed} | {assessed} - {excl_full} = {incl} = {len(papers_data['papers'])}")
+    except Exception as e:
+        check_gate("PRISMA Arithmetic Consistency (Amendment K)", False, str(e))
+
     papers = papers_data["papers"]
 
     # 2. No Duplicate Papers
