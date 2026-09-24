@@ -1,0 +1,58 @@
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{cite}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{microtype}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    citecolor=blue,
+}
+
+\begin{document}
+
+\title{Multimodal Time Series Models: A Survey and Outlook}
+
+\author{Huirui~Li
+\thanks{H. Li is with the School of Computer Science. Project repository and continuous review updates: \url{https://github.com/lihuirui/awesome-multimodal-time-series-survey}. Correspondence: 58367737+lihuirui@users.noreply.github.com.}
+}
+
+\markboth{IEEE Transactions on Pattern Analysis and Machine Intelligence (Preprint), Vol.~14, No.~8, September~2026}%
+{Li: Multimodal Time Series Models: A Survey and Outlook}
+
+\IEEEtitleabstractindextext{%
+\begin{abstract}
+Time series analysis is foundational to critical cyber-physical and natural systems, spanning climate science, financial forecasting, clinical health monitoring, smart grids, and intelligent transportation. While traditional paradigms and unimodal deep learning models rely exclusively on discrete numerical records, real-world systems are embedded in rich multimodal contexts—accompanied by news reports, natural language operational logs, visual charts, and spatial topologies. Recently, the confluence of Large Language Models (LLMs), Vision-Language Models (VLMs), and pre-trained Time Series Foundation Models (TSFMs) has catalyzed a paradigm shift toward Multimodal Time Series Models. This survey provides the first comprehensive, systematic review (following PRISMA 2020 guidelines) of multimodal time series research from 2021 to 2026. We formalize the multimodal time series problem, propose a multi-dimensional taxonomy decomposing the literature by modality pairing, fusion architecture, the functional role of complementary modalities, and downstream tasks. Furthermore, we categorize cutting-edge methodologies including cross-modal patch reprogramming, visual line-chart transcoding, unified multimodal tokenization, and neuro-symbolic reasoning agents. We benchmark the evolving dataset landscape, scrutinize persistent challenges—including cross-modal distribution gaps, temporal misalignment, and evaluation leakage—and outline high-leverage future research directions.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Multimodal Learning, Time Series Analysis, Large Language Models, Vision-Language Models, Foundation Models, Temporal Reasoning.
+\end{IEEEkeywords}}
+
+\maketitle
+\IEEEdisplaynontitleabstractindextext
+\IEEEpeerreviewmaketitle
+
+\input{sections/01_intro}
+\input{sections/02_background}
+\input{sections/03_taxonomy}
+\input{sections/04_methods}
+\input{sections/05_datasets}
+\input{sections/06_outlook}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}

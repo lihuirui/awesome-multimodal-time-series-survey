@@ -1,0 +1,51 @@
+\section{Background \& Preliminaries}
+\label{sec:background}
+
+In this section, we formally formulate the multimodal time-series modeling problem, detail the standard mathematical representations of temporal and non-temporal modalities, and review foundational learning objectives.
+
+\subsection{Problem Formulation}
+
+\textbf{Definition 1 (Multivariate Time Series).} Let $\mathbf{X}_{1:T} = [\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_T]^\top \in \mathbb{R}^{T \times C}$ denote a continuous or discrete multivariate temporal sequence observed over $T$ uniform time steps across $C$ feature channels, where $\mathbf{x}_t = [x_{t,1}, x_{t,2}, \dots, x_{t,C}]^\top \in \mathbb{R}^C$.
+
+\textbf{Definition 2 (Complementary Multimodal Context).} In a multimodal setting, the time series $\mathbf{X}_{1:T}$ is paired with complementary non-temporal contextual information $\mathcal{M} = \{\mathbf{M}_{\text{text}}, \mathbf{M}_{\text{vis}}, \mathbf{M}_{\text{graph}}\}$, where:
+\begin{itemize}
+    \item $\mathbf{M}_{\text{text}} = (w_1, w_2, \dots, w_L)$ represents a sequence of discrete linguistic tokens (e.g., domain descriptions, incident logs, financial news, or analytical instructions).
+    \item $\mathbf{M}_{\text{vis}} \in \mathbb{R}^{H \times W \times 3}$ denotes a 2D visual representation (e.g., plotted line charts, spectrogram transforms, or synchronous satellite imagery).
+    \item $\mathbf{M}_{\text{graph}} = (\mathcal{V}, \mathcal{E}, \mathbf{A})$ encapsulates topological or spatial relationships connecting multivariate time-series nodes.
+\end{itemize}
+
+\textbf{Definition 3 (Multimodal Time Series Objective).} Given an observed history $\mathbf{X}_{1:T}$ and context $\mathcal{M}$, the goal is to parameterize a model $f_\Theta$ that maps $\{\mathbf{X}_{1:T}, \mathcal{M}\}$ to a target space $\mathbf{Y}$ (which may represent future horizons $\mathbf{X}_{T+1:T+H}$, anomaly labels $\mathbf{y} \in \{0, 1\}^T$, textual answers, or joint embeddings) by minimizing an expected loss:
+\begin{equation}
+\min_\Theta \mathbb{E}_{(\mathbf{X}, \mathcal{M}, \mathbf{Y})} \left[ \mathcal{L}_{\text{task}}(f_\Theta(\mathbf{X}_{1:T}, \mathcal{M}), \mathbf{Y}) + \lambda \mathcal{L}_{\text{align}}(\mathbf{X}_{1:T}, \mathcal{M}) \right]
+\label{eq:general_loss}
+\end{equation}
+where $\mathcal{L}_{\text{align}}$ denotes cross-modal alignment regularization.
+
+\subsection{Temporal Patching and Tokenization}
+Direct point-wise numerical tokenization often suffers from high computational overhead and lacks semantic density. Following modern practice~\cite{Zhou2023OneFitsAll,Jin2023TimeLLM}, continuous time series are transformed into $N$ temporal patches of length $P$ with stride $S$:
+\begin{equation}
+\mathbf{P}_i = \mathbf{x}_{(i-1)S : (i-1)S + P} \in \mathbb{R}^{P \times C}, \quad i \in \left\{1, \dots, N = \left\lfloor \frac{T - P}{S} \right\rfloor + 1 \right\}
+\end{equation}
+Each patch $\mathbf{P}_i$ is linearly projected into a $d_{\text{model}}$-dimensional continuous latent embedding and augmented with learnable temporal position encoding $\mathbf{E}_{\text{pos}}$:
+\begin{equation}
+\mathbf{h}_i = \mathbf{P}_i \mathbf{W}_{\text{in}} + \mathbf{E}_{\text{pos}, i}, \quad \mathbf{W}_{\text{in}} \in \mathbb{R}^{(P \cdot C) \times d_{\text{model}}}
+\label{eq:patch_projection}
+\end{equation}
+
+\subsection{Cross-Modal Alignment Paradigms}
+Multimodal architectures leverage three primary pre-training and alignment paradigms:
+\begin{enumerate}
+    \item \textbf{Contrastive Representation Learning (InfoNCE):} Given paired time series representations $\mathbf{z}^{\text{ts}}$ and context representations $\mathbf{z}^{\text{text}}$, a dual-encoder minimizes the normalized temperature-scaled cross-entropy~\cite{Sun2023TEST,Chen2025TRACE}:
+    \begin{equation}
+    \mathcal{L}_{\text{InfoNCE}} = -\log \frac{\exp(\text{sim}(\mathbf{z}_i^{\text{ts}}, \mathbf{z}_i^{\text{text}}) / \tau)}{\sum_{j=1}^B \exp(\text{sim}(\mathbf{z}_i^{\text{ts}}, \mathbf{z}_j^{\text{text}}) / \tau)}
+    \label{eq:infonce}
+    \end{equation}
+    \item \textbf{Masked Autoencoding (MAE):} In visual or temporal reconstruction, a subset of patches $\mathcal{M}_{\text{mask}} \subset \{1, \dots, N\}$ is masked out, and the model reconstructs the unobserved temporal values from visible tokens~\cite{Chen2024VisionTS}:
+    \begin{equation}
+    \mathcal{L}_{\text{MAE}} = \frac{1}{|\mathcal{M}_{\text{mask}}|} \sum_{i \in \mathcal{M}_{\text{mask}}} \|\mathbf{P}_i - \hat{\mathbf{P}}_i\|_2^2
+    \end{equation}
+    \item \textbf{Autoregressive Next-Token Prediction:} In decoder-only LLM-adapted forecasters, predictions are generated sequentially conditioned on prefix prompt tokens $\mathbf{E}_{\text{prompt}}$ and temporal patch tokens~\cite{Liu2024AutoTimes,Zhao2024ChatTS}:
+    \begin{equation}
+    \mathcal{L}_{\text{AR}} = -\sum_{t=1}^K \log P(y_t \mid y_{<t}, \mathbf{E}_{\text{prompt}}, \mathbf{h}_{1:N})
+    \end{equation}
+\end{enumerate}

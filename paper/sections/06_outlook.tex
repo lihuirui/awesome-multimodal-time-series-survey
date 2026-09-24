@@ -1,0 +1,23 @@
+\section{Open Challenges and Future Trajectories}
+\label{sec:outlook}
+
+Despite rapid progress, multimodal time series intelligence faces foundational theoretical and engineering hurdles. In this section, we delineate five open challenges and outline promising future research directions.
+
+\subsection{1. The Continuous-to-Discrete Modality Gap}
+While natural language and visual objects exhibit discrete, hierarchical compositional semantics, physical time series are continuous, non-stationary, and governed by fine-grained numerical gradients. Discretizing numerical time series into discrete vocabulary tokens (e.g., via scalar binning or k-means codebooks) often results in loss of numerical precision or boundary artifacts. Conversely, continuous patch projections frequently suffer from representational collapse when aligned with high-dimensional language embeddings. Developing principled cross-modal mapping functions that preserve continuous physical conservation laws while tapping into discrete semantic reasoning remains an unresolved challenge.
+
+\subsection{2. Asynchronous Sampling and Irregular Multimodal Streams}
+In real-world operational environments, data modalities arrive at vastly different temporal granularities. For instance, high-frequency IoT sensor telemetry is collected millisecond-by-millisecond, financial market prices tick second-by-second, news reports appear intermittently, and satellite passes occur weekly. Current models predominantly rely on artificial resynchronization (e.g., forward filling or downsampling), which discards high-frequency signal content or introduces artificial latency. Future architectures must incorporate continuous-time neural ordinary differential equations (Neural ODEs) or state-space models (SSMs) to natively handle asynchronous, irregularly sampled multimodal streams.
+
+\subsection{3. Evaluation Integrity: Benchmark Contamination and Data Leakage}
+A persistent concern in the evaluation of LLM-adapted time series forecasters is the risk of training data contamination. Pre-trained web-scale language models (e.g., GPT-4, LLaMA) have ingested massive portions of GitHub repositories, academic papers, and publicly hosted datasets (such as the standard ETT, Weather, and Electricity benchmarks). Consequently, models claiming "zero-shot" forecasting prowess may in fact be performing memorized retrieval of benchmark statistical properties. Establishing contamination-resistant benchmarks, strictly partitioned temporal splits, and dynamic online evaluation protocols is imperative for scientific credibility.
+
+\subsection{4. Computational Latency and Edge Deployment Bottlenecks}
+Modern foundation LLMs and VLMs span billions of parameters (7B to 70B), demanding extensive GPU memory and incurring inference latencies measured in hundreds of milliseconds. In contrast, mission-critical time series applications—such as electrical grid fault isolation, surgical patient monitoring, and autonomous vehicle control—mandate sub-10-millisecond response times. Parameter-efficient distillation, specialized lightweight time-series mixers (such as Tiny Time Mixers~\cite{Ekambaram2024TTM}), and edge-optimized hardware accelerators represent crucial avenues for practical industrial adoption.
+
+\subsection{5. Neuro-Symbolic Agentic Frameworks and Database NLQ}
+Looking forward, the frontier of multimodal time series is shifting from passive predictive models toward active, autonomous analytical agents. As demonstrated by recent neuro-symbolic querying frameworks, future systems will seamlessly couple LLM reasoning controllers with formal database query execution engines (e.g., SQL and vector indexing over time-series databases). These agents will formulate hypotheses, write verification code, interrogate terabyte-scale sensor repositories via natural language, and deliver auditable, explainable insights to domain experts.
+
+\section{Conclusion}
+\label{sec:conclusion}
+This survey has presented the first systematic, PRISMA 2020-compliant review of Multimodal Time Series Models from 2021 to 2026. By proposing a unified multi-dimensional taxonomy, providing deep mathematical dissections of cross-modal reprogramming, visual rendering, and conversational reasoning architectures, and mapping the evolving dataset landscape, we establish a structured foundation for this rapidly expanding field. As multimodal foundation models continue to bridge the divide between continuous physical observations and discrete human reasoning, multimodal time series intelligence promises to redefine scientific discovery, industrial automation, and healthcare monitoring.

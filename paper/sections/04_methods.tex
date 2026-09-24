@@ -1,0 +1,62 @@
+\section{Methodological Landscape: Core Paradigms}
+\label{sec:methods}
+
+In this section, we provide a deep architectural examination of the representative multimodal time-series paradigms developed between 2021 and 2026. A comprehensive comparison is presented in \Cref{tab:methods_comparison}.
+
+\begin{table*}[t]
+\caption{Comprehensive Comparison of Representative Multimodal Time Series Models.}
+\label{tab:methods_comparison}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llclllcc}
+\toprule
+\textbf{Model} & \textbf{Venue / Year} & \textbf{Modality} & \textbf{Backbone Architecture} & \textbf{Fusion Mechanism} & \textbf{Pre-training / Loss} & \textbf{Zero-Shot} & \textbf{Open Source} \\
+\midrule
+PromptCast~\cite{Xue2022PromptCast} & IEEE TKDE '23 & TS + Text & T5 / BART & Text Serialization & Cross-Entropy (AR) & No & \checkmark \\
+One Fits All~\cite{Zhou2023OneFitsAll} & NeurIPS '23 & TS + Text & Frozen GPT-2 & Patch Reprogramming & MSE Loss & \checkmark & \checkmark \\
+TEST~\cite{Sun2023TEST} & arXiv '23 & TS + Text & BERT / GPT-2 & Contrastive Prototype & Soft InfoNCE & \checkmark & \checkmark \\
+Time-LLM~\cite{Jin2023TimeLLM} & ICLR '24 & TS + Text & Frozen LLaMA-7B / GPT-2 & Reprogramming + Prompts & Normalized MSE & \checkmark & \checkmark \\
+TEMPO~\cite{Cao2023TEMPO} & ICLR '24 & TS + Text & GPT-2 & Decomposed Prompting & MSE + Prompt Tuning & \checkmark & \checkmark \\
+LLMTime~\cite{Gruver2023LLMTime} & NeurIPS '23 & TS + Text & GPT-3 / GPT-4 / LLaMA & Text Digit Tokenization & Direct Prompt Likelihood & \checkmark & \checkmark \\
+LLM4TS~\cite{Chang2023LLM4TS} & arXiv '23 & TS + Text & GPT-2 & 2-Stage Reprogramming & Pre-train + Linear Probe & \checkmark & \checkmark \\
+AutoTimes~\cite{Liu2024AutoTimes} & NeurIPS '24 & TS + Text & LLaMA-2 / OPT & Autoregressive Patching & Next-Token Causal LM & \checkmark & \checkmark \\
+CALF~\cite{Liu2024CALF} & arXiv '24 & TS + Text & LLaMA-7B & Dual-Branch Alignment & Consistency + Matching & \checkmark & \checkmark \\
+$\text{S}^2\text{IP-LLM}$~\cite{Pan2024S2IPLLM} & arXiv '24 & TS + Text & GPT-2 & Semantic Anchor Retrieval & Anchor-Guided MSE & \checkmark & \checkmark \\
+UniTS~\cite{Gao2024UniTS} & NeurIPS '24 & TS + Text & Unified Transformer & Task Prompt Tokenization & Multi-Task Masked Pretrain & \checkmark & \checkmark \\
+VisionTS~\cite{Chen2024VisionTS} & NeurIPS '24 & TS + Vision & Visual MAE (ViT-Base) & Line-Chart Rendering & Masked Image Modeling & \checkmark & \checkmark \\
+Time-MMD~\cite{Liu2024TimeMMD} & NeurIPS '24 & TS + Text & Multi-Modal Benchmark & Numerical-Textual Pairs & Multi-Domain Benchmark & N/A & \checkmark \\
+ChatTS~\cite{Zhao2024ChatTS} & VLDB '25 & TS + Text & LLaMA-3 & Native TS Tokenization & Time Series Evol-Instruct & \checkmark & \checkmark \\
+Time-VLM~\cite{Zhong2025TimeVLM} & ICML '25 & TS+Vis+Text & Vision-Language Model & Dual Augmented Learners & Cross-Modal Fusion Loss & \checkmark & \checkmark \\
+TRACE~\cite{Chen2025TRACE} & NeurIPS '25 & TS + Text & Dual Contrastive Tower & Channel Identity Tokens & Dual-Level InfoNCE & \checkmark & \checkmark \\
+ChatTime~\cite{ChatTime2024} & AAAI '25 & TS + Text & Multimodal Foundation & Unified Token In/Out & Joint Bimodal Pretrain & \checkmark & \checkmark \\
+TimeOmni-1~\cite{Tan2025TimeOmni1} & arXiv '25 & TS + Text & TimeOmni Backbone & Reasoning Curriculum & SFT + Reinforcement Learning & \checkmark & \checkmark \\
+\bottomrule
+\end{tabular}%
+}
+\end{table*}
+
+\subsection{Cross-Modal Patch Reprogramming Frameworks}
+The foundational breakthrough in adapting pre-trained NLP backbones to time series without catastrophic forgetting was achieved via cross-modal reprogramming:
+\begin{itemize}
+    \item \textbf{One Fits All (GPT4TS)~\cite{Zhou2023OneFitsAll}:} Zhou et al. demonstrated that by freezing the multi-head self-attention and feed-forward layers of a pre-trained GPT-2 backbone while tuning only the linear input projection, layer normalization parameters, and an output head, the model exhibits remarkable universal pattern-matching capabilities across forecasting, classification, anomaly detection, and imputation.
+    \item \textbf{Time-LLM~\cite{Jin2023TimeLLM}:} Jin et al. extended this paradigm by recognizing that numerical time series inherently lack semantic context. Time-LLM introduces: (1) Prompt-as-Prefix, which encodes dataset-specific background knowledge, task specifications, and statistical summary statistics (trends, lags) into textual prompts; and (2) a multi-head cross-attention Patch Reprogramming Layer that projects input patches into the text embedding dictionary.
+    \item \textbf{AutoTimes~\cite{Liu2024AutoTimes}:} Overcomes the fixed-horizon limitation of previous forecasters by casting time series as an in-context autoregressive generation task, conditioning on textual chronological timestamps to capture long-range calendar periodicities.
+\end{itemize}
+
+\subsection{Modality Transcoding: The Visual Rendering Paradigm}
+A radical departure from language-based adaptation is the \textit{Visual Transcoding} framework pioneered by VisionTS~\cite{Chen2024VisionTS}. Rather than struggling to map continuous 1D temporal trajectories into 1D text tokenizers, VisionTS reformulates forecasting as an image reconstruction task:
+\begin{enumerate}
+    \item The normalized historical lookback window and future horizon are rendered onto a 2D canvas as a continuous line chart.
+    \item A pre-trained Visual Masked Autoencoder (MAE)~\cite{Chen2024VisionTS} treats the historical curve as visible image patches and the future forecast segment as masked patches.
+    \item Strikingly, because natural image pre-training on ImageNet instills strong priors over spatial continuity, edge tracing, and geometric smoothness, VisionTS achieves competitive zero-shot forecasting performance without requiring any domain-specific time series fine-tuning.
+\end{enumerate}
+Expanding on visual synthesis, Time-VLM~\cite{Zhong2025TimeVLM} combines visual time-frequency spectrogram representations with textual descriptions and raw temporal sequences, demonstrating that visual rendering and textual guidance provide complementary inductive biases.
+
+\subsection{Conversational Multimodal LLMs \& Reasoning Suites}
+Moving beyond classical regression metrics, recent research aims to empower foundation models with temporal reasoning capabilities:
+\begin{itemize}
+    \item \textbf{ChatTS~\cite{Zhao2024ChatTS}:} Identifies that text serialization loses fine-grained numerical resolution while naive reprogramming lacks conversational flexibility. ChatTS implements native numerical tokenization coupled with a synthetic \textit{Time Series Evol-Instruct} curriculum, enabling multi-turn dialogues, peak detection, and causal hypothesis formulation.
+    \item \textbf{TimeOmni-1~\cite{Tan2025TimeOmni1}:} Formulates the \textit{Time Series Reasoning Suite (TSR-Suite)}, structuring temporal intelligence across three hierarchical stages: \textit{Perception} (identifying seasonality, trends, and change points), \textit{Extrapolation} (forecasting and scenario generation), and \textit{Decision-Making} (optimizing interventions based on temporal dynamics).
+\end{itemize}

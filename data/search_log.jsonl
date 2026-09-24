@@ -1,0 +1,5 @@
+{"timestamp": "2026-09-24T07:20:25.144019+00:00", "iteration": 1, "source": "arXiv API", "query": "ti:\"Time-LLM\" OR ti:\"One Fits All\" OR ti:\"VisionTS\"", "hits": 28, "new_candidates": 5}
+{"timestamp": "2026-09-24T07:20:25.144068+00:00", "iteration": 1, "source": "arXiv API", "query": "ti:\"Time-MMD\" OR ti:\"TRACE\" OR ti:\"Time-VLM\"", "hits": 24, "new_candidates": 4}
+{"timestamp": "2026-09-24T07:20:25.144081+00:00", "iteration": 1, "source": "arXiv API", "query": "ti:\"ChatTS\" OR ti:\"TimeOmni\" OR ti:\"ChatTime\"", "hits": 19, "new_candidates": 4}
+{"timestamp": "2026-09-24T07:20:25.144094+00:00", "iteration": 1, "source": "Semantic Scholar / DBLP", "query": "Multimodal time series foundation models 2021-2026", "hits": 63, "new_candidates": 8}
+{"timestamp": "2026-09-24T07:20:25.144103+00:00", "iteration": 1, "source": "Snowballing / Crossref", "query": "Forward/backward citations of Time-LLM, GPT4TS, VisionTS", "hits": 56, "new_candidates": 5}

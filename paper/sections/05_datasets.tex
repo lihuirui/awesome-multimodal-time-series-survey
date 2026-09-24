@@ -1,0 +1,56 @@
+\section{Datasets, Benchmarks, and Evaluation}
+\label{sec:datasets}
+
+Rigorous evaluation of multimodal time series models requires benchmarks that provide synchronized, high-quality pairings across modalities. In this section, we examine the dataset landscape, summarize standard evaluation protocols, and discuss cross-task distributions.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.48\textwidth]{figures/modality_task_heatmap.png}
+\caption{Cross-distribution heatmap illustrating the frequency of studies evaluated across specific modality pairs and downstream predictive/reasoning tasks.}
+\label{fig:heatmap}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.48\textwidth]{figures/dataset_landscape.png}
+\caption{Landscape of representative multimodal time-series datasets and benchmarks, comparing dataset sample instance volume (log scale) against the number of co-existent modalities.}
+\label{fig:dataset_landscape}
+\end{figure}
+
+\subsection{Benchmark Suites and Multimodal Corpora}
+As illustrated in \Cref{fig:dataset_landscape}, early multimodal experiments relied on ad-hoc combinations of univariate benchmark series (e.g., ETT, Weather, Electricity) paired with synthetic or generic text labels. Recently, comprehensive multi-domain suites have emerged:
+\begin{itemize}
+    \item \textbf{Time-MMD~\cite{Liu2024TimeMMD}:} Spanning 9 diverse domains (including finance, energy, weather, healthcare, traffic, and agriculture), Time-MMD provides fine-grained, timestamp-aligned textual context (e.g., financial news articles, weather warnings, medical discharge summaries) paired with multivariate numerical sequences. Empirical evaluations on Time-MMD demonstrate that text-augmented forecasters reduce Mean Squared Error (MSE) by 15\% to 40\% compared to unimodal baselines.
+    \item \textbf{Fidel-TS~\cite{FidelTS2025}:} A high-fidelity benchmark introduced to assess model robustness under noisy, missing, or asynchronously sampled multimodal conditions across 6 domains.
+    \item \textbf{MTBench~\cite{MTBench2025}:} Designed specifically for evaluating temporal reasoning and Question Answering (QA) capabilities of TS-MLLMs, providing standardized metrics for causal inference, pattern recognition, and counterfactual deduction.
+\end{itemize}
+
+\begin{table}[t]
+\caption{Overview of Prominent Multimodal Time-Series Datasets and Benchmarks.}
+\label{tab:datasets}
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{llccc}
+\toprule
+\textbf{Dataset / Suite} & \textbf{Primary Domain} & \textbf{Modalities} & \textbf{Sample Volume} & \textbf{Target Tasks} \\
+\midrule
+Time-MMD~\cite{Liu2024TimeMMD} & 9 Diverse Domains & TS + Text & $\approx 1.2 \times 10^5$ & Forecasting \\
+Fidel-TS~\cite{FidelTS2025} & Multi-Domain (6) & TS + Text + Vis & $\approx 8.5 \times 10^4$ & Robust Forecasting \\
+MTBench~\cite{MTBench2025} & Multi-Domain (5) & TS + Text & $\approx 4.2 \times 10^4$ & QA \& Reasoning \\
+MIMIC-IV MM & Clinical Healthcare & TS + Text + Vis & $\approx 7.0 \times 10^4$ & Mortality / Diag. \\
+WeatherBench-MM & Meteorology & TS + Text + Vis & $\approx 2.5 \times 10^5$ & Weather Forecasting \\
+CityFlow-TS & Urban Mobility & TS + Text + Graph & $\approx 9.5 \times 10^4$ & Traffic Forecasting \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\subsection{Cross-Task Distribution Analysis}
+\Cref{fig:heatmap} cross-tabulates the distribution of published works across modality combinations and downstream tasks. Several critical patterns emerge:
+\begin{enumerate}
+    \item \textbf{Dominance of Text-Guided Forecasting:} The overwhelming majority of contemporary studies focus on $\text{TS} + \text{Text}$ for forecasting ($n=20$), reflecting the direct applicability of pre-trained language models to temporal regression.
+    \item \textbf{Emerging Frontier in QA and Reasoning:} While forecasting has reached high maturity, interactive QA, semantic reasoning, and explainable anomaly detection ($n=5$) represent the fastest-growing frontier.
+    \item \textbf{Under-Explored Cross-Modal Retrieval:} Despite its industrial utility for database search, cross-modal retrieval ($\text{TS} \leftrightarrow \text{Text}$) remains nascent ($n=1$, pioneered by TRACE~\cite{Chen2025TRACE}).
+\end{enumerate}

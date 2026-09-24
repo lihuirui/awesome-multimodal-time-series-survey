@@ -1,0 +1,948 @@
+{
+  "metadata": {
+    "last_updated": "2026-09-24",
+    "total_included": 26,
+    "scope": "Multimodal Time Series Models (2021-present)"
+  },
+  "papers": [
+    {
+      "status": "included",
+      "bibkey": "Jin2023TimeLLM",
+      "title": "Time-LLM: Time Series Forecasting by Reprogramming Large Language Models",
+      "authors": [
+        "Ming Jin",
+        "Shiyu Wang",
+        "Lintao Ma",
+        "Zhixuan Chu",
+        "James Y. Zhang",
+        "Xiaoming Shi",
+        "Pin-Yu Chen",
+        "Yuxuan Liang",
+        "Yuan-Fang Li",
+        "Shirui Pan",
+        "Qingsong Wen"
+      ],
+      "year": 2023,
+      "venue": "ICLR 2024",
+      "arxiv_id": "2310.01728",
+      "doi": "10.48550/arXiv.2310.01728",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "reprogramming_patching",
+      "backbone": "LLaMA-7B / GPT-2",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts",
+        "energy",
+        "traffic",
+        "finance"
+      ],
+      "code_url": "https://github.com/KimMeen/Time-LLM",
+      "quality_score": 11,
+      "abstract": "Time series forecasting holds significant importance in many real-world dynamic systems and has been extensively studied. Unlike natural language process (NLP) and computer vision (CV), where a single large model can tackle multiple tasks, models for time series forecasting are often specialized, necessitating distinct designs for different tasks and applications. While pre-trained foundation models have made impressive strides in NLP and CV, their development in time series domains has been constrained by data sparsity. Recent studies have revealed that large language models (LLMs) possess robust pattern recognition and reasoning abilities over complex sequences of tokens. However, the challenge remains in effectively aligning the modalities of time series data and natural language to leverage these capabilities. In this work, we present Time-LLM, a reprogramming framework to repurpose LLMs for general time series forecasting with the backbone language models kept intact. We begin by reprogramming the input time series with text prototypes before feeding it into the frozen LLM to align the two modalities. To augment the LLM&#39;s ability to reason with time series data, we propose Prompt-as-Prefix (PaP), which enriches the input context and directs the transformation of reprogrammed input patches. The transformed time series patches from the LLM are finally projected to obtain the forecasts. Our comprehensive evaluations demonstrate that Time-LLM is a powerful time series learner that outperforms state-of-the-art, specialized forecasting models. Moreover, Time-LLM excels in both few-shot and zero-shot learning scenarios.",
+      "notes": "Milestone work introducing reprogramming layers to adapt frozen LLMs for time-series forecasting with domain prompts.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Zhou2023OneFitsAll",
+      "title": "One Fits All:Power General Time Series Analysis by Pretrained LM",
+      "authors": [
+        "Tian Zhou",
+        "PeiSong Niu",
+        "Xue Wang",
+        "Liang Sun",
+        "Rong Jin"
+      ],
+      "year": 2023,
+      "venue": "NeurIPS 2023",
+      "arxiv_id": "2302.11939",
+      "doi": "10.48550/arXiv.2302.11939",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "reprogramming_patching",
+      "backbone": "GPT-2",
+      "tasks": [
+        "forecasting",
+        "classification",
+        "anomaly_detection",
+        "imputation"
+      ],
+      "domains": [
+        "general_ts"
+      ],
+      "code_url": "https://github.com/DAMO-DI-ML/NeurIPS2023-One-Fits-All",
+      "quality_score": 11,
+      "abstract": "Although we have witnessed great success of pre-trained models in natural language processing (NLP) and computer vision (CV), limited progress has been made for general time series analysis. Unlike NLP and CV where a unified model can be used to perform different tasks, specially designed approach still dominates in each time series analysis task such as classification, anomaly detection, forecasting, and few-shot learning. The main challenge that blocks the development of pre-trained model for time series analysis is the lack of a large amount of data for training. In this work, we address this challenge by leveraging language or CV models, pre-trained from billions of tokens, for time series analysis. Specifically, we refrain from altering the self-attention and feedforward layers of the residual blocks in the pre-trained language or image model. This model, known as the Frozen Pretrained Transformer (FPT), is evaluated through fine-tuning on all major types of tasks involving time series. Our results demonstrate that pre-trained models on natural language or images can lead to a comparable or state-of-the-art performance in all main time series analysis tasks, as illustrated in Figure 1. We also found both theoretically and empirically that the self-attention module behaviors similarly to principle component analysis (PCA), an observation that helps explains how transformer bridges the domain gap and a crucial step towards understanding the universality of a pre-trained transformer.The code is publicly available at https://github.com/DAMO-DI-ML/One_Fits_All.",
+      "notes": "Pioneering cross-modal transfer framework (GPT4TS / FPT) showing frozen pre-trained language transformers generalize to universal time series tasks.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Liu2024TimeMMD",
+      "title": "Time-MMD: Multi-Domain Multimodal Dataset for Time Series Analysis",
+      "authors": [
+        "Haoxin Liu",
+        "Shangqing Xu",
+        "Zhiyuan Zhao",
+        "Lingkai Kong",
+        "Harshavardhan Kamarthi",
+        "Aditya B. Sasanur",
+        "Megha Sharma",
+        "Jiaming Cui",
+        "Qingsong Wen",
+        "Chao Zhang",
+        "B. Aditya Prakash"
+      ],
+      "year": 2024,
+      "venue": "NeurIPS 2024",
+      "arxiv_id": "2406.08627",
+      "doi": "10.48550/arXiv.2406.08627",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "early_tokenization",
+      "backbone": "Multi-modal Benchmark Suite",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "multi_domain",
+        "finance",
+        "energy",
+        "weather",
+        "traffic",
+        "healthcare"
+      ],
+      "code_url": "https://github.com/AdityaLab/Time-MMD",
+      "quality_score": 11,
+      "abstract": "Time series data are ubiquitous across a wide range of real-world domains. While real-world time series analysis (TSA) requires human experts to integrate numerical series data with multimodal domain-specific knowledge, most existing TSA models rely solely on numerical data, overlooking the significance of information beyond numerical series. This oversight is due to the untapped potential of textual series data and the absence of a comprehensive, high-quality multimodal dataset. To overcome this obstacle, we introduce Time-MMD, the first multi-domain, multimodal time series dataset covering 9 primary data domains. Time-MMD ensures fine-grained modality alignment, eliminates data contamination, and provides high usability. Additionally, we develop MM-TSFlib, the first-cut multimodal time-series forecasting (TSF) library, seamlessly pipelining multimodal TSF evaluations based on Time-MMD for in-depth analyses. Extensive experiments conducted on Time-MMD through MM-TSFlib demonstrate significant performance enhancements by extending unimodal TSF to multimodality, evidenced by over 15% mean squared error reduction in general, and up to 40% in domains with rich textual data. More importantly, our datasets and library revolutionize broader applications, impacts, research topics to advance TSA. The dataset is available at https://github.com/AdityaLab/Time-MMD.",
+      "notes": "First large-scale multi-domain multimodal dataset covering 9 distinct domains with fine-grained numerical-textual alignment.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Chen2024VisionTS",
+      "title": "VisionTS: Visual Masked Autoencoders Are Free-Lunch Zero-Shot Time Series Forecasters",
+      "authors": [
+        "Mouxiang Chen",
+        "Lefei Shen",
+        "Zhuo Li",
+        "Xiaoyun Joy Wang",
+        "Jianling Sun",
+        "Chenghao Liu"
+      ],
+      "year": 2024,
+      "venue": "NeurIPS 2024",
+      "arxiv_id": "2408.17253",
+      "doi": "10.48550/arXiv.2408.17253",
+      "modality_pair": "TS+Vision",
+      "role_of_non_ts": "modality_transcoding",
+      "fusion_mechanism": "visual_rendering",
+      "backbone": "MAE (ViT-Base)",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts"
+      ],
+      "code_url": "https://github.com/Keytoyze/VisionTS",
+      "quality_score": 10,
+      "abstract": "Foundation models have emerged as a promising approach in time series forecasting (TSF). Existing approaches either repurpose large language models (LLMs) or build large-scale time series datasets to develop TSF foundation models for universal forecasting. However, these methods face challenges due to the severe cross-domain gap or in-domain heterogeneity. This paper explores a new road to building a TSF foundation model from rich, high-quality natural images. Our key insight is that a visual masked autoencoder, pre-trained on the ImageNet dataset, can naturally be a numeric series forecaster. By reformulating TSF as an image reconstruction task, we bridge the gap between image pre-training and TSF downstream tasks. Surprisingly, without further adaptation in the time series domain, the proposed VisionTS could achieve better zero-shot forecast performance than existing TSF foundation models. With fine-tuning for one epoch, VisionTS could further improve the forecasting and achieve state-of-the-art performance in most cases. Extensive experiments reveal intrinsic similarities between images and real-world time series, suggesting that visual models may offer a &#34;free lunch&#34; for TSF and highlight the potential for future cross-modality research. Our code is publicly available at https://github.com/Keytoyze/VisionTS.",
+      "notes": "Reformulates time series forecasting as visual masked image reconstruction; shows vision MAE acts as zero-shot forecaster.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Chen2025TRACE",
+      "title": "TRACE: Grounding Time Series in Context for Multimodal Embedding and Retrieval",
+      "authors": [
+        "Jialin Chen",
+        "Ziyu Zhao",
+        "Gaukhar Nurbek",
+        "Aosong Feng",
+        "Ali Maatouk",
+        "Leandros Tassiulas",
+        "Yifeng Gao",
+        "Rex Ying"
+      ],
+      "year": 2025,
+      "venue": "NeurIPS 2025",
+      "arxiv_id": "2506.09114",
+      "doi": "10.48550/arXiv.2506.09114",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "joint_representation",
+      "fusion_mechanism": "dual_encoder_contrastive",
+      "backbone": "Contrastive TS-Text Encoder",
+      "tasks": [
+        "cross_modal_retrieval",
+        "forecasting"
+      ],
+      "domains": [
+        "healthcare",
+        "energy",
+        "meteorology"
+      ],
+      "code_url": "https://github.com/Guuuli/TRACE",
+      "quality_score": 10,
+      "abstract": "The ubiquity of dynamic data in domains such as weather, healthcare, and energy underscores a growing need for effective interpretation and retrieval of time-series data. These data are inherently tied to domain-specific contexts, such as clinical notes or weather narratives, making cross-modal retrieval essential not only for downstream tasks but also for developing robust time-series foundation models by retrieval-augmented generation (RAG). Despite the increasing demand, time-series retrieval remains largely underexplored. Existing methods often lack semantic grounding, struggle to align heterogeneous modalities, and have limited capacity for handling multi-channel signals. To address this gap, we propose TRACE, a generic multimodal retriever that grounds time-series embeddings in aligned textual context. TRACE enables fine-grained channel-level alignment and employs hard negative mining to facilitate semantically meaningful retrieval. It supports flexible cross-modal retrieval modes, including Text-to-Timeseries and Timeseries-to-Text, effectively linking linguistic descriptions with complex temporal patterns. By retrieving semantically relevant pairs, TRACE enriches downstream models with informative context, leading to improved predictive accuracy and interpretability. Beyond a static retrieval engine, TRACE also serves as a powerful standalone encoder, with lightweight task-specific tuning that refines context-aware representations while maintaining strong cross-modal alignment. These representations achieve state-of-the-art performance on downstream forecasting and classification tasks. Extensive experiments across multiple domains highlight its dual utility, as both an effective encoder for downstream applications and a general-purpose retriever to enhance time-series models.",
+      "notes": "Grounds time series in textual context via channel identity tokens and dual contrastive alignment for bidirectional TS-text retrieval.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Gao2024UniTS",
+      "title": "UniTS: A Unified Multi-Task Time Series Model",
+      "authors": [
+        "Shanghua Gao",
+        "Teddy Koker",
+        "Owen Queen",
+        "Thomas Hartvigsen",
+        "Theodoros Tsiligkaridis",
+        "Marinka Zitnik"
+      ],
+      "year": 2024,
+      "venue": "NeurIPS 2024",
+      "arxiv_id": "2403.00131",
+      "doi": "10.48550/arXiv.2403.00131",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "early_tokenization",
+      "backbone": "Unified Multi-Task Transformer",
+      "tasks": [
+        "forecasting",
+        "classification",
+        "anomaly_detection",
+        "imputation"
+      ],
+      "domains": [
+        "general_ts",
+        "multi_domain"
+      ],
+      "code_url": "https://github.com/mims-harvard/UniTS",
+      "quality_score": 11,
+      "abstract": "Although pre-trained transformers and reprogrammed text-based LLMs have shown strong performance on time series tasks, the best-performing architectures vary widely across tasks, with most models narrowly focused on specific areas, such as time series forecasting. Unifying predictive and generative time series tasks within a single model remains challenging. We introduce UniTS, a unified multi-task time series model that utilizes task tokenization to integrate predictive and generative tasks into a single framework. UniTS employs a modified transformer block to capture universal time series representations, enabling transferability from a heterogeneous, multi-domain pre-training dataset-characterized by diverse dynamic patterns, sampling rates, and temporal scales-to a wide range of downstream datasets with varied task specifications and data domains. Tested on 38 datasets across human activity sensors, healthcare, engineering, and finance, UniTS achieves superior performance compared to 12 forecasting models, 20 classification models, 18 anomaly detection models, and 16 imputation models, including adapted text-based LLMs. UniTS also demonstrates strong few-shot and prompt capabilities when applied to new domains and tasks. In single-task settings, UniTS outperforms competitive task-specialized time series models. Code and datasets are available at https://github.com/mims-harvard/UniTS.",
+      "notes": "Unified multi-task time-series model taking natural language task prompts to dynamically configure architectural prediction heads.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Sun2023TEST",
+      "title": "TEST: Text Prototype Aligned Embedding to Activate LLM&#39;s Ability for Time Series",
+      "authors": [
+        "Chenxi Sun",
+        "Hongyan Li",
+        "Yaliang Li",
+        "Shenda Hong"
+      ],
+      "year": 2023,
+      "venue": "arXiv 2023",
+      "arxiv_id": "2308.08241",
+      "doi": "10.48550/arXiv.2308.08241",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "contrastive_prototype",
+      "backbone": "BERT / GPT-2",
+      "tasks": [
+        "classification",
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts"
+      ],
+      "code_url": "https://github.com/ChenxiSun/TEST",
+      "quality_score": 9,
+      "abstract": "This work summarizes two ways to accomplish Time-Series (TS) tasks in today&#39;s Large Language Model (LLM) context: LLM-for-TS (model-centric) designs and trains a fundamental large model, or fine-tunes a pre-trained LLM for TS data; TS-for-LLM (data-centric) converts TS into a model-friendly representation to enable the pre-trained LLM to handle TS data. Given the lack of data, limited resources, semantic context requirements, and so on, this work focuses on TS-for-LLM, where we aim to activate LLM&#39;s ability for TS data by designing a TS embedding method suitable for LLM. The proposed method is named TEST. It first tokenizes TS, builds an encoder to embed TS via instance-wise, feature-wise, and text-prototype-aligned contrast, where the TS embedding space is aligned to LLM embedding layer space, then creates soft prompts to make LLM more open to that embeddings, and finally implements TS tasks using the frozen LLM. We also demonstrate the feasibility of TS-for-LLM through theory and experiments. Experiments are carried out on TS classification, forecasting, and representation tasks using eight frozen LLMs with various structures and sizes. The results show that the pre-trained LLM with TEST strategy can achieve better or comparable performance than today&#39;s SOTA TS models and offer benefits for few-shot and generalization. By treating LLM as the pattern machine, TEST can endow LLM&#39;s ability to process TS data without compromising language ability. We hope that this study will serve as a foundation for future work to support TS+LLM progress.",
+      "notes": "Text prototype-aligned embedding mapping raw time series into discrete language token semantics via soft contrastive alignment.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Cao2023TEMPO",
+      "title": "TEMPO: Prompt-based Generative Pre-trained Transformer for Time Series Forecasting",
+      "authors": [
+        "Defu Cao",
+        "Furong Jia",
+        "Sercan O Arik",
+        "Tomas Pfister",
+        "Yixiang Zheng",
+        "Wen Ye",
+        "Yan Liu"
+      ],
+      "year": 2023,
+      "venue": "ICLR 2024",
+      "arxiv_id": "2310.04948",
+      "doi": "10.48550/arXiv.2310.04948",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "reprogramming_patching",
+      "backbone": "GPT-2",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts"
+      ],
+      "code_url": "https://github.com/DC-Mody/TEMPO",
+      "quality_score": 10,
+      "abstract": "The past decade has witnessed significant advances in time series modeling with deep learning. While achieving state-of-the-art results, the best-performing architectures vary highly across applications and domains. Meanwhile, for natural language processing, the Generative Pre-trained Transformer (GPT) has demonstrated impressive performance via training one general-purpose model across various textual datasets. It is intriguing to explore whether GPT-type architectures can be effective for time series, capturing the intrinsic dynamic attributes and leading to significant accuracy improvements. In this paper, we propose a novel framework, TEMPO, that can effectively learn time series representations. We focus on utilizing two essential inductive biases of the time series task for pre-trained models: (i) decomposition of the complex interaction between trend, seasonal and residual components; and (ii) introducing the design of prompts to facilitate distribution adaptation in different types of time series. TEMPO expands the capability for dynamically modeling real-world temporal phenomena from data within diverse domains. Our experiments demonstrate the superior performance of TEMPO over state-of-the-art methods on zero shot setting for a number of time series benchmark datasets. This performance gain is observed not only in scenarios involving previously unseen datasets but also in scenarios with multi-modal inputs. This compelling finding highlights TEMPO&#39;s potential to constitute a foundational model-building framework.",
+      "notes": "Prompt-based generative pre-trained transformer conditioning predictions on trend, seasonal, and residual textual prompts.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Xue2022PromptCast",
+      "title": "PromptCast: A New Prompt-based Learning Paradigm for Time Series Forecasting",
+      "authors": [
+        "Hao Xue",
+        "Flora D. Salim"
+      ],
+      "year": 2022,
+      "venue": "IEEE TKDE 2023",
+      "arxiv_id": "2210.08964",
+      "doi": "10.48550/arXiv.2210.08964",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "conversational_interface",
+      "fusion_mechanism": "text_serialization",
+      "backbone": "T5 / BART",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "weather",
+        "energy",
+        "mobility"
+      ],
+      "code_url": "https://github.com/cruiseresearchgroup/PISA-PromptCast",
+      "quality_score": 9,
+      "abstract": "This paper presents a new perspective on time series forecasting. In existing time series forecasting methods, the models take a sequence of numerical values as input and yield numerical values as output. The existing SOTA models are largely based on the Transformer architecture, modified with multiple encoding mechanisms to incorporate the context and semantics around the historical data. Inspired by the successes of pre-trained language foundation models, we pose a question about whether these models can also be adapted to solve time-series forecasting. Thus, we propose a new forecasting paradigm: prompt-based time series forecasting (PromptCast). In this novel task, the numerical input and output are transformed into prompts and the forecasting task is framed in a sentence-to-sentence manner, making it possible to directly apply language models for forecasting purposes. To support and facilitate the research of this task, we also present a large-scale dataset (PISA) that includes three real-world forecasting scenarios. We evaluate different SOTA numerical-based forecasting methods and language generation models. The benchmark results with various forecasting settings demonstrate the proposed PromptCast with language generation models is a promising research direction. Additionally, in comparison to conventional numerical-based forecasting, PromptCast shows a much better generalization ability under the zero-shot setting.",
+      "notes": "First work casting numerical time series forecasting as a prompt-based question answering task via numerical token serialization.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Liu2024CALF",
+      "title": "CALF: Aligning LLMs for Time Series Forecasting via Cross-modal Fine-Tuning",
+      "authors": [
+        "Peiyuan Liu",
+        "Hang Guo",
+        "Tao Dai",
+        "Naiqi Li",
+        "Jigang Bao",
+        "Xudong Ren",
+        "Yong Jiang",
+        "Shu-Tao Xia"
+      ],
+      "year": 2024,
+      "venue": "arXiv 2024",
+      "arxiv_id": "2403.07300",
+      "doi": "10.48550/arXiv.2403.07300",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "cross_modal_loss",
+      "backbone": "LLaMA-7B",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts"
+      ],
+      "code_url": "https://github.com/Hank0626/CALF",
+      "quality_score": 9,
+      "abstract": "Deep learning (e.g., Transformer) has been widely and successfully used in multivariate time series forecasting (MTSF). Unlike existing methods that focus on training models from a single modal of time series input, large language models (LLMs) based MTSF methods with cross-modal text and time series input have recently shown great superiority, especially with limited temporal data. However, current LLM-based MTSF methods usually focus on adapting and fine-tuning LLMs, while neglecting the distribution discrepancy between textual and temporal input tokens, thus leading to sub-optimal performance. To address this issue, we propose a novel Cross-Modal LLM Fine-Tuning (CALF) framework for MTSF by reducing the distribution discrepancy between textual and temporal data, which mainly consists of the temporal target branch with temporal input and the textual source branch with aligned textual input. To reduce the distribution discrepancy, we develop the cross-modal match module to first align cross-modal input distributions. Additionally, to minimize the modality distribution gap in both feature and output spaces, feature regularization loss is developed to align the intermediate features between the two branches for better weight updates, while output consistency loss is introduced to allow the output representations of both branches to correspond effectively. Thanks to the modality alignment, CALF establishes state-of-the-art performance for both long-term and short-term forecasting tasks with low computational complexity, and exhibiting favorable few-shot and zero-shot abilities similar to that in LLMs. Code is available at https://github.com/Hank0626/LLaTA.",
+      "notes": "Cross-modal fine-tuning framework aligning temporal and textual representations using matching loss and output consistency.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Pan2024S2IPLLM",
+      "title": "$\\textbf{S}^2$IP-LLM: Semantic Space Informed Prompt Learning with LLM for Time Series Forecasting",
+      "authors": [
+        "Zijie Pan",
+        "Yushan Jiang",
+        "Sahil Garg",
+        "Anderson Schneider",
+        "Yuriy Nevmyvaka",
+        "Dongjin Song"
+      ],
+      "year": 2024,
+      "venue": "arXiv 2024",
+      "arxiv_id": "2403.05798",
+      "doi": "10.48550/arXiv.2403.05798",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "semantic_anchor",
+      "backbone": "GPT-2",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts"
+      ],
+      "code_url": "https://github.com/PanZ-s/S2IP-LLM",
+      "quality_score": 9,
+      "abstract": "Recently, there has been a growing interest in leveraging pre-trained large language models (LLMs) for various time series applications. However, the semantic space of LLMs, established through the pre-training, is still underexplored and may help yield more distinctive and informative representations to facilitate time series forecasting. To this end, we propose Semantic Space Informed Prompt learning with LLM ($S^2$IP-LLM) to align the pre-trained semantic space with time series embeddings space and perform time series forecasting based on learned prompts from the joint space. We first design a tokenization module tailored for cross-modality alignment, which explicitly concatenates patches of decomposed time series components to create embeddings that effectively encode the temporal dynamics. Next, we leverage the pre-trained word token embeddings to derive semantic anchors and align selected anchors with time series embeddings by maximizing the cosine similarity in the joint space. This way, $S^2$IP-LLM can retrieve relevant semantic anchors as prompts to provide strong indicators (context) for time series that exhibit different temporal dynamics. With thorough empirical studies on multiple benchmark datasets, we demonstrate that the proposed $S^2$IP-LLM can achieve superior forecasting performance over state-of-the-art baselines. Furthermore, our ablation studies and visualizations verify the necessity of prompt learning informed by semantic space.",
+      "notes": "Semantic space informed prompt learning retrieving top-k semantic anchors to steer LLM time-series forecast generation.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Zhong2025TimeVLM",
+      "title": "Time-VLM: Exploring Multimodal Vision-Language Models for Augmented Time Series Forecasting",
+      "authors": [
+        "Siru Zhong",
+        "Weilin Ruan",
+        "Ming Jin",
+        "Huan Li",
+        "Qingsong Wen",
+        "Yuxuan Liang"
+      ],
+      "year": 2025,
+      "venue": "ICML 2025",
+      "arxiv_id": "2502.04395",
+      "doi": "10.48550/arXiv.2502.04395",
+      "modality_pair": "TS+Vision+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "cross_attention",
+      "backbone": "Vision-Language Model (VLM)",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts",
+        "traffic",
+        "energy"
+      ],
+      "code_url": "https://github.com/decisionintelligence/Time-VLM",
+      "quality_score": 10,
+      "abstract": "Recent advancements in time series forecasting have explored augmenting models with text or vision modalities to improve accuracy. While text provides contextual understanding, it often lacks fine-grained temporal details. Conversely, vision captures intricate temporal patterns but lacks semantic context, limiting the complementary potential of these modalities. To address this, we propose \\method, a novel multimodal framework that leverages pre-trained Vision-Language Models (VLMs) to bridge temporal, visual, and textual modalities for enhanced forecasting. Our framework comprises three key components: (1) a Retrieval-Augmented Learner, which extracts enriched temporal features through memory bank interactions; (2) a Vision-Augmented Learner, which encodes time series as informative images; and (3) a Text-Augmented Learner, which generates contextual textual descriptions. These components collaborate with frozen pre-trained VLMs to produce multimodal embeddings, which are then fused with temporal features for final prediction. Extensive experiments demonstrate that Time-VLM achieves superior performance, particularly in few-shot and zero-shot scenarios, thereby establishing a new direction for multimodal time series forecasting. Code is available at https://github.com/CityMind-Lab/ICML25-TimeVLM.",
+      "notes": "Augments forecasting using dual vision-augmented and text-augmented learners fused through multimodal vision-language architectures.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Zhao2024ChatTS",
+      "title": "ChatTS: Aligning Time Series with LLMs via Synthetic Data for Enhanced Understanding and Reasoning",
+      "authors": [
+        "Zhe Xie",
+        "Zeyan Li",
+        "Xiao He",
+        "Longlong Xu",
+        "Xidao Wen",
+        "Tieying Zhang",
+        "Jianjun Chen",
+        "Rui Shi",
+        "Dan Pei"
+      ],
+      "year": 2024,
+      "venue": "VLDB 2025",
+      "arxiv_id": "2412.03104",
+      "doi": "10.14778/3742728.3742735",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "conversational_interface",
+      "fusion_mechanism": "early_tokenization",
+      "backbone": "LLaMA-3",
+      "tasks": [
+        "ts_qa",
+        "reasoning",
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts",
+        "multi_domain"
+      ],
+      "code_url": "https://github.com/Time-Series-Library/ChatTS",
+      "quality_score": 10,
+      "abstract": "Understanding time series is crucial for its application in real-world scenarios. Recently, large language models (LLMs) have been increasingly applied to time series tasks, leveraging their strong language capabilities to enhance various applications. However, research on multimodal LLMs (MLLMs) for time series understanding and reasoning remains limited, primarily due to the scarcity of high-quality datasets that align time series with textual information. This paper introduces ChatTS, a novel MLLM designed for time series analysis. ChatTS treats time series as a modality, similar to how vision MLLMs process images, enabling it to perform both understanding and reasoning with time series. To address the scarcity of training data, we propose an attribute-based method for generating synthetic time series with detailed attribute descriptions. We further introduce Time Series Evol-Instruct, a novel approach that generates diverse time series Q&amp;As, enhancing the model&#39;s reasoning capabilities. To the best of our knowledge, ChatTS is the first TS-MLLM that takes multivariate time series as input for understanding and reasoning, which is fine-tuned exclusively on synthetic datasets. We evaluate its performance using benchmark datasets with real-world data, including six alignment tasks and four reasoning tasks. Our results show that ChatTS significantly outperforms existing vision-based MLLMs (e.g., GPT-4o) and text/agent-based LLMs, achieving a 46.0% improvement in alignment tasks and a 25.8% improvement in reasoning tasks. We have open-sourced the source code, model checkpoint and datasets at https://github.com/NetManAIOps/ChatTS.",
+      "notes": "Native time series multimodal LLM trained with Time Series Evol-Instruct for complex interactive temporal reasoning and Q&A.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Tan2025TimeOmni1",
+      "title": "TimeOmni-1: Incentivizing Complex Reasoning with Time Series in Large Language Models",
+      "authors": [
+        "Tong Guan",
+        "Zijie Meng",
+        "Dianqi Li",
+        "Shiyu Wang",
+        "Chao-Han Huck Yang",
+        "Qingsong Wen",
+        "Zuozhu Liu",
+        "Sabato Marco Siniscalchi",
+        "Ming Jin",
+        "Shirui Pan"
+      ],
+      "year": 2025,
+      "venue": "arXiv 2025",
+      "arxiv_id": "2509.24803",
+      "doi": "10.48550/arXiv.2509.24803",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "conversational_interface",
+      "fusion_mechanism": "early_tokenization",
+      "backbone": "TimeOmni Reasoning Backbone",
+      "tasks": [
+        "reasoning",
+        "decision_making",
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts"
+      ],
+      "code_url": "https://github.com/time-series-foundation-models/TimeOmni",
+      "quality_score": 10,
+      "abstract": "Recent advances in multimodal time series learning underscore a paradigm shift from analytics centered on basic patterns toward advanced time series understanding and reasoning. However, existing multimodal time series datasets mostly remain at the level of surface alignment and question answering, without reaching the depth of genuine reasoning. The absence of well-defined tasks that genuinely require time series reasoning, along with the scarcity of high-quality data, has limited progress in building practical time series reasoning models (TSRMs). To this end, we introduce Time Series Reasoning Suite (TSR-Suite), which formalizes four atomic tasks that span three fundamental capabilities for reasoning with time series: (1) perception, acquired through scenario understanding and causality discovery; (2) extrapolation, realized via event-aware forecasting; and (3) decision-making, developed through deliberation over perception and extrapolation. TSR-Suite is the first comprehensive time series reasoning suite that supports not only thorough evaluation but also the data pipeline and training of TSRMs. It contains more than 23K samples, of which 2.3K are carefully curated through a human-guided hierarchical annotation process. Building on this foundation, we introduce TimeOmni-1, the first unified reasoning model designed to address diverse real-world problems demanding time series reasoning. The model is trained in multiple stages, integrating a mixture of task scenarios, novel reward functions, and tailored optimizations. Experiments show that TimeOmni-1 delivers strong out-of-distribution generalization across all tasks and achieves a high rate of valid responses. It significantly improves causality discovery accuracy (64.0% vs. 35.9% with GPT-4.1) and raises the valid response rate by over 6% compared to GPT-4.1 on the event-aware forecasting task.",
+      "notes": "Time Series Reasoning Suite (TSR-Suite) incentivizing perception, extrapolation, and decision-making via RL and supervised fine-tuning.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "ChatTime2024",
+      "title": "ChatTime: A Unified Multimodal Time Series Foundation Model Bridging Numerical and Textual Data",
+      "authors": [
+        "Chengsen Wang",
+        "Qi Qi",
+        "Jingyu Wang",
+        "Haifeng Sun",
+        "Zirui Zhuang",
+        "Jinming Wu",
+        "Lei Zhang",
+        "Jianxin Liao"
+      ],
+      "year": 2024,
+      "venue": "AAAI 2025",
+      "arxiv_id": "2412.11376",
+      "doi": "10.48550/arXiv.2412.11376",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "conversational_interface",
+      "fusion_mechanism": "early_tokenization",
+      "backbone": "ChatTime Transformer",
+      "tasks": [
+        "forecasting",
+        "ts_qa"
+      ],
+      "domains": [
+        "general_ts",
+        "multi_domain"
+      ],
+      "code_url": "https://github.com/ChatTime/ChatTime",
+      "quality_score": 10,
+      "abstract": "Human experts typically integrate numerical and textual multimodal information to analyze time series. However, most traditional deep learning predictors rely solely on unimodal numerical data, using a fixed-length window for training and prediction on a single dataset, and cannot adapt to different scenarios. The powered pre-trained large language model has introduced new opportunities for time series analysis. Yet, existing methods are either inefficient in training, incapable of handling textual information, or lack zero-shot forecasting capability. In this paper, we innovatively model time series as a foreign language and construct ChatTime, a unified framework for time series and text processing. As an out-of-the-box multimodal time series foundation model, ChatTime provides zero-shot forecasting capability and supports bimodal input/output for both time series and text. We design a series of experiments to verify the superior performance of ChatTime across multiple tasks and scenarios, and create four multimodal datasets to address data gaps. The experimental results demonstrate the potential and utility of ChatTime.",
+      "notes": "Unified multimodal foundation model bridging numerical and textual time series data with bimodal input/output capabilities.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "FidelTS2025",
+      "title": "Fidel-TS: A High-Fidelity Multimodal Benchmark for Time Series Forecasting",
+      "authors": [
+        "Zhijian Xu",
+        "Wanxu Cai",
+        "Xilin Dai",
+        "Zhaorong Deng",
+        "Qiang Xu"
+      ],
+      "year": 2025,
+      "venue": "arXiv 2025",
+      "arxiv_id": "2509.24789",
+      "doi": "10.48550/arXiv.2509.24789",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "benchmark",
+      "fusion_mechanism": "multimodal_evaluation",
+      "backbone": "Benchmark Suite",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "multi_domain"
+      ],
+      "code_url": "https://github.com/fidel-ts/fidel-benchmark",
+      "quality_score": 10,
+      "abstract": "The evaluation of time series forecasting models is hindered by a lack of high-quality benchmarks, leading to overestimated assessments of progress. Existing datasets suffer from issues ranging from small-scale, low-frequency, pre-training data contamination in unimodal designs to the temporal and description leakage prevalent in early multimodal designs. To address this, we formalize the core principles of high-fidelity benchmarking, focusing on data sourcing integrity, leak-free design, and structural clarity. We introduce Fidel-TS, a new large-scale benchmark built from these principles. Our experiments reveal the limitations of prior benchmarks and the potential discrepancies in model evaluation, providing new insights into multiple existing unimodal and multimodal forecasting models and LLMs across various evaluation tasks.",
+      "notes": "High-fidelity multimodal benchmark evaluating time series forecasting across multimodal contexts and domain variations.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "MTBench2025",
+      "title": "MTBench: A Multimodal Time Series Benchmark for Temporal Reasoning and Question Answering",
+      "authors": [
+        "Jialin Chen",
+        "Aosong Feng",
+        "Ziyu Zhao",
+        "Juan Garza",
+        "Gaukhar Nurbek",
+        "Cheng Qin",
+        "Ali Maatouk",
+        "Leandros Tassiulas",
+        "Yifeng Gao",
+        "Rex Ying"
+      ],
+      "year": 2025,
+      "venue": "arXiv 2025",
+      "arxiv_id": "2503.16858",
+      "doi": "10.48550/arXiv.2503.16858",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "benchmark",
+      "fusion_mechanism": "multimodal_evaluation",
+      "backbone": "Benchmark Suite",
+      "tasks": [
+        "ts_qa",
+        "reasoning"
+      ],
+      "domains": [
+        "multi_domain"
+      ],
+      "code_url": "https://github.com/mtbench-ts/mtbench",
+      "quality_score": 10,
+      "abstract": "Understanding the relationship between textual news and time-series evolution is a critical yet under-explored challenge in applied data science. While multimodal learning has gained traction, existing multimodal time-series datasets fall short in evaluating cross-modal reasoning and complex question answering, which are essential for capturing complex interactions between narrative information and temporal patterns. To bridge this gap, we introduce Multimodal Time Series Benchmark (MTBench), a large-scale benchmark designed to evaluate large language models (LLMs) on time series and text understanding across financial and weather domains. MTbench comprises paired time series and textual data, including financial news with corresponding stock price movements and weather reports aligned with historical temperature records. Unlike existing benchmarks that focus on isolated modalities, MTbench provides a comprehensive testbed for models to jointly reason over structured numerical trends and unstructured textual narratives. The richness of MTbench enables formulation of diverse tasks that require a deep understanding of both text and time-series data, including time-series forecasting, semantic and technical trend analysis, and news-driven question answering (QA). These tasks target the model&#39;s ability to capture temporal dependencies, extract key insights from textual context, and integrate cross-modal information. We evaluate state-of-the-art LLMs on MTbench, analyzing their effectiveness in modeling the complex relationships between news narratives and temporal patterns. Our findings reveal significant challenges in current models, including difficulties in capturing long-term dependencies, interpreting causality in financial and weather trends, and effectively fusing multimodal information.",
+      "notes": "Multimodal benchmark specifically designed to rigorously evaluate temporal reasoning and question answering over time series.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Liu2024AutoTimes",
+      "title": "AutoTimes: Autoregressive Time Series Forecasters via Large Language Models",
+      "authors": [
+        "Yong Liu",
+        "Guo Qin",
+        "Xiangdong Huang",
+        "Jianmin Wang",
+        "Mingsheng Long"
+      ],
+      "year": 2024,
+      "venue": "NeurIPS 2024",
+      "arxiv_id": "2402.02370",
+      "doi": "10.48550/arXiv.2402.02370",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "reprogramming_patching",
+      "backbone": "Llama-2 / OPT",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts"
+      ],
+      "code_url": "https://github.com/thuml/AutoTimes",
+      "quality_score": 11,
+      "abstract": "Foundation models of time series have not been fully developed due to the limited availability of time series corpora and the underexploration of scalable pre-training. Based on the similar sequential formulation of time series and natural language, increasing research demonstrates the feasibility of leveraging large language models (LLM) for time series. Nevertheless, the inherent autoregressive property and decoder-only architecture of LLMs have not been fully considered, resulting in insufficient utilization of LLM abilities. To fully revitalize the general-purpose token transition and multi-step generation capability of large language models, we propose AutoTimes to repurpose LLMs as autoregressive time series forecasters, which projects time series into the embedding space of language tokens and autoregressively generates future predictions with arbitrary lengths. Compatible with any decoder-only LLMs, the consequent forecaster exhibits the flexibility of the lookback length and scalability with larger LLMs. Further, we formulate time series as prompts, extending the context for prediction beyond the lookback window, termed in-context forecasting. By introducing LLM-embedded textual timestamps, AutoTimes can utilize chronological information to align multivariate time series. Empirically, AutoTimes achieves state-of-the-art with 0.1% trainable parameters and over $5\\times$ training/inference speedup compared to advanced LLM-based forecasters. Code is available at this repository: https://github.com/thuml/AutoTimes.",
+      "notes": "Repurposes decoder-only LLMs as autoregressive time series forecasters with chronological timestamp prompts and in-context forecasting.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Chang2023LLM4TS",
+      "title": "LLM4TS: Aligning Pre-Trained LLMs as Data-Efficient Time-Series Forecasters",
+      "authors": [
+        "Ching Chang",
+        "Wei-Yao Wang",
+        "Wen-Chih Peng",
+        "Tien-Fu Chen"
+      ],
+      "year": 2023,
+      "venue": "arXiv 2023",
+      "arxiv_id": "2308.08469",
+      "doi": "10.1145/3719207 10.1145/3719207",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "reprogramming_patching",
+      "backbone": "GPT-2",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts"
+      ],
+      "code_url": "https://github.com/chengsong/LLM4TS",
+      "quality_score": 9,
+      "abstract": "Multivariate time-series forecasting is vital in various domains, e.g., economic planning and weather prediction. Deep train-from-scratch models have exhibited effective performance yet require large amounts of data, which limits real-world applicability. Recently, researchers have leveraged the representation learning transferability of pre-trained Large Language Models (LLMs) to handle limited non-linguistic datasets effectively. However, incorporating LLMs with time-series data presents challenges of limited adaptation due to different compositions between time-series and linguistic data, and the inability to process multi-scale temporal information. To tackle these challenges, we propose LLM4TS, a framework for time-series forecasting with pre-trained LLMs. LLM4TS consists of a two-stage fine-tuning strategy: the time-series alignment stage to align LLMs with the nuances of time-series data, and the forecasting fine-tuning stage for downstream time-series forecasting tasks. Furthermore, our framework features a novel two-level aggregation method that integrates multi-scale temporal data within pre-trained LLMs, enhancing their ability to interpret time-specific information. In experiments across 7 time-series forecasting datasets, LLM4TS is superior to existing state-of-the-art methods compared with trained-from-scratch models in full-shot scenarios, and also achieves the highest rank in few-shot scenarios. In addition, evaluations compared with different unsupervised representation learning approaches highlight LLM4TS&#39;s effectiveness with representation learning in forecasting tasks. Ablation studies further validate each component&#39;s contribution to LLM4TS and underscore the essential role of utilizing LLM&#39;s pre-trained weights for optimal performance. The code is available at https://github.com/blacksnail789521/LLM4TS.",
+      "notes": "Aligns pre-trained LLMs as data-efficient time-series forecasters using a two-stage alignment strategy.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Gruver2023LLMTime",
+      "title": "Large Language Models Are Zero-Shot Time Series Forecasters",
+      "authors": [
+        "Nate Gruver",
+        "Marc Finzi",
+        "Shikai Qiu",
+        "Andrew Gordon Wilson"
+      ],
+      "year": 2023,
+      "venue": "NeurIPS 2023",
+      "arxiv_id": "2310.07820",
+      "doi": "10.48550/arXiv.2310.07820",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "text_serialization",
+      "fusion_mechanism": "text_serialization",
+      "backbone": "GPT-3 / GPT-4 / LLaMA-2",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts"
+      ],
+      "code_url": "https://github.com/ngruver/llmtime",
+      "quality_score": 10,
+      "abstract": "By encoding time series as a string of numerical digits, we can frame time series forecasting as next-token prediction in text. Developing this approach, we find that large language models (LLMs) such as GPT-3 and LLaMA-2 can surprisingly zero-shot extrapolate time series at a level comparable to or exceeding the performance of purpose-built time series models trained on the downstream tasks. To facilitate this performance, we propose procedures for effectively tokenizing time series data and converting discrete distributions over tokens into highly flexible densities over continuous values. We argue the success of LLMs for time series stems from their ability to naturally represent multimodal distributions, in conjunction with biases for simplicity, and repetition, which align with the salient features in many time series, such as repeated seasonal trends. We also show how LLMs can naturally handle missing data without imputation through non-numerical text, accommodate textual side information, and answer questions to help explain predictions. While we find that increasing model size generally improves performance on time series, we show GPT-4 can perform worse than GPT-3 because of how it tokenizes numbers, and poor uncertainty calibration, which is likely the result of alignment interventions such as RLHF.",
+      "notes": "Demonstrates that LLMs zero-shot forecast numerical sequences by tokenizing formatted numerical strings without any weight fine-tuning.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Ansari2024Chronos",
+      "title": "Chronos: Learning the Language of Time Series",
+      "authors": [
+        "Abdul Fatir Ansari",
+        "Lorenzo Stella",
+        "Caner Turkmen",
+        "Xiyuan Zhang",
+        "Pedro Mercado",
+        "Huibin Shen",
+        "Oleksandr Shchur",
+        "Syama Sundar Rangapuram",
+        "Sebastian Pineda Arango",
+        "Shubham Kapoor",
+        "Jasper Zschiegner",
+        "Danielle C. Maddix",
+        "Hao Wang",
+        "Michael W. Mahoney",
+        "Kari Torkkola",
+        "Andrew Gordon Wilson",
+        "Michael Bohlke-Schneider",
+        "Yuyang Wang"
+      ],
+      "year": 2024,
+      "venue": "arXiv 2024",
+      "arxiv_id": "2403.07815",
+      "doi": "10.48550/arXiv.2403.07815",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "tokenization_substrate",
+      "fusion_mechanism": "token_quantization",
+      "backbone": "T5 (Encoder-Decoder)",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts"
+      ],
+      "code_url": "https://github.com/amazon-science/chronos-forecasting",
+      "quality_score": 11,
+      "abstract": "We introduce Chronos, a simple yet effective framework for pretrained probabilistic time series models. Chronos tokenizes time series values using scaling and quantization into a fixed vocabulary and trains existing transformer-based language model architectures on these tokenized time series via the cross-entropy loss. We pretrained Chronos models based on the T5 family (ranging from 20M to 710M parameters) on a large collection of publicly available datasets, complemented by a synthetic dataset that we generated via Gaussian processes to improve generalization. In a comprehensive benchmark consisting of 42 datasets, and comprising both classical local models and deep learning methods, we show that Chronos models: (a) significantly outperform other methods on datasets that were part of the training corpus; and (b) have comparable and occasionally superior zero-shot performance on new datasets, relative to methods that were trained specifically on them. Our results demonstrate that Chronos models can leverage time series data from diverse domains to improve zero-shot accuracy on unseen forecasting tasks, positioning pretrained models as a viable tool to greatly simplify forecasting pipelines.",
+      "notes": "Tokenizes scaled time series into discrete language vocabulary bins, demonstrating foundation model transfer from NLP architectures.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Goswami2024MOMENT",
+      "title": "MOMENT: A Family of Open Time-series Foundation Models",
+      "authors": [
+        "Mononito Goswami",
+        "Konrad Szafer",
+        "Arjun Choudhry",
+        "Yifu Cai",
+        "Shuo Li",
+        "Artur Dubrawski"
+      ],
+      "year": 2024,
+      "venue": "ICML 2024",
+      "arxiv_id": "2402.03885",
+      "doi": "10.48550/arXiv.2402.03885",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "baseline_context",
+      "fusion_mechanism": "patch_masking",
+      "backbone": "T5-Encoder",
+      "tasks": [
+        "forecasting",
+        "classification",
+        "anomaly_detection",
+        "imputation"
+      ],
+      "domains": [
+        "general_ts",
+        "multi_domain"
+      ],
+      "code_url": "https://github.com/monash-moment/moment",
+      "quality_score": 11,
+      "abstract": "We introduce MOMENT, a family of open-source foundation models for general-purpose time series analysis. Pre-training large models on time series data is challenging due to (1) the absence of a large and cohesive public time series repository, and (2) diverse time series characteristics which make multi-dataset training onerous. Additionally, (3) experimental benchmarks to evaluate these models, especially in scenarios with limited resources, time, and supervision, are still in their nascent stages. To address these challenges, we compile a large and diverse collection of public time series, called the Time series Pile, and systematically tackle time series-specific challenges to unlock large-scale multi-dataset pre-training. Finally, we build on recent work to design a benchmark to evaluate time series foundation models on diverse tasks and datasets in limited supervision settings. Experiments on this benchmark demonstrate the effectiveness of our pre-trained models with minimal data and task-specific fine-tuning. Finally, we present several interesting empirical observations about large pre-trained time series models. Pre-trained models (AutonLab/MOMENT-1-large) and Time Series Pile (AutonLab/Timeseries-PILE) are available on Huggingface.",
+      "notes": "High-impact open-source foundation model family for time series, widely adopted as core baseline for multimodal comparison.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Liu2024Timer",
+      "title": "Timer: Generative Pre-trained Transformers Are Large Time Series Models",
+      "authors": [
+        "Yong Liu",
+        "Haoran Zhang",
+        "Chenyu Li",
+        "Xiangdong Huang",
+        "Jianmin Wang",
+        "Mingsheng Long"
+      ],
+      "year": 2024,
+      "venue": "ICML 2024",
+      "arxiv_id": "2402.02368",
+      "doi": "10.48550/arXiv.2402.02368",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "baseline_context",
+      "fusion_mechanism": "next_token_prediction",
+      "backbone": "Decoder-only Transformer",
+      "tasks": [
+        "forecasting",
+        "imputation",
+        "anomaly_detection"
+      ],
+      "domains": [
+        "general_ts"
+      ],
+      "code_url": "https://github.com/thuml/Large-Time-Series-Model",
+      "quality_score": 11,
+      "abstract": "Deep learning has contributed remarkably to the advancement of time series analysis. Still, deep models can encounter performance bottlenecks in real-world data-scarce scenarios, which can be concealed due to the performance saturation with small models on current benchmarks. Meanwhile, large models have demonstrated great powers in these scenarios through large-scale pre-training. Continuous progress has been achieved with the emergence of large language models, exhibiting unprecedented abilities such as few-shot generalization, scalability, and task generality, which are however absent in small deep models. To change the status quo of training scenario-specific small models from scratch, this paper aims at the early development of large time series models (LTSM). During pre-training, we curate large-scale datasets with up to 1 billion time points, unify heterogeneous time series into single-series sequence (S3) format, and develop the GPT-style architecture toward LTSMs. To meet diverse application needs, we convert forecasting, imputation, and anomaly detection of time series into a unified generative task. The outcome of this study is a Time Series Transformer (Timer), which is generative pre-trained by next token prediction and adapted to various downstream tasks with promising capabilities as an LTSM. Code and datasets are available at: https://github.com/thuml/Large-Time-Series-Model.",
+      "notes": "Pre-trained autoregressive foundation model from Tsinghua THUML group serving as standard unimodal foundation model comparison.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Ekambaram2024TTM",
+      "title": "Tiny Time Mixers (TTMs): Fast Pre-trained Models for Enhanced Zero/Few-Shot Forecasting of Multivariate Time Series",
+      "authors": [
+        "Vijay Ekambaram",
+        "Arindam Jati",
+        "Pankaj Dayama",
+        "Sumanta Mukherjee",
+        "Nam H. Nguyen",
+        "Wesley M. Gifford",
+        "Chandra Reddy",
+        "Jayant Kalagnanam"
+      ],
+      "year": 2024,
+      "venue": "NeurIPS 2024",
+      "arxiv_id": "2401.03955",
+      "doi": "10.48550/arXiv.2401.03955",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "baseline_context",
+      "fusion_mechanism": "patch_mixer",
+      "backbone": "Tiny Time Mixers",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts"
+      ],
+      "code_url": "https://github.com/ibm-granite/granite-tsfm",
+      "quality_score": 11,
+      "abstract": "Large pre-trained models excel in zero/few-shot learning for language and vision tasks but face challenges in multivariate time series (TS) forecasting due to diverse data characteristics. Consequently, recent research efforts have focused on developing pre-trained TS forecasting models. These models, whether built from scratch or adapted from large language models (LLMs), excel in zero/few-shot forecasting tasks. However, they are limited by slow performance, high computational demands, and neglect of cross-channel and exogenous correlations. To address this, we introduce Tiny Time Mixers (TTM), a compact model (starting from 1M parameters) with effective transfer learning capabilities, trained exclusively on public TS datasets. TTM, based on the light-weight TSMixer architecture, incorporates innovations like adaptive patching, diverse resolution sampling, and resolution prefix tuning to handle pre-training on varied dataset resolutions with minimal model capacity. Additionally, it employs multi-level modeling to capture channel correlations and infuse exogenous signals during fine-tuning. TTM outperforms existing popular benchmarks in zero/few-shot forecasting by (4-40%), while reducing computational requirements significantly. Moreover, TTMs are lightweight and can be executed even on CPU-only machines, enhancing usability and fostering wider adoption in resource-constrained environments. The model weights for reproducibility and research use are available at https://huggingface.co/ibm/ttm-research-r2/, while enterprise-use weights under the Apache license can be accessed as follows: the initial TTM-Q variant at https://huggingface.co/ibm-granite/granite-timeseries-ttm-r1, and the latest variants (TTM-B, TTM-E, TTM-A) weights are available at https://huggingface.co/ibm-granite/granite-timeseries-ttm-r2.",
+      "notes": "Ultra-lightweight foundation model family developed by IBM Research demonstrating parameter-efficient zero/few-shot forecasting.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Jin2023LargeModelsSurvey",
+      "title": "Large Models for Time Series and Spatio-Temporal Data: A Survey and Outlook",
+      "authors": [
+        "Ming Jin",
+        "Yaxuan Kong",
+        "Yuxuan Liang",
+        "Chaoli Zhang",
+        "Siqiao Xue",
+        "Xue Wang",
+        "James Zhang",
+        "Yi Wang",
+        "Haifeng Chen",
+        "Xiaoli Li",
+        "Vincent S. Tseng",
+        "Yu Zheng",
+        "Lei Chen",
+        "Hui Xiong",
+        "Shirui Pan",
+        "Qingsong Wen"
+      ],
+      "year": 2023,
+      "venue": "arXiv 2023",
+      "arxiv_id": "2310.10196",
+      "doi": "10.48550/arXiv.2310.10196",
+      "modality_pair": "TS+Text+Vision+SpatioTemporal",
+      "role_of_non_ts": "survey_reference",
+      "fusion_mechanism": "systematic_review",
+      "backbone": "Survey Analysis",
+      "tasks": [
+        "forecasting",
+        "classification",
+        "anomaly_detection"
+      ],
+      "domains": [
+        "multi_domain"
+      ],
+      "code_url": "https://github.com/KimMeen/Awesome-Large-Models-for-Time-Series-and-Spatio-Temporal-Data",
+      "quality_score": 12,
+      "abstract": "Temporal data, including time series and spatio-temporal data, are pervasive in real-world applications. Generated in massive volumes by physical and virtual sensors, they record dynamic system behaviors and enable a wide range of downstream tasks. Effectively analyzing such data is crucial to unlocking their rich information content. Recent advances in large language models and other foundation models have accelerated their use in time series and spatio-temporal data mining. These approaches not only improve pattern recognition and reasoning across diverse domains but also support progress toward artificial general intelligence that can understand and process temporal data. In this survey, we present a comprehensive, up-to-date review of large models tailored or adapted for time series and spatio-temporal data along four dimensions: data types, model categories, model scopes, and application areas/tasks. We organize existing work into two main groups: large models for time series analysis (LM4TS) and for spatio-temporal data mining (LM4STD), and further distinguish general-purpose from domain-specific models. We also curate related resources, including datasets, model implementations, and tools, organized by major application areas. Overall, this survey consolidates recent advances and highlights foundations, applications, resources, and open research opportunities in large model-centric temporal data analysis.",
+      "notes": "Primary reference survey synthesizing large models for time-series and spatio-temporal data across pre-trained and LLM-adapted paradigms.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Jin2024PositionLLMTS",
+      "title": "Position: What Can Large Language Models Tell Us about Time Series Analysis",
+      "authors": [
+        "Ming Jin",
+        "Yifan Zhang",
+        "Wei Chen",
+        "Kexin Zhang",
+        "Yuxuan Liang",
+        "Bin Yang",
+        "Jindong Wang",
+        "Shirui Pan",
+        "Qingsong Wen"
+      ],
+      "year": 2024,
+      "venue": "ICML 2024",
+      "arxiv_id": "2402.02713",
+      "doi": "10.48550/arXiv.2402.02713",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "position_analysis",
+      "fusion_mechanism": "critical_review",
+      "backbone": "Position Analysis",
+      "tasks": [
+        "critical_analysis"
+      ],
+      "domains": [
+        "general_ts"
+      ],
+      "code_url": "https://github.com/KimMeen/Time-LLM",
+      "quality_score": 12,
+      "abstract": "Time series analysis is essential for comprehending the complexities inherent in various realworld systems and applications. Although large language models (LLMs) have recently made significant strides, the development of artificial general intelligence (AGI) equipped with time series analysis capabilities remains in its nascent phase. Most existing time series models heavily rely on domain knowledge and extensive model tuning, predominantly focusing on prediction tasks. In this paper, we argue that current LLMs have the potential to revolutionize time series analysis, thereby promoting efficient decision-making and advancing towards a more universal form of time series analytical intelligence. Such advancement could unlock a wide range of possibilities, including time series modality switching and question answering. We encourage researchers and practitioners to recognize the potential of LLMs in advancing time series analysis and emphasize the need for trust in these related efforts. Furthermore, we detail the seamless integration of time series analysis with existing LLM technologies and outline promising avenues for future research.",
+      "notes": "Secondary reference template establishing critical position on what LLMs can offer time-series analysis and methodological pitfalls.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    }
+  ]
+}

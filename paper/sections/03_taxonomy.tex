@@ -1,0 +1,49 @@
+\section{Taxonomy of Multimodal Time Series Models}
+\label{sec:taxonomy}
+
+To provide a rigorous structural foundation for this survey, we propose a multi-dimensional taxonomy deconstructing the literature across four orthogonal pillars: (1)~\textbf{Modality Pairing}, (2)~\textbf{Fusion Architecture}, (3)~\textbf{Functional Role of the Complementary Modality}, and (4)~\textbf{Downstream Tasks and Domains} (illustrated in \Cref{fig:taxonomy}).
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.98\textwidth]{figures/timeline_milestones.png}
+\caption{Chronological milestones in multimodal time-series modeling from 2022 to 2026, illustrating the evolution from early text prompt casting (PromptCast) to cross-modal reprogramming (One Fits All, Time-LLM), visual transcoding (VisionTS), unified multimodal models (UniTS, Time-MMD), and neuro-symbolic reasoning frameworks (ChatTS, TimeOmni, Sonar-TS).}
+\label{fig:timeline}
+\end{figure*}
+
+\subsection{Pillar 1: Modality Pairing}
+The combinations of data modalities co-occurring with time series fundamentally dictate architectural constraints and inductive biases:
+\begin{itemize}
+    \item \textbf{Time Series + Text ($\text{TS} + \text{Text}$):} The most prominent paradigm. Text serves diverse functions: semantic descriptions (e.g., sensor metadata, sampling rates, geographical origins in Time-LLM~\cite{Jin2023TimeLLM} and TEMPO~\cite{Cao2023TEMPO}), continuous narrative reports (financial news, corporate filings, EHR medical notes in Time-MMD~\cite{Liu2024TimeMMD}), or natural language analytical queries~\cite{Zhao2024ChatTS,Xue2022PromptCast}.
+    \item \textbf{Time Series + Vision ($\text{TS} + \text{Vision}$):} Emerged prominently with VisionTS~\cite{Chen2024VisionTS}. This pairing exploits 2D visual representations—either by directly plotting numerical trajectories as line charts or converting temporal signals into 2D time-frequency spectrograms—to harness vision foundation models pre-trained on massive natural image corpora.
+    \item \textbf{Tri-Modal Systems ($\text{TS} + \text{Vision} + \text{Text}$):} Recent advanced architectures, notably Time-VLM~\cite{Zhong2025TimeVLM}, combine temporal historical records with synchronous visual observations (e.g., traffic camera feeds, satellite imagery) and textual context to form holistic multi-sensory representations.
+    \item \textbf{Time Series + Spatial Topologies / Knowledge Graphs:} Integrating graph adjacency structures with sensor series to constrain spatio-temporal predictions through physical laws or topological connectivity~\cite{Jin2023LargeModelsSurvey}.
+\end{itemize}
+
+\subsection{Pillar 2: Fusion Architecture}
+How representations from disparate modalities are mathematically merged constitutes the core engineering challenge:
+\begin{enumerate}
+    \item \textbf{Cross-Modal Patch Reprogramming:} Keeps the backbone foundation model (e.g., LLaMA, GPT-2) completely frozen. Patch-level linear or multi-head attention projection layers reprogram numerical time-series patches into the continuous embedding space of language tokens~\cite{Jin2023TimeLLM,Zhou2023OneFitsAll,Chang2023LLM4TS,Liu2024CALF}.
+    \item \textbf{Modality Transcoding \& Visual Rendering:} Transforms the temporal sequence into another modality prior to model ingestion. VisionTS~\cite{Chen2024VisionTS} renders normalized time series into pixel bitmaps, completely bypassing numerical tokenization and directly processing the visual stream with ViT-based Masked Autoencoders.
+    \item \textbf{Unified Early Tokenization:} Maps heterogeneous modalities into a shared token dictionary. Models such as UniTS~\cite{Gao2024UniTS} and ChatTime~\cite{ChatTime2024} tokenize time-series patches, instruction prompts, and domain markers into unified token embeddings passed jointly into deep Transformer stacks.
+    \item \textbf{Cross-Attention \& Adapter Modules:} Employs dedicated adapter blocks where queries from one modality attend to keys and values from another modality, as exemplified by Time-VLM's dual-augmented learners~\cite{Zhong2025TimeVLM}.
+    \item \textbf{Dual-Tower Metric Alignment:} Maintains separate, dedicated encoders for time-series and textual context, aligning them in a shared latent metric space using contrastive losses (e.g., TRACE~\cite{Chen2025TRACE} and TEST~\cite{Sun2023TEST}).
+\end{enumerate}
+
+\subsection{Pillar 3: Functional Role of the Complementary Modality}
+Rather than treating all modalities symmetrically, the complementary modality plays specific functional roles:
+\begin{itemize}
+    \item \textbf{Auxiliary Context / Inductive Condition:} Text or metadata acts as conditioning information to resolve ambiguity in numerical time series, mitigating non-stationarity (e.g., Time-LLM, TEMPO, $\text{S}^2\text{IP-LLM}$~\cite{Pan2024S2IPLLM}).
+    \item \textbf{Frozen Transfer Substrate:} The language model acts as an overparameterized pattern-matching backbone whose self-attention mechanisms transfer directly to universal time-series forecasting (One Fits All~\cite{Zhou2023OneFitsAll}).
+    \item \textbf{Conversational \& Reasoning Interface:} The non-TS modality serves as an interactive communication interface, enabling open-ended question answering, root-cause diagnostics, and counterfactual simulation (ChatTS~\cite{Zhao2024ChatTS}, TimeOmni-1~\cite{Tan2025TimeOmni1}).
+    \item \textbf{Retrieval Anchor:} Text serves as a semantic query anchor for indexing, clustering, and retrieving dynamic time-series trajectories (TRACE~\cite{Chen2025TRACE}).
+\end{itemize}
+
+\subsection{Pillar 4: Downstream Tasks and Domains}
+While unimodal models focus almost exclusively on point forecasting, multimodal frameworks support an expansive task portfolio:
+\begin{itemize}
+    \item \textbf{Multimodal Forecasting:} Point and probabilistic forecasting conditioned on both numerical history and external text/vision events.
+    \item \textbf{Anomaly Detection \& Semantic Explanation:} Detecting out-of-distribution events and generating natural-language explanations of their causes.
+    \item \textbf{Time-Series Question Answering (TS-QA):} Answering queries regarding periodic trends, maximum peaks, and correlated shifts.
+    \item \textbf{Cross-Modal Retrieval:} Retrieving relevant time-series segments given natural language descriptions, and vice versa.
+\end{itemize}
+These tasks span diverse sectors: Meteorology (WeatherBench), Finance (stock volatility, earnings calls), Healthcare (EHR signals, ICU monitoring), Smart Grids (load and renewable generation), and Transportation (traffic sensor dynamics).
