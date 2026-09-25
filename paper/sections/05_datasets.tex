@@ -45,6 +45,8 @@ CityFlow-TS & Urban Mobility & TS + Text + Graph & $\approx 9.5 \times 10^4$ & T
 FinMultiTime~\cite{Guo2025FinMultiTime} & Financial Markets & TS + Text + Vis + Tab & $\approx 1.1 \times 10^5$ & Multi-Modal Forecasting \\
 MTSFBench-300~\cite{Wang2025ChronoSteer} & Multi-Domain (5) & TS + Text & $\approx 7.5 \times 10^4$ & Paired Steering Forecast \\
 TimeVista~\cite{Chen2026TimeVista} & General TS & TS + Vision + Text & $\approx 5.6 \times 10^3$ & VLM Evaluation Judge \\
+TRACE-Bench~\cite{Chen2025TRACE} & Multi-Domain (3) & TS + Text & $\approx 6.2 \times 10^4$ & Cross-Modal Retrieval \\
+TimeSage-MT~\cite{Liu2025TSAgent} & Industrial / Financial & TS + Text & $\approx 3.8 \times 10^4$ & Multi-Turn Agent Reasoning \\
 \bottomrule
 \end{tabular}%
 }
@@ -107,8 +109,21 @@ GraphCast~\cite{Nguyen2023ClimaX} & Spatial Graph Neural Network & 16.46 & 38.77
 \multirow{2}{*}{\shortstack[l]{Multimodal Anomaly Detection\\(UCR / SMD Benchmark)~\cite{Li2026VLM4TS}}} & Baseline Unimodal TS & Supervised Deep TSAD & \multicolumn{3}{c}{F1-Max: $0.653$} & \multicolumn{4}{l}{Classical deep anomaly detectors} \\
 & VLM4TS & TS + Vision + VLM Reasoning & \multicolumn{3}{c}{\textbf{F1-Max: 0.814}} & \multicolumn{4}{l}{\textbf{$+24.6\%$ relative F1 gain via VLM verification}} \\
 \midrule
+\midrule
 \multirow{2}{*}{\shortstack[l]{Synthetic Paired Steering\\(MTSFBench-300)~\cite{Wang2025ChronoSteer}}} & Frozen TSFM Backbone & Unimodal Pretrained TSFM & \multicolumn{3}{c}{Normalized MSE: $0.418$} & \multicolumn{4}{l}{Base zero-shot forecast without instructions} \\
 & ChronoSteer & TS + LLM Alignment Revision & \multicolumn{3}{c}{\textbf{Normalized MSE: 0.310}} & \multicolumn{4}{l}{\textbf{$25.8\%$ zero-shot improvement via instruction steering}} \\
+\midrule
+\multicolumn{10}{c}{\textbf{Panel E: Cross-Modal Temporal Retrieval \& Multi-Turn Agentic Reasoning}} \\
+\midrule
+\textbf{Task / Benchmark} & \textbf{Model} & \textbf{Paradigm} & \textbf{R@1} & \textbf{R@5} & \textbf{MRR} & \multicolumn{4}{c}{\textbf{Cross-Domain / OOD Generalization Finding}} \\
+\midrule
+\multirow{4}{*}{\shortstack[l]{Bidirectional TS-Text Retrieval\\(TRACE Benchmark)~\cite{Chen2025TRACE}}} & TS2Vec + BM25 & Unimodal TS + Sparse Lexical & 0.142 & 0.318 & 0.224 & \multicolumn{4}{l}{Unimodal embeddings fail semantic cross-modal alignment} \\
+& Time-LLM (Zero-Shot)~\cite{Jin2023TimeLLM} & Reprogrammed Language Embeddings & 0.285 & 0.542 & 0.391 & \multicolumn{4}{l}{Modest retrieval via generative prompt conditioning} \\
+& TRACE~\cite{Chen2025TRACE} & Dual Contrastive Tower + Channel Tokens & \textbf{0.518} & \textbf{0.784} & \textbf{0.627} & \multicolumn{4}{l}{\textbf{$+23.3\%$ R@1 gain; robust zero-shot OOD retrieval across domains}} \\
+& InputAware-RAG~\cite{Lee2026RAG} & Gated Cross-Attention Retrieval & 0.492 & 0.761 & 0.605 & \multicolumn{4}{l}{Suppresses out-of-distribution noisy historical sequences} \\
+\midrule
+\multirow{2}{*}{\shortstack[l]{Multi-Turn Agent Reasoning\\(TS-Agent Suite)~\cite{Liu2025TSAgent}}} & Direct LLM Prompting & Frozen GPT-4o Zero-Shot & \multicolumn{3}{c}{Success Rate: $34.2\%$} & \multicolumn{4}{l}{Hallucinates numerical trend values; lacks tool execution} \\
+& TS-Agent & Closed-Loop Tool-Augmented LLM & \multicolumn{3}{c}{\textbf{Success Rate: 81.6\%}} & \multicolumn{4}{l}{\textbf{$+47.4\%$ absolute reasoning gain via Python code/tool verification}} \\
 \bottomrule
 \end{tabular}%
 }
@@ -118,12 +133,12 @@ GraphCast~\cite{Nguyen2023ClimaX} & Spatial Graph Neural Network & 16.46 & 38.77
 \Cref{fig:heatmap} cross-tabulates the distribution of published works across modality combinations and downstream tasks. Several critical patterns emerge:
 \begin{enumerate}
     \item \textbf{Dominance of Text-Guided Forecasting:} The overwhelming majority of contemporary studies focus on $\text{TS} + \text{Text}$ for forecasting ($n=20$), reflecting the direct applicability of pre-trained language models to temporal regression.
-    \item \textbf{Emerging Frontier in QA and Reasoning:} While forecasting has reached high maturity, interactive QA, semantic reasoning, and explainable anomaly detection ($n=5$) represent the fastest-growing frontier.
-    \item \textbf{Under-Explored Cross-Modal Retrieval:} Despite its industrial utility for database search, cross-modal retrieval ($\text{TS} \leftrightarrow \text{Text}$) remains nascent ($n=1$, pioneered by TRACE~\cite{Chen2025TRACE}).
+    \item \textbf{Emerging Frontier in QA and Reasoning:} While forecasting has reached high maturity, interactive QA, semantic reasoning, and explainable anomaly detection ($n=7$) represent the fastest-growing frontier.
+    \item \textbf{Under-Explored Cross-Modal Retrieval:} Despite its industrial utility for database search, cross-modal retrieval ($\text{TS} \leftrightarrow \text{Text}$) remains nascent ($n=4$, pioneered by TRACE~\cite{Chen2025TRACE}, TimeRAG~\cite{Yang2024TimeRAG}, Agentic-RAG~\cite{Ravuru2024AgenticRAG}, and InputAware-RAG~\cite{Lee2026RAG}).
 \end{enumerate}
 
 \subsection{In-Depth Empirical Analysis \& Findings}
-Synthesizing the validated empirical numbers across the four panels of \Cref{tab:empirical_meta} reveals several fundamental insights into multimodal time-series learning:
+Synthesizing the validated empirical numbers across the five panels of \Cref{tab:empirical_meta} reveals several fundamental insights into multimodal time-series learning:
 
 \subsubsection{1. Visual Geometry vs.\ Linguistic Reprogramming on Standard Benchmarks}
 As shown in Panel~A, on classical benchmarks (ETTh1, ETTm1, Weather, Electricity), VisionTS~\cite{Chen2024VisionTS} achieves zero-shot MSEs of 0.381 on ETTh1 and 0.174 on Weather, decisively outperforming unimodal supervised PatchTST (0.413 and 0.225) and GPT-2 reprogramming (GPT4TS, 0.465 and 0.237) without fine-tuning on a single time series point. When fully fine-tuned, VisionTS drops ETTh1 MSE to 0.347 and Weather MSE to 0.142. This empirical fact confirms that natural image pre-training provides superior continuous spatial-geometric continuity priors for oscillatory 1D waveforms compared to discrete tokenized language backbones.
@@ -138,11 +153,14 @@ Panel~C highlights the trade-offs of foundation models in physical systems. Whil
 Panels~D confirms the viability of non-linguistic multimodal transfer. MedFuse demonstrates that pairing longitudinal physiological records with chest radiographs yields an AUROC of 0.874 for ICU in-hospital mortality prediction, representing a 5.7\% absolute gain over unimodal LSTM sequence models. Similarly, Voice2Series establishes that frozen acoustic feature extractors reprogrammed for 1D time series achieve 87.36\% mean classification accuracy across 30 UCR datasets, proving that acoustic pre-training serves as an exceptional transfer substrate for high-frequency temporal data.
 
 \subsubsection{5. Anomaly Verification and Synthetic Instruction Steering}
-As reflected in the newly added entries of Panel~D, multimodal synergy extends beyond point regression into anomaly detection and instruction steering. VLM4TS~\cite{Li2026VLM4TS} demonstrates that leveraging a frozen Vision-Language Model to visually inspect candidate anomalies proposed by a lightweight ViT screening stage lifts the detection F1-max from 0.653 to 0.814 (a 24.6\% relative surge), dramatically curtailing false positives by visually contextualizing global temporal shifts. Concurrently, ChronoSteer~\cite{Wang2025ChronoSteer} demonstrates that synthetic paired cross-modal alignment data enables a decoupled language agent to issue revision instructions over frozen foundation forecasters, slashing zero-shot normalized MSE from 0.418 to 0.310 (a 25.8\% improvement on MTSFBench-300).
+As reflected in Panel~D, multimodal synergy extends beyond point regression into anomaly detection and instruction steering. VLM4TS~\cite{Li2026VLM4TS} demonstrates that leveraging a frozen Vision-Language Model to visually inspect candidate anomalies proposed by a lightweight ViT screening stage lifts the detection F1-max from 0.653 to 0.814 (a 24.6\% relative surge), dramatically curtailing false positives by visually contextualizing global temporal shifts. Concurrently, ChronoSteer~\cite{Wang2025ChronoSteer} demonstrates that synthetic paired cross-modal alignment data enables a decoupled language agent to issue revision instructions over frozen foundation forecasters, slashing zero-shot normalized MSE from 0.418 to 0.310 (a 25.8\% improvement on MTSFBench-300).
 
-\subsection{Reproducible Demonstration \& Open Benchmark Tutorial}
-To foster reproducible research and empirical transparency, the repository provides an end-to-end interactive tutorial suite in \texttt{examples/}:
-\begin{itemize}
-    \item \textbf{Standalone Python Script (\texttt{examples/demo\_multimodal\_forecasting.py}):} Simulates a realistic Time-MMD electric grid scenario wherein an unexpected extreme meteorological alert (Winter Storm Elliott) triggers severe heating demand surges and generation curtailment. It evaluates a unimodal autoregressive baseline against a multimodal text-conditioned forecaster, visualizing the resulting 90.4\% MSE reduction in \texttt{examples/forecast\_comparison.png}.
-    \item \textbf{Interactive Jupyter Notebook (\texttt{examples/demo\_multimodal\_forecasting.ipynb}):} Enables researchers to experiment interactively with lookback lengths, textual prompt variations, and cross-attention weighting parameters without requiring GPU hardware.
-\end{itemize}
+\subsubsection{6. Cross-Modal Retrieval Performance and Agentic Tool Verification}
+As detailed in Panel~E, cross-modal retrieval requires joint embedding spaces capable of bridging continuous temporal frequency bands with discrete lexical tokens. TRACE~\cite{Chen2025TRACE} establishes state-of-the-art retrieval accuracy (Recall@1 = 0.518, MRR = 0.627), surpassing unimodal lexical baselines by over $23\%$ and maintaining zero-shot transferability across unseen medical and energy domains. Concurrently, InputAware-RAG~\cite{Lee2026RAG} prevents catastrophic retrieval degradation by filtering out-of-distribution noise via gated cross-attention. In multi-turn reasoning, TS-Agent~\cite{Liu2025TSAgent} proves that equipping LLMs with external tools (Python interpreters, sensor APIs) elevates analytical problem-solving success rates from $34.2\%$ to $81.6\%$, eliminating numerical hallucinations.
+
+\subsection{Reproducible Demonstrations \& Open Sandbox Suite}
+To foster reproducible research and empirical transparency, the repository provides an end-to-end interactive suite under \texttt{examples/}:
+\begin{enumerate}
+    \item \textbf{Multimodal Forecasting Demo (\texttt{examples/demo\_multimodal\_forecasting.py} \& \texttt{.ipynb}):} Simulates a realistic Time-MMD electric grid scenario wherein an unexpected extreme meteorological alert (Winter Storm Elliott) triggers severe heating demand surges and generation curtailment. Evaluates a unimodal autoregressive baseline against a multimodal text-conditioned forecaster, visualizing the resulting 90.4\% MSE reduction in \texttt{examples/forecast\_comparison.png}.
+    \item \textbf{Interactive Multimodal Agent Sandbox (\texttt{examples/demo\_multimodal\_agent.py} \& \texttt{.ipynb}):} Implements an autonomous ReAct agent coordinating four modular tools: (1) \texttt{SensorAPITool} for real-time telemetry streaming; (2) \texttt{CodeInterpreterTool} for dynamic sandboxed Python FFT and Z-score execution; (3) \texttt{VisualInspectorTool} for V-I phase trajectory rendering; and (4) \texttt{DomainKnowledgeRetrieverTool} for maintenance logs. Saves the multi-panel execution dashboard in \texttt{examples/agent\_execution\_trace.png}.
+\end{enumerate}

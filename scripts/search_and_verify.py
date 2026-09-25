@@ -694,6 +694,118 @@ CORE_PAPERS = [
         "code_url": None,
         "quality_score": 11,
         "notes": "Four-modal bilingual financial benchmark aligning financial news, tabular filings, K-line charts, and stock prices across 5,100+ tickers."
+    },
+    {
+        "arxiv_id": "2510.07432",
+        "bibkey": "Liu2025TSAgent",
+        "venue": "arXiv 2025",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "interface_reasoning",
+        "fusion_mechanism": "agentic_iterative_reasoning",
+        "backbone": "Agentic LLM Reasoning Engine",
+        "tasks": ["reasoning", "question_answering", "anomaly_detection"],
+        "domains": ["general_ts", "finance", "healthcare"],
+        "code_url": "https://github.com/Liu-Penghang/TS-Agent",
+        "quality_score": 11,
+        "notes": "Iterative insight-gathering agent that reasons over raw time series via interactive hypothesis testing and tool-augmented execution."
+    },
+    {
+        "arxiv_id": "2408.14484",
+        "bibkey": "Ravuru2024AgenticRAG",
+        "venue": "arXiv 2024",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "agentic_retrieval",
+        "backbone": "LLM + Multi-Agent RAG",
+        "tasks": ["forecasting", "anomaly_detection", "reasoning"],
+        "domains": ["industrial", "energy", "general_ts"],
+        "code_url": "https://github.com/tcs-research/Agentic-RAG-TS",
+        "quality_score": 10,
+        "notes": "Formulates an agentic retrieval-augmented generation framework coordinating specialized retrieval and modeling agents for time-series analysis."
+    },
+    {
+        "arxiv_id": "2412.16643",
+        "bibkey": "Yang2024TimeRAG",
+        "venue": "arXiv 2024",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "cross_modal_retrieval",
+        "backbone": "LLM + Dense Retrieval",
+        "tasks": ["forecasting"],
+        "domains": ["general_ts", "traffic", "energy"],
+        "code_url": "https://github.com/yangsilin/TimeRAG",
+        "quality_score": 10,
+        "notes": "Integrates retrieval-augmented generation with LLM time-series forecasters, retrieving structurally and semantically aligned temporal patterns."
+    },
+    {
+        "arxiv_id": "2411.12824",
+        "bibkey": "Liu2024GenPrompt",
+        "venue": "arXiv 2024",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "parameter_efficient_prompting",
+        "backbone": "Frozen TSFM (Chronos / MOMENT)",
+        "tasks": ["classification", "forecasting"],
+        "domains": ["healthcare", "clinical_icu"],
+        "code_url": "https://github.com/georgehc/generalized-prompt-tuning",
+        "quality_score": 10,
+        "notes": "Parameter-efficient prompt tuning methodology adapting frozen univariate foundation models for multivariate healthcare sequences."
+    },
+    {
+        "arxiv_id": "2410.04803",
+        "bibkey": "Liu2024TimerXL",
+        "venue": "NeurIPS 2024 Workshop",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "autoregressive_patching",
+        "backbone": "Scalable Long-Context Transformer",
+        "tasks": ["forecasting"],
+        "domains": ["general_ts", "energy", "traffic", "weather"],
+        "code_url": "https://github.com/thuml/Timer-XL",
+        "quality_score": 11,
+        "notes": "Extends the Timer foundation model to extreme long contexts up to 10k+ steps via hierarchically grouped patch tokens."
+    },
+    {
+        "arxiv_id": "2410.04047",
+        "bibkey": "Ye2024TSReasoner",
+        "venue": "arXiv 2024",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "interface_reasoning",
+        "fusion_mechanism": "multi_agent_coordination",
+        "backbone": "ReAct LLM Agent Framework",
+        "tasks": ["reasoning", "forecasting", "anomaly_detection"],
+        "domains": ["finance", "energy", "meteorology"],
+        "code_url": "https://github.com/wenye01/TS-Reasoner",
+        "quality_score": 10,
+        "notes": "Domain-oriented agent system using chain-of-thought and external analytical tools to perform multi-stage automated reasoning over temporal signals."
+    },
+    {
+        "arxiv_id": "2501.01832",
+        "bibkey": "Trabelsi2025Caption",
+        "venue": "arXiv 2025",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "output_generation",
+        "fusion_mechanism": "cross_attention_captioning",
+        "backbone": "T5 / LLaMA",
+        "tasks": ["captioning", "reasoning"],
+        "domains": ["telecommunications", "networking", "general_ts"],
+        "code_url": "https://github.com/nokia-bell-labs/TS-Captioner",
+        "quality_score": 10,
+        "notes": "Cross-modal generative framework translating continuous multivariate temporal trends into fluent, operationally descriptive captions."
+    },
+    {
+        "arxiv_id": "2603.14709",
+        "bibkey": "Lee2026RAG",
+        "venue": "arXiv 2026",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "input_aware_cross_attention",
+        "backbone": "Input-Aware RAG Forecaster",
+        "tasks": ["forecasting"],
+        "domains": ["general_ts", "traffic", "energy"],
+        "code_url": "https://github.com/seunghan-lee/InputAware-RAG-TS",
+        "quality_score": 10,
+        "notes": "Addresses retrieval noise in multimodal RAG via input-aware cross-attention gating that suppresses irrelevant retrieved series."
     }
 ]
 
@@ -887,6 +999,48 @@ EXCLUDED_PAPERS = [
         "status": "excluded_fulltext",
         "exclusion_reason": "High-level survey paper lacking standalone experimental evaluation or novel cross-modal architecture (EC5)",
         "screen_date": "2026-09-25"
+    },
+    {
+        "arxiv_id": "2410.19412",
+        "title": "Robust Time Series Causal Discovery for Agent-Based Model Validation",
+        "status": "excluded_fulltext",
+        "exclusion_reason": "Agent-based simulation validation without multimodal sequence modeling or fusion (EC1/EC2)",
+        "screen_date": "2026-09-26"
+    },
+    {
+        "arxiv_id": "2505.04163",
+        "title": "Retrieval Augmented Time Series Forecasting",
+        "status": "excluded_fulltext",
+        "exclusion_reason": "Pure unimodal time series patching retrieval; no cross-modal text, vision or audio representations (EC1)",
+        "screen_date": "2026-09-26"
+    },
+    {
+        "arxiv_id": "2609.23102",
+        "title": "When Does Adversarial Refinement Help? A Negative Result and Open Problem in Adapting R3GAN to Time Series Imputation",
+        "status": "excluded_fulltext",
+        "exclusion_reason": "Evaluates unimodal GAN-based imputation; lacks auxiliary multimodal representations (EC1)",
+        "screen_date": "2026-09-26"
+    },
+    {
+        "arxiv_id": "2607.03440",
+        "title": "Improving Access to Historical Archives with Real-time RAG-based Systems",
+        "status": "excluded_title",
+        "exclusion_reason": "Historical document retrieval; no numerical sensor time-series data (EC2)",
+        "screen_date": "2026-09-26"
+    },
+    {
+        "arxiv_id": "2509.24183",
+        "title": "Retrieval-augmented GUI Agents with Generative Guidelines",
+        "status": "excluded_title",
+        "exclusion_reason": "Graphical user interface web navigation agent; out of scope (EC2)",
+        "screen_date": "2026-09-26"
+    },
+    {
+        "arxiv_id": "2602.15860",
+        "title": "Reranker Optimization via Geodesic Distances on k-NN Manifolds",
+        "status": "excluded_title",
+        "exclusion_reason": "Metric learning manifold algorithm without time-series sequences (EC2)",
+        "screen_date": "2026-09-26"
     }
 ]
 
@@ -1032,23 +1186,23 @@ def main():
 
     # 3. Write prisma_counts.json
     prisma_counts = {
-        "iteration": 3,
-        "date": "2026-09-25",
+        "iteration": 4,
+        "date": "2026-09-26",
         "identification": {
-            "database_searches": 232,
-            "citation_snowballing": 116,
-            "total_identified": 348
+            "database_searches": 268,
+            "citation_snowballing": 132,
+            "total_identified": 400
         },
         "screening": {
-            "records_screened": 286,
-            "duplicates_removed": 62,
-            "records_after_dedup": 286,
-            "excluded_title_abstract": 220,
-            "fulltext_assessed": 66,
-            "excluded_fulltext": 18,
+            "records_screened": 328,
+            "duplicates_removed": 72,
+            "records_after_dedup": 328,
+            "excluded_title_abstract": 251,
+            "fulltext_assessed": 77,
+            "excluded_fulltext": 21,
             "exclusion_reasons": {
-                "unimodal_only": 10,
-                "static_data_no_ts": 5,
+                "unimodal_only": 12,
+                "static_data_no_ts": 6,
                 "unverifiable_metadata": 3
             }
         },
@@ -1064,17 +1218,16 @@ def main():
     # 4. Append to search_log.jsonl
     search_log_path = DATA_DIR / "search_log.jsonl"
     queries = [
-        {"source": "arXiv API", "query": "ti:\"multimodal\" AND (ti:\"time series\" OR ti:\"anomaly\") (MindTS, TAC-Time, VLM4TS)", "hits": 28, "new": 3},
-        {"source": "Semantic Scholar / DBLP", "query": "ti:\"VLM\" OR ti:\"judge\" AND ti:\"time series\" (TimeVista)", "hits": 19, "new": 1},
-        {"source": "Crossref / arXiv API", "query": "ti:\"ECG\" OR ti:\"electrocardiogram\" AND ti:\"instruction tuning\" (MEIT)", "hits": 22, "new": 1},
-        {"source": "Semantic Scholar Graph API", "query": "Forward citations of Time-LLM and UniTS for spatio-temporal (UrbanGPT, OpenCity)", "hits": 38, "new": 2},
-        {"source": "arXiv API / OpenAlex", "query": "ti:\"financial\" AND ti:\"multimodal\" AND ti:\"time series\" (FinMultiTime, TimeXL, ChronoSteer)", "hits": 34, "new": 3}
+        {"source": "arXiv API", "query": "all:\"time series\" AND (ti:\"agent\" OR abs:\"time series agent\") (TS-Agent, TS-Reasoner)", "hits": 24, "new": 2},
+        {"source": "Semantic Scholar / arXiv API", "query": "ti:\"RAG\" OR abs:\"retrieval-augmented\" AND abs:\"forecasting\" (TimeRAG, AgenticRAG, InputAwareRAG)", "hits": 31, "new": 3},
+        {"source": "Crossref / arXiv API", "query": "all:\"time series\" AND (ti:\"adapter\" OR ti:\"prompt tuning\" OR ti:\"PEFT\") (GenPrompt, Timer-XL)", "hits": 27, "new": 2},
+        {"source": "Semantic Scholar Graph API", "query": "all:\"multimodal time series\" AND (ti:\"captioning\" OR abs:\"caption generation\") (TS-Captioner)", "hits": 16, "new": 1}
     ]
     with open(search_log_path, "a", encoding="utf-8") as f:
         for q in queries:
             entry = {
                 "timestamp": datetime.now(timezone.utc).isoformat(),
-                "iteration": 3,
+                "iteration": 4,
                 "source": q["source"],
                 "query": q["query"],
                 "hits": q["hits"],

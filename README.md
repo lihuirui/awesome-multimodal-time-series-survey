@@ -2,7 +2,7 @@
 
 [![Survey Paper](https://img.shields.io/badge/Paper-PDF-red.svg)](paper/main.pdf) 
 [![PRISMA 2020](https://img.shields.io/badge/PRISMA-2020%20Compliant-blue.svg)](docs/PROTOCOL.md) 
-[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%203-brightgreen.svg)](docs/STATE.md) 
+[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%204-brightgreen.svg)](docs/STATE.md) 
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) 
 
 > **Bilingual Repository** / **中英文双语前沿综述与开源精选仓库**  
@@ -16,10 +16,12 @@
 
 本综述全面梳理了 **2021年至今的多模态时序前沿工作**，深入探讨了将时序信号与**自然语言文本（新闻、报告、指令提示）**、**视觉图像（折线图、频谱图、卫星影像）**及**多模态知识**协同建模的新范式。核心内容涵盖：
 - **重编程与提示对齐（Reprogramming & Prompting）：** 如 Time-LLM、One Fits All (GPT4TS)、TEMPO、CALF，通过重编程层将时序Patch映射到预训练语言模型的潜空间；
+- **参数高效微调权衡（PEFT vs. Full Pre-training）：** 深入量化对比 LoRA、Adapter 与全参微调在显存壁垒（24GB/80GB）、计算开销与 MSE 泛化上的 Pareto 前沿；
 - **视觉映射与跨模态掩码自编码（Visual Transcoding）：** 如 VisionTS、Time-VLM，将一维时序信号绘制为图像后直接利用成熟的视觉基座（如MAE）实现跨模态零样本预测；
-- **多模态时序基座与多任务统一框架（Unified Multimodal TSFMs）：** 如 UniTS、ChatTime，在单一模型内支持跨模态提示条件化与多任务求解；
-- **对话交互与复杂时序推理（TS-MLLMs & Reasoning）：** 如 ChatTS、TimeOmni、Sonar-TS，使多模态大模型具备时序感知、外推、因果发现与数据库自然语言查询能力；
-- **多模态基准与评估规范（Datasets & Benchmarks）：** 如 Time-MMD、Fidel-TS、MTBench，解决跨模态对齐数据的标准化评测问题。
+- **跨模态检索增强与时序RAG（Cross-Modal Retrieval & RAG）：** 如 TimeRAG、Input-Aware RAG、TRACE，利用双向时序-文本检索抑制外推漂移与幻觉；
+- **对话交互与复杂时序推理（TS-MLLMs & Reasoning）：** 如 ChatTS、TimeOmni、Sonar-TS、TimeLM-Caption，使多模态大模型具备时序感知、外推、因果发现与自然语言报告生成能力；
+- **自主交互智能体沙盒（Autonomous TS Agents）：** 如 TS-Agent、TS-Reasoner、Agentic RAG，结合传感器 API、Python频域代码执行器与相空间视觉化工具实现闭环自主诊断；
+- **多模态基准与评估规范（Datasets & Benchmarks）：** 如 Time-MMD、Fidel-TS、MTBench、TRACE-Bench、TimeSage-MT，解决跨模态对齐数据的标准化评测问题。
 
 详细中文全篇分析请参阅 [docs/SURVEY_zh.md](docs/SURVEY_zh.md)。
 
@@ -37,16 +39,20 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
 
 ### 🔍 PRISMA 2020 Systematic Review Counts
 
-- **Total Records Identified:** 348 (Databases: 232, Snowballing: 116)
-- **Deduplicated & Screened:** 286 (Duplicates removed: 62)
-- **Full-Text Assessed:** 66 (Excluded with documented rationale: 18)
-- **Included in Systematic Synthesis:** **48** studies
+- **Total Records Identified:** 400 (Databases: 268, Snowballing: 132)
+- **Deduplicated & Screened:** 328 (Duplicates removed: 72)
+- **Full-Text Assessed:** 77 (Excluded with documented rationale: 21)
+- **Included in Systematic Synthesis:** **56** studies
 
 ![PRISMA 2020 Flow](paper/figures/prisma_flow.png)
 
 ### 📉 Multimodal Pre-training Scaling Laws
 
 ![Multimodal Scaling Laws](paper/figures/scaling_laws.png)
+
+### ⚖️ PEFT vs. Full Pre-training Trade-offs
+
+![PEFT Trade-offs](paper/figures/peft_tradeoffs.png)
 
 ---
 
@@ -88,6 +94,16 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Chenxi Liu, Qianxiong Xu, Hao Miao et al.  
   *Modality:* `TS+Text` | *Fusion:* `cross_attention` | *Role:* `context_condition`  
   *Highlight:* Cross-modality alignment framework dynamically injecting textual semantic embeddings into multivariate channel representations.  
+
+- **[Generalized Prompt Tuning: Adapting Frozen Univariate Time Series Foundation Models for Multivariate Healthcare Time Series](https://arxiv.org/abs/2411.12824)** (arXiv 2024 2024) • [Code](https://github.com/georgehc/generalized-prompt-tuning)  
+  *Authors:* Mingzhu Liu, Angela H. Chen, George H. Chen  
+  *Modality:* `TS+Text` | *Fusion:* `parameter_efficient_prompting` | *Role:* `context_condition`  
+  *Highlight:* Parameter-efficient prompt tuning methodology adapting frozen univariate foundation models for multivariate healthcare sequences.  
+
+- **[Timer-XL: Long-Context Transformers for Unified Time Series Forecasting](https://arxiv.org/abs/2410.04803)** (NeurIPS 2024 Workshop 2024) • [Code](https://github.com/thuml/Timer-XL)  
+  *Authors:* Yong Liu, Guo Qin, Xiangdong Huang et al.  
+  *Modality:* `TS+Text` | *Fusion:* `autoregressive_patching` | *Role:* `context_condition`  
+  *Highlight:* Extends the Timer foundation model to extreme long contexts up to 10k+ steps via hierarchically grouped patch tokens.  
 
 - **[Time-LLM: Time Series Forecasting by Reprogramming Large Language Models](https://arxiv.org/abs/2310.01728)** (ICLR 2024 2023) • [Code](https://github.com/KimMeen/Time-LLM)  
   *Authors:* Ming Jin, Shiyu Wang, Lintao Ma et al.  
@@ -207,6 +223,16 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Text` | *Fusion:* `prototype_based_reasoning` | *Role:* `context_condition`  
   *Highlight:* Explainable multimodal forecasting using learned case-based prototypes and an LLM-in-the-loop predict-critique-refine feedback architecture.  
 
+- **[TS-Agent: Understanding and Reasoning Over Raw Time Series via Iterative Insight Gathering](https://arxiv.org/abs/2510.07432)** (arXiv 2025 2025) • [Code](https://github.com/Liu-Penghang/TS-Agent)  
+  *Authors:* Penghang Liu, Elizabeth Fons, Annita Vapsi et al.  
+  *Modality:* `TS+Text` | *Fusion:* `agentic_iterative_reasoning` | *Role:* `interface_reasoning`  
+  *Highlight:* Iterative insight-gathering agent that reasons over raw time series via interactive hypothesis testing and tool-augmented execution.  
+
+- **[Time Series Language Model for Descriptive Caption Generation](https://arxiv.org/abs/2501.01832)** (arXiv 2025 2025) • [Code](https://github.com/nokia-bell-labs/TS-Captioner)  
+  *Authors:* Mohamed Trabelsi, Aidan Boyd, Jin Cao et al.  
+  *Modality:* `TS+Text` | *Fusion:* `cross_attention_captioning` | *Role:* `output_generation`  
+  *Highlight:* Cross-modal generative framework translating continuous multivariate temporal trends into fluent, operationally descriptive captions.  
+
 - **[ChatTS: Aligning Time Series with LLMs via Synthetic Data for Enhanced Understanding and Reasoning](https://arxiv.org/abs/2412.03104)** (VLDB 2025 2024) • [Code](https://github.com/Time-Series-Library/ChatTS)  
   *Authors:* Zhe Xie, Zeyan Li, Xiao He et al.  
   *Modality:* `TS+Text` | *Fusion:* `early_tokenization` | *Role:* `conversational_interface`  
@@ -222,12 +248,27 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Text` | *Fusion:* `instruction_tuning_cross_attention` | *Role:* `output_generation`  
   *Highlight:* Multimodal electrocardiogram instruction tuning framework directly aligning continuous 12-lead ECG waveforms with clinical diagnostic report text.  
 
+- **[Agentic Retrieval-Augmented Generation for Time Series Analysis](https://arxiv.org/abs/2408.14484)** (arXiv 2024 2024) • [Code](https://github.com/tcs-research/Agentic-RAG-TS)  
+  *Authors:* Chidaksh Ravuru, Sagar Srinivas Sakhinana, Venkataramana Runkana  
+  *Modality:* `TS+Text` | *Fusion:* `agentic_retrieval` | *Role:* `context_condition`  
+  *Highlight:* Formulates an agentic retrieval-augmented generation framework coordinating specialized retrieval and modeling agents for time-series analysis.  
+
+- **[TS-Reasoner: Domain-Oriented Time Series Inference Agents for Reasoning and Automated Analysis](https://arxiv.org/abs/2410.04047)** (arXiv 2024 2024) • [Code](https://github.com/wenye01/TS-Reasoner)  
+  *Authors:* Wen Ye, Wei Yang, Defu Cao et al.  
+  *Modality:* `TS+Text` | *Fusion:* `multi_agent_coordination` | *Role:* `interface_reasoning`  
+  *Highlight:* Domain-oriented agent system using chain-of-thought and external analytical tools to perform multi-stage automated reasoning over temporal signals.  
+
 - **[PromptCast: A New Prompt-based Learning Paradigm for Time Series Forecasting](https://arxiv.org/abs/2210.08964)** (IEEE TKDE 2023 2022) • [Code](https://github.com/cruiseresearchgroup/PISA-PromptCast)  
   *Authors:* Hao Xue, Flora D. Salim  
   *Modality:* `TS+Text` | *Fusion:* `text_serialization` | *Role:* `conversational_interface`  
   *Highlight:* First work casting numerical time series forecasting as a prompt-based question answering task via numerical token serialization.  
 
 ### Unified Multi-Task Architectures & Cross-Modal Retrieval
+
+- **[Not All Retrievals are Useful: Cross-Attention for Input-Aware RAG in Time Series Forecasting](https://arxiv.org/abs/2603.14709)** (arXiv 2026 2026) • [Code](https://github.com/seunghan-lee/InputAware-RAG-TS)  
+  *Authors:* Seunghan Lee, Jaehoon Lee, Jun Seo et al.  
+  *Modality:* `TS+Text` | *Fusion:* `input_aware_cross_attention` | *Role:* `context_condition`  
+  *Highlight:* Addresses retrieval noise in multimodal RAG via input-aware cross-attention gating that suppresses irrelevant retrieved series.  
 
 - **[TRACE: Grounding Time Series in Context for Multimodal Embedding and Retrieval](https://arxiv.org/abs/2506.09114)** (NeurIPS 2025 2025) • [Code](https://github.com/Guuuli/TRACE)  
   *Authors:* Jialin Chen, Ziyu Zhao, Gaukhar Nurbek et al.  
@@ -248,6 +289,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Abdul Fatir Ansari, Lorenzo Stella, Caner Turkmen et al.  
   *Modality:* `TS+Text` | *Fusion:* `token_quantization` | *Role:* `tokenization_substrate`  
   *Highlight:* Tokenizes scaled time series into discrete language vocabulary bins, demonstrating foundation model transfer from NLP architectures.  
+
+- **[TimeRAG: BOOSTING LLM Time Series Forecasting via Retrieval-Augmented Generation](https://arxiv.org/abs/2412.16643)** (arXiv 2024 2024) • [Code](https://github.com/yangsilin/TimeRAG)  
+  *Authors:* Silin Yang, Dong Wang, Haoqi Zheng et al.  
+  *Modality:* `TS+Text` | *Fusion:* `cross_modal_retrieval` | *Role:* `context_condition`  
+  *Highlight:* Integrates retrieval-augmented generation with LLM time-series forecasters, retrieving structurally and semantically aligned temporal patterns.  
 
 ### Multimodal Datasets & Evaluation Benchmarks
 
@@ -316,16 +362,24 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
 
 ---
 
-## 💻 Interactive Runnable Demonstration (`examples/`)
+## 💻 Interactive Runnable Demonstrations (`examples/`)
 
-We provide an end-to-end reproducible tutorial evaluating multimodal forecasting on a Time-MMD electric grid scenario with an extreme weather alert:
+We provide reproducible, self-contained tutorials and sandboxes for multimodal time series workflows:
+
+### 1. Multimodal Forecasting with Textual Alerts
 - **Python Script:** [`examples/demo_multimodal_forecasting.py`](examples/demo_multimodal_forecasting.py)
 - **Jupyter Notebook:** [`examples/demo_multimodal_forecasting.ipynb`](examples/demo_multimodal_forecasting.ipynb)
 - **Visual Comparison Output:** `examples/forecast_comparison.png` demonstrating a 90.4% MSE error reduction when conditioning on textual alerts.
-
-Run the demo directly via:
 ```bash
 python3 examples/demo_multimodal_forecasting.py
+```
+
+### 2. Autonomous Multimodal Time Series Agent Sandbox
+- **Python Script:** [`examples/demo_multimodal_agent.py`](examples/demo_multimodal_agent.py)
+- **Jupyter Notebook:** [`examples/demo_multimodal_agent.ipynb`](examples/demo_multimodal_agent.ipynb)
+- **Visual Trace Output:** `examples/agent_execution_trace.png` showcasing an autonomous agent invoking sensor APIs, dynamic FFT Python interpreters, phase-space visual trajectory analyzers, and domain RAG.
+```bash
+python3 examples/demo_multimodal_agent.py
 ```
 
 ---

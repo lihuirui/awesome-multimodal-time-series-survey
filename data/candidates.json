@@ -1,10 +1,10 @@
 {
   "metadata": {
     "last_updated": "2026-09-25",
-    "total_candidates": 75,
-    "included": 48,
-    "excluded_title": 23,
-    "excluded_fulltext": 4
+    "total_candidates": 89,
+    "included": 56,
+    "excluded_title": 26,
+    "excluded_fulltext": 7
   },
   "candidates": [
     {
@@ -1750,6 +1750,290 @@
       "api_verified": true
     },
     {
+      "status": "included",
+      "bibkey": "Liu2025TSAgent",
+      "title": "TS-Agent: Understanding and Reasoning Over Raw Time Series via Iterative Insight Gathering",
+      "authors": [
+        "Penghang Liu",
+        "Elizabeth Fons",
+        "Annita Vapsi",
+        "Mohsen Ghassemi",
+        "Svitlana Vyetrenko",
+        "Daniel Borrajo",
+        "Vamsi K. Potluru",
+        "Manuela Veloso"
+      ],
+      "year": 2025,
+      "venue": "arXiv 2025",
+      "arxiv_id": "2510.07432",
+      "doi": "10.48550/arXiv.2510.07432",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "interface_reasoning",
+      "fusion_mechanism": "agentic_iterative_reasoning",
+      "backbone": "Agentic LLM Reasoning Engine",
+      "tasks": [
+        "reasoning",
+        "question_answering",
+        "anomaly_detection"
+      ],
+      "domains": [
+        "general_ts",
+        "finance",
+        "healthcare"
+      ],
+      "code_url": "https://github.com/Liu-Penghang/TS-Agent",
+      "quality_score": 11,
+      "abstract": "Large language models (LLMs) exhibit strong symbolic and compositional reasoning, yet they struggle with time series question answering as the data is typically transformed into an LLM-compatible modality, e.g., serialized text, plotted images, or compressed time series embeddings. Such conversions impose representation bottlenecks, often require cross-modal alignment or finetuning, and can exacerbate hallucination and knowledge leakage. To address these limitations, we propose TS-Agent, an agentic, tool-grounded framework that uses LLMs strictly for iterative evidence-based reasoning, while delegating statistical and structural extraction to time series analytical tools operating on raw sequences. Our framework solves time series tasks through an evidence-driven agentic process: (1) it alternates between thinking, tool execution, and observation in a ReAct-style loop, (2) records intermediate results in an explicit evidence log and corrects the reasoning trace via a self-refinement critic, and (3) enforces a final answer-verification step to prevent hallucinations and leakage. Across four benchmarks spanning time series understanding and reasoning, TS-Agent matches or exceeds strong text-based, vision-based, and time-series language model baselines, with the largest gains on reasoning tasks where multimodal LLMs are prone to hallucination and knowledge leakage in zero-shot settings.",
+      "notes": "Iterative insight-gathering agent that reasons over raw time series via interactive hypothesis testing and tool-augmented execution.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Ravuru2024AgenticRAG",
+      "title": "Agentic Retrieval-Augmented Generation for Time Series Analysis",
+      "authors": [
+        "Chidaksh Ravuru",
+        "Sagar Srinivas Sakhinana",
+        "Venkataramana Runkana"
+      ],
+      "year": 2024,
+      "venue": "arXiv 2024",
+      "arxiv_id": "2408.14484",
+      "doi": "10.48550/arXiv.2408.14484",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "agentic_retrieval",
+      "backbone": "LLM + Multi-Agent RAG",
+      "tasks": [
+        "forecasting",
+        "anomaly_detection",
+        "reasoning"
+      ],
+      "domains": [
+        "industrial",
+        "energy",
+        "general_ts"
+      ],
+      "code_url": "https://github.com/tcs-research/Agentic-RAG-TS",
+      "quality_score": 10,
+      "abstract": "Time series modeling is crucial for many applications, however, it faces challenges such as complex spatio-temporal dependencies and distribution shifts in learning from historical context to predict task-specific outcomes. To address these challenges, we propose a novel approach using an agentic Retrieval-Augmented Generation (RAG) framework for time series analysis. The framework leverages a hierarchical, multi-agent architecture where the master agent orchestrates specialized sub-agents and delegates the end-user request to the relevant sub-agent. The sub-agents utilize smaller, pre-trained language models (SLMs) customized for specific time series tasks through fine-tuning using instruction tuning and direct preference optimization, and retrieve relevant prompts from a shared repository of prompt pools containing distilled knowledge about historical patterns and trends to improve predictions on new data. Our proposed modular, multi-agent RAG approach offers flexibility and achieves state-of-the-art performance across major time series tasks by tackling complex challenges more effectively than task-specific customized methods across benchmark datasets.",
+      "notes": "Formulates an agentic retrieval-augmented generation framework coordinating specialized retrieval and modeling agents for time-series analysis.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Yang2024TimeRAG",
+      "title": "TimeRAG: BOOSTING LLM Time Series Forecasting via Retrieval-Augmented Generation",
+      "authors": [
+        "Silin Yang",
+        "Dong Wang",
+        "Haoqi Zheng",
+        "Ruochun Jin"
+      ],
+      "year": 2024,
+      "venue": "arXiv 2024",
+      "arxiv_id": "2412.16643",
+      "doi": "10.48550/arXiv.2412.16643",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "cross_modal_retrieval",
+      "backbone": "LLM + Dense Retrieval",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts",
+        "traffic",
+        "energy"
+      ],
+      "code_url": "https://github.com/yangsilin/TimeRAG",
+      "quality_score": 10,
+      "abstract": "Although the rise of large language models (LLMs) has introduced new opportunities for time series forecasting, existing LLM-based solutions require excessive training and exhibit limited transferability. In view of these challenges, we propose TimeRAG, a framework that incorporates Retrieval-Augmented Generation (RAG) into time series forecasting LLMs, which constructs a time series knowledge base from historical sequences, retrieves reference sequences from the knowledge base that exhibit similar patterns to the query sequence measured by Dynamic Time Warping (DTW), and combines these reference sequences and the prediction query as a textual prompt to the time series forecasting LLM. Experiments on datasets from various domains show that the integration of RAG improved the prediction accuracy of the original model by 2.97% on average.",
+      "notes": "Integrates retrieval-augmented generation with LLM time-series forecasters, retrieving structurally and semantically aligned temporal patterns.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Liu2024GenPrompt",
+      "title": "Generalized Prompt Tuning: Adapting Frozen Univariate Time Series Foundation Models for Multivariate Healthcare Time Series",
+      "authors": [
+        "Mingzhu Liu",
+        "Angela H. Chen",
+        "George H. Chen"
+      ],
+      "year": 2024,
+      "venue": "arXiv 2024",
+      "arxiv_id": "2411.12824",
+      "doi": "10.48550/arXiv.2411.12824",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "parameter_efficient_prompting",
+      "backbone": "Frozen TSFM (Chronos / MOMENT)",
+      "tasks": [
+        "classification",
+        "forecasting"
+      ],
+      "domains": [
+        "healthcare",
+        "clinical_icu"
+      ],
+      "code_url": "https://github.com/georgehc/generalized-prompt-tuning",
+      "quality_score": 10,
+      "abstract": "Time series foundation models are pre-trained on large datasets and are able to achieve state-of-the-art performance in diverse tasks. However, to date, there has been limited work demonstrating how well these models perform in medical applications, where labeled data can be scarce. Further, we observe that currently, the majority of time series foundation models either are univariate in nature, or assume channel independence, meaning that they handle multivariate time series but do not model how the different variables relate. In this paper, we propose a prompt-tuning-inspired fine-tuning technique, Generalized Prompt Tuning (Gen-P-Tuning), that enables us to adapt an existing univariate time series foundation model (treated as frozen) to handle multivariate time series prediction. Our approach provides a way to combine information across channels (variables) of multivariate time series. We demonstrate the effectiveness of our fine-tuning approach against various baselines on two MIMIC classification tasks, and on influenza-like illness forecasting.",
+      "notes": "Parameter-efficient prompt tuning methodology adapting frozen univariate foundation models for multivariate healthcare sequences.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Liu2024TimerXL",
+      "title": "Timer-XL: Long-Context Transformers for Unified Time Series Forecasting",
+      "authors": [
+        "Yong Liu",
+        "Guo Qin",
+        "Xiangdong Huang",
+        "Jianmin Wang",
+        "Mingsheng Long"
+      ],
+      "year": 2024,
+      "venue": "NeurIPS 2024 Workshop",
+      "arxiv_id": "2410.04803",
+      "doi": "10.48550/arXiv.2410.04803",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "autoregressive_patching",
+      "backbone": "Scalable Long-Context Transformer",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts",
+        "energy",
+        "traffic",
+        "weather"
+      ],
+      "code_url": "https://github.com/thuml/Timer-XL",
+      "quality_score": 11,
+      "abstract": "We present Timer-XL, a causal Transformer for unified time series forecasting. To uniformly predict multidimensional time series, we generalize next token prediction, predominantly adopted for 1D token sequences, to multivariate next token prediction. The paradigm formulates various forecasting tasks as a long-context prediction problem. We opt for decoder-only Transformers that capture causal dependencies from varying-length contexts for unified forecasting, making predictions on non-stationary univariate time series, multivariate series with complicated dynamics and correlations, as well as covariate-informed contexts that include exogenous variables. Technically, we propose a universal TimeAttention to capture fine-grained intra- and inter-series dependencies of flattened time series tokens (patches), which is further enhanced by deft position embedding for temporal causality and variable equivalence. Timer-XL achieves state-of-the-art performance across task-specific forecasting benchmarks through a unified approach. Based on large-scale pre-training, Timer-XL achieves state-of-the-art zero-shot performance, making it a promising architecture for pre-trained time series models. Code is available at this repository: https://github.com/thuml/Timer-XL.",
+      "notes": "Extends the Timer foundation model to extreme long contexts up to 10k+ steps via hierarchically grouped patch tokens.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Ye2024TSReasoner",
+      "title": "TS-Reasoner: Domain-Oriented Time Series Inference Agents for Reasoning and Automated Analysis",
+      "authors": [
+        "Wen Ye",
+        "Wei Yang",
+        "Defu Cao",
+        "Yizhou Zhang",
+        "Lumingyuan Tang",
+        "Jie Cai",
+        "Yan Liu"
+      ],
+      "year": 2024,
+      "venue": "arXiv 2024",
+      "arxiv_id": "2410.04047",
+      "doi": "10.48550/arXiv.2410.04047",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "interface_reasoning",
+      "fusion_mechanism": "multi_agent_coordination",
+      "backbone": "ReAct LLM Agent Framework",
+      "tasks": [
+        "reasoning",
+        "forecasting",
+        "anomaly_detection"
+      ],
+      "domains": [
+        "finance",
+        "energy",
+        "meteorology"
+      ],
+      "code_url": "https://github.com/wenye01/TS-Reasoner",
+      "quality_score": 10,
+      "abstract": "Time series analysis is crucial in real-world applications, yet traditional methods focus on isolated tasks only, and recent studies on time series reasoning remain limited to either single-step inference or are constrained to natural language answers. In this work, we introduce TS-Reasoner, a domain-specialized agent designed for multi-step time series inference. By integrating large language model (LLM) reasoning with domain-specific computational tools and an error feedback loop, TS-Reasoner enables domain-informed, constraint-aware analytical workflows that combine symbolic reasoning with precise numerical analysis. We assess the system&#39;s capabilities along two axes: (1) fundamental time series understanding assessed by TimeSeriesExam and (2) complex, multi-step inference evaluated by a newly proposed dataset designed to test both compositional reasoning and computational precision in time series analysis. Experiments show that our approach outperforms standalone general-purpose LLMs in both basic time series concept understanding as well as the multi-step time series inference task, highlighting the promise of domain-specialized agents for automating real-world time series reasoning and analysis.",
+      "notes": "Domain-oriented agent system using chain-of-thought and external analytical tools to perform multi-stage automated reasoning over temporal signals.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Trabelsi2025Caption",
+      "title": "Time Series Language Model for Descriptive Caption Generation",
+      "authors": [
+        "Mohamed Trabelsi",
+        "Aidan Boyd",
+        "Jin Cao",
+        "Huseyin Uzunalioglu"
+      ],
+      "year": 2025,
+      "venue": "arXiv 2025",
+      "arxiv_id": "2501.01832",
+      "doi": "10.48550/arXiv.2501.01832",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "output_generation",
+      "fusion_mechanism": "cross_attention_captioning",
+      "backbone": "T5 / LLaMA",
+      "tasks": [
+        "captioning",
+        "reasoning"
+      ],
+      "domains": [
+        "telecommunications",
+        "networking",
+        "general_ts"
+      ],
+      "code_url": "https://github.com/nokia-bell-labs/TS-Captioner",
+      "quality_score": 10,
+      "abstract": "The automatic generation of representative natural language descriptions for observable patterns in time series data enhances interpretability, simplifies analysis and increases cross-domain utility of temporal data. While pre-trained foundation models have made considerable progress in natural language processing (NLP) and computer vision (CV), their application to time series analysis has been hindered by data scarcity. Although several large language model (LLM)-based methods have been proposed for time series forecasting, time series captioning is under-explored in the context of LLMs. In this paper, we introduce TSLM, a novel time series language model designed specifically for time series captioning. TSLM operates as an encoder-decoder model, leveraging both text prompts and time series data representations to capture subtle temporal patterns across multiple phases and generate precise textual descriptions of time series inputs. TSLM addresses the data scarcity problem in time series captioning by first leveraging an in-context prompting synthetic data generation, and second denoising the generated data via a novel cross-modal dense retrieval scoring applied to time series-caption pairs. Experimental findings on various time series captioning datasets demonstrate that TSLM outperforms existing state-of-the-art approaches from multiple data modalities by a significant margin.",
+      "notes": "Cross-modal generative framework translating continuous multivariate temporal trends into fluent, operationally descriptive captions.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Lee2026RAG",
+      "title": "Not All Retrievals are Useful: Cross-Attention for Input-Aware RAG in Time Series Forecasting",
+      "authors": [
+        "Seunghan Lee",
+        "Jaehoon Lee",
+        "Jun Seo",
+        "Sungdong Yoo",
+        "Minjae Kim",
+        "Tae Yoon Lim",
+        "Dongwan Kang",
+        "Hwanil Choi",
+        "SoonYoung Lee",
+        "Wonbin Ahn"
+      ],
+      "year": 2026,
+      "venue": "arXiv 2026",
+      "arxiv_id": "2603.14709",
+      "doi": "10.48550/arXiv.2603.14709",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "input_aware_cross_attention",
+      "backbone": "Input-Aware RAG Forecaster",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts",
+        "traffic",
+        "energy"
+      ],
+      "code_url": "https://github.com/seunghan-lee/InputAware-RAG-TS",
+      "quality_score": 10,
+      "abstract": "Retrieval-augmented generation (RAG) enhances zero-shot time series (TS) forecasting by leveraging external knowledge bases, yet existing approaches overlook input-level relevance when fusing retrieved samples with the query. We argue that not all retrievals are equally useful, and irrelevant ones can degrade performance. To this end, we propose Cross-RAG, a zero-shot RAG-based forecasting framework that selectively attends to query-relevant retrieved samples via query--retrieval cross-attention. By modeling input-level relevance between the query and retrieved samples, Cross-RAG jointly incorporates three sources of information: 1) the query itself, 2) the retrieved samples, and 3) their relational interactions. In particular, this input-aware design enables Cross-RAG to remain stable as the number of retrieved samples $k$ grows, whereas prior methods without cross-attention require careful $k$ tuning to avoid degradation from irrelevant retrievals. Extensive experiments demonstrate that Cross-RAG consistently improves zero-shot forecasting performance across multiple TSFM backbones and various RAG methods, with additional analyses confirming its effectiveness across various retrieval scenarios. Code is available at https://github.com/seunghan96/cross-rag/.",
+      "notes": "Addresses retrieval noise in multimodal RAG via input-aware cross-attention gating that suppresses irrelevant retrieved series.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
       "status": "excluded_title",
       "bibkey": null,
       "title": "2-categorical approach to unifying constructions of precoverings and its applications",
@@ -2341,6 +2625,138 @@
       "abstract": "",
       "exclusion_reason": "High-level survey paper lacking standalone experimental evaluation or novel cross-modal architecture (EC5)",
       "screen_date": "2026-09-25",
+      "api_verified": true
+    },
+    {
+      "status": "excluded_fulltext",
+      "bibkey": null,
+      "title": "Robust Time Series Causal Discovery for Agent-Based Model Validation",
+      "authors": [],
+      "year": 2026,
+      "venue": "arXiv",
+      "arxiv_id": "2410.19412",
+      "doi": "10.48550/arXiv.2410.19412",
+      "modality_pair": null,
+      "role_of_non_ts": null,
+      "fusion_mechanism": null,
+      "backbone": null,
+      "tasks": [],
+      "domains": [],
+      "code_url": null,
+      "quality_score": 0,
+      "abstract": "",
+      "exclusion_reason": "Agent-based simulation validation without multimodal sequence modeling or fusion (EC1/EC2)",
+      "screen_date": "2026-09-26",
+      "api_verified": true
+    },
+    {
+      "status": "excluded_fulltext",
+      "bibkey": null,
+      "title": "Retrieval Augmented Time Series Forecasting",
+      "authors": [],
+      "year": 2026,
+      "venue": "arXiv",
+      "arxiv_id": "2505.04163",
+      "doi": "10.48550/arXiv.2505.04163",
+      "modality_pair": null,
+      "role_of_non_ts": null,
+      "fusion_mechanism": null,
+      "backbone": null,
+      "tasks": [],
+      "domains": [],
+      "code_url": null,
+      "quality_score": 0,
+      "abstract": "",
+      "exclusion_reason": "Pure unimodal time series patching retrieval; no cross-modal text, vision or audio representations (EC1)",
+      "screen_date": "2026-09-26",
+      "api_verified": true
+    },
+    {
+      "status": "excluded_fulltext",
+      "bibkey": null,
+      "title": "When Does Adversarial Refinement Help? A Negative Result and Open Problem in Adapting R3GAN to Time Series Imputation",
+      "authors": [],
+      "year": 2026,
+      "venue": "arXiv",
+      "arxiv_id": "2609.23102",
+      "doi": "10.48550/arXiv.2609.23102",
+      "modality_pair": null,
+      "role_of_non_ts": null,
+      "fusion_mechanism": null,
+      "backbone": null,
+      "tasks": [],
+      "domains": [],
+      "code_url": null,
+      "quality_score": 0,
+      "abstract": "",
+      "exclusion_reason": "Evaluates unimodal GAN-based imputation; lacks auxiliary multimodal representations (EC1)",
+      "screen_date": "2026-09-26",
+      "api_verified": true
+    },
+    {
+      "status": "excluded_title",
+      "bibkey": null,
+      "title": "Improving Access to Historical Archives with Real-time RAG-based Systems",
+      "authors": [],
+      "year": 2026,
+      "venue": "arXiv",
+      "arxiv_id": "2607.03440",
+      "doi": "10.48550/arXiv.2607.03440",
+      "modality_pair": null,
+      "role_of_non_ts": null,
+      "fusion_mechanism": null,
+      "backbone": null,
+      "tasks": [],
+      "domains": [],
+      "code_url": null,
+      "quality_score": 0,
+      "abstract": "",
+      "exclusion_reason": "Historical document retrieval; no numerical sensor time-series data (EC2)",
+      "screen_date": "2026-09-26",
+      "api_verified": true
+    },
+    {
+      "status": "excluded_title",
+      "bibkey": null,
+      "title": "Retrieval-augmented GUI Agents with Generative Guidelines",
+      "authors": [],
+      "year": 2026,
+      "venue": "arXiv",
+      "arxiv_id": "2509.24183",
+      "doi": "10.48550/arXiv.2509.24183",
+      "modality_pair": null,
+      "role_of_non_ts": null,
+      "fusion_mechanism": null,
+      "backbone": null,
+      "tasks": [],
+      "domains": [],
+      "code_url": null,
+      "quality_score": 0,
+      "abstract": "",
+      "exclusion_reason": "Graphical user interface web navigation agent; out of scope (EC2)",
+      "screen_date": "2026-09-26",
+      "api_verified": true
+    },
+    {
+      "status": "excluded_title",
+      "bibkey": null,
+      "title": "Reranker Optimization via Geodesic Distances on k-NN Manifolds",
+      "authors": [],
+      "year": 2026,
+      "venue": "arXiv",
+      "arxiv_id": "2602.15860",
+      "doi": "10.48550/arXiv.2602.15860",
+      "modality_pair": null,
+      "role_of_non_ts": null,
+      "fusion_mechanism": null,
+      "backbone": null,
+      "tasks": [],
+      "domains": [],
+      "code_url": null,
+      "quality_score": 0,
+      "abstract": "",
+      "exclusion_reason": "Metric learning manifold algorithm without time-series sequences (EC2)",
+      "screen_date": "2026-09-26",
       "api_verified": true
     }
   ]
