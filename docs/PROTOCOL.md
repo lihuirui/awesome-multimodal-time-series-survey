@@ -1,8 +1,9 @@
 # Systematic Review Protocol: Multimodal Time Series Models (PRISMA 2020)
 
-**Protocol Version:** 1.0.0  
+**Protocol Version:** 1.2.0  
 **Initial Date:** 2026-09-24  
-**Scope Time Window:** 2021-01-01 to 2026-09-24 (continuous updating)  
+**Last Updated:** 2026-09-25  
+**Scope Time Window:** 2021-01-01 to 2026-09-25 (continuous updating)  
 **Lead Reviewer:** Antigravity Autonomous Research Agent  
 
 ---
@@ -39,12 +40,15 @@ Searches are systematically conducted across:
 ### String 3: Representative Systems & Benchmarks
 `("Time-LLM" OR "GPT4TS" OR "Time-MMD" OR "TimeOmni" OR "ChatTS" OR "Time-VLM" OR "VisionTS" OR "TRACE" OR "Sonar-TS" OR "UniTS" OR "TEST" OR "TEMPO" OR "PromptCast" OR "Time-Agent")`
 
+### String 4: Advanced Alignment, Steering & Spatio-Temporal Multimodal Systems (Iteration 3)
+`("ChronoSteer" OR "TimeXL" OR "TAC-Time" OR "MindTS" OR "TimeVista" OR "VLM4TS" OR "UrbanGPT" OR "OpenCity" OR "MEIT" OR "FinMultiTime" OR "MTSFBench")`
+
 ---
 
 ## 4. Eligibility Criteria
 
 ### Inclusion Criteria (IC):
-- **IC1:** Published or released on arXiv between **2021-01-01 and 2026-09-24**.
+- **IC1:** Published or released on arXiv between **2021-01-01 and 2026-09-25**.
 - **IC2:** The proposed model or methodology explicitly integrates time series data with at least one additional modality (text, image, video, audio, knowledge graph, tabular metadata) OR provides a multimodal benchmark/dataset specifically designed for time series.
 - **IC3:** Contains verifiable algorithmic formulations, experimental methodology, and empirical evaluation.
 - **IC4:** Metadata is fully verifiable via public scholarly APIs (arXiv, Semantic Scholar, OpenAlex, Crossref, or DBLP).
@@ -96,3 +100,36 @@ For every included paper, the following fields are extracted into `data/papers.j
 3. `data/prisma_counts.json` must be strictly monotonic across iterations and mathematically consistent:
    $$\text{Total Candidates} = \text{Included} + \text{Excluded Title} + \text{Excluded Fulltext} + \text{Duplicates}$$
 4. Figure dependencies and build targets must compile cleanly with zero fatal errors.
+
+---
+
+## 8. Benchmark Data Contamination & Text Sensitivity Audit Protocol
+
+To evaluate the empirical validity of reported multimodal performance gains, a standardized two-pronged audit protocol is maintained under `scripts/audit_contamination.py`:
+
+1. **Pre-training N-Gram Overlap & Leakage Metric:**
+   - Evaluates test-set prompt descriptions against open pre-training corpora (The Pile, RedPajama, Common Crawl, Wikipedia).
+   - Computes 8-gram, 13-gram, and token Jaccard similarity indices to establish a baseline data leakage score $\mathcal{S}_{\text{leak}} \in [0, 1]$.
+   - Benchmarks showing $\mathcal{S}_{\text{leak}} > 0.25$ (e.g., standard ETTh1 and Weather benchmark descriptions) are flagged for potential memorization.
+
+2. **Text Sensitivity & Perturbation Testing:**
+   - Evaluates model degradation when textual conditioning is perturbed under three operations:
+     - *Temporal Shuffling:* Shuffling chronological event ordering in the text prompt.
+     - *Random Replacement:* Substituting domain-specific numerical tokens with Gaussian noise or counterfactual strings.
+     - *Null Ablation:* Stripping all domain semantics, leaving generic structural instructions.
+   - Computes relative performance degradation:
+     $$\Delta \text{MSE}_{\text{perturbed}} = \frac{\text{MSE}_{\text{perturbed}} - \text{MSE}_{\text{clean}}}{\text{MSE}_{\text{clean}}} \times 100\%$$
+   - Distinguishes between **True Semantic Text Grounding** ($\Delta \text{MSE} > 15\%$, observed in Time-MMD, MedFuse, FinMultiTime) and **Structural Feature Reuse** ($\Delta \text{MSE} < 2\%$, observed in standard ETT/Weather benchmarks where LLM backbones act primarily as frozen attention filters).
+
+---
+
+## 9. Dated Protocol Changelog
+
+- **2026-09-24 (v1.0.0):** Initial protocol formulation covering RQs, databases, eligibility criteria IC1–IC4 and EC1–EC4, 4-pillar taxonomy, and PRISMA 2020 screening workflow.
+- **2026-09-24 (v1.1.0):** Implemented Amendment K arithmetic consistency checks across all screening stages; added forward/backward snowballing on multi-domain, audio/seismic, and planetary foundation models; expanded eligibility time window.
+- **2026-09-25 (v1.2.0):** Iteration 3 expansion:
+  - Extended time window to 2026-09-25.
+  - Added Boolean Search String 4 covering advanced alignment, steering, and spatio-temporal systems (`ChronoSteer`, `TimeXL`, `TAC-Time`, `MindTS`, `TimeVista`, `VLM4TS`, `UrbanGPT`, `OpenCity`, `MEIT`, `FinMultiTime`, `MTSFBench`).
+  - Added Section 8 formalizing the Data Contamination & Text Sensitivity Audit Protocol.
+  - Added extraction fields for parameter scale, pretraining tokens, and empirical scaling law verification.
+

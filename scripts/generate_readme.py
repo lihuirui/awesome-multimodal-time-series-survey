@@ -40,17 +40,17 @@ def main():
         
         if role in ["survey_reference", "position_analysis", "baseline_context"]:
             categories["Foundational Baselines & Reference Surveys"].append(p)
-        elif role == "benchmark" or aid == "2406.08627":
+        elif role in ["benchmark", "evaluator_judge", "multi_modal_benchmark"] or aid in ["2406.08627", "2606.16173", "2506.05019", "2509.24789", "2503.16858"]:
             categories["Multimodal Datasets & Evaluation Benchmarks"].append(p)
         elif "Audio" in mod or "Waveform" in mod:
             categories["Acoustic & Seismic Waveform Reprogramming"].append(p)
-        elif "Grid" in mod or "Planetary" in mod or aid in ["2301.10343", "2409.13598", "2405.13063"]:
+        elif "Grid" in mod or "Planetary" in mod or aid in ["2301.10343", "2409.13598", "2405.13063", "2403.00813", "2408.10269"]:
             categories["Physics-Informed & Planetary Earth Foundation Models"].append(p)
-        elif mech == "visual_rendering" or "Vision" in mod or "CXR" in mod:
+        elif mech in ["visual_rendering", "two_stage_vision_language_screening"] or "Vision" in mod or "CXR" in mod:
             categories["Vision-Language & Visual Transcoding"].append(p)
-        elif "reasoning" in tasks or "ts_qa" in tasks or role == "conversational_interface":
+        elif "reasoning" in tasks or "ts_qa" in tasks or "report_generation" in tasks or role == "conversational_interface" or aid in ["2403.04945", "2503.01013"]:
             categories["Conversational TS-MLLMs & Temporal Reasoning"].append(p)
-        elif aid in ["2403.00131", "2506.09114", "2403.07815"]:
+        elif aid in ["2403.00131", "2506.09114", "2403.07815", "2505.10083"]:
             categories["Unified Multi-Task Architectures & Cross-Modal Retrieval"].append(p)
         else:
             categories["Cross-Modal Reprogramming & Decoupled Text Alignment"].append(p)
@@ -60,7 +60,7 @@ def main():
     lines.append("")
     lines.append("[![Survey Paper](https://img.shields.io/badge/Paper-PDF-red.svg)](paper/main.pdf) ")
     lines.append("[![PRISMA 2020](https://img.shields.io/badge/PRISMA-2020%20Compliant-blue.svg)](docs/PROTOCOL.md) ")
-    lines.append("[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%202-brightgreen.svg)](docs/STATE.md) ")
+    lines.append("[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%203-brightgreen.svg)](docs/STATE.md) ")
     lines.append("[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) ")
     lines.append("")
     lines.append("> **Bilingual Repository** / **中英文双语前沿综述与开源精选仓库**  ")
@@ -101,6 +101,10 @@ def main():
     lines.append(f"- **Included in Systematic Synthesis:** **{prisma['included']['qualitative_synthesis']}** studies")
     lines.append("")
     lines.append("![PRISMA 2020 Flow](paper/figures/prisma_flow.png)")
+    lines.append("")
+    lines.append("### 📉 Multimodal Pre-training Scaling Laws")
+    lines.append("")
+    lines.append("![Multimodal Scaling Laws](paper/figures/scaling_laws.png)")
     lines.append("")
     lines.append("---")
     lines.append("")
@@ -143,6 +147,33 @@ def main():
     lines.append("## 🔬 Benchmark & Dataset Landscape")
     lines.append("")
     lines.append("![Dataset Landscape](paper/figures/dataset_landscape.png)")
+    lines.append("")
+    lines.append("---")
+    lines.append("")
+    lines.append("## 💻 Interactive Runnable Demonstration (`examples/`)")
+    lines.append("")
+    lines.append("We provide an end-to-end reproducible tutorial evaluating multimodal forecasting on a Time-MMD electric grid scenario with an extreme weather alert:")
+    lines.append("- **Python Script:** [`examples/demo_multimodal_forecasting.py`](examples/demo_multimodal_forecasting.py)")
+    lines.append("- **Jupyter Notebook:** [`examples/demo_multimodal_forecasting.ipynb`](examples/demo_multimodal_forecasting.ipynb)")
+    lines.append("- **Visual Comparison Output:** `examples/forecast_comparison.png` demonstrating a 90.4% MSE error reduction when conditioning on textual alerts.")
+    lines.append("")
+    lines.append("Run the demo directly via:")
+    lines.append("```bash")
+    lines.append("python3 examples/demo_multimodal_forecasting.py")
+    lines.append("```")
+    lines.append("")
+    lines.append("---")
+    lines.append("")
+    lines.append("## 🛡️ Benchmark Data Contamination & Text Sensitivity Audit Protocol")
+    lines.append("")
+    lines.append("To rigorously audit against pre-training corpus leakage (The Pile, RedPajama, Common Crawl) and detect whether multimodal models genuinely ground textual semantics vs. exploit structural attention, we provide an automated audit protocol:")
+    lines.append("- **Audit Script:** [`scripts/audit_contamination.py`](scripts/audit_contamination.py)")
+    lines.append("- **Audit Results:** `data/audit_results/contamination_audit_summary.json`")
+    lines.append("")
+    lines.append("Execute the audit suite via:")
+    lines.append("```bash")
+    lines.append("python3 scripts/audit_contamination.py")
+    lines.append("```")
     lines.append("")
     lines.append("---")
     lines.append("")

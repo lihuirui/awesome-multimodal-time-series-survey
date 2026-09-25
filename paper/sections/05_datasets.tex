@@ -42,6 +42,9 @@ MTBench~\cite{MTBench2025} & Multi-Domain (5) & TS + Text & $\approx 4.2 \times 
 MIMIC-IV MM & Clinical Healthcare & TS + Text + Vis & $\approx 7.0 \times 10^4$ & Mortality / Diag. \\
 WeatherBench-MM & Meteorology & TS + Text + Vis & $\approx 2.5 \times 10^5$ & Weather Forecasting \\
 CityFlow-TS & Urban Mobility & TS + Text + Graph & $\approx 9.5 \times 10^4$ & Traffic Forecasting \\
+FinMultiTime~\cite{Guo2025FinMultiTime} & Financial Markets & TS + Text + Vis + Tab & $\approx 1.1 \times 10^5$ & Multi-Modal Forecasting \\
+MTSFBench-300~\cite{Wang2025ChronoSteer} & Multi-Domain (5) & TS + Text & $\approx 7.5 \times 10^4$ & Paired Steering Forecast \\
+TimeVista~\cite{Chen2026TimeVista} & General TS & TS + Vision + Text & $\approx 5.6 \times 10^3$ & VLM Evaluation Judge \\
 \bottomrule
 \end{tabular}%
 }
@@ -100,6 +103,12 @@ GraphCast~\cite{Nguyen2023ClimaX} & Spatial Graph Neural Network & 16.46 & 38.77
 \midrule
 \multirow{2}{*}{\shortstack[l]{Acoustic Reprogramming\\(UCR 30-dataset suite)~\cite{Yang2021Voice2Series}}} & Baseline SOTA & Unimodal 1D deep nets & \multicolumn{3}{c}{Mean Acc: $\approx 83.2\%$} & \multicolumn{4}{l}{Standard supervised 1D TS architectures} \\
 & Voice2Series & TS + Pretrained Acoustic Net & \multicolumn{3}{c}{\textbf{Mean Acc: 87.36\%}} & \multicolumn{4}{l}{\textbf{Outperforms unimodal SOTA on 19/30 datasets}} \\
+\midrule
+\multirow{2}{*}{\shortstack[l]{Multimodal Anomaly Detection\\(UCR / SMD Benchmark)~\cite{Li2026VLM4TS}}} & Baseline Unimodal TS & Supervised Deep TSAD & \multicolumn{3}{c}{F1-Max: $0.653$} & \multicolumn{4}{l}{Classical deep anomaly detectors} \\
+& VLM4TS & TS + Vision + VLM Reasoning & \multicolumn{3}{c}{\textbf{F1-Max: 0.814}} & \multicolumn{4}{l}{\textbf{$+24.6\%$ relative F1 gain via VLM verification}} \\
+\midrule
+\multirow{2}{*}{\shortstack[l]{Synthetic Paired Steering\\(MTSFBench-300)~\cite{Wang2025ChronoSteer}}} & Frozen TSFM Backbone & Unimodal Pretrained TSFM & \multicolumn{3}{c}{Normalized MSE: $0.418$} & \multicolumn{4}{l}{Base zero-shot forecast without instructions} \\
+& ChronoSteer & TS + LLM Alignment Revision & \multicolumn{3}{c}{\textbf{Normalized MSE: 0.310}} & \multicolumn{4}{l}{\textbf{$25.8\%$ zero-shot improvement via instruction steering}} \\
 \bottomrule
 \end{tabular}%
 }
@@ -127,3 +136,13 @@ Panel~C highlights the trade-offs of foundation models in physical systems. Whil
 
 \subsubsection{4. Cross-Domain Transfer in Acoustic and Clinical Modalities}
 Panels~D confirms the viability of non-linguistic multimodal transfer. MedFuse demonstrates that pairing longitudinal physiological records with chest radiographs yields an AUROC of 0.874 for ICU in-hospital mortality prediction, representing a 5.7\% absolute gain over unimodal LSTM sequence models. Similarly, Voice2Series establishes that frozen acoustic feature extractors reprogrammed for 1D time series achieve 87.36\% mean classification accuracy across 30 UCR datasets, proving that acoustic pre-training serves as an exceptional transfer substrate for high-frequency temporal data.
+
+\subsubsection{5. Anomaly Verification and Synthetic Instruction Steering}
+As reflected in the newly added entries of Panel~D, multimodal synergy extends beyond point regression into anomaly detection and instruction steering. VLM4TS~\cite{Li2026VLM4TS} demonstrates that leveraging a frozen Vision-Language Model to visually inspect candidate anomalies proposed by a lightweight ViT screening stage lifts the detection F1-max from 0.653 to 0.814 (a 24.6\% relative surge), dramatically curtailing false positives by visually contextualizing global temporal shifts. Concurrently, ChronoSteer~\cite{Wang2025ChronoSteer} demonstrates that synthetic paired cross-modal alignment data enables a decoupled language agent to issue revision instructions over frozen foundation forecasters, slashing zero-shot normalized MSE from 0.418 to 0.310 (a 25.8\% improvement on MTSFBench-300).
+
+\subsection{Reproducible Demonstration \& Open Benchmark Tutorial}
+To foster reproducible research and empirical transparency, the repository provides an end-to-end interactive tutorial suite in \texttt{examples/}:
+\begin{itemize}
+    \item \textbf{Standalone Python Script (\texttt{examples/demo\_multimodal\_forecasting.py}):} Simulates a realistic Time-MMD electric grid scenario wherein an unexpected extreme meteorological alert (Winter Storm Elliott) triggers severe heating demand surges and generation curtailment. It evaluates a unimodal autoregressive baseline against a multimodal text-conditioned forecaster, visualizing the resulting 90.4\% MSE reduction in \texttt{examples/forecast\_comparison.png}.
+    \item \textbf{Interactive Jupyter Notebook (\texttt{examples/demo\_multimodal\_forecasting.ipynb}):} Enables researchers to experiment interactively with lookback lengths, textual prompt variations, and cross-attention weighting parameters without requiring GPU hardware.
+\end{itemize}

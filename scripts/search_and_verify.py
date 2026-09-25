@@ -8,6 +8,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import time
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -553,6 +554,146 @@ CORE_PAPERS = [
         "code_url": "https://github.com/liuxu7/UniTime",
         "quality_score": 10,
         "notes": "Language-empowered cross-domain foundation model masking and learning domain-specific language prompts to unify multi-source forecasting."
+    },
+    {
+        "arxiv_id": "2505.10083",
+        "bibkey": "Wang2025ChronoSteer",
+        "venue": "arXiv 2025",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "cross_modal_alignment_instructions",
+        "backbone": "LLaMA-3 / Mistral + Frozen TSFM",
+        "tasks": ["forecasting"],
+        "domains": ["energy", "traffic", "weather", "multi_domain"],
+        "code_url": "https://github.com/ForestsKing/ChronoSteer",
+        "quality_score": 11,
+        "notes": "Decoupled framework generating text-guided revision instructions over frozen TSFM forecasts with synthetic cross-modal alignment data (MTSFBench-300)."
+    },
+    {
+        "arxiv_id": "2503.01013",
+        "bibkey": "Jiang2025TimeXL",
+        "venue": "NeurIPS 2025",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "prototype_based_reasoning",
+        "backbone": "Multi-modal Prototype Encoder + LLM",
+        "tasks": ["forecasting", "interpretability"],
+        "domains": ["finance", "general_ts"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Explainable multimodal forecasting using learned case-based prototypes and an LLM-in-the-loop predict-critique-refine feedback architecture."
+    },
+    {
+        "arxiv_id": "2609.24156",
+        "bibkey": "Liang2026TACTime",
+        "venue": "arXiv 2026",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "auxiliary_channel",
+        "fusion_mechanism": "text_as_temporal_channels",
+        "backbone": "Sparse Autoencoder (SAE) + FFT Backbone",
+        "tasks": ["forecasting"],
+        "domains": ["multi_domain", "finance", "weather"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Transforms unstructured text embeddings into additional temporal channels via sparse autoencoders and frequency-domain decomposition."
+    },
+    {
+        "arxiv_id": "2603.21612",
+        "bibkey": "Zhang2026MindTS",
+        "venue": "ICLR 2026",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "supervision_condition",
+        "fusion_mechanism": "semantic_alignment_condenser",
+        "backbone": "Multi-modal Transformer + Content Condenser",
+        "tasks": ["anomaly_detection"],
+        "domains": ["industrial", "server_metrics", "multi_domain"],
+        "code_url": "https://github.com/decisionintelligence/MindTS",
+        "quality_score": 11,
+        "notes": "Multimodal anomaly detection framework decoupling exogenous and endogenous text signals with content condenser reconstruction."
+    },
+    {
+        "arxiv_id": "2606.16173",
+        "bibkey": "Chen2026TimeVista",
+        "venue": "arXiv 2026",
+        "modality_pair": "TS+Vision+Text",
+        "role_of_non_ts": "evaluator_judge",
+        "fusion_mechanism": "vlm_as_a_judge",
+        "backbone": "GPT-4o / Claude-3.5-Sonnet / Qwen2-VL",
+        "tasks": ["evaluation_benchmark", "preference_judging"],
+        "domains": ["multi_domain", "general_ts"],
+        "code_url": None,
+        "quality_score": 12,
+        "notes": "Introduces VLM-as-a-Judge paradigm for time series forecasting, analyzing visual time series plots with rubrics over 5,563 benchmark instances."
+    },
+    {
+        "arxiv_id": "2506.06836",
+        "bibkey": "Li2026VLM4TS",
+        "venue": "AAAI 2026",
+        "modality_pair": "TS+Vision+Text",
+        "role_of_non_ts": "modality_transcoding",
+        "fusion_mechanism": "two_stage_vision_language_screening",
+        "backbone": "ViT + Vision-Language Model",
+        "tasks": ["anomaly_detection"],
+        "domains": ["general_ts", "industrial"],
+        "code_url": "https://github.com/ZLHe0/VLM4TS",
+        "quality_score": 11,
+        "notes": "Two-stage framework using lightweight 2D ViT for candidate anomaly screening followed by VLM visual reasoning for global verification."
+    },
+    {
+        "arxiv_id": "2403.00813",
+        "bibkey": "Li2024UrbanGPT",
+        "venue": "KDD 2024",
+        "modality_pair": "TS+SpatioTemporal+Text",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "spatio_temporal_instruction_tuning",
+        "backbone": "LLaMA-2 / Spatio-Temporal Dependency Encoder",
+        "tasks": ["forecasting", "spatio_temporal_prediction"],
+        "domains": ["traffic", "urban_mobility", "smart_cities"],
+        "code_url": "https://github.com/HKUDS/UrbanGPT",
+        "quality_score": 11,
+        "notes": "Integrates spatio-temporal dependency encoders with instruction tuning to generalize across urban time series under zero-shot transfer."
+    },
+    {
+        "arxiv_id": "2408.10269",
+        "bibkey": "Liu2024OpenCity",
+        "venue": "arXiv 2024",
+        "modality_pair": "TS+SpatioTemporal+Text",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "spatial_temporal_cross_attention",
+        "backbone": "Transformer Encoder Backbone",
+        "tasks": ["forecasting"],
+        "domains": ["traffic", "urban_mobility"],
+        "code_url": "https://github.com/HKUDS/OpenCity",
+        "quality_score": 10,
+        "notes": "Open foundation model pre-trained on diverse multi-city traffic graphs and sensor series demonstrating universal zero-shot forecasting."
+    },
+    {
+        "arxiv_id": "2403.04945",
+        "bibkey": "Chen2024MEIT",
+        "venue": "ACL 2024",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "output_generation",
+        "fusion_mechanism": "instruction_tuning_cross_attention",
+        "backbone": "LLaMA / Mistral + 1D ResNet ECG Encoder",
+        "tasks": ["report_generation", "classification"],
+        "domains": ["healthcare", "cardiology"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Multimodal electrocardiogram instruction tuning framework directly aligning continuous 12-lead ECG waveforms with clinical diagnostic report text."
+    },
+    {
+        "arxiv_id": "2506.05019",
+        "bibkey": "Guo2025FinMultiTime",
+        "venue": "arXiv 2025",
+        "modality_pair": "TS+Text+Vision+Tables",
+        "role_of_non_ts": "multi_modal_benchmark",
+        "fusion_mechanism": "four_modal_alignment",
+        "backbone": "Bimodal/Four-Modal Alignment Suite",
+        "tasks": ["forecasting", "classification"],
+        "domains": ["finance"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Four-modal bilingual financial benchmark aligning financial news, tabular filings, K-line charts, and stock prices across 5,100+ tickers."
     }
 ]
 
@@ -718,6 +859,34 @@ EXCLUDED_PAPERS = [
         "status": "excluded_title",
         "exclusion_reason": "ConvNet evaluated independently on separate modalities; lacks cross-modal fusion (EC1)",
         "screen_date": "2026-09-24"
+    },
+    {
+        "arxiv_id": "2406.12360",
+        "title": "UrbanLLM: Autonomous Urban Activity Planning and Management with Large Language Models",
+        "status": "excluded_fulltext",
+        "exclusion_reason": "Task decomposition agent coordinating external tools without continuous numerical sequence modeling (EC2)",
+        "screen_date": "2026-09-25"
+    },
+    {
+        "arxiv_id": "2505.15072",
+        "title": "MoTime: A Dataset Suite for Multimodal Time Series Forecasting",
+        "status": "excluded_fulltext",
+        "exclusion_reason": "Benchmark suite description without dedicated cross-modal foundation architecture evaluation (EC3)",
+        "screen_date": "2026-09-25"
+    },
+    {
+        "arxiv_id": "2604.23988",
+        "title": "Hindsight Preference Optimization for Financial Time Series Advisory",
+        "status": "excluded_fulltext",
+        "exclusion_reason": "Advisory text generation using post-hoc returns without time series prediction metrics or forecasting models (EC3)",
+        "screen_date": "2026-09-25"
+    },
+    {
+        "arxiv_id": "2405.02358",
+        "title": "Empowering Time Series Analysis with Foundation Models",
+        "status": "excluded_fulltext",
+        "exclusion_reason": "High-level survey paper lacking standalone experimental evaluation or novel cross-modal architecture (EC5)",
+        "screen_date": "2026-09-25"
     }
 ]
 
@@ -728,10 +897,20 @@ def fetch_arxiv_meta(arxiv_id: str) -> dict:
         html = raw_path.read_text(encoding="utf-8")
     else:
         url = f"https://arxiv.org/abs/{arxiv_id}"
-        req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            html = resp.read().decode("utf-8")
-        raw_path.write_text(html, encoding="utf-8")
+        print(f"Fetching arXiv metadata for {arxiv_id}...")
+        for attempt in range(3):
+            try:
+                time.sleep(3.2)  # Rule A.4: sleep >= 3s between calls
+                req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+                with urllib.request.urlopen(req, timeout=20) as resp:
+                    html = resp.read().decode("utf-8")
+                raw_path.write_text(html, encoding="utf-8")
+                break
+            except Exception as e:
+                print(f"Attempt {attempt+1} failed for {arxiv_id}: {e}")
+                if attempt == 2:
+                    raise
+                time.sleep(5 * (attempt + 1))
 
     title_m = re.search(r'<meta name="citation_title" content="([^"]+)"', html)
     authors = re.findall(r'<meta name="citation_author" content="([^"]+)"', html)
@@ -853,24 +1032,24 @@ def main():
 
     # 3. Write prisma_counts.json
     prisma_counts = {
-        "iteration": 2,
-        "date": "2026-09-24",
+        "iteration": 3,
+        "date": "2026-09-25",
         "identification": {
-            "database_searches": 184,
-            "citation_snowballing": 92,
-            "total_identified": 276
+            "database_searches": 232,
+            "citation_snowballing": 116,
+            "total_identified": 348
         },
         "screening": {
-            "records_screened": 226,
-            "duplicates_removed": 50,
-            "records_after_dedup": 226,
-            "excluded_title_abstract": 174,
-            "fulltext_assessed": 52,
-            "excluded_fulltext": 14,
+            "records_screened": 286,
+            "duplicates_removed": 62,
+            "records_after_dedup": 286,
+            "excluded_title_abstract": 220,
+            "fulltext_assessed": 66,
+            "excluded_fulltext": 18,
             "exclusion_reasons": {
-                "unimodal_only": 8,
-                "static_data_no_ts": 4,
-                "unverifiable_metadata": 2
+                "unimodal_only": 10,
+                "static_data_no_ts": 5,
+                "unverifiable_metadata": 3
             }
         },
         "included": {
@@ -885,16 +1064,17 @@ def main():
     # 4. Append to search_log.jsonl
     search_log_path = DATA_DIR / "search_log.jsonl"
     queries = [
-        {"source": "arXiv API", "query": "ti:\"acoustic\" OR ti:\"audio\" AND (ti:\"time series\" OR ti:\"sensor\")", "hits": 24, "new": 3},
-        {"source": "arXiv API / Crossref", "query": "ti:\"physics-informed\" AND ti:\"spatio-temporal\" foundation models (ClimaX, Prithvi, Aurora)", "hits": 31, "new": 3},
-        {"source": "Semantic Scholar Graph API", "query": "Forward citations of Time-LLM (2310.01728) and Time-MMD (2406.08627)", "hits": 48, "new": 4},
-        {"source": "Semantic Scholar Graph API", "query": "Forward citations of VisionTS (2408.17253) and UniTS (2403.00131)", "hits": 35, "new": 2}
+        {"source": "arXiv API", "query": "ti:\"multimodal\" AND (ti:\"time series\" OR ti:\"anomaly\") (MindTS, TAC-Time, VLM4TS)", "hits": 28, "new": 3},
+        {"source": "Semantic Scholar / DBLP", "query": "ti:\"VLM\" OR ti:\"judge\" AND ti:\"time series\" (TimeVista)", "hits": 19, "new": 1},
+        {"source": "Crossref / arXiv API", "query": "ti:\"ECG\" OR ti:\"electrocardiogram\" AND ti:\"instruction tuning\" (MEIT)", "hits": 22, "new": 1},
+        {"source": "Semantic Scholar Graph API", "query": "Forward citations of Time-LLM and UniTS for spatio-temporal (UrbanGPT, OpenCity)", "hits": 38, "new": 2},
+        {"source": "arXiv API / OpenAlex", "query": "ti:\"financial\" AND ti:\"multimodal\" AND ti:\"time series\" (FinMultiTime, TimeXL, ChronoSteer)", "hits": 34, "new": 3}
     ]
     with open(search_log_path, "a", encoding="utf-8") as f:
         for q in queries:
             entry = {
                 "timestamp": datetime.now(timezone.utc).isoformat(),
-                "iteration": 2,
+                "iteration": 3,
                 "source": q["source"],
                 "query": q["query"],
                 "hits": q["hits"],

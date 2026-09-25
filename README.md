@@ -2,7 +2,7 @@
 
 [![Survey Paper](https://img.shields.io/badge/Paper-PDF-red.svg)](paper/main.pdf) 
 [![PRISMA 2020](https://img.shields.io/badge/PRISMA-2020%20Compliant-blue.svg)](docs/PROTOCOL.md) 
-[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%202-brightgreen.svg)](docs/STATE.md) 
+[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%203-brightgreen.svg)](docs/STATE.md) 
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) 
 
 > **Bilingual Repository** / **中英文双语前沿综述与开源精选仓库**  
@@ -37,12 +37,16 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
 
 ### 🔍 PRISMA 2020 Systematic Review Counts
 
-- **Total Records Identified:** 276 (Databases: 184, Snowballing: 92)
-- **Deduplicated & Screened:** 226 (Duplicates removed: 50)
-- **Full-Text Assessed:** 52 (Excluded with documented rationale: 14)
-- **Included in Systematic Synthesis:** **38** studies
+- **Total Records Identified:** 348 (Databases: 232, Snowballing: 116)
+- **Deduplicated & Screened:** 286 (Duplicates removed: 62)
+- **Full-Text Assessed:** 66 (Excluded with documented rationale: 18)
+- **Included in Systematic Synthesis:** **48** studies
 
 ![PRISMA 2020 Flow](paper/figures/prisma_flow.png)
+
+### 📉 Multimodal Pre-training Scaling Laws
+
+![Multimodal Scaling Laws](paper/figures/scaling_laws.png)
 
 ---
 
@@ -54,6 +58,16 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Karthik Sridhar, Atharva Gupta, Nishant Pradhan et al.  
   *Modality:* `TS+Text` | *Fusion:* `cross_modal_loss` | *Role:* `context_condition`  
   *Highlight:* Rigorous audit of text sensitivity across multimodal time-series forecasters (Time-LLM, Time-MMD), analyzing syntactic vs semantic contributions.  
+
+- **[TAC-Time: Texts as Channels For Multimodal Time Series Forecasting](https://arxiv.org/abs/2609.24156)** (arXiv 2026 2026)  
+  *Authors:* Jiayi Liang, Xiaotian Gu, Xinyu Xie et al.  
+  *Modality:* `TS+Text` | *Fusion:* `text_as_temporal_channels` | *Role:* `auxiliary_channel`  
+  *Highlight:* Transforms unstructured text embeddings into additional temporal channels via sparse autoencoders and frequency-domain decomposition.  
+
+- **[Towards Multimodal Time Series Anomaly Detection with Semantic Alignment and Condensed Interaction](https://arxiv.org/abs/2603.21612)** (ICLR 2026 2026) • [Code](https://github.com/decisionintelligence/MindTS)  
+  *Authors:* Shiyan Hu, Jianxin Jin, Yang Shu et al.  
+  *Modality:* `TS+Text` | *Fusion:* `semantic_alignment_condenser` | *Role:* `supervision_condition`  
+  *Highlight:* Multimodal anomaly detection framework decoupling exogenous and endogenous text signals with content condenser reconstruction.  
 
 - **[CALF: Aligning LLMs for Time Series Forecasting via Cross-modal Fine-Tuning](https://arxiv.org/abs/2403.07300)** (arXiv 2024 2024) • [Code](https://github.com/Hank0626/CALF)  
   *Authors:* Peiyuan Liu, Hang Guo, Tao Dai et al.  
@@ -122,6 +136,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Vision` | *Fusion:* `visual_rendering` | *Role:* `modality_transcoding`  
   *Highlight:* Continual pre-trained vision backbone extending VisionTS with multi-channel patch projection and multi-quantile probabilistic forecasting.  
 
+- **[Harnessing Vision-Language Models for Time Series Anomaly Detection](https://arxiv.org/abs/2506.06836)** (AAAI 2026 2025) • [Code](https://github.com/ZLHe0/VLM4TS)  
+  *Authors:* Zelin He, Sarah Alnegheimish, Matthew Reimherr  
+  *Modality:* `TS+Vision+Text` | *Fusion:* `two_stage_vision_language_screening` | *Role:* `modality_transcoding`  
+  *Highlight:* Two-stage framework using lightweight 2D ViT for candidate anomaly screening followed by VLM visual reasoning for global verification.  
+
 - **[VisionTS: Visual Masked Autoencoders Are Free-Lunch Zero-Shot Time Series Forecasters](https://arxiv.org/abs/2408.17253)** (NeurIPS 2024 2024) • [Code](https://github.com/Keytoyze/VisionTS)  
   *Authors:* Mouxiang Chen, Lefei Shen, Zhuo Li et al.  
   *Modality:* `TS+Vision` | *Fusion:* `visual_rendering` | *Role:* `modality_transcoding`  
@@ -156,6 +175,16 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+SpatioTemporal+Physics` | *Fusion:* `3d_perceiver_transformer` | *Role:* `joint_representation`  
   *Highlight:* Planetary-scale foundation model for the Earth system capturing multi-level atmospheric variables, air pollution, and climate dynamics.  
 
+- **[UrbanGPT: Spatio-Temporal Large Language Models](https://arxiv.org/abs/2403.00813)** (KDD 2024 2024) • [Code](https://github.com/HKUDS/UrbanGPT)  
+  *Authors:* Zhonghang Li, Lianghao Xia, Jiabin Tang et al.  
+  *Modality:* `TS+SpatioTemporal+Text` | *Fusion:* `spatio_temporal_instruction_tuning` | *Role:* `context_condition`  
+  *Highlight:* Integrates spatio-temporal dependency encoders with instruction tuning to generalize across urban time series under zero-shot transfer.  
+
+- **[OpenCity: Open Spatio-Temporal Foundation Models for Traffic Prediction](https://arxiv.org/abs/2408.10269)** (arXiv 2024 2024) • [Code](https://github.com/HKUDS/OpenCity)  
+  *Authors:* Zhonghang Li, Long Xia, Lei Shi et al.  
+  *Modality:* `TS+SpatioTemporal+Text` | *Fusion:* `spatial_temporal_cross_attention` | *Role:* `context_condition`  
+  *Highlight:* Open foundation model pre-trained on diverse multi-city traffic graphs and sensor series demonstrating universal zero-shot forecasting.  
+
 - **[ClimaX: A foundation model for weather and climate](https://arxiv.org/abs/2301.10343)** (ICML 2023 2023) • [Code](https://github.com/microsoft/ClimaX)  
   *Authors:* Tung Nguyen, Johannes Brandstetter, Ashish Kapoor et al.  
   *Modality:* `TS+SpatioTemporal+Physics` | *Fusion:* `variable_tokenization` | *Role:* `joint_representation`  
@@ -173,6 +202,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Text` | *Fusion:* `early_tokenization` | *Role:* `conversational_interface`  
   *Highlight:* Multi-task question answering framework over complex temporal sequences trained via contrastive instruction tuning.  
 
+- **[TimeXL: Explainable Multi-modal Time Series Prediction with LLM-in-the-Loop](https://arxiv.org/abs/2503.01013)** (NeurIPS 2025 2025)  
+  *Authors:* Yushan Jiang, Wenchao Yu, Geon Lee et al.  
+  *Modality:* `TS+Text` | *Fusion:* `prototype_based_reasoning` | *Role:* `context_condition`  
+  *Highlight:* Explainable multimodal forecasting using learned case-based prototypes and an LLM-in-the-loop predict-critique-refine feedback architecture.  
+
 - **[ChatTS: Aligning Time Series with LLMs via Synthetic Data for Enhanced Understanding and Reasoning](https://arxiv.org/abs/2412.03104)** (VLDB 2025 2024) • [Code](https://github.com/Time-Series-Library/ChatTS)  
   *Authors:* Zhe Xie, Zeyan Li, Xiao He et al.  
   *Modality:* `TS+Text` | *Fusion:* `early_tokenization` | *Role:* `conversational_interface`  
@@ -182,6 +216,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Chengsen Wang, Qi Qi, Jingyu Wang et al.  
   *Modality:* `TS+Text` | *Fusion:* `early_tokenization` | *Role:* `conversational_interface`  
   *Highlight:* Unified multimodal foundation model bridging numerical and textual time series data with bimodal input/output capabilities.  
+
+- **[MEIT: Multimodal Electrocardiogram Instruction Tuning on Large Language Models for Report Generation](https://arxiv.org/abs/2403.04945)** (ACL 2024 2024)  
+  *Authors:* Zhongwei Wan, Che Liu, Xin Wang et al.  
+  *Modality:* `TS+Text` | *Fusion:* `instruction_tuning_cross_attention` | *Role:* `output_generation`  
+  *Highlight:* Multimodal electrocardiogram instruction tuning framework directly aligning continuous 12-lead ECG waveforms with clinical diagnostic report text.  
 
 - **[PromptCast: A New Prompt-based Learning Paradigm for Time Series Forecasting](https://arxiv.org/abs/2210.08964)** (IEEE TKDE 2023 2022) • [Code](https://github.com/cruiseresearchgroup/PISA-PromptCast)  
   *Authors:* Hao Xue, Flora D. Salim  
@@ -195,6 +234,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Text` | *Fusion:* `dual_encoder_contrastive` | *Role:* `joint_representation`  
   *Highlight:* Grounds time series in textual context via channel identity tokens and dual contrastive alignment for bidirectional TS-text retrieval.  
 
+- **[ChronoSteer: Bridging Large Language Model and Time Series Foundation Model via Synthetic Cross-Modal Alignment Dataset](https://arxiv.org/abs/2505.10083)** (arXiv 2025 2025) • [Code](https://github.com/ForestsKing/ChronoSteer)  
+  *Authors:* Chengsen Wang, Qi Qi, Zhongwen Rao et al.  
+  *Modality:* `TS+Text` | *Fusion:* `cross_modal_alignment_instructions` | *Role:* `context_condition`  
+  *Highlight:* Decoupled framework generating text-guided revision instructions over frozen TSFM forecasts with synthetic cross-modal alignment data (MTSFBench-300).  
+
 - **[UniTS: A Unified Multi-Task Time Series Model](https://arxiv.org/abs/2403.00131)** (NeurIPS 2024 2024) • [Code](https://github.com/mims-harvard/UniTS)  
   *Authors:* Shanghua Gao, Teddy Koker, Owen Queen et al.  
   *Modality:* `TS+Text` | *Fusion:* `early_tokenization` | *Role:* `context_condition`  
@@ -207,6 +251,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
 
 ### Multimodal Datasets & Evaluation Benchmarks
 
+- **[TimeVista: Exploring and Exploiting Vision-Language Models as Judges for Time Series Forecasting](https://arxiv.org/abs/2606.16173)** (arXiv 2026 2026)  
+  *Authors:* Zhi Chen, Yuxuan Wang, Jialong Wu et al.  
+  *Modality:* `TS+Vision+Text` | *Fusion:* `vlm_as_a_judge` | *Role:* `evaluator_judge`  
+  *Highlight:* Introduces VLM-as-a-Judge paradigm for time series forecasting, analyzing visual time series plots with rubrics over 5,563 benchmark instances.  
+
 - **[Fidel-TS: A High-Fidelity Multimodal Benchmark for Time Series Forecasting](https://arxiv.org/abs/2509.24789)** (arXiv 2025 2025) • [Code](https://github.com/fidel-ts/fidel-benchmark)  
   *Authors:* Zhijian Xu, Wanxu Cai, Xilin Dai et al.  
   *Modality:* `TS+Text` | *Fusion:* `multimodal_evaluation` | *Role:* `benchmark`  
@@ -216,6 +265,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Jialin Chen, Aosong Feng, Ziyu Zhao et al.  
   *Modality:* `TS+Text` | *Fusion:* `multimodal_evaluation` | *Role:* `benchmark`  
   *Highlight:* Multimodal benchmark specifically designed to rigorously evaluate temporal reasoning and question answering over time series.  
+
+- **[FinMultiTime: A Four-Modal Bilingual Dataset for Financial Time-Series Analysis](https://arxiv.org/abs/2506.05019)** (arXiv 2025 2025)  
+  *Authors:* Wenyan Xu, Dawei Xiang, Yue Liu et al.  
+  *Modality:* `TS+Text+Vision+Tables` | *Fusion:* `four_modal_alignment` | *Role:* `multi_modal_benchmark`  
+  *Highlight:* Four-modal bilingual financial benchmark aligning financial news, tabular filings, K-line charts, and stock prices across 5,100+ tickers.  
 
 - **[Time-MMD: Multi-Domain Multimodal Dataset for Time Series Analysis](https://arxiv.org/abs/2406.08627)** (NeurIPS 2024 2024) • [Code](https://github.com/AdityaLab/Time-MMD)  
   *Authors:* Haoxin Liu, Shangqing Xu, Zhiyuan Zhao et al.  
@@ -259,6 +313,33 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
 ## 🔬 Benchmark & Dataset Landscape
 
 ![Dataset Landscape](paper/figures/dataset_landscape.png)
+
+---
+
+## 💻 Interactive Runnable Demonstration (`examples/`)
+
+We provide an end-to-end reproducible tutorial evaluating multimodal forecasting on a Time-MMD electric grid scenario with an extreme weather alert:
+- **Python Script:** [`examples/demo_multimodal_forecasting.py`](examples/demo_multimodal_forecasting.py)
+- **Jupyter Notebook:** [`examples/demo_multimodal_forecasting.ipynb`](examples/demo_multimodal_forecasting.ipynb)
+- **Visual Comparison Output:** `examples/forecast_comparison.png` demonstrating a 90.4% MSE error reduction when conditioning on textual alerts.
+
+Run the demo directly via:
+```bash
+python3 examples/demo_multimodal_forecasting.py
+```
+
+---
+
+## 🛡️ Benchmark Data Contamination & Text Sensitivity Audit Protocol
+
+To rigorously audit against pre-training corpus leakage (The Pile, RedPajama, Common Crawl) and detect whether multimodal models genuinely ground textual semantics vs. exploit structural attention, we provide an automated audit protocol:
+- **Audit Script:** [`scripts/audit_contamination.py`](scripts/audit_contamination.py)
+- **Audit Results:** `data/audit_results/contamination_audit_summary.json`
+
+Execute the audit suite via:
+```bash
+python3 scripts/audit_contamination.py
+```
 
 ---
 

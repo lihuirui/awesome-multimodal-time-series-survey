@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "last_updated": "2026-09-24",
-    "total_candidates": 61,
-    "included": 38,
+    "last_updated": "2026-09-25",
+    "total_candidates": 75,
+    "included": 48,
     "excluded_title": 23,
-    "excluded_fulltext": 0
+    "excluded_fulltext": 4
   },
   "candidates": [
     {
@@ -1394,6 +1394,362 @@
       "api_verified": true
     },
     {
+      "status": "included",
+      "bibkey": "Wang2025ChronoSteer",
+      "title": "ChronoSteer: Bridging Large Language Model and Time Series Foundation Model via Synthetic Cross-Modal Alignment Dataset",
+      "authors": [
+        "Chengsen Wang",
+        "Qi Qi",
+        "Zhongwen Rao",
+        "Lujia Pan",
+        "Jingyu Wang"
+      ],
+      "year": 2025,
+      "venue": "arXiv 2025",
+      "arxiv_id": "2505.10083",
+      "doi": "10.48550/arXiv.2505.10083",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "cross_modal_alignment_instructions",
+      "backbone": "LLaMA-3 / Mistral + Frozen TSFM",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "energy",
+        "traffic",
+        "weather",
+        "multi_domain"
+      ],
+      "code_url": "https://github.com/ForestsKing/ChronoSteer",
+      "quality_score": 11,
+      "abstract": "Conventional forecasting methods are trained end-to-end on unimodal time series, which limits their ability to exploit textual information and undermines their generalization in data-scarce scenarios. Recently, large language models (LLMs) and time series foundation models (TSFMs) have demonstrated powerful capabilities in complex textual reasoning and zero-shot temporal modeling, respectively. Integrating these strengths to construct a multimodal time series foundation model that jointly leverages temporal and textual information for zero-shot future inference has emerged as a promising research direction. However, the scarcity of large-scale, high-quality multimodal datasets remains a fundamental obstacle. To address this challenge, we propose ChronoSteer, a decoupled agentic framework that learns cross-modal alignment from synthetic paired supervision. Specifically, a pretrained LLM first converts textual events into revision instructions that steer the initial unimodal prediction produced by a frozen TSFM. These revision instructions form an intermediate instruction space that bridges the semantic gap between text and time series while fully leveraging pretrained knowledge. Technically, the instructions are discretized into a compact codebook of instruction anchors, effectively mitigating semantic divergence while reducing the cost of dataset construction. Finally, we adopt a two-stage training strategy to recover the fine-grained magnitude information lost during discretization. Furthermore, we release a leakage-controlled multimodal benchmark constructed with temporal separation and textual context available before the prediction window. When paired with an LLM and trained on synthetic cross-modal alignment data, ChronoSteer achieves a 25.8% improvement in zero-shot prediction accuracy over its unimodal backbone, and outperforms prior state-of-the-art unimodal and multimodal ...",
+      "notes": "Decoupled framework generating text-guided revision instructions over frozen TSFM forecasts with synthetic cross-modal alignment data (MTSFBench-300).",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Jiang2025TimeXL",
+      "title": "TimeXL: Explainable Multi-modal Time Series Prediction with LLM-in-the-Loop",
+      "authors": [
+        "Yushan Jiang",
+        "Wenchao Yu",
+        "Geon Lee",
+        "Dongjin Song",
+        "Kijung Shin",
+        "Wei Cheng",
+        "Yanchi Liu",
+        "Haifeng Chen"
+      ],
+      "year": 2025,
+      "venue": "NeurIPS 2025",
+      "arxiv_id": "2503.01013",
+      "doi": "10.48550/arXiv.2503.01013",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "prototype_based_reasoning",
+      "backbone": "Multi-modal Prototype Encoder + LLM",
+      "tasks": [
+        "forecasting",
+        "interpretability"
+      ],
+      "domains": [
+        "finance",
+        "general_ts"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Time series analysis provides essential insights for real-world system dynamics and informs downstream decision-making, yet most existing methods often overlook the rich contextual signals present in auxiliary modalities. To bridge this gap, we introduce TimeXL, a multi-modal prediction framework that integrates a prototype-based time series encoder with three collaborating Large Language Models (LLMs) to deliver more accurate predictions and interpretable explanations. First, a multi-modal prototype-based encoder processes both time series and textual inputs to generate preliminary forecasts alongside case-based rationales. These outputs then feed into a prediction LLM, which refines the forecasts by reasoning over the encoder&#39;s predictions and explanations. Next, a reflection LLM compares the predicted values against the ground truth, identifying textual inconsistencies or noise. Guided by this feedback, a refinement LLM iteratively enhances text quality and triggers encoder retraining. This closed-loop workflow-prediction, critique (reflect), and refinement-continuously boosts the framework&#39;s performance and interpretability. Empirical evaluations on four real-world datasets demonstrate that TimeXL achieves up to 8.9% improvement in AUC and produces human-centric, multi-modal explanations, highlighting the power of LLM-driven reasoning for time series prediction.",
+      "notes": "Explainable multimodal forecasting using learned case-based prototypes and an LLM-in-the-loop predict-critique-refine feedback architecture.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Liang2026TACTime",
+      "title": "TAC-Time: Texts as Channels For Multimodal Time Series Forecasting",
+      "authors": [
+        "Jiayi Liang",
+        "Xiaotian Gu",
+        "Xinyu Xie",
+        "Yuanbin Wu",
+        "Xiaoling Wang"
+      ],
+      "year": 2026,
+      "venue": "arXiv 2026",
+      "arxiv_id": "2609.24156",
+      "doi": "10.48550/arXiv.2609.24156",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "auxiliary_channel",
+      "fusion_mechanism": "text_as_temporal_channels",
+      "backbone": "Sparse Autoencoder (SAE) + FFT Backbone",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "multi_domain",
+        "finance",
+        "weather"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Most existing time series forecasting methods rely solely on numerical observations, overlooking rich contextual information from auxiliary texts. Recent multimodal approaches attempt to incorporate textual signals, but they often treat text as static features or use large language models as forecasting backbones, limiting their ability to capture temporal dynamics and increasing computational cost. To address these challenges, we propose TAC-Time, a unified framework that transforms textual information into additional temporal channels. By modeling text features jointly with numerical sequences in a shared temporal backbone, TAC-Time preserves temporal continuity and periodic structures while remaining efficient and scalable. This formulation also enables systematic interpretability analyses. We show strong cross-modal dependencies through attention and frequency-domain analyses, and identify predictive textual signals whose correlation-aware alignment yields partial forecasting improvements. Extensive experiments on real-world multimodal benchmarks demonstrate that TAC-Time outperforms prior methods.",
+      "notes": "Transforms unstructured text embeddings into additional temporal channels via sparse autoencoders and frequency-domain decomposition.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Zhang2026MindTS",
+      "title": "Towards Multimodal Time Series Anomaly Detection with Semantic Alignment and Condensed Interaction",
+      "authors": [
+        "Shiyan Hu",
+        "Jianxin Jin",
+        "Yang Shu",
+        "Peng Chen",
+        "Bin Yang",
+        "Chenjuan Guo"
+      ],
+      "year": 2026,
+      "venue": "ICLR 2026",
+      "arxiv_id": "2603.21612",
+      "doi": "10.48550/arXiv.2603.21612",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "supervision_condition",
+      "fusion_mechanism": "semantic_alignment_condenser",
+      "backbone": "Multi-modal Transformer + Content Condenser",
+      "tasks": [
+        "anomaly_detection"
+      ],
+      "domains": [
+        "industrial",
+        "server_metrics",
+        "multi_domain"
+      ],
+      "code_url": "https://github.com/decisionintelligence/MindTS",
+      "quality_score": 11,
+      "abstract": "Time series anomaly detection plays a critical role in many dynamic systems. Despite its importance, previous approaches have primarily relied on unimodal numerical data, overlooking the importance of complementary information from other modalities. In this paper, we propose a novel multimodal time series anomaly detection model (MindTS) that focuses on addressing two key challenges: (1) how to achieve semantically consistent alignment across heterogeneous multimodal data, and (2) how to filter out redundant modality information to enhance cross-modal interaction effectively. To address the first challenge, we propose Fine-grained Time-text Semantic Alignment. It integrates exogenous and endogenous text information through cross-view text fusion and a multimodal alignment mechanism, achieving semantically consistent alignment between time and text modalities. For the second challenge, we introduce Content Condenser Reconstruction, which filters redundant information within the aligned text modality and performs cross-modal reconstruction to enable interaction. Extensive experiments on six real-world multimodal datasets demonstrate that the proposed MindTS achieves competitive or superior results compared to existing methods. The code is available at: https://github.com/decisionintelligence/MindTS.",
+      "notes": "Multimodal anomaly detection framework decoupling exogenous and endogenous text signals with content condenser reconstruction.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Chen2026TimeVista",
+      "title": "TimeVista: Exploring and Exploiting Vision-Language Models as Judges for Time Series Forecasting",
+      "authors": [
+        "Zhi Chen",
+        "Yuxuan Wang",
+        "Jialong Wu",
+        "Yong Liu",
+        "Haoran Zhang",
+        "Xingjian Su",
+        "Jianmin Wang",
+        "Mingsheng Long"
+      ],
+      "year": 2026,
+      "venue": "arXiv 2026",
+      "arxiv_id": "2606.16173",
+      "doi": "10.48550/arXiv.2606.16173",
+      "modality_pair": "TS+Vision+Text",
+      "role_of_non_ts": "evaluator_judge",
+      "fusion_mechanism": "vlm_as_a_judge",
+      "backbone": "GPT-4o / Claude-3.5-Sonnet / Qwen2-VL",
+      "tasks": [
+        "evaluation_benchmark",
+        "preference_judging"
+      ],
+      "domains": [
+        "multi_domain",
+        "general_ts"
+      ],
+      "code_url": null,
+      "quality_score": 12,
+      "abstract": "High-quality time series forecasting is pivotal for real-world decision-making. However, traditional point-wise metrics often fail to reveal complex temporal patterns and align poorly with human intuitive preferences. While the &#39;&#39;LLM-as-a-Judge&#39;&#39; paradigm has revolutionized text evaluation by providing flexible, human-aligned judgment, its application to time series remains largely unexplored. In this paper, we leverage Vision-Language Models (VLMs) as judges for time series forecasting, harnessing their ability to comprehend time series plots grounded in textual information. Specifically, we propose a novel framework integrating micro- and macro-level judgments informed by contextual information to evaluate time series forecasting. To this end, we introduce TimeVista, a comprehensive VLM-as-a-Judge benchmark comprising 5563 time series samples paired with detailed evaluation rubrics. Extensive meta-evaluations demonstrate that VLMs are highly reliable judges, achieving significantly higher consistency with human preferences than conventional metrics. Building upon our benchmark, we comprehensively assess recent Time Series Foundation Models (TSFMs) under the VLM-as-a-Judge paradigm. Our results demonstrate that VLMs serve as robust and interpretable judges, providing a comprehensive, human-aligned standard for evaluating time series models.",
+      "notes": "Introduces VLM-as-a-Judge paradigm for time series forecasting, analyzing visual time series plots with rubrics over 5,563 benchmark instances.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Li2026VLM4TS",
+      "title": "Harnessing Vision-Language Models for Time Series Anomaly Detection",
+      "authors": [
+        "Zelin He",
+        "Sarah Alnegheimish",
+        "Matthew Reimherr"
+      ],
+      "year": 2025,
+      "venue": "AAAI 2026",
+      "arxiv_id": "2506.06836",
+      "doi": "10.48550/arXiv.2506.06836",
+      "modality_pair": "TS+Vision+Text",
+      "role_of_non_ts": "modality_transcoding",
+      "fusion_mechanism": "two_stage_vision_language_screening",
+      "backbone": "ViT + Vision-Language Model",
+      "tasks": [
+        "anomaly_detection"
+      ],
+      "domains": [
+        "general_ts",
+        "industrial"
+      ],
+      "code_url": "https://github.com/ZLHe0/VLM4TS",
+      "quality_score": 11,
+      "abstract": "Time-series anomaly detection (TSAD) has played a vital role in a variety of fields, including healthcare, finance, and sensor-based condition monitoring. Prior methods, which mainly focus on training domain-specific models on numerical data, lack the visual-temporal understanding capacity that human experts have to identify contextual anomalies. To fill this gap, we explore a solution based on vision language models (VLMs). Recent studies have shown the ability of VLMs for visual understanding tasks, yet their direct application to time series has fallen short on both accuracy and efficiency. To harness the power of VLMs for TSAD, we propose a two-stage solution, with (1) ViT4TS, a vision-screening stage built on a relatively lightweight pre-trained vision encoder, which leverages 2D time series representations to accurately localize candidate anomalies; (2) VLM4TS, a VLM-based stage that integrates global temporal context and VLM&#39;s visual understanding capacity to refine the detection upon the candidates provided by ViT4TS. We show that without any time-series training, VLM4TS outperforms time-series pre-trained and from-scratch baselines in most cases, yielding a 24.6% improvement in F1-max score over the best baseline. Moreover, VLM4TS also consistently outperforms existing language model-based TSAD methods and is on average 36x more efficient in token usage.",
+      "notes": "Two-stage framework using lightweight 2D ViT for candidate anomaly screening followed by VLM visual reasoning for global verification.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Li2024UrbanGPT",
+      "title": "UrbanGPT: Spatio-Temporal Large Language Models",
+      "authors": [
+        "Zhonghang Li",
+        "Lianghao Xia",
+        "Jiabin Tang",
+        "Yong Xu",
+        "Lei Shi",
+        "Long Xia",
+        "Dawei Yin",
+        "Chao Huang"
+      ],
+      "year": 2024,
+      "venue": "KDD 2024",
+      "arxiv_id": "2403.00813",
+      "doi": "10.48550/arXiv.2403.00813",
+      "modality_pair": "TS+SpatioTemporal+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "spatio_temporal_instruction_tuning",
+      "backbone": "LLaMA-2 / Spatio-Temporal Dependency Encoder",
+      "tasks": [
+        "forecasting",
+        "spatio_temporal_prediction"
+      ],
+      "domains": [
+        "traffic",
+        "urban_mobility",
+        "smart_cities"
+      ],
+      "code_url": "https://github.com/HKUDS/UrbanGPT",
+      "quality_score": 11,
+      "abstract": "Spatio-temporal prediction aims to forecast and gain insights into the ever-changing dynamics of urban environments across both time and space. Its purpose is to anticipate future patterns, trends, and events in diverse facets of urban life, including transportation, population movement, and crime rates. Although numerous efforts have been dedicated to developing neural network techniques for accurate predictions on spatio-temporal data, it is important to note that many of these methods heavily depend on having sufficient labeled data to generate precise spatio-temporal representations. Unfortunately, the issue of data scarcity is pervasive in practical urban sensing scenarios. Consequently, it becomes necessary to build a spatio-temporal model with strong generalization capabilities across diverse spatio-temporal learning scenarios. Taking inspiration from the remarkable achievements of large language models (LLMs), our objective is to create a spatio-temporal LLM that can exhibit exceptional generalization capabilities across a wide range of downstream urban tasks. To achieve this objective, we present the UrbanGPT, which seamlessly integrates a spatio-temporal dependency encoder with the instruction-tuning paradigm. This integration enables LLMs to comprehend the complex inter-dependencies across time and space, facilitating more comprehensive and accurate predictions under data scarcity. To validate the effectiveness of our approach, we conduct extensive experiments on various public datasets, covering different spatio-temporal prediction tasks. The results consistently demonstrate that our UrbanGPT, with its carefully designed architecture, consistently outperforms state-of-the-art baselines. These findings highlight the potential of building large language models for spatio-temporal learning, particularly in zero-shot scenarios where labeled data is scarce.",
+      "notes": "Integrates spatio-temporal dependency encoders with instruction tuning to generalize across urban time series under zero-shot transfer.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Liu2024OpenCity",
+      "title": "OpenCity: Open Spatio-Temporal Foundation Models for Traffic Prediction",
+      "authors": [
+        "Zhonghang Li",
+        "Long Xia",
+        "Lei Shi",
+        "Yong Xu",
+        "Dawei Yin",
+        "Chao Huang"
+      ],
+      "year": 2024,
+      "venue": "arXiv 2024",
+      "arxiv_id": "2408.10269",
+      "doi": "10.1145/3773912",
+      "modality_pair": "TS+SpatioTemporal+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "spatial_temporal_cross_attention",
+      "backbone": "Transformer Encoder Backbone",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "traffic",
+        "urban_mobility"
+      ],
+      "code_url": "https://github.com/HKUDS/OpenCity",
+      "quality_score": 10,
+      "abstract": "Accurate traffic forecasting is crucial for effective urban planning and transportation management, enabling efficient resource allocation and enhanced travel experiences. However, existing models often face limitations in generalization, struggling with zero-shot prediction on unseen regions and cities, as well as diminished long-term accuracy. This is primarily due to the inherent challenges in handling the spatial and temporal heterogeneity of traffic data, coupled with the significant distribution shift across time and space. In this work, we aim to unlock new possibilities for building versatile, resilient and adaptive spatio-temporal foundation models for traffic prediction. To achieve this goal, we introduce a novel foundation model, named OpenCity, that can effectively capture and normalize the underlying spatio-temporal patterns from diverse data characteristics, facilitating zero-shot generalization across diverse urban environments. OpenCity integrates the Transformer architecture with graph neural networks to model the complex spatio-temporal dependencies in traffic data. By pre-training OpenCity on large-scale, heterogeneous traffic datasets, we enable the model to learn rich, generalizable representations that can be seamlessly applied to a wide range of traffic forecasting scenarios. Experimental results demonstrate that OpenCity exhibits exceptional zero-shot predictive performance. Moreover, OpenCity showcases promising scaling laws, suggesting the potential for developing a truly one-for-all traffic prediction solution that can adapt to new urban contexts with minimal overhead. We made our proposed OpenCity model open-source and it is available at the following link: https://github.com/HKUDS/OpenCity.",
+      "notes": "Open foundation model pre-trained on diverse multi-city traffic graphs and sensor series demonstrating universal zero-shot forecasting.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Chen2024MEIT",
+      "title": "MEIT: Multimodal Electrocardiogram Instruction Tuning on Large Language Models for Report Generation",
+      "authors": [
+        "Zhongwei Wan",
+        "Che Liu",
+        "Xin Wang",
+        "Chaofan Tao",
+        "Hui Shen",
+        "Jing Xiong",
+        "Rossella Arcucci",
+        "Huaxiu Yao",
+        "Mi Zhang"
+      ],
+      "year": 2024,
+      "venue": "ACL 2024",
+      "arxiv_id": "2403.04945",
+      "doi": "10.48550/arXiv.2403.04945",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "output_generation",
+      "fusion_mechanism": "instruction_tuning_cross_attention",
+      "backbone": "LLaMA / Mistral + 1D ResNet ECG Encoder",
+      "tasks": [
+        "report_generation",
+        "classification"
+      ],
+      "domains": [
+        "healthcare",
+        "cardiology"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Electrocardiogram (ECG) is the primary non-invasive diagnostic tool for monitoring cardiac conditions and is crucial in assisting clinicians. Recent studies have concentrated on classifying cardiac conditions using ECG data but have overlooked ECG report generation, which is time-consuming and requires clinical expertise. To automate ECG report generation and ensure its versatility, we propose the Multimodal ECG Instruction Tuning (MEIT) framework, the first attempt to tackle ECG report generation with LLMs and multimodal instructions. To facilitate future research, we establish a benchmark to evaluate MEIT with various LLMs backbones across two large-scale ECG datasets. Our approach uniquely aligns the representations of the ECG signal and the report, and we conduct extensive experiments to benchmark MEIT with nine open-source LLMs using more than 800,000 ECG reports. MEIT&#39;s results underscore the superior performance of instruction-tuned LLMs, showcasing their proficiency in quality report generation, zero-shot capabilities, resilience to signal perturbation, and alignment with human expert evaluation. These findings emphasize the efficacy of MEIT and its potential for real-world clinical application.",
+      "notes": "Multimodal electrocardiogram instruction tuning framework directly aligning continuous 12-lead ECG waveforms with clinical diagnostic report text.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Guo2025FinMultiTime",
+      "title": "FinMultiTime: A Four-Modal Bilingual Dataset for Financial Time-Series Analysis",
+      "authors": [
+        "Wenyan Xu",
+        "Dawei Xiang",
+        "Yue Liu",
+        "Xiyu Wang",
+        "Yanxiang Ma",
+        "Liang Zhang",
+        "Shu Hu",
+        "Chang Xu",
+        "Jiaheng Zhang"
+      ],
+      "year": 2025,
+      "venue": "arXiv 2025",
+      "arxiv_id": "2506.05019",
+      "doi": "10.48550/arXiv.2506.05019",
+      "modality_pair": "TS+Text+Vision+Tables",
+      "role_of_non_ts": "multi_modal_benchmark",
+      "fusion_mechanism": "four_modal_alignment",
+      "backbone": "Bimodal/Four-Modal Alignment Suite",
+      "tasks": [
+        "forecasting",
+        "classification"
+      ],
+      "domains": [
+        "finance"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Pure time series forecasting tasks typically focus exclusively on numerical features; however, real-world financial decision-making demands the comparison and analysis of heterogeneous sources of information. Recent advances in deep learning and large scale language models (LLMs) have made significant strides in capturing sentiment and other qualitative signals, thereby enhancing the accuracy of financial time series predictions. Despite these advances, most existing datasets consist solely of price series and news text, are confined to a single market, and remain limited in scale. In this paper, we introduce FinMultiTime, the first large scale, multimodal financial time series dataset. FinMultiTime temporally aligns four distinct modalities financial news, structured financial tables, K-line technical charts, and stock price time series across both the S&amp;P 500 and HS 300 universes. Covering 5,105 stocks from 2009 to 2025 in the United States and China, the dataset totals 112.6 GB and provides minute-level, daily, and quarterly resolutions, thus capturing short, medium, and long term market signals with high fidelity. Our experiments demonstrate that (1) scale and data quality markedly boost prediction accuracy; (2) multimodal fusion yields moderate gains in Transformer models; and (3) a fully reproducible pipeline enables seamless dataset updates.",
+      "notes": "Four-modal bilingual financial benchmark aligning financial news, tabular filings, K-line charts, and stock prices across 5,100+ tickers.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
       "status": "excluded_title",
       "bibkey": null,
       "title": "2-categorical approach to unifying constructions of precoverings and its applications",
@@ -1897,6 +2253,94 @@
       "abstract": "",
       "exclusion_reason": "ConvNet evaluated independently on separate modalities; lacks cross-modal fusion (EC1)",
       "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "excluded_fulltext",
+      "bibkey": null,
+      "title": "UrbanLLM: Autonomous Urban Activity Planning and Management with Large Language Models",
+      "authors": [],
+      "year": 2026,
+      "venue": "arXiv",
+      "arxiv_id": "2406.12360",
+      "doi": "10.48550/arXiv.2406.12360",
+      "modality_pair": null,
+      "role_of_non_ts": null,
+      "fusion_mechanism": null,
+      "backbone": null,
+      "tasks": [],
+      "domains": [],
+      "code_url": null,
+      "quality_score": 0,
+      "abstract": "",
+      "exclusion_reason": "Task decomposition agent coordinating external tools without continuous numerical sequence modeling (EC2)",
+      "screen_date": "2026-09-25",
+      "api_verified": true
+    },
+    {
+      "status": "excluded_fulltext",
+      "bibkey": null,
+      "title": "MoTime: A Dataset Suite for Multimodal Time Series Forecasting",
+      "authors": [],
+      "year": 2026,
+      "venue": "arXiv",
+      "arxiv_id": "2505.15072",
+      "doi": "10.48550/arXiv.2505.15072",
+      "modality_pair": null,
+      "role_of_non_ts": null,
+      "fusion_mechanism": null,
+      "backbone": null,
+      "tasks": [],
+      "domains": [],
+      "code_url": null,
+      "quality_score": 0,
+      "abstract": "",
+      "exclusion_reason": "Benchmark suite description without dedicated cross-modal foundation architecture evaluation (EC3)",
+      "screen_date": "2026-09-25",
+      "api_verified": true
+    },
+    {
+      "status": "excluded_fulltext",
+      "bibkey": null,
+      "title": "Hindsight Preference Optimization for Financial Time Series Advisory",
+      "authors": [],
+      "year": 2026,
+      "venue": "arXiv",
+      "arxiv_id": "2604.23988",
+      "doi": "10.48550/arXiv.2604.23988",
+      "modality_pair": null,
+      "role_of_non_ts": null,
+      "fusion_mechanism": null,
+      "backbone": null,
+      "tasks": [],
+      "domains": [],
+      "code_url": null,
+      "quality_score": 0,
+      "abstract": "",
+      "exclusion_reason": "Advisory text generation using post-hoc returns without time series prediction metrics or forecasting models (EC3)",
+      "screen_date": "2026-09-25",
+      "api_verified": true
+    },
+    {
+      "status": "excluded_fulltext",
+      "bibkey": null,
+      "title": "Empowering Time Series Analysis with Foundation Models",
+      "authors": [],
+      "year": 2026,
+      "venue": "arXiv",
+      "arxiv_id": "2405.02358",
+      "doi": "10.48550/arXiv.2405.02358",
+      "modality_pair": null,
+      "role_of_non_ts": null,
+      "fusion_mechanism": null,
+      "backbone": null,
+      "tasks": [],
+      "domains": [],
+      "code_url": null,
+      "quality_score": 0,
+      "abstract": "",
+      "exclusion_reason": "High-level survey paper lacking standalone experimental evaluation or novel cross-modal architecture (EC5)",
+      "screen_date": "2026-09-25",
       "api_verified": true
     }
   ]

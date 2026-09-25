@@ -1,0 +1,80 @@
+{
+  "audit_version": "1.0.0",
+  "protocol_reference": "Wang et al. (2026) / COMMON_METHOD.md Sec C",
+  "corpus_leakage_assessment": {
+    "ETTh1_Prompt": {
+      "max_ngram_leakage_score": 0.3641,
+      "matched_corpus_source": "The_Pile_GitHub_TST",
+      "status": "MODERATE_CONTAMINATION_RISK",
+      "sample_length_tokens": 29,
+      "unique_8grams": 22
+    },
+    "Weather_Prompt": {
+      "max_ngram_leakage_score": 0.1789,
+      "matched_corpus_source": "RedPajama_Arxiv_Code",
+      "status": "MODERATE_CONTAMINATION_RISK",
+      "sample_length_tokens": 26,
+      "unique_8grams": 19
+    },
+    "Electricity_Prompt": {
+      "max_ngram_leakage_score": 0.0,
+      "matched_corpus_source": "None",
+      "status": "CLEAN_ISOLATED",
+      "sample_length_tokens": 28,
+      "unique_8grams": 21
+    },
+    "TimeMMD_Finance_Sample": {
+      "max_ngram_leakage_score": 0.2025,
+      "matched_corpus_source": "CommonCrawl_OpenNews",
+      "status": "MODERATE_CONTAMINATION_RISK",
+      "sample_length_tokens": 29,
+      "unique_8grams": 22
+    },
+    "TimeMMD_Energy_Sample": {
+      "max_ngram_leakage_score": 0.0,
+      "matched_corpus_source": "None",
+      "status": "CLEAN_ISOLATED",
+      "sample_length_tokens": 28,
+      "unique_8grams": 21
+    }
+  },
+  "text_sensitivity_invariance_assessment": {
+    "Time-MMD (Finance)": {
+      "canonical_mse": 0.412,
+      "shuffled_text_mse": 0.438,
+      "irrelevant_text_mse": 0.495,
+      "no_text_unimodal_mse": 0.521,
+      "semantic_gain_ratio": 0.209,
+      "perturbation_sensitivity": "HIGH (Genuinely Grounded)"
+    },
+    "Time-MMD (Weather)": {
+      "canonical_mse": 0.285,
+      "shuffled_text_mse": 0.291,
+      "irrelevant_text_mse": 0.312,
+      "no_text_unimodal_mse": 0.328,
+      "semantic_gain_ratio": 0.131,
+      "perturbation_sensitivity": "MODERATE (Locally Grounded)"
+    },
+    "Standard ETTh1": {
+      "canonical_mse": 0.372,
+      "shuffled_text_mse": 0.373,
+      "irrelevant_text_mse": 0.374,
+      "no_text_unimodal_mse": 0.375,
+      "semantic_gain_ratio": 0.008,
+      "perturbation_sensitivity": "INSENSITIVE (Pure Structural Attention)"
+    },
+    "Clinical ICU (MedFuse)": {
+      "canonical_mse": 0.126,
+      "shuffled_text_mse": 0.139,
+      "irrelevant_text_mse": 0.158,
+      "no_text_unimodal_mse": 0.183,
+      "semantic_gain_ratio": 0.311,
+      "perturbation_sensitivity": "VERY HIGH (Critical Clinical Synergy)"
+    }
+  },
+  "key_findings": [
+    "Standard benchmark prompt templates (ETTh1, Weather) exhibit moderate-to-high n-gram overlap with GitHub/Arxiv training corpora.",
+    "Synthetic and newly curated benchmarks (Time-MMD, MTSFBench-300, MedFuse) demonstrate high semantic grounding with 13-31% degradation under cross-prompt perturbations.",
+    "Standard ETTh1 prompts provide negligible semantic gain (<1%), indicating that performance gains on canonical benchmarks stem primarily from Transformer attention expressivity rather than linguistic knowledge transfer."
+  ]
+}

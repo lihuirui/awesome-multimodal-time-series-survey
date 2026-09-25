@@ -1,8 +1,8 @@
 # Template files (per COMMON_METHOD.md)
 template/
 
-# Raw API cache (can be large)
-data/raw/
+# Raw API cache (tracked to preserve verification artifacts)
+# data/raw/
 
 # Python cache
 __pycache__/
