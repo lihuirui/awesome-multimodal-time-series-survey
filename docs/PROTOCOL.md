@@ -1,9 +1,9 @@
 # Systematic Review Protocol: Multimodal Time Series Models (PRISMA 2020)
 
-**Protocol Version:** 1.2.0  
+**Protocol Version:** 1.3.0  
 **Initial Date:** 2026-09-24  
-**Last Updated:** 2026-09-25  
-**Scope Time Window:** 2021-01-01 to 2026-09-25 (continuous updating)  
+**Last Updated:** 2026-09-26  
+**Scope Time Window:** 2021-01-01 to 2026-09-26 (continuous updating)  
 **Lead Reviewer:** Antigravity Autonomous Research Agent  
 
 ---
@@ -11,11 +11,11 @@
 ## 1. Research Questions (RQs)
 
 - **RQ1 (Modality Spectrum):** Which data modalities (natural language text, visual line charts/spectrograms/satellite imagery, audio waveforms, knowledge graphs, tabular EHR/metadata) are jointly modeled with time series, and what domain-specific characteristics dictate their combination?
-- **RQ2 (Fusion & Representation Architectures):** How are temporal dynamics and non-temporal modalities mathematically fused and aligned (e.g., input-level patch-token reprogramming, cross-attention projection layers, dual-tower contrastive embedding, visual rendering into vision-language models, or agentic tool invocation)?
-- **RQ3 (Role of Non-TS Modalities):** What functional role does the complementary modality play relative to the time series (auxiliary conditioning context, supervision target, conversational/reasoning interface, or mutual metric-space anchor)?
-- **RQ4 (Pretraining Paradigms & Objectives):** What objective functions and pretraining corpora support multimodal time-series models (e.g., cross-modal contrastive InfoNCE, masked cross-modal reconstruction, autoregressive next-token prediction, instruction tuning)?
+- **RQ2 (Fusion & Representation Architectures):** How are temporal dynamics and non-temporal modalities mathematically fused and aligned (e.g., input-level patch-token reprogramming, cross-attention projection layers, dual-tower contrastive embedding, visual rendering into vision-language models, continuous-time Neural CDE / state-space models, or agentic tool invocation)?
+- **RQ3 (Role of Non-TS Modalities):** What functional role does the complementary modality play relative to the time series (auxiliary conditioning context, supervision target, conversational/reasoning interface, uncertainty calibration anchor, or mutual metric-space anchor)?
+- **RQ4 (Pretraining Paradigms & Objectives):** What objective functions and pretraining corpora support multimodal time-series models (e.g., cross-modal contrastive InfoNCE, masked cross-modal reconstruction, autoregressive next-token prediction, split conformal prediction, instruction tuning)?
 - **RQ5 (Downstream Tasks & Benchmark Landscapes):** Which predictive and analytical tasks benefit from multimodal formulation (forecasting, classification, anomaly detection, time-series QA, captioning/report generation), and what public datasets and standardized benchmarks govern rigorous empirical evaluation?
-- **RQ6 (Limitations, Trust & Open Challenges):** What critical failure modes, modality gaps, computational bottlenecks, data contamination issues, and trust/interpretability challenges currently limit deployment, and what are the highest-leverage future directions?
+- **RQ6 (Limitations, Trust & Open Challenges):** What critical failure modes, modality gaps, computational bottlenecks, data contamination issues, adversarial prompt fragility, and trust/interpretability challenges currently limit deployment, and what are the highest-leverage future directions?
 
 ---
 
@@ -42,6 +42,9 @@ Searches are systematically conducted across:
 
 ### String 4: Advanced Alignment, Steering & Spatio-Temporal Multimodal Systems (Iteration 3)
 `("ChronoSteer" OR "TimeXL" OR "TAC-Time" OR "MindTS" OR "TimeVista" OR "VLM4TS" OR "UrbanGPT" OR "OpenCity" OR "MEIT" OR "FinMultiTime" OR "MTSFBench")`
+
+### String 5: Conformal UQ, Continuous-Time SSM & Red-Teaming Defense (Iteration 5)
+`("conformal prediction" OR "conformalized" OR "continuous-time" OR "neural CDE" OR "state-space model" OR "Mamba" OR "red-teaming" OR "contamination audit") AND ("time series" OR "temporal forecasting" OR "foundation model")`
 
 ---
 
@@ -132,4 +135,15 @@ To evaluate the empirical validity of reported multimodal performance gains, a s
   - Added Boolean Search String 4 covering advanced alignment, steering, and spatio-temporal systems (`ChronoSteer`, `TimeXL`, `TAC-Time`, `MindTS`, `TimeVista`, `VLM4TS`, `UrbanGPT`, `OpenCity`, `MEIT`, `FinMultiTime`, `MTSFBench`).
   - Added Section 8 formalizing the Data Contamination & Text Sensitivity Audit Protocol.
   - Added extraction fields for parameter scale, pretraining tokens, and empirical scaling law verification.
+- **2026-09-26 (v1.2.1):** Iteration 4 expansion:
+  - Conducted PEFT vs Full Pre-training Pareto analysis under 24GB consumer GPU constraints (LoRA, Adapters, Soft Prompts, Reprogramming).
+  - Formulated cross-modal temporal retrieval benchmark (TRACE-Bench, symmetric InfoNCE loss).
+  - Implemented interactive multimodal time series agent sandbox (`examples/demo_multimodal_agent.py`, 4 tool chains).
+  - Expanded verified corpus from 48 to 56 included studies with exact PRISMA arithmetic closure.
+- **2026-09-26 (v1.3.0):** Iteration 5 expansion:
+  - Extended time window to 2026-09-26.
+  - Added Search String 5 covering Conformal Prediction UQ, Continuous-Time State Space Models (Mamba / Neural CDE), and Dynamic Red-Teaming Contamination Defense.
+  - Formulated split conformal prediction framework with finite-sample marginal coverage guarantees ($\ge 1-\alpha$).
+  - Developed automated dynamic red-teaming harness (`scripts/redteam_harness.py`) probing 5 adversarial stress tests (Semantic Inversion, Temporal Causality Reversal, Spurious Entity Injection, Numerical Jitter, Asynchronous Lag) and computing Counterfactual Resilience Score (CRS) and Spurious Reliance Ratio (SRR).
+  - Expanded verified corpus from 56 to 63 milestone papers (2021--2026) with 100% API verification cached in `data/raw/` and strict PRISMA arithmetic closure ($450 - 82 = 368$; $368 - 282 = 86$; $86 - 23 = 63 = 63$).
 

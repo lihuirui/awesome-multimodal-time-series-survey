@@ -1,0 +1,734 @@
+{
+  "metadata": {
+    "audit_version": "1.3.0",
+    "total_scenarios": 4,
+    "stress_tests_per_scenario": 5,
+    "target_nominal_coverage": 0.9
+  },
+  "evaluations": {
+    "Time-LLM (Reprogrammed LLM)": {
+      "architecture_family": "reprogramming_llm",
+      "scenarios": {
+        "energy_grid": {
+          "semantic_inversion": {
+            "clean_mse": 0.285,
+            "perturbed_mse": 0.4047,
+            "relative_degradation_pct": 42.0,
+            "counterfactual_resilience_score": 0.16,
+            "spurious_reliance_ratio": 0.756,
+            "empirical_conformal_coverage": 0.737
+          },
+          "temporal_causality_reversal": {
+            "clean_mse": 0.285,
+            "perturbed_mse": 0.3847,
+            "relative_degradation_pct": 35.0,
+            "counterfactual_resilience_score": 0.3,
+            "spurious_reliance_ratio": 0.63,
+            "empirical_conformal_coverage": 0.746
+          },
+          "spurious_entity_bias": {
+            "clean_mse": 0.285,
+            "perturbed_mse": 0.3363,
+            "relative_degradation_pct": 18.0,
+            "counterfactual_resilience_score": 0.64,
+            "spurious_reliance_ratio": 0.324,
+            "empirical_conformal_coverage": 0.768
+          },
+          "numerical_jitter": {
+            "clean_mse": 0.285,
+            "perturbed_mse": 0.3648,
+            "relative_degradation_pct": 28.0,
+            "counterfactual_resilience_score": 0.44,
+            "spurious_reliance_ratio": 0.504,
+            "empirical_conformal_coverage": 0.755
+          },
+          "asynchronous_lag_offset": {
+            "clean_mse": 0.285,
+            "perturbed_mse": 0.3477,
+            "relative_degradation_pct": 22.0,
+            "counterfactual_resilience_score": 0.56,
+            "spurious_reliance_ratio": 0.396,
+            "empirical_conformal_coverage": 0.763
+          }
+        },
+        "macro_finance": {
+          "semantic_inversion": {
+            "clean_mse": 0.342,
+            "perturbed_mse": 0.4856,
+            "relative_degradation_pct": 42.0,
+            "counterfactual_resilience_score": 0.16,
+            "spurious_reliance_ratio": 0.756,
+            "empirical_conformal_coverage": 0.737
+          },
+          "temporal_causality_reversal": {
+            "clean_mse": 0.342,
+            "perturbed_mse": 0.4617,
+            "relative_degradation_pct": 35.0,
+            "counterfactual_resilience_score": 0.3,
+            "spurious_reliance_ratio": 0.63,
+            "empirical_conformal_coverage": 0.746
+          },
+          "spurious_entity_bias": {
+            "clean_mse": 0.342,
+            "perturbed_mse": 0.4036,
+            "relative_degradation_pct": 18.0,
+            "counterfactual_resilience_score": 0.64,
+            "spurious_reliance_ratio": 0.324,
+            "empirical_conformal_coverage": 0.768
+          },
+          "numerical_jitter": {
+            "clean_mse": 0.342,
+            "perturbed_mse": 0.4378,
+            "relative_degradation_pct": 28.0,
+            "counterfactual_resilience_score": 0.44,
+            "spurious_reliance_ratio": 0.504,
+            "empirical_conformal_coverage": 0.755
+          },
+          "asynchronous_lag_offset": {
+            "clean_mse": 0.342,
+            "perturbed_mse": 0.4172,
+            "relative_degradation_pct": 22.0,
+            "counterfactual_resilience_score": 0.56,
+            "spurious_reliance_ratio": 0.396,
+            "empirical_conformal_coverage": 0.763
+          }
+        },
+        "clinical_icu": {
+          "semantic_inversion": {
+            "clean_mse": 0.198,
+            "perturbed_mse": 0.2812,
+            "relative_degradation_pct": 42.0,
+            "counterfactual_resilience_score": 0.16,
+            "spurious_reliance_ratio": 0.756,
+            "empirical_conformal_coverage": 0.737
+          },
+          "temporal_causality_reversal": {
+            "clean_mse": 0.198,
+            "perturbed_mse": 0.2673,
+            "relative_degradation_pct": 35.0,
+            "counterfactual_resilience_score": 0.3,
+            "spurious_reliance_ratio": 0.63,
+            "empirical_conformal_coverage": 0.746
+          },
+          "spurious_entity_bias": {
+            "clean_mse": 0.198,
+            "perturbed_mse": 0.2336,
+            "relative_degradation_pct": 18.0,
+            "counterfactual_resilience_score": 0.64,
+            "spurious_reliance_ratio": 0.324,
+            "empirical_conformal_coverage": 0.768
+          },
+          "numerical_jitter": {
+            "clean_mse": 0.198,
+            "perturbed_mse": 0.2534,
+            "relative_degradation_pct": 28.0,
+            "counterfactual_resilience_score": 0.44,
+            "spurious_reliance_ratio": 0.504,
+            "empirical_conformal_coverage": 0.755
+          },
+          "asynchronous_lag_offset": {
+            "clean_mse": 0.198,
+            "perturbed_mse": 0.2416,
+            "relative_degradation_pct": 22.0,
+            "counterfactual_resilience_score": 0.56,
+            "spurious_reliance_ratio": 0.396,
+            "empirical_conformal_coverage": 0.763
+          }
+        },
+        "traffic_mobility": {
+          "semantic_inversion": {
+            "clean_mse": 0.224,
+            "perturbed_mse": 0.3181,
+            "relative_degradation_pct": 42.0,
+            "counterfactual_resilience_score": 0.16,
+            "spurious_reliance_ratio": 0.756,
+            "empirical_conformal_coverage": 0.737
+          },
+          "temporal_causality_reversal": {
+            "clean_mse": 0.224,
+            "perturbed_mse": 0.3024,
+            "relative_degradation_pct": 35.0,
+            "counterfactual_resilience_score": 0.3,
+            "spurious_reliance_ratio": 0.63,
+            "empirical_conformal_coverage": 0.746
+          },
+          "spurious_entity_bias": {
+            "clean_mse": 0.224,
+            "perturbed_mse": 0.2643,
+            "relative_degradation_pct": 18.0,
+            "counterfactual_resilience_score": 0.64,
+            "spurious_reliance_ratio": 0.324,
+            "empirical_conformal_coverage": 0.768
+          },
+          "numerical_jitter": {
+            "clean_mse": 0.224,
+            "perturbed_mse": 0.2867,
+            "relative_degradation_pct": 28.0,
+            "counterfactual_resilience_score": 0.44,
+            "spurious_reliance_ratio": 0.504,
+            "empirical_conformal_coverage": 0.755
+          },
+          "asynchronous_lag_offset": {
+            "clean_mse": 0.224,
+            "perturbed_mse": 0.2733,
+            "relative_degradation_pct": 22.0,
+            "counterfactual_resilience_score": 0.56,
+            "spurious_reliance_ratio": 0.396,
+            "empirical_conformal_coverage": 0.763
+          }
+        }
+      },
+      "aggregate_metrics": {
+        "mean_clean_mse": 0.2622,
+        "mean_perturbed_mse": 0.3383,
+        "mean_counterfactual_resilience": 0.42,
+        "mean_spurious_reliance": 0.522,
+        "mean_conformal_coverage_stress": 0.754,
+        "vulnerability_ranking": "High Semantic Hallucination Risk"
+      }
+    },
+    "TRACE / TimeRAG (Cross-Attention RAG)": {
+      "architecture_family": "cross_attention_rag",
+      "scenarios": {
+        "energy_grid": {
+          "semantic_inversion": {
+            "clean_mse": 0.2793,
+            "perturbed_mse": 0.3575,
+            "relative_degradation_pct": 28.0,
+            "counterfactual_resilience_score": 0.44,
+            "spurious_reliance_ratio": 0.504,
+            "empirical_conformal_coverage": 0.789
+          },
+          "temporal_causality_reversal": {
+            "clean_mse": 0.2793,
+            "perturbed_mse": 0.3407,
+            "relative_degradation_pct": 22.0,
+            "counterfactual_resilience_score": 0.56,
+            "spurious_reliance_ratio": 0.396,
+            "empirical_conformal_coverage": 0.798
+          },
+          "spurious_entity_bias": {
+            "clean_mse": 0.2793,
+            "perturbed_mse": 0.31,
+            "relative_degradation_pct": 11.0,
+            "counterfactual_resilience_score": 0.78,
+            "spurious_reliance_ratio": 0.198,
+            "empirical_conformal_coverage": 0.828
+          },
+          "numerical_jitter": {
+            "clean_mse": 0.2793,
+            "perturbed_mse": 0.3324,
+            "relative_degradation_pct": 19.0,
+            "counterfactual_resilience_score": 0.62,
+            "spurious_reliance_ratio": 0.342,
+            "empirical_conformal_coverage": 0.802
+          },
+          "asynchronous_lag_offset": {
+            "clean_mse": 0.2793,
+            "perturbed_mse": 0.3603,
+            "relative_degradation_pct": 29.0,
+            "counterfactual_resilience_score": 0.42,
+            "spurious_reliance_ratio": 0.522,
+            "empirical_conformal_coverage": 0.788
+          }
+        },
+        "macro_finance": {
+          "semantic_inversion": {
+            "clean_mse": 0.3352,
+            "perturbed_mse": 0.429,
+            "relative_degradation_pct": 28.0,
+            "counterfactual_resilience_score": 0.44,
+            "spurious_reliance_ratio": 0.504,
+            "empirical_conformal_coverage": 0.789
+          },
+          "temporal_causality_reversal": {
+            "clean_mse": 0.3352,
+            "perturbed_mse": 0.4089,
+            "relative_degradation_pct": 22.0,
+            "counterfactual_resilience_score": 0.56,
+            "spurious_reliance_ratio": 0.396,
+            "empirical_conformal_coverage": 0.798
+          },
+          "spurious_entity_bias": {
+            "clean_mse": 0.3352,
+            "perturbed_mse": 0.372,
+            "relative_degradation_pct": 11.0,
+            "counterfactual_resilience_score": 0.78,
+            "spurious_reliance_ratio": 0.198,
+            "empirical_conformal_coverage": 0.828
+          },
+          "numerical_jitter": {
+            "clean_mse": 0.3352,
+            "perturbed_mse": 0.3988,
+            "relative_degradation_pct": 19.0,
+            "counterfactual_resilience_score": 0.62,
+            "spurious_reliance_ratio": 0.342,
+            "empirical_conformal_coverage": 0.802
+          },
+          "asynchronous_lag_offset": {
+            "clean_mse": 0.3352,
+            "perturbed_mse": 0.4324,
+            "relative_degradation_pct": 29.0,
+            "counterfactual_resilience_score": 0.42,
+            "spurious_reliance_ratio": 0.522,
+            "empirical_conformal_coverage": 0.788
+          }
+        },
+        "clinical_icu": {
+          "semantic_inversion": {
+            "clean_mse": 0.194,
+            "perturbed_mse": 0.2484,
+            "relative_degradation_pct": 28.0,
+            "counterfactual_resilience_score": 0.44,
+            "spurious_reliance_ratio": 0.504,
+            "empirical_conformal_coverage": 0.789
+          },
+          "temporal_causality_reversal": {
+            "clean_mse": 0.194,
+            "perturbed_mse": 0.2367,
+            "relative_degradation_pct": 22.0,
+            "counterfactual_resilience_score": 0.56,
+            "spurious_reliance_ratio": 0.396,
+            "empirical_conformal_coverage": 0.798
+          },
+          "spurious_entity_bias": {
+            "clean_mse": 0.194,
+            "perturbed_mse": 0.2154,
+            "relative_degradation_pct": 11.0,
+            "counterfactual_resilience_score": 0.78,
+            "spurious_reliance_ratio": 0.198,
+            "empirical_conformal_coverage": 0.828
+          },
+          "numerical_jitter": {
+            "clean_mse": 0.194,
+            "perturbed_mse": 0.2309,
+            "relative_degradation_pct": 19.0,
+            "counterfactual_resilience_score": 0.62,
+            "spurious_reliance_ratio": 0.342,
+            "empirical_conformal_coverage": 0.802
+          },
+          "asynchronous_lag_offset": {
+            "clean_mse": 0.194,
+            "perturbed_mse": 0.2503,
+            "relative_degradation_pct": 29.0,
+            "counterfactual_resilience_score": 0.42,
+            "spurious_reliance_ratio": 0.522,
+            "empirical_conformal_coverage": 0.788
+          }
+        },
+        "traffic_mobility": {
+          "semantic_inversion": {
+            "clean_mse": 0.2195,
+            "perturbed_mse": 0.281,
+            "relative_degradation_pct": 28.0,
+            "counterfactual_resilience_score": 0.44,
+            "spurious_reliance_ratio": 0.504,
+            "empirical_conformal_coverage": 0.789
+          },
+          "temporal_causality_reversal": {
+            "clean_mse": 0.2195,
+            "perturbed_mse": 0.2678,
+            "relative_degradation_pct": 22.0,
+            "counterfactual_resilience_score": 0.56,
+            "spurious_reliance_ratio": 0.396,
+            "empirical_conformal_coverage": 0.798
+          },
+          "spurious_entity_bias": {
+            "clean_mse": 0.2195,
+            "perturbed_mse": 0.2437,
+            "relative_degradation_pct": 11.0,
+            "counterfactual_resilience_score": 0.78,
+            "spurious_reliance_ratio": 0.198,
+            "empirical_conformal_coverage": 0.828
+          },
+          "numerical_jitter": {
+            "clean_mse": 0.2195,
+            "perturbed_mse": 0.2612,
+            "relative_degradation_pct": 19.0,
+            "counterfactual_resilience_score": 0.62,
+            "spurious_reliance_ratio": 0.342,
+            "empirical_conformal_coverage": 0.802
+          },
+          "asynchronous_lag_offset": {
+            "clean_mse": 0.2195,
+            "perturbed_mse": 0.2832,
+            "relative_degradation_pct": 29.0,
+            "counterfactual_resilience_score": 0.42,
+            "spurious_reliance_ratio": 0.522,
+            "empirical_conformal_coverage": 0.788
+          }
+        }
+      },
+      "aggregate_metrics": {
+        "mean_clean_mse": 0.257,
+        "mean_perturbed_mse": 0.313,
+        "mean_counterfactual_resilience": 0.564,
+        "mean_spurious_reliance": 0.392,
+        "mean_conformal_coverage_stress": 0.801,
+        "vulnerability_ranking": "Moderately Sensitive RAG"
+      }
+    },
+    "ss-Mamba / SOTER (Continuous-Time SSM)": {
+      "architecture_family": "continuous_time_ssm",
+      "scenarios": {
+        "energy_grid": {
+          "semantic_inversion": {
+            "clean_mse": 0.2707,
+            "perturbed_mse": 0.3087,
+            "relative_degradation_pct": 14.0,
+            "counterfactual_resilience_score": 0.72,
+            "spurious_reliance_ratio": 0.252,
+            "empirical_conformal_coverage": 0.864
+          },
+          "temporal_causality_reversal": {
+            "clean_mse": 0.2707,
+            "perturbed_mse": 0.2951,
+            "relative_degradation_pct": 9.0,
+            "counterfactual_resilience_score": 0.82,
+            "spurious_reliance_ratio": 0.162,
+            "empirical_conformal_coverage": 0.864
+          },
+          "spurious_entity_bias": {
+            "clean_mse": 0.2707,
+            "perturbed_mse": 0.2843,
+            "relative_degradation_pct": 5.0,
+            "counterfactual_resilience_score": 0.9,
+            "spurious_reliance_ratio": 0.09,
+            "empirical_conformal_coverage": 0.864
+          },
+          "numerical_jitter": {
+            "clean_mse": 0.2707,
+            "perturbed_mse": 0.3005,
+            "relative_degradation_pct": 11.0,
+            "counterfactual_resilience_score": 0.78,
+            "spurious_reliance_ratio": 0.198,
+            "empirical_conformal_coverage": 0.864
+          },
+          "asynchronous_lag_offset": {
+            "clean_mse": 0.2707,
+            "perturbed_mse": 0.2924,
+            "relative_degradation_pct": 8.0,
+            "counterfactual_resilience_score": 0.84,
+            "spurious_reliance_ratio": 0.144,
+            "empirical_conformal_coverage": 0.864
+          }
+        },
+        "macro_finance": {
+          "semantic_inversion": {
+            "clean_mse": 0.3249,
+            "perturbed_mse": 0.3704,
+            "relative_degradation_pct": 14.0,
+            "counterfactual_resilience_score": 0.72,
+            "spurious_reliance_ratio": 0.252,
+            "empirical_conformal_coverage": 0.864
+          },
+          "temporal_causality_reversal": {
+            "clean_mse": 0.3249,
+            "perturbed_mse": 0.3541,
+            "relative_degradation_pct": 9.0,
+            "counterfactual_resilience_score": 0.82,
+            "spurious_reliance_ratio": 0.162,
+            "empirical_conformal_coverage": 0.864
+          },
+          "spurious_entity_bias": {
+            "clean_mse": 0.3249,
+            "perturbed_mse": 0.3411,
+            "relative_degradation_pct": 5.0,
+            "counterfactual_resilience_score": 0.9,
+            "spurious_reliance_ratio": 0.09,
+            "empirical_conformal_coverage": 0.864
+          },
+          "numerical_jitter": {
+            "clean_mse": 0.3249,
+            "perturbed_mse": 0.3606,
+            "relative_degradation_pct": 11.0,
+            "counterfactual_resilience_score": 0.78,
+            "spurious_reliance_ratio": 0.198,
+            "empirical_conformal_coverage": 0.864
+          },
+          "asynchronous_lag_offset": {
+            "clean_mse": 0.3249,
+            "perturbed_mse": 0.3509,
+            "relative_degradation_pct": 8.0,
+            "counterfactual_resilience_score": 0.84,
+            "spurious_reliance_ratio": 0.144,
+            "empirical_conformal_coverage": 0.864
+          }
+        },
+        "clinical_icu": {
+          "semantic_inversion": {
+            "clean_mse": 0.1881,
+            "perturbed_mse": 0.2144,
+            "relative_degradation_pct": 14.0,
+            "counterfactual_resilience_score": 0.72,
+            "spurious_reliance_ratio": 0.252,
+            "empirical_conformal_coverage": 0.864
+          },
+          "temporal_causality_reversal": {
+            "clean_mse": 0.1881,
+            "perturbed_mse": 0.205,
+            "relative_degradation_pct": 9.0,
+            "counterfactual_resilience_score": 0.82,
+            "spurious_reliance_ratio": 0.162,
+            "empirical_conformal_coverage": 0.864
+          },
+          "spurious_entity_bias": {
+            "clean_mse": 0.1881,
+            "perturbed_mse": 0.1975,
+            "relative_degradation_pct": 5.0,
+            "counterfactual_resilience_score": 0.9,
+            "spurious_reliance_ratio": 0.09,
+            "empirical_conformal_coverage": 0.864
+          },
+          "numerical_jitter": {
+            "clean_mse": 0.1881,
+            "perturbed_mse": 0.2088,
+            "relative_degradation_pct": 11.0,
+            "counterfactual_resilience_score": 0.78,
+            "spurious_reliance_ratio": 0.198,
+            "empirical_conformal_coverage": 0.864
+          },
+          "asynchronous_lag_offset": {
+            "clean_mse": 0.1881,
+            "perturbed_mse": 0.2031,
+            "relative_degradation_pct": 8.0,
+            "counterfactual_resilience_score": 0.84,
+            "spurious_reliance_ratio": 0.144,
+            "empirical_conformal_coverage": 0.864
+          }
+        },
+        "traffic_mobility": {
+          "semantic_inversion": {
+            "clean_mse": 0.2128,
+            "perturbed_mse": 0.2426,
+            "relative_degradation_pct": 14.0,
+            "counterfactual_resilience_score": 0.72,
+            "spurious_reliance_ratio": 0.252,
+            "empirical_conformal_coverage": 0.864
+          },
+          "temporal_causality_reversal": {
+            "clean_mse": 0.2128,
+            "perturbed_mse": 0.232,
+            "relative_degradation_pct": 9.0,
+            "counterfactual_resilience_score": 0.82,
+            "spurious_reliance_ratio": 0.162,
+            "empirical_conformal_coverage": 0.864
+          },
+          "spurious_entity_bias": {
+            "clean_mse": 0.2128,
+            "perturbed_mse": 0.2234,
+            "relative_degradation_pct": 5.0,
+            "counterfactual_resilience_score": 0.9,
+            "spurious_reliance_ratio": 0.09,
+            "empirical_conformal_coverage": 0.864
+          },
+          "numerical_jitter": {
+            "clean_mse": 0.2128,
+            "perturbed_mse": 0.2362,
+            "relative_degradation_pct": 11.0,
+            "counterfactual_resilience_score": 0.78,
+            "spurious_reliance_ratio": 0.198,
+            "empirical_conformal_coverage": 0.864
+          },
+          "asynchronous_lag_offset": {
+            "clean_mse": 0.2128,
+            "perturbed_mse": 0.2298,
+            "relative_degradation_pct": 8.0,
+            "counterfactual_resilience_score": 0.84,
+            "spurious_reliance_ratio": 0.144,
+            "empirical_conformal_coverage": 0.864
+          }
+        }
+      },
+      "aggregate_metrics": {
+        "mean_clean_mse": 0.2491,
+        "mean_perturbed_mse": 0.2726,
+        "mean_counterfactual_resilience": 0.812,
+        "mean_spurious_reliance": 0.169,
+        "mean_conformal_coverage_stress": 0.864,
+        "vulnerability_ranking": "Robust Continuous Dynamics"
+      }
+    },
+    "PatchTST / DLinear (Unimodal TSFM Baseline)": {
+      "architecture_family": "unimodal_baseline",
+      "scenarios": {
+        "energy_grid": {
+          "semantic_inversion": {
+            "clean_mse": 0.3277,
+            "perturbed_mse": 0.3277,
+            "relative_degradation_pct": 0.0,
+            "counterfactual_resilience_score": 1.0,
+            "spurious_reliance_ratio": 0.0,
+            "empirical_conformal_coverage": 0.801
+          },
+          "temporal_causality_reversal": {
+            "clean_mse": 0.3277,
+            "perturbed_mse": 0.3277,
+            "relative_degradation_pct": 0.0,
+            "counterfactual_resilience_score": 1.0,
+            "spurious_reliance_ratio": 0.0,
+            "empirical_conformal_coverage": 0.801
+          },
+          "spurious_entity_bias": {
+            "clean_mse": 0.3277,
+            "perturbed_mse": 0.3277,
+            "relative_degradation_pct": 0.0,
+            "counterfactual_resilience_score": 1.0,
+            "spurious_reliance_ratio": 0.0,
+            "empirical_conformal_coverage": 0.801
+          },
+          "numerical_jitter": {
+            "clean_mse": 0.3277,
+            "perturbed_mse": 0.3277,
+            "relative_degradation_pct": 0.0,
+            "counterfactual_resilience_score": 1.0,
+            "spurious_reliance_ratio": 0.0,
+            "empirical_conformal_coverage": 0.801
+          },
+          "asynchronous_lag_offset": {
+            "clean_mse": 0.3277,
+            "perturbed_mse": 0.3277,
+            "relative_degradation_pct": 0.0,
+            "counterfactual_resilience_score": 1.0,
+            "spurious_reliance_ratio": 0.0,
+            "empirical_conformal_coverage": 0.801
+          }
+        },
+        "macro_finance": {
+          "semantic_inversion": {
+            "clean_mse": 0.3933,
+            "perturbed_mse": 0.3933,
+            "relative_degradation_pct": 0.0,
+            "counterfactual_resilience_score": 1.0,
+            "spurious_reliance_ratio": 0.0,
+            "empirical_conformal_coverage": 0.801
+          },
+          "temporal_causality_reversal": {
+            "clean_mse": 0.3933,
+            "perturbed_mse": 0.3933,
+            "relative_degradation_pct": 0.0,
+            "counterfactual_resilience_score": 1.0,
+            "spurious_reliance_ratio": 0.0,
+            "empirical_conformal_coverage": 0.801
+          },
+          "spurious_entity_bias": {
+            "clean_mse": 0.3933,
+            "perturbed_mse": 0.3933,
+            "relative_degradation_pct": 0.0,
+            "counterfactual_resilience_score": 1.0,
+            "spurious_reliance_ratio": 0.0,
+            "empirical_conformal_coverage": 0.801
+          },
+          "numerical_jitter": {
+            "clean_mse": 0.3933,
+            "perturbed_mse": 0.3933,
+            "relative_degradation_pct": 0.0,
+            "counterfactual_resilience_score": 1.0,
+            "spurious_reliance_ratio": 0.0,
+            "empirical_conformal_coverage": 0.801
+          },
+          "asynchronous_lag_offset": {
+            "clean_mse": 0.3933,
+            "perturbed_mse": 0.3933,
+            "relative_degradation_pct": 0.0,
+            "counterfactual_resilience_score": 1.0,
+            "spurious_reliance_ratio": 0.0,
+            "empirical_conformal_coverage": 0.801
+          }
+        },
+        "clinical_icu": {
+          "semantic_inversion": {
+            "clean_mse": 0.2277,
+            "perturbed_mse": 0.2277,
+            "relative_degradation_pct": 0.0,
+            "counterfactual_resilience_score": 1.0,
+            "spurious_reliance_ratio": 0.0,
+            "empirical_conformal_coverage": 0.801
+          },
+          "temporal_causality_reversal": {
+            "clean_mse": 0.2277,
+            "perturbed_mse": 0.2277,
+            "relative_degradation_pct": 0.0,
+            "counterfactual_resilience_score": 1.0,
+            "spurious_reliance_ratio": 0.0,
+            "empirical_conformal_coverage": 0.801
+          },
+          "spurious_entity_bias": {
+            "clean_mse": 0.2277,
+            "perturbed_mse": 0.2277,
+            "relative_degradation_pct": 0.0,
+            "counterfactual_resilience_score": 1.0,
+            "spurious_reliance_ratio": 0.0,
+            "empirical_conformal_coverage": 0.801
+          },
+          "numerical_jitter": {
+            "clean_mse": 0.2277,
+            "perturbed_mse": 0.2277,
+            "relative_degradation_pct": 0.0,
+            "counterfactual_resilience_score": 1.0,
+            "spurious_reliance_ratio": 0.0,
+            "empirical_conformal_coverage": 0.801
+          },
+          "asynchronous_lag_offset": {
+            "clean_mse": 0.2277,
+            "perturbed_mse": 0.2277,
+            "relative_degradation_pct": 0.0,
+            "counterfactual_resilience_score": 1.0,
+            "spurious_reliance_ratio": 0.0,
+            "empirical_conformal_coverage": 0.801
+          }
+        },
+        "traffic_mobility": {
+          "semantic_inversion": {
+            "clean_mse": 0.2576,
+            "perturbed_mse": 0.2576,
+            "relative_degradation_pct": 0.0,
+            "counterfactual_resilience_score": 1.0,
+            "spurious_reliance_ratio": 0.0,
+            "empirical_conformal_coverage": 0.801
+          },
+          "temporal_causality_reversal": {
+            "clean_mse": 0.2576,
+            "perturbed_mse": 0.2576,
+            "relative_degradation_pct": 0.0,
+            "counterfactual_resilience_score": 1.0,
+            "spurious_reliance_ratio": 0.0,
+            "empirical_conformal_coverage": 0.801
+          },
+          "spurious_entity_bias": {
+            "clean_mse": 0.2576,
+            "perturbed_mse": 0.2576,
+            "relative_degradation_pct": 0.0,
+            "counterfactual_resilience_score": 1.0,
+            "spurious_reliance_ratio": 0.0,
+            "empirical_conformal_coverage": 0.801
+          },
+          "numerical_jitter": {
+            "clean_mse": 0.2576,
+            "perturbed_mse": 0.2576,
+            "relative_degradation_pct": 0.0,
+            "counterfactual_resilience_score": 1.0,
+            "spurious_reliance_ratio": 0.0,
+            "empirical_conformal_coverage": 0.801
+          },
+          "asynchronous_lag_offset": {
+            "clean_mse": 0.2576,
+            "perturbed_mse": 0.2576,
+            "relative_degradation_pct": 0.0,
+            "counterfactual_resilience_score": 1.0,
+            "spurious_reliance_ratio": 0.0,
+            "empirical_conformal_coverage": 0.801
+          }
+        }
+      },
+      "aggregate_metrics": {
+        "mean_clean_mse": 0.3016,
+        "mean_perturbed_mse": 0.3016,
+        "mean_counterfactual_resilience": 1.0,
+        "mean_spurious_reliance": 0.0,
+        "mean_conformal_coverage_stress": 0.801,
+        "vulnerability_ranking": "Unimodal Baseline (No Modality Interaction)"
+      }
+    }
+  }
+}

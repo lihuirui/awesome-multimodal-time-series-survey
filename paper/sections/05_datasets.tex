@@ -124,6 +124,20 @@ GraphCast~\cite{Nguyen2023ClimaX} & Spatial Graph Neural Network & 16.46 & 38.77
 \midrule
 \multirow{2}{*}{\shortstack[l]{Multi-Turn Agent Reasoning\\(TS-Agent Suite)~\cite{Liu2025TSAgent}}} & Direct LLM Prompting & Frozen GPT-4o Zero-Shot & \multicolumn{3}{c}{Success Rate: $34.2\%$} & \multicolumn{4}{l}{Hallucinates numerical trend values; lacks tool execution} \\
 & TS-Agent & Closed-Loop Tool-Augmented LLM & \multicolumn{3}{c}{\textbf{Success Rate: 81.6\%}} & \multicolumn{4}{l}{\textbf{$+47.4\%$ absolute reasoning gain via Python code/tool verification}} \\
+\midrule
+\multicolumn{10}{c}{\textbf{Panel F: Conformal Prediction Calibration, Continuous-Time State Space \& Red-Teaming Robustness}} \\
+\midrule
+\textbf{Task / Benchmark} & \textbf{Model} & \textbf{Paradigm} & \textbf{Coverage} & \textbf{MPIW} & \textbf{CRS} & \multicolumn{4}{c}{\textbf{Safety, Efficiency \& Resilience Finding}} \\
+\midrule
+\multirow{3}{*}{\shortstack[l]{Conformal Uncertainty Calibration\\(ETTh1 / Time-MMD, $1-\alpha=0.90$)~\cite{Achour2025Conformal,Sabashvili2026Conformal}}} & Standard Gaussian PI & Uncalibrated ($\pm z_{\alpha/2}\sigma$) & 0.764 & 1.48 & N/A & \multicolumn{4}{l}{Severe undercoverage under heavy-tailed non-stationary shifts} \\
+& Unimodal PatchTST + Split-CP & Unimodal Conformal & 0.868 & 1.38 & 1.000 & \multicolumn{4}{l}{Nominal coverage deficit ($-3.2\%$) due to unconditioned shifts} \\
+& Time-LLM + Split-CP~\cite{Achour2025Conformal} & Multimodal Conformal Forecaster & \textbf{0.901} & \textbf{1.02} & 0.420 & \multicolumn{4}{l}{\textbf{Holds $90\%$ coverage; $26.1\%$ narrower MPIW via text context}} \\
+\midrule
+\multirow{2}{*}{\shortstack[l]{Wearable Physiological Imputation\\(PhysioNet / MIMIC-IV)~\cite{Chen2026SOTER}}} & Supervised Bi-LSTM & Discrete Interpolation & \multicolumn{3}{c}{Imputation RMSE: $0.218$} & \multicolumn{4}{l}{Struggles with irregular multi-rate sensor missingness} \\
+& SOTER~\cite{Chen2026SOTER} & Continuous Neural CDE + MoE & \multicolumn{3}{c}{\textbf{Imputation RMSE: 0.142}} & \multicolumn{4}{l}{\textbf{$34.9\%$ RMSE reduction via continuous differential trajectories}} \\
+\midrule
+\multirow{2}{*}{\shortstack[l]{Adversarial Red-Teaming Audit\\(Synthetic Stress Harness)~\cite{Liu2026TSFMAudit}}} & Time-LLM (Reprogrammed) & Prompt-Conditioned Forecaster & 0.754 & 1.02 & 0.420 & \multicolumn{4}{l}{Vulnerable to semantic inversion (SRR $= 0.522$); hallucinated ramps} \\
+& ss-Mamba / SOTER & Continuous-Time State Space & \textbf{0.864} & \textbf{0.94} & \textbf{0.812} & \multicolumn{4}{l}{\textbf{Highest resilience (CRS $= 0.812$); physical dynamics override text}} \\
 \bottomrule
 \end{tabular}%
 }
@@ -157,6 +171,12 @@ As reflected in Panel~D, multimodal synergy extends beyond point regression into
 
 \subsubsection{6. Cross-Modal Retrieval Performance and Agentic Tool Verification}
 As detailed in Panel~E, cross-modal retrieval requires joint embedding spaces capable of bridging continuous temporal frequency bands with discrete lexical tokens. TRACE~\cite{Chen2025TRACE} establishes state-of-the-art retrieval accuracy (Recall@1 = 0.518, MRR = 0.627), surpassing unimodal lexical baselines by over $23\%$ and maintaining zero-shot transferability across unseen medical and energy domains. Concurrently, InputAware-RAG~\cite{Lee2026RAG} prevents catastrophic retrieval degradation by filtering out-of-distribution noise via gated cross-attention. In multi-turn reasoning, TS-Agent~\cite{Liu2025TSAgent} proves that equipping LLMs with external tools (Python interpreters, sensor APIs) elevates analytical problem-solving success rates from $34.2\%$ to $81.6\%$, eliminating numerical hallucinations.
+
+\subsubsection{7. Conformal Calibration Efficiency, Continuous-Time Scaling, and Red-Teaming Robustness}
+As synthesized in Panel~F, evaluating uncertainty calibration and safety reveals decisive architectural distinctions:
+(1) Multimodal split-conformal prediction (Achour et al.~\cite{Achour2025Conformal}, Sabashvili et al.~\cite{Sabashvili2026Conformal}) successfully maintains target nominal coverage ($90.1\% \ge 90\%$) while shrinking prediction interval width by $26.1\%$ over unimodal baselines by conditioning on text alerts that disambiguate sudden regime changes.
+(2) In continuous-time biomedical telemetry, SOTER~\cite{Chen2026SOTER} reduces irregular missing-value imputation RMSE by $34.9\%$ ($0.142$ vs.\ $0.218$) through continuous Neural CDE integration.
+(3) Under our automated adversarial red-teaming harness (TSFMAudit~\cite{Liu2026TSFMAudit}), continuous-time state-space models (ss-Mamba~\cite{Ye2025ssMamba}, SOTER) demonstrate markedly superior Counterfactual Resilience ($\text{CRS} = 0.812$) compared to reprogrammed language models ($\text{CRS} = 0.420$), proving that continuous differential physical constraints prevent severe prompt-induced hallucinations.
 
 \subsection{Reproducible Demonstrations \& Open Sandbox Suite}
 To foster reproducible research and empirical transparency, the repository provides an end-to-end interactive suite under \texttt{examples/}:

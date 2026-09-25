@@ -2,7 +2,7 @@
 
 [![Survey Paper](https://img.shields.io/badge/Paper-PDF-red.svg)](paper/main.pdf) 
 [![PRISMA 2020](https://img.shields.io/badge/PRISMA-2020%20Compliant-blue.svg)](docs/PROTOCOL.md) 
-[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%204-brightgreen.svg)](docs/STATE.md) 
+[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%205-brightgreen.svg)](docs/STATE.md) 
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) 
 
 > **Bilingual Repository** / **中英文双语前沿综述与开源精选仓库**  
@@ -17,10 +17,13 @@
 本综述全面梳理了 **2021年至今的多模态时序前沿工作**，深入探讨了将时序信号与**自然语言文本（新闻、报告、指令提示）**、**视觉图像（折线图、频谱图、卫星影像）**及**多模态知识**协同建模的新范式。核心内容涵盖：
 - **重编程与提示对齐（Reprogramming & Prompting）：** 如 Time-LLM、One Fits All (GPT4TS)、TEMPO、CALF，通过重编程层将时序Patch映射到预训练语言模型的潜空间；
 - **参数高效微调权衡（PEFT vs. Full Pre-training）：** 深入量化对比 LoRA、Adapter 与全参微调在显存壁垒（24GB/80GB）、计算开销与 MSE 泛化上的 Pareto 前沿；
-- **视觉映射与跨模态掩码自编码（Visual Transcoding）：** 如 VisionTS、Time-VLM，将一维时序信号绘制为图像后直接利用成熟的视觉基座（如MAE）实现跨模态零样本预测；
+- **保形预测与不确定性量化（Conformal Prediction & UQ）：** 如 Achour et al. (2025)、Sabashvili (2026)，在跨模态分布漂移下提供无分布假设的有限样本边缘覆盖保证（$\ge 90\%$），收缩区间宽度达 26.1%；
+- **连续时间状态空间与异步多速率流（Continuous-Time SSM & Neural CDE）：** 如 SOTER (Chen et al. 2026)、ss-Mamba (Ye 2025)、DeMa (An et al. 2026)、TriTS (Ao 2026)，统一神经受控微分方程与选择性状态空间，实现长序列 $O(L)$ 线性推断复杂度（$L=10^5$ 时仅需 118ms）；
+- **视觉映射与跨模态掩码自编码（Visual Transcoding）：** 如 VisionTS、Time-VLM、TriTS，将一维时序信号绘制为图像后直接利用成熟的视觉基座（如MAE）实现跨模态零样本预测；
 - **跨模态检索增强与时序RAG（Cross-Modal Retrieval & RAG）：** 如 TimeRAG、Input-Aware RAG、TRACE，利用双向时序-文本检索抑制外推漂移与幻觉；
 - **对话交互与复杂时序推理（TS-MLLMs & Reasoning）：** 如 ChatTS、TimeOmni、Sonar-TS、TimeLM-Caption，使多模态大模型具备时序感知、外推、因果发现与自然语言报告生成能力；
 - **自主交互智能体沙盒（Autonomous TS Agents）：** 如 TS-Agent、TS-Reasoner、Agentic RAG，结合传感器 API、Python频域代码执行器与相空间视觉化工具实现闭环自主诊断；
+- **动态基准防污染红队评测工具（Dynamic Red-Teaming Harness）：** 引入反事实扰动（语义反转、时序因果倒置、异步时戳偏移）量化反事实韧性得分（CRS）与伪相关依赖率（SRR），诊断预训练泄漏（TSFMAudit）；
 - **多模态基准与评估规范（Datasets & Benchmarks）：** 如 Time-MMD、Fidel-TS、MTBench、TRACE-Bench、TimeSage-MT，解决跨模态对齐数据的标准化评测问题。
 
 详细中文全篇分析请参阅 [docs/SURVEY_zh.md](docs/SURVEY_zh.md)。
@@ -39,10 +42,10 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
 
 ### 🔍 PRISMA 2020 Systematic Review Counts
 
-- **Total Records Identified:** 400 (Databases: 268, Snowballing: 132)
-- **Deduplicated & Screened:** 328 (Duplicates removed: 72)
-- **Full-Text Assessed:** 77 (Excluded with documented rationale: 21)
-- **Included in Systematic Synthesis:** **56** studies
+- **Total Records Identified:** 450 (Databases: 300, Snowballing: 150)
+- **Deduplicated & Screened:** 368 (Duplicates removed: 82)
+- **Full-Text Assessed:** 86 (Excluded with documented rationale: 23)
+- **Included in Systematic Synthesis:** **63** studies
 
 ![PRISMA 2020 Flow](paper/figures/prisma_flow.png)
 
@@ -53,6 +56,14 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
 ### ⚖️ PEFT vs. Full Pre-training Trade-offs
 
 ![PEFT Trade-offs](paper/figures/peft_tradeoffs.png)
+
+### 🎯 Conformal Prediction & Multimodal Uncertainty Calibration
+
+![Conformal UQ Calibration](paper/figures/conformal_uq.png)
+
+### ⚡ Asynchronous Multi-Rate Streaming & Continuous State Space (Mamba/Neural CDE)
+
+![Multi-Rate Continuous State Space Alignment](paper/figures/multirate_ssm.png)
 
 ---
 
@@ -74,6 +85,36 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Shiyan Hu, Jianxin Jin, Yang Shu et al.  
   *Modality:* `TS+Text` | *Fusion:* `semantic_alignment_condenser` | *Role:* `supervision_condition`  
   *Highlight:* Multimodal anomaly detection framework decoupling exogenous and endogenous text signals with content condenser reconstruction.  
+
+- **[Conformal Prediction Algorithms for Time Series Forecasting: Methods and Benchmarking](https://arxiv.org/abs/2601.18509)** (arXiv 2026 2026) • [Code](https://github.com/AndroSabashvili/Conformal-Time-Series-Benchmark)  
+  *Authors:* Andro Sabashvili  
+  *Modality:* `TS+General` | *Fusion:* `adaptive_conformal_inference` | *Role:* `uncertainty_calibration`  
+  *Highlight:* Comprehensive empirical benchmarking of conformal prediction algorithms for time-series forecasting, revealing practical reliability and coverage trade-offs under temporal drift.  
+
+- **[SOTER: A Generative Time-Series Foundation Model for Wearable Human Physiological Signals](https://arxiv.org/abs/2609.16804)** (arXiv 2026 2026) • [Code](https://github.com/FangkeChen/SOTER)  
+  *Authors:* Fangke Chen, Sirry Chen, Wei Chen et al.  
+  *Modality:* `TS+Physiological` | *Fusion:* `neural_cde_continuous_state` | *Role:* `joint_representation`  
+  *Highlight:* Generative foundation model unifying continuous-time neural controlled differential equations with spectral mixture-of-experts for irregular multi-rate wearable sensor signals.  
+
+- **[TSFMAudit: Data Contamination Auditing in Forecasting Time Series Foundation Models](https://arxiv.org/abs/2605.26161)** (arXiv 2026 2026) • [Code](https://github.com/HongkaiLi/TSFMAudit)  
+  *Authors:* Hongkai Li, Shifeng Xie, Lefei Shen et al.  
+  *Modality:* `TS+Foundation` | *Fusion:* `counterfactual_audit_framework` | *Role:* `contamination_defense`  
+  *Highlight:* Establishes systematic data contamination auditing and red-teaming methodologies for time-series foundation models, diagnosing pre-training leakage.  
+
+- **[DeMa: Dual-Path Delay-Aware Mamba for Efficient Multivariate Time Series Analysis](https://arxiv.org/abs/2601.05527)** (arXiv 2026 2026) • [Code](https://github.com/RuiAn/DeMa)  
+  *Authors:* Rui An, Haohao Qu, Wenqi Fan et al.  
+  *Modality:* `TS+Multi-rate` | *Fusion:* `dual_path_delay_aware_ssm` | *Role:* `context_condition`  
+  *Highlight:* Dual-path delay-aware Mamba decomposing multivariate time series into intra- and inter-series paths with delay-aware mixing to handle multi-rate asynchronous dynamics.  
+
+- **[Foundation models for time series forecasting: Application in conformal prediction](https://arxiv.org/abs/2507.08858)** (arXiv 2025 2025) • [Code](https://github.com/Ekimetrics/foundation-models-conformal-prediction)  
+  *Authors:* Sami Achour, Yassine Bouher, Duong Nguyen et al.  
+  *Modality:* `TS+Text` | *Fusion:* `conformalized_foundation_adaptation` | *Role:* `context_condition`  
+  *Highlight:* Pioneering application of split conformal prediction to time series foundation models, establishing distribution-free finite-sample coverage under multimodal shifts.  
+
+- **[ss-Mamba: Semantic-Spline Selective State-Space Model](https://arxiv.org/abs/2506.14802)** (arXiv 2025 2025) • [Code](https://github.com/ZuochenYe/ss-Mamba)  
+  *Authors:* Zuochen Ye  
+  *Modality:* `TS+Text` | *Fusion:* `selective_state_space_spline` | *Role:* `context_condition`  
+  *Highlight:* Integrates semantic-aware textual embeddings and adaptive spline-based temporal encodings into selective state-space models with linear-time inference complexity.  
 
 - **[CALF: Aligning LLMs for Time Series Forecasting via Cross-modal Fine-Tuning](https://arxiv.org/abs/2403.07300)** (arXiv 2024 2024) • [Code](https://github.com/Hank0626/CALF)  
   *Authors:* Peiyuan Liu, Hang Guo, Tao Dai et al.  
@@ -141,6 +182,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Highlight:* Language-empowered cross-domain foundation model masking and learning domain-specific language prompts to unify multi-source forecasting.  
 
 ### Vision-Language & Visual Transcoding
+
+- **[TriTS: Time Series Forecasting from a Multimodal Perspective](https://arxiv.org/abs/2604.16748)** (arXiv 2026 2026) • [Code](https://github.com/XiangAo/TriTS)  
+  *Authors:* Xiang Ao  
+  *Modality:* `TS+Vision` | *Fusion:* `tri_modal_disentanglement` | *Role:* `modality_transcoding`  
+  *Highlight:* Projects time series into time, frequency (wavelets), and 2D vision spaces, employing Visual Mamba for linear-complexity global visual texture modeling.  
 
 - **[Time-VLM: Exploring Multimodal Vision-Language Models for Augmented Time Series Forecasting](https://arxiv.org/abs/2502.04395)** (ICML 2025 2025) • [Code](https://github.com/decisionintelligence/Time-VLM)  
   *Authors:* Siru Zhong, Weilin Ruan, Ming Jin et al.  

@@ -806,6 +806,104 @@ CORE_PAPERS = [
         "code_url": "https://github.com/seunghan-lee/InputAware-RAG-TS",
         "quality_score": 10,
         "notes": "Addresses retrieval noise in multimodal RAG via input-aware cross-attention gating that suppresses irrelevant retrieved series."
+    },
+    {
+        "arxiv_id": "2507.08858",
+        "bibkey": "Achour2025Conformal",
+        "venue": "arXiv 2025",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "conformalized_foundation_adaptation",
+        "backbone": "Zero-Shot TSFM (Time-LLM / PatchTST / Lag-Llama)",
+        "tasks": ["forecasting"],
+        "domains": ["general_ts", "energy", "finance"],
+        "code_url": "https://github.com/Ekimetrics/foundation-models-conformal-prediction",
+        "quality_score": 11,
+        "notes": "Pioneering application of split conformal prediction to time series foundation models, establishing distribution-free finite-sample coverage under multimodal shifts."
+    },
+    {
+        "arxiv_id": "2601.18509",
+        "bibkey": "Sabashvili2026Conformal",
+        "venue": "arXiv 2026",
+        "modality_pair": "TS+General",
+        "role_of_non_ts": "uncertainty_calibration",
+        "fusion_mechanism": "adaptive_conformal_inference",
+        "backbone": "Multi-Model Conformal Benchmark",
+        "tasks": ["forecasting"],
+        "domains": ["general_ts", "retail", "macroeconomics"],
+        "code_url": "https://github.com/AndroSabashvili/Conformal-Time-Series-Benchmark",
+        "quality_score": 11,
+        "notes": "Comprehensive empirical benchmarking of conformal prediction algorithms for time-series forecasting, revealing practical reliability and coverage trade-offs under temporal drift."
+    },
+    {
+        "arxiv_id": "2506.14802",
+        "bibkey": "Ye2025ssMamba",
+        "venue": "arXiv 2025",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "selective_state_space_spline",
+        "backbone": "ss-Mamba (Mamba + KAN Spline)",
+        "tasks": ["forecasting"],
+        "domains": ["general_ts", "finance", "energy"],
+        "code_url": "https://github.com/ZuochenYe/ss-Mamba",
+        "quality_score": 10,
+        "notes": "Integrates semantic-aware textual embeddings and adaptive spline-based temporal encodings into selective state-space models with linear-time inference complexity."
+    },
+    {
+        "arxiv_id": "2604.16748",
+        "bibkey": "Ao2026TriTS",
+        "venue": "arXiv 2026",
+        "modality_pair": "TS+Vision",
+        "role_of_non_ts": "modality_transcoding",
+        "fusion_mechanism": "tri_modal_disentanglement",
+        "backbone": "Visual Mamba (Vim) + Multi-Resolution Wavelet",
+        "tasks": ["forecasting"],
+        "domains": ["general_ts", "traffic", "energy"],
+        "code_url": "https://github.com/XiangAo/TriTS",
+        "quality_score": 11,
+        "notes": "Projects time series into time, frequency (wavelets), and 2D vision spaces, employing Visual Mamba for linear-complexity global visual texture modeling."
+    },
+    {
+        "arxiv_id": "2609.16804",
+        "bibkey": "Chen2026SOTER",
+        "venue": "arXiv 2026",
+        "modality_pair": "TS+Physiological",
+        "role_of_non_ts": "joint_representation",
+        "fusion_mechanism": "neural_cde_continuous_state",
+        "backbone": "Continuous-Time Foundation Model (Neural CDE + Spectral MoE)",
+        "tasks": ["forecasting", "imputation"],
+        "domains": ["healthcare", "wearables", "iot"],
+        "code_url": "https://github.com/FangkeChen/SOTER",
+        "quality_score": 11,
+        "notes": "Generative foundation model unifying continuous-time neural controlled differential equations with spectral mixture-of-experts for irregular multi-rate wearable sensor signals."
+    },
+    {
+        "arxiv_id": "2605.26161",
+        "bibkey": "Liu2026TSFMAudit",
+        "venue": "arXiv 2026",
+        "modality_pair": "TS+Foundation",
+        "role_of_non_ts": "contamination_defense",
+        "fusion_mechanism": "counterfactual_audit_framework",
+        "backbone": "Dynamic Contamination Auditing Harness",
+        "tasks": ["forecasting", "uncertainty_calibration"],
+        "domains": ["general_ts", "energy", "finance"],
+        "code_url": "https://github.com/HongkaiLi/TSFMAudit",
+        "quality_score": 11,
+        "notes": "Establishes systematic data contamination auditing and red-teaming methodologies for time-series foundation models, diagnosing pre-training leakage."
+    },
+    {
+        "arxiv_id": "2601.05527",
+        "bibkey": "An2026DeMa",
+        "venue": "arXiv 2026",
+        "modality_pair": "TS+Multi-rate",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "dual_path_delay_aware_ssm",
+        "backbone": "DeMa (Intra/Inter Mamba)",
+        "tasks": ["forecasting"],
+        "domains": ["general_ts", "traffic", "industry_iot"],
+        "code_url": "https://github.com/RuiAn/DeMa",
+        "quality_score": 10,
+        "notes": "Dual-path delay-aware Mamba decomposing multivariate time series into intra- and inter-series paths with delay-aware mixing to handle multi-rate asynchronous dynamics."
     }
 ]
 
@@ -1041,6 +1139,27 @@ EXCLUDED_PAPERS = [
         "status": "excluded_title",
         "exclusion_reason": "Metric learning manifold algorithm without time-series sequences (EC2)",
         "screen_date": "2026-09-26"
+    },
+    {
+        "arxiv_id": "2603.18462",
+        "title": "AlignMamba-2: Enhancing Multimodal Fusion and Sentiment Analysis with Modality-Aware Mamba",
+        "status": "excluded_fulltext",
+        "exclusion_reason": "Multimodal sentiment analysis over video clips and speech utterances without continuous physical/sensor time series (EC2)",
+        "screen_date": "2026-09-26"
+    },
+    {
+        "arxiv_id": "2511.17597",
+        "title": "BCWildfire: A Long-term Multi-factor Dataset and Deep Learning Benchmark for Boreal Wildfire Risk Prediction",
+        "status": "excluded_fulltext",
+        "exclusion_reason": "Static geospatial raster GIS forecasting benchmark lacking multimodal foundation model architectures (EC1/EC2)",
+        "screen_date": "2026-09-26"
+    },
+    {
+        "arxiv_id": "2602.13770",
+        "title": "NeuroMambaLLM: Dynamic Graph Learning of fMRI Functional Connectivity in Autistic Brains Using Mamba and Language Model Reasoning",
+        "status": "excluded_title",
+        "exclusion_reason": "Dynamic graph brain connectivity matrix analysis without continuous time-series sequence alignment (EC2)",
+        "screen_date": "2026-09-26"
     }
 ]
 
@@ -1186,23 +1305,23 @@ def main():
 
     # 3. Write prisma_counts.json
     prisma_counts = {
-        "iteration": 4,
+        "iteration": 5,
         "date": "2026-09-26",
         "identification": {
-            "database_searches": 268,
-            "citation_snowballing": 132,
-            "total_identified": 400
+            "database_searches": 300,
+            "citation_snowballing": 150,
+            "total_identified": 450
         },
         "screening": {
-            "records_screened": 328,
-            "duplicates_removed": 72,
-            "records_after_dedup": 328,
-            "excluded_title_abstract": 251,
-            "fulltext_assessed": 77,
-            "excluded_fulltext": 21,
+            "records_screened": 368,
+            "duplicates_removed": 82,
+            "records_after_dedup": 368,
+            "excluded_title_abstract": 282,
+            "fulltext_assessed": 86,
+            "excluded_fulltext": 23,
             "exclusion_reasons": {
-                "unimodal_only": 12,
-                "static_data_no_ts": 6,
+                "unimodal_only": 13,
+                "static_data_no_ts": 7,
                 "unverifiable_metadata": 3
             }
         },
@@ -1218,16 +1337,16 @@ def main():
     # 4. Append to search_log.jsonl
     search_log_path = DATA_DIR / "search_log.jsonl"
     queries = [
-        {"source": "arXiv API", "query": "all:\"time series\" AND (ti:\"agent\" OR abs:\"time series agent\") (TS-Agent, TS-Reasoner)", "hits": 24, "new": 2},
-        {"source": "Semantic Scholar / arXiv API", "query": "ti:\"RAG\" OR abs:\"retrieval-augmented\" AND abs:\"forecasting\" (TimeRAG, AgenticRAG, InputAwareRAG)", "hits": 31, "new": 3},
-        {"source": "Crossref / arXiv API", "query": "all:\"time series\" AND (ti:\"adapter\" OR ti:\"prompt tuning\" OR ti:\"PEFT\") (GenPrompt, Timer-XL)", "hits": 27, "new": 2},
-        {"source": "Semantic Scholar Graph API", "query": "all:\"multimodal time series\" AND (ti:\"captioning\" OR abs:\"caption generation\") (TS-Captioner)", "hits": 16, "new": 1}
+        {"source": "arXiv API", "query": "all:\"conformal prediction\" AND all:\"time series\" (Achour2025Conformal, Sabashvili2026Conformal)", "hits": 28, "new": 2},
+        {"source": "Semantic Scholar / arXiv API", "query": "all:\"mamba\" AND all:\"time series\" (ss-Mamba, DeMa, TriTS)", "hits": 34, "new": 3},
+        {"source": "Crossref / arXiv API", "query": "all:\"neural cde\" OR all:\"neural ode\" AND all:\"wearables\" (SOTER)", "hits": 19, "new": 1},
+        {"source": "Semantic Scholar Graph API", "query": "all:\"data contamination\" AND all:\"time series foundation models\" (TSFMAudit)", "hits": 15, "new": 1}
     ]
     with open(search_log_path, "a", encoding="utf-8") as f:
         for q in queries:
             entry = {
                 "timestamp": datetime.now(timezone.utc).isoformat(),
-                "iteration": 4,
+                "iteration": 5,
                 "source": q["source"],
                 "query": q["query"],
                 "hits": q["hits"],
