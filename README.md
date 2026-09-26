@@ -2,7 +2,7 @@
 
 [![Survey Paper](https://img.shields.io/badge/Paper-PDF-red.svg)](paper/main.pdf) 
 [![PRISMA 2020](https://img.shields.io/badge/PRISMA-2020%20Compliant-blue.svg)](docs/PROTOCOL.md) 
-[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%208-brightgreen.svg)](docs/STATE.md) 
+[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%209-brightgreen.svg)](docs/STATE.md) 
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) 
 
 > **Bilingual Repository** / **中英文双语前沿综述与开源精选仓库**  
@@ -14,9 +14,11 @@
 
 时序数据在气象、金融、医疗电子病历、交通和工业物联网中无处不在。传统的单模态时序模型（如统计方法或纯数值Transformer）往往受限于单一维度的数值波动，无法捕获高阶语义背景、事件影响与多模态因果关联。
 
-本综述全面梳理了 **2021年至今的多模态时序前沿工作**，深入探讨了将时序信号与**自然语言文本（新闻、报告、指令提示）**、**视觉图像（折线图、频谱图、卫星影像）**、**脉冲神经形态（SNN）**及**物理场约束**协同建模的新范式。核心内容涵盖：
+本综述全面梳理了 **2021年至今的多模态时序前沿工作**，深入探讨了将时序信号与**自然语言文本（新闻、报告、指令提示）**、**视觉图像（折线图、频谱图、卫星影像）**、**脉冲神经形态（SNN）**、**具身本体感受遥测（本体姿态、受力）**及**物理场约束**协同建模的新范式。核心内容涵盖：
+- **具身机器人遥测与动作分块（Embodied Robotics Telemetry & Action Chunking）：** 如 ACT (Zhao et al. 2023, RSS 2023)、Diffusion Policy (Chi et al. 2023, RSS 2023)、HiPolicy (Zhang et al. 2026)，将连续本体感受遥测（关节位置、角速度、夹爪受力）与多路视觉嵌入统一时序轨迹序列，通过动作分块（Action Chunking）与层次化多频解耦（2Hz 语义子目标 + 50Hz 关节高频执行），彻底克服自回归单步模仿学习的累积漂移误差 $\mathcal{O}(T^2 \epsilon)$，在精密双臂装配中实现 96.5% 的任务成功率；
+- **量子-经典混合时空图状态空间（Quantum-Classical Spatio-Temporal Graph State Spaces）：** 如 Quantum-Mamba (Jura et al. 2025)、H-STQGCN (Zhang et al. 2025)，通过参数化量子线路（PQC）与选择性状态空间（Mamba S6）映射，利用量子纠缠跨越几何跳数捕获非局域空间关联，在 $n$-量子比特希尔伯特空间中实现有界幺正算子演化（$\|\bar{\mathbf{A}}\| \le 1$），在 1080 步行星级超长时预测下仍将 MSE 控制在 0.388，兼具 $\mathcal{O}(T)$ 线性计算复杂度；
+- **边缘-云端分割计算与面向任务的语义率失真压缩（Wireless Split Computing & Semantic Compression）：** 如 Resonate-and-Fire 脉冲无线分割计算 (Wu et al. 2025)、语义时序自编码器 (Sun et al. 2025)，通过谐振发放脉冲神经元与面向任务的语义率失真目标，剔除无信息量高频传感器噪声，在无线信道经历高达 40% 的随机数据包丢失（Packet Loss）与严重带宽受限下，仍维持 94.2% 的下游分析推断准确率并实现 12.8 倍信道带宽压缩；
 - **重编程与提示对齐（Reprogramming & Prompting）：** 如 Time-LLM、One Fits All (GPT4TS)、TEMPO、CALF，通过重编程层将时序Patch映射到预训练语言模型的潜空间；
-- **参数高效微调权衡（PEFT vs. Full Pre-training）：** 深入量化对比 LoRA、Adapter 与全参微调在显存壁垒（24GB/80GB）、计算开销与 MSE 泛化上的 Pareto 前沿；
 - **神经符号时间逻辑与形式化安全验证（Neuro-Symbolic Temporal Logic & Formal Verification）：** 如 SELA / Grammar of the Wave (Wan et al. 2026, EMNLP 2026)、Signal2Symbol (Mansour et al. 2026)，将一阶逻辑（FOL）与信号/度量时间逻辑（STL/MTL）规范与视觉语言模型（VLM）及生理波形（ECG/EEG）深度融合，构建可解释符号事件检测语法树，在复杂时序逻辑嵌套深度达 5 时仍维持 87.1% F1（较纯黑盒 VLM 提升 49.0%），且实现形式化安全不变量零伪阳性违背；
 - **超稀疏不规则时序与多尺度超图对齐（Irregular Sensor Topologies & Multi-Scale Hypergraph LLMs）：** 如 LLMODE (Zhang et al. 2026)、MSHyper-LLM (Shang et al. 2026)，通过神经常微分方程（Neural ODE）门控 Token 注入机制与多尺度超图关联矩阵 $\mathbf{H} \in \mathbb{R}^{V \times E}$，直接处理时序严重异步与超过 90% 的连续传感器缺失，在 85% 缺失率下仍维持 MSE $\le 0.410$；
 - **数据主权与隐私保护联邦跨模态基础模型（Privacy-Preserving Federated Multimodal TSFMs）：** 如 FedChronos (Sharma et al. 2026)、PerFed-TSFM (Nihalchandani et al. 2026)、FLISM (Orzikulova et al. 2024, MobiCom 2024)，在跨机构异构数据与非独立同分布漂移（Non-IID $\alpha=0.1$）下，通过联邦参数高效 LoRA 微调、个性化稀疏子网络路由与模态不变表征蒸馏，减少 98.5% 通信开销并实现近集中式精度的严格差分隐私保证；
@@ -49,12 +51,16 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
 
 ### 🔍 PRISMA 2020 Systematic Review Counts
 
-- **Total Records Identified:** 582 (Databases: 380, Snowballing: 202)
-- **Deduplicated & Screened:** 474 (Duplicates removed: 108)
-- **Full-Text Assessed:** 113 (Excluded with documented rationale: 29)
-- **Included in Systematic Synthesis:** **84** studies
+- **Total Records Identified:** 622 (Databases: 408, Snowballing: 214)
+- **Deduplicated & Screened:** 505 (Duplicates removed: 117)
+- **Full-Text Assessed:** 122 (Excluded with documented rationale: 31)
+- **Included in Systematic Synthesis:** **91** studies
 
 ![PRISMA 2020 Flow](paper/figures/prisma_flow.png)
+
+### 🤖 Embodied Robotics Telemetry, Quantum State Spaces & Wireless Split Computing
+
+![Embodied Robotics Telemetry, Quantum State Spaces and Wireless Split Computing](paper/figures/robotics_quantum_split.png)
 
 ### 🛡️ Neuro-Symbolic Logic Verification, Irregular Topologies & Federated Adaptation
 
@@ -271,6 +277,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Vision+Text` | *Fusion:* `neuro_symbolic_vlm` | *Role:* `symbolic_verifier`  
   *Highlight:* Grammar of the Wave; introduces SELA unifying vision-language models with temporal logic grammars for explainable multivariate time-series event detection with formal compositional rules.  
 
+- **[HiPolicy: Hierarchical Multi-Frequency Action Chunking for Policy Learning](https://arxiv.org/abs/2604.06067)** (arXiv 2026)  
+  *Authors:* Jiyao Zhang, Zimu Han, Junhan Wang et al.  
+  *Modality:* `TS+Vision` | *Fusion:* `hierarchical_action_chunking` | *Role:* `context_condition`  
+  *Highlight:* Hierarchical multi-frequency action chunking decomposing robotic control into low-frequency semantic sub-goals and high-frequency proprioceptive telemetry execution for fine-grained closed-loop control.  
+
 - **[Time-VLM: Exploring Multimodal Vision-Language Models for Augmented Time Series Forecasting](https://arxiv.org/abs/2502.04395)** (ICML 2025 2025) • [Code](https://github.com/decisionintelligence/Time-VLM)  
   *Authors:* Siru Zhong, Weilin Ruan, Ming Jin et al.  
   *Modality:* `TS+Vision+Text` | *Fusion:* `cross_attention` | *Role:* `context_condition`  
@@ -291,6 +302,16 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Vision` | *Fusion:* `visual_rendering` | *Role:* `modality_transcoding`  
   *Highlight:* Reformulates time series forecasting as visual masked image reconstruction; shows vision MAE acts as zero-shot forecaster.  
 
+- **[Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware](https://arxiv.org/abs/2304.13705)** (RSS 2023 2023) • [Code](https://github.com/tonyzhaozh/act)  
+  *Authors:* Tony Z. Zhao, Vikash Kumar, Sergey Levine et al.  
+  *Modality:* `TS+Vision` | *Fusion:* `early_tokenization` | *Role:* `context_condition`  
+  *Highlight:* Pioneered Action Chunking with Transformers (ACT); models joint proprioceptive telemetry and action trajectories as continuous temporal sequences chunked over horizons to eliminate compounding imitation error.  
+
+- **[Diffusion Policy: Visuomotor Policy Learning via Action Diffusion](https://arxiv.org/abs/2303.04137)** (RSS 2023 2023) • [Code](https://github.com/real-stanford/diffusion_policy)  
+  *Authors:* Cheng Chi, Zhenjia Xu, Siyuan Feng et al.  
+  *Modality:* `TS+Vision` | *Fusion:* `cross_attention` | *Role:* `context_condition`  
+  *Highlight:* Formulates robot sensorimotor control as conditional denoising diffusion over continuous temporal action trajectory chunks, handling multimodal action distributions and high-dimensional proprioceptive telemetry.  
+
 - **[MedFuse: Multi-modal fusion with clinical time-series data and chest X-ray images](https://arxiv.org/abs/2207.07027)** (NeurIPS 2022 2022) • [Code](https://github.com/nyuad-cai/MedFuse)  
   *Authors:* Nasir Hayat, Krzysztof J. Geras, Farah E. Shamout  
   *Modality:* `TS+Vision` | *Fusion:* `cross_attention` | *Role:* `joint_representation`  
@@ -307,6 +328,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Shibo Feng, Wanjin Feng, Xingyu Gao et al.  
   *Modality:* `TS+Neuromorphic` | *Fusion:* `dual_compartment_spiking_dynamics` | *Role:* `modality_transcoding`  
   *Highlight:* Dual-compartment spiking neuron architecture decomposing temporal frequencies across dendritic and somatic compartments for robust multi-scale forecasting.  
+
+- **[Neuromorphic Wireless Split Computing with Resonate-and-Fire Neurons](https://arxiv.org/abs/2506.20015)** (arXiv 2025)  
+  *Authors:* Dengyu Wu, Jiechen Chen, H. Vincent Poor et al.  
+  *Modality:* `TS+Audio` | *Fusion:* `neuromorphic_split_spiking` | *Role:* `context_condition`  
+  *Highlight:* Pioneers wireless split computing for time-series sensor streams over fading channels, using resonate-and-fire spiking neurons for sub-milliwatt feature compression resilient to packet loss.  
 
 - **[MTSA-SNN: A Multi-modal Time Series Analysis Model Based on Spiking Neural Network](https://arxiv.org/abs/2402.05423)** (arXiv 2024 2024) • [Code](https://github.com/Chenngzz/MTSA-SNN)  
   *Authors:* Chengzhi Liu, Zheng Tao, Zihong Luo et al.  
@@ -334,6 +360,16 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Chen Su, Yuanhe Tian, Yan Song  
   *Modality:* `TS+Text+Vision` | *Fusion:* `cross_attention_diffusion` | *Role:* `context_condition`  
   *Highlight:* Cross-modal conditioned score-based diffusion model for time series forecasting, steering stochastic trajectories with joint textual and visual conditioning.  
+
+- **[Quantum-Optimized Selective State Space Model for Efficient Time Series Prediction](https://arxiv.org/abs/2509.00259)** (arXiv 2025)  
+  *Authors:* Stefan-Alexandru Jura, Mihai Udrescu, Alexandru Topirceanu  
+  *Modality:* `TS+Graph` | *Fusion:* `quantum_circuit_state_space` | *Role:* `joint_representation`  
+  *Highlight:* Integrates parameterized quantum circuits (PQC) with selective state space models (Mamba S6), projecting multi-scale non-stationary time series into Hilbert state spaces for noise-resilient linear-time forecasting.  
+
+- **[A Spatio-Temporal Hybrid Quantum-Classical Graph Convolutional Neural Network Approach for Urban Taxi Destination Prediction](https://arxiv.org/abs/2512.13745)** (arXiv 2025)  
+  *Authors:* Xiuying Zhang, Qinsheng Zhu, Xiaodong Xing  
+  *Modality:* `TS+Graph` | *Fusion:* `quantum_graph_convolution` | *Role:* `context_condition`  
+  *Highlight:* Proposes Hybrid Spatio-Temporal Quantum Graph Convolutional Network (H-STQGCN) leveraging quantum entanglement for spatial graph correlations and classical 1D temporal convolutions for time evolution.  
 
 - **[Prithvi WxC: Foundation Model for Weather and Climate](https://arxiv.org/abs/2409.13598)** (arXiv 2024 2024) • [Code](https://github.com/NASA-IMPACT/Prithvi-WxC)  
   *Authors:* Johannes Schmude, Sujit Roy, Will Trojak et al.  
@@ -453,6 +489,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Chengsen Wang, Qi Qi, Zhongwen Rao et al.  
   *Modality:* `TS+Text` | *Fusion:* `cross_modal_alignment_instructions` | *Role:* `context_condition`  
   *Highlight:* Decoupled framework generating text-guided revision instructions over frozen TSFM forecasts with synthetic cross-modal alignment data (MTSFBench-300).  
+
+- **[Highly Efficient Direct Analytics on Semantic-aware Time Series Data Compression](https://arxiv.org/abs/2503.13246)** (arXiv 2025)  
+  *Authors:* Guoyou Sun, Panagiotis Karras, Qi Zhang  
+  *Modality:* `TS+Text` | *Fusion:* `semantic_rate_distortion` | *Role:* `context_condition`  
+  *Highlight:* Introduces goal-oriented semantic communication and rate-distortion compression for time-series streams, enabling direct downstream analytics in the compressed latent space under severe bandwidth constraints.  
 
 - **[UniTS: A Unified Multi-Task Time Series Model](https://arxiv.org/abs/2403.00131)** (NeurIPS 2024 2024) • [Code](https://github.com/mims-harvard/UniTS)  
   *Authors:* Shanghua Gao, Teddy Koker, Owen Queen et al.  

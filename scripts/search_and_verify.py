@@ -1198,6 +1198,104 @@ CORE_PAPERS = [
         "code_url": "https://github.com/AdibaOrz/FLISM",
         "quality_score": 11,
         "notes": "FLISM architecture for federated multimodal time-series healthcare sensing under incomplete modalities; features modality-invariant representations, quality-aware aggregation, and global distillation."
+    },
+    {
+        "arxiv_id": "2304.13705",
+        "bibkey": "Zhao2023ACT",
+        "venue": "RSS 2023",
+        "modality_pair": "TS+Vision",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "early_tokenization",
+        "backbone": "Action Chunking with Transformers (ACT)",
+        "tasks": ["forecasting", "robot_manipulation"],
+        "domains": ["robotics"],
+        "code_url": "https://github.com/tonyzhaozh/act",
+        "quality_score": 11,
+        "notes": "Pioneered Action Chunking with Transformers (ACT); models joint proprioceptive telemetry and action trajectories as continuous temporal sequences chunked over horizons to eliminate compounding imitation error."
+    },
+    {
+        "arxiv_id": "2303.04137",
+        "bibkey": "Chi2023DiffusionPolicy",
+        "venue": "RSS 2023",
+        "modality_pair": "TS+Vision",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "cross_attention",
+        "backbone": "Diffusion Policy (DDPM / CNN & TS Transformer)",
+        "tasks": ["forecasting", "robot_manipulation"],
+        "domains": ["robotics"],
+        "code_url": "https://github.com/real-stanford/diffusion_policy",
+        "quality_score": 11,
+        "notes": "Formulates robot sensorimotor control as conditional denoising diffusion over continuous temporal action trajectory chunks, handling multimodal action distributions and high-dimensional proprioceptive telemetry."
+    },
+    {
+        "arxiv_id": "2604.06067",
+        "bibkey": "Zhang2026HiPolicy",
+        "venue": "arXiv",
+        "modality_pair": "TS+Vision",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "hierarchical_action_chunking",
+        "backbone": "HiPolicy (Hierarchical Multi-Frequency Transformer)",
+        "tasks": ["forecasting", "robot_manipulation"],
+        "domains": ["robotics"],
+        "code_url": None,
+        "quality_score": 10,
+        "notes": "Hierarchical multi-frequency action chunking decomposing robotic control into low-frequency semantic sub-goals and high-frequency proprioceptive telemetry execution for fine-grained closed-loop control."
+    },
+    {
+        "arxiv_id": "2509.00259",
+        "bibkey": "Jura2025QuantumSSM",
+        "venue": "arXiv",
+        "modality_pair": "TS+Graph",
+        "role_of_non_ts": "joint_representation",
+        "fusion_mechanism": "quantum_circuit_state_space",
+        "backbone": "Quantum-Mamba (PQC + S6 Selective State Space)",
+        "tasks": ["forecasting"],
+        "domains": ["general_ts", "energy"],
+        "code_url": None,
+        "quality_score": 10,
+        "notes": "Integrates parameterized quantum circuits (PQC) with selective state space models (Mamba S6), projecting multi-scale non-stationary time series into Hilbert state spaces for noise-resilient linear-time forecasting."
+    },
+    {
+        "arxiv_id": "2512.13745",
+        "bibkey": "Zhang2025HSTQGCN",
+        "venue": "arXiv",
+        "modality_pair": "TS+Graph",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "quantum_graph_convolution",
+        "backbone": "H-STQGCN (Quantum Graph ConvNet + Temporal ConvNet)",
+        "tasks": ["forecasting"],
+        "domains": ["traffic_mobility"],
+        "code_url": None,
+        "quality_score": 10,
+        "notes": "Proposes Hybrid Spatio-Temporal Quantum Graph Convolutional Network (H-STQGCN) leveraging quantum entanglement for spatial graph correlations and classical 1D temporal convolutions for time evolution."
+    },
+    {
+        "arxiv_id": "2506.20015",
+        "bibkey": "Wu2025NeuromorphicSplit",
+        "venue": "arXiv",
+        "modality_pair": "TS+Audio",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "neuromorphic_split_spiking",
+        "backbone": "Resonate-and-Fire (RF) Neuromorphic Split Network",
+        "tasks": ["classification", "anomaly_detection"],
+        "domains": ["industry_iot"],
+        "code_url": None,
+        "quality_score": 10,
+        "notes": "Pioneers wireless split computing for time-series sensor streams over fading channels, using resonate-and-fire spiking neurons for sub-milliwatt feature compression resilient to packet loss."
+    },
+    {
+        "arxiv_id": "2503.13246",
+        "bibkey": "Sun2025SemanticTS",
+        "venue": "arXiv",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "semantic_rate_distortion",
+        "backbone": "Semantic Time-Series Autoencoder",
+        "tasks": ["forecasting", "classification"],
+        "domains": ["industry_iot", "general_ts"],
+        "code_url": None,
+        "quality_score": 10,
+        "notes": "Introduces goal-oriented semantic communication and rate-distortion compression for time-series streams, enabling direct downstream analytics in the compressed latent space under severe bandwidth constraints."
     }
 ]
 
@@ -1496,6 +1594,20 @@ EXCLUDED_PAPERS = [
         "status": "excluded_fulltext",
         "exclusion_reason": "Industrial chemical process soft sensing utilizing unimodal spatio-temporal hypergraph convolutions without cross-modal text, vision, or foundation model interactions (EC1)",
         "screen_date": "2026-09-26"
+    },
+    {
+        "arxiv_id": "2608.02547",
+        "title": "Why Does Action Chunking Improve Behavioral Cloning Performance in Robotic Control?",
+        "status": "excluded_fulltext",
+        "exclusion_reason": "Theoretical behavioural cloning stability analysis without cross-modal sequence modeling or multi-sensor time-series alignment (EC1)",
+        "screen_date": "2026-09-27"
+    },
+    {
+        "arxiv_id": "2311.14105",
+        "title": "Hybrid quantum-classical reservoir computing for simulating chaotic systems",
+        "status": "excluded_fulltext",
+        "exclusion_reason": "Unimodal chaotic dynamical system tracking without external modalities or cross-modal integration (EC1)",
+        "screen_date": "2026-09-27"
     }
 ]
 
@@ -1641,22 +1753,22 @@ def main():
 
     # 3. Write prisma_counts.json
     prisma_counts = {
-        "iteration": 8,
-        "date": "2026-09-26",
+        "iteration": 9,
+        "date": "2026-09-27",
         "identification": {
-            "database_searches": 380,
-            "citation_snowballing": 202,
-            "total_identified": 582
+            "database_searches": 408,
+            "citation_snowballing": 214,
+            "total_identified": 622
         },
         "screening": {
-            "records_screened": 474,
-            "duplicates_removed": 108,
-            "records_after_dedup": 474,
-            "excluded_title_abstract": 361,
-            "fulltext_assessed": 113,
-            "excluded_fulltext": 29,
+            "records_screened": 505,
+            "duplicates_removed": 117,
+            "records_after_dedup": 505,
+            "excluded_title_abstract": 383,
+            "fulltext_assessed": 122,
+            "excluded_fulltext": 31,
             "exclusion_reasons": {
-                "unimodal_only": 16,
+                "unimodal_only": 18,
                 "static_data_no_ts": 9,
                 "unverifiable_metadata": 4
             }
@@ -1673,15 +1785,15 @@ def main():
     # 4. Append to search_log.jsonl
     search_log_path = DATA_DIR / "search_log.jsonl"
     queries = [
-        {"source": "arXiv API", "query": "all:\"neuro-symbolic\" AND all:\"temporal logic\" AND all:\"time series\" (GrammarWave, Signal2Symbol)", "hits": 24, "new": 2},
-        {"source": "arXiv API", "query": "all:\"spatio-temporal\" AND (all:\"foundation model\" OR all:\"large language model\") AND (all:sparse OR all:irregular) (LLMODE, MSHyper-LLM)", "hits": 31, "new": 2},
-        {"source": "Semantic Scholar / arXiv API", "query": "all:\"federated\" AND all:\"time series\" AND (all:\"foundation model\" OR all:multimodal) AND all:privacy (FedChronos, PerFed-TSFM, FLISM)", "hits": 38, "new": 3}
+        {"source": "arXiv API", "query": "all:\"action chunking\" OR (all:\"tactile\" AND all:\"force-torque\" AND all:\"time series\") (ACT, DiffusionPolicy, HiPolicy)", "hits": 28, "new": 3},
+        {"source": "arXiv API", "query": "all:quantum AND all:\"spatio-temporal\" AND (all:mamba OR all:\"state space\" OR all:graph) (QuantumSSM, H-STQGCN)", "hits": 21, "new": 2},
+        {"source": "arXiv API", "query": "all:\"split computing\" OR all:\"semantic communication\" AND all:\"time series\" (NeuromorphicSplit, SemanticTS)", "hits": 19, "new": 2}
     ]
     with open(search_log_path, "a", encoding="utf-8") as f:
         for q in queries:
             entry = {
                 "timestamp": datetime.now(timezone.utc).isoformat(),
-                "iteration": 8,
+                "iteration": 9,
                 "source": q["source"],
                 "query": q["query"],
                 "hits": q["hits"],

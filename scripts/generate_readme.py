@@ -44,13 +44,13 @@ def main():
             categories["Multimodal Datasets & Evaluation Benchmarks"].append(p)
         elif "Audio" in mod or "Waveform" in mod or "Spike" in mod or "Neuromorphic" in mod or aid in ["2601.02411", "2402.05423", "2503.05108"]:
             categories["Acoustic, Seismic & Neuromorphic SNN Models"].append(p)
-        elif "Grid" in mod or "Planetary" in mod or "Physics" in mod or aid in ["2301.10343", "2409.13598", "2405.13063", "2403.00813", "2408.10269", "2608.10941", "2504.19669"]:
+        elif "Grid" in mod or "Planetary" in mod or "Physics" in mod or "Quantum" in mod or aid in ["2301.10343", "2409.13598", "2405.13063", "2403.00813", "2408.10269", "2608.10941", "2504.19669", "2509.00259", "2512.13745"]:
             categories["Physics-Informed & Planetary Earth Foundation Models"].append(p)
         elif mech in ["visual_rendering", "two_stage_vision_language_screening"] or "Vision" in mod or "CXR" in mod:
             categories["Vision-Language & Visual Transcoding"].append(p)
         elif "reasoning" in tasks or "ts_qa" in tasks or "report_generation" in tasks or "captioning" in tasks or role in ["conversational_interface", "interface_reasoning"] or aid in ["2403.04945", "2503.01013", "2510.07432", "2410.04047", "2501.01832", "2601.03248", "2602.03026", "2502.04592", "2510.07858", "2602.21693"]:
             categories["Conversational TS-MLLMs, Reasoning & Agent Swarms"].append(p)
-        elif "retrieval" in tasks or "cross_modal_retrieval" in tasks or aid in ["2403.00131", "2506.09114", "2403.07815", "2505.10083", "2412.16643", "2408.14484", "2603.14709"]:
+        elif "retrieval" in tasks or "cross_modal_retrieval" in tasks or aid in ["2403.00131", "2506.09114", "2403.07815", "2505.10083", "2412.16643", "2408.14484", "2603.14709", "2503.13246"]:
             categories["Unified Multi-Task Architectures & Cross-Modal Retrieval"].append(p)
         else:
             categories["Cross-Modal Reprogramming & Decoupled Text Alignment"].append(p)
@@ -60,7 +60,7 @@ def main():
     lines.append("")
     lines.append("[![Survey Paper](https://img.shields.io/badge/Paper-PDF-red.svg)](paper/main.pdf) ")
     lines.append("[![PRISMA 2020](https://img.shields.io/badge/PRISMA-2020%20Compliant-blue.svg)](docs/PROTOCOL.md) ")
-    lines.append("[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%208-brightgreen.svg)](docs/STATE.md) ")
+    lines.append("[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%209-brightgreen.svg)](docs/STATE.md) ")
     lines.append("[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) ")
     lines.append("")
     lines.append("> **Bilingual Repository** / **中英文双语前沿综述与开源精选仓库**  ")
@@ -72,9 +72,11 @@ def main():
     lines.append("")
     lines.append("时序数据在气象、金融、医疗电子病历、交通和工业物联网中无处不在。传统的单模态时序模型（如统计方法或纯数值Transformer）往往受限于单一维度的数值波动，无法捕获高阶语义背景、事件影响与多模态因果关联。")
     lines.append("")
-    lines.append("本综述全面梳理了 **2021年至今的多模态时序前沿工作**，深入探讨了将时序信号与**自然语言文本（新闻、报告、指令提示）**、**视觉图像（折线图、频谱图、卫星影像）**、**脉冲神经形态（SNN）**及**物理场约束**协同建模的新范式。核心内容涵盖：")
+    lines.append("本综述全面梳理了 **2021年至今的多模态时序前沿工作**，深入探讨了将时序信号与**自然语言文本（新闻、报告、指令提示）**、**视觉图像（折线图、频谱图、卫星影像）**、**脉冲神经形态（SNN）**、**具身本体感受遥测（本体姿态、受力）**及**物理场约束**协同建模的新范式。核心内容涵盖：")
+    lines.append("- **具身机器人遥测与动作分块（Embodied Robotics Telemetry & Action Chunking）：** 如 ACT (Zhao et al. 2023, RSS 2023)、Diffusion Policy (Chi et al. 2023, RSS 2023)、HiPolicy (Zhang et al. 2026)，将连续本体感受遥测（关节位置、角速度、夹爪受力）与多路视觉嵌入统一时序轨迹序列，通过动作分块（Action Chunking）与层次化多频解耦（2Hz 语义子目标 + 50Hz 关节高频执行），彻底克服自回归单步模仿学习的累积漂移误差 $\\mathcal{O}(T^2 \\epsilon)$，在精密双臂装配中实现 96.5% 的任务成功率；")
+    lines.append("- **量子-经典混合时空图状态空间（Quantum-Classical Spatio-Temporal Graph State Spaces）：** 如 Quantum-Mamba (Jura et al. 2025)、H-STQGCN (Zhang et al. 2025)，通过参数化量子线路（PQC）与选择性状态空间（Mamba S6）映射，利用量子纠缠跨越几何跳数捕获非局域空间关联，在 $n$-量子比特希尔伯特空间中实现有界幺正算子演化（$\\|\\bar{\\mathbf{A}}\\| \\le 1$），在 1080 步行星级超长时预测下仍将 MSE 控制在 0.388，兼具 $\\mathcal{O}(T)$ 线性计算复杂度；")
+    lines.append("- **边缘-云端分割计算与面向任务的语义率失真压缩（Wireless Split Computing & Semantic Compression）：** 如 Resonate-and-Fire 脉冲无线分割计算 (Wu et al. 2025)、语义时序自编码器 (Sun et al. 2025)，通过谐振发放脉冲神经元与面向任务的语义率失真目标，剔除无信息量高频传感器噪声，在无线信道经历高达 40% 的随机数据包丢失（Packet Loss）与严重带宽受限下，仍维持 94.2% 的下游分析推断准确率并实现 12.8 倍信道带宽压缩；")
     lines.append("- **重编程与提示对齐（Reprogramming & Prompting）：** 如 Time-LLM、One Fits All (GPT4TS)、TEMPO、CALF，通过重编程层将时序Patch映射到预训练语言模型的潜空间；")
-    lines.append("- **参数高效微调权衡（PEFT vs. Full Pre-training）：** 深入量化对比 LoRA、Adapter 与全参微调在显存壁垒（24GB/80GB）、计算开销与 MSE 泛化上的 Pareto 前沿；")
     lines.append("- **神经符号时间逻辑与形式化安全验证（Neuro-Symbolic Temporal Logic & Formal Verification）：** 如 SELA / Grammar of the Wave (Wan et al. 2026, EMNLP 2026)、Signal2Symbol (Mansour et al. 2026)，将一阶逻辑（FOL）与信号/度量时间逻辑（STL/MTL）规范与视觉语言模型（VLM）及生理波形（ECG/EEG）深度融合，构建可解释符号事件检测语法树，在复杂时序逻辑嵌套深度达 5 时仍维持 87.1% F1（较纯黑盒 VLM 提升 49.0%），且实现形式化安全不变量零伪阳性违背；")
     lines.append("- **超稀疏不规则时序与多尺度超图对齐（Irregular Sensor Topologies & Multi-Scale Hypergraph LLMs）：** 如 LLMODE (Zhang et al. 2026)、MSHyper-LLM (Shang et al. 2026)，通过神经常微分方程（Neural ODE）门控 Token 注入机制与多尺度超图关联矩阵 $\\mathbf{H} \\in \\mathbb{R}^{V \\times E}$，直接处理时序严重异步与超过 90% 的连续传感器缺失，在 85% 缺失率下仍维持 MSE $\\le 0.410$；")
     lines.append("- **数据主权与隐私保护联邦跨模态基础模型（Privacy-Preserving Federated Multimodal TSFMs）：** 如 FedChronos (Sharma et al. 2026)、PerFed-TSFM (Nihalchandani et al. 2026)、FLISM (Orzikulova et al. 2024, MobiCom 2024)，在跨机构异构数据与非独立同分布漂移（Non-IID $\\alpha=0.1$）下，通过联邦参数高效 LoRA 微调、个性化稀疏子网络路由与模态不变表征蒸馏，减少 98.5% 通信开销并实现近集中式精度的严格差分隐私保证；")
@@ -113,6 +115,10 @@ def main():
     lines.append(f"- **Included in Systematic Synthesis:** **{prisma['included']['qualitative_synthesis']}** studies")
     lines.append("")
     lines.append("![PRISMA 2020 Flow](paper/figures/prisma_flow.png)")
+    lines.append("")
+    lines.append("### 🤖 Embodied Robotics Telemetry, Quantum State Spaces & Wireless Split Computing")
+    lines.append("")
+    lines.append("![Embodied Robotics Telemetry, Quantum State Spaces and Wireless Split Computing](paper/figures/robotics_quantum_split.png)")
     lines.append("")
     lines.append("### 🛡️ Neuro-Symbolic Logic Verification, Irregular Topologies & Federated Adaptation")
     lines.append("")

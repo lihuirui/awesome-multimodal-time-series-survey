@@ -1,7 +1,7 @@
 \section{Open Challenges and Future Trajectories}
 \label{sec:outlook}
 
-Despite rapid progress, multimodal time series intelligence faces foundational theoretical and engineering hurdles. In this section, we delineate nine open challenges and outline high-leverage future research trajectories.
+Despite rapid progress, multimodal time series intelligence faces foundational theoretical and engineering hurdles. In this section, we delineate twelve open challenges and outline high-leverage future research trajectories.
 
 \subsection{1. The Continuous-to-Discrete Gap and Physical Conservation Laws}
 While natural language and visual objects exhibit discrete, hierarchical compositional semantics, physical time series are continuous, non-stationary, and governed by underlying differential equations and conservation laws (e.g., mass, momentum, energy). Discretizing numerical time series into discrete vocabulary tokens often results in precision loss or quantization artifacts. Conversely, continuous patch projections frequently suffer from representational collapse when mapped into unconstrained language embeddings. In planetary and cyber-physical domains (such as ClimaX~\cite{Nguyen2023ClimaX}, Prithvi WxC~\cite{Schmude2024PrithviWxC}, and Aurora~\cite{Bodnar2024Aurora}), future architectures must integrate physics-informed loss constraints and Hamiltonian or symplectic neural network priors to ensure predictions respect invariant conservation laws.
@@ -29,6 +29,15 @@ Deploying time-series foundation models across planetary sensor topologies requi
 
 \subsection{9. Differential Privacy Guarantees in Heterogeneous Multimodal Edge Federations}
 Adapting multimodal foundation models over distributed, highly private data silos (cross-hospital electronic health records, smart building microgrids, confidential banking transactions) demands rigorous privacy guarantees without raw data centralization. Emerging federated PEFT frameworks (FedChronos~\cite{Sharma2026FedChronos}, PerFed-TSFM~\cite{Nihalchandani2026PerFedTSFM}) and incomplete modality distillation architectures (FLISM~\cite{Orzikulova2024FedImpHC}) offer promising directions. However, establishing formal $(\epsilon, \delta)$-differential privacy bounds under continuous streaming non-IID drift and multimodal adversary poisoning remains a vital, unsolved challenge.
+
+\subsection{10. Embodied Sensorimotor Latency \& Physical Action Safety Constraints}
+Bridging high-level visual and language reasoning with low-level high-frequency proprioceptive telemetry (ACT~\cite{Zhao2023ACT}, Diffusion Policy~\cite{Chi2023DiffusionPolicy}, HiPolicy~\cite{Zhang2026HiPolicy}) faces critical physical challenges. While diffusion trajectory sampling generates expressive multimodal action chunks, its iterative denoising steps introduce tens of milliseconds of computational latency, impeding real-time disturbance rejection in dynamic contact tasks. Future work must develop single-step consistency models for temporal action trajectories and embed real-time control barrier functions (CBFs) directly into action chunking decoders, guaranteeing physical obstacle avoidance and joint torque limits under sub-millisecond execution constraints.
+
+\subsection{11. Noise-Resilient Quantum Hilbert Space Embeddings on NISQ Hardware}
+While quantum parameterized circuits and selective state spaces (Quantum-Mamba~\cite{Jura2025QuantumSSM}, H-STQGCN~\cite{Zhang2025HSTQGCN}) theoretically achieve bounded unitary norm evolution and exponential state capacity, current Noisy Intermediate-Scale Quantum (NISQ) hardware suffers from gate infidelities, thermal decoherence, and qubit readout errors. Deploying quantum-classical spatio-temporal foundation models requires developing error-mitigated temporal circuit compilations, continuous quantum dynamical decoupling, and barren plateau mitigation strategies tailored for long-horizon non-stationary time series embeddings.
+
+\subsection{12. Asymmetric Edge-Cloud Semantic Drift \& Wireless Channel Resilience}
+In distributed cyber-physical infrastructures, edge-cloud split computing and goal-oriented semantic compression (NeuromorphicSplit~\cite{Wu2025NeuromorphicSplit}, SemanticTS~\cite{Sun2025SemanticTS}) demonstrate impressive resilience against random wireless packet erasures. However, non-stationary environmental shifts introduce asymmetric semantic drift: the edge encoder and cloud decoder gradually fall out of distributional alignment over time. Future architectures must formulate continuous online rate-distortion calibration and self-supervised latent synchronization protocols that adapt to time-varying channel capacities and fading dynamics without saturating uplink bandwidth.
 
 \section{Conclusion}
 \label{sec:conclusion}

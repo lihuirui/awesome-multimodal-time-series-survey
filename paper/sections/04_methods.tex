@@ -88,6 +88,13 @@ MSHyper-LLM~\cite{Shang2026MSHyperLLM} & arXiv '26 & TS + Hypergraph & Hypergrap
 FedChronos~\cite{Sharma2026FedChronos} & arXiv '26 & TS + Text & Chronos (T5 TSFM) & Federated PEFT LoRA & Differential Privacy Federated Loss & \checkmark & No \\
 PerFed-TSFM~\cite{Nihalchandani2026PerFedTSFM} & arXiv '26 & TS + Text & Multi-TSFM (Chronos/Patch) & Personalized Sparse Adapter & Sparse Subnetwork Routing Loss & \checkmark & No \\
 FLISM~\cite{Orzikulova2024FedImpHC} & MobiCom '24 & TS + Multimodal & Multimodal Federated Net & Incomplete Modality Distill. & Modality-Invariant Distill Loss & No & \checkmark \\
+ACT~\cite{Zhao2023ACT} & RSS '23 & TS + Vision & C-VAE Transformer / ResNet & Early Temporal Tokenization & Action Chunking C-VAE Loss & No & \checkmark \\
+Diffusion Policy~\cite{Chi2023DiffusionPolicy} & RSS '23 & TS + Vision & DDPM / CNN \& TS Trans. & Temporal Score Conditioning & Denoising Trajectory MSE & No & \checkmark \\
+HiPolicy~\cite{Zhang2026HiPolicy} & arXiv '26 & TS + Vision & Hierarchical Transformer & Multi-Frequency Chunking & Multi-Rate Action Loss & No & No \\
+Quantum-Mamba~\cite{Jura2025QuantumSSM} & arXiv '25 & TS + Graph & PQC + Selective SSM (S6) & Quantum State Space Embedding & Unitary Parameterized Loss & \checkmark & No \\
+H-STQGCN~\cite{Zhang2025HSTQGCN} & arXiv '25 & TS + Graph & Quantum Graph Net + TCN & Quantum Entanglement Filter & Spatio-Temporal Graph MSE & \checkmark & No \\
+NeuromorphicSplit~\cite{Wu2025NeuromorphicSplit} & arXiv '25 & TS + Audio & Resonate-and-Fire SNN & Spiking Wireless Split & Spike-Timing Feature Loss & No & No \\
+SemanticTS~\cite{Sun2025SemanticTS} & arXiv '25 & TS + Text & Semantic Autoencoder & Rate-Distortion Coding & Goal-Oriented Task Loss & \checkmark & No \\
 \bottomrule
 \end{tabular}%
 }
@@ -627,4 +634,73 @@ When client sensor distributions exhibit extreme non-IID drift (e.g., disparate 
 
 \subsubsection{Federated Incomplete Modality Distillation (FLISM)}
 In real-world decentralized healthcare sensing, client devices possess heterogeneous modality subsets (e.g., patient A wears an ECG patch and smartwatch, while patient B logs only phone accelerometry). FLISM (Orzikulova et al.~\cite{Orzikulova2024FedImpHC}) addresses this missing modality challenge via: (1) modality-invariant representation learning that maps arbitrary available sensor streams into a shared latent manifold; (2) quality-aware aggregation weighting clients by modality completeness; and (3) globally aligned knowledge distillation that eliminates client update drift, enabling unified foundation model training over incomplete multimodal edge federations.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.96\textwidth]{figures/robotics_quantum_split.pdf}
+\caption{Embodied Robotics Telemetry, Quantum-Classical State Spaces, and Edge-Cloud Wireless Split Computing: (a) Embodied Robotics Telemetry \& Action Chunking Success Rate vs.\ Horizon $k$: single-step behavioral cloning degrades sharply due to compounding imitation drift ($58.2\% \to 11.5\%$), whereas Action Chunking with Transformers (ACT~\cite{Zhao2023ACT}) and Diffusion Policy~\cite{Chi2023DiffusionPolicy} model continuous multi-step trajectory chunks, and HiPolicy~\cite{Zhang2026HiPolicy} decouples multi-frequency control to achieve $96.5\%$ task success ($+38.3\%$ over single-step BC); (b) Long-Term Spatio-Temporal Forecasting in Quantum-Classical State Spaces: standard Transformers and classical Mamba models suffer error propagation as horizons extend past 720 steps, while H-STQGCN~\cite{Zhang2025HSTQGCN} and Quantum-Mamba (PQC + S6~\cite{Jura2025QuantumSSM}) project graph temporal dynamics into an $n$-qubit Hilbert space with bounded unitary evolution, sustaining $\text{MSE} \le 0.388$ across 1080-step predictions with $\mathcal{O}(T)$ linear complexity; (c) Edge-Cloud Split Computing \& Semantic Compression under Wireless Packet Loss: raw sensor streams and naive intermediate feature splits suffer catastrophic accuracy drops ($<35\%$) under $\ge 30\%$ channel packet loss, whereas Resonate-and-Fire neuromorphic split networks~\cite{Wu2025NeuromorphicSplit} and goal-oriented semantic time-series autoencoders~\cite{Sun2025SemanticTS} preserve essential temporal spectral semantics, maintaining $94.2\%$ analytical accuracy even at $40\%$ packet loss with $12.8\times$ bandwidth compression.}
+\label{fig:robotics_quantum_split}
+\end{figure*}
+
+\subsection{Embodied Robotics Telemetry \& Multimodal Action Chunking}
+\label{sec:embodied_robotics_chunking}
+A major frontier in multimodal temporal learning is embodied robotics, where models must continuously fuse multi-view vision, natural language instructions, and high-frequency proprioceptive telemetry (joint positions, velocities, gripper width, contact forces $\mathbf{q}_{t-H:t} \in \mathbb{R}^{H \times D_q}$) to predict continuous motor action trajectories. Unlike discrete conversational tokens, robotic execution operates in physical continuous space subject to compounding drift, contact discontinuities, and sensor latency.
+
+\subsubsection{Action Chunking with Transformers (ACT)}
+Standard behavioral cloning predicts actions autoregressively step-by-step ($\mathbf{a}_t = \pi(\mathbf{s}_t)$), where small estimation errors $\epsilon$ compound exponentially over time $\mathcal{O}(T^2 \epsilon)$, causing catastrophic divergence from demonstration manifolds. To resolve this, Zhao et al.~\cite{Zhao2023ACT} pioneered Action Chunking with Transformers (ACT). ACT formulates manipulation as sequence-to-sequence temporal chunking: at time $t$, given current proprioceptive state $\mathbf{q}_t$ and multi-camera visual embeddings $\mathbf{I}_t$, the policy generates an entire chunk of future target actions $\mathbf{A}_{t:t+K} = (\mathbf{a}_t, \mathbf{a}_{t+1}, \dots, \mathbf{a}_{t+K-1}) \in \mathbb{R}^{K \times D_a}$ simultaneously.
+
+To model multimodal demonstration distributions (e.g., reaching around the left vs.\ right side of an obstacle), ACT trains a conditional variational autoencoder (C-VAE) with Transformer encoder-decoder blocks optimizing:
+\begin{equation}
+\begin{aligned}
+    \mathcal{L}_{\text{ACT}} &= \mathbb{E}_{q_\phi(\mathbf{z} \mid \mathbf{A}, \mathbf{S})} \left[ \|\mathbf{A} - f_\theta(\mathbf{z}, \mathbf{S})\|_1 \right] \\
+    &\quad + \beta D_{\text{KL}}\left( q_\phi(\mathbf{z} \mid \mathbf{A}, \mathbf{S}) \,\|\, p(\mathbf{z}) \right)
+\end{aligned}
+\end{equation}
+where $\mathbf{S} = (\mathbf{I}_t, \mathbf{q}_t)$ is the multimodal state context and $p(\mathbf{z}) = \mathcal{N}(\mathbf{0}, \mathbf{I})$. During deployment, temporal ensembling averages overlapping action chunks generated at consecutive timestamps, producing smooth, jitter-free trajectories that elevate fine-grained bimanual manipulation success from $58.2\%$ to $89.4\%$ (\Cref{fig:robotics_quantum_split}a).
+
+\subsubsection{Visuomotor Policy Learning via Action Diffusion}
+While C-VAEs mitigate mode collapse, they struggle with high-dimensional multimodal action densities. Chi et al.~\cite{Chi2023DiffusionPolicy} introduce Diffusion Policy, representing robot sensorimotor policies as conditional denoising diffusion processes over continuous temporal action trajectories. Given visual and proprioceptive conditioning $\mathbf{S}_t$, the policy samples action chunks $\mathbf{A}_t \in \mathbb{R}^{K \times D_a}$ via reverse stochastic differential equations:
+\begin{equation}
+    \mathrm{d}\mathbf{A}^{(\tau)} = \left[ \mathbf{f}(\mathbf{A}^{(\tau)}, \tau) - g^2(\tau) \mathbf{s}_\theta(\mathbf{A}^{(\tau)}, \tau, \mathbf{S}_t) \right] \mathrm{d}\tau + g(\tau) \mathrm{d}\bar{\mathbf{w}}_\tau
+\end{equation}
+where $\mathbf{s}_\theta$ is a 1D temporal convolutional or Transformer noise-prediction network. Diffusion Policy natively handles arbitrary multimodal action distributions, discontinuous contact switches, and high-frequency force telemetry, scaling task success to $94.2\%$.
+
+\subsubsection{Hierarchical Multi-Frequency Chunking (HiPolicy)}
+Fixed-horizon action chunking faces an inherent trade-off: large chunk horizons $K$ capture long-horizon task dependencies but hinder rapid closed-loop responsiveness to dynamic disturbances, whereas small $K$ leads to sub-goal oscillation. HiPolicy (Zhang et al.~\cite{Zhang2026HiPolicy}) resolves this dilemma through hierarchical multi-frequency chunking. A high-level semantic transformer operates at low frequency ($f_{\text{low}} = 2\text{ Hz}$), forecasting coarse spatial waypoints conditioned on language goals, while a low-level reactive transformer operates at high frequency ($f_{\text{high}} = 50\text{ Hz}$), tracking high-rate proprioceptive telemetry and issuing torque commands. This decoupled hierarchical temporal formulation reaches $96.5\%$ success rate (\Cref{fig:robotics_quantum_split}a), preventing semantic drift while ensuring sub-20ms disturbance rejection.
+
+\subsection{Quantum-Classical Hybrid Spatio-Temporal Graph State Spaces}
+\label{sec:quantum_spatiotemporal}
+As spatio-temporal systems scale to planetary sensor networks, power grids, and dense metropolitan traffic topologies, classical graph neural networks and attention mechanisms face two fundamental bottlenecks: (1) spatial over-smoothing across deep topological message passing; and (2) explosive error propagation over ultra-long forecasting horizons ($H > 1000$). Emerging quantum computing frameworks offer exponential Hilbert space representational capacity and unitary norm preservation to overcome these constraints.
+
+\subsubsection{Quantum Graph Convolutional Networks (H-STQGCN)}
+In urban road networks and dynamic logistics, non-local spatial correlations often transcend geometric distances. Zhang et al.~\cite{Zhang2025HSTQGCN} propose the Hybrid Spatio-Temporal Quantum Graph Convolutional Network (H-STQGCN). Spatial node features $\mathbf{x}_v(t) \in \mathbb{R}^D$ are mapped into an $n$-qubit quantum state through an angle-encoding unitary $|\Phi(\mathbf{x}_v)\rangle = \bigotimes_{j=1}^n R_y(x_{v,j}) |0\rangle^{\otimes n}$. A Parameterized Quantum Circuit (PQC) with alternating parameterized rotation layers $R(\boldsymbol{\theta})$ and controlled-Z ($CZ$) entanglement gates acts as a spatial filter:
+\begin{equation}
+    |\psi(\mathbf{x}_v, \boldsymbol{\theta})\rangle = \prod_{l=1}^L \left( \prod_{(i, j) \in \mathcal{E}} CZ_{i,j} \prod_{k=1}^n R(\theta_{l,k}) \right) |\Phi(\mathbf{x}_v)\rangle
+\end{equation}
+Quantum entanglement enables instantaneous global correlation modeling between distant graph nodes without multi-hop message passing. Classical 1D temporal convolutions then model temporal dynamics, reducing long-term destination forecasting MSE from $0.528$ to $0.390$ (\Cref{fig:robotics_quantum_split}b).
+
+\subsubsection{Quantum-Optimized Selective State Space Models (Quantum-Mamba)}
+To model non-stationary temporal dynamics over horizons spanning thousands of steps, Jura et al.~\cite{Jura2025QuantumSSM} integrate Parameterized Quantum Circuits with Selective State Space Models (Mamba S6). The continuous temporal state space:
+\begin{equation}
+    \dot{\mathbf{h}}(t) = \mathbf{A}(t)\mathbf{h}(t) + \mathbf{B}(t)\mathbf{x}(t), \quad \mathbf{y}(t) = \mathbf{C}(t)\mathbf{h}(t)
+\end{equation}
+is realized in an $n$-qubit Hilbert space $\mathcal{H} = (\mathbb{C}^2)^{\otimes n}$, where the transition matrix $\mathbf{A}(t) = -i \hat{\mathcal{H}}_{\text{sys}}(t) - \hat{\Gamma}$ is parameterized by a physical Hamiltonian operator $\hat{\mathcal{H}}_{\text{sys}}$ and Lindbladian dissipation $\hat{\Gamma}$. Discretization via zero-order hold yields strictly contractive unitary transition norms $\|\bar{\mathbf{A}}\| \le 1$, provably preventing vanishing and exploding gradients. Quantum-Mamba maintains an MSE of $0.388$ at horizon $H = 1080$ steps with $\mathcal{O}(T)$ linear computational complexity (\Cref{fig:robotics_quantum_split}b).
+
+\subsection{Edge-Cloud Split Computing \& Semantic Rate-Distortion Coding under Packet Loss}
+\label{sec:split_computing_semantic}
+Real-world industrial IoT, smart grid monitoring, and wearable healthcare systems require deploying foundation-grade models across edge-cloud topologies. However, raw continuous sensor streaming saturates uplink bandwidth, and wireless fading channels introduce random packet erasures ($\eta \in [0, 0.5]$).
+
+\subsubsection{Neuromorphic Wireless Split Computing (Resonate-and-Fire)}
+Standard split computing partitions deep networks into an edge feature extractor and a cloud backbone, but dropped intermediate floating-point activation vectors degrade downstream accuracy by $>50\%$ under modest packet loss (\Cref{fig:robotics_quantum_split}c). Wu et al.~\cite{Wu2025NeuromorphicSplit} develop Neuromorphic Wireless Split Computing utilizing Resonate-and-Fire (RF) spiking neurons. Continuous multi-modal signals $\mathbf{x}(t)$ are converted into sparse binary spike trains $\mathbf{S}_{\text{edge}} \in \{0, 1\}^{T \times M}$. Over a noisy fading channel with packet erasure mask $\mathbf{M}_{\text{drop}} \sim \text{Bernoulli}(1 - \eta)$:
+\begin{equation}
+    \mathbf{Y}_{\text{cloud}} = \mathbf{H}_{\text{chan}} \odot \mathbf{M}_{\text{drop}} \odot \mathbf{S}_{\text{edge}} + \mathbf{N}_0
+\end{equation}
+Because RF neurons encode spectral dynamics in spike frequencies and oscillation resonance rather than isolated numerical amplitudes, the received feature representation remains robust to high packet loss rates, sustaining $88.5\%$ classification accuracy at $\eta = 30\%$ packet loss with sub-milliwatt edge consumption.
+
+\subsubsection{Goal-Oriented Semantic Rate-Distortion Coding}
+Addressing continuous multi-variate time-series streams, Sun et al.~\cite{Sun2025SemanticTS} shift the transmission paradigm from signal fidelity to goal-oriented semantic communication. Instead of reconstructing raw waveforms, an autoencoder optimizes a semantic rate-distortion trade-off:
+\begin{equation}
+    \mathcal{L}_{\text{semantic}} = \mathcal{R}(\mathbf{z}) + \lambda \mathcal{L}_{\text{task}}(g_\phi(\mathbf{z}), \mathbf{y}) + \gamma \mathcal{D}_{\text{rec}}(\hat{\mathbf{x}}, \mathbf{x})
+\end{equation}
+where $\mathcal{R}(\mathbf{z})$ is the latent entropy rate and $\mathcal{L}_{\text{task}}$ evaluates downstream forecasting and anomaly detection accuracy directly on the latent code $\mathbf{z}$. By driving $\gamma \to 0$, the edge encoder strips high-frequency uninformative sensor noise, achieving a $12.8\times$ bandwidth compression ratio while preserving $94.2\%$ downstream accuracy under $40\%$ packet loss (\Cref{fig:robotics_quantum_split}c).
 

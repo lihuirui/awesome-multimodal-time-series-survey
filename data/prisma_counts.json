@@ -1,26 +1,26 @@
 {
-  "iteration": 8,
-  "date": "2026-09-26",
+  "iteration": 9,
+  "date": "2026-09-27",
   "identification": {
-    "database_searches": 380,
-    "citation_snowballing": 202,
-    "total_identified": 582
+    "database_searches": 408,
+    "citation_snowballing": 214,
+    "total_identified": 622
   },
   "screening": {
-    "records_screened": 474,
-    "duplicates_removed": 108,
-    "records_after_dedup": 474,
-    "excluded_title_abstract": 361,
-    "fulltext_assessed": 113,
-    "excluded_fulltext": 29,
+    "records_screened": 505,
+    "duplicates_removed": 117,
+    "records_after_dedup": 505,
+    "excluded_title_abstract": 383,
+    "fulltext_assessed": 122,
+    "excluded_fulltext": 31,
     "exclusion_reasons": {
-      "unimodal_only": 16,
+      "unimodal_only": 18,
       "static_data_no_ts": 9,
       "unverifiable_metadata": 4
     }
   },
   "included": {
-    "qualitative_synthesis": 84,
-    "quantitative_taxonomy": 84
+    "qualitative_synthesis": 91,
+    "quantitative_taxonomy": 91
   }
 }

@@ -1,10 +1,10 @@
 {
   "metadata": {
     "last_updated": "2026-09-26",
-    "total_candidates": 126,
-    "included": 84,
+    "total_candidates": 135,
+    "included": 91,
     "excluded_title": 27,
-    "excluded_fulltext": 15
+    "excluded_fulltext": 17
   },
   "candidates": [
     {
@@ -2983,6 +2983,238 @@
       "api_verified": true
     },
     {
+      "status": "included",
+      "bibkey": "Zhao2023ACT",
+      "title": "Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware",
+      "authors": [
+        "Tony Z. Zhao",
+        "Vikash Kumar",
+        "Sergey Levine",
+        "Chelsea Finn"
+      ],
+      "year": 2023,
+      "venue": "RSS 2023",
+      "arxiv_id": "2304.13705",
+      "doi": "10.48550/arXiv.2304.13705",
+      "modality_pair": "TS+Vision",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "early_tokenization",
+      "backbone": "Action Chunking with Transformers (ACT)",
+      "tasks": [
+        "forecasting",
+        "robot_manipulation"
+      ],
+      "domains": [
+        "robotics"
+      ],
+      "code_url": "https://github.com/tonyzhaozh/act",
+      "quality_score": 11,
+      "abstract": "Fine manipulation tasks, such as threading cable ties or slotting a battery, are notoriously difficult for robots because they require precision, careful coordination of contact forces, and closed-loop visual feedback. Performing these tasks typically requires high-end robots, accurate sensors, or careful calibration, which can be expensive and difficult to set up. Can learning enable low-cost and imprecise hardware to perform these fine manipulation tasks? We present a low-cost system that performs end-to-end imitation learning directly from real demonstrations, collected with a custom teleoperation interface. Imitation learning, however, presents its own challenges, particularly in high-precision domains: errors in the policy can compound over time, and human demonstrations can be non-stationary. To address these challenges, we develop a simple yet novel algorithm, Action Chunking with Transformers (ACT), which learns a generative model over action sequences. ACT allows the robot to learn 6 difficult tasks in the real world, such as opening a translucent condiment cup and slotting a battery with 80-90% success, with only 10 minutes worth of demonstrations. Project website: https://tonyzhaozh.github.io/aloha/",
+      "notes": "Pioneered Action Chunking with Transformers (ACT); models joint proprioceptive telemetry and action trajectories as continuous temporal sequences chunked over horizons to eliminate compounding imitation error.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Chi2023DiffusionPolicy",
+      "title": "Diffusion Policy: Visuomotor Policy Learning via Action Diffusion",
+      "authors": [
+        "Cheng Chi",
+        "Zhenjia Xu",
+        "Siyuan Feng",
+        "Eric Cousineau",
+        "Yilun Du",
+        "Benjamin Burchfiel",
+        "Russ Tedrake",
+        "Shuran Song"
+      ],
+      "year": 2023,
+      "venue": "RSS 2023",
+      "arxiv_id": "2303.04137",
+      "doi": "10.48550/arXiv.2303.04137",
+      "modality_pair": "TS+Vision",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "cross_attention",
+      "backbone": "Diffusion Policy (DDPM / CNN & TS Transformer)",
+      "tasks": [
+        "forecasting",
+        "robot_manipulation"
+      ],
+      "domains": [
+        "robotics"
+      ],
+      "code_url": "https://github.com/real-stanford/diffusion_policy",
+      "quality_score": 11,
+      "abstract": "This paper introduces Diffusion Policy, a new way of generating robot behavior by representing a robot&#39;s visuomotor policy as a conditional denoising diffusion process. We benchmark Diffusion Policy across 12 different tasks from 4 different robot manipulation benchmarks and find that it consistently outperforms existing state-of-the-art robot learning methods with an average improvement of 46.9%. Diffusion Policy learns the gradient of the action-distribution score function and iteratively optimizes with respect to this gradient field during inference via a series of stochastic Langevin dynamics steps. We find that the diffusion formulation yields powerful advantages when used for robot policies, including gracefully handling multimodal action distributions, being suitable for high-dimensional action spaces, and exhibiting impressive training stability. To fully unlock the potential of diffusion models for visuomotor policy learning on physical robots, this paper presents a set of key technical contributions including the incorporation of receding horizon control, visual conditioning, and the time-series diffusion transformer. We hope this work will help motivate a new generation of policy learning techniques that are able to leverage the powerful generative modeling capabilities of diffusion models. Code, data, and training details is publicly available diffusion-policy.cs.columbia.edu",
+      "notes": "Formulates robot sensorimotor control as conditional denoising diffusion over continuous temporal action trajectory chunks, handling multimodal action distributions and high-dimensional proprioceptive telemetry.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Zhang2026HiPolicy",
+      "title": "HiPolicy: Hierarchical Multi-Frequency Action Chunking for Policy Learning",
+      "authors": [
+        "Jiyao Zhang",
+        "Zimu Han",
+        "Junhan Wang",
+        "Xionghao Wu",
+        "Shihong Lin",
+        "Jinzhou Li",
+        "Hongwei Fan",
+        "Ruihai Wu",
+        "Dongjiang Li",
+        "Hao Dong"
+      ],
+      "year": 2026,
+      "venue": "arXiv",
+      "arxiv_id": "2604.06067",
+      "doi": "10.48550/arXiv.2604.06067",
+      "modality_pair": "TS+Vision",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "hierarchical_action_chunking",
+      "backbone": "HiPolicy (Hierarchical Multi-Frequency Transformer)",
+      "tasks": [
+        "forecasting",
+        "robot_manipulation"
+      ],
+      "domains": [
+        "robotics"
+      ],
+      "code_url": null,
+      "quality_score": 10,
+      "abstract": "Robotic imitation learning faces a fundamental trade-off between modeling long-horizon dependencies and enabling fine-grained closed-loop control. Existing fixed-frequency action chunking approaches struggle to achieve both. Building on this insight, we propose HiPolicy, a hierarchical multi-frequency action chunking framework that jointly predicts action sequences at different frequencies to capture both coarse high-level plans and precise reactive motions. We extract and fuse hierarchical features from history observations aligned to each frequency for multi-frequency chunk generation, and introduce an entropy-guided execution mechanism that adaptively balances long-horizon planning with fine-grained control based on action uncertainty. Experiments on diverse simulated benchmarks and real-world manipulation tasks show that HiPolicy can be seamlessly integrated into existing 2D and 3D generative policies, delivering consistent improvements in performance while significantly enhancing execution efficiency.",
+      "notes": "Hierarchical multi-frequency action chunking decomposing robotic control into low-frequency semantic sub-goals and high-frequency proprioceptive telemetry execution for fine-grained closed-loop control.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Jura2025QuantumSSM",
+      "title": "Quantum-Optimized Selective State Space Model for Efficient Time Series Prediction",
+      "authors": [
+        "Stefan-Alexandru Jura",
+        "Mihai Udrescu",
+        "Alexandru Topirceanu"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2509.00259",
+      "doi": "10.48550/arXiv.2509.00259",
+      "modality_pair": "TS+Graph",
+      "role_of_non_ts": "joint_representation",
+      "fusion_mechanism": "quantum_circuit_state_space",
+      "backbone": "Quantum-Mamba (PQC + S6 Selective State Space)",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts",
+        "energy"
+      ],
+      "code_url": null,
+      "quality_score": 10,
+      "abstract": "Long-range time series forecasting remains challenging, as it requires capturing non-stationary and multi-scale temporal dependencies while maintaining noise robustness, efficiency, and stability. Transformer-based architectures such as Autoformer and Informer improve generalization but suffer from quadratic complexity and degraded performance on very long time horizons. State space models, notably S-Mamba, provide linear-time updates but often face unstable training dynamics, sensitivity to initialization, and limited robustness for multivariate forecasting. To address such challenges, we propose the Quantum-Optimized Selective State Space Model (Q-SSM), a hybrid quantum-optimized approach that integrates state space dynamics with a variational quantum gate. Instead of relying on expensive attention mechanisms, Q-SSM employs a simple parametrized quantum circuit (RY-RX ansatz) whose expectation values regulate memory updates adaptively. This quantum gating mechanism improves convergence stability, enhances the modeling of long-term dependencies, and provides a lightweight alternative to attention. We empirically validate Q-SSM on three widely used benchmarks, i.e., ETT, Traffic, and Exchange Rate. Results show that Q-SSM consistently improves over strong baselines (LSTM, TCN, Reformer), Transformer-based models, and S-Mamba. These findings demonstrate that variational quantum gating can address current limitations in long-range forecasting, leading to accurate and robust multivariate predictions.",
+      "notes": "Integrates parameterized quantum circuits (PQC) with selective state space models (Mamba S6), projecting multi-scale non-stationary time series into Hilbert state spaces for noise-resilient linear-time forecasting.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Zhang2025HSTQGCN",
+      "title": "A Spatio-Temporal Hybrid Quantum-Classical Graph Convolutional Neural Network Approach for Urban Taxi Destination Prediction",
+      "authors": [
+        "Xiuying Zhang",
+        "Qinsheng Zhu",
+        "Xiaodong Xing"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2512.13745",
+      "doi": "10.48550/arXiv.2512.13745",
+      "modality_pair": "TS+Graph",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "quantum_graph_convolution",
+      "backbone": "H-STQGCN (Quantum Graph ConvNet + Temporal ConvNet)",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "traffic_mobility"
+      ],
+      "code_url": null,
+      "quality_score": 10,
+      "abstract": "We propose a Hybrid Spatio-Temporal Quantum Graph Convolutional Network (H-STQGCN) algorithm by combining the strengths of quantum computing and classical deep learning to predict the taxi destination within urban road networks. Our algorithm consists of two branches: spatial processing and time evolution. Regarding the spatial processing, the classical module encodes the local topological features of the road network based on the GCN method, and the quantum module is designed to map graph features onto parameterized quantum circuits through a differentiable pooling layer. The time evolution is solved by integrating multi-source contextual information and capturing dynamic trip dependencies on the classical TCN theory. Finally, our experimental results demonstrate that the proposed algorithm outperforms the current methods in terms of prediction accuracy and stability, validating the unique advantages of the quantum-enhanced mechanism in capturing high-dimensional spatial dependencies.",
+      "notes": "Proposes Hybrid Spatio-Temporal Quantum Graph Convolutional Network (H-STQGCN) leveraging quantum entanglement for spatial graph correlations and classical 1D temporal convolutions for time evolution.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Wu2025NeuromorphicSplit",
+      "title": "Neuromorphic Wireless Split Computing with Resonate-and-Fire Neurons",
+      "authors": [
+        "Dengyu Wu",
+        "Jiechen Chen",
+        "H. Vincent Poor",
+        "Bipin Rajendran",
+        "Osvaldo Simeone"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2506.20015",
+      "doi": "10.48550/arXiv.2506.20015",
+      "modality_pair": "TS+Audio",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "neuromorphic_split_spiking",
+      "backbone": "Resonate-and-Fire (RF) Neuromorphic Split Network",
+      "tasks": [
+        "classification",
+        "anomaly_detection"
+      ],
+      "domains": [
+        "industry_iot"
+      ],
+      "code_url": null,
+      "quality_score": 10,
+      "abstract": "Neuromorphic computing offers an energy-efficient alternative to conventional deep learning accelerators, particularly for real-time processing of time-series data. However, many edge applications, such as wireless sensing and audio recognition, generate streaming signals with rich spectral features that are not effectively captured by conventional leaky integrate-and-fire (LIF) spiking neurons. This paper investigates a wireless split computing architecture that employs resonate-and-fire (RF) neurons with oscillatory dynamics to process time-domain signals directly, eliminating the need for costly spectral pre-processing. By resonating at tunable frequencies, RF neurons extract time-localized spectral features while maintaining low spiking activity. This temporal sparsity translates into significant savings in both computation and transmission energy. Assuming an OFDM-based analog wireless interface for spike transmission, we present a complete system design and evaluate its performance on audio classification and modulation classification tasks. Experimental results show that the proposed RF-SNN architecture achieves comparable accuracy to conventional LIF-SNNs and ANNs, while substantially reducing spike rates and total energy consumption during inference and communication.",
+      "notes": "Pioneers wireless split computing for time-series sensor streams over fading channels, using resonate-and-fire spiking neurons for sub-milliwatt feature compression resilient to packet loss.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Sun2025SemanticTS",
+      "title": "Highly Efficient Direct Analytics on Semantic-aware Time Series Data Compression",
+      "authors": [
+        "Guoyou Sun",
+        "Panagiotis Karras",
+        "Qi Zhang"
+      ],
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2503.13246",
+      "doi": "10.48550/arXiv.2503.13246",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "semantic_rate_distortion",
+      "backbone": "Semantic Time-Series Autoencoder",
+      "tasks": [
+        "forecasting",
+        "classification"
+      ],
+      "domains": [
+        "industry_iot",
+        "general_ts"
+      ],
+      "code_url": null,
+      "quality_score": 10,
+      "abstract": "Semantic communication has emerged as a promising paradigm to tackle the challenges of massive growing data traffic and sustainable data communication. It shifts the focus from data fidelity to goal-oriented or task-oriented semantic transmission. While deep learning-based methods are commonly used for semantic encoding and decoding, they struggle with the sequential nature of time series data and high computation cost, particularly in resource-constrained IoT environments. Data compression plays a crucial role in reducing transmission and storage costs, yet traditional data compression methods fall short of the demands of goal-oriented communication systems. In this paper, we propose a novel method for direct analytics on time series data compressed by the SHRINK compression algorithm. Through experimentation using outlier detection as a case study, we show that our method outperforms baselines running on uncompressed data in multiple cases, with merely 1% difference in the worst case. Additionally, it achieves four times lower runtime on average and accesses approximately 10% of the data volume, which enables edge analytics with limited storage and computation power. These results demonstrate that our approach offers reliable, high-speed outlier detection analytics for diverse IoT applications while extracting semantics from time-series data, achieving high compression, and reducing data transmission.",
+      "notes": "Introduces goal-oriented semantic communication and rate-distortion compression for time-series streams, enabling direct downstream analytics in the compressed latent space under severe bandwidth constraints.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
       "status": "excluded_title",
       "bibkey": null,
       "title": "2-categorical approach to unifying constructions of precoverings and its applications",
@@ -3904,6 +4136,50 @@
       "abstract": "",
       "exclusion_reason": "Industrial chemical process soft sensing utilizing unimodal spatio-temporal hypergraph convolutions without cross-modal text, vision, or foundation model interactions (EC1)",
       "screen_date": "2026-09-26",
+      "api_verified": true
+    },
+    {
+      "status": "excluded_fulltext",
+      "bibkey": null,
+      "title": "Why Does Action Chunking Improve Behavioral Cloning Performance in Robotic Control?",
+      "authors": [],
+      "year": 2026,
+      "venue": "arXiv",
+      "arxiv_id": "2608.02547",
+      "doi": "10.48550/arXiv.2608.02547",
+      "modality_pair": null,
+      "role_of_non_ts": null,
+      "fusion_mechanism": null,
+      "backbone": null,
+      "tasks": [],
+      "domains": [],
+      "code_url": null,
+      "quality_score": 0,
+      "abstract": "",
+      "exclusion_reason": "Theoretical behavioural cloning stability analysis without cross-modal sequence modeling or multi-sensor time-series alignment (EC1)",
+      "screen_date": "2026-09-27",
+      "api_verified": true
+    },
+    {
+      "status": "excluded_fulltext",
+      "bibkey": null,
+      "title": "Hybrid quantum-classical reservoir computing for simulating chaotic systems",
+      "authors": [],
+      "year": 2026,
+      "venue": "arXiv",
+      "arxiv_id": "2311.14105",
+      "doi": "10.48550/arXiv.2311.14105",
+      "modality_pair": null,
+      "role_of_non_ts": null,
+      "fusion_mechanism": null,
+      "backbone": null,
+      "tasks": [],
+      "domains": [],
+      "code_url": null,
+      "quality_score": 0,
+      "abstract": "",
+      "exclusion_reason": "Unimodal chaotic dynamical system tracking without external modalities or cross-modal integration (EC1)",
+      "screen_date": "2026-09-27",
       "api_verified": true
     }
   ]

@@ -249,11 +249,33 @@ $$\mathbf{h}_i = \mathbf{P}_i \mathbf{W}_{\text{in}} + \mathbf{E}_{\text{pos}, i
   - **PerFed-TSFM (Nihalchandani et al., 2026):** 针对极端非独立同分布漂移（Non-IID $\text{Dir}(\alpha=0.1)$），提出个性化稀疏子网络路由算法。将全局时序基础先验与客户端私有稀疏适配器解耦，20 轮通信即可收敛至 0.379 最佳 MSE；
   - **FLISM (Orzikulova et al., 2024, ACM MobiCom 2024):** 针对联邦穿戴感知中客户端传感器模态缺失（部分患者仅佩戴手表、部分具备胸带心电）的问题，设计模态不变表征学习与全局对齐知识蒸馏，使异构不完整模态客户端协同达到 0.410 稳健 MSE。
 
+### 4.26 具身智能机器人高频遥测与多模态动作块建模 (Embodied Robotics Telemetry & Action Chunking)
+在具身机器人操作与自动驾驶等物理交互系统中，模型必须实时融合多视角视觉流、自然语言任务指令以及高频本体感受遥测流（关节位置、角速度、末端夹爪开合度、六维触觉力矩 $\mathbf{q}_{t-H:t} \in \mathbb{R}^{H \times D_q}$），生成连续的电机控制轨迹。与离散文本不同，物理电机控制存在严重的复合模仿漂移（Compounding Drift）、接触力学不连续性与传感器延迟：
+- **动作分块建模（Action Chunking）：** 传统单步行为克隆（$\mathbf{a}_t = \pi(\mathbf{s}_t)$）预测误差在时间尺度上呈 $\mathcal{O}(T^2 \epsilon)$ 指数级累积发散。动作块架构将控制转化为 Seq2Seq 时序块生成，在时刻 $t$ 一次性预测未来 $K$ 步连续动作轨迹：$\mathbf{A}_{t:t+K} = (\mathbf{a}_t, \dots, \mathbf{a}_{t+K-1})$。
+- **代表性前沿突破：**
+  - **ACT (Zhao et al., RSS 2023):** 提出基于 Transformer 的动作块 C-VAE 架构。利用编码器-解码器学习多模态演示分布潜在先验，在部署时采用时序平滑集成（Temporal Ensembling）对相邻时间戳预测的重叠动作块进行滑动指数加权，彻底消除运动抖动，将精细双臂操作成功率从 58.2% 跃升至 **89.4%**（见英文正文 Figure 14a）；
+  - **Diffusion Policy (Chi et al., RSS 2023):** 将多模态感知-动作映射建模为条件去噪扩散过程。通过连续反向随机微分方程（Reverse SDE）采样动作轨迹，天然拟合多峰动作分布与复杂的接触切换力学，将复杂操作成功率提升至 **94.2%**；
+  - **HiPolicy (Zhang et al., 2026):** 提出分层多频动作分块。高层语义 Transformer 以低频（$2\text{ Hz}$）规划粗粒度空间目标路标点，底层反应式 Transformer 以高频（$50\text{ Hz}$）追踪本体感受高频遥测并直接输出力矩，兼顾长程任务规划稳定性与 $<20\text{ms}$ 突发扰动抑制，达到 **96.5% 最高成功率**。
+
+### 4.27 量子-经典混合时空图状态空间模型 (Quantum-Classical Hybrid Spatio-Temporal Graph State Spaces)
+伴随城市路网、广域电网与行星遥感向数万节点与超长周期（$H > 1000$ 步）延展，经典图神经网络与注意力机制面临深层消息传递的“过度平滑”（Over-Smoothing）与时域误差爆炸：
+- **量子希尔伯特空间表征与酉演化（Unitary State Spaces）：** 将连续时间状态空间方程：$\dot{\mathbf{h}}(t) = \mathbf{A}(t)\mathbf{h}(t) + \mathbf{B}(t)\mathbf{x}(t)$ 嵌入 $n$-量子比特希尔伯特空间 $\mathcal{H} = (\mathbb{C}^2)^{\otimes n}$。状态转移矩阵由物理哈密顿算符与耗散项参数化：$\mathbf{A}(t) = -i \hat{\mathcal{H}}_{\text{sys}}(t) - \hat{\Gamma}$，离散化后的状态转移矩阵满足严格压缩酉范数界 $\|\bar{\mathbf{A}}\| \le 1$。
+- **代表性前沿突破：**
+  - **H-STQGCN (Zhang et al., 2025):** 提出混合时空量子图卷积网络。将图节点特征通过角度编码单比特旋转门 $|\Phi(\mathbf{x}_v)\rangle = \bigotimes_{j=1}^n R_y(x_{v,j}) |0\rangle^{\otimes n}$ 映射至量子态，通过参数化受控 Z（CZ）纠缠门实现全局瞬时节点关联建模，彻底避免多跳消息平滑，长程目的地预测 MSE 降低 26.1%（0.528 $\to$ 0.390，见英文正文 Figure 14b）；
+  - **Quantum-Mamba (Jura et al., 2025):** 将参数化量子线路（PQC）与选择性状态空间模型（Mamba S6）深度融合。依托严格酉演化在时域阻断梯度消失与爆炸，在 $H=1080$ 步超长视界预测下保持 **0.388 稳健 MSE**（较经典 Transformer 误差降低 48.9%），且计算复杂度保持 $\mathcal{O}(T)$ 严格线性。
+
+### 4.28 边缘-云端无线切分计算与语义率失真编码 (Edge-Cloud Split Computing & Semantic Rate-Distortion Coding under Packet Loss)
+在工业物联网、微电网与远程医疗中，大模型必须跨越端侧传感节点与云端服务器进行分布式协同推理，但无线信道衰落与高达 30%--50% 的随机数据包丢弃（Packet Erasure）极易造成浮点特征损毁：
+- **目标导向语义率失真优化（Task-Oriented Semantic Rate-Distortion）：** 摒弃还原原始波形的传统思路，构建联合损失目标函数：$\mathcal{L}_{\text{semantic}} = \mathcal{R}(\mathbf{z}) + \lambda \mathcal{L}_{\text{task}}(g_\phi(\mathbf{z}), \mathbf{y}) + \gamma \mathcal{D}_{\text{rec}}$。
+- **代表性前沿突破：**
+  - **Neuromorphic Wireless Split Computing (Wu et al., 2025):** 引入共振点火（Resonate-and-Fire, RF）脉冲神经元。将连续波形编码为稀疏事件二值脉冲序列，信息由振荡共振频率与发放时序承载而非单一浮点幅值。在遭遇高达 **30% 恶劣丢包率**下仍能维持 **88.5%** 分类精度，且端侧能耗达到亚毫瓦级（见英文正文 Figure 14c）；
+  - **SemanticTS (Sun et al., 2025):** 提出面向时序分析的语义自编码器。通过主动剥离无信息量高频传感器白噪声，在 40% 随机丢包下保持 **94.2%** 的下游预测与异常检测精度，同时实现 **12.8 倍上行带宽压缩**。
+
 ---
 
 ## 5. 经验基准元分析与实测对比 (Empirical Meta-Analysis)
 
-本综述汇总了各顶会论文公开发布的严格评测指标，构建了涵盖 4 个 Panel 的经验基准元分析表（详见英文正文 Table 4）：
+本综述汇总了各顶会论文公开发布的严格评测指标，构建了涵盖 10 个 Panel 的经验基准元分析表（详见英文正文 Table 4）：
 
 ### 5.1 Panel A: 经典标准长期预测对比 (Lookback 512, Horizon 96)
 - **VisionTS (Visual MAE 零样本):** 在 ETTh1 上取得 0.381 MSE，Weather 上取得 0.174 MSE，无需任何时序微调即战胜全样本监督训练的 PatchTST (0.413 / 0.225) 与 DLinear (0.422 / 0.248)。微调后更是进一步降至 0.347 (ETTh1) 与 0.142 (Weather)。
@@ -328,7 +350,23 @@ $$\mathbf{h}_i = \mathbf{P}_i \mathbf{W}_{\text{in}} + \mathbf{E}_{\text{pos}, i
   - **FedChronos (2026):** 联邦低秩适配（LoRA）结合安全差分隐私，在保护数据主权下实现 $0.388$ MSE，通信载荷削减 $98.5\%$；
   - **PerFed-TSFM (2026):** 个性化稀疏子网络路由算法在 20 轮通信内极速收敛至 **0.379 最佳 MSE**，几乎完全拟合集中式私有数据全量微调的上界（$0.372$ MSE，详见英文正文 Figure 13c）。
 
-### 5.10 开源端到端可复现演示教程与沙盒 (`examples/`)
+### 5.10 Panel J: 具身遥测动作分块、长程量子状态空间与语义切分计算实测对比
+- **具身机器人高频遥测动作分块与复合误差抑制 (Bimanual / Robot Manipulation):**
+  - **单步行为克隆 (Single-Step BC):** 随着动作预测步长扩展至 $K=24$，预测累积误差呈二次方爆炸，末端轨迹剧烈发散，任务成功率断崖式暴跌至 **$18.2\%$**；
+  - **ACT (Zhao et al., 2023):** 基于 Transformer 的条件变分自编码（C-VAE）与时序平滑集成（Temporal Ensembling）将成功率大幅提升至 **$88.0\%$**；
+  - **Diffusion Policy (Chi et al., 2023):** 依托反向 SDE 动作扩散连续采样，成功率跃升至 **$94.2\%$**；
+  - **HiPolicy (Zhang et al., 2026):** 解耦低频语言引导粗粒度子目标（$2\text{ Hz}$）与高频关节本体感受力矩跟踪（$50\text{ Hz}$），取得 **$96.5\%$ 最高成功率**（较单步基线相对提升 $38.3\%$，详见英文正文 Figure 14a）。
+- **长程量子-经典状态空间酉范数有界性 (Horizon $H=1080$ Steps):**
+  - **经典自注意力与循环网络:** 视界拓展至 720 步以上时累积误差剧烈扩散，在 $H=1080$ 步时 MSE 攀升至 $0.759$；
+  - **经典 Mamba (S6):** 具备较好长程记忆，但长程漂移仍导致 MSE 达到 $0.582$；
+  - **H-STQGCN (Zhang et al., 2025):** 量子纠缠门实现全局瞬时非局部空间关联建模，有效克服多跳过度平滑；
+  - **Quantum-Mamba (Jura et al., 2025):** 嵌入 $n$-qubit 希尔伯特空间的哈密顿动力学保证转移矩阵严格满足酉范数有界性（$\|\bar{\mathbf{A}}\| \le 1$），在 $H=1080$ 步超长时域下维持 **$0.388$ 稳健 MSE**（较 Transformer 误差降低 $48.9\%$），计算复杂度保持严格线性 $\mathcal{O}(T)$（详见英文正文 Figure 14b）。
+- **面向任务的目标导向语义压缩抗无线丢包 (Wireless Packet Erasure $\eta=40\%$):**
+  - **原始时序波形传输与传统浮点特征切分:** 在遭遇 $\ge 30\%$ 丢包时下游分析精度雪崩式下跌至 **$14.2\%$--$34.5\%$**；
+  - **Neuromorphic Wireless Split (Wu et al., 2025):** 共振点火（RF）脉冲神经元将时序频域动态由脉冲发放频率承载，在 $30\%$ 随机丢包下仍维持 **$88.5\%$** 分类精度，功耗控制在亚毫瓦级；
+  - **SemanticTS (Sun et al., 2025):** 目标导向语义率失真自编码器主动过滤非信息量高频噪声，在高达 **$40\%$ 恶劣丢包**下仍保持 **$94.2\%$** 的下游分析精度，同时带来 **$12.8\times$ 带宽压缩比**（详见英文正文 Figure 14c）。
+
+### 5.11 开源端到端可复现演示教程与沙盒 (`examples/`)
 项目在 `examples/` 目录下配套提供了两套端到端完全可复现的代码与交互式 Jupyter Notebook：
 1. **多模态告警时序预测演示：**
    - 脚本：`examples/demo_multimodal_forecasting.py` 与 `examples/demo_multimodal_forecasting.ipynb`
@@ -362,4 +400,7 @@ $$\mathbf{h}_i = \mathbf{P}_i \mathbf{W}_{\text{in}} + \mathbf{E}_{\text{pos}, i
 14. **神经符号形式化逻辑验证与可信自主集群安全证书（Formal Safety Verification & Provable Certificates）：** 如何构建可微信号时间逻辑（STL）损失函数与在线监控自动机，为自主飞行集群与智能变电站等安全攸关系统提供具备数学保证的可证明安全证书（$\rho(\mathbf{x}, t, \varphi) > 0$），彻底根除跨模态黑盒推理的虚假外推隐患。
 15. **行星级超稀疏不规则超图拓扑与连续 ODE 几何深度学习（Ultra-Sparse Planetary Hypergraph Geometries & Continuous Neural ODEs）：** 面对覆盖数百万边缘节点的物联网环境（传感器缺失率超过 90% 且网络拓扑动态重构），如何突破固定欧氏网格与局部图卷积，将连续时间常微分方程推广至非欧黎曼流形与多尺度超图关联矩阵 $\mathbf{H} \in \mathbb{R}^{V \times E}$。
 16. **异构多模态边缘联邦训练与非独立同分布严格差分隐私保证（Differential Privacy Guarantees in Heterogeneous Multimodal Edge Federations）：** 针对跨医院电子病历、智慧微电网与多机构交易日志等隐私敏感孤岛，如何在持续流式非独立同分布漂移（Non-IID Drift）及对抗投毒攻击下，建立严谨的 $(\epsilon, \delta)$-差分隐私理论下界与轻量级个性化稀疏子网络协同机制。
+17. **具身传感运动延迟与物理动作安全控制屏障（Embodied Sensorimotor Latency & Physical Action Safety Constraints）：** 将动作块与扩散策略应用于连续机器人控制时，反向迭代采样的高计算开销引入数十毫秒时延。未来需探索单步一致性轨迹生成模型，并将控制屏障函数（Control Barrier Functions, CBFs）与力矩极限直接嵌入动作块解码器，确保物理避障与执行器安全的严苛硬实时性。
+18. **含噪中等规模量子硬件（NISQ）上的抗噪量子希尔伯特状态空间映射（Noise-Resilient Quantum Hilbert Space Embeddings on NISQ Hardware）：** 尽管参数化量子线路（PQC）与选择性状态空间理论上具备保酉压缩范数优势，但当前超导与离子阱量子硬件受制于退相干与门误差。未来需深入研究针对非平稳连续时序的量子动态去耦、抗噪电路编译与贫瘠高原（Barren Plateau）自适应抑制方案。
+19. **边云非对称语义漂移与无线时变信道在线自适应（Asymmetric Edge-Cloud Semantic Drift & Wireless Channel Resilience）：** 在长周期分布式物联监测中，传感器老化或突发环境突变常引起边端特征编码器与云端解码器之间的分布失配（语义漂移）。未来需发展自监督潜空间同步协议与动态在线率失真微调，在零原始波形回传下抵御无线时变衰落。
 
