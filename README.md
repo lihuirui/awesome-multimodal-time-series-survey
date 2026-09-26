@@ -2,7 +2,7 @@
 
 [![Survey Paper](https://img.shields.io/badge/Paper-PDF-red.svg)](paper/main.pdf) 
 [![PRISMA 2020](https://img.shields.io/badge/PRISMA-2020%20Compliant-blue.svg)](docs/PROTOCOL.md) 
-[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%206-brightgreen.svg)](docs/STATE.md) 
+[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%207-brightgreen.svg)](docs/STATE.md) 
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) 
 
 > **Bilingual Repository** / **中英文双语前沿综述与开源精选仓库**  
@@ -17,6 +17,9 @@
 本综述全面梳理了 **2021年至今的多模态时序前沿工作**，深入探讨了将时序信号与**自然语言文本（新闻、报告、指令提示）**、**视觉图像（折线图、频谱图、卫星影像）**、**脉冲神经形态（SNN）**及**物理场约束**协同建模的新范式。核心内容涵盖：
 - **重编程与提示对齐（Reprogramming & Prompting）：** 如 Time-LLM、One Fits All (GPT4TS)、TEMPO、CALF，通过重编程层将时序Patch映射到预训练语言模型的潜空间；
 - **参数高效微调权衡（PEFT vs. Full Pre-training）：** 深入量化对比 LoRA、Adapter 与全参微调在显存壁垒（24GB/80GB）、计算开销与 MSE 泛化上的 Pareto 前沿；
+- **跨模态因果发现与反事实事件增强（Cross-Modal Causal Discovery & Confounder Disentanglement）：** 如 CAMEF (Zhang et al. 2025)、Augur (Cui et al. 2025)、TiMi (Lin et al. 2026)，通过大模型启发式搜索推断有向因果图，结合反事实宏观事件增强与多模态混合专家架构（MMoE），在强混杂干扰（$\gamma=0.9$）下使因果边识别 F1 保持在 81.9%（较传统因果方法提升 55.4%）；
+- **端侧微控制器基础模型极度蒸馏（Microcontroller Foundation Model Distillation）：** 如 DistilTS (Li et al. 2026, ICASSP 2026)、GUARD (Dey et al. 2026, KDD 2026)，通过预测视界加权目标克服长时视界欠拟合，辅以不确定性门控温度熔断机制，实现 1/150 参数极度压缩与 6000 倍推断加速，内存完全拟合 ARM Cortex-M 严苛边界（$<512$ KB SRAM, $<2$ MB Flash）；
+- **行星级非平稳流式测试时适应（Streaming Test-Time Adaptation, TTA）：** 如 RG-TTA (Kumar et al. 2026)、TAFAS (Kim et al. 2025)，利用 Wasserstein-1 距离与 KS 检验集成机制动态评估流式数据分布相似度，自适应调节微调学习率并门控复用历史机制模型，在突发环境与金融冲击下使预测 MSE 降低 52.1%，彻底杜绝灾难性遗忘；
 - **保形预测与不确定性量化（Conformal Prediction & UQ）：** 如 Achour et al. (2025)、Sabashvili (2026)，在跨模态分布漂移下提供无分布假设的有限样本边缘覆盖保证（$\ge 90\%$），收缩区间宽度达 26.1%；
 - **连续时间状态空间与异步多速率流（Continuous-Time SSM & Neural CDE）：** 如 SOTER (Chen et al. 2026)、ss-Mamba (Ye 2025)、DeMa (An et al. 2026)、TriTS (Ao 2026)，统一神经受控微分方程与选择性状态空间，实现长序列 $O(L)$ 线性推断复杂度（$L=10^5$ 时仅需 118ms）；
 - **微瓦级神经形态SNN与边缘量化（Neuromorphic SNNs & Edge Quantization）：** 如 SpikySpace (Chen et al. 2026)、TS-LIF (Feng et al. 2025)、MTSA-SNN (Wang et al. 2024)，通过脉冲驱动状态空间与双房室树突动力学，实现事件驱动稀疏性（87.4%零激活），在 sub-100mW 极低功耗下能效较传统模型提升 85 倍；
@@ -43,12 +46,16 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
 
 ### 🔍 PRISMA 2020 Systematic Review Counts
 
-- **Total Records Identified:** 505 (Databases: 335, Snowballing: 170)
-- **Deduplicated & Screened:** 413 (Duplicates removed: 92)
-- **Full-Text Assessed:** 95 (Excluded with documented rationale: 25)
-- **Included in Systematic Synthesis:** **70** studies
+- **Total Records Identified:** 547 (Databases: 360, Snowballing: 187)
+- **Deduplicated & Screened:** 447 (Duplicates removed: 100)
+- **Full-Text Assessed:** 104 (Excluded with documented rationale: 27)
+- **Included in Systematic Synthesis:** **77** studies
 
 ![PRISMA 2020 Flow](paper/figures/prisma_flow.png)
+
+### 🧬 Cross-Modal Causal Discovery, Microcontroller Distillation & Streaming TTA
+
+![Causal Discovery, Distillation and Streaming TTA](paper/figures/causal_distill_tta.png)
 
 ### 📉 Multimodal Pre-training Scaling Laws
 
@@ -115,6 +122,21 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Multi-rate` | *Fusion:* `dual_path_delay_aware_ssm` | *Role:* `context_condition`  
   *Highlight:* Dual-path delay-aware Mamba decomposing multivariate time series into intra- and inter-series paths with delay-aware mixing to handle multi-rate asynchronous dynamics.  
 
+- **[Distilling Time Series Foundation Models for Efficient Forecasting](https://arxiv.org/abs/2601.12785)** (ICASSP 2026 2026) • [Code](https://github.com/itsnotacie/DistilTS-ICASSP2026)  
+  *Authors:* Yuqi Li, Kuiye Ding, Chuanguang Yang et al.  
+  *Modality:* `TS+Text` | *Fusion:* `reprogramming_patching` | *Role:* `context_condition`  
+  *Highlight:* Knowledge distillation framework tailored for TSFMs; introduces horizon-weighted objectives and temporal alignment to resolve task discrepancy, slashing parameters by 1/150 and speeding inference by 6000x.  
+
+- **[When to Trust, How to Distill: Multi-Foundation Model Guidance for Lightweight, Robust Scientific Time Series Forecasting](https://arxiv.org/abs/2606.19363)** (KDD 2026 2026) • [Code](https://github.com/RupasreeDey/GUARD-KDD2026)  
+  *Authors:* Rupasree Dey, Abdul Matin, Nathan Orwick et al.  
+  *Modality:* `TS+Text` | *Fusion:* `cross_attention` | *Role:* `context_condition`  
+  *Highlight:* Gated Uncertainty-Aware Routing for Distillation (GUARD); extracts latent structural knowledge from multi-foundation models via contextual routing and an uncertainty-gated temperature circuit-breaker for edge sensor networks.  
+
+- **[RG-TTA: Regime-Guided Meta-Control for Test-Time Adaptation in Streaming Time Series](https://arxiv.org/abs/2603.27814)** (arXiv 2026 2026)  
+  *Authors:* Indar Kumar, Akanksha Tiwari, Sai Krishna Jasti et al.  
+  *Modality:* `TS+Text` | *Fusion:* `reprogramming_patching` | *Role:* `context_condition`  
+  *Highlight:* Regime-guided test-time adaptation for streaming time series; continuously modulates learning rate and gradient budget via an ensemble of Wasserstein-1, KS test, and variance-ratio distributional similarity metrics.  
+
 - **[Foundation models for time series forecasting: Application in conformal prediction](https://arxiv.org/abs/2507.08858)** (arXiv 2025 2025) • [Code](https://github.com/Ekimetrics/foundation-models-conformal-prediction)  
   *Authors:* Sami Achour, Yassine Bouher, Duong Nguyen et al.  
   *Modality:* `TS+Text` | *Fusion:* `conformalized_foundation_adaptation` | *Role:* `context_condition`  
@@ -124,6 +146,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Zuochen Ye  
   *Modality:* `TS+Text` | *Fusion:* `selective_state_space_spline` | *Role:* `context_condition`  
   *Highlight:* Integrates semantic-aware textual embeddings and adaptive spline-based temporal encodings into selective state-space models with linear-time inference complexity.  
+
+- **[Battling the Non-stationarity in Time Series Forecasting via Test-time Adaptation](https://arxiv.org/abs/2501.04970)** (arXiv 2025 2025) • [Code](https://github.com/kimanki/TAFAS)  
+  *Authors:* HyunGi Kim, Siwon Kim, Jisoo Mok et al.  
+  *Modality:* `TS+Text` | *Fusion:* `reprogramming_patching` | *Role:* `context_condition`  
+  *Highlight:* Pioneering test-time adaptation framework for time series forecasting utilizing partially-observed ground truth and a gated calibration module to adapt source forecasters under continuous distribution shifts.  
 
 - **[CALF: Aligning LLMs for Time Series Forecasting via Cross-modal Fine-Tuning](https://arxiv.org/abs/2403.07300)** (arXiv 2024 2024) • [Code](https://github.com/Hank0626/CALF)  
   *Authors:* Peiyuan Liu, Hang Guo, Tao Dai et al.  
@@ -298,6 +325,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Text+Graph` | *Fusion:* `spatial_aware_rl_grpo` | *Role:* `conversational_interface`  
   *Highlight:* Spatio-temporal reasoning framework empowering LLMs with spatial-aware reinforcement learning (S-GRPO) to integrate time series, graph structures, and textual context.  
 
+- **[TiMi: Empower Time Series Transformers with Multimodal Mixture of Experts](https://arxiv.org/abs/2602.21693)** (arXiv 2026 2026)  
+  *Authors:* Jiafeng Lin, Yuxuan Wang, Huakun Luo et al.  
+  *Modality:* `TS+Text` | *Fusion:* `cross_attention` | *Role:* `context_condition`  
+  *Highlight:* Empowers time series transformers with a lightweight Multimodal Mixture-of-Experts (MMoE) plug-in driven by LLM-inferred causal future guidance, bypassing explicit representation alignment.  
+
 - **[TimeOmni-1: Incentivizing Complex Reasoning with Time Series in Large Language Models](https://arxiv.org/abs/2509.24803)** (arXiv 2025 2025) • [Code](https://github.com/time-series-foundation-models/TimeOmni)  
   *Authors:* Tong Guan, Zijie Meng, Dianqi Li et al.  
   *Modality:* `TS+Text` | *Fusion:* `early_tokenization` | *Role:* `conversational_interface`  
@@ -322,6 +354,16 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Mohamed Trabelsi, Aidan Boyd, Jin Cao et al.  
   *Modality:* `TS+Text` | *Fusion:* `cross_attention_captioning` | *Role:* `output_generation`  
   *Highlight:* Cross-modal generative framework translating continuous multivariate temporal trends into fluent, operationally descriptive captions.  
+
+- **[CAMEF: Causal-Augmented Multi-Modality Event-Driven Financial Forecasting by Integrating Time Series Patterns and Salient Macroeconomic Announcements](https://arxiv.org/abs/2502.04592)** (arXiv 2025 2025)  
+  *Authors:* Yang Zhang, Wenbo Yang, Jun Wang et al.  
+  *Modality:* `TS+Text` | *Fusion:* `cross_attention` | *Role:* `context_condition`  
+  *Highlight:* Causal-augmented multi-modality event-driven framework integrating high-frequency price sequences with macroeconomic announcement texts via causal graph discovery and counterfactual event augmentation.  
+
+- **[Augur: Modeling Covariate Causal Associations in Time Series via Large Language Models](https://arxiv.org/abs/2510.07858)** (arXiv 2025 2025)  
+  *Authors:* Zhiqing Cui, Binwu Wang, Qingxiang Liu et al.  
+  *Modality:* `TS+Text` | *Fusion:* `reprogramming_patching` | *Role:* `conversational_interface`  
+  *Highlight:* LLM-driven time series forecasting framework exploiting causal reasoning to discover and encode directed causal graphs among covariates via heuristic search and pairwise causality tests.  
 
 - **[ChatTS: Aligning Time Series with LLMs via Synthetic Data for Enhanced Understanding and Reasoning](https://arxiv.org/abs/2412.03104)** (VLDB 2025 2024) • [Code](https://github.com/Time-Series-Library/ChatTS)  
   *Authors:* Zhe Xie, Zeyan Li, Xiao He et al.  

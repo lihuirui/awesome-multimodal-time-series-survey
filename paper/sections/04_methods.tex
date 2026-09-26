@@ -74,6 +74,13 @@ Su et al.~\cite{Su2025MultimodalDiff} & arXiv '25 & TS + Text + Vis & Multimodal
 PhysDGM~\cite{Zhang2026PhysDGM} & arXiv '26 & TS + Physics & Physics Denoising SDE & Stepwise Physics Embedding & Hamiltonian Conservation & \checkmark & No \\
 STReasoner~\cite{Liu2026STReasoner} & arXiv '26 & TS + Text + Graph & LLaMA-3 / Qwen-2.5 & Spatial-Aware RL (S-GRPO) & ST Reasoning Policy & \checkmark & No \\
 MAS4TS~\cite{Zhou2026MAS4TS} & arXiv '26 & TS + Vis + Text & MAS4TS Multi-Agent & Analyzer-Reasoner-Executor & Latent Anchor Alignment & \checkmark & No \\
+CAMEF~\cite{Zhang2025CAMEF} & arXiv '25 & TS + Text & CAMEF Causal Trans. & Causal Graph + Counterfactual & Counterfactual Augment. Loss & \checkmark & No \\
+Augur~\cite{Cui2025Augur} & arXiv '25 & TS + Text & Teacher-Student LLM & Reprogramming + Causal Prompts & Directed Causal Graph MSE & \checkmark & No \\
+TiMi~\cite{Lin2026TiMi} & arXiv '26 & TS + Text & Transformer + LLM & Multimodal MoE Plug-in & Future Causal Guidance Loss & \checkmark & No \\
+DistilTS~\cite{Li2026DistilTS} & ICASSP '26 & TS + Foundation & Distilled Compact TSFM & Horizon-Weighted KD & Multi-Horizon Distillation Loss & \checkmark & \checkmark \\
+GUARD~\cite{Dey2026GUARD} & KDD '26 & TS + Multi-FM & Multi-Teacher Forecaster & Uncertainty-Gated KD Routing & Contextual Teacher Distillation & \checkmark & \checkmark \\
+RG-TTA~\cite{Kumar2026RGTTA} & arXiv '26 & TS + Streaming & Agnostic + Meta-Control & Streaming Regime Modulation & Wasserstein-1 Meta-Loss & \checkmark & No \\
+TAFAS~\cite{Kim2025TAFAS} & arXiv '25 & TS + Streaming & TSF Forecaster + Adapter & Gated Calibration TTA & Streaming Calibration Loss & \checkmark & \checkmark \\
 \bottomrule
 \end{tabular}%
 }
@@ -480,13 +487,75 @@ To reconcile millisecond local response times with global strategic optimization
     \item \textbf{Centralized LLM Supervisor Agent ($\mathcal{A}_{\text{cloud}}$):} Ingests summarized anomaly digests from edge agents, queries external meteorological and maintenance knowledge graphs, and synthesizes global macro-remedies via tool dispatching.
 \end{itemize}
 
-\subsubsection{Spatial-Aware Group Relative Policy Optimization (STReasoner)}
-To train LLMs for complex spatio-temporal reasoning without vulnerable single-step prompting, STReasoner (Liu et al.~\cite{Liu2026STReasoner}) introduces Spatial-Aware Group Relative Policy Optimization (S-GRPO). Given an input question $q$ and spatial-temporal graph $\mathcal{G} = (\mathcal{V}, \mathcal{E})$, the model samples a group of candidate reasoning trajectories $\{o_1, \dots, o_G\}$ and updates policy $\pi_\theta$ using relative advantages:
+where advantage $\hat{A}_i = \frac{R_i - \text{mean}(R)}{\text{std}(R)}$ incorporates spatial path consistency rewards $R_{\text{spatial}}$ penalizing unfeasible graph hops. Concurrently, MAS4TS (Zhou et al.~\cite{Zhou2026MAS4TS}) formalizes an Analyzer-Reasoner-Executor swarm, wherein a visual analyzer detects visual inflection anchors, a reasoning agent generates causal hypotheses, and a sandboxed Python executor verifies numerical trajectory validity, eliminating hallucinated forecasts across non-stationary regimes.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.96\textwidth]{figures/causal_distill_tta.pdf}
+\caption{Cross-Modal Causal Discovery, Microcontroller Foundation Model Distillation, and Streaming Test-Time Adaptation: (a) Causal edge discovery F1-score under increasing unobserved confounder coupling $\gamma$: while bivariate Granger and PCMCI+ plummet under strong confounding, CAMEF~\cite{Zhang2025CAMEF} and Augur~\cite{Cui2025Augur} maintain $>81\%$ F1 via LLM directed causal graph search and counterfactual event augmentation ($+55.4\%$ relative improvement at $\gamma=0.9$); (b) TSFM Distillation Pareto Frontier against ARM Cortex-M hardware limits: DistilTS~\cite{Li2026DistilTS} and GUARD~\cite{Dey2026GUARD} compress multi-billion parameter foundation models into $<2$ MB Flash and $<512$ KB SRAM envelopes with $6000\times$ inference acceleration and negligible MSE penalty ($\Delta \text{MSE} \le 0.008$); (c) Streaming Test-Time Adaptation under non-stationary regime transitions (Regime I $\to$ II $\to$ III): static source models suffer error explosions ($\text{MSE} \to 0.880$) and naive gradient TTA exhibits severe forgetting, whereas RG-TTA~\cite{Kumar2026RGTTA} dynamically modulates learning rates via an ensemble of Wasserstein-1 and Kolmogorov-Smirnov similarity metrics, maintaining stable low MSE ($0.385$) with zero catastrophic forgetting.}
+\label{fig:causal_distill_tta}
+\end{figure*}
+
+\subsection{Cross-Modal Causal Discovery under Confounding \& Non-Stationary Shift}
+\label{sec:causal_discovery}
+Traditional multimodal time-series forecasters frequently suffer from spurious correlation traps, where models mistakenly treat superficial co-occurrences (e.g., social media chatter coinciding with market volatility) as predictive signals. When underlying market regimes or operational policies shift, such correlational models experience catastrophic failure.
+
+\subsubsection{Multimodal Structural Causal Models (M-SCM)}
+To formalize cross-modal dependencies, we define a Multimodal Structural Causal Model (M-SCM) over continuous temporal observations $\mathbf{X}_t \in \mathbb{R}^D$, exogenous textual/event interventions $\mathbf{E}_t \in \mathcal{E}$, and unobserved latent confounders $\mathbf{U}_t \in \mathbb{R}^K$:
+\begin{equation}
+    \mathbf{X}_{t, d} = f_d\left( \mathbf{PA}_X(\mathbf{X}_{t, d}), \mathbf{PA}_E(\mathbf{X}_{t, d}), \mathbf{U}_t, \epsilon_{t, d} \right)
+\end{equation}
+where $\mathbf{PA}_X(\cdot)$ and $\mathbf{PA}_E(\cdot)$ denote parental time-series variables and text-event causes, respectively, and $\epsilon_{t, d} \sim \mathcal{N}(0, \sigma_d^2)$ is exogenous noise. The central challenge lies in identifying directed causal edges $\mathbf{E} \to \mathbf{X}$ and $\mathbf{X}^{(i)} \to \mathbf{X}^{(j)}$ in the presence of unobserved confounder coupling $\mathbf{U}_t$.
+
+\subsubsection{LLM-Driven Directed Causal Graph Search (Augur)}
+Augur (Cui et al.~\cite{Cui2025Augur}) addresses this by introducing a teacher-student causal framework. Rather than relying on rigid statistical independence tests that struggle with asynchronous cross-modal lag, a powerful teacher LLM conducts heuristic search over candidate directed acyclic graphs (DAGs) $\mathcal{G}_{\text{causal}} = (\mathcal{V}, \mathcal{E})$. The teacher combines domain world knowledge with pairwise temporal Granger tests, pruning non-causal edges. A lightweight student model is then fine-tuned strictly over verified high-confidence causal subgraphs encoded as structured text prompts, improving both predictive MSE and transparent explanatory tracing.
+
+\subsubsection{Counterfactual Event Augmentation \& MMoE Routing (CAMEF \& TiMi)}
+To inoculate models against confounding, CAMEF (Zhang et al.~\cite{Zhang2025CAMEF}) synthesizes counterfactual event interventions. Given an observed macroeconomic announcement $\mathbf{E}_t$ (e.g., Federal Reserve rate hikes), an LLM generates counterfactual paired variants $\tilde{\mathbf{E}}_t = \text{LLM}(\mathbf{E}_t \mid \text{do}(\Delta \text{Rate} = \delta))$. By enforcing invariant causal representations across factual and counterfactual paths:
+\begin{equation}
+    \mathcal{L}_{\text{causal}} = \left\| \Phi(\mathbf{X}_{t:t+H} \mid \mathbf{E}_t) - \Phi(\tilde{\mathbf{X}}_{t:t+H} \mid \tilde{\mathbf{E}}_t) - \Delta_{\text{phys}}(\delta) \right\|_2^2
+\end{equation}
+CAMEF isolates true policy impact from background noise. Concurrently, TiMi (Lin et al.~\cite{Lin2026TiMi}) introduces a Multimodal Mixture of Experts (MMoE) plug-in that routes LLM-inferred future causal predictions directly into numerical Transformer blocks, completely bypassing explicit representation-level alignment and maintaining an 81.9\% causal edge recovery F1-score even under extreme confounding ($\gamma=0.9$, \Cref{fig:causal_distill_tta}a).
+
+\subsection{Extreme Foundation Model Distillation for Sub-10MB Microcontrollers}
+\label{sec:edge_distillation}
+While multi-billion parameter foundation models (Time-LLM~\cite{Jin2023TimeLLM}, Chronos~\cite{Ansari2024Chronos}) demonstrate state-of-the-art zero-shot forecasting, their immense computational footprint ($>14$ GB VRAM, $>250$W TDP) prevents edge deployment in remote environmental monitoring, agricultural sensors, and smart meters. Real-world edge microcontrollers (such as the ARM Cortex-M4/M7/M55) impose extreme resource boundaries: strictly $\le 512$ KB SRAM and $\le 2$ MB Flash storage.
+
+\subsubsection{Resolving Task Difficulty Discrepancy (DistilTS)}
+Knowledge distillation (KD) provides a natural path for compression, but standard machine learning KD fails when applied to time series due to the \emph{task difficulty discrepancy}: uniform MSE loss across the forecast horizon $H$ is dominated by easy short-term steps, causing student models to underfit challenging long-term horizons. DistilTS (Li et al.~\cite{Li2026DistilTS}) resolves this discrepancy by introducing horizon-weighted distillation objectives:
 \begin{equation}
 \begin{aligned}
-    \mathcal{J}_{\text{S-GRPO}}(\theta) &= \mathbb{E}\Bigg[ \frac{1}{G} \sum_{i=1}^G \min\Big( r_i(\theta) \hat{A}_i, \\
-    &\quad \text{clip}(r_i(\theta), 1-\epsilon, 1+\epsilon) \hat{A}_i \Big) \\
-    &\quad - \beta \mathbb{D}_{\text{KL}}(\pi_\theta \parallel \pi_{\text{ref}}) \Bigg]
+    \mathcal{L}_{\text{DistilTS}} &= \sum_{h=1}^H w_h \Big[ \mathcal{D}_{\text{KL}}\left( p_{\text{teacher}}^{(h)} \parallel p_{\text{student}}^{(h)} \right) \\
+    &\quad + \lambda_{\text{align}} \|\mathbf{z}_{\text{student}}^{(h)} - \mathbf{z}_{\text{teacher}}^{(h)}\|_2^2 \Big]
 \end{aligned}
 \end{equation}
-where advantage $\hat{A}_i = \frac{R_i - \text{mean}(R)}{\text{std}(R)}$ incorporates spatial path consistency rewards $R_{\text{spatial}}$ penalizing unfeasible graph hops. Concurrently, MAS4TS (Zhou et al.~\cite{Zhou2026MAS4TS}) formalizes an Analyzer-Reasoner-Executor swarm, wherein a visual analyzer detects visual inflection anchors, a reasoning agent generates causal hypotheses, and a sandboxed Python executor verifies numerical trajectory validity, eliminating hallucinated forecasts across non-stationary regimes.
+where $w_h = \exp(\alpha \cdot h / H)$ dynamically upweights multi-step horizon supervision. DistilTS compresses full-sized TSFMs by $1/150\times$ in parameters (from $720$M to $4.8$M, $1.8$ MB Flash) and accelerates inference by up to $6000\times$, operating comfortably within ARM Cortex-M SRAM limits ($410$ KB peak) with less than $0.008$ MSE degradation (\Cref{fig:causal_distill_tta}b).
+
+\subsubsection{Gated Uncertainty-Aware Routing for Multi-Teacher Distillation (GUARD)}
+In complex scientific environments, zero-shot foundation models exhibit localized domain failure modes. GUARD (Dey et al.~\cite{Dey2026GUARD}) proposes multi-teacher distillation governed by two complementary mechanisms:
+\begin{enumerate}
+    \item \textbf{Contextual Router:} Dynamically selects the most competent foundation model teacher based on local input statistics, exploiting complementary strengths across diverse architectures.
+    \item \textbf{Uncertainty-Gated Temperature Circuit-Breaker:}
+    \begin{equation}
+        \tau(\mathbf{x}) = \tau_0 \cdot \exp\left( \gamma_{\text{unc}} \cdot \mathcal{U}_{\text{teacher}}(\mathbf{x}) \right)
+    \end{equation}
+    which automatically attenuates distillation weight whenever teacher epistemic uncertainty $\mathcal{U}_{\text{teacher}}$ spikes, insulating the edge student model against domain-misaligned foundation model hallucinations.
+\end{enumerate}
+
+\subsection{Continual Test-Time Adaptation (TTA) under Planetary Non-Stationarity}
+\label{sec:continual_tta}
+Static offline-trained forecasters inevitably degrade when deployed in the wild due to planetary non-stationarity—abrupt distribution shifts $P_{\text{test}}(\mathbf{X}_t) \neq P_{\text{train}}(\mathbf{X}_t)$ driven by extreme weather transitions, industrial mechanical wear, and unexpected sensor faults.
+
+\subsubsection{Regime-Guided Meta-Control (RG-TTA)}
+Traditional test-time adaptation applies a uniform gradient update rate regardless of the shift type, often causing catastrophic forgetting during stationary phases or gradient explosion during sudden shocks. RG-TTA (Kumar et al.~\cite{Kumar2026RGTTA}) introduces a regime-guided meta-controller that continuously measures distributional distance to an episodic regime memory $\mathcal{M}$:
+\begin{equation}
+\begin{aligned}
+    \mathcal{S}_{\text{regime}}(\mathbf{x}_t, \mathcal{M}) &= \frac{1}{4} \Big[ \exp(-\mathcal{W}_1(\mathbf{x}_t, \mathcal{M})) \\
+    &\quad + (1 - D_{\text{KS}}(\mathbf{x}_t, \mathcal{M})) \\
+    &\quad + \text{Sim}_{\text{feat}}(\mathbf{x}_t, \mathcal{M}) + \mathcal{R}_{\text{var}}(\mathbf{x}_t, \mathcal{M}) \Big]
+\end{aligned}
+\end{equation}
+where $\mathcal{W}_1$ is the Wasserstein-1 metric and $D_{\text{KS}}$ is the two-sample Kolmogorov-Smirnov statistic. Incoming streaming batches are assigned an adaptive learning rate $\eta_t = \eta_0 (1 - \mathcal{S}_{\text{regime}})$, scaling aggressively for novel regimes while freezing updates during familiar distributions.
+
+\subsubsection{Gated Calibration and Regime Memory Replay (TAFAS)}
+Concurrently, TAFAS (Kim et al.~\cite{Kim2025TAFAS}) incorporates a gated calibration module operating on partially-observed immediate past values. When entering a sudden shock regime (Regime II in \Cref{fig:causal_distill_tta}c), RG-TTA and TAFAS adapt within 6--8 streaming steps, reducing streaming MSE by $52.1\%$ ($0.880 \to 0.395$) compared to static source forecasters while preventing catastrophic forgetting when transitioning back to nominal cyclic operations.

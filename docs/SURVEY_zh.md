@@ -204,6 +204,29 @@ $$\mathbf{h}_i = \mathbf{P}_i \mathbf{W}_{\text{in}} + \mathbf{E}_{\text{pos}, i
   - **STReasoner (Liu et al., 2026):** 针对时空图推理提出空间感知群组相对策略优化算法（S-GRPO）。通过构建包含拓扑可达性奖励的优势函数，引导 LLM 在时空图结构上进行显式多步推理，将复杂时空因果问答准确率从传统单智能体的 54.2% 大幅跃升至 88.5%；
   - **MAS4TS (Zhou et al., 2026):** 建立分析器（Analyzer）、推理器（Reasoner）与执行器（Executor）三元多智能体集群。分析器利用视觉多模态大模型定位折线图拐点锚点，推理器生成因果假设，执行器在沙盒中运行 Python 校验预测轨迹数学合法性，并具备对抗故障或漂移传感器的去中心化拜占庭容错机制。
 
+### 4.20 跨模态因果发现与反事实事件解耦 (Cross-Modal Causal Discovery under Confounding & Events)
+在金融、电力与宏观经济等非平稳动态系统中，表面相关的多模态表征极易落入虚假关联陷阱。当底层政策与宏观机制突变时，传统相关性预测器会发生灾难性预测击穿：
+- **多模态结构因果模型（M-SCM）：** 将连续传感器时序 $\mathbf{X}_t$、外生文本/事件干预 $\mathbf{E}_t$ 与隐式未观测混杂变量 $\mathbf{U}_t$ 联合建模为：$\mathbf{X}_{t, d} = f_d(\mathbf{PA}_X(\mathbf{X}_{t, d}), \mathbf{PA}_E(\mathbf{X}_{t, d}), \mathbf{U}_t, \epsilon_{t, d})$。
+- **代表性前沿突破：**
+  - **Augur (Cui et al., 2025):** 提出教师-学生两阶段因果架构。利用具备丰富世界知识的教师大模型，结合成对格兰杰统计因果检验，在连续时序变量与文本协变量间执行启发式有向无环图（DAG）搜索，剪除虚假依赖，将高置信度因果图结构编码为提示词指导学生模型预测；
+  - **CAMEF (Zhang et al., 2025):** 建立因果增强多模态事件驱动预测架构。针对美联储加息等重大宏观发布文本，引入大模型驱动的反事实事件增强策略（$\text{do}(\Delta\text{Rate}=\delta)$），在混杂噪声严重（$\gamma=0.90$）的环境下将因果边识别 F1 保持在 81.9%（较传统因果方法跃升 55.4%，见英文正文 Figure 12a）；
+  - **TiMi (Lin et al., 2026):** 提出轻量级多模态混合专家架构（MMoE）。利用 LLM 生成关于未来走势的因果推论，作为时序 Transformer 的前瞻性因果引导，彻底摆脱了脆弱的表征级硬对齐。
+
+### 4.21 极小微控制器端侧基础模型极度蒸馏 (Extreme Foundation Model Distillation for Edge Microcontrollers)
+十亿级跨模态基础模型（如 Time-LLM、Chronos）虽然具备强大的零样本泛化能力，但其高昂功耗（$>250\text{W}$）与庞大显存占用（$>14\text{GB}$）无法下沉至极端受限的工业物联网微控制器（如 ARM Cortex-M4/M7/M55，其硬件预算仅有 $\le 512\text{ KB}$ SRAM 与 $\le 2\text{ MB}$ Flash）：
+- **预测视界难度差异化（Task Difficulty Discrepancy）：** 传统知识蒸馏采用统一的均方误差加权，导致短周期简单步长主导损失下降，长周期步长严重欠拟合。
+- **代表性前沿突破：**
+  - **DistilTS (Li et al., 2026, ICASSP 2026):** 首个针对时序基础模型（TSFM）定制的蒸馏架构。设计视界加权目标函数 $\mathcal{L}_{\text{DistilTS}} = \sum_{h=1}^H w_h [\mathcal{D}_{\text{KL}} + \lambda \|\mathbf{z}_s - \mathbf{z}_t\|^2]$，动态加强长周期步长的监督力度。将基础模型参数量极度压缩 $1/150$（从 $720\text{M} \to 4.8\text{M}$，Flash 仅需 $1.8\text{ MB}$，SRAM 峰值仅 $410\text{ KB}$），实现高达 **6000 倍推理加速**，且预测 MSE 损失小于 0.008（见英文正文 Figure 12b）；
+  - **GUARD (Dey et al., 2026, KDD 2026):** 针对多教师模型蒸馏提出上下文路由与不确定性门控温度熔断器：$\tau(\mathbf{x}) = \tau_0 \exp(\gamma \mathcal{U}(\mathbf{x}))$。当教师大模型在特定传感器领域的认知不确定性激增时，熔断机制自动削弱蒸馏权重，防止端侧学生网络受到负知识迁移污染。
+
+### 4.22 行星级非平稳流式测试时自适应 (Continual Test-Time Adaptation under Planetary Non-Stationarity)
+离线训练好的时序预测器在真实物理世界部署后，不可避免会面临由极端天气、机械磨损或突发故障引起的连续分布漂移（$P_{\text{test}} \neq P_{\text{train}}$）：
+- **传统测试时适应的困境：** 统一梯度的在线微调极易在平稳期产生灾难性遗忘，或在剧烈突变期产生梯度发散爆炸。
+- **代表性前沿突破：**
+  - **RG-TTA (Kumar et al., 2026):** 机制引导测试时适应架构。利用 Wasserstein-1 距离与双样本 Kolmogorov-Smirnov 检验等综合指标，实时量化当前数据流与历史机制记忆的分布相似度：$\mathcal{S}_{\text{regime}}$。自适应动态调节微调学习率 $\eta_t = \eta_0 (1 - \mathcal{S}_{\text{regime}})$，并在识别出历史已知机制时门控复用历史机制模型；
+  - **TAFAS (Kim et al., 2025):** 提出门控校准机制，利用局部即时真值进行无遗忘前瞻性自适应；
+  - **流式实测（见英文正文 Figure 12c）：** 在突发剧烈机制漂移（Regime II）中，静态基线模型误差暴增 130.4%（MSE 冲高至 0.880），朴素梯度 TTA 产生 34.2% 的严重遗忘；而 RG-TTA 与 TAFAS 在 6--8 个流式时间步内即可实现无缝收敛，使漂移后 MSE 降低 52.1%（0.880 $\to$ 0.395），遗忘率控制在 0.4% 以下。
+
 ---
 
 ## 5. 经验基准元分析与实测对比 (Empirical Meta-Analysis)
@@ -254,7 +277,21 @@ $$\mathbf{h}_i = \mathbf{P}_i \mathbf{W}_{\text{in}} + \mathbf{E}_{\text{pos}, i
   - **单智能体 LLM (Zero-Shot CoT Prompting):** 仅取得 $54.2\%$ 推理准确率，极易在无向时空拓扑中生成不存在的物理跳变连接，缺乏工具物理锚定；
   - **STReasoner / MAS4TS (2026):** 依托空间感知群组策略优化（S-GRPO）与分析-推理-执行三元集群架构，多步时空推理准确率大幅跃升至 **88.5%（绝对提升 +34.3%）**，且依托多智能体交叉校验协议具备严谨的抗传感器失效与拜占庭容错能力。
 
-### 5.8 开源端到端可复现演示教程与沙盒 (`examples/`)
+### 5.8 Panel H: 跨模态因果发现、微控制器极度蒸馏与流式测试时适应实测对比
+- **跨模态因果边发现与反事实抗混杂 (Macro-Financial CAMEF, $\gamma=0.90$):**
+  - **传统双变量 Granger / PCMCI+:** 在强烈隐式混杂耦合（$\gamma=0.90$）下性能雪崩，因果边识别 F1 仅为 $16.8\%$--$26.5\%$，严重受困于虚假相关；
+  - **TiMi (2026):** 依托多模态混合专家架构（MMoE）将大模型推断的未来因果走势无缝注入 Transformer，因果识别 F1 达到 $64.0\%$，预测 MSE 降至 $0.384$；
+  - **CAMEF / Augur (2025):** 引入大模型引导的反事实事件增强策略（$\text{do}(\Delta\text{Rate}=\delta)$），将因果边识别 F1 稳稳保持在 **81.9%（较传统统计方法提升 55.4%）**，并将预测 MSE 进一步下探至 **0.372**（详见英文正文 Figure 12a）。
+- **微控制器 TSFM 知识蒸馏与存储边界 (ETTh1 / Weather, Cortex-M Limits):**
+  - **全尺寸基座教师模型 (Time-LLM 7B / Chronos 710M):** 显存占用高达 $14\text{ GB}$，功耗 $>250\text{W}$，根本无法部署于边缘传感网络；
+  - **DistilTS (ICASSP 2026):** 提出视界加权蒸馏目标函数，一举攻克长周期步长欠拟合痼疾。模型参数压缩至 **4.8M（模型权重仅 1.8 MB）**，运行时 SRAM 峰值仅 **410 KB**，实现 **6000 倍极致推理加速**，且预测 MSE 相对全参大模型仅微增 0.004，完全拟合 ARM Cortex-M 微控制器严苛硬件预算（$<512\text{ KB}$ SRAM, $<2\text{ MB}$ Flash，详见英文正文 Figure 12b）；
+  - **GUARD (KDD 2026):** 上下文路由与不确定性门控温度熔断器有效阻断了跨域蒸馏中的负知识迁移，在科学物联传感网硬样本上超越单一全局最优基座模型达 28.5%。
+- **流式非平稳测试时自适应 (Streaming Non-Stationary Shift on ETT):**
+  - **静态离线基座模型 (Static Source):** 遭遇突发环境或市场机制跃迁（Regime II）时，预测误差瞬间飙升 **+130.4%（MSE 冲高至 0.880）**；
+  - **朴素梯度在线 TTA (Naive Gradient TTA):** 发生剧烈灾难性遗忘，在历史平稳机制上的预测精度损失达 $34.2\%$；
+  - **RG-TTA / TAFAS (2026):** 依托 Wasserstein-1 距离与双样本 KS 检验集成机制，实现流式数据分布相似度的亚秒级元控制评估，自适应调节微调学习率。漂移后预测 MSE 下降 **52.1%（0.880 $\to$ 0.395）**，运行速度较传统 TTA 加快 5.5%，且将灾难性遗忘率彻底抑制在 **0.4%** 以内（详见英文正文 Figure 12c）。
+
+### 5.9 开源端到端可复现演示教程与沙盒 (`examples/`)
 项目在 `examples/` 目录下配套提供了两套端到端完全可复现的代码与交互式 Jupyter Notebook：
 1. **多模态告警时序预测演示：**
    - 脚本：`examples/demo_multimodal_forecasting.py` 与 `examples/demo_multimodal_forecasting.ipynb`
@@ -282,4 +319,7 @@ $$\mathbf{h}_i = \mathbf{P}_i \mathbf{W}_{\text{in}} + \mathbf{E}_{\text{pos}, i
 8. **微瓦级神经形态脉冲协同与极端低比特端侧编译器（Micro-Watt Neuromorphic Edge Compilation）：** 如何将十亿级跨模态参数通过时序依赖突触可塑性（STDP）与混合精度量化感知训练（QAT）直接编译固化至超低功耗神经形态阵列（如 Intel Loihi 2、清华天机），在 $<100\text{mW}$ 极限功耗下实现事件驱动的纳秒级异步唤醒。
 9. **强物理双重守恒保真度与扩散极限环稳定保障（Physics Conservation & Limit-Cycle Invariance）：** 如何在分数阶反向随机微分方程（Reverse SDE）中建立非交换辛积分器与李代数对称性约束，杜绝长时间积分发散与流形畸变，确保极端电网震荡与气候相变推演的绝对可信。
 10. **去中心化集群拜占庭容错与多模态空间感知泛化（Decentralized Swarm Byzantine Resilience & Spatial Generalization）：** 针对智慧城市与智能电网成千上万异构传感节点，结合空间感知强化学习（S-GRPO）与分布式零知识证明，赋予多智能体集群在高达 33% 传感器被恶意劫持或失效下的鲁棒自愈与协同推理能力。
+11. **跨模态因果不变性与非平稳隐式混杂鲁棒学习（Cross-Modal Causal Invariance under Latent Confounding）：** 如何在连续高频传感流与异步非结构化事件文本交织的动态系统中，建立严谨的有限样本反事实边界，彻底解决未观测环境混杂变量对因果推断的系统性偏置。
+12. **极低功耗 MCU 端侧多模态神经架构搜索与混合位宽量化（Sub-Milliwatt Microcontroller NAS & Extreme Quantization）：** 针对 ARM Cortex-M 等微控制器的亚毫瓦级与亚兆字节硬件严苛限制，结合视界加权知识蒸馏、结构化自注意力剪枝与 1--4 bit 极低位宽量化感知编译，推动跨模态大模型走向万物智联。
+13. **无遗忘非平稳流式终身泛化与零样本在线元控制（Zero-Forgetting Streaming Continual Learning & Meta-Control）：** 针对行星级气候突变、深空遥感漂移与高频金融闪崩，构建基于最优传输（Wasserstein）与经验分布假设检验的在线流式元控制器，实现毫秒级自适应收敛与真正的零灾难性遗忘。
 

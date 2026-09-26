@@ -1002,6 +1002,104 @@ CORE_PAPERS = [
         "code_url": None,
         "quality_score": 10,
         "notes": "Tool-driven multi-agent framework built on Analyzer-Reasoner-Executor paradigm to extract visual anchors from time-series plots and reconstruct predictive trajectories."
+    },
+    {
+        "arxiv_id": "2502.04592",
+        "bibkey": "Zhang2025CAMEF",
+        "venue": "arXiv 2025",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "cross_attention",
+        "backbone": "CAMEF (Causal-Augmented Transformer)",
+        "tasks": ["forecasting"],
+        "domains": ["finance"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Causal-augmented multi-modality event-driven framework integrating high-frequency price sequences with macroeconomic announcement texts via causal graph discovery and counterfactual event augmentation."
+    },
+    {
+        "arxiv_id": "2510.07858",
+        "bibkey": "Cui2025Augur",
+        "venue": "arXiv 2025",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "conversational_interface",
+        "fusion_mechanism": "reprogramming_patching",
+        "backbone": "Teacher-Student LLM (Augur)",
+        "tasks": ["forecasting"],
+        "domains": ["general_ts", "energy", "traffic"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "LLM-driven time series forecasting framework exploiting causal reasoning to discover and encode directed causal graphs among covariates via heuristic search and pairwise causality tests."
+    },
+    {
+        "arxiv_id": "2602.21693",
+        "bibkey": "Lin2026TiMi",
+        "venue": "arXiv 2026",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "cross_attention",
+        "backbone": "TiMi (Transformer + LLM Causal Guidance + MMoE)",
+        "tasks": ["forecasting"],
+        "domains": ["multi_domain", "finance", "weather", "traffic"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Empowers time series transformers with a lightweight Multimodal Mixture-of-Experts (MMoE) plug-in driven by LLM-inferred causal future guidance, bypassing explicit representation alignment."
+    },
+    {
+        "arxiv_id": "2601.12785",
+        "bibkey": "Li2026DistilTS",
+        "venue": "ICASSP 2026",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "reprogramming_patching",
+        "backbone": "DistilTS (Compact Distilled TSFM)",
+        "tasks": ["forecasting"],
+        "domains": ["general_ts", "energy", "weather"],
+        "code_url": "https://github.com/itsnotacie/DistilTS-ICASSP2026",
+        "quality_score": 12,
+        "notes": "Knowledge distillation framework tailored for TSFMs; introduces horizon-weighted objectives and temporal alignment to resolve task discrepancy, slashing parameters by 1/150 and speeding inference by 6000x."
+    },
+    {
+        "arxiv_id": "2606.19363",
+        "bibkey": "Dey2026GUARD",
+        "venue": "KDD 2026",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "cross_attention",
+        "backbone": "GUARD (Multi-Teacher Distilled Edge Forecaster)",
+        "tasks": ["forecasting"],
+        "domains": ["meteorology_climate", "energy", "ecology"],
+        "code_url": "https://github.com/RupasreeDey/GUARD-KDD2026",
+        "quality_score": 12,
+        "notes": "Gated Uncertainty-Aware Routing for Distillation (GUARD); extracts latent structural knowledge from multi-foundation models via contextual routing and an uncertainty-gated temperature circuit-breaker for edge sensor networks."
+    },
+    {
+        "arxiv_id": "2603.27814",
+        "bibkey": "Kumar2026RGTTA",
+        "venue": "arXiv 2026",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "reprogramming_patching",
+        "backbone": "RG-TTA (Regime-Guided Meta-Controller)",
+        "tasks": ["forecasting"],
+        "domains": ["general_ts", "streaming"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Regime-guided test-time adaptation for streaming time series; continuously modulates learning rate and gradient budget via an ensemble of Wasserstein-1, KS test, and variance-ratio distributional similarity metrics."
+    },
+    {
+        "arxiv_id": "2501.04970",
+        "bibkey": "Kim2025TAFAS",
+        "venue": "arXiv 2025",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "reprogramming_patching",
+        "backbone": "TAFAS (Test-Time Adaptive Forecaster)",
+        "tasks": ["forecasting"],
+        "domains": ["general_ts", "energy", "traffic"],
+        "code_url": "https://github.com/kimanki/TAFAS",
+        "quality_score": 11,
+        "notes": "Pioneering test-time adaptation framework for time series forecasting utilizing partially-observed ground truth and a gated calibration module to adapt source forecasters under continuous distribution shifts."
     }
 ]
 
@@ -1272,6 +1370,20 @@ EXCLUDED_PAPERS = [
         "status": "excluded_fulltext",
         "exclusion_reason": "Theoretical statistical physics analysis without empirical time series forecasting or benchmark evaluation (EC3)",
         "screen_date": "2026-09-26"
+    },
+    {
+        "arxiv_id": "2509.04449",
+        "title": "ChronoGraph: A Real-World Graph-Based Multivariate Time Series Dataset",
+        "status": "excluded_fulltext",
+        "exclusion_reason": "Static/multivariate graph time series without external text/vision/audio cross-modal interactions (EC1)",
+        "screen_date": "2026-09-26"
+    },
+    {
+        "arxiv_id": "2609.09586",
+        "title": "Distillation of Synthetic Data for Time Series Foundation Models",
+        "status": "excluded_fulltext",
+        "exclusion_reason": "Pure synthetic univariate time-series data distillation without multimodal or microcontroller hardware constraints (EC1/EC3)",
+        "screen_date": "2026-09-26"
     }
 ]
 
@@ -1417,24 +1529,24 @@ def main():
 
     # 3. Write prisma_counts.json
     prisma_counts = {
-        "iteration": 6,
+        "iteration": 7,
         "date": "2026-09-26",
         "identification": {
-            "database_searches": 335,
-            "citation_snowballing": 170,
-            "total_identified": 505
+            "database_searches": 360,
+            "citation_snowballing": 187,
+            "total_identified": 547
         },
         "screening": {
-            "records_screened": 413,
-            "duplicates_removed": 92,
-            "records_after_dedup": 413,
-            "excluded_title_abstract": 318,
-            "fulltext_assessed": 95,
-            "excluded_fulltext": 25,
+            "records_screened": 447,
+            "duplicates_removed": 100,
+            "records_after_dedup": 447,
+            "excluded_title_abstract": 343,
+            "fulltext_assessed": 104,
+            "excluded_fulltext": 27,
             "exclusion_reasons": {
-                "unimodal_only": 14,
+                "unimodal_only": 15,
                 "static_data_no_ts": 8,
-                "unverifiable_metadata": 3
+                "unverifiable_metadata": 4
             }
         },
         "included": {
@@ -1449,15 +1561,15 @@ def main():
     # 4. Append to search_log.jsonl
     search_log_path = DATA_DIR / "search_log.jsonl"
     queries = [
-        {"source": "arXiv API", "query": "all:\"spiking neural network\" AND all:\"time series\" (SpikySpace, MTSA-SNN, TS-LIF)", "hits": 31, "new": 3},
-        {"source": "Semantic Scholar / arXiv API", "query": "all:\"diffusion\" AND all:\"physics\" AND all:\"time series\" (Su2025MultimodalDiff, PhysDGM)", "hits": 24, "new": 2},
-        {"source": "Crossref / arXiv API", "query": "all:\"multi-agent\" AND (all:\"time series\" OR all:\"spatio-temporal\") (STReasoner, MAS4TS)", "hits": 29, "new": 2}
+        {"source": "arXiv API", "query": "all:causal AND all:\"time series\" AND (all:multimodal OR all:text) (CAMEF, Augur, TiMi)", "hits": 35, "new": 3},
+        {"source": "Semantic Scholar / arXiv API", "query": "all:\"time series\" AND (all:distillation OR all:microcontroller OR all:edge) AND (all:foundation OR all:multimodal) (DistilTS, GUARD)", "hits": 28, "new": 2},
+        {"source": "Crossref / arXiv API", "query": "all:\"test-time adaptation\" AND all:\"time series\" AND (all:multimodal OR all:continual OR all:foundation) (RG-TTA, TAFAS)", "hits": 26, "new": 2}
     ]
     with open(search_log_path, "a", encoding="utf-8") as f:
         for q in queries:
             entry = {
                 "timestamp": datetime.now(timezone.utc).isoformat(),
-                "iteration": 6,
+                "iteration": 7,
                 "source": q["source"],
                 "query": q["query"],
                 "hits": q["hits"],

@@ -1,6 +1,6 @@
 # Systematic Review Protocol: Multimodal Time Series Models (PRISMA 2020)
 
-**Protocol Version:** 1.3.0  
+**Protocol Version:** 1.5.0  
 **Initial Date:** 2026-09-24  
 **Last Updated:** 2026-09-26  
 **Scope Time Window:** 2021-01-01 to 2026-09-26 (continuous updating)  
@@ -146,4 +146,13 @@ To evaluate the empirical validity of reported multimodal performance gains, a s
   - Formulated split conformal prediction framework with finite-sample marginal coverage guarantees ($\ge 1-\alpha$).
   - Developed automated dynamic red-teaming harness (`scripts/redteam_harness.py`) probing 5 adversarial stress tests (Semantic Inversion, Temporal Causality Reversal, Spurious Entity Injection, Numerical Jitter, Asynchronous Lag) and computing Counterfactual Resilience Score (CRS) and Spurious Reliance Ratio (SRR).
   - Expanded verified corpus from 56 to 63 milestone papers (2021--2026) with 100% API verification cached in `data/raw/` and strict PRISMA arithmetic closure ($450 - 82 = 368$; $368 - 282 = 86$; $86 - 23 = 63 = 63$).
+- **2026-09-26 (v1.4.0):** Iteration 6 expansion:
+  - Added Search Strings for micro-watt neuromorphic SNN architectures (`SpikySpace`, `TS-LIF`, `MTSA-SNN`), physics-constrained diffusion models (`PhysDGM`, `Su2025MultimodalDiff`), and spatio-temporal multi-agent swarms (`STReasoner`, `MAS4TS`).
+  - Formulated continuous biological Leaky Integrate-and-Fire (LIF) dynamics, Tweedie-projected score-based Hamiltonian/swing equation guidance, and Spatial-Aware Group Relative Policy Optimization (S-GRPO).
+  - Expanded verified corpus from 63 to 70 milestone papers (2021--2026) with strict PRISMA arithmetic closure ($505 - 92 = 413$; $413 - 318 = 95$; $95 - 25 = 70 = 70$).
+- **2026-09-26 (v1.5.0):** Iteration 7 expansion:
+  - Added Search Strings for cross-modal causal discovery under confounding (`CAMEF`, `Augur`, `TiMi`), microcontroller TSFM knowledge distillation (`DistilTS`, `GUARD`), and streaming test-time adaptation (`RG-TTA`, `TAFAS`).
+  - Formulated Multimodal Structural Causal Models (M-SCMs) with counterfactual event augmentation, horizon-weighted distillation objectives overcoming prediction difficulty discrepancy, and Wasserstein-1 / KS ensemble metric regime-guided meta-control.
+  - Plotted 3-panel publication figure `paper/figures/causal_distill_tta.png` and vector `.pdf`.
+  - Expanded verified corpus from 70 to 77 milestone papers (2021--2026) with 100% API verification cached in `data/raw/` and strict PRISMA arithmetic closure ($547 - 100 = 447$; $447 - 343 = 104$; $104 - 27 = 77 = 77$).
 

@@ -1,10 +1,10 @@
 {
   "metadata": {
     "last_updated": "2026-09-26",
-    "total_candidates": 108,
-    "included": 70,
+    "total_candidates": 117,
+    "included": 77,
     "excluded_title": 27,
-    "excluded_fulltext": 11
+    "excluded_fulltext": 13
   },
   "candidates": [
     {
@@ -2507,6 +2507,243 @@
       "api_verified": true
     },
     {
+      "status": "included",
+      "bibkey": "Zhang2025CAMEF",
+      "title": "CAMEF: Causal-Augmented Multi-Modality Event-Driven Financial Forecasting by Integrating Time Series Patterns and Salient Macroeconomic Announcements",
+      "authors": [
+        "Yang Zhang",
+        "Wenbo Yang",
+        "Jun Wang",
+        "Qiang Ma",
+        "Jie Xiong"
+      ],
+      "year": 2025,
+      "venue": "arXiv 2025",
+      "arxiv_id": "2502.04592",
+      "doi": "10.1145/3711896.373687",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "cross_attention",
+      "backbone": "CAMEF (Causal-Augmented Transformer)",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "finance"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Accurately forecasting the impact of macroeconomic events is critical for investors and policymakers. Salient events like monetary policy decisions and employment reports often trigger market movements by shaping expectations of economic growth and risk, thereby establishing causal relationships between events and market behavior. Existing forecasting methods typically focus either on textual analysis or time-series modeling, but fail to capture the multi-modal nature of financial markets and the causal relationship between events and price movements. To address these gaps, we propose CAMEF (Causal-Augmented Multi-Modality Event-Driven Financial Forecasting), a multi-modality framework that effectively integrates textual and time-series data with a causal learning mechanism and an LLM-based counterfactual event augmentation technique for causal-enhanced financial forecasting. Our contributions include: (1) a multi-modal framework that captures causal relationships between policy texts and historical price data; (2) a new financial dataset with six types of macroeconomic releases from 2008 to April 2024, and high-frequency real trading data for five key U.S. financial assets; and (3) an LLM-based counterfactual event augmentation strategy. We compare CAMEF to state-of-the-art transformer-based time-series and multi-modal baselines, and perform ablation studies to validate the effectiveness of the causal learning mechanism and event types.",
+      "notes": "Causal-augmented multi-modality event-driven framework integrating high-frequency price sequences with macroeconomic announcement texts via causal graph discovery and counterfactual event augmentation.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Cui2025Augur",
+      "title": "Augur: Modeling Covariate Causal Associations in Time Series via Large Language Models",
+      "authors": [
+        "Zhiqing Cui",
+        "Binwu Wang",
+        "Qingxiang Liu",
+        "Yeqiang Wang",
+        "Zhengyang Zhou",
+        "Yuxuan Liang",
+        "Yang Wang"
+      ],
+      "year": 2025,
+      "venue": "arXiv 2025",
+      "arxiv_id": "2510.07858",
+      "doi": "10.48550/arXiv.2510.07858",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "conversational_interface",
+      "fusion_mechanism": "reprogramming_patching",
+      "backbone": "Teacher-Student LLM (Augur)",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts",
+        "energy",
+        "traffic"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Large language models (LLM) have emerged as a promising avenue for time series forecasting, offering the potential to integrate multimodal data. However, existing LLM-based approaches face notable limitations-such as marginalized role in model architectures, reliance on coarse statistical text prompts, and lack of interpretability. In this work, we introduce Augur, a fully LLM driven time series forecasting framework that exploits LLM causal reasoning to discover and use directed causal associations among covariates. Augur uses a two stage teacher student architecture where a powerful teacher LLM infers a directed causal graph from time series using heuristic search together with pairwise causality testing. A lightweight student agent then refines the graph and fine tune on high confidence causal associations that are encoded as rich textual prompts to perform forecasting. This design improves predictive accuracy while yielding transparent, traceable reasoning about variable interactions. Extensive experiments on real-world datasets with 26 baselines demonstrate that Augur achieves competitive performance and robust zero-shot generalization.",
+      "notes": "LLM-driven time series forecasting framework exploiting causal reasoning to discover and encode directed causal graphs among covariates via heuristic search and pairwise causality tests.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Lin2026TiMi",
+      "title": "TiMi: Empower Time Series Transformers with Multimodal Mixture of Experts",
+      "authors": [
+        "Jiafeng Lin",
+        "Yuxuan Wang",
+        "Huakun Luo",
+        "Jianmin Wang",
+        "Zhongyi Pei"
+      ],
+      "year": 2026,
+      "venue": "arXiv 2026",
+      "arxiv_id": "2602.21693",
+      "doi": "10.48550/arXiv.2602.21693",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "cross_attention",
+      "backbone": "TiMi (Transformer + LLM Causal Guidance + MMoE)",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "multi_domain",
+        "finance",
+        "weather",
+        "traffic"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Multimodal time series forecasting has garnered significant attention for its potential to provide more accurate predictions than traditional single-modality models by leveraging rich information inherent in other modalities. However, due to fundamental challenges in modality alignment, existing methods often struggle to effectively incorporate multimodal data into predictions, particularly textual information that has a causal influence on time series fluctuations, such as emergency reports and policy announcements. In this paper, we reflect on the role of textual information in numerical forecasting and propose Time series transformers with Multimodal Mixture-of-Experts, TiMi, to unleash the causal reasoning capabilities of LLMs. Concretely, TiMi utilizes LLMs to generate inferences on future developments, which serve as guidance for time series forecasting. To seamlessly integrate both exogenous factors and time series into predictions, we introduce a Multimodal Mixture-of-Experts (MMoE) module as a lightweight plug-in to empower Transformer-based time series models for multimodal forecasting, eliminating the need for explicit representation-level alignment. Experimentally, our proposed TiMi demonstrates consistent state-of-the-art performance on sixteen real-world multimodal forecasting benchmarks, outperforming advanced baselines while offering both strong adaptability and interpretability.",
+      "notes": "Empowers time series transformers with a lightweight Multimodal Mixture-of-Experts (MMoE) plug-in driven by LLM-inferred causal future guidance, bypassing explicit representation alignment.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Li2026DistilTS",
+      "title": "Distilling Time Series Foundation Models for Efficient Forecasting",
+      "authors": [
+        "Yuqi Li",
+        "Kuiye Ding",
+        "Chuanguang Yang",
+        "Szu-Yu Chen",
+        "Yingli Tian"
+      ],
+      "year": 2026,
+      "venue": "ICASSP 2026",
+      "arxiv_id": "2601.12785",
+      "doi": "10.48550/arXiv.2601.12785",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "reprogramming_patching",
+      "backbone": "DistilTS (Compact Distilled TSFM)",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts",
+        "energy",
+        "weather"
+      ],
+      "code_url": "https://github.com/itsnotacie/DistilTS-ICASSP2026",
+      "quality_score": 12,
+      "abstract": "Time Series foundation models (TSFMs) deliver strong forecasting performance through large-scale pretraining, but their large parameter sizes make deployment costly. While knowledge distillation offers a natural and effective approach for model compression, techniques developed for general machine learning tasks are not directly applicable to time series forecasting due to the unique characteristics. To address this, we present DistilTS, the first distillation framework specifically designed for TSFMs. DistilTS addresses two key challenges: (1) task difficulty discrepancy, specific to forecasting, where uniform weighting makes optimization dominated by easier short-term horizons, while long-term horizons receive weaker supervision; and (2) architecture discrepancy, a general challenge in distillation, for which we design an alignment mechanism in the time series forecasting. To overcome these issues, DistilTS introduces horizon-weighted objectives to balance learning across horizons, and a temporal alignment strategy that reduces architectural mismatch, enabling compact models. Experiments on multiple benchmarks demonstrate that DistilTS achieves forecasting performance comparable to full-sized TSFMs, while reducing parameters by up to 1/150 and accelerating inference by up to 6000x. Code is available at: https://github.com/itsnotacie/DistilTS-ICASSP2026.",
+      "notes": "Knowledge distillation framework tailored for TSFMs; introduces horizon-weighted objectives and temporal alignment to resolve task discrepancy, slashing parameters by 1/150 and speeding inference by 6000x.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Dey2026GUARD",
+      "title": "When to Trust, How to Distill: Multi-Foundation Model Guidance for Lightweight, Robust Scientific Time Series Forecasting",
+      "authors": [
+        "Rupasree Dey",
+        "Abdul Matin",
+        "Nathan Orwick",
+        "Yao Zhang",
+        "Shrideep Pallickara",
+        "Sangmi Lee Pallickara"
+      ],
+      "year": 2026,
+      "venue": "KDD 2026",
+      "arxiv_id": "2606.19363",
+      "doi": "10.1145/3770855.3819018",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "cross_attention",
+      "backbone": "GUARD (Multi-Teacher Distilled Edge Forecaster)",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "meteorology_climate",
+        "energy",
+        "ecology"
+      ],
+      "code_url": "https://github.com/RupasreeDey/GUARD-KDD2026",
+      "quality_score": 12,
+      "abstract": "The deployment of Time-Series Foundation Models (TSFMs) in physical sciences is hindered by a critical trade-off: while these models encode rich, universal temporal dynamics, they suffer from severe distributional misalignment when applied zero-shot to specific scientific domains, and their computational cost prohibits deployment in edge-computing sensor networks. We address a fundamental challenge: How can we extract latent structural knowledge from misaligned foundation models (FM) to train lightweight, specialized forecasters? We propose Gated Uncertainty-Aware Routing for Distillation (Guard), a novel framework that reframes multiteacher distillation as an instance-wise decision process with two adaptive mechanisms: (1) a Contextual Router that dynamically selects the most relevant teacher based on local input statistics, exploiting complementarity across diverse foundation models; and (2) an Uncertainty-Gated Temperature mechanism that acts as a &#34;circuit-breaker,&#34; automatically attenuating distillation strength when teacher confidence diverges from domain reality. We evaluate our proposed lightweight framework on four climate-critical domains: meteorology, ecosystem carbon flux, soil moisture, and energy grids. Our method significantly reduces RMSE relative to a fixed-weight multi-teacher distillation baseline, successfully distilling knowledge from pretrained FMs (teachers) even when they exhibit suboptimal zero-shot accuracy due to distribution shift between the original and target data domains. We demonstrate that these domain-misaligned teachers can still serve as critical correctives, outperforming the globally superior FMs on 28.5% of the hardest instances. Ultimately, this enables high-precision scientific forecasting suitable for resource-constrained edge deployment. Code is available at https://github.com/RupasreeDey/GUARD-KDD2026.",
+      "notes": "Gated Uncertainty-Aware Routing for Distillation (GUARD); extracts latent structural knowledge from multi-foundation models via contextual routing and an uncertainty-gated temperature circuit-breaker for edge sensor networks.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Kumar2026RGTTA",
+      "title": "RG-TTA: Regime-Guided Meta-Control for Test-Time Adaptation in Streaming Time Series",
+      "authors": [
+        "Indar Kumar",
+        "Akanksha Tiwari",
+        "Sai Krishna Jasti",
+        "Ankit Hemant Lade"
+      ],
+      "year": 2026,
+      "venue": "arXiv 2026",
+      "arxiv_id": "2603.27814",
+      "doi": "10.48550/arXiv.2603.27814",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "reprogramming_patching",
+      "backbone": "RG-TTA (Regime-Guided Meta-Controller)",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts",
+        "streaming"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Test-time adaptation (TTA) enables neural forecasters to adapt to distribution shifts in streaming time series, but existing methods apply the same adaptation intensity regardless of the nature of the shift. We propose Regime-Guided Test-Time Adaptation (RG-TTA), a meta-controller that continuously modulates adaptation intensity based on distributional similarity to previously-seen regimes. Using an ensemble of Kolmogorov-Smirnov, Wasserstein-1, feature-distance, and variance-ratio metrics, RG-TTA computes a similarity score for each incoming batch and uses it to (i) smoothly scale the learning rate -- more aggressive for novel distributions, conservative for familiar ones -- and (ii) control gradient effort via loss-driven early stopping rather than fixed budgets, allowing the system to allocate exactly the effort each batch requires. As a supplementary mechanism, RG-TTA gates checkpoint reuse from a regime memory, loading stored specialist models only when they demonstrably outperform the current model (loss improvement &gt;= 30%). RG-TTA is model-agnostic and strategy-composable: it wraps any forecaster exposing train/predict/save/load interfaces and enhances any gradient-based TTA method. We demonstrate three compositions -- RG-TTA, RG-EWC, and RG-DynaTTA -- and evaluate 6 update policies (3 baselines + 3 regime-guided variants) across 4 compact architectures (GRU, iTransformer, PatchTST, DLinear), 14 datasets (6 real-world multivariate benchmarks + 8 synthetic regime scenarios), and 4 forecast horizons (96, 192, 336, 720) under a streaming evaluation protocol with 3 random seeds (672 experiments total). Regime-guided policies achieve the lowest MSE in 156 of 224 seed-averaged experiments (69.6%), with RG-EWC winning 30.4% and RG-TTA winning 29.0%. Overall, RG-TTA reduces MSE by 5.7% vs TTA while running 5.5% faster; RG-EWC reduces MSE by 14.1% vs standalone EWC.",
+      "notes": "Regime-guided test-time adaptation for streaming time series; continuously modulates learning rate and gradient budget via an ensemble of Wasserstein-1, KS test, and variance-ratio distributional similarity metrics.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Kim2025TAFAS",
+      "title": "Battling the Non-stationarity in Time Series Forecasting via Test-time Adaptation",
+      "authors": [
+        "HyunGi Kim",
+        "Siwon Kim",
+        "Jisoo Mok",
+        "Sungroh Yoon"
+      ],
+      "year": 2025,
+      "venue": "arXiv 2025",
+      "arxiv_id": "2501.04970",
+      "doi": "10.48550/arXiv.2501.04970",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "reprogramming_patching",
+      "backbone": "TAFAS (Test-Time Adaptive Forecaster)",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts",
+        "energy",
+        "traffic"
+      ],
+      "code_url": "https://github.com/kimanki/TAFAS",
+      "quality_score": 11,
+      "abstract": "Deep Neural Networks have spearheaded remarkable advancements in time series forecasting (TSF), one of the major tasks in time series modeling. Nonetheless, the non-stationarity of time series undermines the reliability of pre-trained source time series forecasters in mission-critical deployment settings. In this study, we introduce a pioneering test-time adaptation framework tailored for TSF (TSF-TTA). TAFAS, the proposed approach to TSF-TTA, flexibly adapts source forecasters to continuously shifting test distributions while preserving the core semantic information learned during pre-training. The novel utilization of partially-observed ground truth and gated calibration module enables proactive, robust, and model-agnostic adaptation of source forecasters. Experiments on diverse benchmark datasets and cutting-edge architectures demonstrate the efficacy and generality of TAFAS, especially in long-term forecasting scenarios that suffer from significant distribution shifts. The code is available at https://github.com/kimanki/TAFAS.",
+      "notes": "Pioneering test-time adaptation framework for time series forecasting utilizing partially-observed ground truth and a gated calibration module to adapt source forecasters under continuous distribution shifts.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
       "status": "excluded_title",
       "bibkey": null,
       "title": "2-categorical approach to unifying constructions of precoverings and its applications",
@@ -3339,6 +3576,50 @@
       "quality_score": 0,
       "abstract": "",
       "exclusion_reason": "Theoretical statistical physics analysis without empirical time series forecasting or benchmark evaluation (EC3)",
+      "screen_date": "2026-09-26",
+      "api_verified": true
+    },
+    {
+      "status": "excluded_fulltext",
+      "bibkey": null,
+      "title": "ChronoGraph: A Real-World Graph-Based Multivariate Time Series Dataset",
+      "authors": [],
+      "year": 2026,
+      "venue": "arXiv",
+      "arxiv_id": "2509.04449",
+      "doi": "10.48550/arXiv.2509.04449",
+      "modality_pair": null,
+      "role_of_non_ts": null,
+      "fusion_mechanism": null,
+      "backbone": null,
+      "tasks": [],
+      "domains": [],
+      "code_url": null,
+      "quality_score": 0,
+      "abstract": "",
+      "exclusion_reason": "Static/multivariate graph time series without external text/vision/audio cross-modal interactions (EC1)",
+      "screen_date": "2026-09-26",
+      "api_verified": true
+    },
+    {
+      "status": "excluded_fulltext",
+      "bibkey": null,
+      "title": "Distillation of Synthetic Data for Time Series Foundation Models",
+      "authors": [],
+      "year": 2026,
+      "venue": "arXiv",
+      "arxiv_id": "2609.09586",
+      "doi": "10.48550/arXiv.2609.09586",
+      "modality_pair": null,
+      "role_of_non_ts": null,
+      "fusion_mechanism": null,
+      "backbone": null,
+      "tasks": [],
+      "domains": [],
+      "code_url": null,
+      "quality_score": 0,
+      "abstract": "",
+      "exclusion_reason": "Pure synthetic univariate time-series data distillation without multimodal or microcontroller hardware constraints (EC1/EC3)",
       "screen_date": "2026-09-26",
       "api_verified": true
     }
