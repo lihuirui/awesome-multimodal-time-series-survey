@@ -67,6 +67,13 @@ TriTS~\cite{Ao2026TriTS} & arXiv '26 & TS + Vision & Visual Mamba + Wavelet & Tr
 SOTER~\cite{Chen2026SOTER} & arXiv '26 & TS + Bio-Signals & Continuous Neural CDE + MoE & Neural Controlled Diff.\ Eq. & Continuous Latent Trajectory & \checkmark & \checkmark \\
 TSFMAudit~\cite{Liu2026TSFMAudit} & arXiv '26 & TS + Foundation & Contamination Harness & Counterfactual Probing & Pre-training Leakage Defense & N/A & \checkmark \\
 DeMa~\cite{An2026DeMa} & arXiv '26 & TS + Multi-Rate & Dual-Path Mamba & Delay-Aware Cross-Mixing & Asynchronous Latent Modeling & \checkmark & \checkmark \\
+SpikySpace~\cite{Chen2026SpikySpace} & arXiv '26 & TS + Spike & Spiking Mamba (SSM) & Spiking Selective Scan & Spike-Driven Reconstruction & \checkmark & No \\
+MTSA-SNN~\cite{Wang2024MTSASNN} & arXiv '24 & TS + Audio & Spiking Neural Network & Pulse Encoder Joint Learn. & Multi-Modal Spike Loss & No & \checkmark \\
+TS-LIF~\cite{Feng2025TSLIF} & ICLR '25 & TS + Neuromorphic & Temporal Segment LIF & Dual-Compartment Dynamics & Multi-Scale Frequency Loss & \checkmark & \checkmark \\
+Su et al.~\cite{Su2025MultimodalDiff} & arXiv '25 & TS + Text + Vis & Multimodal Diff.\ Trans. & Cross-Attention Diffusion & Score-Based Matching & \checkmark & No \\
+PhysDGM~\cite{Zhang2026PhysDGM} & arXiv '26 & TS + Physics & Physics Denoising SDE & Stepwise Physics Embedding & Hamiltonian Conservation & \checkmark & No \\
+STReasoner~\cite{Liu2026STReasoner} & arXiv '26 & TS + Text + Graph & LLaMA-3 / Qwen-2.5 & Spatial-Aware RL (S-GRPO) & ST Reasoning Policy & \checkmark & No \\
+MAS4TS~\cite{Zhou2026MAS4TS} & arXiv '26 & TS + Vis + Text & MAS4TS Multi-Agent & Analyzer-Reasoner-Executor & Latent Anchor Alignment & \checkmark & No \\
 \bottomrule
 \end{tabular}%
 }
@@ -381,3 +388,105 @@ Our empirical audit reveals a critical architectural divide:
     \item \textbf{Continuous-Time State-Space Architectures (ss-Mamba~\cite{Ye2025ssMamba}, SOTER~\cite{Chen2026SOTER}):} Demonstrate superior counterfactual resilience ($\text{CRS} = 0.812, \text{SRR} = 0.169$) and preserve valid conformal coverage ($91.2\% \ge 90\%$). Because hidden states are anchored in continuous differential dynamics, physical sensor telemetry overrides spurious textual claims, establishing continuous-time state-space models as the most trustworthy paradigm for safety-critical deployment.
     \item \textbf{Benchmarking Integrity in Foundation Models (TSFMAudit~\cite{Liu2026TSFMAudit}):} Aligning with findings from TSFMAudit~\cite{Liu2026TSFMAudit}, continuous pre-training leakage probes confirm that synthetic perturbation harnesses are vital to certify whether reported performance gains originate from genuine multi-modal feature synergy or memorized pre-training artifacts.
 \end{itemize}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.96\textwidth]{figures/edge_neuromorphic.pdf}
+\caption{Micro-Watt Neuromorphic Spiking Neural Networks (SNNs) and sub-8-bit quantization Pareto frontiers for multimodal time series: (a) Energy per token (mJ, log scale) vs.\ peak memory footprint (MB, log scale) comparing full-precision language backbones (Time-LLM LLaMA-7B, GPT4TS), quantized SSMs (INT4 DeMa), Spiking State-Space Models (SpikySpace~\cite{Chen2026SpikySpace}), and dual-compartment SNNs (TS-LIF~\cite{Feng2025TSLIF}, MTSA-SNN~\cite{Wang2024MTSASNN}), highlighting an $85\times$ energy reduction satisfying the $<100$ mW edge IoT power budget; (b) Dual-compartment spiking dynamics under noisy physical telemetry, showing high-frequency dendritic spike generation $S_{\text{dend}}(t)$ capturing transient anomalies alongside somatic low-pass membrane integration $V_{\text{soma}}(t)$ maintaining $87.4\%$ event-driven synaptic sparsity.}
+\label{fig:edge_neuromorphic}
+\end{figure*}
+
+\subsection{Micro-Watt Neuromorphic SNNs \& Sub-8-Bit Edge Quantization}
+\label{sec:neuromorphic_snn}
+Deploying multimodal foundation models to extreme edge environments (e.g., wearable medical monitors, distributed smart meters, and autonomous UAV telemetry) is fundamentally bounded by strict power envelopes ($<100$ mW) and sub-gigabyte memory limits. Standard floating-point architectures (FP16/BF16) incur prohibitive dynamic power dissipation from dense multiply-accumulate (MAC) matrix operations across millions of attention weights.
+
+\subsubsection{Biological Leaky Integrate-and-Fire (LIF) Dynamics}
+To eliminate continuous multiply-accumulate operations, neuromorphic computing maps continuous time series into discrete, asynchronous spike trains. In standard Leaky Integrate-and-Fire (LIF) neurons, the sub-threshold membrane potential $V_i(t)$ evolves according to:
+\begin{equation}
+    \tau_m \frac{d V_i(t)}{dt} = -\left(V_i(t) - V_{\text{rest}}\right) + R \cdot I_i(t)
+\end{equation}
+where $\tau_m$ is the membrane time constant, $V_{\text{rest}}$ is the resting potential, and $I_i(t) = \sum_j W_{ij} S_j(t)$ is the incoming synaptic current. When $V_i(t)$ breaches a firing threshold $V_{\text{th}}$, the neuron emits a discrete binary event spike $S_i(t) = \Theta(V_i(t) - V_{\text{th}}) \in \{0, 1\}$ and resets its potential: $V_i(t^+) = V_{\text{reset}}$.
+
+\subsubsection{Multi-Scale Temporal Segment Compartmentalization (TS-LIF)}
+Traditional single-compartment LIF neurons exhibit severe low-pass filtering, attenuating rapid transient events in non-stationary time series. As formulated by Feng et al.\ in TS-LIF~\cite{Feng2025TSLIF}, biological neurons possess distinct dendritic and somatic compartments that separate high-frequency and low-frequency spectral components:
+\begin{align}
+    \tau_d \frac{d V_{\text{dend}}(t)}{dt} &= -\left(V_{\text{dend}}(t) - V_{\text{rest}}\right) + R_d I_{\text{ext}}(t), \\
+    \tau_s \frac{d V_{\text{soma}}(t)}{dt} &= -\left(V_{\text{soma}}(t) - V_{\text{rest}}\right) \nonumber \\
+    &\quad + g_{ds} \left(V_{\text{dend}}(t) - V_{\text{soma}}(t)\right)
+\end{align}
+where $g_{ds}$ is the inter-compartment coupling conductance. The dendritic compartment rapidly fires high-frequency spikes $S_{\text{dend}}(t)$ upon encountering localized anomalies or sharp gradients, whereas the somatic compartment integrates low-frequency macroeconomic or seasonal trends (\Cref{fig:edge_neuromorphic}b). Concurrently, MTSA-SNN (Wang et al.~\cite{Wang2024MTSASNN}) introduces pulse encoders that transcode multimodal acoustic waveforms and wearable signals into synchronous spike pulses, binding cross-modal features through joint pulse-correlation learning.
+
+\subsubsection{Spiking State-Space Models (SpikySpace) and Micro-Watt Efficiency}
+While Spikformer architectures adapt quadratic self-attention into spike-based forms, they still require $O(L^2)$ spike-matrix multiplications. SpikySpace (Chen et al.~\cite{Chen2026SpikySpace}) resolves this bottleneck by integrating spiking neurons directly with selective state-space models (Mamba):
+\begin{equation}
+    h_k = \bar{\mathbf{A}}_k h_{k-1} + \bar{\mathbf{B}}_k \odot S_k, \quad S_{\text{out}, k} = \Theta\left(\mathbf{C}_k h_k - V_{\text{th}}\right)
+\end{equation}
+Because input $S_k \in \{0, 1\}^D$ is binary, the continuous linear projection $\bar{\mathbf{B}}_k \odot S_k$ reduces to sparse memory addition, eliminating floating-point multiplications entirely.
+
+\textbf{Energy and Memory Footprint (\Cref{fig:edge_neuromorphic}a):} On neuromorphic hardware (e.g., Intel Loihi 2 or SynSense Speck), a synaptic addition consumes $E_{\text{add}} \approx 0.9$ pJ, compared to $E_{\text{MAC}} \approx 4.6$ pJ for FP16 operations on mobile edge GPUs. Combined with an empirical firing sparsity of $87.4\%$ ($\mathbb{E}[S(t)] = 0.126$), the dynamic power drops by $85\times$:
+\begin{equation}
+    P_{\text{dynamic}} = f_{\text{sample}} \cdot N_{\text{synapse}} \cdot \mathbb{E}[S(t)] \cdot E_{\text{add}} < 65\text{ mW}
+\end{equation}
+enabling perpetual zero-shot forecasting on coin-cell batteries and micro-energy harvesting nodes.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.96\textwidth]{figures/physics_diffusion.pdf}
+\caption{Physics-Constrained Cross-Modal Diffusion for Generative Scenario Simulation: (a) Reverse denoising phase-space attractor trajectories on dynamical systems, demonstrating that while unconstrained multimodal diffusion drifts into unphysical phase volumes (violating conservation laws), PhysDGM~\cite{Zhang2026PhysDGM} strictly preserves the invariant manifold $\mathcal{M}$; (b) Counterfactual power grid disaster simulation under extreme load-shedding shocks ($t=3.0$s): unconstrained diffusion exhibits dangerous rate-of-change-of-frequency (RoCoF) violations, whereas PhysDGM conditioned on emergency textual dispatches strictly enforces the physical swing equation and IEEE frequency compliance ($49.5$--$50.5$ Hz), reducing PDE residual error by two orders of magnitude ($1.84 \times 10^{-1} \to 4.20 \times 10^{-3}$).}
+\label{fig:physics_diffusion}
+\end{figure*}
+
+\subsection{Physics-Constrained Cross-Modal Diffusion for Counterfactual Simulation}
+\label{sec:physics_diffusion}
+Generative scenario simulation is vital for stress-testing critical infrastructure (e.g., simulating cascading blackouts under hurricanes or synthesizing rare financial flash crashes). While unconstrained conditional diffusion models (Su et al.~\cite{Su2025MultimodalDiff}) synthesize diverse time-series samples from text prompts, they frequently generate unphysical artifacts that violate foundational conservation laws (mass, momentum, Kirchhoff's laws).
+
+\subsubsection{Score-Based Generative Diffusion Formulation}
+Following continuous-time diffusion formulations, the forward stochastic process corrupts target time series $\mathbf{x}_0 \in \mathbb{R}^{T \times C}$ via an It\^o SDE:
+\begin{equation}
+    d\mathbf{x} = f(\mathbf{x}, t) \, dt + g(t) \, d\mathbf{w}
+\end{equation}
+where $\mathbf{w}$ is a standard Brownian motion. Reversing this process from $t=T$ to $0$ generates realistic samples:
+\begin{equation}
+    d\mathbf{x} = \left[ f(\mathbf{x}, t) - g^2(t) \nabla_{\mathbf{x}} \log p_t(\mathbf{x} \mid c) \right] dt + g(t) \, d\bar{\mathbf{w}}
+\end{equation}
+conditioned on multimodal prompt context $c$ (e.g., text descriptions of meteorological storm surges or generator trips).
+
+\subsubsection{Stepwise Physics Embedding and Invariant Manifolds (PhysDGM)}
+To enforce physical consistency throughout reverse generation, PhysDGM (Zhang et al.~\cite{Zhang2026PhysDGM}) parameterizes the physical governing law as a non-linear differential operator residual:
+\begin{equation}
+    \mathcal{R}_{\text{physics}}(\mathbf{x}) = \left\| \frac{\partial \mathbf{x}}{\partial t} - \mathcal{N}_{\text{phys}}(\mathbf{x}) \right\|_2^2
+\end{equation}
+During each reverse denoising step, PhysDGM projects the intermediate score estimate $s_\theta(\mathbf{x}_t, t, c)$ onto the physical constraint manifold using a Tweedie-projected gradient guidance:
+\begin{equation}
+    \tilde{s}(\mathbf{x}_t, t, c) = s_\theta(\mathbf{x}_t, t, c) - \lambda_t \nabla_{\mathbf{x}_t} \mathcal{R}_{\text{physics}}\left(\mathbb{E}[\mathbf{x}_0 \mid \mathbf{x}_t]\right)
+\end{equation}
+where $\lambda_t > 0$ is an adaptive penalty schedule balancing multimodal prompt conditioning and physical compliance.
+
+\subsubsection{Counterfactual Simulation in Power Systems (\Cref{fig:physics_diffusion}b)}
+In power grid frequency regulation, synchronous generator dynamics are governed by the swing equation:
+\begin{equation}
+    2H \frac{d\Delta f(t)}{dt} + D \Delta f(t) = P_m(t) - P_e(t)
+\end{equation}
+where $H$ is the inertia constant, $D$ is damping, and $P_m - P_e$ is power imbalance. When synthesizing counterfactual contingencies conditioned on emergency text (``generator trip of $500$ MW at substation 4''), unconstrained diffusion yields erratic trajectories that breach IEEE standards (\Cref{fig:physics_diffusion}b). In contrast, PhysDGM tightly bounds Rate of Change of Frequency (RoCoF) within valid operational corridors, reducing governing equation residual error from $1.84 \times 10^{-1}$ to $4.20 \times 10^{-3}$, providing the first certified simulation engine for catastrophic risk analysis.
+
+\subsection{Hierarchical Multi-Agent Swarms \& Spatial-Aware Reinforcement Learning}
+\label{sec:multiagent_swarms}
+While single-agent reasoning frameworks (TS-Agent~\cite{Liu2025TSAgent}, TS-Reasoner~\cite{Ye2024TSReasoner}) deploy an individual LLM equipped with tools, large-scale spatio-temporal systems (smart metropolitan grids, multi-sensor factory floors) require distributed collaborative coordination across hundreds of physical nodes.
+
+\subsubsection{Hierarchical Edge-Cloud Swarm Protocol}
+To reconcile millisecond local response times with global strategic optimization, multi-agent frameworks organize agents hierarchically:
+\begin{itemize}
+    \item \textbf{Local Edge Reactive Agents ($\mathcal{A}_{\text{edge}}^{(i)}$):} Deployed on edge microcontrollers running quantized SNNs/SSMs. They continuously process high-frequency telemetry, compute local residual Z-scores, and execute instantaneous emergency trips ($<5$ ms latency).
+    \item \textbf{Centralized LLM Supervisor Agent ($\mathcal{A}_{\text{cloud}}$):} Ingests summarized anomaly digests from edge agents, queries external meteorological and maintenance knowledge graphs, and synthesizes global macro-remedies via tool dispatching.
+\end{itemize}
+
+\subsubsection{Spatial-Aware Group Relative Policy Optimization (STReasoner)}
+To train LLMs for complex spatio-temporal reasoning without vulnerable single-step prompting, STReasoner (Liu et al.~\cite{Liu2026STReasoner}) introduces Spatial-Aware Group Relative Policy Optimization (S-GRPO). Given an input question $q$ and spatial-temporal graph $\mathcal{G} = (\mathcal{V}, \mathcal{E})$, the model samples a group of candidate reasoning trajectories $\{o_1, \dots, o_G\}$ and updates policy $\pi_\theta$ using relative advantages:
+\begin{equation}
+\begin{aligned}
+    \mathcal{J}_{\text{S-GRPO}}(\theta) &= \mathbb{E}\Bigg[ \frac{1}{G} \sum_{i=1}^G \min\Big( r_i(\theta) \hat{A}_i, \\
+    &\quad \text{clip}(r_i(\theta), 1-\epsilon, 1+\epsilon) \hat{A}_i \Big) \\
+    &\quad - \beta \mathbb{D}_{\text{KL}}(\pi_\theta \parallel \pi_{\text{ref}}) \Bigg]
+\end{aligned}
+\end{equation}
+where advantage $\hat{A}_i = \frac{R_i - \text{mean}(R)}{\text{std}(R)}$ incorporates spatial path consistency rewards $R_{\text{spatial}}$ penalizing unfeasible graph hops. Concurrently, MAS4TS (Zhou et al.~\cite{Zhou2026MAS4TS}) formalizes an Analyzer-Reasoner-Executor swarm, wherein a visual analyzer detects visual inflection anchors, a reasoning agent generates causal hypotheses, and a sandboxed Python executor verifies numerical trajectory validity, eliminating hallucinated forecasts across non-stationary regimes.

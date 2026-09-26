@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "last_updated": "2026-09-25",
-    "total_candidates": 99,
-    "included": 63,
+    "last_updated": "2026-09-26",
+    "total_candidates": 108,
+    "included": 70,
     "excluded_title": 27,
-    "excluded_fulltext": 9
+    "excluded_fulltext": 11
   },
   "candidates": [
     {
@@ -2265,6 +2265,248 @@
       "api_verified": true
     },
     {
+      "status": "included",
+      "bibkey": "Chen2026SpikySpace",
+      "title": "SpikySpace: A Spiking State Space Model for Energy-Efficient Time Series Forecasting",
+      "authors": [
+        "Kaiwen Tang",
+        "Jiaqi Zheng",
+        "Yuze Jin",
+        "Yupeng Qiu",
+        "Guangda Sun",
+        "Zhanglu Yan",
+        "Weng-Fai Wong"
+      ],
+      "year": 2026,
+      "venue": "arXiv 2026",
+      "arxiv_id": "2601.02411",
+      "doi": "10.48550/arXiv.2601.02411",
+      "modality_pair": "TS+Spike",
+      "role_of_non_ts": "modality_transcoding",
+      "fusion_mechanism": "spiking_state_space_model",
+      "backbone": "Spiking Mamba (SSM)",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts",
+        "energy",
+        "weather"
+      ],
+      "code_url": null,
+      "quality_score": 10,
+      "abstract": "Time-series forecasting in domains like traffic management and industrial monitoring often requires real-time, energy-efficient processing on edge devices with limited resources. Spiking neural networks (SNNs) offer event-driven computation and ultra-low power and have been proposed for use in this space. Unfortunately, existing SNN-based time-series forecasters often use complex transformer blocks. To address this issue, we propose SpikySpace, a spiking state-space model (SSM) that reduces the quadratic cost in the attention block to linear time via spiking selective scanning. Further, we introduce PTsoftplus and PTSiLU, two efficient approximations of SiLU and Softplus that replace costly exponential and division operations with simple bit-shifts. Evaluated on four multivariate time-series benchmarks, SpikySpace outperforms the leading SNN in terms of accuracy by up to 3.0% while reducing energy consumption by over 96.1%. As the first fully spiking state-space model, SpikySpace bridges neuromorphic efficiency with modern sequence modeling, opening a practical path toward efficient time series forecasting systems. Our code is available at https://anonymous.4open.science/r/SpikySpace.",
+      "notes": "Spiking state space model replacing quadratic attention with spike-driven selective scanning to achieve linear time complexity and ultra-low energy consumption for edge deployment.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Wang2024MTSASNN",
+      "title": "MTSA-SNN: A Multi-modal Time Series Analysis Model Based on Spiking Neural Network",
+      "authors": [
+        "Chengzhi Liu",
+        "Zheng Tao",
+        "Zihong Luo",
+        "Chenghao Liu"
+      ],
+      "year": 2024,
+      "venue": "arXiv 2024",
+      "arxiv_id": "2402.05423",
+      "doi": "10.48550/arXiv.2402.05423",
+      "modality_pair": "TS+Audio",
+      "role_of_non_ts": "joint_representation",
+      "fusion_mechanism": "pulse_encoder_joint_learning",
+      "backbone": "Spiking Neural Network (SNN)",
+      "tasks": [
+        "classification",
+        "anomaly_detection"
+      ],
+      "domains": [
+        "healthcare",
+        "industry_iot"
+      ],
+      "code_url": "https://github.com/Chenngzz/MTSA-SNN",
+      "quality_score": 10,
+      "abstract": "Time series analysis and modelling constitute a crucial research area. Traditional artificial neural networks struggle with complex, non-stationary time series data due to high computational complexity, limited ability to capture temporal information, and difficulty in handling event-driven data. To address these challenges, we propose a Multi-modal Time Series Analysis Model Based on Spiking Neural Network (MTSA-SNN). The Pulse Encoder unifies the encoding of temporal images and sequential information in a common pulse-based representation. The Joint Learning Module employs a joint learning function and weight allocation mechanism to fuse information from multi-modal pulse signals complementary. Additionally, we incorporate wavelet transform operations to enhance the model&#39;s ability to analyze and evaluate temporal information. Experimental results demonstrate that our method achieved superior performance on three complex time-series tasks. This work provides an effective event-driven approach to overcome the challenges associated with analyzing intricate temporal information. Access to the source code is available at https://github.com/Chenngzz/MTSA-SNN}{https://github.com/Chenngzz/MTSA-SNN",
+      "notes": "Multimodal time series analysis framework employing event-driven pulse encoders and joint cross-modal learning to achieve ultra-low energy neuromorphic execution.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Feng2025TSLIF",
+      "title": "TS-LIF: A Temporal Segment Spiking Neuron Network for Time Series Forecasting",
+      "authors": [
+        "Shibo Feng",
+        "Wanjin Feng",
+        "Xingyu Gao",
+        "Peilin Zhao",
+        "Zhiqi Shen"
+      ],
+      "year": 2025,
+      "venue": "ICLR 2025",
+      "arxiv_id": "2503.05108",
+      "doi": "10.48550/arXiv.2503.05108",
+      "modality_pair": "TS+Neuromorphic",
+      "role_of_non_ts": "modality_transcoding",
+      "fusion_mechanism": "dual_compartment_spiking_dynamics",
+      "backbone": "Temporal Segment LIF",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts",
+        "energy",
+        "weather"
+      ],
+      "code_url": "https://github.com/kkking-kk/TS-LIF",
+      "quality_score": 11,
+      "abstract": "Spiking Neural Networks (SNNs) offer a promising, biologically inspired approach for processing spatiotemporal data, particularly for time series forecasting. However, conventional neuron models like the Leaky Integrate-and-Fire (LIF) struggle to capture long-term dependencies and effectively process multi-scale temporal dynamics. To overcome these limitations, we introduce the Temporal Segment Leaky Integrate-and-Fire (TS-LIF) model, featuring a novel dual-compartment architecture. The dendritic and somatic compartments specialize in capturing distinct frequency components, providing functional heterogeneity that enhances the neuron&#39;s ability to process both low- and high-frequency information. Furthermore, the newly introduced direct somatic current injection reduces information loss during intra-neuronal transmission, while dendritic spike generation improves multi-scale information extraction. We provide a theoretical stability analysis of the TS-LIF model and explain how each compartment contributes to distinct frequency response characteristics. Experimental results show that TS-LIF outperforms traditional SNNs in time series forecasting, demonstrating better accuracy and robustness, even with missing data. TS-LIF advances the application of SNNs in time-series forecasting, providing a biologically inspired approach that captures complex temporal dynamics and offers potential for practical implementation in diverse forecasting scenarios. The source code is available at https://github.com/kkking-kk/TS-LIF.",
+      "notes": "Dual-compartment spiking neuron architecture decomposing temporal frequencies across dendritic and somatic compartments for robust multi-scale forecasting.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Su2025MultimodalDiff",
+      "title": "Multimodal Conditioned Diffusive Time Series Forecasting",
+      "authors": [
+        "Chen Su",
+        "Yuanhe Tian",
+        "Yan Song"
+      ],
+      "year": 2025,
+      "venue": "arXiv 2025",
+      "arxiv_id": "2504.19669",
+      "doi": "10.48550/arXiv.2504.19669",
+      "modality_pair": "TS+Text+Vision",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "cross_attention_diffusion",
+      "backbone": "Multimodal Diffusion Transformer",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "meteorology_climate",
+        "traffic_mobility",
+        "energy"
+      ],
+      "code_url": null,
+      "quality_score": 10,
+      "abstract": "Diffusion models achieve remarkable success in processing images and text, and have been extended to special domains such as time series forecasting (TSF). Existing diffusion-based approaches for TSF primarily focus on modeling single-modality numerical sequences, overlooking the rich multimodal information in time series data. To effectively leverage such information for prediction, we propose a multimodal conditioned diffusion model for TSF, namely, MCD-TSF, to jointly utilize timestamps and texts as extra guidance for time series modeling, especially for forecasting. Specifically, Timestamps are combined with time series to establish temporal and semantic correlations among different data points when aggregating information along the temporal dimension. Texts serve as supplementary descriptions of time series&#39; history, and adaptively aligned with data points as well as dynamically controlled in a classifier-free manner. Extensive experiments on real-world benchmark datasets across eight domains demonstrate that the proposed MCD-TSF model achieves state-of-the-art performance.",
+      "notes": "Cross-modal conditioned score-based diffusion model for time series forecasting, steering stochastic trajectories with joint textual and visual conditioning.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Zhang2026PhysDGM",
+      "title": "Physics-informed Diffusion Generative Model for Time-Series Data Synthesis in Dynamic Systems",
+      "authors": [
+        "Haiteng Wang",
+        "Yunfei Zhu",
+        "Tao Wang",
+        "Yikang Li",
+        "Jiabao Dong",
+        "Xiaoge Zhang",
+        "Lei Ren"
+      ],
+      "year": 2026,
+      "venue": "arXiv 2026",
+      "arxiv_id": "2608.10941",
+      "doi": "10.48550/arXiv.2608.10941",
+      "modality_pair": "TS+Physics",
+      "role_of_non_ts": "supervision_target",
+      "fusion_mechanism": "stepwise_physics_embedded_diffusion",
+      "backbone": "PhysDGM (Physics Denoising SDE)",
+      "tasks": [
+        "generative_synthesis",
+        "forecasting",
+        "anomaly_detection"
+      ],
+      "domains": [
+        "industry_iot",
+        "energy",
+        "physical_systems"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Industrial time-series signals, such as turbine temperature and rotational speed in aero-engines, are essential for monitoring the health and operational status of complex dynamical systems. However, collecting such data is often limited by harsh environments (e.g., high temperature and high pressure) and the high cost of experimental testing. To address this challenge, we introduce PhysDGM, a stepwise physics-embedded diffusion generative model for synthesizing time-series data that are consistent with the underlying physical laws of dynamical systems. PhysDGM embeds physical laws directly into each reverse diffusion step of the generative process, ensuring trajectory-level physical consistency, rather than enforcing constraints only at the final output. A large-scale AI-synthetic dataset (4.4 million samples, 20x scale-up) constructed by PhysDGM demonstrates strong fidelity across 34 datasets spanning turbofan engines, aero-engines, batteries, and chemical processes. After incorporating the synthetic data, the downstream task performance substantially surpassed that using real data alone by 48% for remaining useful life prediction, 15% for health indicator estimation, 22% for state-of-health assessment, and 20% for fault diagnosis. Moreover, it requires 10-20x less training data than existing approaches, substantially reducing the high cost of data collection in dynamical systems. We further demonstrate PhysDGM&#39;s potential in identifying early-stage faults in aero-engines by incorporating AI-synthesized data. In summary, PhysDGM provides a solid foundation for generating physically consistent industrial time-series, paving the way for expanding physics-guided AI into diverse data-scarce environments, including both industrial machinery and complex chemical reaction dynamics.",
+      "notes": "Stepwise physics-embedded diffusion generative model integrating governing differential equations into reverse denoising steps for physically consistent synthetic dynamical time series.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Liu2026STReasoner",
+      "title": "STReasoner: Empowering LLMs for Spatio-Temporal Reasoning in Time Series via Spatial-Aware Reinforcement Learning",
+      "authors": [
+        "Juntong Ni",
+        "Shiyu Wang",
+        "Qi He",
+        "Ming Jin",
+        "Wei Jin"
+      ],
+      "year": 2026,
+      "venue": "arXiv 2026",
+      "arxiv_id": "2601.03248",
+      "doi": "10.48550/arXiv.2601.03248",
+      "modality_pair": "TS+Text+Graph",
+      "role_of_non_ts": "conversational_interface",
+      "fusion_mechanism": "spatial_aware_rl_grpo",
+      "backbone": "LLaMA-3 / Qwen-2.5 (S-GRPO)",
+      "tasks": [
+        "forecasting",
+        "ts_qa",
+        "causal_reasoning"
+      ],
+      "domains": [
+        "traffic_mobility",
+        "epidemiology",
+        "smart_cities"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Spatio-temporal reasoning in time series involves the explicit synthesis of temporal dynamics, spatial dependencies, and textual context. This capability is vital for high-stakes decision-making in systems such as traffic networks, power grids, and disease propagation. However, the field remains underdeveloped because most existing works prioritize predictive accuracy over reasoning. To address the gap, we introduce ST-Bench, a benchmark consisting of four core tasks, including etiological reasoning, entity identification, correlation reasoning, and in-context forecasting, developed via a network SDE-based multi-agent data synthesis pipeline. We then propose STReasoner, which empowers LLM to integrate time series, graph structure, and text for explicit reasoning. To promote spatially grounded logic, we introduce S-GRPO, a reinforcement learning algorithm that rewards performance gains specifically attributable to spatial information. Experiments show that STReasoner achieves average accuracy gains between 17% and 135% at only 0.004X the cost of proprietary models and generalizes robustly to real-world data.",
+      "notes": "Spatio-temporal reasoning framework empowering LLMs with spatial-aware reinforcement learning (S-GRPO) to integrate time series, graph structures, and textual context.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Zhou2026MAS4TS",
+      "title": "Visual Reasoning over Time Series via Multi-Agent System",
+      "authors": [
+        "Weilin Ruan",
+        "Yuxuan Liang"
+      ],
+      "year": 2026,
+      "venue": "arXiv 2026",
+      "arxiv_id": "2602.03026",
+      "doi": "10.48550/arXiv.2602.03026",
+      "modality_pair": "TS+Vision+Text",
+      "role_of_non_ts": "conversational_interface",
+      "fusion_mechanism": "multi_agent_analyzer_reasoner_executor",
+      "backbone": "MAS4TS (Multi-Agent VLM Swarm)",
+      "tasks": [
+        "forecasting",
+        "anomaly_detection",
+        "visual_reasoning"
+      ],
+      "domains": [
+        "general_ts",
+        "finance",
+        "healthcare"
+      ],
+      "code_url": null,
+      "quality_score": 10,
+      "abstract": "Time series analysis underpins many real-world applications, yet existing time-series-specific methods and pretrained large-model-based approaches remain limited in integrating intuitive visual reasoning and generalizing across tasks with adaptive tool usage. To address these limitations, we propose MAS4TS, a tool-driven multi-agent system for general time series tasks, built upon an Analyzer-Reasoner-Executor paradigm that integrates agent communication, visual reasoning, and latent reconstruction within a unified framework. MAS4TS first performs visual reasoning over time series plots with structured priors using a Vision-Language Model to extract temporal structures, and subsequently reconstructs predictive trajectories in latent space. Three specialized agents coordinate via shared memory and gated communication, while a router selects task-specific tool chains for execution. Extensive experiments on multiple benchmarks demonstrate that MAS4TS achieves state-of-the-art performance across a wide range of time series tasks, while exhibiting strong generalization and efficient inference.",
+      "notes": "Tool-driven multi-agent framework built on Analyzer-Reasoner-Executor paradigm to extract visual anchors from time-series plots and reconstruct predictive trajectories.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
       "status": "excluded_title",
       "bibkey": null,
       "title": "2-categorical approach to unifying constructions of precoverings and its applications",
@@ -3053,6 +3295,50 @@
       "quality_score": 0,
       "abstract": "",
       "exclusion_reason": "Dynamic graph brain connectivity matrix analysis without continuous time-series sequence alignment (EC2)",
+      "screen_date": "2026-09-26",
+      "api_verified": true
+    },
+    {
+      "status": "excluded_fulltext",
+      "bibkey": null,
+      "title": "Combined Physics and Event Camera Simulator for Slip Detection",
+      "authors": [],
+      "year": 2026,
+      "venue": "arXiv",
+      "arxiv_id": "2503.04838",
+      "doi": "10.48550/arXiv.2503.04838",
+      "modality_pair": null,
+      "role_of_non_ts": null,
+      "fusion_mechanism": null,
+      "backbone": null,
+      "tasks": [],
+      "domains": [],
+      "code_url": null,
+      "quality_score": 0,
+      "abstract": "",
+      "exclusion_reason": "Tactile robotics slip simulator lacking multimodal time-series foundation modeling (EC2)",
+      "screen_date": "2026-09-26",
+      "api_verified": true
+    },
+    {
+      "status": "excluded_fulltext",
+      "bibkey": null,
+      "title": "Dynamical Regimes of Multimodal Diffusion Models",
+      "authors": [],
+      "year": 2026,
+      "venue": "arXiv",
+      "arxiv_id": "2602.04780",
+      "doi": "10.48550/arXiv.2602.04780",
+      "modality_pair": null,
+      "role_of_non_ts": null,
+      "fusion_mechanism": null,
+      "backbone": null,
+      "tasks": [],
+      "domains": [],
+      "code_url": null,
+      "quality_score": 0,
+      "abstract": "",
+      "exclusion_reason": "Theoretical statistical physics analysis without empirical time series forecasting or benchmark evaluation (EC3)",
       "screen_date": "2026-09-26",
       "api_verified": true
     }

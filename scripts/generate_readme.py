@@ -23,9 +23,9 @@ def main():
     categories = {
         "Cross-Modal Reprogramming & Decoupled Text Alignment": [],
         "Vision-Language & Visual Transcoding": [],
-        "Acoustic & Seismic Waveform Reprogramming": [],
+        "Acoustic, Seismic & Neuromorphic SNN Models": [],
         "Physics-Informed & Planetary Earth Foundation Models": [],
-        "Conversational TS-MLLMs & Temporal Reasoning": [],
+        "Conversational TS-MLLMs, Reasoning & Agent Swarms": [],
         "Unified Multi-Task Architectures & Cross-Modal Retrieval": [],
         "Multimodal Datasets & Evaluation Benchmarks": [],
         "Foundational Baselines & Reference Surveys": []
@@ -42,14 +42,14 @@ def main():
             categories["Foundational Baselines & Reference Surveys"].append(p)
         elif role in ["benchmark", "evaluator_judge", "multi_modal_benchmark"] or aid in ["2406.08627", "2606.16173", "2506.05019", "2509.24789", "2503.16858"]:
             categories["Multimodal Datasets & Evaluation Benchmarks"].append(p)
-        elif "Audio" in mod or "Waveform" in mod:
-            categories["Acoustic & Seismic Waveform Reprogramming"].append(p)
-        elif "Grid" in mod or "Planetary" in mod or aid in ["2301.10343", "2409.13598", "2405.13063", "2403.00813", "2408.10269"]:
+        elif "Audio" in mod or "Waveform" in mod or "Spike" in mod or "Neuromorphic" in mod or aid in ["2601.02411", "2402.05423", "2503.05108"]:
+            categories["Acoustic, Seismic & Neuromorphic SNN Models"].append(p)
+        elif "Grid" in mod or "Planetary" in mod or "Physics" in mod or aid in ["2301.10343", "2409.13598", "2405.13063", "2403.00813", "2408.10269", "2608.10941", "2504.19669"]:
             categories["Physics-Informed & Planetary Earth Foundation Models"].append(p)
         elif mech in ["visual_rendering", "two_stage_vision_language_screening"] or "Vision" in mod or "CXR" in mod:
             categories["Vision-Language & Visual Transcoding"].append(p)
-        elif "reasoning" in tasks or "ts_qa" in tasks or "report_generation" in tasks or "captioning" in tasks or role in ["conversational_interface", "interface_reasoning"] or aid in ["2403.04945", "2503.01013", "2510.07432", "2410.04047", "2501.01832"]:
-            categories["Conversational TS-MLLMs & Temporal Reasoning"].append(p)
+        elif "reasoning" in tasks or "ts_qa" in tasks or "report_generation" in tasks or "captioning" in tasks or role in ["conversational_interface", "interface_reasoning"] or aid in ["2403.04945", "2503.01013", "2510.07432", "2410.04047", "2501.01832", "2601.03248", "2602.03026"]:
+            categories["Conversational TS-MLLMs, Reasoning & Agent Swarms"].append(p)
         elif "retrieval" in tasks or "cross_modal_retrieval" in tasks or aid in ["2403.00131", "2506.09114", "2403.07815", "2505.10083", "2412.16643", "2408.14484", "2603.14709"]:
             categories["Unified Multi-Task Architectures & Cross-Modal Retrieval"].append(p)
         else:
@@ -60,7 +60,7 @@ def main():
     lines.append("")
     lines.append("[![Survey Paper](https://img.shields.io/badge/Paper-PDF-red.svg)](paper/main.pdf) ")
     lines.append("[![PRISMA 2020](https://img.shields.io/badge/PRISMA-2020%20Compliant-blue.svg)](docs/PROTOCOL.md) ")
-    lines.append("[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%205-brightgreen.svg)](docs/STATE.md) ")
+    lines.append("[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%206-brightgreen.svg)](docs/STATE.md) ")
     lines.append("[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) ")
     lines.append("")
     lines.append("> **Bilingual Repository** / **中英文双语前沿综述与开源精选仓库**  ")
@@ -72,15 +72,16 @@ def main():
     lines.append("")
     lines.append("时序数据在气象、金融、医疗电子病历、交通和工业物联网中无处不在。传统的单模态时序模型（如统计方法或纯数值Transformer）往往受限于单一维度的数值波动，无法捕获高阶语义背景、事件影响与多模态因果关联。")
     lines.append("")
-    lines.append("本综述全面梳理了 **2021年至今的多模态时序前沿工作**，深入探讨了将时序信号与**自然语言文本（新闻、报告、指令提示）**、**视觉图像（折线图、频谱图、卫星影像）**及**多模态知识**协同建模的新范式。核心内容涵盖：")
+    lines.append("本综述全面梳理了 **2021年至今的多模态时序前沿工作**，深入探讨了将时序信号与**自然语言文本（新闻、报告、指令提示）**、**视觉图像（折线图、频谱图、卫星影像）**、**脉冲神经形态（SNN）**及**物理场约束**协同建模的新范式。核心内容涵盖：")
     lines.append("- **重编程与提示对齐（Reprogramming & Prompting）：** 如 Time-LLM、One Fits All (GPT4TS)、TEMPO、CALF，通过重编程层将时序Patch映射到预训练语言模型的潜空间；")
     lines.append("- **参数高效微调权衡（PEFT vs. Full Pre-training）：** 深入量化对比 LoRA、Adapter 与全参微调在显存壁垒（24GB/80GB）、计算开销与 MSE 泛化上的 Pareto 前沿；")
     lines.append("- **保形预测与不确定性量化（Conformal Prediction & UQ）：** 如 Achour et al. (2025)、Sabashvili (2026)，在跨模态分布漂移下提供无分布假设的有限样本边缘覆盖保证（$\\ge 90\\%$），收缩区间宽度达 26.1%；")
     lines.append("- **连续时间状态空间与异步多速率流（Continuous-Time SSM & Neural CDE）：** 如 SOTER (Chen et al. 2026)、ss-Mamba (Ye 2025)、DeMa (An et al. 2026)、TriTS (Ao 2026)，统一神经受控微分方程与选择性状态空间，实现长序列 $O(L)$ 线性推断复杂度（$L=10^5$ 时仅需 118ms）；")
+    lines.append("- **微瓦级神经形态SNN与边缘量化（Neuromorphic SNNs & Edge Quantization）：** 如 SpikySpace (Chen et al. 2026)、TS-LIF (Feng et al. 2025)、MTSA-SNN (Wang et al. 2024)，通过脉冲驱动状态空间与双房室树突动力学，实现事件驱动稀疏性（87.4%零激活），在 sub-100mW 极低功耗下能效较传统模型提升 85 倍；")
+    lines.append("- **物理守恒约束跨模态扩散生成（Physics-Constrained Cross-Modal Diffusion）：** 如 PhysDGM (Zhang et al. 2026)、Su et al. (2025)，在反向扩散采样步中嵌入哈密顿量与偏微分方程（PDE）守恒残差，使极端电网震荡与灾害反事实推演的物理残差下降至 $4.2 \\times 10^{-3}$；")
+    lines.append("- **分层多智能体协同与空间感知强化学习（Multi-Agent Swarms & S-GRPO）：** 如 STReasoner (Liu et al. 2026)、MAS4TS (Zhou et al. 2026)，结合局部毫秒级低功耗滤波智能体与集中式 LLM 规划智能体，通过 S-GRPO 算法大幅提升因果推理准确率并提供拜占庭容错；")
     lines.append("- **视觉映射与跨模态掩码自编码（Visual Transcoding）：** 如 VisionTS、Time-VLM、TriTS，将一维时序信号绘制为图像后直接利用成熟的视觉基座（如MAE）实现跨模态零样本预测；")
     lines.append("- **跨模态检索增强与时序RAG（Cross-Modal Retrieval & RAG）：** 如 TimeRAG、Input-Aware RAG、TRACE，利用双向时序-文本检索抑制外推漂移与幻觉；")
-    lines.append("- **对话交互与复杂时序推理（TS-MLLMs & Reasoning）：** 如 ChatTS、TimeOmni、Sonar-TS、TimeLM-Caption，使多模态大模型具备时序感知、外推、因果发现与自然语言报告生成能力；")
-    lines.append("- **自主交互智能体沙盒（Autonomous TS Agents）：** 如 TS-Agent、TS-Reasoner、Agentic RAG，结合传感器 API、Python频域代码执行器与相空间视觉化工具实现闭环自主诊断；")
     lines.append("- **动态基准防污染红队评测工具（Dynamic Red-Teaming Harness）：** 引入反事实扰动（语义反转、时序因果倒置、异步时戳偏移）量化反事实韧性得分（CRS）与伪相关依赖率（SRR），诊断预训练泄漏（TSFMAudit）；")
     lines.append("- **多模态基准与评估规范（Datasets & Benchmarks）：** 如 Time-MMD、Fidel-TS、MTBench、TRACE-Bench、TimeSage-MT，解决跨模态对齐数据的标准化评测问题。")
     lines.append("")
@@ -122,6 +123,14 @@ def main():
     lines.append("### ⚡ Asynchronous Multi-Rate Streaming & Continuous State Space (Mamba/Neural CDE)")
     lines.append("")
     lines.append("![Multi-Rate Continuous State Space Alignment](paper/figures/multirate_ssm.png)")
+    lines.append("")
+    lines.append("### 🔋 Micro-Watt Neuromorphic SNNs & Edge Quantization Pareto Frontiers")
+    lines.append("")
+    lines.append("![Micro-Watt Neuromorphic SNNs and Edge Quantization](paper/figures/edge_neuromorphic.png)")
+    lines.append("")
+    lines.append("### 🌌 Physics-Constrained Cross-Modal Diffusion for Generative Scenario Simulation")
+    lines.append("")
+    lines.append("![Physics-Constrained Diffusion](paper/figures/physics_diffusion.png)")
     lines.append("")
     lines.append("---")
     lines.append("")

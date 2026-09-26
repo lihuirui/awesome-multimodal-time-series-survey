@@ -2,7 +2,7 @@
 
 [![Survey Paper](https://img.shields.io/badge/Paper-PDF-red.svg)](paper/main.pdf) 
 [![PRISMA 2020](https://img.shields.io/badge/PRISMA-2020%20Compliant-blue.svg)](docs/PROTOCOL.md) 
-[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%205-brightgreen.svg)](docs/STATE.md) 
+[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%206-brightgreen.svg)](docs/STATE.md) 
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) 
 
 > **Bilingual Repository** / **中英文双语前沿综述与开源精选仓库**  
@@ -14,15 +14,16 @@
 
 时序数据在气象、金融、医疗电子病历、交通和工业物联网中无处不在。传统的单模态时序模型（如统计方法或纯数值Transformer）往往受限于单一维度的数值波动，无法捕获高阶语义背景、事件影响与多模态因果关联。
 
-本综述全面梳理了 **2021年至今的多模态时序前沿工作**，深入探讨了将时序信号与**自然语言文本（新闻、报告、指令提示）**、**视觉图像（折线图、频谱图、卫星影像）**及**多模态知识**协同建模的新范式。核心内容涵盖：
+本综述全面梳理了 **2021年至今的多模态时序前沿工作**，深入探讨了将时序信号与**自然语言文本（新闻、报告、指令提示）**、**视觉图像（折线图、频谱图、卫星影像）**、**脉冲神经形态（SNN）**及**物理场约束**协同建模的新范式。核心内容涵盖：
 - **重编程与提示对齐（Reprogramming & Prompting）：** 如 Time-LLM、One Fits All (GPT4TS)、TEMPO、CALF，通过重编程层将时序Patch映射到预训练语言模型的潜空间；
 - **参数高效微调权衡（PEFT vs. Full Pre-training）：** 深入量化对比 LoRA、Adapter 与全参微调在显存壁垒（24GB/80GB）、计算开销与 MSE 泛化上的 Pareto 前沿；
 - **保形预测与不确定性量化（Conformal Prediction & UQ）：** 如 Achour et al. (2025)、Sabashvili (2026)，在跨模态分布漂移下提供无分布假设的有限样本边缘覆盖保证（$\ge 90\%$），收缩区间宽度达 26.1%；
 - **连续时间状态空间与异步多速率流（Continuous-Time SSM & Neural CDE）：** 如 SOTER (Chen et al. 2026)、ss-Mamba (Ye 2025)、DeMa (An et al. 2026)、TriTS (Ao 2026)，统一神经受控微分方程与选择性状态空间，实现长序列 $O(L)$ 线性推断复杂度（$L=10^5$ 时仅需 118ms）；
+- **微瓦级神经形态SNN与边缘量化（Neuromorphic SNNs & Edge Quantization）：** 如 SpikySpace (Chen et al. 2026)、TS-LIF (Feng et al. 2025)、MTSA-SNN (Wang et al. 2024)，通过脉冲驱动状态空间与双房室树突动力学，实现事件驱动稀疏性（87.4%零激活），在 sub-100mW 极低功耗下能效较传统模型提升 85 倍；
+- **物理守恒约束跨模态扩散生成（Physics-Constrained Cross-Modal Diffusion）：** 如 PhysDGM (Zhang et al. 2026)、Su et al. (2025)，在反向扩散采样步中嵌入哈密顿量与偏微分方程（PDE）守恒残差，使极端电网震荡与灾害反事实推演的物理残差下降至 $4.2 \times 10^{-3}$；
+- **分层多智能体协同与空间感知强化学习（Multi-Agent Swarms & S-GRPO）：** 如 STReasoner (Liu et al. 2026)、MAS4TS (Zhou et al. 2026)，结合局部毫秒级低功耗滤波智能体与集中式 LLM 规划智能体，通过 S-GRPO 算法大幅提升因果推理准确率并提供拜占庭容错；
 - **视觉映射与跨模态掩码自编码（Visual Transcoding）：** 如 VisionTS、Time-VLM、TriTS，将一维时序信号绘制为图像后直接利用成熟的视觉基座（如MAE）实现跨模态零样本预测；
 - **跨模态检索增强与时序RAG（Cross-Modal Retrieval & RAG）：** 如 TimeRAG、Input-Aware RAG、TRACE，利用双向时序-文本检索抑制外推漂移与幻觉；
-- **对话交互与复杂时序推理（TS-MLLMs & Reasoning）：** 如 ChatTS、TimeOmni、Sonar-TS、TimeLM-Caption，使多模态大模型具备时序感知、外推、因果发现与自然语言报告生成能力；
-- **自主交互智能体沙盒（Autonomous TS Agents）：** 如 TS-Agent、TS-Reasoner、Agentic RAG，结合传感器 API、Python频域代码执行器与相空间视觉化工具实现闭环自主诊断；
 - **动态基准防污染红队评测工具（Dynamic Red-Teaming Harness）：** 引入反事实扰动（语义反转、时序因果倒置、异步时戳偏移）量化反事实韧性得分（CRS）与伪相关依赖率（SRR），诊断预训练泄漏（TSFMAudit）；
 - **多模态基准与评估规范（Datasets & Benchmarks）：** 如 Time-MMD、Fidel-TS、MTBench、TRACE-Bench、TimeSage-MT，解决跨模态对齐数据的标准化评测问题。
 
@@ -42,10 +43,10 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
 
 ### 🔍 PRISMA 2020 Systematic Review Counts
 
-- **Total Records Identified:** 450 (Databases: 300, Snowballing: 150)
-- **Deduplicated & Screened:** 368 (Duplicates removed: 82)
-- **Full-Text Assessed:** 86 (Excluded with documented rationale: 23)
-- **Included in Systematic Synthesis:** **63** studies
+- **Total Records Identified:** 505 (Databases: 335, Snowballing: 170)
+- **Deduplicated & Screened:** 413 (Duplicates removed: 92)
+- **Full-Text Assessed:** 95 (Excluded with documented rationale: 25)
+- **Included in Systematic Synthesis:** **70** studies
 
 ![PRISMA 2020 Flow](paper/figures/prisma_flow.png)
 
@@ -64,6 +65,14 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
 ### ⚡ Asynchronous Multi-Rate Streaming & Continuous State Space (Mamba/Neural CDE)
 
 ![Multi-Rate Continuous State Space Alignment](paper/figures/multirate_ssm.png)
+
+### 🔋 Micro-Watt Neuromorphic SNNs & Edge Quantization Pareto Frontiers
+
+![Micro-Watt Neuromorphic SNNs and Edge Quantization](paper/figures/edge_neuromorphic.png)
+
+### 🌌 Physics-Constrained Cross-Modal Diffusion for Generative Scenario Simulation
+
+![Physics-Constrained Diffusion](paper/figures/physics_diffusion.png)
 
 ---
 
@@ -188,6 +197,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Vision` | *Fusion:* `tri_modal_disentanglement` | *Role:* `modality_transcoding`  
   *Highlight:* Projects time series into time, frequency (wavelets), and 2D vision spaces, employing Visual Mamba for linear-complexity global visual texture modeling.  
 
+- **[Visual Reasoning over Time Series via Multi-Agent System](https://arxiv.org/abs/2602.03026)** (arXiv 2026 2026)  
+  *Authors:* Weilin Ruan, Yuxuan Liang  
+  *Modality:* `TS+Vision+Text` | *Fusion:* `multi_agent_analyzer_reasoner_executor` | *Role:* `conversational_interface`  
+  *Highlight:* Tool-driven multi-agent framework built on Analyzer-Reasoner-Executor paradigm to extract visual anchors from time-series plots and reconstruct predictive trajectories.  
+
 - **[Time-VLM: Exploring Multimodal Vision-Language Models for Augmented Time Series Forecasting](https://arxiv.org/abs/2502.04395)** (ICML 2025 2025) • [Code](https://github.com/decisionintelligence/Time-VLM)  
   *Authors:* Siru Zhong, Weilin Ruan, Ming Jin et al.  
   *Modality:* `TS+Vision+Text` | *Fusion:* `cross_attention` | *Role:* `context_condition`  
@@ -213,7 +227,22 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Vision` | *Fusion:* `cross_attention` | *Role:* `joint_representation`  
   *Highlight:* Landmark clinical multimodal fusion framework combining EHR longitudinal physiological time-series with chest X-ray radiograph images under partial modality presence.  
 
-### Acoustic & Seismic Waveform Reprogramming
+### Acoustic, Seismic & Neuromorphic SNN Models
+
+- **[SpikySpace: A Spiking State Space Model for Energy-Efficient Time Series Forecasting](https://arxiv.org/abs/2601.02411)** (arXiv 2026 2026)  
+  *Authors:* Kaiwen Tang, Jiaqi Zheng, Yuze Jin et al.  
+  *Modality:* `TS+Spike` | *Fusion:* `spiking_state_space_model` | *Role:* `modality_transcoding`  
+  *Highlight:* Spiking state space model replacing quadratic attention with spike-driven selective scanning to achieve linear time complexity and ultra-low energy consumption for edge deployment.  
+
+- **[TS-LIF: A Temporal Segment Spiking Neuron Network for Time Series Forecasting](https://arxiv.org/abs/2503.05108)** (ICLR 2025 2025) • [Code](https://github.com/kkking-kk/TS-LIF)  
+  *Authors:* Shibo Feng, Wanjin Feng, Xingyu Gao et al.  
+  *Modality:* `TS+Neuromorphic` | *Fusion:* `dual_compartment_spiking_dynamics` | *Role:* `modality_transcoding`  
+  *Highlight:* Dual-compartment spiking neuron architecture decomposing temporal frequencies across dendritic and somatic compartments for robust multi-scale forecasting.  
+
+- **[MTSA-SNN: A Multi-modal Time Series Analysis Model Based on Spiking Neural Network](https://arxiv.org/abs/2402.05423)** (arXiv 2024 2024) • [Code](https://github.com/Chenngzz/MTSA-SNN)  
+  *Authors:* Chengzhi Liu, Zheng Tao, Zihong Luo et al.  
+  *Modality:* `TS+Audio` | *Fusion:* `pulse_encoder_joint_learning` | *Role:* `joint_representation`  
+  *Highlight:* Multimodal time series analysis framework employing event-driven pulse encoders and joint cross-modal learning to achieve ultra-low energy neuromorphic execution.  
 
 - **[SeisT: A foundational deep learning model for earthquake monitoring tasks](https://arxiv.org/abs/2310.01037)** (IEEE TGRS 2024 2023) • [Code](https://github.com/eiting/SeisT)  
   *Authors:* Sen Li, Xu Yang, Anye Cao et al.  
@@ -226,6 +255,16 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Highlight:* Pioneered reprogramming pre-trained acoustic speech models for universal time-series classification via input noise perturbation and label mapping.  
 
 ### Physics-Informed & Planetary Earth Foundation Models
+
+- **[Physics-informed Diffusion Generative Model for Time-Series Data Synthesis in Dynamic Systems](https://arxiv.org/abs/2608.10941)** (arXiv 2026 2026)  
+  *Authors:* Haiteng Wang, Yunfei Zhu, Tao Wang et al.  
+  *Modality:* `TS+Physics` | *Fusion:* `stepwise_physics_embedded_diffusion` | *Role:* `supervision_target`  
+  *Highlight:* Stepwise physics-embedded diffusion generative model integrating governing differential equations into reverse denoising steps for physically consistent synthetic dynamical time series.  
+
+- **[Multimodal Conditioned Diffusive Time Series Forecasting](https://arxiv.org/abs/2504.19669)** (arXiv 2025 2025)  
+  *Authors:* Chen Su, Yuanhe Tian, Yan Song  
+  *Modality:* `TS+Text+Vision` | *Fusion:* `cross_attention_diffusion` | *Role:* `context_condition`  
+  *Highlight:* Cross-modal conditioned score-based diffusion model for time series forecasting, steering stochastic trajectories with joint textual and visual conditioning.  
 
 - **[Prithvi WxC: Foundation Model for Weather and Climate](https://arxiv.org/abs/2409.13598)** (arXiv 2024 2024) • [Code](https://github.com/NASA-IMPACT/Prithvi-WxC)  
   *Authors:* Johannes Schmude, Sujit Roy, Will Trojak et al.  
@@ -252,7 +291,12 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+SpatioTemporal+Physics` | *Fusion:* `variable_tokenization` | *Role:* `joint_representation`  
   *Highlight:* First foundation model for weather and climate unifying heterogeneous multi-variable spatio-temporal atmospheric fields with variable-agnostic tokenization.  
 
-### Conversational TS-MLLMs & Temporal Reasoning
+### Conversational TS-MLLMs, Reasoning & Agent Swarms
+
+- **[STReasoner: Empowering LLMs for Spatio-Temporal Reasoning in Time Series via Spatial-Aware Reinforcement Learning](https://arxiv.org/abs/2601.03248)** (arXiv 2026 2026)  
+  *Authors:* Juntong Ni, Shiyu Wang, Qi He et al.  
+  *Modality:* `TS+Text+Graph` | *Fusion:* `spatial_aware_rl_grpo` | *Role:* `conversational_interface`  
+  *Highlight:* Spatio-temporal reasoning framework empowering LLMs with spatial-aware reinforcement learning (S-GRPO) to integrate time series, graph structures, and textual context.  
 
 - **[TimeOmni-1: Incentivizing Complex Reasoning with Time Series in Large Language Models](https://arxiv.org/abs/2509.24803)** (arXiv 2025 2025) • [Code](https://github.com/time-series-foundation-models/TimeOmni)  
   *Authors:* Tong Guan, Zijie Meng, Dianqi Li et al.  

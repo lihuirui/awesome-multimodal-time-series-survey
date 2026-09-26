@@ -24,3 +24,6 @@
 {"timestamp": "2026-09-25T23:23:28.298751+00:00", "iteration": 5, "source": "Semantic Scholar / arXiv API", "query": "all:\"mamba\" AND all:\"time series\" (ss-Mamba, DeMa, TriTS)", "hits": 34, "new_candidates": 3}
 {"timestamp": "2026-09-25T23:23:28.298760+00:00", "iteration": 5, "source": "Crossref / arXiv API", "query": "all:\"neural cde\" OR all:\"neural ode\" AND all:\"wearables\" (SOTER)", "hits": 19, "new_candidates": 1}
 {"timestamp": "2026-09-25T23:23:28.298766+00:00", "iteration": 5, "source": "Semantic Scholar Graph API", "query": "all:\"data contamination\" AND all:\"time series foundation models\" (TSFMAudit)", "hits": 15, "new_candidates": 1}
+{"timestamp": "2026-09-26T04:17:59.885256+00:00", "iteration": 6, "source": "arXiv API", "query": "all:\"spiking neural network\" AND all:\"time series\" (SpikySpace, MTSA-SNN, TS-LIF)", "hits": 31, "new_candidates": 3}
+{"timestamp": "2026-09-26T04:17:59.885287+00:00", "iteration": 6, "source": "Semantic Scholar / arXiv API", "query": "all:\"diffusion\" AND all:\"physics\" AND all:\"time series\" (Su2025MultimodalDiff, PhysDGM)", "hits": 24, "new_candidates": 2}
+{"timestamp": "2026-09-26T04:17:59.885298+00:00", "iteration": 6, "source": "Crossref / arXiv API", "query": "all:\"multi-agent\" AND (all:\"time series\" OR all:\"spatio-temporal\") (STReasoner, MAS4TS)", "hits": 29, "new_candidates": 2}

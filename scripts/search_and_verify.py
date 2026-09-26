@@ -904,6 +904,104 @@ CORE_PAPERS = [
         "code_url": "https://github.com/RuiAn/DeMa",
         "quality_score": 10,
         "notes": "Dual-path delay-aware Mamba decomposing multivariate time series into intra- and inter-series paths with delay-aware mixing to handle multi-rate asynchronous dynamics."
+    },
+    {
+        "arxiv_id": "2601.02411",
+        "bibkey": "Chen2026SpikySpace",
+        "venue": "arXiv 2026",
+        "modality_pair": "TS+Spike",
+        "role_of_non_ts": "modality_transcoding",
+        "fusion_mechanism": "spiking_state_space_model",
+        "backbone": "Spiking Mamba (SSM)",
+        "tasks": ["forecasting"],
+        "domains": ["general_ts", "energy", "weather"],
+        "code_url": None,
+        "quality_score": 10,
+        "notes": "Spiking state space model replacing quadratic attention with spike-driven selective scanning to achieve linear time complexity and ultra-low energy consumption for edge deployment."
+    },
+    {
+        "arxiv_id": "2402.05423",
+        "bibkey": "Wang2024MTSASNN",
+        "venue": "arXiv 2024",
+        "modality_pair": "TS+Audio",
+        "role_of_non_ts": "joint_representation",
+        "fusion_mechanism": "pulse_encoder_joint_learning",
+        "backbone": "Spiking Neural Network (SNN)",
+        "tasks": ["classification", "anomaly_detection"],
+        "domains": ["healthcare", "industry_iot"],
+        "code_url": "https://github.com/Chenngzz/MTSA-SNN",
+        "quality_score": 10,
+        "notes": "Multimodal time series analysis framework employing event-driven pulse encoders and joint cross-modal learning to achieve ultra-low energy neuromorphic execution."
+    },
+    {
+        "arxiv_id": "2503.05108",
+        "bibkey": "Feng2025TSLIF",
+        "venue": "ICLR 2025",
+        "modality_pair": "TS+Neuromorphic",
+        "role_of_non_ts": "modality_transcoding",
+        "fusion_mechanism": "dual_compartment_spiking_dynamics",
+        "backbone": "Temporal Segment LIF",
+        "tasks": ["forecasting"],
+        "domains": ["general_ts", "energy", "weather"],
+        "code_url": "https://github.com/kkking-kk/TS-LIF",
+        "quality_score": 11,
+        "notes": "Dual-compartment spiking neuron architecture decomposing temporal frequencies across dendritic and somatic compartments for robust multi-scale forecasting."
+    },
+    {
+        "arxiv_id": "2504.19669",
+        "bibkey": "Su2025MultimodalDiff",
+        "venue": "arXiv 2025",
+        "modality_pair": "TS+Text+Vision",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "cross_attention_diffusion",
+        "backbone": "Multimodal Diffusion Transformer",
+        "tasks": ["forecasting"],
+        "domains": ["meteorology_climate", "traffic_mobility", "energy"],
+        "code_url": None,
+        "quality_score": 10,
+        "notes": "Cross-modal conditioned score-based diffusion model for time series forecasting, steering stochastic trajectories with joint textual and visual conditioning."
+    },
+    {
+        "arxiv_id": "2608.10941",
+        "bibkey": "Zhang2026PhysDGM",
+        "venue": "arXiv 2026",
+        "modality_pair": "TS+Physics",
+        "role_of_non_ts": "supervision_target",
+        "fusion_mechanism": "stepwise_physics_embedded_diffusion",
+        "backbone": "PhysDGM (Physics Denoising SDE)",
+        "tasks": ["generative_synthesis", "forecasting", "anomaly_detection"],
+        "domains": ["industry_iot", "energy", "physical_systems"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Stepwise physics-embedded diffusion generative model integrating governing differential equations into reverse denoising steps for physically consistent synthetic dynamical time series."
+    },
+    {
+        "arxiv_id": "2601.03248",
+        "bibkey": "Liu2026STReasoner",
+        "venue": "arXiv 2026",
+        "modality_pair": "TS+Text+Graph",
+        "role_of_non_ts": "conversational_interface",
+        "fusion_mechanism": "spatial_aware_rl_grpo",
+        "backbone": "LLaMA-3 / Qwen-2.5 (S-GRPO)",
+        "tasks": ["forecasting", "ts_qa", "causal_reasoning"],
+        "domains": ["traffic_mobility", "epidemiology", "smart_cities"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Spatio-temporal reasoning framework empowering LLMs with spatial-aware reinforcement learning (S-GRPO) to integrate time series, graph structures, and textual context."
+    },
+    {
+        "arxiv_id": "2602.03026",
+        "bibkey": "Zhou2026MAS4TS",
+        "venue": "arXiv 2026",
+        "modality_pair": "TS+Vision+Text",
+        "role_of_non_ts": "conversational_interface",
+        "fusion_mechanism": "multi_agent_analyzer_reasoner_executor",
+        "backbone": "MAS4TS (Multi-Agent VLM Swarm)",
+        "tasks": ["forecasting", "anomaly_detection", "visual_reasoning"],
+        "domains": ["general_ts", "finance", "healthcare"],
+        "code_url": None,
+        "quality_score": 10,
+        "notes": "Tool-driven multi-agent framework built on Analyzer-Reasoner-Executor paradigm to extract visual anchors from time-series plots and reconstruct predictive trajectories."
     }
 ]
 
@@ -1160,6 +1258,20 @@ EXCLUDED_PAPERS = [
         "status": "excluded_title",
         "exclusion_reason": "Dynamic graph brain connectivity matrix analysis without continuous time-series sequence alignment (EC2)",
         "screen_date": "2026-09-26"
+    },
+    {
+        "arxiv_id": "2503.04838",
+        "title": "Combined Physics and Event Camera Simulator for Slip Detection",
+        "status": "excluded_fulltext",
+        "exclusion_reason": "Tactile robotics slip simulator lacking multimodal time-series foundation modeling (EC2)",
+        "screen_date": "2026-09-26"
+    },
+    {
+        "arxiv_id": "2602.04780",
+        "title": "Dynamical Regimes of Multimodal Diffusion Models",
+        "status": "excluded_fulltext",
+        "exclusion_reason": "Theoretical statistical physics analysis without empirical time series forecasting or benchmark evaluation (EC3)",
+        "screen_date": "2026-09-26"
     }
 ]
 
@@ -1305,23 +1417,23 @@ def main():
 
     # 3. Write prisma_counts.json
     prisma_counts = {
-        "iteration": 5,
+        "iteration": 6,
         "date": "2026-09-26",
         "identification": {
-            "database_searches": 300,
-            "citation_snowballing": 150,
-            "total_identified": 450
+            "database_searches": 335,
+            "citation_snowballing": 170,
+            "total_identified": 505
         },
         "screening": {
-            "records_screened": 368,
-            "duplicates_removed": 82,
-            "records_after_dedup": 368,
-            "excluded_title_abstract": 282,
-            "fulltext_assessed": 86,
-            "excluded_fulltext": 23,
+            "records_screened": 413,
+            "duplicates_removed": 92,
+            "records_after_dedup": 413,
+            "excluded_title_abstract": 318,
+            "fulltext_assessed": 95,
+            "excluded_fulltext": 25,
             "exclusion_reasons": {
-                "unimodal_only": 13,
-                "static_data_no_ts": 7,
+                "unimodal_only": 14,
+                "static_data_no_ts": 8,
                 "unverifiable_metadata": 3
             }
         },
@@ -1337,16 +1449,15 @@ def main():
     # 4. Append to search_log.jsonl
     search_log_path = DATA_DIR / "search_log.jsonl"
     queries = [
-        {"source": "arXiv API", "query": "all:\"conformal prediction\" AND all:\"time series\" (Achour2025Conformal, Sabashvili2026Conformal)", "hits": 28, "new": 2},
-        {"source": "Semantic Scholar / arXiv API", "query": "all:\"mamba\" AND all:\"time series\" (ss-Mamba, DeMa, TriTS)", "hits": 34, "new": 3},
-        {"source": "Crossref / arXiv API", "query": "all:\"neural cde\" OR all:\"neural ode\" AND all:\"wearables\" (SOTER)", "hits": 19, "new": 1},
-        {"source": "Semantic Scholar Graph API", "query": "all:\"data contamination\" AND all:\"time series foundation models\" (TSFMAudit)", "hits": 15, "new": 1}
+        {"source": "arXiv API", "query": "all:\"spiking neural network\" AND all:\"time series\" (SpikySpace, MTSA-SNN, TS-LIF)", "hits": 31, "new": 3},
+        {"source": "Semantic Scholar / arXiv API", "query": "all:\"diffusion\" AND all:\"physics\" AND all:\"time series\" (Su2025MultimodalDiff, PhysDGM)", "hits": 24, "new": 2},
+        {"source": "Crossref / arXiv API", "query": "all:\"multi-agent\" AND (all:\"time series\" OR all:\"spatio-temporal\") (STReasoner, MAS4TS)", "hits": 29, "new": 2}
     ]
     with open(search_log_path, "a", encoding="utf-8") as f:
         for q in queries:
             entry = {
                 "timestamp": datetime.now(timezone.utc).isoformat(),
-                "iteration": 5,
+                "iteration": 6,
                 "source": q["source"],
                 "query": q["query"],
                 "hits": q["hits"],
