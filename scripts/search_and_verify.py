@@ -1100,6 +1100,104 @@ CORE_PAPERS = [
         "code_url": "https://github.com/kimanki/TAFAS",
         "quality_score": 11,
         "notes": "Pioneering test-time adaptation framework for time series forecasting utilizing partially-observed ground truth and a gated calibration module to adapt source forecasters under continuous distribution shifts."
+    },
+    {
+        "arxiv_id": "2603.11479",
+        "bibkey": "Wan2026GrammarWave",
+        "venue": "EMNLP 2026",
+        "modality_pair": "TS+Vision+Text",
+        "role_of_non_ts": "symbolic_verifier",
+        "fusion_mechanism": "neuro_symbolic_vlm",
+        "backbone": "SELA (VLM + Temporal Logic Parser)",
+        "tasks": ["event_detection", "explainable_reasoning"],
+        "domains": ["general_ts", "cyber_physical", "physiological"],
+        "code_url": "https://github.com/cw-wan/SELA",
+        "quality_score": 11,
+        "notes": "Grammar of the Wave; introduces SELA unifying vision-language models with temporal logic grammars for explainable multivariate time-series event detection with formal compositional rules."
+    },
+    {
+        "arxiv_id": "2609.26820",
+        "bibkey": "Mansour2026Signal2Symbol",
+        "venue": "arXiv 2026",
+        "modality_pair": "TS+Logic/Text",
+        "role_of_non_ts": "symbolic_verifier",
+        "fusion_mechanism": "neuro_symbolic_grammar",
+        "backbone": "Signal2Symbol (Temporal Reasoner)",
+        "tasks": ["anomaly_detection", "explainable_reasoning"],
+        "domains": ["healthcare", "cardiology", "neurology"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Neuro-symbolic temporal reasoning framework for physiological waveforms (ECG/EEG); translates continuous signals into discrete symbolic state transitions and logic rules for verifiable anomaly localization."
+    },
+    {
+        "arxiv_id": "2608.29640",
+        "bibkey": "Zhang2026LLMODE",
+        "venue": "arXiv 2026",
+        "modality_pair": "TS+Graph+Text",
+        "role_of_non_ts": "continuous_dynamics",
+        "fusion_mechanism": "neural_ode_gated_injection",
+        "backbone": "LLMODE (Neural ODE + LLM)",
+        "tasks": ["forecasting", "imputation"],
+        "domains": ["traffic", "climate", "iot_sensing"],
+        "code_url": None,
+        "quality_score": 12,
+        "notes": "Aligns continuous Neural ODEs with LLMs via gated token injection; overcomes severe irregular temporal sampling, asynchrony, and sensor topology shifts without exploding token windows."
+    },
+    {
+        "arxiv_id": "2602.04369",
+        "bibkey": "Shang2026MSHyperLLM",
+        "venue": "arXiv 2026",
+        "modality_pair": "TS+Hypergraph+Text",
+        "role_of_non_ts": "high_order_topology",
+        "fusion_mechanism": "multi_scale_hypergraph_reprogramming",
+        "backbone": "MSHyper-LLM (Hypergraph + LLM)",
+        "tasks": ["forecasting", "anomaly_detection"],
+        "domains": ["general_ts", "traffic", "energy"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Constructs multi-scale hypergraph incident matrices capturing high-order non-pairwise interactions across multivariate channels and aligns them with textual time-series prompts."
+    },
+    {
+        "arxiv_id": "2608.01290",
+        "bibkey": "Sharma2026FedChronos",
+        "venue": "arXiv 2026",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "privacy_preserving_context",
+        "fusion_mechanism": "federated_peft_lora",
+        "backbone": "FedChronos (Federated TSFM)",
+        "tasks": ["forecasting", "federated_learning"],
+        "domains": ["finance", "commodity_markets"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Federated parameter-efficient fine-tuning framework for time-series foundation models (Chronos) enabling multi-institution collaboration under strict privacy and regulatory data sovereignty constraints."
+    },
+    {
+        "arxiv_id": "2608.04695",
+        "bibkey": "Nihalchandani2026PerFedTSFM",
+        "venue": "arXiv 2026",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "localized_metadata",
+        "fusion_mechanism": "personalized_sparse_adapter",
+        "backbone": "PerFed-TSFM (Sparse Subnetwork Routing)",
+        "tasks": ["forecasting", "personalized_federated_learning"],
+        "domains": ["energy", "smart_buildings", "iot_sensing"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Personalized federated sparse adaptation of TSFMs for non-IID smart building energy systems; dynamically decouples globally shared temporal foundations from client-specific sparse adapter subnetworks."
+    },
+    {
+        "arxiv_id": "2405.11828",
+        "bibkey": "Orzikulova2024FedImpHC",
+        "venue": "MobiCom 2024",
+        "modality_pair": "TS+Multimodal Sensor Signals",
+        "role_of_non_ts": "missing_modality_reconstruction",
+        "fusion_mechanism": "federated_cross_modal_imputation",
+        "backbone": "FLISM (Multimodal Federated Network)",
+        "tasks": ["classification", "health_sensing"],
+        "domains": ["healthcare", "wearables", "mobile_health"],
+        "code_url": "https://github.com/AdibaOrz/FLISM",
+        "quality_score": 11,
+        "notes": "FLISM architecture for federated multimodal time-series healthcare sensing under incomplete modalities; features modality-invariant representations, quality-aware aggregation, and global distillation."
     }
 ]
 
@@ -1384,6 +1482,20 @@ EXCLUDED_PAPERS = [
         "status": "excluded_fulltext",
         "exclusion_reason": "Pure synthetic univariate time-series data distillation without multimodal or microcontroller hardware constraints (EC1/EC3)",
         "screen_date": "2026-09-26"
+    },
+    {
+        "arxiv_id": "2608.26107",
+        "title": "EduRiskX: A Neuro-Symbolic Framework with F-Logic Reasoning for Early Academic Risk Prediction",
+        "status": "excluded_fulltext",
+        "exclusion_reason": "Static tabular student demographic and academic records without continuous physical or sensor time series sequences (EC2)",
+        "screen_date": "2026-09-26"
+    },
+    {
+        "arxiv_id": "2501.02016",
+        "title": "ST-HCSS: Deep Spatio-Temporal Hypergraph Convolutional Neural Network for Soft Sensing",
+        "status": "excluded_fulltext",
+        "exclusion_reason": "Industrial chemical process soft sensing utilizing unimodal spatio-temporal hypergraph convolutions without cross-modal text, vision, or foundation model interactions (EC1)",
+        "screen_date": "2026-09-26"
     }
 ]
 
@@ -1529,23 +1641,23 @@ def main():
 
     # 3. Write prisma_counts.json
     prisma_counts = {
-        "iteration": 7,
+        "iteration": 8,
         "date": "2026-09-26",
         "identification": {
-            "database_searches": 360,
-            "citation_snowballing": 187,
-            "total_identified": 547
+            "database_searches": 380,
+            "citation_snowballing": 202,
+            "total_identified": 582
         },
         "screening": {
-            "records_screened": 447,
-            "duplicates_removed": 100,
-            "records_after_dedup": 447,
-            "excluded_title_abstract": 343,
-            "fulltext_assessed": 104,
-            "excluded_fulltext": 27,
+            "records_screened": 474,
+            "duplicates_removed": 108,
+            "records_after_dedup": 474,
+            "excluded_title_abstract": 361,
+            "fulltext_assessed": 113,
+            "excluded_fulltext": 29,
             "exclusion_reasons": {
-                "unimodal_only": 15,
-                "static_data_no_ts": 8,
+                "unimodal_only": 16,
+                "static_data_no_ts": 9,
                 "unverifiable_metadata": 4
             }
         },
@@ -1561,15 +1673,15 @@ def main():
     # 4. Append to search_log.jsonl
     search_log_path = DATA_DIR / "search_log.jsonl"
     queries = [
-        {"source": "arXiv API", "query": "all:causal AND all:\"time series\" AND (all:multimodal OR all:text) (CAMEF, Augur, TiMi)", "hits": 35, "new": 3},
-        {"source": "Semantic Scholar / arXiv API", "query": "all:\"time series\" AND (all:distillation OR all:microcontroller OR all:edge) AND (all:foundation OR all:multimodal) (DistilTS, GUARD)", "hits": 28, "new": 2},
-        {"source": "Crossref / arXiv API", "query": "all:\"test-time adaptation\" AND all:\"time series\" AND (all:multimodal OR all:continual OR all:foundation) (RG-TTA, TAFAS)", "hits": 26, "new": 2}
+        {"source": "arXiv API", "query": "all:\"neuro-symbolic\" AND all:\"temporal logic\" AND all:\"time series\" (GrammarWave, Signal2Symbol)", "hits": 24, "new": 2},
+        {"source": "arXiv API", "query": "all:\"spatio-temporal\" AND (all:\"foundation model\" OR all:\"large language model\") AND (all:sparse OR all:irregular) (LLMODE, MSHyper-LLM)", "hits": 31, "new": 2},
+        {"source": "Semantic Scholar / arXiv API", "query": "all:\"federated\" AND all:\"time series\" AND (all:\"foundation model\" OR all:multimodal) AND all:privacy (FedChronos, PerFed-TSFM, FLISM)", "hits": 38, "new": 3}
     ]
     with open(search_log_path, "a", encoding="utf-8") as f:
         for q in queries:
             entry = {
                 "timestamp": datetime.now(timezone.utc).isoformat(),
-                "iteration": 7,
+                "iteration": 8,
                 "source": q["source"],
                 "query": q["query"],
                 "hits": q["hits"],

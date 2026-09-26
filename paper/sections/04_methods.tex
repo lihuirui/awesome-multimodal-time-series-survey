@@ -81,6 +81,13 @@ DistilTS~\cite{Li2026DistilTS} & ICASSP '26 & TS + Foundation & Distilled Compac
 GUARD~\cite{Dey2026GUARD} & KDD '26 & TS + Multi-FM & Multi-Teacher Forecaster & Uncertainty-Gated KD Routing & Contextual Teacher Distillation & \checkmark & \checkmark \\
 RG-TTA~\cite{Kumar2026RGTTA} & arXiv '26 & TS + Streaming & Agnostic + Meta-Control & Streaming Regime Modulation & Wasserstein-1 Meta-Loss & \checkmark & No \\
 TAFAS~\cite{Kim2025TAFAS} & arXiv '25 & TS + Streaming & TSF Forecaster + Adapter & Gated Calibration TTA & Streaming Calibration Loss & \checkmark & \checkmark \\
+SELA (GrammarWave)~\cite{Wan2026GrammarWave} & EMNLP '26 & TS + Vis + Text & VLM + Temporal Logic Parser & Neuro-Symbolic Grammar & Formal Invariant Event Loss & \checkmark & \checkmark \\
+Signal2Symbol~\cite{Mansour2026Signal2Symbol} & arXiv '26 & TS + Logic & Deep Encoder + FOL Reasoner & Symbolic State Transition & First-Order Logic Predicate Loss & \checkmark & No \\
+LLMODE~\cite{Zhang2026LLMODE} & arXiv '26 & TS + Graph + Text & Neural ODE + Frozen LLM & Gated Token Injection & Continuous Trajectory ODE Loss & \checkmark & No \\
+MSHyper-LLM~\cite{Shang2026MSHyperLLM} & arXiv '26 & TS + Hypergraph & Hypergraph Neural Net + LLM & Multi-Scale Reprogramming & High-Order Correlation MSE & \checkmark & No \\
+FedChronos~\cite{Sharma2026FedChronos} & arXiv '26 & TS + Text & Chronos (T5 TSFM) & Federated PEFT LoRA & Differential Privacy Federated Loss & \checkmark & No \\
+PerFed-TSFM~\cite{Nihalchandani2026PerFedTSFM} & arXiv '26 & TS + Text & Multi-TSFM (Chronos/Patch) & Personalized Sparse Adapter & Sparse Subnetwork Routing Loss & \checkmark & No \\
+FLISM~\cite{Orzikulova2024FedImpHC} & MobiCom '24 & TS + Multimodal & Multimodal Federated Net & Incomplete Modality Distill. & Modality-Invariant Distill Loss & No & \checkmark \\
 \bottomrule
 \end{tabular}%
 }
@@ -559,3 +566,65 @@ where $\mathcal{W}_1$ is the Wasserstein-1 metric and $D_{\text{KS}}$ is the two
 
 \subsubsection{Gated Calibration and Regime Memory Replay (TAFAS)}
 Concurrently, TAFAS (Kim et al.~\cite{Kim2025TAFAS}) incorporates a gated calibration module operating on partially-observed immediate past values. When entering a sudden shock regime (Regime II in \Cref{fig:causal_distill_tta}c), RG-TTA and TAFAS adapt within 6--8 streaming steps, reducing streaming MSE by $52.1\%$ ($0.880 \to 0.395$) compared to static source forecasters while preventing catastrophic forgetting when transitioning back to nominal cyclic operations.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.96\textwidth]{figures/neurosymbolic_irregular_federated.pdf}
+\caption{Neuro-Symbolic Logic Verification, Irregular Topology ODEs, and Privacy-Preserving Federated Foundation Model Adaptation: (a) Neuro-Symbolic Logic Verification vs.\ Temporal Logic Formula Nesting Depth $d$: while direct LLM prompting and standard VLM chart QA degrade sharply as formula complexity grows (dropping to $24.0\%$ and $38.1\%$ F1 at depth 5), SELA (Grammar of the Wave~\cite{Wan2026GrammarWave}) and Signal2Symbol~\cite{Mansour2026Signal2Symbol} enforce formal grammar invariant verification, maintaining $87.1\%$ F1 ($+49.0\%$ relative improvement over VLMs) with zero false-alarm safety invariant violations; (b) Irregular Spatio-Temporal Forecasting under extreme asynchronous sensor missingness: discrete time transformers and spatial GNNs break down as missingness exceeds $50\%$, whereas continuous-time Neural ODEs with gated token injection (LLMODE~\cite{Zhang2026LLMODE}) and multi-scale hypergraphs (MSHyper-LLM~\cite{Shang2026MSHyperLLM}) maintain low MSE ($\le 0.410$) even under $85\%$ asynchronous sensor dropouts; (c) Privacy-Preserving Federated Multimodal Foundation Model Adaptation under severe non-IID drift ($\alpha = 0.1$): standard full-parameter FedAvg suffers severe oscillation and client drift ($0.465$ MSE), whereas FedChronos~\cite{Sharma2026FedChronos}, FLISM~\cite{Orzikulova2024FedImpHC}, and PerFed-TSFM~\cite{Nihalchandani2026PerFedTSFM} converge within 20 communication rounds ($0.379$ MSE) with $98.5\%$ less communication overhead, preserving local data sovereignty and differential privacy.}
+\label{fig:neurosymbolic_irregular_federated}
+\end{figure*}
+
+\subsection{Neuro-Symbolic Temporal Reasoning \& Formal Logic Verification}
+\label{sec:neurosymbolic_logic}
+While deep vision-language models and foundation forecasters achieve impressive numerical accuracy, mission-critical cyber-physical systems (autonomous flight, cardiac intensive care, smart substation switching) demand \emph{formal verification}---mathematical proof that predictions satisfy safety invariants and domain operational envelopes. Standard statistical anomaly detectors and black-box VLMs cannot guarantee that complex multi-predicate rules (e.g., ``if pressure rises by $\delta$ over $\Delta t_1$, then valve angle must modulate within $[a, b]$ for at least $\Delta t_2$ seconds'') are respected without hallucination.
+
+\subsubsection{Signal and Metric Temporal Logic Formalism}
+To formulate verifiable safety certificates over continuous multi-channel signals $\mathbf{x}(t) \in \mathbb{R}^D$, neuro-symbolic architectures leverage Signal Temporal Logic (STL) and Metric Temporal Logic (MTL) semantics:
+\begin{equation}
+    \varphi := \mu \mid \neg \varphi \mid \varphi_1 \wedge \varphi_2 \mid \mathbf{G}_{[a, b]} \varphi \mid \mathbf{F}_{[a, b]} \varphi \mid \varphi_1 \mathbf{U}_{[a, b]} \varphi_2
+\end{equation}
+where $\mu \equiv (g(\mathbf{x}(t)) \ge 0)$ is a continuous predicate, $\mathbf{G}_{[a, b]}$ denotes the globally (always) operator, $\mathbf{F}_{[a, b]}$ denotes eventually, and $\mathbf{U}_{[a, b]}$ denotes until over the metric time interval $[a, b]$. Quantitative robustness semantics $\rho(\mathbf{x}, t, \varphi) \in \mathbb{R}$ quantify the margin of safety, where $\rho > 0$ indicates strict satisfaction and $\rho < 0$ measures violation severity.
+
+\subsubsection{Grammar-Grounded VLM Agents (SELA)}
+In Grammar of the Wave, Wan et al.~\cite{Wan2026GrammarWave} propose SELA (Symbolic Event Logic Agent), introducing a context-free grammar $\mathcal{G}_{\text{wave}} = (\Sigma, \mathcal{V}_N, \mathcal{R}, S)$ that decomposes continuous multi-channel waveforms into discrete geometric primitive tokens (inflections, crests, plateaus). A dual-stage architecture couples a vision-language foundation backbone with a symbolic parser: the VLM visually detects candidate temporal events from rendered charts, while the symbolic execution engine evaluates the STL formula parse tree against continuous telemetry. Under nested temporal-logic formulas ($d=5$), SELA sustains an $87.1\%$ event detection F1-score (\Cref{fig:neurosymbolic_irregular_federated}a), surpassing unconstrained VLMs ($38.1\%$) by $49.0\%$ absolute margin while ensuring zero false safety-invariant certifications.
+
+\subsubsection{Physiological Waveform Symbolic Reasoning (Signal2Symbol)}
+Concurrently, Signal2Symbol (Mansour et al.~\cite{Mansour2026Signal2Symbol}) addresses high variability and black-box opacity in biomedical waveforms (ECG/EEG). Continuous physiological signals are discretized into symbolic state transitions through learnable wavelet temporal discretization. A First-Order Logic (FOL) reasoner then validates rhythm disturbances against clinical electrophysiology rules, delivering provably verifiable anomaly attributions.
+
+\subsection{Irregular Spatio-Temporal Foundation Models \& Hypergraphs}
+\label{sec:irregular_hypergraphs}
+A prevailing limitation of existing multimodal time-series foundation models is their implicit reliance on uniformly gridded, synchronously sampled time steps. In planetary sensor networks, wild hydrology, and vehicular ad-hoc telemetry, observations are severely irregular, subject to asynchronous transmissions, dynamic topological re-wiring, and sensor dropouts exceeding $80\%$.
+
+\subsubsection{Continuous Neural ODE Gated Token Injection (LLMODE)}
+Standard Transformer patching fails on irregular data because zero-filling distorts temporal frequencies and padding explodes token context lengths. LLMODE (Zhang et al.~\cite{Zhang2026LLMODE}) unifies continuous-time Neural Ordinary Differential Equations (Neural ODEs) with frozen LLM reasoning. The latent continuous hidden state $\mathbf{z}(t)$ evolves according to:
+\begin{equation}
+\begin{aligned}
+    \frac{d\mathbf{z}(t)}{dt} &= f_\theta\left( \mathbf{z}(t), t, \mathcal{G}(t) \right), \\
+    \mathbf{z}(t_1) &= \mathbf{z}(t_0) + \int_{t_0}^{t_1} f_\theta(\mathbf{z}(\tau), \tau, \mathcal{G}(\tau)) \, d\tau
+\end{aligned}
+\end{equation}
+To inject continuous trajectories into discrete language models without token bloat, LLMODE introduces a \emph{Gated Token Injection} mechanism: continuous states evaluated at query timestamps are adaptively compressed into a compact set of $K$ latent anchor tokens $\mathbf{T}_{\text{ode}} \in \mathbb{R}^{K \times d}$ via cross-attention gating. As illustrated in \Cref{fig:neurosymbolic_irregular_federated}b, LLMODE maintains stable forecasting accuracy ($\text{MSE} \le 0.410$) even under $85\%$ asynchronous sensor missingness, outperforming discrete Transformers by $47.8\%$.
+
+\subsubsection{Multi-Scale Hypergraph Channel Reprogramming (MSHyper-LLM)}
+Pairwise spatial graph convolutions $\mathbf{A} \in \mathbb{R}^{V \times V}$ are fundamentally restricted to dyadic interactions, failing to capture polyadic correlations where multiple environmental variables jointly influence regional dynamics. MSHyper-LLM (Shang et al.~\cite{Shang2026MSHyperLLM}) models multivariate interactions through multi-scale hypergraphs defined by an incidence matrix $\mathbf{H} \in \mathbb{R}^{V \times E}$, where each hyperedge $e \in E$ encompasses arbitrary variable cliques. Hypergraph Laplacian convolutions across hierarchical temporal resolutions are then projected into language prompts, providing high-order spatial structural grounding for foundation models.
+
+\subsection{Privacy-Preserving Federated Multimodal Foundation Model Adaptation}
+\label{sec:federated_foundation}
+Deploying foundation models across institutional silos (banking consortia, multi-hospital ICU networks, smart energy microgrids) encounters legal and privacy barriers: raw sensory data cannot leave on-premise enclaves due to GDPR, HIPAA, and corporate intellectual property regulations.
+
+\subsubsection{Federated Parameter-Efficient Adaptation (FedChronos)}
+FedChronos (Sharma et al.~\cite{Sharma2026FedChronos}) formulates distributed foundation model adaptation under strict data sovereignty. Rather than synchronizing massive foundation weights $\mathbf{W}_0 \in \mathbb{R}^{d_1 \times d_2}$ (e.g., Chronos-T5, $710$M parameters), participating client nodes optimize low-rank adapter matrices $\Delta \mathbf{W}_k = \mathbf{B}_k \mathbf{A}_k$ with rank $r \ll \min(d_1, d_2)$. Global aggregation applies secure multi-party computation and local $(\epsilon, \delta)$-differential privacy:
+\begin{equation}
+\begin{aligned}
+    \mathbf{A}^{(t+1)} &= \sum_{k=1}^K \frac{n_k}{N} \mathbf{A}_k^{(t)} + \mathcal{N}\left(0, \sigma^2 \mathbf{I}\right), \\
+    \mathbf{B}^{(t+1)} &= \sum_{k=1}^K \frac{n_k}{N} \mathbf{B}_k^{(t)} + \mathcal{N}\left(0, \sigma^2 \mathbf{I}\right)
+\end{aligned}
+\end{equation}
+FedChronos achieves near-centralized forecasting accuracy ($0.388$ vs.\ $0.372$ MSE, \Cref{fig:neurosymbolic_irregular_federated}c) while reducing client-to-server communication payload by $98.5\%$.
+
+\subsubsection{Personalized Sparse Routing under Non-IID Drift (PerFed-TSFM)}
+When client sensor distributions exhibit extreme non-IID drift (e.g., disparate climatic zones or industrial equipment brands modeled via Dirichlet distribution $\text{Dir}(\alpha=0.1)$), shared global adapters suffer negative interference. PerFed-TSFM (Nihalchandani et al.~\cite{Nihalchandani2026PerFedTSFM}) introduces personalized sparse subnetwork routing: a global foundation temporal prior is decoupled from client-specific sparse adapter masks, accelerating convergence to 20 rounds with an optimal $0.379$ MSE.
+
+\subsubsection{Federated Incomplete Modality Distillation (FLISM)}
+In real-world decentralized healthcare sensing, client devices possess heterogeneous modality subsets (e.g., patient A wears an ECG patch and smartwatch, while patient B logs only phone accelerometry). FLISM (Orzikulova et al.~\cite{Orzikulova2024FedImpHC}) addresses this missing modality challenge via: (1) modality-invariant representation learning that maps arbitrary available sensor streams into a shared latent manifold; (2) quality-aware aggregation weighting clients by modality completeness; and (3) globally aligned knowledge distillation that eliminates client update drift, enabling unified foundation model training over incomplete multimodal edge federations.
+

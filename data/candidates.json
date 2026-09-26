@@ -1,10 +1,10 @@
 {
   "metadata": {
     "last_updated": "2026-09-26",
-    "total_candidates": 117,
-    "included": 77,
+    "total_candidates": 126,
+    "included": 84,
     "excluded_title": 27,
-    "excluded_fulltext": 13
+    "excluded_fulltext": 15
   },
   "candidates": [
     {
@@ -2744,6 +2744,245 @@
       "api_verified": true
     },
     {
+      "status": "included",
+      "bibkey": "Wan2026GrammarWave",
+      "title": "Grammar of the Wave: Towards Explainable Multivariate Time Series Event Detection via Neuro-Symbolic VLM Agents",
+      "authors": [
+        "Sky Chenwei Wan",
+        "Yifei Y. Wang",
+        "Tianjun Hou",
+        "Xiqing Chang",
+        "Aymeric Jan"
+      ],
+      "year": 2026,
+      "venue": "EMNLP 2026",
+      "arxiv_id": "2603.11479",
+      "doi": "10.48550/arXiv.2603.11479",
+      "modality_pair": "TS+Vision+Text",
+      "role_of_non_ts": "symbolic_verifier",
+      "fusion_mechanism": "neuro_symbolic_vlm",
+      "backbone": "SELA (VLM + Temporal Logic Parser)",
+      "tasks": [
+        "event_detection",
+        "explainable_reasoning"
+      ],
+      "domains": [
+        "general_ts",
+        "cyber_physical",
+        "physiological"
+      ],
+      "code_url": "https://github.com/cw-wan/SELA",
+      "quality_score": 11,
+      "abstract": "Time Series Event Detection (TSED) aims to localize semantically meaningful events in time series data, with critical applications in high-stakes domains. Unlike statistical anomalies, events are often defined by natural-language descriptions with internal temporal-logic structures across multiple physical channels. However, in real-world settings, dense event annotations are expensive to obtain, making purely supervised learning difficult. We introduce Language-guided TSED, a setting where a model is given textual event descriptions and must ground them to intervals in multivariate signals with little or no labeled data. To address this problem, we propose Event Logic Tree (ELT), a knowledge representation framework that converts linguistic descriptions into structured temporal logic over signal primitives. Building on ELT, we present SELA, a neuro-symbolic VLM agent framework that iteratively grounds primitives from signal visualizations and composes them under ELT constraints, producing both event intervals and faithful tree-structured explanations. We further release a real-world benchmark across energy and climate domains with expert knowledge and annotations. Experiments show that SELA improves over supervised fine-tuning and existing zero/few-shot time series reasoning baselines.",
+      "notes": "Grammar of the Wave; introduces SELA unifying vision-language models with temporal logic grammars for explainable multivariate time-series event detection with formal compositional rules.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Mansour2026Signal2Symbol",
+      "title": "Signal2Symbol: Neuro-Symbolic Temporal Reasoning for Explainable Physiological Time-Series Anomaly Detection",
+      "authors": [
+        "Naser Mansour",
+        "Sidahmed Benabderrahmane",
+        "Ameer Rahwan"
+      ],
+      "year": 2026,
+      "venue": "arXiv 2026",
+      "arxiv_id": "2609.26820",
+      "doi": "10.48550/arXiv.2609.26820",
+      "modality_pair": "TS+Logic/Text",
+      "role_of_non_ts": "symbolic_verifier",
+      "fusion_mechanism": "neuro_symbolic_grammar",
+      "backbone": "Signal2Symbol (Temporal Reasoner)",
+      "tasks": [
+        "anomaly_detection",
+        "explainable_reasoning"
+      ],
+      "domains": [
+        "healthcare",
+        "cardiology",
+        "neurology"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Physiological time series such as electrocardiograms (ECG) and electroencephalograms (EEG) exhibit complex temporal structure, substantial acquisition variability, and a strong need for transparent decision-making. Although deep models can achieve high detection performance, they often provide limited insight into why a segment is anomalous, how local anomalies relate over time, and whether a detection belongs to a broader recurring pattern. We propose Signal2Symbol, a neuro-symbolic framework for explainable biosignal anomaly detection. The method first converts ECG/EEG signals into symbolic sequences using either a learned VQ-VAE (Vector Quantized Variational Autoencoder) codebook or a SAX (Symbolic Aggregate approXimation) baseline. It then constructs bigram enriched token-window transactions and scores anomalies through rare itemset evidence derived from minimal rare itemset mining. Detected anomalous windows are merged into intervals and related using Allen interval algebra, enabling composite temporal explanations such as escalation chains, artifact overlap, and cross-channel synchrony. Finally, we introduce a rare temporal concept lattice based on Formal Concept Analysis (FCA), which groups anomalous intervals by shared rare symbolic evidence, Allen temporal relations, channel context, and robustness attributes. The resulting Galois lattice compresses many local detections into interpretable families of temporal-symbolic anomalies. We evaluate on three public benchmarks: MIT-BIH Arrhythmia (beat-level ECG), PTB-XL (record-level ECG), and the Bonn EEG dataset (segment-level EEG). We stress-test robustness under additive noise and baseline-wander perturbations. The results highlight the value of neuro-symbolic tokenization for temporal anomaly analysis and show that Allen/FCA reasoning provides compact, interpretable summaries of local detections.",
+      "notes": "Neuro-symbolic temporal reasoning framework for physiological waveforms (ECG/EEG); translates continuous signals into discrete symbolic state transitions and logic rules for verifiable anomaly localization.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Zhang2026LLMODE",
+      "title": "LLMODE: Aligning ODEs with LLMs via Gated Token Injection for Irregular Spatio-Temporal Forecasting",
+      "authors": [
+        "Di Zhang",
+        "Jingyang Zhang",
+        "Ziqian Wang",
+        "Chi Zhang",
+        "Yikun Ban",
+        "Ziwei Zhang",
+        "Ruijie Wang"
+      ],
+      "year": 2026,
+      "venue": "arXiv 2026",
+      "arxiv_id": "2608.29640",
+      "doi": "10.48550/arXiv.2608.29640",
+      "modality_pair": "TS+Graph+Text",
+      "role_of_non_ts": "continuous_dynamics",
+      "fusion_mechanism": "neural_ode_gated_injection",
+      "backbone": "LLMODE (Neural ODE + LLM)",
+      "tasks": [
+        "forecasting",
+        "imputation"
+      ],
+      "domains": [
+        "traffic",
+        "climate",
+        "iot_sensing"
+      ],
+      "code_url": null,
+      "quality_score": 12,
+      "abstract": "Large language models (LLMs) have shown promise for spatio-temporal forecasting, but existing approaches often rely on regularly sampled token sequences and struggle with irregular observations because of temporal asynchrony, representation-space misalignment, and limited context windows. We propose LLMODE, a token-efficient framework for irregular spatio-temporal forecasting with a frozen LLM backbone. LLMODE first uses a graph-aware ODE encoder to reconstruct irregular graph observations as a continuous-time latent trajectory. A Fixed-Budget Perceiver Resampler then compresses this variable-length trajectory into a fixed number of dynamic memory tokens. In parallel, compact statistical descriptors are encoded and resampled into context memory tokens. A dual-source gated cross-attention module injects both memories into the frozen LLM, enabling controlled utilization of external spatio-temporal evidence. Experiments on three real-world urban datasets and two physical-dynamics benchmarks show competitive overall performance, with clearer advantages under sparse or dynamically complex irregular sampling. Additional evaluations on unseen urban regions further demonstrate strong zero-shot generalization without adaptation.",
+      "notes": "Aligns continuous Neural ODEs with LLMs via gated token injection; overcomes severe irregular temporal sampling, asynchrony, and sensor topology shifts without exploding token windows.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Shang2026MSHyperLLM",
+      "title": "Multi-scale hypergraph meets LLMs: Aligning large language models for time series analysis",
+      "authors": [
+        "Zongjiang Shang",
+        "Dongliang Cui",
+        "Binqing Wu",
+        "Ling Chen"
+      ],
+      "year": 2026,
+      "venue": "arXiv 2026",
+      "arxiv_id": "2602.04369",
+      "doi": "10.48550/arXiv.2602.04369",
+      "modality_pair": "TS+Hypergraph+Text",
+      "role_of_non_ts": "high_order_topology",
+      "fusion_mechanism": "multi_scale_hypergraph_reprogramming",
+      "backbone": "MSHyper-LLM (Hypergraph + LLM)",
+      "tasks": [
+        "forecasting",
+        "anomaly_detection"
+      ],
+      "domains": [
+        "general_ts",
+        "traffic",
+        "energy"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Recently, there has been great success in leveraging pre-trained large language models (LLMs) for time series analysis. The core idea lies in effectively aligning the modality between natural language and time series. However, the multi-scale structures of natural language and time series have not been fully considered, resulting in insufficient utilization of LLMs capabilities. To this end, we propose MSH-LLM, a Multi-Scale Hypergraph method that aligns Large Language Models for time series analysis. Specifically, a hyperedging mechanism is designed to enhance the multi-scale semantic information of time series semantic space. Then, a cross-modality alignment (CMA) module is introduced to align the modality between natural language and time series at different scales. In addition, a mixture of prompts (MoP) mechanism is introduced to provide contextual information and enhance the ability of LLMs to understand the multi-scale temporal patterns of time series. Experimental results on 27 real-world datasets across 5 different applications demonstrate that MSH-LLM achieves the state-of-the-art results.",
+      "notes": "Constructs multi-scale hypergraph incident matrices capturing high-order non-pairwise interactions across multivariate channels and aligns them with textual time-series prompts.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Sharma2026FedChronos",
+      "title": "FedChronos: Federated Fine-Tuning of Time-Series Foundation Models for Privacy-Preserving Commodity Price Forecasting",
+      "authors": [
+        "Amit Sharma",
+        "Nitin Auluck",
+        "Akramul Azim"
+      ],
+      "year": 2026,
+      "venue": "arXiv 2026",
+      "arxiv_id": "2608.01290",
+      "doi": "10.48550/arXiv.2608.01290",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "privacy_preserving_context",
+      "fusion_mechanism": "federated_peft_lora",
+      "backbone": "FedChronos (Federated TSFM)",
+      "tasks": [
+        "forecasting",
+        "federated_learning"
+      ],
+      "domains": [
+        "finance",
+        "commodity_markets"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Time-series foundation models (TSFMs) such as Chronos have demonstrated strong forecasting capabilities across domains, yet adapting them to institutionally fragmented settings, where data cannot be centralized due to regulatory, competitive, or sovereignty constraints, remains unexplored. We introduce FedChronos, a framework for federated parameter-efficient fine-tuning of an already pre-trained TSFM, a setting that existing federated time-series work has not addressed, since prior methods either pre-train from scratch or align prototypes rather than adapt a fixed backbone. Our approach applies Low-Rank Adaptation (LoRA) to the Chronos-T5 backbone and trains across distributed clients using FedAvg and FedProx, transmitting only lightweight adapter weights (384~KB per round, an 86$\\times$ reduction over full-model exchange). We evaluate FedChronos on daily commodity prices from 15 Indian agricultural markets across 9 states, a naturally non-IID federated setting, and find that na\\&#34;ive LoRA fine-tuning overfits substantially on small per-client datasets, dropping below zero-shot performance. We further observe that differential privacy (DP) noise can act as implicit regularization and counteract this overfitting: in our experiments the strongest configuration ($\\varepsilon = 5$) reduces mean absolute percentage error (MAPE) by 31% over zero-shot and 26% over the best traditional baseline, while bounding each round&#39;s information leakage via per-round $(\\varepsilon, \\delta)$-differential privacy. Because the model is compact and the updates are small, the approach also suits edge AI deployments where both the network link and the client device are constrained. Overall, our findings suggest that privacy and accuracy can be complementary rather than competing objectives in federated TSFM fine-tuning.",
+      "notes": "Federated parameter-efficient fine-tuning framework for time-series foundation models (Chronos) enabling multi-institution collaboration under strict privacy and regulatory data sovereignty constraints.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Nihalchandani2026PerFedTSFM",
+      "title": "Personalized Federated Sparse Adaptation of Time-Series Foundation Models",
+      "authors": [
+        "Priyanka Nihalchandani",
+        "Naman Srivastava",
+        "Varun Ojha",
+        "Pandarasamy Arjunan"
+      ],
+      "year": 2026,
+      "venue": "arXiv 2026",
+      "arxiv_id": "2608.04695",
+      "doi": "10.48550/arXiv.2608.04695",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "localized_metadata",
+      "fusion_mechanism": "personalized_sparse_adapter",
+      "backbone": "PerFed-TSFM (Sparse Subnetwork Routing)",
+      "tasks": [
+        "forecasting",
+        "personalized_federated_learning"
+      ],
+      "domains": [
+        "energy",
+        "smart_buildings",
+        "iot_sensing"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Federated adaptation of time-series foundation models (TSFMs) is attractive for building energy forecasting because meter data are private, distributed, and highly non-IID. However, a single parameter-sharing strategy is unlikely to serve all pretrained TSFMs or building clients: fully shared adapters can suppress building-specific temporal behavior, while fully local adaptation discards cross-building transfer. We propose a personalized federated sparse adaptation framework with a heterogeneous temporal mixture-of-experts (MoE) adapter placed after the pretrained TSFM representation. A sequence-level router maps each 168-hour context window to a top-$k$ subset of experts specialized for periodicity, long-range interactions, local variation, trend-residual structure, and multi-resolution behavior. We compare global FL, local training, and personalized FL variants with globally shared or client-private expert banks. Across 50 buildings and three TSFM backbones, personalization consistently outperforms Global FL-MoE and Local MoE, while the best sparse-adaptation strategy varies by backbone and metric. Routing behavior further reveals client-level expert specialization, expert concentration, and near-uniform routing across backbones, showing that federated TSFM adaptation should be both client-aware and backbone-aware.",
+      "notes": "Personalized federated sparse adaptation of TSFMs for non-IID smart building energy systems; dynamically decouples globally shared temporal foundations from client-specific sparse adapter subnetworks.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Orzikulova2024FedImpHC",
+      "title": "Federated Learning for Time-Series Healthcare Sensing with Incomplete Modalities",
+      "authors": [
+        "Adiba Orzikulova",
+        "Jaehyun Kwak",
+        "Jaemin Shin",
+        "Sung-Ju Lee"
+      ],
+      "year": 2024,
+      "venue": "MobiCom 2024",
+      "arxiv_id": "2405.11828",
+      "doi": "10.48550/arXiv.2405.11828",
+      "modality_pair": "TS+Multimodal Sensor Signals",
+      "role_of_non_ts": "missing_modality_reconstruction",
+      "fusion_mechanism": "federated_cross_modal_imputation",
+      "backbone": "FLISM (Multimodal Federated Network)",
+      "tasks": [
+        "classification",
+        "health_sensing"
+      ],
+      "domains": [
+        "healthcare",
+        "wearables",
+        "mobile_health"
+      ],
+      "code_url": "https://github.com/AdibaOrz/FLISM",
+      "quality_score": 11,
+      "abstract": "Many healthcare sensing applications utilize multimodal time-series data from sensors embedded in mobile and wearable devices. Federated Learning (FL), with its privacy-preserving advantages, is particularly well-suited for health applications. However, most multimodal FL methods assume the availability of complete modality data for local training, which is often unrealistic. Moreover, recent approaches tackling incomplete modalities scale poorly and become inefficient as the number of modalities increases. To address these limitations, we propose FLISM, an efficient FL training algorithm with incomplete sensing modalities while maintaining high accuracy. FLISM employs three key techniques: (1) modality-invariant representation learning to extract effective features from clients with a diverse set of modalities, (2) modality quality-aware aggregation to prioritize contributions from clients with higher-quality modality data, and (3) global-aligned knowledge distillation to reduce local update shifts caused by modality differences. Extensive experiments on real-world datasets show that FLISM not only achieves high accuracy but is also faster and more efficient compared with state-of-the-art methods handling incomplete modality problems in FL. We release the code as open-source at https://github.com/AdibaOrz/FLISM.",
+      "notes": "FLISM architecture for federated multimodal time-series healthcare sensing under incomplete modalities; features modality-invariant representations, quality-aware aggregation, and global distillation.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
       "status": "excluded_title",
       "bibkey": null,
       "title": "2-categorical approach to unifying constructions of precoverings and its applications",
@@ -3620,6 +3859,50 @@
       "quality_score": 0,
       "abstract": "",
       "exclusion_reason": "Pure synthetic univariate time-series data distillation without multimodal or microcontroller hardware constraints (EC1/EC3)",
+      "screen_date": "2026-09-26",
+      "api_verified": true
+    },
+    {
+      "status": "excluded_fulltext",
+      "bibkey": null,
+      "title": "EduRiskX: A Neuro-Symbolic Framework with F-Logic Reasoning for Early Academic Risk Prediction",
+      "authors": [],
+      "year": 2026,
+      "venue": "arXiv",
+      "arxiv_id": "2608.26107",
+      "doi": "10.48550/arXiv.2608.26107",
+      "modality_pair": null,
+      "role_of_non_ts": null,
+      "fusion_mechanism": null,
+      "backbone": null,
+      "tasks": [],
+      "domains": [],
+      "code_url": null,
+      "quality_score": 0,
+      "abstract": "",
+      "exclusion_reason": "Static tabular student demographic and academic records without continuous physical or sensor time series sequences (EC2)",
+      "screen_date": "2026-09-26",
+      "api_verified": true
+    },
+    {
+      "status": "excluded_fulltext",
+      "bibkey": null,
+      "title": "ST-HCSS: Deep Spatio-Temporal Hypergraph Convolutional Neural Network for Soft Sensing",
+      "authors": [],
+      "year": 2026,
+      "venue": "arXiv",
+      "arxiv_id": "2501.02016",
+      "doi": "10.48550/arXiv.2501.02016",
+      "modality_pair": null,
+      "role_of_non_ts": null,
+      "fusion_mechanism": null,
+      "backbone": null,
+      "tasks": [],
+      "domains": [],
+      "code_url": null,
+      "quality_score": 0,
+      "abstract": "",
+      "exclusion_reason": "Industrial chemical process soft sensing utilizing unimodal spatio-temporal hypergraph convolutions without cross-modal text, vision, or foundation model interactions (EC1)",
       "screen_date": "2026-09-26",
       "api_verified": true
     }

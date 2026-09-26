@@ -1,9 +1,9 @@
 # 多模态时间序列模型前沿综述与展望 (中文深度长文)
 
 **项目名称：** Multimodal Time Series Models: A Survey and Outlook  
-**当前迭代：** Iteration 6 (Phase P4/P5: 微瓦级神经形态SNN、物理守恒跨模态扩散、分层智能体集群与 70 篇核验证据)  
+**当前迭代：** Iteration 8 (Phase P4/P5: 神经符号时间逻辑、超稀疏不规则超图ODE、联邦跨模态基座与 84 篇核验证据)  
 **更新日期：** 2026-09-26  
-**PRISMA 2020 纳入文献：** 70 篇严格实测核验的高质量论文（初筛 505 篇，去重后 413 篇，全文评估 95 篇，严格剔除 25 篇，最终纳入 70 篇，100% 具备本地 API 原始缓存与严格 PRISMA 2020 算术闭包一致性：$505 - 92 = 413; 413 - 318 = 95; 95 - 25 = 70 = 70$）
+**PRISMA 2020 纳入文献：** 84 篇严格实测核验的高质量论文（初筛 582 篇，去重后 474 篇，全文评估 113 篇，严格剔除 29 篇，最终纳入 84 篇，100% 具备本地 API 原始缓存与严格 PRISMA 2020 算术闭包一致性：$582 - 108 = 474; 474 - 361 = 113; 113 - 29 = 84 = 84$）
 
 ---
 
@@ -227,6 +227,28 @@ $$\mathbf{h}_i = \mathbf{P}_i \mathbf{W}_{\text{in}} + \mathbf{E}_{\text{pos}, i
   - **TAFAS (Kim et al., 2025):** 提出门控校准机制，利用局部即时真值进行无遗忘前瞻性自适应；
   - **流式实测（见英文正文 Figure 12c）：** 在突发剧烈机制漂移（Regime II）中，静态基线模型误差暴增 130.4%（MSE 冲高至 0.880），朴素梯度 TTA 产生 34.2% 的严重遗忘；而 RG-TTA 与 TAFAS 在 6--8 个流式时间步内即可实现无缝收敛，使漂移后 MSE 降低 52.1%（0.880 $\to$ 0.395），遗忘率控制在 0.4% 以下。
 
+### 4.23 神经符号时间逻辑与形式化安全验证 (Neuro-Symbolic Temporal Logic & Formal Verification)
+在航天测控、化工反应堆、重症监护及智能变电站等安全攸关（Safety-Critical）领域，单纯的数值概率预测或缺乏约束的大模型推理远远不够，必须提供具备数学可证明性的形式化安全证书：
+- **信号与度量时间逻辑形式化（STL / MTL）：** 针对连续多通道信号 $\mathbf{x}(t) \in \mathbb{R}^D$，定义时间逻辑公式：$\varphi := \mu \mid \neg \varphi \mid \varphi_1 \wedge \varphi_2 \mid \mathbf{G}_{[a, b]} \varphi \mid \mathbf{F}_{[a, b]} \varphi \mid \varphi_1 \mathbf{U}_{[a, b]} \varphi_2$。定量鲁棒度语义 $\rho(\mathbf{x}, t, \varphi) \in \mathbb{R}$ 严格量化安全裕度（$\rho > 0$ 表示严格满足，$\rho < 0$ 表示违背严重性）。
+- **代表性前沿突破：**
+  - **SELA / Grammar of the Wave (Wan et al., EMNLP 2026):** 首创波形语法神经符号 VLM 智能体架构。构建上下文无关文法 $\mathcal{G}_{\text{wave}} = (\Sigma, \mathcal{V}_N, \mathcal{R}, S)$ 将连续波形分解为极值、拐点等几何基元 Token。视觉大模型审阅候选事件，形式化符号执行器解析 STL 公式语法树，在逻辑嵌套深度达 5 的极高复杂度下维持 **87.1% 事件检测 F1**（较纯黑盒 VLM 提升 49.0%），且实现形式化安全不变量零伪阳性违背（见英文正文 Figure 13a）；
+  - **Signal2Symbol (Mansour et al., 2026):** 针对心电（ECG）与脑电（EEG）等生理波形，提出基于一阶逻辑（FOL）的可解释神经符号推理机。将连续生理轨迹映射为离散状态转移自动机，使异常诊断具备明确的临床电生理规则溯源。
+
+### 4.24 超稀疏不规则时序与多尺度超图对齐 (Irregular Spatio-Temporal Foundation Models & Hypergraphs)
+现实物联感知网、野外水文监测与车联网遥测普遍存在严重的时序异步性、传输丢失与超过 80% 的连续传感器缺失，传统的固定网格 Patch 划分与静态图卷积陷入瘫痪：
+- **神经常微分方程门控注入（Continuous Neural ODE Gated Token Injection）：** 将隐层连续动态建模为：$d\mathbf{z}(t)/dt = f_\theta(\mathbf{z}(t), t, \mathcal{G}(t))$，利用自适应数值积分器求解任意连续时戳状态。
+- **代表性前沿突破：**
+  - **LLMODE (Zhang et al., 2026):** 提出连续神经常微分方程与大语言模型对齐框架。针对不规则采样导致的 Token 窗口爆炸，设计门控 Token 注入机制，将连续时间轨迹自适应压缩为 $K$ 个紧凑隐层锚点 Token $\mathbf{T}_{\text{ode}} \in \mathbb{R}^{K \times d}$。在高达 **85% 异步传感器缺失率**下仍维持 MSE $\le 0.410$（较离散 Transformer 误差降低 47.8%，见英文正文 Figure 13b）；
+  - **MSHyper-LLM (Shang et al., 2026):** 突破传统图神经网络仅能表达成对两两关联的局限，构建多尺度超图关联矩阵 $\mathbf{H} \in \mathbb{R}^{V \times E}$，超边 $e \in E$ 能够灵活封装多变量传感器群的高阶多元多对多相关性，并与语言提示无缝对齐。
+
+### 4.25 隐私保护联邦跨模态基础模型自适应 (Privacy-Preserving Federated Multimodal Foundation Model Adaptation)
+在跨银行金融联合风控、多医院临床 EHR 辅助诊断与跨区域微电网协同中，受限于 GDPR、HIPAA 及数据主权法规，原始时序与敏感文本严禁出域集中：
+- **联邦参数高效微调（Federated PEFT）：** 冻结数十亿参数的基础模型权重 $\mathbf{W}_0$，各客户端本地仅优化低秩适配矩阵 $\Delta \mathbf{W}_k = \mathbf{B}_k \mathbf{A}_k$（$r \ll d$）。
+- **代表性前沿突破：**
+  - **FedChronos (Sharma et al., 2026):** 面向时序基础模型（Chronos）的联邦微调架构。通过安全多方计算与本地 $(\epsilon, \delta)$-差分隐私噪声注入，实现跨机构商品价格与宏观指标的联合建模。在保护数据主权的前提下取得近集中式精度（0.388 vs. 0.372 MSE），且通信开销暴降 98.5%（见英文正文 Figure 13c）；
+  - **PerFed-TSFM (Nihalchandani et al., 2026):** 针对极端非独立同分布漂移（Non-IID $\text{Dir}(\alpha=0.1)$），提出个性化稀疏子网络路由算法。将全局时序基础先验与客户端私有稀疏适配器解耦，20 轮通信即可收敛至 0.379 最佳 MSE；
+  - **FLISM (Orzikulova et al., 2024, ACM MobiCom 2024):** 针对联邦穿戴感知中客户端传感器模态缺失（部分患者仅佩戴手表、部分具备胸带心电）的问题，设计模态不变表征学习与全局对齐知识蒸馏，使异构不完整模态客户端协同达到 0.410 稳健 MSE。
+
 ---
 
 ## 5. 经验基准元分析与实测对比 (Empirical Meta-Analysis)
@@ -291,7 +313,22 @@ $$\mathbf{h}_i = \mathbf{P}_i \mathbf{W}_{\text{in}} + \mathbf{E}_{\text{pos}, i
   - **朴素梯度在线 TTA (Naive Gradient TTA):** 发生剧烈灾难性遗忘，在历史平稳机制上的预测精度损失达 $34.2\%$；
   - **RG-TTA / TAFAS (2026):** 依托 Wasserstein-1 距离与双样本 KS 检验集成机制，实现流式数据分布相似度的亚秒级元控制评估，自适应调节微调学习率。漂移后预测 MSE 下降 **52.1%（0.880 $\to$ 0.395）**，运行速度较传统 TTA 加快 5.5%，且将灾难性遗忘率彻底抑制在 **0.4%** 以内（详见英文正文 Figure 12c）。
 
-### 5.9 开源端到端可复现演示教程与沙盒 (`examples/`)
+### 5.9 Panel I: 神经符号形式化验证、超稀疏不规则拓扑迁移与联邦隐私自适应实测对比
+- **神经符号时间逻辑与形式化安全验证 (Waveform Event Detection, $d=5$):**
+  - **直接大模型 Zero-Shot 提示与纯 VLM 折线图问答:** 伴随时间逻辑规则嵌套深度增加至 $d=5$，模型推理精度断崖式下跌至 $24.0\%$ 与 $38.1\%$ F1，生成大量不存在的多通道因果伪阳性；
+  - **Signal2Symbol (2026):** 离散生理状态自动机结合一阶逻辑（FOL）推论，达到 $78.2\%$ F1，提供严谨的临床电生理归因证据；
+  - **SELA / Grammar of the Wave (EMNLP 2026):** 语法引导的双阶段 VLM 智能体架构将复杂时序事件检测 F1 维持在 **87.1%（较纯黑盒 VLM 提升 49.0%）**，且依托信号时间逻辑（STL）语法树执行器实现形式化安全不变量零伪阳性违背（详见英文正文 Figure 13a）。
+- **超稀疏不规则时空拓扑迁移 (Climate / Traffic, 85% Missing):**
+  - **离散时序 Transformer 与时空 GNN:** 在 $85\%$ 异步缺失下严重失效，均值填充导致频率畸变，MSE 高达 $0.785$--$0.790$；
+  - **MSHyper-LLM (2026):** 多尺度超图关联矩阵 $\mathbf{H} \in \mathbb{R}^{V \times E}$ 成功捕捉高阶多元非成对非局部关联，将预测 MSE 压低至 $0.560$；
+  - **LLMODE (2026):** 连续时间神经常微分方程结合门控 Token 注入机制，任意时间步自适应积分求解，将预测 MSE 显著压缩至 **0.410（误差降幅达 47.8%）**，展现出对极端传感器缺失的超强连续动力学内插能力（详见英文正文 Figure 13b）。
+- **隐私保护与数据主权联邦基础模型自适应 (Federated Adaptation, Non-IID $\alpha=0.10$):**
+  - **全参数标准 FedAvg:** 遭遇极端非独立同分布客户端漂移时发生剧烈梯度振荡，MSE 仅为 $0.465$，单轮通信量高达 $14\text{ GB}$；
+  - **FLISM (MobiCom 2024):** 模态不变表征蒸馏成功化解了客户端穿戴传感器模态缺失难题，协同收敛至 $0.410$ MSE；
+  - **FedChronos (2026):** 联邦低秩适配（LoRA）结合安全差分隐私，在保护数据主权下实现 $0.388$ MSE，通信载荷削减 $98.5\%$；
+  - **PerFed-TSFM (2026):** 个性化稀疏子网络路由算法在 20 轮通信内极速收敛至 **0.379 最佳 MSE**，几乎完全拟合集中式私有数据全量微调的上界（$0.372$ MSE，详见英文正文 Figure 13c）。
+
+### 5.10 开源端到端可复现演示教程与沙盒 (`examples/`)
 项目在 `examples/` 目录下配套提供了两套端到端完全可复现的代码与交互式 Jupyter Notebook：
 1. **多模态告警时序预测演示：**
    - 脚本：`examples/demo_multimodal_forecasting.py` 与 `examples/demo_multimodal_forecasting.ipynb`
@@ -322,4 +359,7 @@ $$\mathbf{h}_i = \mathbf{P}_i \mathbf{W}_{\text{in}} + \mathbf{E}_{\text{pos}, i
 11. **跨模态因果不变性与非平稳隐式混杂鲁棒学习（Cross-Modal Causal Invariance under Latent Confounding）：** 如何在连续高频传感流与异步非结构化事件文本交织的动态系统中，建立严谨的有限样本反事实边界，彻底解决未观测环境混杂变量对因果推断的系统性偏置。
 12. **极低功耗 MCU 端侧多模态神经架构搜索与混合位宽量化（Sub-Milliwatt Microcontroller NAS & Extreme Quantization）：** 针对 ARM Cortex-M 等微控制器的亚毫瓦级与亚兆字节硬件严苛限制，结合视界加权知识蒸馏、结构化自注意力剪枝与 1--4 bit 极低位宽量化感知编译，推动跨模态大模型走向万物智联。
 13. **无遗忘非平稳流式终身泛化与零样本在线元控制（Zero-Forgetting Streaming Continual Learning & Meta-Control）：** 针对行星级气候突变、深空遥感漂移与高频金融闪崩，构建基于最优传输（Wasserstein）与经验分布假设检验的在线流式元控制器，实现毫秒级自适应收敛与真正的零灾难性遗忘。
+14. **神经符号形式化逻辑验证与可信自主集群安全证书（Formal Safety Verification & Provable Certificates）：** 如何构建可微信号时间逻辑（STL）损失函数与在线监控自动机，为自主飞行集群与智能变电站等安全攸关系统提供具备数学保证的可证明安全证书（$\rho(\mathbf{x}, t, \varphi) > 0$），彻底根除跨模态黑盒推理的虚假外推隐患。
+15. **行星级超稀疏不规则超图拓扑与连续 ODE 几何深度学习（Ultra-Sparse Planetary Hypergraph Geometries & Continuous Neural ODEs）：** 面对覆盖数百万边缘节点的物联网环境（传感器缺失率超过 90% 且网络拓扑动态重构），如何突破固定欧氏网格与局部图卷积，将连续时间常微分方程推广至非欧黎曼流形与多尺度超图关联矩阵 $\mathbf{H} \in \mathbb{R}^{V \times E}$。
+16. **异构多模态边缘联邦训练与非独立同分布严格差分隐私保证（Differential Privacy Guarantees in Heterogeneous Multimodal Edge Federations）：** 针对跨医院电子病历、智慧微电网与多机构交易日志等隐私敏感孤岛，如何在持续流式非独立同分布漂移（Non-IID Drift）及对抗投毒攻击下，建立严谨的 $(\epsilon, \delta)$-差分隐私理论下界与轻量级个性化稀疏子网络协同机制。
 

@@ -2,7 +2,7 @@
 
 [![Survey Paper](https://img.shields.io/badge/Paper-PDF-red.svg)](paper/main.pdf) 
 [![PRISMA 2020](https://img.shields.io/badge/PRISMA-2020%20Compliant-blue.svg)](docs/PROTOCOL.md) 
-[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%207-brightgreen.svg)](docs/STATE.md) 
+[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%208-brightgreen.svg)](docs/STATE.md) 
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) 
 
 > **Bilingual Repository** / **中英文双语前沿综述与开源精选仓库**  
@@ -17,6 +17,9 @@
 本综述全面梳理了 **2021年至今的多模态时序前沿工作**，深入探讨了将时序信号与**自然语言文本（新闻、报告、指令提示）**、**视觉图像（折线图、频谱图、卫星影像）**、**脉冲神经形态（SNN）**及**物理场约束**协同建模的新范式。核心内容涵盖：
 - **重编程与提示对齐（Reprogramming & Prompting）：** 如 Time-LLM、One Fits All (GPT4TS)、TEMPO、CALF，通过重编程层将时序Patch映射到预训练语言模型的潜空间；
 - **参数高效微调权衡（PEFT vs. Full Pre-training）：** 深入量化对比 LoRA、Adapter 与全参微调在显存壁垒（24GB/80GB）、计算开销与 MSE 泛化上的 Pareto 前沿；
+- **神经符号时间逻辑与形式化安全验证（Neuro-Symbolic Temporal Logic & Formal Verification）：** 如 SELA / Grammar of the Wave (Wan et al. 2026, EMNLP 2026)、Signal2Symbol (Mansour et al. 2026)，将一阶逻辑（FOL）与信号/度量时间逻辑（STL/MTL）规范与视觉语言模型（VLM）及生理波形（ECG/EEG）深度融合，构建可解释符号事件检测语法树，在复杂时序逻辑嵌套深度达 5 时仍维持 87.1% F1（较纯黑盒 VLM 提升 49.0%），且实现形式化安全不变量零伪阳性违背；
+- **超稀疏不规则时序与多尺度超图对齐（Irregular Sensor Topologies & Multi-Scale Hypergraph LLMs）：** 如 LLMODE (Zhang et al. 2026)、MSHyper-LLM (Shang et al. 2026)，通过神经常微分方程（Neural ODE）门控 Token 注入机制与多尺度超图关联矩阵 $\mathbf{H} \in \mathbb{R}^{V \times E}$，直接处理时序严重异步与超过 90% 的连续传感器缺失，在 85% 缺失率下仍维持 MSE $\le 0.410$；
+- **数据主权与隐私保护联邦跨模态基础模型（Privacy-Preserving Federated Multimodal TSFMs）：** 如 FedChronos (Sharma et al. 2026)、PerFed-TSFM (Nihalchandani et al. 2026)、FLISM (Orzikulova et al. 2024, MobiCom 2024)，在跨机构异构数据与非独立同分布漂移（Non-IID $\alpha=0.1$）下，通过联邦参数高效 LoRA 微调、个性化稀疏子网络路由与模态不变表征蒸馏，减少 98.5% 通信开销并实现近集中式精度的严格差分隐私保证；
 - **跨模态因果发现与反事实事件增强（Cross-Modal Causal Discovery & Confounder Disentanglement）：** 如 CAMEF (Zhang et al. 2025)、Augur (Cui et al. 2025)、TiMi (Lin et al. 2026)，通过大模型启发式搜索推断有向因果图，结合反事实宏观事件增强与多模态混合专家架构（MMoE），在强混杂干扰（$\gamma=0.9$）下使因果边识别 F1 保持在 81.9%（较传统因果方法提升 55.4%）；
 - **端侧微控制器基础模型极度蒸馏（Microcontroller Foundation Model Distillation）：** 如 DistilTS (Li et al. 2026, ICASSP 2026)、GUARD (Dey et al. 2026, KDD 2026)，通过预测视界加权目标克服长时视界欠拟合，辅以不确定性门控温度熔断机制，实现 1/150 参数极度压缩与 6000 倍推断加速，内存完全拟合 ARM Cortex-M 严苛边界（$<512$ KB SRAM, $<2$ MB Flash）；
 - **行星级非平稳流式测试时适应（Streaming Test-Time Adaptation, TTA）：** 如 RG-TTA (Kumar et al. 2026)、TAFAS (Kim et al. 2025)，利用 Wasserstein-1 距离与 KS 检验集成机制动态评估流式数据分布相似度，自适应调节微调学习率并门控复用历史机制模型，在突发环境与金融冲击下使预测 MSE 降低 52.1%，彻底杜绝灾难性遗忘；
@@ -46,12 +49,16 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
 
 ### 🔍 PRISMA 2020 Systematic Review Counts
 
-- **Total Records Identified:** 547 (Databases: 360, Snowballing: 187)
-- **Deduplicated & Screened:** 447 (Duplicates removed: 100)
-- **Full-Text Assessed:** 104 (Excluded with documented rationale: 27)
-- **Included in Systematic Synthesis:** **77** studies
+- **Total Records Identified:** 582 (Databases: 380, Snowballing: 202)
+- **Deduplicated & Screened:** 474 (Duplicates removed: 108)
+- **Full-Text Assessed:** 113 (Excluded with documented rationale: 29)
+- **Included in Systematic Synthesis:** **84** studies
 
 ![PRISMA 2020 Flow](paper/figures/prisma_flow.png)
+
+### 🛡️ Neuro-Symbolic Logic Verification, Irregular Topologies & Federated Adaptation
+
+![Neuro-Symbolic, Irregular Topologies and Federated Adaptation](paper/figures/neurosymbolic_irregular_federated.png)
 
 ### 🧬 Cross-Modal Causal Discovery, Microcontroller Distillation & Streaming TTA
 
@@ -137,6 +144,31 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Text` | *Fusion:* `reprogramming_patching` | *Role:* `context_condition`  
   *Highlight:* Regime-guided test-time adaptation for streaming time series; continuously modulates learning rate and gradient budget via an ensemble of Wasserstein-1, KS test, and variance-ratio distributional similarity metrics.  
 
+- **[Signal2Symbol: Neuro-Symbolic Temporal Reasoning for Explainable Physiological Time-Series Anomaly Detection](https://arxiv.org/abs/2609.26820)** (arXiv 2026 2026)  
+  *Authors:* Naser Mansour, Sidahmed Benabderrahmane, Ameer Rahwan  
+  *Modality:* `TS+Logic/Text` | *Fusion:* `neuro_symbolic_grammar` | *Role:* `symbolic_verifier`  
+  *Highlight:* Neuro-symbolic temporal reasoning framework for physiological waveforms (ECG/EEG); translates continuous signals into discrete symbolic state transitions and logic rules for verifiable anomaly localization.  
+
+- **[LLMODE: Aligning ODEs with LLMs via Gated Token Injection for Irregular Spatio-Temporal Forecasting](https://arxiv.org/abs/2608.29640)** (arXiv 2026 2026)  
+  *Authors:* Di Zhang, Jingyang Zhang, Ziqian Wang et al.  
+  *Modality:* `TS+Graph+Text` | *Fusion:* `neural_ode_gated_injection` | *Role:* `continuous_dynamics`  
+  *Highlight:* Aligns continuous Neural ODEs with LLMs via gated token injection; overcomes severe irregular temporal sampling, asynchrony, and sensor topology shifts without exploding token windows.  
+
+- **[Multi-scale hypergraph meets LLMs: Aligning large language models for time series analysis](https://arxiv.org/abs/2602.04369)** (arXiv 2026 2026)  
+  *Authors:* Zongjiang Shang, Dongliang Cui, Binqing Wu et al.  
+  *Modality:* `TS+Hypergraph+Text` | *Fusion:* `multi_scale_hypergraph_reprogramming` | *Role:* `high_order_topology`  
+  *Highlight:* Constructs multi-scale hypergraph incident matrices capturing high-order non-pairwise interactions across multivariate channels and aligns them with textual time-series prompts.  
+
+- **[FedChronos: Federated Fine-Tuning of Time-Series Foundation Models for Privacy-Preserving Commodity Price Forecasting](https://arxiv.org/abs/2608.01290)** (arXiv 2026 2026)  
+  *Authors:* Amit Sharma, Nitin Auluck, Akramul Azim  
+  *Modality:* `TS+Text` | *Fusion:* `federated_peft_lora` | *Role:* `privacy_preserving_context`  
+  *Highlight:* Federated parameter-efficient fine-tuning framework for time-series foundation models (Chronos) enabling multi-institution collaboration under strict privacy and regulatory data sovereignty constraints.  
+
+- **[Personalized Federated Sparse Adaptation of Time-Series Foundation Models](https://arxiv.org/abs/2608.04695)** (arXiv 2026 2026)  
+  *Authors:* Priyanka Nihalchandani, Naman Srivastava, Varun Ojha et al.  
+  *Modality:* `TS+Text` | *Fusion:* `personalized_sparse_adapter` | *Role:* `localized_metadata`  
+  *Highlight:* Personalized federated sparse adaptation of TSFMs for non-IID smart building energy systems; dynamically decouples globally shared temporal foundations from client-specific sparse adapter subnetworks.  
+
 - **[Foundation models for time series forecasting: Application in conformal prediction](https://arxiv.org/abs/2507.08858)** (arXiv 2025 2025) • [Code](https://github.com/Ekimetrics/foundation-models-conformal-prediction)  
   *Authors:* Sami Achour, Yassine Bouher, Duong Nguyen et al.  
   *Modality:* `TS+Text` | *Fusion:* `conformalized_foundation_adaptation` | *Role:* `context_condition`  
@@ -181,6 +213,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Yong Liu, Guo Qin, Xiangdong Huang et al.  
   *Modality:* `TS+Text` | *Fusion:* `autoregressive_patching` | *Role:* `context_condition`  
   *Highlight:* Extends the Timer foundation model to extreme long contexts up to 10k+ steps via hierarchically grouped patch tokens.  
+
+- **[Federated Learning for Time-Series Healthcare Sensing with Incomplete Modalities](https://arxiv.org/abs/2405.11828)** (MobiCom 2024 2024) • [Code](https://github.com/AdibaOrz/FLISM)  
+  *Authors:* Adiba Orzikulova, Jaehyun Kwak, Jaemin Shin et al.  
+  *Modality:* `TS+Multimodal Sensor Signals` | *Fusion:* `federated_cross_modal_imputation` | *Role:* `missing_modality_reconstruction`  
+  *Highlight:* FLISM architecture for federated multimodal time-series healthcare sensing under incomplete modalities; features modality-invariant representations, quality-aware aggregation, and global distillation.  
 
 - **[Time-LLM: Time Series Forecasting by Reprogramming Large Language Models](https://arxiv.org/abs/2310.01728)** (ICLR 2024 2023) • [Code](https://github.com/KimMeen/Time-LLM)  
   *Authors:* Ming Jin, Shiyu Wang, Lintao Ma et al.  
@@ -228,6 +265,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Weilin Ruan, Yuxuan Liang  
   *Modality:* `TS+Vision+Text` | *Fusion:* `multi_agent_analyzer_reasoner_executor` | *Role:* `conversational_interface`  
   *Highlight:* Tool-driven multi-agent framework built on Analyzer-Reasoner-Executor paradigm to extract visual anchors from time-series plots and reconstruct predictive trajectories.  
+
+- **[Grammar of the Wave: Towards Explainable Multivariate Time Series Event Detection via Neuro-Symbolic VLM Agents](https://arxiv.org/abs/2603.11479)** (EMNLP 2026 2026) • [Code](https://github.com/cw-wan/SELA)  
+  *Authors:* Sky Chenwei Wan, Yifei Y. Wang, Tianjun Hou et al.  
+  *Modality:* `TS+Vision+Text` | *Fusion:* `neuro_symbolic_vlm` | *Role:* `symbolic_verifier`  
+  *Highlight:* Grammar of the Wave; introduces SELA unifying vision-language models with temporal logic grammars for explainable multivariate time-series event detection with formal compositional rules.  
 
 - **[Time-VLM: Exploring Multimodal Vision-Language Models for Augmented Time Series Forecasting](https://arxiv.org/abs/2502.04395)** (ICML 2025 2025) • [Code](https://github.com/decisionintelligence/Time-VLM)  
   *Authors:* Siru Zhong, Weilin Ruan, Ming Jin et al.  
