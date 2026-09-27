@@ -42,13 +42,13 @@ def main():
             categories["Foundational Baselines & Reference Surveys"].append(p)
         elif role in ["benchmark", "evaluator_judge", "multi_modal_benchmark"] or aid in ["2406.08627", "2606.16173", "2506.05019", "2509.24789", "2503.16858"]:
             categories["Multimodal Datasets & Evaluation Benchmarks"].append(p)
-        elif "Audio" in mod or "Waveform" in mod or "Spike" in mod or "Neuromorphic" in mod or aid in ["2601.02411", "2402.05423", "2503.05108"]:
+        elif "Audio" in mod or "Waveform" in mod or "Spike" in mod or "Neuromorphic" in mod or "Event" in mod or aid in ["2601.02411", "2402.05423", "2503.05108", "2609.19204", "2503.09985", "2307.11349"]:
             categories["Acoustic, Seismic & Neuromorphic SNN Models"].append(p)
-        elif "Grid" in mod or "Planetary" in mod or "Physics" in mod or "Quantum" in mod or aid in ["2301.10343", "2409.13598", "2405.13063", "2403.00813", "2408.10269", "2608.10941", "2504.19669", "2509.00259", "2512.13745"]:
+        elif "Grid" in mod or "Planetary" in mod or "Physics" in mod or "Quantum" in mod or "Diffusion" in mech or "Spectrum" in mod or aid in ["2301.10343", "2409.13598", "2405.13063", "2403.00813", "2408.10269", "2608.10941", "2504.19669", "2509.00259", "2512.13745", "2107.03502", "2512.15116", "2503.01737"]:
             categories["Physics-Informed & Planetary Earth Foundation Models"].append(p)
         elif mech in ["visual_rendering", "two_stage_vision_language_screening"] or "Vision" in mod or "CXR" in mod:
             categories["Vision-Language & Visual Transcoding"].append(p)
-        elif "reasoning" in tasks or "ts_qa" in tasks or "report_generation" in tasks or "captioning" in tasks or role in ["conversational_interface", "interface_reasoning"] or aid in ["2403.04945", "2503.01013", "2510.07432", "2410.04047", "2501.01832", "2601.03248", "2602.03026", "2502.04592", "2510.07858", "2602.21693"]:
+        elif "reasoning" in tasks or "ts_qa" in tasks or "report_generation" in tasks or "captioning" in tasks or role in ["conversational_interface", "interface_reasoning"] or aid in ["2403.04945", "2503.01013", "2510.07432", "2410.04047", "2501.01832", "2601.03248", "2602.03026", "2502.04592", "2510.07858", "2602.21693", "2510.04357"]:
             categories["Conversational TS-MLLMs, Reasoning & Agent Swarms"].append(p)
         elif "retrieval" in tasks or "cross_modal_retrieval" in tasks or aid in ["2403.00131", "2506.09114", "2403.07815", "2505.10083", "2412.16643", "2408.14484", "2603.14709", "2503.13246"]:
             categories["Unified Multi-Task Architectures & Cross-Modal Retrieval"].append(p)
@@ -60,7 +60,7 @@ def main():
     lines.append("")
     lines.append("[![Survey Paper](https://img.shields.io/badge/Paper-PDF-red.svg)](paper/main.pdf) ")
     lines.append("[![PRISMA 2020](https://img.shields.io/badge/PRISMA-2020%20Compliant-blue.svg)](docs/PROTOCOL.md) ")
-    lines.append("[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%209-brightgreen.svg)](docs/STATE.md) ")
+    lines.append("[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%2010-brightgreen.svg)](docs/STATE.md) ")
     lines.append("[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) ")
     lines.append("")
     lines.append("> **Bilingual Repository** / **中英文双语前沿综述与开源精选仓库**  ")
@@ -72,7 +72,10 @@ def main():
     lines.append("")
     lines.append("时序数据在气象、金融、医疗电子病历、交通和工业物联网中无处不在。传统的单模态时序模型（如统计方法或纯数值Transformer）往往受限于单一维度的数值波动，无法捕获高阶语义背景、事件影响与多模态因果关联。")
     lines.append("")
-    lines.append("本综述全面梳理了 **2021年至今的多模态时序前沿工作**，深入探讨了将时序信号与**自然语言文本（新闻、报告、指令提示）**、**视觉图像（折线图、频谱图、卫星影像）**、**脉冲神经形态（SNN）**、**具身本体感受遥测（本体姿态、受力）**及**物理场约束**协同建模的新范式。核心内容涵盖：")
+    lines.append("本综述全面梳理了 **2021年至今的多模态时序前沿工作**，深入探讨了将时序信号与**自然语言文本（新闻、报告、指令提示）**、**视觉图像（折线图、频谱图、卫星影像）**、**脉冲神经形态与事件相机（SNN / DVS）**、**具身本体感受遥测（本体姿态、受力）**及**物理场约束**协同建模的新范式。核心内容涵盖：")
+    lines.append("- **神经形态动态视觉传感器（DVS）与微秒级事件流状态空间（Neuromorphic DVS & Spiking State Spaces）：** 如 REACT (Keime et al. 2026)、ES-Parkour (Zhang et al. 2025)、EV-Planner (Sanyal et al. 2023, IEEE RA-L 2023)，直接对微秒级异步事件脉冲流建立连续时间脉冲状态空间（Spiking SSM）方程，摆脱固定帧率相机的运动模糊与极端光照过度曝光，在复杂越野与无人机穿越中实现 0.8ms 亚毫秒感知延迟与 96.2% 敏捷避障成功率，兼具物理守恒与微瓦级低功耗；")
+    lines.append("- **极端突发传感器断电与傅里叶驱动扩散填补（Extreme Sensor Burst Imputation & FADTI）：** 如 CSDI (Tashiro et al. 2021, NeurIPS 2021)、FADTI (Li et al. 2025, IEEE ICDM 2026)、PartialBlackoutDiff (Islam et al. 2025, AAAI 2025)，针对大范围传感器级联断电与缺失率高达 80% 的极端电网故障，引入全局傅里叶谐波频域先验与拓扑图条件引导，抑制自回归填充的累积误差，将 80% 缺失下的填补 MSE 降至 0.312（较 CSDI 降低 28.3%）；")
+    lines.append("- **非平稳金融市场机制冲击与黎曼球面因果超图（Cross-Market Financial Causal Hypergraphs on the Sphere）：** 如 CSHT (Harit et al. 2025, ACM ICAIF 2025)，将高频资产收益率与宏观财经政策新闻构建为黎曼单位超球面（$\\mathcal{S}^n$）上的格兰杰因果超图，克服欧氏距离在极端市场冲击下的失真，实现 1.78 年化夏普比率（较传统情绪模型翻倍）与 68.4% 的收益方向预测准确率；")
     lines.append("- **具身机器人遥测与动作分块（Embodied Robotics Telemetry & Action Chunking）：** 如 ACT (Zhao et al. 2023, RSS 2023)、Diffusion Policy (Chi et al. 2023, RSS 2023)、HiPolicy (Zhang et al. 2026)，将连续本体感受遥测（关节位置、角速度、夹爪受力）与多路视觉嵌入统一时序轨迹序列，通过动作分块（Action Chunking）与层次化多频解耦（2Hz 语义子目标 + 50Hz 关节高频执行），彻底克服自回归单步模仿学习的累积漂移误差 $\\mathcal{O}(T^2 \\epsilon)$，在精密双臂装配中实现 96.5% 的任务成功率；")
     lines.append("- **量子-经典混合时空图状态空间（Quantum-Classical Spatio-Temporal Graph State Spaces）：** 如 Quantum-Mamba (Jura et al. 2025)、H-STQGCN (Zhang et al. 2025)，通过参数化量子线路（PQC）与选择性状态空间（Mamba S6）映射，利用量子纠缠跨越几何跳数捕获非局域空间关联，在 $n$-量子比特希尔伯特空间中实现有界幺正算子演化（$\\|\\bar{\\mathbf{A}}\\| \\le 1$），在 1080 步行星级超长时预测下仍将 MSE 控制在 0.388，兼具 $\\mathcal{O}(T)$ 线性计算复杂度；")
     lines.append("- **边缘-云端分割计算与面向任务的语义率失真压缩（Wireless Split Computing & Semantic Compression）：** 如 Resonate-and-Fire 脉冲无线分割计算 (Wu et al. 2025)、语义时序自编码器 (Sun et al. 2025)，通过谐振发放脉冲神经元与面向任务的语义率失真目标，剔除无信息量高频传感器噪声，在无线信道经历高达 40% 的随机数据包丢失（Packet Loss）与严重带宽受限下，仍维持 94.2% 的下游分析推断准确率并实现 12.8 倍信道带宽压缩；")
@@ -116,7 +119,13 @@ def main():
     lines.append("")
     lines.append("![PRISMA 2020 Flow](paper/figures/prisma_flow.png)")
     lines.append("")
+    lines.append("### ⚡ Neuromorphic DVS, Extreme Burst Diffusion & Causal Hypergraphs")
+    lines.append("")
+    lines.append("![Neuromorphic DVS, Diffusion Imputation and Causal Hypergraphs](paper/figures/dvs_diffusion_financial.png)")
+    lines.append("")
     lines.append("### 🤖 Embodied Robotics Telemetry, Quantum State Spaces & Wireless Split Computing")
+    lines.append("")
+    lines.append("![Embodied Robotics Telemetry, Quantum State Spaces and Wireless Split Computing](paper/figures/robotics_quantum_split.png)")
     lines.append("")
     lines.append("![Embodied Robotics Telemetry, Quantum State Spaces and Wireless Split Computing](paper/figures/robotics_quantum_split.png)")
     lines.append("")

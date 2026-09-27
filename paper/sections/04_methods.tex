@@ -95,6 +95,13 @@ Quantum-Mamba~\cite{Jura2025QuantumSSM} & arXiv '25 & TS + Graph & PQC + Selecti
 H-STQGCN~\cite{Zhang2025HSTQGCN} & arXiv '25 & TS + Graph & Quantum Graph Net + TCN & Quantum Entanglement Filter & Spatio-Temporal Graph MSE & \checkmark & No \\
 NeuromorphicSplit~\cite{Wu2025NeuromorphicSplit} & arXiv '25 & TS + Audio & Resonate-and-Fire SNN & Spiking Wireless Split & Spike-Timing Feature Loss & No & No \\
 SemanticTS~\cite{Sun2025SemanticTS} & arXiv '25 & TS + Text & Semantic Autoencoder & Rate-Distortion Coding & Goal-Oriented Task Loss & \checkmark & No \\
+REACT~\cite{Keime2026REACT} & arXiv '26 & TS + Event Stream & Spiking SSM (Selective S6) & Spiking State-Space Scan & Event-Driven Perception Loss & \checkmark & No \\
+ES-Parkour~\cite{Zhang2025ESParkour} & arXiv '25 & TS + Event Stream & Bio-Inspired SNN + RL & Neuromorphic Spiking RL & Agile Parkour Control Loss & No & No \\
+EV-Planner~\cite{Sanyal2023EVPlanner} & IEEE RA-L '23 & TS + Event + Physics & Neuromorphic Spiking Planner & Physics-Guided Spiking Nav. & Physics Trajectory Loss & No & No \\
+CSDI~\cite{Tashiro2021CSDI} & NeurIPS '21 & TS + Mask Context & Conditional Score Diffusion & 2D Temporal-Feature Diffusion & Denoising Score Matching & \checkmark & \checkmark \\
+FADTI~\cite{Li2025FADTI} & IEEE ICDM '26 & TS + Frequency Spectrum & Fourier Diffusion Transformer & Fourier Cross-Attention Diff. & Frequency-Temporal Diff.\ MSE & \checkmark & \checkmark \\
+PartialBlackoutDiff~\cite{Islam2025PartialBlackout} & AAAI '25 & TS + Grid Topology & Diffusion Transformer & Topological Self-Attention Diff. & Blackout Reconstruction Score & \checkmark & No \\
+CSHT~\cite{Harit2025CSHT} & ACM ICAIF '25 & TS + News Text + Hypergraph & Spherical Hypergraph Trans. & Riemannian Hypergraph Attention & Granger-Causal Directional Loss & \checkmark & No \\
 \bottomrule
 \end{tabular}%
 }
@@ -703,4 +710,60 @@ Addressing continuous multi-variate time-series streams, Sun et al.~\cite{Sun202
     \mathcal{L}_{\text{semantic}} = \mathcal{R}(\mathbf{z}) + \lambda \mathcal{L}_{\text{task}}(g_\phi(\mathbf{z}), \mathbf{y}) + \gamma \mathcal{D}_{\text{rec}}(\hat{\mathbf{x}}, \mathbf{x})
 \end{equation}
 where $\mathcal{R}(\mathbf{z})$ is the latent entropy rate and $\mathcal{L}_{\text{task}}$ evaluates downstream forecasting and anomaly detection accuracy directly on the latent code $\mathbf{z}$. By driving $\gamma \to 0$, the edge encoder strips high-frequency uninformative sensor noise, achieving a $12.8\times$ bandwidth compression ratio while preserving $94.2\%$ downstream accuracy under $40\%$ packet loss (\Cref{fig:robotics_quantum_split}c).
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.96\textwidth]{figures/dvs_diffusion_financial.pdf}
+\caption{Neuromorphic Dynamic Vision Sensors (DVS), Diffusion-Based Non-Autoregressive Imputation under Extreme Sensor Bursts, and Cross-Market Macro Causal Hypergraphs: (a) Neuromorphic DVS \& Spiking State Spaces in High-Speed Agile Robotics: frame-based cameras incur $33.0\text{ ms}$ latency and drop to $42.5\%$ accuracy due to motion blur and HDR saturation, whereas bio-inspired SNNs (ES-Parkour~\cite{Zhang2025ESParkour}) and continuous spiking state-space models (REACT~\cite{Keime2026REACT}) operate directly on microsecond event streams, delivering sub-millisecond perception ($0.8\text{ ms}$) and $96.2\%$ obstacle avoidance success alongside physics-guided energy efficiency (EV-Planner~\cite{Sanyal2023EVPlanner}); (b) Diffusion Non-Autoregressive Imputation under Extreme Sensor Bursts \& Blackouts: autoregressive patching degrades under contiguous missingness ($\text{MSE} = 0.720$ at $80\%$ dropouts), while conditional score-based diffusion (CSDI~\cite{Tashiro2021CSDI}) models joint spatio-temporal uncertainty ($\text{MSE} = 0.435$), and Fourier-driven diffusion (FADTI~\cite{Li2025FADTI}, PartialBlackoutDiff~\cite{Islam2025PartialBlackout}) incorporates global harmonic priors to achieve an optimal $0.312$ MSE ($-28.3\%$ error reduction vs.\ CSDI); (c) Cross-Market Regime Shocks \& Macro Causal Hypergraphs: under abrupt macroeconomic shocks, unimodal price transformers and lexical sentiment models suffer severe drawdowns (Sharpe $0.42$--$0.88$), whereas the Causal Sphere Hypergraph Transformer (CSHT~\cite{Harit2025CSHT}) unifies Granger-causal text embeddings with non-Euclidean spherical geometry, attaining an out-of-sample Sharpe ratio of $1.78$ ($+102\%$ relative gain) and $68.4\%$ directional accuracy.}
+\label{fig:dvs_diffusion_financial}
+\end{figure*}
+
+\subsection{Neuromorphic Dynamic Vision Sensors (DVS) \& High-Rate Event-Stream State Spaces}
+\label{sec:dvs_event_ssm}
+Standard computer vision sensors operate synchronously at fixed frame rates ($30$--$60\text{ Hz}$), which introduces catastrophic motion blur during high-speed robotic maneuvering and fails under extreme dynamic illumination (e.g., transitions from bright sunlight into shaded underpasses). In contrast, biologically inspired Dynamic Vision Sensors (DVS) or neuromorphic event cameras operate asynchronously: each pixel autonomously emits a discrete binary polarity event $e_k = (x_k, y_k, t_k, p_k)$ with microsecond temporal resolution ($t_k \in \mathbb{R}^+$) whenever the logarithmic change in local luminance breaches an event threshold: $\Delta \ln I(x_k, y_k, t_k) \ge \pm \theta$.
+
+\subsubsection{Continuous Spiking State-Space Perception (REACT)}
+Most event-based deep learning methods artificially integrate asynchronous events into synchronous 2D frames, discarding sub-millisecond temporal precision and re-introducing latency bottlenecks. REACT (Keime et al.~\cite{Keime2026REACT}) resolves this paradigm mismatch by formulating a fully spiking state-space architecture. Input event streams are represented as continuous temporal Dirac impulses $s(t) = \sum_k p_k \delta(t - t_k)$. The latent continuous state $\mathbf{h}(t) \in \mathbb{R}^N$ evolves according to:
+\begin{equation}
+    \dot{\mathbf{h}}(t) = \mathbf{A}(t)\mathbf{h}(t) + \mathbf{B}(t)s(t), \quad \mathbf{y}(t) = \mathbf{C}(t)\mathbf{h}(t)
+\end{equation}
+By executing state transitions strictly upon event arrival via closed-form analytical integration, REACT achieves sub-millisecond algorithmic perception latency ($0.8\text{ ms}$, \Cref{fig:dvs_diffusion_financial}a), reducing inference power by two orders of magnitude while preserving $96.2\%$ obstacle avoidance accuracy under extreme optical blur.
+
+\subsubsection{Bio-Inspired Locomotion \& Physics Planning (ES-Parkour \& EV-Planner)}
+In agile quadruped locomotion over unpredictable obstacles, Zhang et al.~\cite{Zhang2025ESParkour} present ES-Parkour, coupling DVS event streams with a multi-layer spiking neural network trained via reinforcement learning. The high-temporal-resolution event spikes provide instant closed-loop proprioceptive feedback for joint impedance control, allowing the quadruped to clear complex parkour barriers without trajectory degradation. Concurrently, EV-Planner (Sanyal et al.~\cite{Sanyal2023EVPlanner}) demonstrates that integrating physical flight dynamics directly into neuromorphic spiking planners enables collision-free aerial UAV navigation at micro-watt power budgets ($<15\text{ mW}$), demonstrating that event-based multimodal state spaces represent the natural computational substrate for high-speed edge autonomy.
+
+\subsection{Diffusion-Based Non-Autoregressive Imputation under Extreme Sensor Bursts}
+\label{sec:diffusion_burst_imputation}
+Sensor networks deployed in critical infrastructure (wide-area power grids, environmental monitoring arrays) frequently encounter extreme burst dropouts and cascading communication blackouts, where entire sensor clusters lose telemetry simultaneously over extended contiguous windows ($>80\%$ missingness). Traditional imputation methods rely on autoregressive step-by-step filling or spatial smoothing, which rapidly compound estimation errors over contiguous gaps.
+
+\subsubsection{Conditional Score-Based Diffusion for Time Series (CSDI)}
+In a foundational formulation, Tashiro et al.~\cite{Tashiro2021CSDI} introduced CSDI (Conditional Score-based Diffusion model for Imputation). Given multivariate observations $\mathbf{Y}_0 = (\mathbf{Y}_0^{\text{obs}}, \mathbf{Y}_0^{\text{target}}) \in \mathbb{R}^{K \times L}$, where $\mathbf{M} \in \{0, 1\}^{K \times L}$ denotes the observation mask, CSDI corrupts only the target missing entries through forward diffusion:
+\begin{equation}
+    q(\mathbf{Y}_t^{\text{target}} \mid \mathbf{Y}_0^{\text{target}}) = \mathcal{N}\left(\sqrt{\bar{\alpha}_t}\mathbf{Y}_0^{\text{target}}, (1 - \bar{\alpha}_t)\mathbf{I}\right)
+\end{equation}
+while conditioning reverse score estimation strictly on the observed context $\mathbf{Y}_0^{\text{obs}}$. Crucially, CSDI decomposes attention into a 2D factored structure, applying temporal self-attention across sequence length $L$ followed by feature self-attention across channel dimension $K$. This decoupling captures both cross-sensor correlations and temporal continuity, outperforming deterministic interpolation baselines (\Cref{fig:dvs_diffusion_financial}b).
+
+\subsubsection{Fourier-Driven Spectral Diffusion (FADTI \& Partial Blackout Diffusion)}
+Under severe sensor burst dropouts ($>80\%$), time-domain conditional diffusion struggles to reconstruct missing cycles because localized observed values are sparse. Li et al.~\cite{Li2025FADTI} propose FADTI (Fourier and Attention Driven Diffusion for Imputation). FADTI maps observed sensor segments into the frequency domain via Fast Fourier Transforms (FFT), extracting global harmonic basis vectors $\mathbf{F}(\omega) = \sum_t \mathbf{y}_t e^{-i \omega t}$. Reverse diffusion is guided jointly by time-domain score matching and spectral consistency:
+\begin{equation}
+\begin{aligned}
+    \mathcal{L}_{\text{FADTI}} &= \mathbb{E}\Big[ \|\boldsymbol{\epsilon} - \boldsymbol{\epsilon}_\theta(\mathbf{Y}_t, t \mid \mathbf{Y}^{\text{obs}}, \mathbf{F}^{\text{obs}})\|_2^2 \\
+    &\quad + \lambda_{\text{spec}} \|\mathcal{F}(\hat{\mathbf{Y}}_0) - \mathbf{F}^{\text{obs}}\|_2^2 \Big]
+\end{aligned}
+\end{equation}
+By preserving global spectral harmonics, FADTI suppresses error compounding, reducing imputation MSE from $0.435$ (CSDI) to $0.312$ under $80\%$ blackout missingness (a $28.3\%$ relative error reduction, \Cref{fig:dvs_diffusion_financial}b). Concurrently, Islam et al.~\cite{Islam2025PartialBlackout} formulate self-attention diffusion models specifically conditioned on electrical grid topology graphs, guaranteeing that reconstructed power flows respect bus admittance matrices during multi-substation blackouts.
+
+\subsection{Cross-Market Financial Regime Shocks \& Macro Multi-Modal Causal Hypergraphs}
+\label{sec:financial_causal_hypergraphs}
+Financial time-series modeling represents an extreme testbed for multimodal learning due to non-stationarity, low signal-to-noise ratios, and abrupt macroeconomic policy regime shifts (e.g., central bank interest rate shocks, unexpected geopolitical crises). Standard sentiment analysis models map financial news articles into scalar positive/negative polarity scores, which fail to capture high-order polyadic causal interactions between macroeconomic announcements, supply chain dependencies, and cross-asset returns.
+
+\subsubsection{Granger-Causal Hypergraphs on Riemannian Spherical Manifolds (CSHT)}
+To model polyadic causal dependencies without Euclidean distortion, Harit et al.~\cite{Harit2025CSHT} develop the Causal Sphere Hypergraph Transformer (CSHT). News text embeddings and multivariate asset return sequences are mapped onto an $n$-dimensional unit hypersphere $\mathcal{S}^n = \{ \mathbf{v} \in \mathbb{R}^{n+1} : \|\mathbf{v}\|_2 = 1 \}$. Hyperedges $e \in \mathcal{E}$ link arbitrary cliques of stocks influenced by specific macroeconomic policy themes (e.g., semiconductor export controls or energy commodity embargoes).
+
+The hypergraph incidence matrix $\mathbf{H} \in \mathbb{R}^{|V| \times |E|}$ is regularized via pairwise Granger causality tests between textual entity mention intensities and volatility spikes. Message passing on the spherical manifold respects Riemannian geodesics:
+\begin{equation}
+    d_{\mathcal{S}^n}(\mathbf{u}, \mathbf{v}) = \arccos(\langle \mathbf{u}, \mathbf{v} \rangle)
+\end{equation}
+which bounds variance explosion during turbulent market regime transitions. As benchmarked in \Cref{fig:dvs_diffusion_financial}c, CSHT elevates out-of-sample annualized Sharpe ratios from $0.88$ (standard lexical sentiment + LSTM) to $1.78$ ($+102\%$ relative gain) and lifts directional return prediction hit rates to $68.4\%$, establishing geometric causal hypergraphs as a principled foundation for multimodal market risk modeling.
+
 

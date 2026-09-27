@@ -1,7 +1,7 @@
 \section{Open Challenges and Future Trajectories}
 \label{sec:outlook}
 
-Despite rapid progress, multimodal time series intelligence faces foundational theoretical and engineering hurdles. In this section, we delineate twelve open challenges and outline high-leverage future research trajectories.
+Despite rapid progress, multimodal time series intelligence faces foundational theoretical and engineering hurdles. In this section, we delineate fifteen open challenges and outline high-leverage future research trajectories.
 
 \subsection{1. The Continuous-to-Discrete Gap and Physical Conservation Laws}
 While natural language and visual objects exhibit discrete, hierarchical compositional semantics, physical time series are continuous, non-stationary, and governed by underlying differential equations and conservation laws (e.g., mass, momentum, energy). Discretizing numerical time series into discrete vocabulary tokens often results in precision loss or quantization artifacts. Conversely, continuous patch projections frequently suffer from representational collapse when mapped into unconstrained language embeddings. In planetary and cyber-physical domains (such as ClimaX~\cite{Nguyen2023ClimaX}, Prithvi WxC~\cite{Schmude2024PrithviWxC}, and Aurora~\cite{Bodnar2024Aurora}), future architectures must integrate physics-informed loss constraints and Hamiltonian or symplectic neural network priors to ensure predictions respect invariant conservation laws.
@@ -38,6 +38,15 @@ While quantum parameterized circuits and selective state spaces (Quantum-Mamba~\
 
 \subsection{12. Asymmetric Edge-Cloud Semantic Drift \& Wireless Channel Resilience}
 In distributed cyber-physical infrastructures, edge-cloud split computing and goal-oriented semantic compression (NeuromorphicSplit~\cite{Wu2025NeuromorphicSplit}, SemanticTS~\cite{Sun2025SemanticTS}) demonstrate impressive resilience against random wireless packet erasures. However, non-stationary environmental shifts introduce asymmetric semantic drift: the edge encoder and cloud decoder gradually fall out of distributional alignment over time. Future architectures must formulate continuous online rate-distortion calibration and self-supervised latent synchronization protocols that adapt to time-varying channel capacities and fading dynamics without saturating uplink bandwidth.
+
+\subsection{13. Asynchronous Multi-Modality Temporal Alignment under Microsecond DVS Event Rates}
+Biologically inspired Dynamic Vision Sensors (DVS) produce asynchronous spike event streams with microsecond temporal resolution ($>10^6\text{ events/sec}$), whereas physical inertial telemetry ($100\text{ Hz}$), lidar ($10\text{ Hz}$), and high-level language guidance ($1\text{ Hz}$) operate on disparate, multi-rate timescales (REACT~\cite{Keime2026REACT}, ES-Parkour~\cite{Zhang2025ESParkour}, EV-Planner~\cite{Sanyal2023EVPlanner}). Current models force artificial temporal binning into synchronous frame slices, re-introducing motion blur and processing latency. Future multimodal foundation models must formulate continuous-time state-space architectures that ingest continuous event point processes directly alongside sampled numerical series, resolving cross-modal asynchronous phase lag through event-triggered differential updates.
+
+\subsection{14. Non-Autoregressive Diffusion Imputation Convergence under Cascading Sensor Outages}
+While score-based conditional diffusion models (CSDI~\cite{Tashiro2021CSDI}, FADTI~\cite{Li2025FADTI}, PartialBlackoutDiff~\cite{Islam2025PartialBlackout}) exhibit exceptional fidelity in reconstructing multivariate sensor dropouts during extreme weather and power grid blackouts, iterative reverse Langevin diffusion sampling requires dozens of sequential denoising steps. This incurs multi-second latency, preventing real-time emergency trip intervention. Future research must develop non-autoregressive consistency models and one-step rectified flow distillation tailored for physical multivariate manifolds, enabling sub-10ms burst imputation while strictly preserving underlying physical governing equations.
+
+\subsection{15. Non-Stationary Regime Generalization in Cross-Modal Financial Causal Graphs}
+Financial time-series modeling suffers from severe non-stationarity, shifting market volatility regimes, and low signal-to-noise ratios. Although Granger-causal spherical hypergraphs (CSHT~\cite{Harit2025CSHT}) alleviate Euclidean distortion, sudden regulatory shocks or geopolitical crises abruptly reconfigure directed causal dependencies among assets and news narratives. Developing adaptive Riemannian manifolds, causal invariance tests with finite-sample bounds, and online counterfactual event intervention frameworks represents a crucial frontier for robust, hallucination-free financial foundation modeling.
 
 \section{Conclusion}
 \label{sec:conclusion}

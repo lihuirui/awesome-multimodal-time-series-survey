@@ -1,9 +1,9 @@
 # Systematic Review Protocol: Multimodal Time Series Models (PRISMA 2020)
 
-**Protocol Version:** 1.5.0  
+**Protocol Version:** 1.6.0  
 **Initial Date:** 2026-09-24  
-**Last Updated:** 2026-09-26  
-**Scope Time Window:** 2021-01-01 to 2026-09-26 (continuous updating)  
+**Last Updated:** 2026-09-27  
+**Scope Time Window:** 2021-01-01 to 2026-09-27 (continuous updating)  
 **Lead Reviewer:** Antigravity Autonomous Research Agent  
 
 ---
@@ -46,12 +46,15 @@ Searches are systematically conducted across:
 ### String 5: Conformal UQ, Continuous-Time SSM & Red-Teaming Defense (Iteration 5)
 `("conformal prediction" OR "conformalized" OR "continuous-time" OR "neural CDE" OR "state-space model" OR "Mamba" OR "red-teaming" OR "contamination audit") AND ("time series" OR "temporal forecasting" OR "foundation model")`
 
+### String 6: Neuromorphic DVS Event Streams, Non-Autoregressive Diffusion Imputation & Cross-Market Financial Causal Hypergraphs (Iteration 10)
+`("neuromorphic" OR "event camera" OR "DVS" OR "event stream" OR "diffusion imputation" OR "non-autoregressive" OR "burst dropout" OR "financial causal" OR "hypergraph") AND ("time series" OR "spatio-temporal" OR "continuous-time" OR "state space")`
+
 ---
 
 ## 4. Eligibility Criteria
 
 ### Inclusion Criteria (IC):
-- **IC1:** Published or released on arXiv between **2021-01-01 and 2026-09-25**.
+- **IC1:** Published or released on arXiv between **2021-01-01 and 2026-09-27**.
 - **IC2:** The proposed model or methodology explicitly integrates time series data with at least one additional modality (text, image, video, audio, knowledge graph, tabular metadata) OR provides a multimodal benchmark/dataset specifically designed for time series.
 - **IC3:** Contains verifiable algorithmic formulations, experimental methodology, and empirical evaluation.
 - **IC4:** Metadata is fully verifiable via public scholarly APIs (arXiv, Semantic Scholar, OpenAlex, Crossref, or DBLP).
@@ -155,4 +158,21 @@ To evaluate the empirical validity of reported multimodal performance gains, a s
   - Formulated Multimodal Structural Causal Models (M-SCMs) with counterfactual event augmentation, horizon-weighted distillation objectives overcoming prediction difficulty discrepancy, and Wasserstein-1 / KS ensemble metric regime-guided meta-control.
   - Plotted 3-panel publication figure `paper/figures/causal_distill_tta.png` and vector `.pdf`.
   - Expanded verified corpus from 70 to 77 milestone papers (2021--2026) with 100% API verification cached in `data/raw/` and strict PRISMA arithmetic closure ($547 - 100 = 447$; $447 - 343 = 104$; $104 - 27 = 77 = 77$).
+- **2026-09-26 (v1.5.1):** Iteration 8 expansion:
+  - Added Search Strings for neuro-symbolic temporal logic (STL/MTL) verification (`GrammarWave`, `Signal2Symbol`), irregular continuous-depth Neural ODEs (`LLMODE`, `MSHyperLLM`), and federated privacy-preserving adaptation (`FedChronos`, `PerFedTSFM`, `FedImpHC`).
+  - Formulated quantitative STL robustness degree, irregular hypergraph incidence propagation, and Rényi Differential Privacy bounds for decentralized TSFM fine-tuning.
+  - Plotted 3-panel publication figure `paper/figures/neurosymbolic_irregular_federated.png` and vector `.pdf`.
+  - Expanded verified corpus from 77 to 84 milestone papers (2021--2026) with strict PRISMA arithmetic closure ($582 - 108 = 474$; $474 - 361 = 113$; $113 - 29 = 84 = 84$).
+- **2026-09-27 (v1.5.2):** Iteration 9 expansion:
+  - Extended time window to 2026-09-27.
+  - Added Search Strings for embodied robotics telemetry and action chunking (`ACT`, `DiffusionPolicy`, `HiPolicy`), quantum-classical graph state spaces (`QuantumSSM`, `HSTQGCN`), and wireless split computing under packet loss (`NeuromorphicSplit`, `SemanticTS`).
+  - Formulated C-VAE action trajectory chunking, Parameterized Quantum Circuit (PQC) Hamiltonian unitary dynamics, and task-oriented semantic rate-distortion entropy coding.
+  - Plotted 3-panel publication figure `paper/figures/robotics_quantum_split.png` and vector `.pdf`.
+  - Expanded verified corpus from 84 to 91 milestone papers (2021--2026) with strict PRISMA arithmetic closure ($622 - 117 = 505$; $505 - 383 = 122$; $122 - 31 = 91 = 91$).
+- **2026-09-27 (v1.6.0):** Iteration 10 expansion:
+  - Added Search String 6 covering neuromorphic dynamic vision sensors (DVS) with asynchronous event-stream state spaces (`REACT`, `ESParkour`, `EVPlanner`), diffusion-based non-autoregressive imputation under extreme sensor bursts and blackouts (`CSDI`, `FADTI`, `PartialBlackout`), and cross-market financial regime shocks with macro multi-modal causal hypergraphs (`CSHT`).
+  - Formulated Dirac-impulse continuous event-stream state-space transitions, Fourier harmonic score-based diffusion guidance under $80\%$ blackout missingness, and spherical causal hypergraph projections on $\mathcal{S}^n$.
+  - Plotted 3-panel publication figure `paper/figures/dvs_diffusion_financial.png` (300 dpi) and vector `paper/figures/dvs_diffusion_financial.pdf` (Figure 15).
+  - Expanded verified corpus from 91 to 98 milestone papers (2021--2026) with 100% real API verification cached in `data/raw/` and strict PRISMA arithmetic closure ($662 - 124 = 538$; $538 - 407 = 131$; $131 - 33 = 98 = 98$).
+
 

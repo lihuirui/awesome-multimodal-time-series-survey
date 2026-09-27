@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "last_updated": "2026-09-26",
-    "total_included": 91,
+    "last_updated": "2026-09-27",
+    "total_included": 98,
     "scope": "Multimodal Time Series Models (2021-present)"
   },
   "papers": [
@@ -3209,6 +3209,242 @@
       "quality_score": 10,
       "abstract": "Semantic communication has emerged as a promising paradigm to tackle the challenges of massive growing data traffic and sustainable data communication. It shifts the focus from data fidelity to goal-oriented or task-oriented semantic transmission. While deep learning-based methods are commonly used for semantic encoding and decoding, they struggle with the sequential nature of time series data and high computation cost, particularly in resource-constrained IoT environments. Data compression plays a crucial role in reducing transmission and storage costs, yet traditional data compression methods fall short of the demands of goal-oriented communication systems. In this paper, we propose a novel method for direct analytics on time series data compressed by the SHRINK compression algorithm. Through experimentation using outlier detection as a case study, we show that our method outperforms baselines running on uncompressed data in multiple cases, with merely 1% difference in the worst case. Additionally, it achieves four times lower runtime on average and accesses approximately 10% of the data volume, which enables edge analytics with limited storage and computation power. These results demonstrate that our approach offers reliable, high-speed outlier detection analytics for diverse IoT applications while extracting semantics from time-series data, achieving high compression, and reducing data transmission.",
       "notes": "Introduces goal-oriented semantic communication and rate-distortion compression for time-series streams, enabling direct downstream analytics in the compressed latent space under severe bandwidth constraints.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Keime2026REACT",
+      "title": "REACT: A Fully Spiking State-Space Model for Real-Time Event-Driven Temporal Perception",
+      "authors": [
+        "Geoffroy Keime",
+        "Nicolas Cuperlier",
+        "Benoit R. Cottereau"
+      ],
+      "year": 2026,
+      "venue": "arXiv 2026",
+      "arxiv_id": "2609.19204",
+      "doi": "10.48550/arXiv.2609.19204",
+      "modality_pair": "TS+Event Stream",
+      "role_of_non_ts": "joint_representation",
+      "fusion_mechanism": "spiking_state_space",
+      "backbone": "REACT (Spiking Selective State-Space SSM)",
+      "tasks": [
+        "robot_perception",
+        "obstacle_avoidance",
+        "tracking"
+      ],
+      "domains": [
+        "robotics",
+        "autonomous_systems"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Robotic systems operating in dynamic environments require visual perception that evolves continuously with the incoming sensory stream. Event cameras provide microsecond temporal resolution and asynchronous sensing, but most learning-based methods accumulate events into frames or temporal bins, introducing an integration delay that can limit fast reaction. Here we propose REACT, a fully spiking state-space model for event-driven temporal perception that processes raw events one by one, without temporal accumulation. REACT uses a complex-valued spiking neuron, C-SiLIF, whose continuous-time dynamics are driven by the physical inter-event interval, allowing its internal state to evolve at the temporal resolution of individual events. We evaluate REACT on gesture recognition and time-to-collision (TTC) estimation from full-field event streams, without a target bounding box or localization input. On EvTTC, REACT achieves a 9.59% relative TTC error with 4.6 ms end-to-end inference latency, within 0.15 percentage points of the best learned method while requiring no target prior. At the dataset&#39;s mean approach speed, this latency corresponds to only 4 cm of vehicle motion, compared with 1 m for the fastest competing learned method. REACT further supports anytime TTC prediction, zero-shot transfer to a different driving sequence, and INT8 quantization, reducing the estimated energy consumption from 18.5 to 2.8 mJ per 32,768 events. These results show that event-driven spiking state-space dynamics can provide low-latency, continuously updated temporal perception for reactive robotic systems.",
+      "notes": "Fully spiking continuous-time state-space model for microsecond asynchronous event-driven temporal perception in robotics, eliminating frame-based latency and reducing power.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Zhang2025ESParkour",
+      "title": "ES-Parkour: Advanced Robot Parkour with Bio-inspired Event Camera and Spiking Neural Network",
+      "authors": [
+        "Qiang Zhang",
+        "Jiahang Cao",
+        "Jingkai Sun",
+        "Yecheng Shao",
+        "Gang Han",
+        "Wen Zhao",
+        "Yijie Guo",
+        "Renjing Xu"
+      ],
+      "year": 2025,
+      "venue": "arXiv 2025",
+      "arxiv_id": "2503.09985",
+      "doi": "10.48550/arXiv.2503.09985",
+      "modality_pair": "TS+Event Stream",
+      "role_of_non_ts": "sensorimotor_feedback",
+      "fusion_mechanism": "neuromorphic_spiking_reinforcement_learning",
+      "backbone": "ES-Parkour (Event Camera + SNN + RL)",
+      "tasks": [
+        "robot_parkour",
+        "obstacle_avoidance",
+        "locomotion"
+      ],
+      "domains": [
+        "robotics"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "In recent years, quadruped robotics has advanced significantly, particularly in perception and motion control via reinforcement learning, enabling complex motions in challenging environments. Visual sensors like depth cameras enhance stability and robustness but face limitations, such as low operating frequencies relative to joint control and sensitivity to lighting, which hinder outdoor deployment. Additionally, deep neural networks in sensor and control systems increase computational demands. To address these issues, we introduce spiking neural networks (SNNs) and event cameras to perform a challenging quadruped parkour task. Event cameras capture dynamic visual data, while SNNs efficiently process spike sequences, mimicking biological perception. Experimental results demonstrate that this approach significantly outperforms traditional models, achieving excellent parkour performance with just 11.7% of the energy consumption of an artificial neural network (ANN)-based model, yielding an 88.3% energy reduction. By integrating event cameras with SNNs, our work advances robotic reinforcement learning and opens new possibilities for applications in demanding environments.",
+      "notes": "Integrates bio-inspired event cameras and spiking neural networks for quadruped robot parkour, achieving dynamic obstacle avoidance and agile locomotion under extreme high-speed and challenging illumination.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Sanyal2023EVPlanner",
+      "title": "EV-Planner: Energy-Efficient Robot Navigation via Event-Based Physics-Guided Neuromorphic Planner",
+      "authors": [
+        "Sourav Sanyal",
+        "Rohan Kumar Manna",
+        "Kaushik Roy"
+      ],
+      "year": 2023,
+      "venue": "IEEE RA-L 2023",
+      "arxiv_id": "2307.11349",
+      "doi": "10.48550/arXiv.2307.11349",
+      "modality_pair": "TS+Event Stream+Physics",
+      "role_of_non_ts": "physics_guidance",
+      "fusion_mechanism": "physics_guided_spiking_planner",
+      "backbone": "EV-Planner (Neuromorphic Spiking Planner)",
+      "tasks": [
+        "trajectory_planning",
+        "obstacle_avoidance",
+        "navigation"
+      ],
+      "domains": [
+        "robotics",
+        "aerospace"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Vision-based object tracking is an essential precursor to performing autonomous aerial navigation in order to avoid obstacles. Biologically inspired neuromorphic event cameras are emerging as a powerful alternative to frame-based cameras, due to their ability to asynchronously detect varying intensities (even in poor lighting conditions), high dynamic range, and robustness to motion blur. Spiking neural networks (SNNs) have gained traction for processing events asynchronously in an energy-efficient manner. On the other hand, physics-based artificial intelligence (AI) has gained prominence recently, as they enable embedding system knowledge via physical modeling inside traditional analog neural networks (ANNs). In this letter, we present an event-based physics-guided neuromorphic planner (EV-Planner) to perform obstacle avoidance using neuromorphic event cameras and physics-based AI. We consider the task of autonomous drone navigation where the mission is to detect moving gates and fly through them while avoiding a collision. We use event cameras to perform object detection using a shallow spiking neural network in an unsupervised fashion. Utilizing the physical equations of the brushless DC motors present in the drone rotors, we train a lightweight energy-aware physics-guided neural network (PgNN) with depth inputs. This predicts the optimal flight time responsible for generating near-minimum energy paths. We spawn the drone in the Gazebo simulator and implement a sensor-fused vision-to-planning neuro-symbolic framework using Robot Operating System (ROS). Simulation results for safe collision-free flight trajectories are presented with performance analysis, ablation study and potential future research directions",
+      "notes": "Energy-efficient robot navigation and obstacle avoidance leveraging event cameras and physics-guided spiking neural networks for micro-watt aerial drone trajectory planning.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Tashiro2021CSDI",
+      "title": "CSDI: Conditional Score-based Diffusion Models for Probabilistic Time Series Imputation",
+      "authors": [
+        "Yusuke Tashiro",
+        "Jiaming Song",
+        "Yang Song",
+        "Stefano Ermon"
+      ],
+      "year": 2021,
+      "venue": "NeurIPS 2021",
+      "arxiv_id": "2107.03502",
+      "doi": "10.48550/arXiv.2107.03502",
+      "modality_pair": "TS+Mask Context",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "conditional_score_diffusion",
+      "backbone": "CSDI (Conditional Score-Based Diffusion)",
+      "tasks": [
+        "imputation",
+        "forecasting"
+      ],
+      "domains": [
+        "healthcare",
+        "meteorology",
+        "general_ts"
+      ],
+      "code_url": "https://github.com/ermongroup/CSDI",
+      "quality_score": 12,
+      "abstract": "The imputation of missing values in time series has many applications in healthcare and finance. While autoregressive models are natural candidates for time series imputation, score-based diffusion models have recently outperformed existing counterparts including autoregressive models in many tasks such as image generation and audio synthesis, and would be promising for time series imputation. In this paper, we propose Conditional Score-based Diffusion models for Imputation (CSDI), a novel time series imputation method that utilizes score-based diffusion models conditioned on observed data. Unlike existing score-based approaches, the conditional diffusion model is explicitly trained for imputation and can exploit correlations between observed values. On healthcare and environmental data, CSDI improves by 40-65% over existing probabilistic imputation methods on popular performance metrics. In addition, deterministic imputation by CSDI reduces the error by 5-20% compared to the state-of-the-art deterministic imputation methods. Furthermore, CSDI can also be applied to time series interpolation and probabilistic forecasting, and is competitive with existing baselines. The code is available at https://github.com/ermongroup/CSDI.",
+      "notes": "Foundational conditional score-based diffusion model for multivariate time series imputation; introduces 2D attention separating temporal and feature dimensions under random and block missingness.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Li2025FADTI",
+      "title": "FADTI: Fourier and Attention Driven Diffusion for Multivariate Time Series Imputation",
+      "authors": [
+        "Runze Li",
+        "Hanchen Wang",
+        "Wenjie Zhang",
+        "Binghao Li",
+        "Yu Zhang",
+        "Xuemin Lin",
+        "Ying Zhang"
+      ],
+      "year": 2025,
+      "venue": "IEEE ICDM 2026",
+      "arxiv_id": "2512.15116",
+      "doi": "10.48550/arXiv.2512.15116",
+      "modality_pair": "TS+Frequency Spectrum",
+      "role_of_non_ts": "spectral_prior",
+      "fusion_mechanism": "fourier_attention_diffusion",
+      "backbone": "FADTI (Fourier-Driven Diffusion)",
+      "tasks": [
+        "imputation"
+      ],
+      "domains": [
+        "healthcare",
+        "traffic_mobility",
+        "general_ts"
+      ],
+      "code_url": "https://github.com/RazeenLI/FADTI",
+      "quality_score": 11,
+      "abstract": "Multivariate time series imputation is fundamental in applications such as healthcare, traffic forecasting, and biological modeling, where sensor failures and irregular sampling lead to pervasive missing values. Existing Transformer- and diffusion-based imputers achieve strong performance, but they often rely mainly on time-domain modeling and lack adaptive spectral bias for recovering structured temporal gaps. We propose FADTI, a Fourier- and attention-driven diffusion framework for multivariate time series imputation. FADTI introduces a Fourier Bias Projection (FBP) module that injects learnable frequency-aware bias into intermediate hidden states during denoising. It projects intermediate hidden states onto Fourier bases, avoiding direct spectral estimation from masked or zero-filled inputs. With DFT, STFT, and FSST instantiations, FBP captures global periodicity, localized time--frequency variations, and non-stationary oscillatory patterns. By coupling FBP with self-attention and gated convolution, FADTI integrates frequency-domain guidance, temporal dependency modeling, and probabilistic denoising in a unified framework. Experiments on multiple benchmarks, including a new biological imputation benchmark, show that FADTI improves accuracy, uncertainty estimation, and sampling efficiency, especially under high missing rates and structured missing patterns. Code is available at https://github.com/RazeenLI/FADTI",
+      "notes": "Fourier and attention-driven conditional diffusion framework for multivariate time series imputation, capturing global harmonic frequencies and local temporal-feature correlations under extreme sensor missingness.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Islam2025PartialBlackout",
+      "title": "Self-attention-based Diffusion Model for Time-series Imputation in Partial Blackout Scenarios",
+      "authors": [
+        "Mohammad Rafid Ul Islam",
+        "Prasad Tadepalli",
+        "Alan Fern"
+      ],
+      "year": 2025,
+      "venue": "AAAI 2025",
+      "arxiv_id": "2503.01737",
+      "doi": "10.48550/arXiv.2503.01737",
+      "modality_pair": "TS+Grid Topology",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "self_attention_diffusion",
+      "backbone": "Diffusion Model for Partial Blackouts",
+      "tasks": [
+        "imputation",
+        "power_grid_reconstruction"
+      ],
+      "domains": [
+        "energy",
+        "smart_grids"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Missing values in multivariate time series data can harm machine learning performance and introduce bias. These gaps arise from sensor malfunctions, blackouts, and human error and are typically addressed by data imputation. Previous work has tackled the imputation of missing data in random, complete blackouts and forecasting scenarios. The current paper addresses a more general missing pattern, which we call &#34;partial blackout,&#34; where a subset of features is missing for consecutive time steps. We introduce a two-stage imputation process using self-attention and diffusion processes to model feature and temporal correlations. Notably, our model effectively handles missing data during training, enhancing adaptability and ensuring reliable imputation and performance, even with incomplete datasets. Our experiments on benchmark and two real-world time series datasets demonstrate that our model outperforms the state-of-the-art in partial blackout scenarios and shows better scalability.",
+      "notes": "Self-attention-based diffusion model designed for multivariate time-series imputation during severe partial blackout scenarios and sensor cascade dropouts across electrical distribution grids.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Harit2025CSHT",
+      "title": "From News to Returns: A Granger-Causal Hypergraph Transformer on the Sphere",
+      "authors": [
+        "Anoushka Harit",
+        "Zhongtian Sun",
+        "Jongmin Yu"
+      ],
+      "year": 2025,
+      "venue": "ACM ICAIF 2025",
+      "arxiv_id": "2510.04357",
+      "doi": "10.48550/arXiv.2510.04357",
+      "modality_pair": "TS+Text+Hypergraph",
+      "role_of_non_ts": "granger_causal_context",
+      "fusion_mechanism": "riemannian_hypergraph_transformer",
+      "backbone": "CSHT (Causal Sphere Hypergraph Transformer)",
+      "tasks": [
+        "forecasting",
+        "causal_inference"
+      ],
+      "domains": [
+        "finance"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "We propose the Causal Sphere Hypergraph Transformer (CSHT), a novel architecture for interpretable financial time-series forecasting that unifies \\emph{Granger-causal hypergraph structure}, \\emph{Riemannian geometry}, and \\emph{causally masked Transformer attention}. CSHT models the directional influence of financial news and sentiment on asset returns by extracting multivariate Granger-causal dependencies, which are encoded as directional hyperedges on the surface of a hypersphere. Attention is constrained via angular masks that preserve both temporal directionality and geometric consistency. Evaluated on S\\&amp;P 500 data from 2018 to 2023, including the 2020 COVID-19 shock, CSHT consistently outperforms baselines across return prediction, regime classification, and top-asset ranking tasks. By enforcing predictive causal structure and embedding variables in a Riemannian manifold, CSHT delivers both \\emph{robust generalisation across market regimes} and \\emph{transparent attribution pathways} from macroeconomic events to stock-level responses. These results suggest that CSHT is a principled and practical solution for trustworthy financial forecasting under uncertainty.",
+      "notes": "Unifies Granger-causal hypergraphs, Riemannian spherical geometry, and causally-masked transformers to model high-order financial news and asset return dynamics under market regime shocks.",
       "screen_date": "2026-09-24",
       "api_verified": true
     }

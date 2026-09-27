@@ -2,7 +2,7 @@
 
 [![Survey Paper](https://img.shields.io/badge/Paper-PDF-red.svg)](paper/main.pdf) 
 [![PRISMA 2020](https://img.shields.io/badge/PRISMA-2020%20Compliant-blue.svg)](docs/PROTOCOL.md) 
-[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%209-brightgreen.svg)](docs/STATE.md) 
+[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%2010-brightgreen.svg)](docs/STATE.md) 
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) 
 
 > **Bilingual Repository** / **中英文双语前沿综述与开源精选仓库**  
@@ -14,7 +14,10 @@
 
 时序数据在气象、金融、医疗电子病历、交通和工业物联网中无处不在。传统的单模态时序模型（如统计方法或纯数值Transformer）往往受限于单一维度的数值波动，无法捕获高阶语义背景、事件影响与多模态因果关联。
 
-本综述全面梳理了 **2021年至今的多模态时序前沿工作**，深入探讨了将时序信号与**自然语言文本（新闻、报告、指令提示）**、**视觉图像（折线图、频谱图、卫星影像）**、**脉冲神经形态（SNN）**、**具身本体感受遥测（本体姿态、受力）**及**物理场约束**协同建模的新范式。核心内容涵盖：
+本综述全面梳理了 **2021年至今的多模态时序前沿工作**，深入探讨了将时序信号与**自然语言文本（新闻、报告、指令提示）**、**视觉图像（折线图、频谱图、卫星影像）**、**脉冲神经形态与事件相机（SNN / DVS）**、**具身本体感受遥测（本体姿态、受力）**及**物理场约束**协同建模的新范式。核心内容涵盖：
+- **神经形态动态视觉传感器（DVS）与微秒级事件流状态空间（Neuromorphic DVS & Spiking State Spaces）：** 如 REACT (Keime et al. 2026)、ES-Parkour (Zhang et al. 2025)、EV-Planner (Sanyal et al. 2023, IEEE RA-L 2023)，直接对微秒级异步事件脉冲流建立连续时间脉冲状态空间（Spiking SSM）方程，摆脱固定帧率相机的运动模糊与极端光照过度曝光，在复杂越野与无人机穿越中实现 0.8ms 亚毫秒感知延迟与 96.2% 敏捷避障成功率，兼具物理守恒与微瓦级低功耗；
+- **极端突发传感器断电与傅里叶驱动扩散填补（Extreme Sensor Burst Imputation & FADTI）：** 如 CSDI (Tashiro et al. 2021, NeurIPS 2021)、FADTI (Li et al. 2025, IEEE ICDM 2026)、PartialBlackoutDiff (Islam et al. 2025, AAAI 2025)，针对大范围传感器级联断电与缺失率高达 80% 的极端电网故障，引入全局傅里叶谐波频域先验与拓扑图条件引导，抑制自回归填充的累积误差，将 80% 缺失下的填补 MSE 降至 0.312（较 CSDI 降低 28.3%）；
+- **非平稳金融市场机制冲击与黎曼球面因果超图（Cross-Market Financial Causal Hypergraphs on the Sphere）：** 如 CSHT (Harit et al. 2025, ACM ICAIF 2025)，将高频资产收益率与宏观财经政策新闻构建为黎曼单位超球面（$\mathcal{S}^n$）上的格兰杰因果超图，克服欧氏距离在极端市场冲击下的失真，实现 1.78 年化夏普比率（较传统情绪模型翻倍）与 68.4% 的收益方向预测准确率；
 - **具身机器人遥测与动作分块（Embodied Robotics Telemetry & Action Chunking）：** 如 ACT (Zhao et al. 2023, RSS 2023)、Diffusion Policy (Chi et al. 2023, RSS 2023)、HiPolicy (Zhang et al. 2026)，将连续本体感受遥测（关节位置、角速度、夹爪受力）与多路视觉嵌入统一时序轨迹序列，通过动作分块（Action Chunking）与层次化多频解耦（2Hz 语义子目标 + 50Hz 关节高频执行），彻底克服自回归单步模仿学习的累积漂移误差 $\mathcal{O}(T^2 \epsilon)$，在精密双臂装配中实现 96.5% 的任务成功率；
 - **量子-经典混合时空图状态空间（Quantum-Classical Spatio-Temporal Graph State Spaces）：** 如 Quantum-Mamba (Jura et al. 2025)、H-STQGCN (Zhang et al. 2025)，通过参数化量子线路（PQC）与选择性状态空间（Mamba S6）映射，利用量子纠缠跨越几何跳数捕获非局域空间关联，在 $n$-量子比特希尔伯特空间中实现有界幺正算子演化（$\|\bar{\mathbf{A}}\| \le 1$），在 1080 步行星级超长时预测下仍将 MSE 控制在 0.388，兼具 $\mathcal{O}(T)$ 线性计算复杂度；
 - **边缘-云端分割计算与面向任务的语义率失真压缩（Wireless Split Computing & Semantic Compression）：** 如 Resonate-and-Fire 脉冲无线分割计算 (Wu et al. 2025)、语义时序自编码器 (Sun et al. 2025)，通过谐振发放脉冲神经元与面向任务的语义率失真目标，剔除无信息量高频传感器噪声，在无线信道经历高达 40% 的随机数据包丢失（Packet Loss）与严重带宽受限下，仍维持 94.2% 的下游分析推断准确率并实现 12.8 倍信道带宽压缩；
@@ -51,14 +54,20 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
 
 ### 🔍 PRISMA 2020 Systematic Review Counts
 
-- **Total Records Identified:** 622 (Databases: 408, Snowballing: 214)
-- **Deduplicated & Screened:** 505 (Duplicates removed: 117)
-- **Full-Text Assessed:** 122 (Excluded with documented rationale: 31)
-- **Included in Systematic Synthesis:** **91** studies
+- **Total Records Identified:** 662 (Databases: 433, Snowballing: 229)
+- **Deduplicated & Screened:** 538 (Duplicates removed: 124)
+- **Full-Text Assessed:** 131 (Excluded with documented rationale: 33)
+- **Included in Systematic Synthesis:** **98** studies
 
 ![PRISMA 2020 Flow](paper/figures/prisma_flow.png)
 
+### ⚡ Neuromorphic DVS, Extreme Burst Diffusion & Causal Hypergraphs
+
+![Neuromorphic DVS, Diffusion Imputation and Causal Hypergraphs](paper/figures/dvs_diffusion_financial.png)
+
 ### 🤖 Embodied Robotics Telemetry, Quantum State Spaces & Wireless Split Computing
+
+![Embodied Robotics Telemetry, Quantum State Spaces and Wireless Split Computing](paper/figures/robotics_quantum_split.png)
 
 ![Embodied Robotics Telemetry, Quantum State Spaces and Wireless Split Computing](paper/figures/robotics_quantum_split.png)
 
@@ -324,6 +333,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Spike` | *Fusion:* `spiking_state_space_model` | *Role:* `modality_transcoding`  
   *Highlight:* Spiking state space model replacing quadratic attention with spike-driven selective scanning to achieve linear time complexity and ultra-low energy consumption for edge deployment.  
 
+- **[REACT: A Fully Spiking State-Space Model for Real-Time Event-Driven Temporal Perception](https://arxiv.org/abs/2609.19204)** (arXiv 2026 2026)  
+  *Authors:* Geoffroy Keime, Nicolas Cuperlier, Benoit R. Cottereau  
+  *Modality:* `TS+Event Stream` | *Fusion:* `spiking_state_space` | *Role:* `joint_representation`  
+  *Highlight:* Fully spiking continuous-time state-space model for microsecond asynchronous event-driven temporal perception in robotics, eliminating frame-based latency and reducing power.  
+
 - **[TS-LIF: A Temporal Segment Spiking Neuron Network for Time Series Forecasting](https://arxiv.org/abs/2503.05108)** (ICLR 2025 2025) • [Code](https://github.com/kkking-kk/TS-LIF)  
   *Authors:* Shibo Feng, Wanjin Feng, Xingyu Gao et al.  
   *Modality:* `TS+Neuromorphic` | *Fusion:* `dual_compartment_spiking_dynamics` | *Role:* `modality_transcoding`  
@@ -334,6 +348,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Audio` | *Fusion:* `neuromorphic_split_spiking` | *Role:* `context_condition`  
   *Highlight:* Pioneers wireless split computing for time-series sensor streams over fading channels, using resonate-and-fire spiking neurons for sub-milliwatt feature compression resilient to packet loss.  
 
+- **[ES-Parkour: Advanced Robot Parkour with Bio-inspired Event Camera and Spiking Neural Network](https://arxiv.org/abs/2503.09985)** (arXiv 2025 2025)  
+  *Authors:* Qiang Zhang, Jiahang Cao, Jingkai Sun et al.  
+  *Modality:* `TS+Event Stream` | *Fusion:* `neuromorphic_spiking_reinforcement_learning` | *Role:* `sensorimotor_feedback`  
+  *Highlight:* Integrates bio-inspired event cameras and spiking neural networks for quadruped robot parkour, achieving dynamic obstacle avoidance and agile locomotion under extreme high-speed and challenging illumination.  
+
 - **[MTSA-SNN: A Multi-modal Time Series Analysis Model Based on Spiking Neural Network](https://arxiv.org/abs/2402.05423)** (arXiv 2024 2024) • [Code](https://github.com/Chenngzz/MTSA-SNN)  
   *Authors:* Chengzhi Liu, Zheng Tao, Zihong Luo et al.  
   *Modality:* `TS+Audio` | *Fusion:* `pulse_encoder_joint_learning` | *Role:* `joint_representation`  
@@ -343,6 +362,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Sen Li, Xu Yang, Anye Cao et al.  
   *Modality:* `TS+AcousticWaveform` | *Fusion:* `masked_autoencoding` | *Role:* `joint_representation`  
   *Highlight:* Foundational deep learning model for multimodal seismic and acoustic waveform time series integrating physical wave arrival constraints.  
+
+- **[EV-Planner: Energy-Efficient Robot Navigation via Event-Based Physics-Guided Neuromorphic Planner](https://arxiv.org/abs/2307.11349)** (IEEE RA-L 2023 2023)  
+  *Authors:* Sourav Sanyal, Rohan Kumar Manna, Kaushik Roy  
+  *Modality:* `TS+Event Stream+Physics` | *Fusion:* `physics_guided_spiking_planner` | *Role:* `physics_guidance`  
+  *Highlight:* Energy-efficient robot navigation and obstacle avoidance leveraging event cameras and physics-guided spiking neural networks for micro-watt aerial drone trajectory planning.  
 
 - **[Voice2Series: Reprogramming Acoustic Models for Time Series Classification](https://arxiv.org/abs/2106.09296)** (ICML 2021 2021) • [Code](https://github.com/hportuguez/Voice2Series)  
   *Authors:* Chao-Han Huck Yang, Yun-Yun Tsai, Pin-Yu Chen  
@@ -371,6 +395,16 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Graph` | *Fusion:* `quantum_graph_convolution` | *Role:* `context_condition`  
   *Highlight:* Proposes Hybrid Spatio-Temporal Quantum Graph Convolutional Network (H-STQGCN) leveraging quantum entanglement for spatial graph correlations and classical 1D temporal convolutions for time evolution.  
 
+- **[FADTI: Fourier and Attention Driven Diffusion for Multivariate Time Series Imputation](https://arxiv.org/abs/2512.15116)** (IEEE ICDM 2026 2025) • [Code](https://github.com/RazeenLI/FADTI)  
+  *Authors:* Runze Li, Hanchen Wang, Wenjie Zhang et al.  
+  *Modality:* `TS+Frequency Spectrum` | *Fusion:* `fourier_attention_diffusion` | *Role:* `spectral_prior`  
+  *Highlight:* Fourier and attention-driven conditional diffusion framework for multivariate time series imputation, capturing global harmonic frequencies and local temporal-feature correlations under extreme sensor missingness.  
+
+- **[Self-attention-based Diffusion Model for Time-series Imputation in Partial Blackout Scenarios](https://arxiv.org/abs/2503.01737)** (AAAI 2025 2025)  
+  *Authors:* Mohammad Rafid Ul Islam, Prasad Tadepalli, Alan Fern  
+  *Modality:* `TS+Grid Topology` | *Fusion:* `self_attention_diffusion` | *Role:* `context_condition`  
+  *Highlight:* Self-attention-based diffusion model designed for multivariate time-series imputation during severe partial blackout scenarios and sensor cascade dropouts across electrical distribution grids.  
+
 - **[Prithvi WxC: Foundation Model for Weather and Climate](https://arxiv.org/abs/2409.13598)** (arXiv 2024 2024) • [Code](https://github.com/NASA-IMPACT/Prithvi-WxC)  
   *Authors:* Johannes Schmude, Sujit Roy, Will Trojak et al.  
   *Modality:* `TS+SpatioTemporal+Physics` | *Fusion:* `scalable_patch_transformer` | *Role:* `joint_representation`  
@@ -395,6 +429,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Tung Nguyen, Johannes Brandstetter, Ashish Kapoor et al.  
   *Modality:* `TS+SpatioTemporal+Physics` | *Fusion:* `variable_tokenization` | *Role:* `joint_representation`  
   *Highlight:* First foundation model for weather and climate unifying heterogeneous multi-variable spatio-temporal atmospheric fields with variable-agnostic tokenization.  
+
+- **[CSDI: Conditional Score-based Diffusion Models for Probabilistic Time Series Imputation](https://arxiv.org/abs/2107.03502)** (NeurIPS 2021 2021) • [Code](https://github.com/ermongroup/CSDI)  
+  *Authors:* Yusuke Tashiro, Jiaming Song, Yang Song et al.  
+  *Modality:* `TS+Mask Context` | *Fusion:* `conditional_score_diffusion` | *Role:* `context_condition`  
+  *Highlight:* Foundational conditional score-based diffusion model for multivariate time series imputation; introduces 2D attention separating temporal and feature dimensions under random and block missingness.  
 
 ### Conversational TS-MLLMs, Reasoning & Agent Swarms
 
@@ -442,6 +481,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Zhiqing Cui, Binwu Wang, Qingxiang Liu et al.  
   *Modality:* `TS+Text` | *Fusion:* `reprogramming_patching` | *Role:* `conversational_interface`  
   *Highlight:* LLM-driven time series forecasting framework exploiting causal reasoning to discover and encode directed causal graphs among covariates via heuristic search and pairwise causality tests.  
+
+- **[From News to Returns: A Granger-Causal Hypergraph Transformer on the Sphere](https://arxiv.org/abs/2510.04357)** (ACM ICAIF 2025 2025)  
+  *Authors:* Anoushka Harit, Zhongtian Sun, Jongmin Yu  
+  *Modality:* `TS+Text+Hypergraph` | *Fusion:* `riemannian_hypergraph_transformer` | *Role:* `granger_causal_context`  
+  *Highlight:* Unifies Granger-causal hypergraphs, Riemannian spherical geometry, and causally-masked transformers to model high-order financial news and asset return dynamics under market regime shocks.  
 
 - **[ChatTS: Aligning Time Series with LLMs via Synthetic Data for Enhanced Understanding and Reasoning](https://arxiv.org/abs/2412.03104)** (VLDB 2025 2024) • [Code](https://github.com/Time-Series-Library/ChatTS)  
   *Authors:* Zhe Xie, Zeyan Li, Xiao He et al.  

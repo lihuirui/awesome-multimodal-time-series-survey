@@ -271,11 +271,33 @@ $$\mathbf{h}_i = \mathbf{P}_i \mathbf{W}_{\text{in}} + \mathbf{E}_{\text{pos}, i
   - **Neuromorphic Wireless Split Computing (Wu et al., 2025):** 引入共振点火（Resonate-and-Fire, RF）脉冲神经元。将连续波形编码为稀疏事件二值脉冲序列，信息由振荡共振频率与发放时序承载而非单一浮点幅值。在遭遇高达 **30% 恶劣丢包率**下仍能维持 **88.5%** 分类精度，且端侧能耗达到亚毫瓦级（见英文正文 Figure 14c）；
   - **SemanticTS (Sun et al., 2025):** 提出面向时序分析的语义自编码器。通过主动剥离无信息量高频传感器白噪声，在 40% 随机丢包下保持 **94.2%** 的下游预测与异常检测精度，同时实现 **12.8 倍上行带宽压缩**。
 
+### 4.29 神经形态动态视觉传感器（DVS）与微秒级事件流状态空间 (Neuromorphic DVS & High-Rate Event-Stream State Spaces)
+标准帧式相机（30--60 Hz）在高速机器人运动中存在严重的运动模糊，且在极端高动态光照（如阳光直射与黑暗隧道交替）下极易过度曝光。仿生事件相机（DVS）具备微秒级时间分辨率，每个像素异步独立输出对数光强变化的二值事件脉冲 $e_k = (x_k, y_k, t_k, p_k)$：
+- **连续时间脉冲状态空间方程（Spiking State-Space Models）：** 摆脱将事件人工切片为 2D 帧的伪连续做法，直接建立 Dirac 脉冲输入的连续状态演化方程：$\dot{\mathbf{h}}(t) = \mathbf{A}(t)\mathbf{h}(t) + \mathbf{B}(t)s(t)$，在事件到达时通过解析积分更新隐藏状态。
+- **代表性前沿突破：**
+  - **REACT (Keime et al., 2026):** 全脉冲选择性状态空间（Spiking S6）模型，实现 **0.8ms 亚毫秒级感知推理延迟**（较帧式卷积提速超 40 倍），在剧烈动态光照与高速模糊下实现 **96.2%** 的避障感知精度（详见英文正文 Figure 15a）；
+  - **ES-Parkour (Zhang et al., 2025):** 仿生事件相机与多层脉冲神经网络结合强化学习，为四足机器人越野跑酷提供瞬时闭环阻抗控制，攻克高速跳跃中的障碍探测滞后；
+  - **EV-Planner (Sanyal et al., 2023, IEEE RA-L 2023):** 将无人机物理飞行动力学直接嵌入神经形态脉冲规划器，在微瓦级功耗（$<15\text{ mW}$）下实现零碰撞轨迹规划。
+
+### 4.30 极端传感器突发缺失下的非自回归扩散填补 (Diffusion-Based Non-Autoregressive Imputation under Extreme Sensor Bursts)
+广域物理传感器网络常因暴风雪黑客攻击或断电发生级联故障，引发持续数小时的大范围传感器多通道突发丢失（缺失率 $\ge 80\%$）。传统的局部样条插值与自回归单步填补会导致误差级联扩散：
+- **条件分数扩散时序填补（Conditional Score-Based Diffusion）：** 仅对缺失目标通道执行前向加噪与反向去噪采样，将观测上下文作为引导条件。
+- **代表性前沿突破：**
+  - **CSDI (Tashiro et al., 2021, NeurIPS 2021):** 提出条件分数扩散时序填补基石架构，采用 2D 分解注意力解耦时序跨步关联与传感器跨通道特征依赖；
+  - **FADTI (Li et al., 2025, IEEE ICDM 2026):** 傅里叶与注意力双驱动条件扩散模型。通过 FFT 提取全局谐波频域基向量 $\mathbf{F}^{\text{obs}}$，在反向扩散中施加时域分数匹配与频域谱一致性双重约束，将 80% 极端断电缺失下的填补 MSE 显著降至 **0.312**（较 CSDI 的 0.435 相对改善 **28.3%**，详见英文正文 Figure 15b）；
+  - **PartialBlackoutDiff (Islam et al., AAAI 2025):** 针对配电网断电故障，将电网节点导纳拓扑矩阵嵌入自注意力扩散过程，确保重构功率流满足基尔霍夫物理定律。
+
+### 4.31 跨市场金融机制冲击与黎曼球面因果超图 (Cross-Market Financial Regime Shocks & Macro Multi-Modal Causal Hypergraphs)
+金融时序具备极低信噪比与剧烈非平稳性。央行突发加息、地缘政治震荡等宏观冲击会瞬间改变资产间的动态关联，传统标量情绪分析无法捕捉高阶多方协同因果：
+- **黎曼单位超球面因果超图（Spherical Granger-Causal Hypergraph）：** 将财经新闻文本嵌入与多资产高频收益率序列映射至 $n$ 维单位超球面 $\mathcal{S}^n$，利用球面测地线距离 $d_{\mathcal{S}^n}(\mathbf{u}, \mathbf{v}) = \arccos(\langle \mathbf{u}, \mathbf{v} \rangle)$ 约束极端震荡下的方差发散。
+- **代表性前沿突破：**
+  - **CSHT (Harit et al., 2025, ACM ICAIF 2025):** 提出球面因果超图 Transformer。利用格兰杰因果检验规范超图关联矩阵 $\mathbf{H}$，在宏观剧烈冲击下取得 **1.78 的样本外年化夏普比率**（较传统情绪模型提升 102%），方向预测命中率提升至 **68.4%**（详见英文正文 Figure 15c）。
+
 ---
 
 ## 5. 经验基准元分析与实测对比 (Empirical Meta-Analysis)
 
-本综述汇总了各顶会论文公开发布的严格评测指标，构建了涵盖 10 个 Panel 的经验基准元分析表（详见英文正文 Table 4）：
+本综述汇总了各顶会论文公开发布的严格评测指标，构建了涵盖 11 个 Panel 的经验基准元分析表（详见英文正文 Table 4）：
 
 ### 5.1 Panel A: 经典标准长期预测对比 (Lookback 512, Horizon 96)
 - **VisionTS (Visual MAE 零样本):** 在 ETTh1 上取得 0.381 MSE，Weather 上取得 0.174 MSE，无需任何时序微调即战胜全样本监督训练的 PatchTST (0.413 / 0.225) 与 DLinear (0.422 / 0.248)。微调后更是进一步降至 0.347 (ETTh1) 与 0.142 (Weather)。
@@ -366,7 +388,23 @@ $$\mathbf{h}_i = \mathbf{P}_i \mathbf{W}_{\text{in}} + \mathbf{E}_{\text{pos}, i
   - **Neuromorphic Wireless Split (Wu et al., 2025):** 共振点火（RF）脉冲神经元将时序频域动态由脉冲发放频率承载，在 $30\%$ 随机丢包下仍维持 **$88.5\%$** 分类精度，功耗控制在亚毫瓦级；
   - **SemanticTS (Sun et al., 2025):** 目标导向语义率失真自编码器主动过滤非信息量高频噪声，在高达 **$40\%$ 恶劣丢包**下仍保持 **$94.2\%$** 的下游分析精度，同时带来 **$12.8\times$ 带宽压缩比**（详见英文正文 Figure 14c）。
 
-### 5.11 开源端到端可复现演示教程与沙盒 (`examples/`)
+### 5.11 Panel K: 神经形态事件流、极端突发扩散填补与球面因果超图实测对比
+- **高速敏捷机器人仿生感知与抗强光运动模糊 (Dynamic HDR Lighting):**
+  - **传统帧式相机结合 CNN/Transformer:** 存在固定曝光时间瓶颈（$30\text{ Hz}$ 帧率），感知延迟高达 **$33.0\text{ ms}$**，在快速转弯与极端高动态光照下严重模糊饱和，障碍识别精度暴跌至 **$42.5\%$**；
+  - **标准脉冲规划器:** 脉冲稀疏性降低了功耗，但帧缓冲与累加积分仍带来 $8.2\text{ ms}$ 延迟，避障精度仅为 $74.2\%$；
+  - **EV-Planner (Sanyal et al., 2023):** 物理引导脉冲规划器将无人机规划延迟压缩至 $2.1\text{ ms}$，导航准确率达 $89.4\%$，整机神经形态功耗低于 $15\text{ mW}$；
+  - **ES-Parkour / REACT (Keime et al., 2026; Zhang et al., 2025):** 连续时间脉冲选择性状态空间（Spiking SSM）直接消费微秒级事件流，取得 **$0.8\text{ ms}$ 亚毫秒超低感知延迟**与 **$96.2\%$ 极限避障成功率**（详见英文正文 Figure 15a）。
+- **极端突发传感器断电与傅里叶频域扩散填补 (80% Blackout Missingness):**
+  - **局部线性与样条插值:** 面对超过 12 小时的多传感器连续故障断电时完全失效，MSE 飙升至 **$0.950$**；
+  - **PatchTST / Time-LLM 自回归单步填补:** 自回归外推在长跨度遮盖下累积复合误差，MSE 达到 $0.720$；
+  - **CSDI (Tashiro et al., 2021):** 条件分数扩散模型通过 2D 时空解耦注意力捕捉连续时变不确定性，将填补 MSE 压至 $0.435$；
+  - **FADTI / PartialBlackoutDiff (Li et al., 2025; Islam et al., 2025):** 引入全局傅里叶谐波频域一致性损失与电网拓扑约束，在 $80\%$ 极端断电缺失下取得 **$0.312$ 最佳 MSE**（较 CSDI 相对降低 **$28.3\%$**，详见英文正文 Figure 15b）。
+- **非平稳金融机制冲击与黎曼球面因果超图 (Non-Stationary Market Volatility):**
+  - **纯数值单模态 Transformer:** 遭遇宏观央行利率黑天鹅或突发闪崩时发生灾难性回撤，年化夏普比率仅为 $0.42$，方向预测准确率 $51.2\%$；
+  - **LLM 情绪文本 + LSTM:** 标量极性无法表征非成对多资产因果联动，夏普比率为 $0.88$，方向准确率 $56.4\%$；
+  - **CSHT (Harit et al., 2025):** 将财经宏观新闻与多股收益率投射至黎曼单位超球面，依托球面测地线距离约束极端波动，取得 **$1.78$ 样本外年化夏普比率**（较情绪模型提升 **$102\%$**），方向预测命中率提升至 **$68.4\%$**（详见英文正文 Figure 15c）。
+
+### 5.12 开源端到端可复现演示教程与沙盒 (`examples/`)
 项目在 `examples/` 目录下配套提供了两套端到端完全可复现的代码与交互式 Jupyter Notebook：
 1. **多模态告警时序预测演示：**
    - 脚本：`examples/demo_multimodal_forecasting.py` 与 `examples/demo_multimodal_forecasting.ipynb`
@@ -403,4 +441,7 @@ $$\mathbf{h}_i = \mathbf{P}_i \mathbf{W}_{\text{in}} + \mathbf{E}_{\text{pos}, i
 17. **具身传感运动延迟与物理动作安全控制屏障（Embodied Sensorimotor Latency & Physical Action Safety Constraints）：** 将动作块与扩散策略应用于连续机器人控制时，反向迭代采样的高计算开销引入数十毫秒时延。未来需探索单步一致性轨迹生成模型，并将控制屏障函数（Control Barrier Functions, CBFs）与力矩极限直接嵌入动作块解码器，确保物理避障与执行器安全的严苛硬实时性。
 18. **含噪中等规模量子硬件（NISQ）上的抗噪量子希尔伯特状态空间映射（Noise-Resilient Quantum Hilbert Space Embeddings on NISQ Hardware）：** 尽管参数化量子线路（PQC）与选择性状态空间理论上具备保酉压缩范数优势，但当前超导与离子阱量子硬件受制于退相干与门误差。未来需深入研究针对非平稳连续时序的量子动态去耦、抗噪电路编译与贫瘠高原（Barren Plateau）自适应抑制方案。
 19. **边云非对称语义漂移与无线时变信道在线自适应（Asymmetric Edge-Cloud Semantic Drift & Wireless Channel Resilience）：** 在长周期分布式物联监测中，传感器老化或突发环境突变常引起边端特征编码器与云端解码器之间的分布失配（语义漂移）。未来需发展自监督潜空间同步协议与动态在线率失真微调，在零原始波形回传下抵御无线时变衰落。
+20. **微秒级仿生 DVS 事件相机与低频文本遥测的跨模态异步对齐（Asynchronous Multi-Modality Temporal Alignment under Microsecond DVS Event Rates）：** 事件相机以微秒级输出点过程脉冲（$>10^6\text{ events/s}$），而机体惯导（100 Hz）与文本指令（1--2 Hz）跨越多个量级。未来需突破人工固定切片，建立连续时间微分状态空间与点过程事件驱动的联合演化方程。
+21. **广域电网与物联网断电级联故障下的非自回归扩散极速收敛（Non-Autoregressive Diffusion Imputation Convergence under Cascading Sensor Outages）：** 针对条件扩散模型（CSDI、FADTI）反向迭代数十步带来的秒级时延瓶颈，未来需深入探索单步整流流（Rectified Flow）与一致性蒸馏（Consistency Distillation），在保留偏微分方程与基尔霍夫物理守恒的前提下实现亚 10 毫秒级的极速断电数据重构。
+22. **非平稳金融因果图的几何流形自适应与有限样本稳健泛化（Non-Stationary Regime Generalization in Cross-Modal Financial Causal Graphs）：** 面对黑天鹅事件导致的资产因果拓扑剧烈突变，未来需研究动态自适应黎曼球面曲率流形与有限样本因果不变性检验，在噪声订单薄与实时财经宏观新闻的交织中实现可信且具备理论边界的风险度量。
 

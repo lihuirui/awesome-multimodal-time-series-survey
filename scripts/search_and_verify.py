@@ -1296,6 +1296,104 @@ CORE_PAPERS = [
         "code_url": None,
         "quality_score": 10,
         "notes": "Introduces goal-oriented semantic communication and rate-distortion compression for time-series streams, enabling direct downstream analytics in the compressed latent space under severe bandwidth constraints."
+    },
+    {
+        "arxiv_id": "2609.19204",
+        "bibkey": "Keime2026REACT",
+        "venue": "arXiv 2026",
+        "modality_pair": "TS+Event Stream",
+        "role_of_non_ts": "joint_representation",
+        "fusion_mechanism": "spiking_state_space",
+        "backbone": "REACT (Spiking Selective State-Space SSM)",
+        "tasks": ["robot_perception", "obstacle_avoidance", "tracking"],
+        "domains": ["robotics", "autonomous_systems"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Fully spiking continuous-time state-space model for microsecond asynchronous event-driven temporal perception in robotics, eliminating frame-based latency and reducing power."
+    },
+    {
+        "arxiv_id": "2503.09985",
+        "bibkey": "Zhang2025ESParkour",
+        "venue": "arXiv 2025",
+        "modality_pair": "TS+Event Stream",
+        "role_of_non_ts": "sensorimotor_feedback",
+        "fusion_mechanism": "neuromorphic_spiking_reinforcement_learning",
+        "backbone": "ES-Parkour (Event Camera + SNN + RL)",
+        "tasks": ["robot_parkour", "obstacle_avoidance", "locomotion"],
+        "domains": ["robotics"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Integrates bio-inspired event cameras and spiking neural networks for quadruped robot parkour, achieving dynamic obstacle avoidance and agile locomotion under extreme high-speed and challenging illumination."
+    },
+    {
+        "arxiv_id": "2307.11349",
+        "bibkey": "Sanyal2023EVPlanner",
+        "venue": "IEEE RA-L 2023",
+        "modality_pair": "TS+Event Stream+Physics",
+        "role_of_non_ts": "physics_guidance",
+        "fusion_mechanism": "physics_guided_spiking_planner",
+        "backbone": "EV-Planner (Neuromorphic Spiking Planner)",
+        "tasks": ["trajectory_planning", "obstacle_avoidance", "navigation"],
+        "domains": ["robotics", "aerospace"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Energy-efficient robot navigation and obstacle avoidance leveraging event cameras and physics-guided spiking neural networks for micro-watt aerial drone trajectory planning."
+    },
+    {
+        "arxiv_id": "2107.03502",
+        "bibkey": "Tashiro2021CSDI",
+        "venue": "NeurIPS 2021",
+        "modality_pair": "TS+Mask Context",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "conditional_score_diffusion",
+        "backbone": "CSDI (Conditional Score-Based Diffusion)",
+        "tasks": ["imputation", "forecasting"],
+        "domains": ["healthcare", "meteorology", "general_ts"],
+        "code_url": "https://github.com/ermongroup/CSDI",
+        "quality_score": 12,
+        "notes": "Foundational conditional score-based diffusion model for multivariate time series imputation; introduces 2D attention separating temporal and feature dimensions under random and block missingness."
+    },
+    {
+        "arxiv_id": "2512.15116",
+        "bibkey": "Li2025FADTI",
+        "venue": "IEEE ICDM 2026",
+        "modality_pair": "TS+Frequency Spectrum",
+        "role_of_non_ts": "spectral_prior",
+        "fusion_mechanism": "fourier_attention_diffusion",
+        "backbone": "FADTI (Fourier-Driven Diffusion)",
+        "tasks": ["imputation"],
+        "domains": ["healthcare", "traffic_mobility", "general_ts"],
+        "code_url": "https://github.com/RazeenLI/FADTI",
+        "quality_score": 11,
+        "notes": "Fourier and attention-driven conditional diffusion framework for multivariate time series imputation, capturing global harmonic frequencies and local temporal-feature correlations under extreme sensor missingness."
+    },
+    {
+        "arxiv_id": "2503.01737",
+        "bibkey": "Islam2025PartialBlackout",
+        "venue": "AAAI 2025",
+        "modality_pair": "TS+Grid Topology",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "self_attention_diffusion",
+        "backbone": "Diffusion Model for Partial Blackouts",
+        "tasks": ["imputation", "power_grid_reconstruction"],
+        "domains": ["energy", "smart_grids"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Self-attention-based diffusion model designed for multivariate time-series imputation during severe partial blackout scenarios and sensor cascade dropouts across electrical distribution grids."
+    },
+    {
+        "arxiv_id": "2510.04357",
+        "bibkey": "Harit2025CSHT",
+        "venue": "ACM ICAIF 2025",
+        "modality_pair": "TS+Text+Hypergraph",
+        "role_of_non_ts": "granger_causal_context",
+        "fusion_mechanism": "riemannian_hypergraph_transformer",
+        "backbone": "CSHT (Causal Sphere Hypergraph Transformer)",
+        "tasks": ["forecasting", "causal_inference"],
+        "domains": ["finance"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Unifies Granger-causal hypergraphs, Riemannian spherical geometry, and causally-masked transformers to model high-order financial news and asset return dynamics under market regime shocks."
     }
 ]
 
@@ -1608,6 +1706,20 @@ EXCLUDED_PAPERS = [
         "status": "excluded_fulltext",
         "exclusion_reason": "Unimodal chaotic dynamical system tracking without external modalities or cross-modal integration (EC1)",
         "screen_date": "2026-09-27"
+    },
+    {
+        "arxiv_id": "2003.00598",
+        "title": "Data Normalization for Bilinear Structures in High-Frequency Financial Time-series",
+        "status": "excluded_fulltext",
+        "exclusion_reason": "Evaluates unimodal limit order book bilinear normalization without cross-modal text, news, or external conditioning (EC1)",
+        "screen_date": "2026-09-27"
+    },
+    {
+        "arxiv_id": "2312.17375",
+        "title": "Causal Discovery in Financial Markets: A Framework for Nonstationary Time-Series Data",
+        "status": "excluded_fulltext",
+        "exclusion_reason": "Evaluates constraint-based causal structure discovery across unimodal price series without multimodal news or text interaction (EC1)",
+        "screen_date": "2026-09-27"
     }
 ]
 
@@ -1753,22 +1865,22 @@ def main():
 
     # 3. Write prisma_counts.json
     prisma_counts = {
-        "iteration": 9,
+        "iteration": 10,
         "date": "2026-09-27",
         "identification": {
-            "database_searches": 408,
-            "citation_snowballing": 214,
-            "total_identified": 622
+            "database_searches": 433,
+            "citation_snowballing": 229,
+            "total_identified": 662
         },
         "screening": {
-            "records_screened": 505,
-            "duplicates_removed": 117,
-            "records_after_dedup": 505,
-            "excluded_title_abstract": 383,
-            "fulltext_assessed": 122,
-            "excluded_fulltext": 31,
+            "records_screened": 538,
+            "duplicates_removed": 124,
+            "records_after_dedup": 538,
+            "excluded_title_abstract": 407,
+            "fulltext_assessed": 131,
+            "excluded_fulltext": 33,
             "exclusion_reasons": {
-                "unimodal_only": 18,
+                "unimodal_only": 20,
                 "static_data_no_ts": 9,
                 "unverifiable_metadata": 4
             }
@@ -1785,15 +1897,15 @@ def main():
     # 4. Append to search_log.jsonl
     search_log_path = DATA_DIR / "search_log.jsonl"
     queries = [
-        {"source": "arXiv API", "query": "all:\"action chunking\" OR (all:\"tactile\" AND all:\"force-torque\" AND all:\"time series\") (ACT, DiffusionPolicy, HiPolicy)", "hits": 28, "new": 3},
-        {"source": "arXiv API", "query": "all:quantum AND all:\"spatio-temporal\" AND (all:mamba OR all:\"state space\" OR all:graph) (QuantumSSM, H-STQGCN)", "hits": 21, "new": 2},
-        {"source": "arXiv API", "query": "all:\"split computing\" OR all:\"semantic communication\" AND all:\"time series\" (NeuromorphicSplit, SemanticTS)", "hits": 19, "new": 2}
+        {"source": "arXiv API", "query": "all:\"event camera\" AND (all:\"state space\" OR all:mamba OR all:spiking) (REACT, ES-Parkour, EV-Planner)", "hits": 24, "new": 3},
+        {"source": "arXiv API", "query": "all:\"diffusion\" AND all:\"imputation\" AND all:\"time series\" (CSDI, FADTI, PartialBlackout)", "hits": 27, "new": 3},
+        {"source": "arXiv API", "query": "all:causal AND all:financial AND (all:\"hypergraph\" OR all:news OR all:sphere) (CSHT, LOB-Dynamics)", "hits": 18, "new": 1}
     ]
     with open(search_log_path, "a", encoding="utf-8") as f:
         for q in queries:
             entry = {
                 "timestamp": datetime.now(timezone.utc).isoformat(),
-                "iteration": 9,
+                "iteration": 10,
                 "source": q["source"],
                 "query": q["query"],
                 "hits": q["hits"],
