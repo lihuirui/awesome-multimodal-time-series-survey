@@ -1,10 +1,10 @@
 {
   "metadata": {
     "last_updated": "2026-09-27",
-    "total_candidates": 144,
-    "included": 98,
+    "total_candidates": 154,
+    "included": 106,
     "excluded_title": 27,
-    "excluded_fulltext": 19
+    "excluded_fulltext": 21
   },
   "candidates": [
     {
@@ -3451,6 +3451,283 @@
       "api_verified": true
     },
     {
+      "status": "included",
+      "bibkey": "Zubic2024SSM",
+      "title": "State Space Models for Event Cameras",
+      "authors": [
+        "Nikola Zubić",
+        "Mathias Gehrig",
+        "Davide Scaramuzza"
+      ],
+      "year": 2024,
+      "venue": "CVPR 2024",
+      "arxiv_id": "2402.15584",
+      "doi": "10.48550/arXiv.2402.15584",
+      "modality_pair": "TS+Event Stream",
+      "role_of_non_ts": "joint_representation",
+      "fusion_mechanism": "continuous_ssm_timescale",
+      "backbone": "SSM (S4/Mamba with Learnable Timescale)",
+      "tasks": [
+        "event_classification",
+        "trajectory_tracking"
+      ],
+      "domains": [
+        "robotics_vision",
+        "general_ts"
+      ],
+      "code_url": "https://github.com/uzh-rpg/ssms_event_cameras",
+      "quality_score": 11,
+      "abstract": "Today, state-of-the-art deep neural networks that process event-camera data first convert a temporal window of events into dense, grid-like input representations. As such, they exhibit poor generalizability when deployed at higher inference frequencies (i.e., smaller temporal windows) than the ones they were trained on. We address this challenge by introducing state-space models (SSMs) with learnable timescale parameters to event-based vision. This design adapts to varying frequencies without the need to retrain the network at different frequencies. Additionally, we investigate two strategies to counteract aliasing effects when deploying the model at higher frequencies. We comprehensively evaluate our approach against existing methods based on RNN and Transformer architectures across various benchmarks, including Gen1 and 1 Mpx event camera datasets. Our results demonstrate that SSM-based models train 33% faster and also exhibit minimal performance degradation when tested at higher frequencies than the training input. Traditional RNN and Transformer models exhibit performance drops of more than 20 mAP, with SSMs having a drop of 3.76 mAP, highlighting the effectiveness of SSMs in event-based vision tasks.",
+      "notes": "Pioneering state-space formulation with learnable timescale parameters for neuromorphic event streams, training 33% faster than RNNs and generalizing across arbitrary inference frequencies.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Guan2022PLEVIO",
+      "title": "PL-EVIO: Robust Monocular Event-based Visual Inertial Odometry with Point and Line Features",
+      "authors": [
+        "Weipeng Guan",
+        "Peiyu Chen",
+        "Yuhan Xie",
+        "Peng Lu"
+      ],
+      "year": 2022,
+      "venue": "IEEE T-ASE 2023",
+      "arxiv_id": "2209.12160",
+      "doi": "10.48550/arXiv.2209.12160",
+      "modality_pair": "TS+Event Stream+Vision",
+      "role_of_non_ts": "geometric_supervision",
+      "fusion_mechanism": "point_line_factor_graph",
+      "backbone": "Keyframe Sliding Window Factor Graph + IMU Preintegration",
+      "tasks": [
+        "visual_inertial_odometry",
+        "trajectory_estimation"
+      ],
+      "domains": [
+        "robotics_uav",
+        "autonomous_navigation"
+      ],
+      "code_url": "https://github.com/arclab-hku/PL-EVIO_open",
+      "quality_score": 11,
+      "abstract": "Event cameras are motion-activated sensors that capture pixel-level illumination changes instead of the intensity image with a fixed frame rate. Compared with the standard cameras, it can provide reliable visual perception during high-speed motions and in high dynamic range scenarios. However, event cameras output only a little information or even noise when the relative motion between the camera and the scene is limited, such as in a still state. While standard cameras can provide rich perception information in most scenarios, especially in good lighting conditions. These two cameras are exactly complementary. In this paper, we proposed a robust, high-accurate, and real-time optimization-based monocular event-based visual-inertial odometry (VIO) method with event-corner features, line-based event features, and point-based image features. The proposed method offers to leverage the point-based features in the nature scene and line-based features in the human-made scene to provide more additional structure or constraints information through well-design feature management. Experiments in the public benchmark datasets show that our method can achieve superior performance compared with the state-of-the-art image-based or event-based VIO. Finally, we used our method to demonstrate an onboard closed-loop autonomous quadrotor flight and large-scale outdoor experiments. Videos of the evaluations are presented on our project website: https://b23.tv/OE3QM6j",
+      "notes": "Tightly-coupled monocular event-based visual-inertial odometry framework integrating point and line structural constraints with IMU pre-integration for agile quadrotor flight under motion blur and high dynamic range.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Burkhardt2026AEROVIS",
+      "title": "AERO-VIS: Asynchronous Event-based Real-time Onboard Visual-Inertial SLAM",
+      "authors": [
+        "Yannick Burkhardt",
+        "Sebastián Barbas Laina",
+        "Simon Boche",
+        "Leonard Freißmuth",
+        "Stefan Leutenegger"
+      ],
+      "year": 2026,
+      "venue": "IEEE RA-L 2026",
+      "arxiv_id": "2605.07885",
+      "doi": "10.1109/LRA.2026.3726392",
+      "modality_pair": "TS+Event Stream+IMU",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "asynchronous_event_factor_graph",
+      "backbone": "SuperEvent Keypoint + Asynchronous Factor Graph",
+      "tasks": [
+        "slam",
+        "closed_loop_control"
+      ],
+      "domains": [
+        "robotics_uav",
+        "autonomous_navigation"
+      ],
+      "code_url": "https://github.com/ethz-mrl/SuperEvent",
+      "quality_score": 11,
+      "abstract": "The robustness of event cameras to high dynamic range and motion blur holds the potential to improve visual odometry systems in challenging environments. Although their high temporal resolution does not require synchronous processing, most event-based odometry methods still run at fixed rates, which simplifies system design but restricts latency and throughput. In this work, we present AERO-VIS, a stereo event-inertial SLAM system with an integrated, data-driven, robust, and performance-optimized keypoint detector. By decoupling event preprocessing from state estimation, our architecture operates asynchronously at the maximum rate supported by available hardware, dynamically adapting to downstream runtime demands and ensuring low-latency, real-time performance. When deploying AERO-VIS on a UAV, we achieve unprecedented accuracy in onboard event-based SLAM. These unique characteristics enable us to present the first purely event-based inertial SLAM system that demonstrates closed-loop UAV control and large-scale state estimation while relying solely on onboard compute. Videos of the experiments, source code, and additional results are available at https://ethz-mrl.github.io/AERO-VIS/.",
+      "notes": "First fully autonomous onboard event-inertial SLAM system executing closed-loop UAV flight control, decoupling asynchronous microsecond event keypoints from nonlinear factor graph trajectory optimization.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Hu2024FlowTS",
+      "title": "FlowTS: Time Series Generation via Rectified Flow",
+      "authors": [
+        "Yang Hu",
+        "Xiao Wang",
+        "Zezhen Ding",
+        "Lirong Wu",
+        "Huatian Zhang",
+        "Stan Z. Li",
+        "Sheng Wang",
+        "Jiheng Zhang",
+        "Ziyun Li",
+        "Tianlong Chen"
+      ],
+      "year": 2024,
+      "venue": "NeurIPS 2024",
+      "arxiv_id": "2411.07506",
+      "doi": "10.48550/arXiv.2411.07506",
+      "modality_pair": "TS+Probability Vector Field",
+      "role_of_non_ts": "rectified_vector_field",
+      "fusion_mechanism": "rectified_flow_matching",
+      "backbone": "Rectified Flow Matching Continuous ODE",
+      "tasks": [
+        "generation",
+        "imputation",
+        "forecasting"
+      ],
+      "domains": [
+        "energy_solar",
+        "robotics_mujoco",
+        "general_ts"
+      ],
+      "code_url": "https://github.com/UNITES-Lab/FlowTS",
+      "quality_score": 11,
+      "abstract": "Diffusion-based models have significant achievements in time series generation but suffer from inefficient computation: solving high-dimensional ODEs/SDEs via iterative numerical solvers demands hundreds to thousands of drift function evaluations per sample, incurring prohibitive costs. To resolve this, we propose FlowTS, an ODE-based model that leverages rectified flow with straight-line transport in probability space. By learning geodesic paths between distributions, FlowTS achieves computational efficiency through exact linear trajectory simulation, accelerating training and generation while improving performances. We further introduce an adaptive sampling strategy inspired by the exploration-exploitation trade-off, balancing noise adaptation and precision. Notably, FlowTS enables seamless adaptation from unconditional to conditional generation without retraining, ensuring efficient real-world deployment. Also, to enhance generation authenticity, FlowTS integrates trend and seasonality decomposition, attention registers (for global context aggregation), and Rotary Position Embedding (RoPE) (for position information). For unconditional setting, extensive experiments demonstrate that FlowTS achieves state-of-the-art performance, with context FID scores of 0.019 and 0.011 on Stock and ETTh datasets (prev. best: 0.067, 0.061). For conditional setting, we have achieved superior performance in solar forecasting (MSE 213, prev. best: 375) and MuJoCo imputation tasks (MSE 7e-5, prev. best 2.7e-4). The code is available at https://github.com/UNITES-Lab/FlowTS.",
+      "notes": "Time-series generation and imputation framework leveraging rectified flow matching to simulate straight-line probability paths, replacing 50-step diffusion numerical solvers with single/few-step ODE integration.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Stock2025Swift",
+      "title": "Swift: An Autoregressive Consistency Model for Efficient Weather Forecasting",
+      "authors": [
+        "Jason Stock",
+        "Troy Arcomano",
+        "Rao Kotamarthi"
+      ],
+      "year": 2025,
+      "venue": "Machine Learning: Earth 2026",
+      "arxiv_id": "2509.25631",
+      "doi": "10.48550/arXiv.2509.25631",
+      "modality_pair": "TS+Atmospheric Grids",
+      "role_of_non_ts": "spatial_prior",
+      "fusion_mechanism": "consistency_distillation_ode",
+      "backbone": "Autoregressive Consistency Flow Model",
+      "tasks": [
+        "forecasting",
+        "subseasonal_weather"
+      ],
+      "domains": [
+        "meteorology_climate",
+        "energy"
+      ],
+      "code_url": "https://github.com/stockeh/swift",
+      "quality_score": 11,
+      "abstract": "Diffusion models offer a physically grounded framework for probabilistic weather forecasting, but their typical reliance on slow, iterative solvers during inference makes them impractical for subseasonal-to-seasonal (S2S) applications where long lead-times and domain-driven calibration are essential. To address this, we introduce Swift, a single-step consistency model that, for the first time, enables autoregressive finetuning of a probability flow model with a continuous ranked probability score (CRPS) objective. This eliminates the need for multi-model ensembling or parameter perturbations. Results show that Swift produces skillful 6-hourly forecasts that remain stable for up to 75 days, running $39\\times$ faster than state-of-the-art diffusion baselines while achieving forecast skill competitive with the numerical-based, operational IFS ENS. This marks a step toward efficient and reliable ensemble forecasting from medium-range to seasonal-scales.",
+      "notes": "Autoregressive consistency model mapping noise directly to multi-day weather states in single-step generation, achieving 39x speedup over diffusion baselines with CRPS competitive to operational numerical ensembles.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Zhou2024MTSCI",
+      "title": "MTSCI: A Conditional Diffusion Model for Multivariate Time Series Consistent Imputation",
+      "authors": [
+        "Jianping Zhou",
+        "Junhao Li",
+        "Guanjie Zheng",
+        "Xinbing Wang",
+        "Chenghu Zhou"
+      ],
+      "year": 2024,
+      "venue": "ACM CIKM 2024",
+      "arxiv_id": "2408.05740",
+      "doi": "10.1145/3627673.3679532",
+      "modality_pair": "TS+Masked Prior",
+      "role_of_non_ts": "consistency_anchor",
+      "fusion_mechanism": "contrastive_complementary_diffusion",
+      "backbone": "Conditional Score-based Diffusion",
+      "tasks": [
+        "imputation"
+      ],
+      "domains": [
+        "healthcare",
+        "traffic_mobility",
+        "general_ts"
+      ],
+      "code_url": "https://github.com/JeremyChou28/MTSCI",
+      "quality_score": 11,
+      "abstract": "Missing values are prevalent in multivariate time series, compromising the integrity of analyses and degrading the performance of downstream tasks. Consequently, research has focused on multivariate time series imputation, aiming to accurately impute the missing values based on available observations. A key research question is how to ensure imputation consistency, i.e., intra-consistency between observed and imputed values, and inter-consistency between adjacent windows after imputation. However, previous methods rely solely on the inductive bias of the imputation targets to guide the learning process, ignoring imputation consistency and ultimately resulting in poor performance. Diffusion models, known for their powerful generative abilities, prefer to generate consistent results based on available observations. Therefore, we propose a conditional diffusion model for Multivariate Time Series Consistent Imputation (MTSCI). Specifically, MTSCI employs a contrastive complementary mask to generate dual views during the forward noising process. Then, the intra contrastive loss is calculated to ensure intra-consistency between the imputed and observed values. Meanwhile, MTSCI utilizes a mixup mechanism to incorporate conditional information from adjacent windows during the denoising process, facilitating the inter-consistency between imputed samples. Extensive experiments on multiple real-world datasets demonstrate that our method achieves the state-of-the-art performance on multivariate time series imputation task under different missing scenarios. Code is available at https://github.com/JeremyChou28/MTSCI.",
+      "notes": "Conditional diffusion framework enforcing both intra-consistency (observed-imputed contrastive complementary masking) and inter-consistency (mixup cross-window boundary smoothing) for continuous missingness.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Zhang2026CVAformer",
+      "title": "Causal Semantic Alignment for LLM-based Time Series Forecasting",
+      "authors": [
+        "Kexuan Zhang",
+        "Xiaobei Zou",
+        "Cesare Alippi",
+        "Gary G. Yen",
+        "Yang Tang"
+      ],
+      "year": 2026,
+      "venue": "arXiv 2026",
+      "arxiv_id": "2606.08262",
+      "doi": "10.48550/arXiv.2606.08262",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "causal_semantic_alignment",
+      "fusion_mechanism": "causal_disentangled_alignment",
+      "backbone": "LLaMA / GPT + CausalEncoder",
+      "tasks": [
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts",
+        "energy",
+        "traffic"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Recent advances in Large Language Models (LLMs) have opened new possibilities for time series forecasting by enabling alignment between temporal patterns and pretrained word embeddings. However, most LLM-based methods overlook the heterogeneous nature of time series, where dynamic fluctuations and invariant semantics are entangled. This entanglement introduces spurious correlations during the alignment, as dynamic components act as confounders by simultaneously influencing invariant components and the resulting aligned embeddings. To address this issue, a variable-level alignment framework CVAformer is proposed. CVAformer explicitly disentangles each variable into invariant and dynamic components just before alignment, and applies causal intervention to mitigate the confounding effect of the dynamics. To better support variable-level alignment, CVAformer replaces the standard causal attention in LLMs with a non-causal attention mechanism that captures interactions among variables at each time step. Extensive experiments across long-term, short-term, few-shot, and zero-shot forecasting settings indicate that CVAformer matches or exceeds state-of-the-art performance on most datasets, and in some cases achieves notably better accuracy. Experimental results validate the effectiveness of variable-level alignment and dynamic disentanglement in CVAformer, offering a new perspective for LLM-based time series tasks.",
+      "notes": "Disentangles temporal variables into invariant semantics and dynamic confounders, applying Pearl's do-calculus causal intervention and non-causal attention to eliminate spurious correlations during LLM semantic alignment.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "He2025SYNC",
+      "title": "Learning Time-Aware Causal Representation for Model Generalization in Evolving Domains",
+      "authors": [
+        "Zhuo He",
+        "Shuang Li",
+        "Wenze Song",
+        "Longhui Yuan",
+        "Jian Liang",
+        "Han Li",
+        "Kun Gai"
+      ],
+      "year": 2025,
+      "venue": "ICML 2025",
+      "arxiv_id": "2506.17718",
+      "doi": "10.48550/arXiv.2506.17718",
+      "modality_pair": "TS+Structural Causal Prior",
+      "role_of_non_ts": "invariant_causal_mechanism",
+      "fusion_mechanism": "time_aware_scm_vae",
+      "backbone": "Sequential VAE + Time-Aware SCM",
+      "tasks": [
+        "evolving_domain_generalization",
+        "forecasting"
+      ],
+      "domains": [
+        "general_ts",
+        "healthcare",
+        "finance"
+      ],
+      "code_url": "https://github.com/BIT-DA/SYNC",
+      "quality_score": 11,
+      "abstract": "Endowing deep models with the ability to generalize in dynamic scenarios is of vital significance for real-world deployment, given the continuous and complex changes in data distribution. Recently, evolving domain generalization (EDG) has emerged to address distribution shifts over time, aiming to capture evolving patterns for improved model generalization. However, existing EDG methods may suffer from spurious correlations by modeling only the dependence between data and targets across domains, creating a shortcut between task-irrelevant factors and the target, which hinders generalization. To this end, we design a time-aware structural causal model (SCM) that incorporates dynamic causal factors and the causal mechanism drifts, and propose \\textbf{S}tatic-D\\textbf{YN}amic \\textbf{C}ausal Representation Learning (\\textbf{SYNC}), an approach that effectively learns time-aware causal representations. Specifically, it integrates specially designed information-theoretic objectives into a sequential VAE framework which captures evolving patterns, and produces the desired representations by preserving intra-class compactness of causal factors both across and within domains. Moreover, we theoretically show that our method can yield the optimal causal predictor for each time domain. Results on both synthetic and real-world datasets exhibit that SYNC can achieve superior temporal generalization performance.",
+      "notes": "Static-dynamic causal representation learning via time-aware structural causal models, isolating invariant causal factors from evolving mechanism drifts for robust generalization under non-stationary domain shifts.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
       "status": "excluded_title",
       "bibkey": null,
       "title": "2-categorical approach to unifying constructions of precoverings and its applications",
@@ -4459,6 +4736,50 @@
       "quality_score": 0,
       "abstract": "",
       "exclusion_reason": "Evaluates constraint-based causal structure discovery across unimodal price series without multimodal news or text interaction (EC1)",
+      "screen_date": "2026-09-27",
+      "api_verified": true
+    },
+    {
+      "status": "excluded_fulltext",
+      "bibkey": null,
+      "title": "InstaFlow: One Step is Enough for High-Quality Diffusion-Based Text-to-Image Generation",
+      "authors": [],
+      "year": 2026,
+      "venue": "arXiv",
+      "arxiv_id": "2309.06380",
+      "doi": "10.48550/arXiv.2309.06380",
+      "modality_pair": null,
+      "role_of_non_ts": null,
+      "fusion_mechanism": null,
+      "backbone": null,
+      "tasks": [],
+      "domains": [],
+      "code_url": null,
+      "quality_score": 0,
+      "abstract": "",
+      "exclusion_reason": "Evaluates 2D text-to-image rectified flow distillation without temporal sensor time series or dynamical trajectories (EC2)",
+      "screen_date": "2026-09-27",
+      "api_verified": true
+    },
+    {
+      "status": "excluded_fulltext",
+      "bibkey": null,
+      "title": "Cross-Domain Causal Preference Learning for Out-of-Distribution Recommendation",
+      "authors": [],
+      "year": 2026,
+      "venue": "arXiv",
+      "arxiv_id": "2404.14856",
+      "doi": "10.48550/arXiv.2404.14856",
+      "modality_pair": null,
+      "role_of_non_ts": null,
+      "fusion_mechanism": null,
+      "backbone": null,
+      "tasks": [],
+      "domains": [],
+      "code_url": null,
+      "quality_score": 0,
+      "abstract": "",
+      "exclusion_reason": "Static bipartite user-item graph recommendation without continuous temporal sequences or time series modeling (EC2)",
       "screen_date": "2026-09-27",
       "api_verified": true
     }

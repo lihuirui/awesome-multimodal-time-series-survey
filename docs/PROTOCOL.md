@@ -1,6 +1,6 @@
 # Systematic Review Protocol: Multimodal Time Series Models (PRISMA 2020)
 
-**Protocol Version:** 1.6.0  
+**Protocol Version:** 1.7.0  
 **Initial Date:** 2026-09-24  
 **Last Updated:** 2026-09-27  
 **Scope Time Window:** 2021-01-01 to 2026-09-27 (continuous updating)  
@@ -48,6 +48,9 @@ Searches are systematically conducted across:
 
 ### String 6: Neuromorphic DVS Event Streams, Non-Autoregressive Diffusion Imputation & Cross-Market Financial Causal Hypergraphs (Iteration 10)
 `("neuromorphic" OR "event camera" OR "DVS" OR "event stream" OR "diffusion imputation" OR "non-autoregressive" OR "burst dropout" OR "financial causal" OR "hypergraph") AND ("time series" OR "spatio-temporal" OR "continuous-time" OR "state space")`
+
+### String 7: Agile UAV Event-Frame-IMU Hybrid Fusion, One-Step Rectified Flow Imputation & Cross-Domain Non-Stationary Invariant Causal Transfer (Iteration 11)
+`("event camera" OR "event-inertial" OR "PL-EVIO" OR "AERO-VIS" OR "rectified flow" OR "consistency distillation" OR "FlowTS" OR "Swift" OR "MTSCI" OR "causal transfer" OR "CVAformer" OR "SYNC") AND ("time series" OR "state space" OR "continuous-timescale" OR "imputation" OR "non-stationary")`
 
 ---
 
@@ -174,5 +177,11 @@ To evaluate the empirical validity of reported multimodal performance gains, a s
   - Formulated Dirac-impulse continuous event-stream state-space transitions, Fourier harmonic score-based diffusion guidance under $80\%$ blackout missingness, and spherical causal hypergraph projections on $\mathcal{S}^n$.
   - Plotted 3-panel publication figure `paper/figures/dvs_diffusion_financial.png` (300 dpi) and vector `paper/figures/dvs_diffusion_financial.pdf` (Figure 15).
   - Expanded verified corpus from 91 to 98 milestone papers (2021--2026) with 100% real API verification cached in `data/raw/` and strict PRISMA arithmetic closure ($662 - 124 = 538$; $538 - 407 = 131$; $131 - 33 = 98 = 98$).
+- **2026-09-27 (v1.7.0):** Iteration 11 expansion:
+  - Added Search String 7 covering neuromorphic event-frame-IMU hybrid fusion and continuous-timescale state spaces for agile UAV flight (`AERO-VIS`, `Zubic2024SSM`, `PL-EVIO`), consistency distillation and one-step rectified flow for ultra-fast time-series imputation and forecasting (`FlowTS`, `Swift`, `MTSCI`), and cross-domain non-stationary invariant causal transfer with dynamic semantic disentanglement (`CVAformer`, `SYNC`).
+  - Formulated continuous linear differential state-space matrix exponentials $\bar{\mathbf{A}}_k = \exp(-\Delta t_k \mathbf{A}/\tau_k)$ under adaptive timescales, straight-line probability flow velocity fields $v_\theta(\mathbf{x}_t, t) = \mathbf{x}_1 - \mathbf{x}_0$, single-step autoregressive consistency self-mapping $f_\theta(\mathbf{x}_t, t) = f_\theta(\mathbf{x}_{t'}, t')$, and Pearl's $\text{do}$-calculus causal intervention $P(\mathbf{Y} \mid \text{do}(\mathbf{z}_{\text{inv}}))$.
+  - Generated 3-panel publication figure `paper/figures/uav_rectified_invariance.png` (300 dpi) and vector `paper/figures/uav_rectified_invariance.pdf` (Figure 16).
+  - Expanded verified corpus from 98 to 106 milestone papers (2021--2026) with 100% real API verification cached in `data/raw/` and strict PRISMA arithmetic closure ($706 - 133 = 573$; $573 - 432 = 141$; $141 - 35 = 106 = 106$).
+
 
 

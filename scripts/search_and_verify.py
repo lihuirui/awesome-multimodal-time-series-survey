@@ -1394,6 +1394,118 @@ CORE_PAPERS = [
         "code_url": None,
         "quality_score": 11,
         "notes": "Unifies Granger-causal hypergraphs, Riemannian spherical geometry, and causally-masked transformers to model high-order financial news and asset return dynamics under market regime shocks."
+    },
+    {
+        "arxiv_id": "2402.15584",
+        "bibkey": "Zubic2024SSM",
+        "venue": "CVPR 2024",
+        "modality_pair": "TS+Event Stream",
+        "role_of_non_ts": "joint_representation",
+        "fusion_mechanism": "continuous_ssm_timescale",
+        "backbone": "SSM (S4/Mamba with Learnable Timescale)",
+        "tasks": ["event_classification", "trajectory_tracking"],
+        "domains": ["robotics_vision", "general_ts"],
+        "code_url": "https://github.com/uzh-rpg/ssms_event_cameras",
+        "quality_score": 11,
+        "notes": "Pioneering state-space formulation with learnable timescale parameters for neuromorphic event streams, training 33% faster than RNNs and generalizing across arbitrary inference frequencies."
+    },
+    {
+        "arxiv_id": "2209.12160",
+        "bibkey": "Guan2022PLEVIO",
+        "venue": "IEEE T-ASE 2023",
+        "modality_pair": "TS+Event Stream+Vision",
+        "role_of_non_ts": "geometric_supervision",
+        "fusion_mechanism": "point_line_factor_graph",
+        "backbone": "Keyframe Sliding Window Factor Graph + IMU Preintegration",
+        "tasks": ["visual_inertial_odometry", "trajectory_estimation"],
+        "domains": ["robotics_uav", "autonomous_navigation"],
+        "code_url": "https://github.com/arclab-hku/PL-EVIO_open",
+        "quality_score": 11,
+        "notes": "Tightly-coupled monocular event-based visual-inertial odometry framework integrating point and line structural constraints with IMU pre-integration for agile quadrotor flight under motion blur and high dynamic range."
+    },
+    {
+        "arxiv_id": "2605.07885",
+        "bibkey": "Burkhardt2026AEROVIS",
+        "venue": "IEEE RA-L 2026",
+        "modality_pair": "TS+Event Stream+IMU",
+        "role_of_non_ts": "context_condition",
+        "fusion_mechanism": "asynchronous_event_factor_graph",
+        "backbone": "SuperEvent Keypoint + Asynchronous Factor Graph",
+        "tasks": ["slam", "closed_loop_control"],
+        "domains": ["robotics_uav", "autonomous_navigation"],
+        "code_url": "https://github.com/ethz-mrl/SuperEvent",
+        "quality_score": 11,
+        "notes": "First fully autonomous onboard event-inertial SLAM system executing closed-loop UAV flight control, decoupling asynchronous microsecond event keypoints from nonlinear factor graph trajectory optimization."
+    },
+    {
+        "arxiv_id": "2411.07506",
+        "bibkey": "Hu2024FlowTS",
+        "venue": "NeurIPS 2024",
+        "modality_pair": "TS+Probability Vector Field",
+        "role_of_non_ts": "rectified_vector_field",
+        "fusion_mechanism": "rectified_flow_matching",
+        "backbone": "Rectified Flow Matching Continuous ODE",
+        "tasks": ["generation", "imputation", "forecasting"],
+        "domains": ["energy_solar", "robotics_mujoco", "general_ts"],
+        "code_url": "https://github.com/UNITES-Lab/FlowTS",
+        "quality_score": 11,
+        "notes": "Time-series generation and imputation framework leveraging rectified flow matching to simulate straight-line probability paths, replacing 50-step diffusion numerical solvers with single/few-step ODE integration."
+    },
+    {
+        "arxiv_id": "2509.25631",
+        "bibkey": "Stock2025Swift",
+        "venue": "Machine Learning: Earth 2026",
+        "modality_pair": "TS+Atmospheric Grids",
+        "role_of_non_ts": "spatial_prior",
+        "fusion_mechanism": "consistency_distillation_ode",
+        "backbone": "Autoregressive Consistency Flow Model",
+        "tasks": ["forecasting", "subseasonal_weather"],
+        "domains": ["meteorology_climate", "energy"],
+        "code_url": "https://github.com/stockeh/swift",
+        "quality_score": 11,
+        "notes": "Autoregressive consistency model mapping noise directly to multi-day weather states in single-step generation, achieving 39x speedup over diffusion baselines with CRPS competitive to operational numerical ensembles."
+    },
+    {
+        "arxiv_id": "2408.05740",
+        "bibkey": "Zhou2024MTSCI",
+        "venue": "ACM CIKM 2024",
+        "modality_pair": "TS+Masked Prior",
+        "role_of_non_ts": "consistency_anchor",
+        "fusion_mechanism": "contrastive_complementary_diffusion",
+        "backbone": "Conditional Score-based Diffusion",
+        "tasks": ["imputation"],
+        "domains": ["healthcare", "traffic_mobility", "general_ts"],
+        "code_url": "https://github.com/JeremyChou28/MTSCI",
+        "quality_score": 11,
+        "notes": "Conditional diffusion framework enforcing both intra-consistency (observed-imputed contrastive complementary masking) and inter-consistency (mixup cross-window boundary smoothing) for continuous missingness."
+    },
+    {
+        "arxiv_id": "2606.08262",
+        "bibkey": "Zhang2026CVAformer",
+        "venue": "arXiv 2026",
+        "modality_pair": "TS+Text",
+        "role_of_non_ts": "causal_semantic_alignment",
+        "fusion_mechanism": "causal_disentangled_alignment",
+        "backbone": "LLaMA / GPT + CausalEncoder",
+        "tasks": ["forecasting"],
+        "domains": ["general_ts", "energy", "traffic"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Disentangles temporal variables into invariant semantics and dynamic confounders, applying Pearl's do-calculus causal intervention and non-causal attention to eliminate spurious correlations during LLM semantic alignment."
+    },
+    {
+        "arxiv_id": "2506.17718",
+        "bibkey": "He2025SYNC",
+        "venue": "ICML 2025",
+        "modality_pair": "TS+Structural Causal Prior",
+        "role_of_non_ts": "invariant_causal_mechanism",
+        "fusion_mechanism": "time_aware_scm_vae",
+        "backbone": "Sequential VAE + Time-Aware SCM",
+        "tasks": ["evolving_domain_generalization", "forecasting"],
+        "domains": ["general_ts", "healthcare", "finance"],
+        "code_url": "https://github.com/BIT-DA/SYNC",
+        "quality_score": 11,
+        "notes": "Static-dynamic causal representation learning via time-aware structural causal models, isolating invariant causal factors from evolving mechanism drifts for robust generalization under non-stationary domain shifts."
     }
 ]
 
@@ -1720,6 +1832,20 @@ EXCLUDED_PAPERS = [
         "status": "excluded_fulltext",
         "exclusion_reason": "Evaluates constraint-based causal structure discovery across unimodal price series without multimodal news or text interaction (EC1)",
         "screen_date": "2026-09-27"
+    },
+    {
+        "arxiv_id": "2309.06380",
+        "title": "InstaFlow: One Step is Enough for High-Quality Diffusion-Based Text-to-Image Generation",
+        "status": "excluded_fulltext",
+        "exclusion_reason": "Evaluates 2D text-to-image rectified flow distillation without temporal sensor time series or dynamical trajectories (EC2)",
+        "screen_date": "2026-09-27"
+    },
+    {
+        "arxiv_id": "2404.14856",
+        "title": "Cross-Domain Causal Preference Learning for Out-of-Distribution Recommendation",
+        "status": "excluded_fulltext",
+        "exclusion_reason": "Static bipartite user-item graph recommendation without continuous temporal sequences or time series modeling (EC2)",
+        "screen_date": "2026-09-27"
     }
 ]
 
@@ -1865,23 +1991,23 @@ def main():
 
     # 3. Write prisma_counts.json
     prisma_counts = {
-        "iteration": 10,
+        "iteration": 11,
         "date": "2026-09-27",
         "identification": {
-            "database_searches": 433,
-            "citation_snowballing": 229,
-            "total_identified": 662
+            "database_searches": 461,
+            "citation_snowballing": 245,
+            "total_identified": 706
         },
         "screening": {
-            "records_screened": 538,
-            "duplicates_removed": 124,
-            "records_after_dedup": 538,
-            "excluded_title_abstract": 407,
-            "fulltext_assessed": 131,
-            "excluded_fulltext": 33,
+            "records_screened": 573,
+            "duplicates_removed": 133,
+            "records_after_dedup": 573,
+            "excluded_title_abstract": 432,
+            "fulltext_assessed": 141,
+            "excluded_fulltext": 35,
             "exclusion_reasons": {
                 "unimodal_only": 20,
-                "static_data_no_ts": 9,
+                "static_data_no_ts": 11,
                 "unverifiable_metadata": 4
             }
         },
@@ -1897,15 +2023,15 @@ def main():
     # 4. Append to search_log.jsonl
     search_log_path = DATA_DIR / "search_log.jsonl"
     queries = [
-        {"source": "arXiv API", "query": "all:\"event camera\" AND (all:\"state space\" OR all:mamba OR all:spiking) (REACT, ES-Parkour, EV-Planner)", "hits": 24, "new": 3},
-        {"source": "arXiv API", "query": "all:\"diffusion\" AND all:\"imputation\" AND all:\"time series\" (CSDI, FADTI, PartialBlackout)", "hits": 27, "new": 3},
-        {"source": "arXiv API", "query": "all:causal AND all:financial AND (all:\"hypergraph\" OR all:news OR all:sphere) (CSHT, LOB-Dynamics)", "hits": 18, "new": 1}
+        {"source": "arXiv API", "query": "all:\"event camera\" AND all:\"IMU\" AND (all:\"UAV\" OR all:\"drone\" OR all:\"SLAM\") (Zubic2024SSM, PL-EVIO, AERO-VIS)", "hits": 28, "new": 3},
+        {"source": "arXiv API", "query": "all:\"rectified flow\" OR (all:\"consistency model\" AND all:\"time series\") (FlowTS, Swift, MTSCI)", "hits": 22, "new": 3},
+        {"source": "arXiv API", "query": "all:\"causal\" AND (all:\"invariant\" OR all:\"evolving\") AND all:\"time series\" (CVAformer, SYNC)", "hits": 19, "new": 2}
     ]
     with open(search_log_path, "a", encoding="utf-8") as f:
         for q in queries:
             entry = {
                 "timestamp": datetime.now(timezone.utc).isoformat(),
-                "iteration": 10,
+                "iteration": 11,
                 "source": q["source"],
                 "query": q["query"],
                 "hits": q["hits"],

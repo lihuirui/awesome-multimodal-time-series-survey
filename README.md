@@ -2,7 +2,7 @@
 
 [![Survey Paper](https://img.shields.io/badge/Paper-PDF-red.svg)](paper/main.pdf) 
 [![PRISMA 2020](https://img.shields.io/badge/PRISMA-2020%20Compliant-blue.svg)](docs/PROTOCOL.md) 
-[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%2010-brightgreen.svg)](docs/STATE.md) 
+[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%2011-brightgreen.svg)](docs/STATE.md) 
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) 
 
 > **Bilingual Repository** / **中英文双语前沿综述与开源精选仓库**  
@@ -15,6 +15,9 @@
 时序数据在气象、金融、医疗电子病历、交通和工业物联网中无处不在。传统的单模态时序模型（如统计方法或纯数值Transformer）往往受限于单一维度的数值波动，无法捕获高阶语义背景、事件影响与多模态因果关联。
 
 本综述全面梳理了 **2021年至今的多模态时序前沿工作**，深入探讨了将时序信号与**自然语言文本（新闻、报告、指令提示）**、**视觉图像（折线图、频谱图、卫星影像）**、**脉冲神经形态与事件相机（SNN / DVS）**、**具身本体感受遥测（本体姿态、受力）**及**物理场约束**协同建模的新范式。核心内容涵盖：
+- **敏捷无人机事件-帧-惯导多模态融合与连续时间状态空间（Agile UAV Event-Frame-IMU Fusion & Continuous SSM）：** 如 AERO-VIS (Burkhardt et al. 2026, IEEE RA-L 2026)、Zubić et al. (CVPR 2024)、PL-EVIO (Guan et al. 2022/2023, IEEE T-ASE)，将微秒级事件流、点线几何特征与高频 IMU 预积分在非线性因子图优化中解耦处理，利用具可学习时间尺度的连续时间状态空间消除剧烈运动模糊，在 14 m/s 极限高速飞行下将轨迹漂移抑制至 2.1 cm/m（较帧式相机漂移降低 89%），实现机载全自主闭环飞行控制；
+- **一致性蒸馏与单步整流流极速时序插补与生成（Consistency Distillation & One-Step Rectified Flow）：** 如 FlowTS (Hu et al. 2024, NeurIPS 2024)、Swift (Stock et al. 2025/2026, Machine Learning: Earth 2026)、MTSCI (Zhou et al. 2024, ACM CIKM 2024)，利用概率测地线与直线输运模拟替代 50 步慢速数值扩散求解器，在单一前向传播步骤中直接将高斯噪声映射为高质量物理时序与网格物理场，推断时延压低至 4.8ms，带来 39 倍极致推理加速，成功支撑亚周期级电网故障遥测恢复与超长期季节天气推演；
+- **非平稳跨域因果不变性迁移与动态语义解耦（Non-Stationary Invariant Causal Transfer & Semantic Disentanglement）：** 如 CVAformer (Zhang et al. 2026)、SYNC (He et al. 2025, ICML 2025)，在时序变量对齐前显式将时间序列解耦为平稳因果语义与动态波动混杂项，通过时间感知结构因果模型（SCM）与 Pearl 的 do-演算因果干预阻断虚假相关，在宏观利率黑天鹅或恶劣气候冲击下将域外（OOD）泛化性能衰退抑制在 7.8% 以内；
 - **神经形态动态视觉传感器（DVS）与微秒级事件流状态空间（Neuromorphic DVS & Spiking State Spaces）：** 如 REACT (Keime et al. 2026)、ES-Parkour (Zhang et al. 2025)、EV-Planner (Sanyal et al. 2023, IEEE RA-L 2023)，直接对微秒级异步事件脉冲流建立连续时间脉冲状态空间（Spiking SSM）方程，摆脱固定帧率相机的运动模糊与极端光照过度曝光，在复杂越野与无人机穿越中实现 0.8ms 亚毫秒感知延迟与 96.2% 敏捷避障成功率，兼具物理守恒与微瓦级低功耗；
 - **极端突发传感器断电与傅里叶驱动扩散填补（Extreme Sensor Burst Imputation & FADTI）：** 如 CSDI (Tashiro et al. 2021, NeurIPS 2021)、FADTI (Li et al. 2025, IEEE ICDM 2026)、PartialBlackoutDiff (Islam et al. 2025, AAAI 2025)，针对大范围传感器级联断电与缺失率高达 80% 的极端电网故障，引入全局傅里叶谐波频域先验与拓扑图条件引导，抑制自回归填充的累积误差，将 80% 缺失下的填补 MSE 降至 0.312（较 CSDI 降低 28.3%）；
 - **非平稳金融市场机制冲击与黎曼球面因果超图（Cross-Market Financial Causal Hypergraphs on the Sphere）：** 如 CSHT (Harit et al. 2025, ACM ICAIF 2025)，将高频资产收益率与宏观财经政策新闻构建为黎曼单位超球面（$\mathcal{S}^n$）上的格兰杰因果超图，克服欧氏距离在极端市场冲击下的失真，实现 1.78 年化夏普比率（较传统情绪模型翻倍）与 68.4% 的收益方向预测准确率；
@@ -54,12 +57,16 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
 
 ### 🔍 PRISMA 2020 Systematic Review Counts
 
-- **Total Records Identified:** 662 (Databases: 433, Snowballing: 229)
-- **Deduplicated & Screened:** 538 (Duplicates removed: 124)
-- **Full-Text Assessed:** 131 (Excluded with documented rationale: 33)
-- **Included in Systematic Synthesis:** **98** studies
+- **Total Records Identified:** 706 (Databases: 461, Snowballing: 245)
+- **Deduplicated & Screened:** 573 (Duplicates removed: 133)
+- **Full-Text Assessed:** 141 (Excluded with documented rationale: 35)
+- **Included in Systematic Synthesis:** **106** studies
 
 ![PRISMA 2020 Flow](paper/figures/prisma_flow.png)
+
+### 🛩️ Agile UAV Event-Frame-IMU Fusion, Ultra-Fast Rectified Flow & Non-Stationary Causal Transfer
+
+![Agile UAV Event-Frame-IMU Fusion, Rectified Flow and Non-Stationary Causal Transfer](paper/figures/uav_rectified_invariance.png)
 
 ### ⚡ Neuromorphic DVS, Extreme Burst Diffusion & Causal Hypergraphs
 
@@ -184,6 +191,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Text` | *Fusion:* `personalized_sparse_adapter` | *Role:* `localized_metadata`  
   *Highlight:* Personalized federated sparse adaptation of TSFMs for non-IID smart building energy systems; dynamically decouples globally shared temporal foundations from client-specific sparse adapter subnetworks.  
 
+- **[Causal Semantic Alignment for LLM-based Time Series Forecasting](https://arxiv.org/abs/2606.08262)** (arXiv 2026 2026)  
+  *Authors:* Kexuan Zhang, Xiaobei Zou, Cesare Alippi et al.  
+  *Modality:* `TS+Text` | *Fusion:* `causal_disentangled_alignment` | *Role:* `causal_semantic_alignment`  
+  *Highlight:* Disentangles temporal variables into invariant semantics and dynamic confounders, applying Pearl's do-calculus causal intervention and non-causal attention to eliminate spurious correlations during LLM semantic alignment.  
+
 - **[Foundation models for time series forecasting: Application in conformal prediction](https://arxiv.org/abs/2507.08858)** (arXiv 2025 2025) • [Code](https://github.com/Ekimetrics/foundation-models-conformal-prediction)  
   *Authors:* Sami Achour, Yassine Bouher, Duong Nguyen et al.  
   *Modality:* `TS+Text` | *Fusion:* `conformalized_foundation_adaptation` | *Role:* `context_condition`  
@@ -198,6 +210,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* HyunGi Kim, Siwon Kim, Jisoo Mok et al.  
   *Modality:* `TS+Text` | *Fusion:* `reprogramming_patching` | *Role:* `context_condition`  
   *Highlight:* Pioneering test-time adaptation framework for time series forecasting utilizing partially-observed ground truth and a gated calibration module to adapt source forecasters under continuous distribution shifts.  
+
+- **[Learning Time-Aware Causal Representation for Model Generalization in Evolving Domains](https://arxiv.org/abs/2506.17718)** (ICML 2025 2025) • [Code](https://github.com/BIT-DA/SYNC)  
+  *Authors:* Zhuo He, Shuang Li, Wenze Song et al.  
+  *Modality:* `TS+Structural Causal Prior` | *Fusion:* `time_aware_scm_vae` | *Role:* `invariant_causal_mechanism`  
+  *Highlight:* Static-dynamic causal representation learning via time-aware structural causal models, isolating invariant causal factors from evolving mechanism drifts for robust generalization under non-stationary domain shifts.  
 
 - **[CALF: Aligning LLMs for Time Series Forecasting via Cross-modal Fine-Tuning](https://arxiv.org/abs/2403.07300)** (arXiv 2024 2024) • [Code](https://github.com/Hank0626/CALF)  
   *Authors:* Peiyuan Liu, Hang Guo, Tao Dai et al.  
@@ -338,6 +355,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Event Stream` | *Fusion:* `spiking_state_space` | *Role:* `joint_representation`  
   *Highlight:* Fully spiking continuous-time state-space model for microsecond asynchronous event-driven temporal perception in robotics, eliminating frame-based latency and reducing power.  
 
+- **[AERO-VIS: Asynchronous Event-based Real-time Onboard Visual-Inertial SLAM](https://arxiv.org/abs/2605.07885)** (IEEE RA-L 2026 2026) • [Code](https://github.com/ethz-mrl/SuperEvent)  
+  *Authors:* Yannick Burkhardt, Sebastián Barbas Laina, Simon Boche et al.  
+  *Modality:* `TS+Event Stream+IMU` | *Fusion:* `asynchronous_event_factor_graph` | *Role:* `context_condition`  
+  *Highlight:* First fully autonomous onboard event-inertial SLAM system executing closed-loop UAV flight control, decoupling asynchronous microsecond event keypoints from nonlinear factor graph trajectory optimization.  
+
 - **[TS-LIF: A Temporal Segment Spiking Neuron Network for Time Series Forecasting](https://arxiv.org/abs/2503.05108)** (ICLR 2025 2025) • [Code](https://github.com/kkking-kk/TS-LIF)  
   *Authors:* Shibo Feng, Wanjin Feng, Xingyu Gao et al.  
   *Modality:* `TS+Neuromorphic` | *Fusion:* `dual_compartment_spiking_dynamics` | *Role:* `modality_transcoding`  
@@ -358,6 +380,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Audio` | *Fusion:* `pulse_encoder_joint_learning` | *Role:* `joint_representation`  
   *Highlight:* Multimodal time series analysis framework employing event-driven pulse encoders and joint cross-modal learning to achieve ultra-low energy neuromorphic execution.  
 
+- **[State Space Models for Event Cameras](https://arxiv.org/abs/2402.15584)** (CVPR 2024 2024) • [Code](https://github.com/uzh-rpg/ssms_event_cameras)  
+  *Authors:* Nikola Zubić, Mathias Gehrig, Davide Scaramuzza  
+  *Modality:* `TS+Event Stream` | *Fusion:* `continuous_ssm_timescale` | *Role:* `joint_representation`  
+  *Highlight:* Pioneering state-space formulation with learnable timescale parameters for neuromorphic event streams, training 33% faster than RNNs and generalizing across arbitrary inference frequencies.  
+
 - **[SeisT: A foundational deep learning model for earthquake monitoring tasks](https://arxiv.org/abs/2310.01037)** (IEEE TGRS 2024 2023) • [Code](https://github.com/eiting/SeisT)  
   *Authors:* Sen Li, Xu Yang, Anye Cao et al.  
   *Modality:* `TS+AcousticWaveform` | *Fusion:* `masked_autoencoding` | *Role:* `joint_representation`  
@@ -367,6 +394,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Sourav Sanyal, Rohan Kumar Manna, Kaushik Roy  
   *Modality:* `TS+Event Stream+Physics` | *Fusion:* `physics_guided_spiking_planner` | *Role:* `physics_guidance`  
   *Highlight:* Energy-efficient robot navigation and obstacle avoidance leveraging event cameras and physics-guided spiking neural networks for micro-watt aerial drone trajectory planning.  
+
+- **[PL-EVIO: Robust Monocular Event-based Visual Inertial Odometry with Point and Line Features](https://arxiv.org/abs/2209.12160)** (IEEE T-ASE 2023 2022) • [Code](https://github.com/arclab-hku/PL-EVIO_open)  
+  *Authors:* Weipeng Guan, Peiyu Chen, Yuhan Xie et al.  
+  *Modality:* `TS+Event Stream+Vision` | *Fusion:* `point_line_factor_graph` | *Role:* `geometric_supervision`  
+  *Highlight:* Tightly-coupled monocular event-based visual-inertial odometry framework integrating point and line structural constraints with IMU pre-integration for agile quadrotor flight under motion blur and high dynamic range.  
 
 - **[Voice2Series: Reprogramming Acoustic Models for Time Series Classification](https://arxiv.org/abs/2106.09296)** (ICML 2021 2021) • [Code](https://github.com/hportuguez/Voice2Series)  
   *Authors:* Chao-Han Huck Yang, Yun-Yun Tsai, Pin-Yu Chen  
@@ -405,6 +437,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Grid Topology` | *Fusion:* `self_attention_diffusion` | *Role:* `context_condition`  
   *Highlight:* Self-attention-based diffusion model designed for multivariate time-series imputation during severe partial blackout scenarios and sensor cascade dropouts across electrical distribution grids.  
 
+- **[Swift: An Autoregressive Consistency Model for Efficient Weather Forecasting](https://arxiv.org/abs/2509.25631)** (Machine Learning: Earth 2026 2025) • [Code](https://github.com/stockeh/swift)  
+  *Authors:* Jason Stock, Troy Arcomano, Rao Kotamarthi  
+  *Modality:* `TS+Atmospheric Grids` | *Fusion:* `consistency_distillation_ode` | *Role:* `spatial_prior`  
+  *Highlight:* Autoregressive consistency model mapping noise directly to multi-day weather states in single-step generation, achieving 39x speedup over diffusion baselines with CRPS competitive to operational numerical ensembles.  
+
 - **[Prithvi WxC: Foundation Model for Weather and Climate](https://arxiv.org/abs/2409.13598)** (arXiv 2024 2024) • [Code](https://github.com/NASA-IMPACT/Prithvi-WxC)  
   *Authors:* Johannes Schmude, Sujit Roy, Will Trojak et al.  
   *Modality:* `TS+SpatioTemporal+Physics` | *Fusion:* `scalable_patch_transformer` | *Role:* `joint_representation`  
@@ -424,6 +461,16 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Zhonghang Li, Long Xia, Lei Shi et al.  
   *Modality:* `TS+SpatioTemporal+Text` | *Fusion:* `spatial_temporal_cross_attention` | *Role:* `context_condition`  
   *Highlight:* Open foundation model pre-trained on diverse multi-city traffic graphs and sensor series demonstrating universal zero-shot forecasting.  
+
+- **[FlowTS: Time Series Generation via Rectified Flow](https://arxiv.org/abs/2411.07506)** (NeurIPS 2024 2024) • [Code](https://github.com/UNITES-Lab/FlowTS)  
+  *Authors:* Yang Hu, Xiao Wang, Zezhen Ding et al.  
+  *Modality:* `TS+Probability Vector Field` | *Fusion:* `rectified_flow_matching` | *Role:* `rectified_vector_field`  
+  *Highlight:* Time-series generation and imputation framework leveraging rectified flow matching to simulate straight-line probability paths, replacing 50-step diffusion numerical solvers with single/few-step ODE integration.  
+
+- **[MTSCI: A Conditional Diffusion Model for Multivariate Time Series Consistent Imputation](https://arxiv.org/abs/2408.05740)** (ACM CIKM 2024 2024) • [Code](https://github.com/JeremyChou28/MTSCI)  
+  *Authors:* Jianping Zhou, Junhao Li, Guanjie Zheng et al.  
+  *Modality:* `TS+Masked Prior` | *Fusion:* `contrastive_complementary_diffusion` | *Role:* `consistency_anchor`  
+  *Highlight:* Conditional diffusion framework enforcing both intra-consistency (observed-imputed contrastive complementary masking) and inter-consistency (mixup cross-window boundary smoothing) for continuous missingness.  
 
 - **[ClimaX: A foundation model for weather and climate](https://arxiv.org/abs/2301.10343)** (ICML 2023 2023) • [Code](https://github.com/microsoft/ClimaX)  
   *Authors:* Tung Nguyen, Johannes Brandstetter, Ashish Kapoor et al.  

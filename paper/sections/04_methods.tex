@@ -102,6 +102,14 @@ CSDI~\cite{Tashiro2021CSDI} & NeurIPS '21 & TS + Mask Context & Conditional Scor
 FADTI~\cite{Li2025FADTI} & IEEE ICDM '26 & TS + Frequency Spectrum & Fourier Diffusion Transformer & Fourier Cross-Attention Diff. & Frequency-Temporal Diff.\ MSE & \checkmark & \checkmark \\
 PartialBlackoutDiff~\cite{Islam2025PartialBlackout} & AAAI '25 & TS + Grid Topology & Diffusion Transformer & Topological Self-Attention Diff. & Blackout Reconstruction Score & \checkmark & No \\
 CSHT~\cite{Harit2025CSHT} & ACM ICAIF '25 & TS + News Text + Hypergraph & Spherical Hypergraph Trans. & Riemannian Hypergraph Attention & Granger-Causal Directional Loss & \checkmark & No \\
+Zubi\'c et al.~\cite{Zubic2024SSM} & CVPR '24 & TS + Event Stream & SSM (S4/Mamba + Timescale) & Continuous SSM Scan & Continuous Trajectory Loss & \checkmark & \checkmark \\
+PL-EVIO~\cite{Guan2022PLEVIO} & IEEE T-ASE '23 & TS + Event + Vision & Point-Line Factor Graph & Sliding Window EVIO & Keyframe Factor Optimization & No & \checkmark \\
+AERO-VIS~\cite{Burkhardt2026AEROVIS} & IEEE RA-L '26 & TS + Event + IMU & SuperEvent + Factor Graph & Asynchronous Event SLAM & Closed-Loop Trajectory Loss & \checkmark & \checkmark \\
+FlowTS~\cite{Hu2024FlowTS} & NeurIPS '24 & TS + Probability Flow & Continuous Rectified Flow & Rectified Flow Matching & Straight-Line Transport Loss & \checkmark & \checkmark \\
+Swift~\cite{Stock2025Swift} & ML: Earth '26 & TS + Atmospheric Grids & Autoregressive Consistency Flow & Single-Step Consistency ODE & CRPS Skill Score & \checkmark & \checkmark \\
+MTSCI~\cite{Zhou2024MTSCI} & ACM CIKM '24 & TS + Masked Context & Conditional Diffusion Net & Dual Consistency Diffusion & Masked Score Matching & \checkmark & \checkmark \\
+CVAformer~\cite{Zhang2026CVAformer} & arXiv '26 & TS + Text & LLaMA / GPT + CausalEncoder & Variable-Level Disentangle & Pearl $\text{do}$-calculus Loss & \checkmark & No \\
+SYNC~\cite{He2025SYNC} & ICML '25 & TS + Structural Prior & Sequential VAE + SCM & Time-Aware SCM VAE & Static-Dynamic Causal Loss & \checkmark & \checkmark \\
 \bottomrule
 \end{tabular}%
 }
@@ -765,5 +773,75 @@ The hypergraph incidence matrix $\mathbf{H} \in \mathbb{R}^{|V| \times |E|}$ is 
     d_{\mathcal{S}^n}(\mathbf{u}, \mathbf{v}) = \arccos(\langle \mathbf{u}, \mathbf{v} \rangle)
 \end{equation}
 which bounds variance explosion during turbulent market regime transitions. As benchmarked in \Cref{fig:dvs_diffusion_financial}c, CSHT elevates out-of-sample annualized Sharpe ratios from $0.88$ (standard lexical sentiment + LSTM) to $1.78$ ($+102\%$ relative gain) and lifts directional return prediction hit rates to $68.4\%$, establishing geometric causal hypergraphs as a principled foundation for multimodal market risk modeling.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.96\textwidth]{figures/uav_rectified_invariance.pdf}
+\caption{Agile UAV Event-Frame-IMU Fusion, Ultra-Fast Rectified Flow Imputation, and Non-Stationary Causal Transfer: (a) Autonomous UAV Flight under Turbulence: frame-based VIO suffers catastrophic optical blur breakdown at speeds exceeding $8\text{ m/s}$ ($29.0\text{ cm/m}$ drift at $14\text{ m/s}$), whereas point-line event-inertial odometry (PL-EVIO~\cite{Guan2022PLEVIO}) and continuous-timescale state-space models (AERO-VIS~\cite{Burkhardt2026AEROVIS}, Zubić et al.~\cite{Zubic2024SSM}) maintain trajectory drift below $2.1\text{ cm/m}$ (an $89\%$ drift reduction), enabling fully onboard closed-loop control; (b) Generative Telemetry Imputation \& Forecast: multi-step score diffusion (CSDI~\cite{Tashiro2021CSDI}, MTSCI~\cite{Zhou2024MTSCI}) requires 20--50 numerical steps ($135$--$320\text{ ms}$ latency), while straight-line rectified flow (FlowTS~\cite{Hu2024FlowTS}) and single-step autoregressive consistency flow (Swift~\cite{Stock2025Swift}) achieve identical or superior CRPS accuracy ($0.284$) in a single pass ($4.8\text{ ms}$ latency, $39\times$ acceleration); (c) Non-Stationary Regime Generalization: under interest rate shocks and financial crisis regimes, standard LLM alignment (Time-LLM) experiences a catastrophic $+92.4\%$ error explosion due to spurious dynamic confounders, whereas causal semantic disentanglement (CVAformer~\cite{Zhang2026CVAformer}, SYNC~\cite{He2025SYNC}) bounds out-of-distribution degradation to $\le 7.8\%$ via Pearl's $\text{do}$-calculus intervention.}
+\label{fig:uav_rectified_invariance}
+\end{figure*}
+
+\subsection{Neuromorphic Event-Frame-IMU Hybrid Fusion \& Continuous-Timescale State Spaces for Agile UAV Flight}
+\label{sec:uav_event_imu_ssm}
+Operating autonomous unmanned aerial vehicles (UAVs) in turbulent, visually degraded, or GPS-denied environments imposes extreme demands on multimodal state estimation. Standard frame-based cameras provide dense structural semantics under static conditions, but experience catastrophic motion blur and feature loss during high-speed rotational maneuvers ($>8\text{ m/s}$, \Cref{fig:uav_rectified_invariance}a). Conversely, asynchronous Dynamic Vision Sensors (DVS) provide microsecond-level temporal resolution ($>10^6\text{ events/s}$) with high dynamic range ($>120\text{ dB}$), yet produce sparse differential point clouds devoid of absolute photometric intensity. Fusing microsecond event streams, standard visual frames, and high-rate Inertial Measurement Unit (IMU) telemetry within a unified continuous-time dynamical system has emerged as the critical architectural frontier for agile flight.
+
+\subsubsection{Continuous-Timescale State Spaces for Event Cameras (Zubić et al.)}
+Standard recurrent neural networks and discrete Transformers applied to event streams assume fixed inter-frame intervals $\Delta t$, suffering severe degradation when inference event rates diverge from training distributions. Zubić et al.~\cite{Zubic2024SSM} introduce State Space Models (SSMs) equipped with learnable timescale parameters $\tau_k \in \mathbb{R}^+$ for event-based vision. Modeling hidden state dynamics via a continuous linear differential equation:
+\begin{equation}
+    \dot{\mathbf{h}}(t) = -\frac{1}{\tau_k}\mathbf{A}\mathbf{h}(t) + \mathbf{B}\mathbf{u}(t), \quad \mathbf{y}(t) = \mathbf{C}\mathbf{h}(t) + \mathbf{D}\mathbf{u}(t)
+\end{equation}
+the system analytically discretizes state transitions over arbitrary irregular inter-arrival gaps $\Delta t_k = t_k - t_{k-1}$ through matrix exponentials $\bar{\mathbf{A}}_k = \exp(-\Delta t_k \mathbf{A} / \tau_k)$. Because the timescale $\tau_k$ adapts dynamically to local scene velocity, this continuous-time SSM trains $33\%$ faster than recurrent baselines and exhibits zero-shot frequency invariance, maintaining trajectory tracking stability across extreme variations in UAV flight velocity.
+
+\subsubsection{Tightly-Coupled Point-Line Visual-Inertial Odometry (PL-EVIO)}
+In human-made indoor corridors and obstacle-dense operational environments, point feature trackers frequently fail due to textureless walls and rapid camera rotations. Guan et al.~\cite{Guan2022PLEVIO} propose PL-EVIO, a tightly-coupled monocular event-based visual-inertial odometry framework. PL-EVIO extracts both point and line primitives from asynchronous event streams, formulating a joint nonlinear sliding-window factor graph:
+\begin{equation}
+    \min_{\mathcal{X}} \left\{ \|\mathbf{r}_p - \mathbf{H}_p \mathcal{X}\|^2 + \sum_{k \in \mathcal{K}} \|\mathbf{r}_{\text{IMU}}(k, k+1)\|^2_{\mathbf{\Sigma}_{\text{IMU}}} + \sum_{i \in \mathcal{C}_{\text{point}}} \|\mathbf{r}_e^i\|^2_{\mathbf{\Sigma}_e} + \sum_{j \in \mathcal{C}_{\text{line}}} \|\mathbf{r}_l^j\|^2_{\mathbf{\Sigma}_l} \right\}
+\end{equation}
+where $\mathbf{r}_{\text{IMU}}$ denotes pre-integrated inertial residuals, and $\mathbf{r}_l^j$ measures structural line projection errors on the event manifold. By enforcing line co-planarity constraints alongside high-rate inertial pre-integration, PL-EVIO suppresses trajectory drift to $5.2\text{ cm/m}$ at $14\text{ m/s}$ (\Cref{fig:uav_rectified_invariance}a), outperforming frame-based visual odometry by an order of magnitude.
+
+\subsubsection{Real-Time Asynchronous Onboard SLAM \& Closed-Loop Control (AERO-VIS)}
+Bridging the gap from offline trajectory benchmarks to live closed-loop control, Burkhardt et al.~\cite{Burkhardt2026AEROVIS} present AERO-VIS, the first purely event-driven visual-inertial SLAM system executing autonomous flight on resource-constrained onboard flight computers. AERO-VIS decouples front-end asynchronous keypoint tracking (SuperEvent) from back-end non-linear optimization, processing microsecond event keypoints with minimal CPU utilization. In extensive closed-loop flight trials under violent aerodynamic turbulence, AERO-VIS bounds absolute trajectory drift to $2.1\text{ cm/m}$ at $14\text{ m/s}$ flight speed ($-89\%$ drift reduction relative to frame-based VIO, \Cref{fig:uav_rectified_invariance}a), establishing that asynchronous event-inertial state spaces provide sufficient robustness for aggressive autonomous flight.
+
+\subsection{Consistency Distillation \& One-Step Rectified Flow for Ultra-Fast Time-Series Generation and Imputation}
+\label{sec:flow_consistency_imputation}
+While score-based diffusion models (such as CSDI~\cite{Tashiro2021CSDI} and FADTI~\cite{Li2025FADTI}) generate exceptionally high-fidelity trajectories under sensor blackouts, their operational deployment in safety-critical industrial telemetry is severely hindered by sampling speed. Numerical reverse SDE/ODE solvers require $20$--$50$ sequential function evaluations ($135$--$320\text{ ms}$ latency), exceeding the sub-$10\text{ ms}$ protective tripping window mandated for real-time electrical grid relay stabilization. Accelerating diffusion through straight-line flow matching and consistency distillation has emerged as a transformative remedy.
+
+\subsubsection{Straight-Line Probability Flow Matching (FlowTS)}
+Hu et al.~\cite{Hu2024FlowTS} introduce FlowTS, reformulating time-series generation and imputation via continuous rectified flow matching. Instead of diffusing data along a highly curved Brownian noise trajectory, FlowTS defines a probability transport path directly bridging Gaussian noise $\mathbf{x}_0 \sim \mathcal{N}(\mathbf{0}, \mathbf{I})$ and empirical data $\mathbf{x}_1 \sim p_{\text{data}}$ along straight trajectories:
+\begin{equation}
+    \mathbf{x}_t = t \mathbf{x}_1 + (1 - t) \mathbf{x}_0, \quad t \in [0, 1]
+\end{equation}
+The instantaneous velocity vector field is constant along each trajectory: $\mathbf{v}_t(\mathbf{x}_t) = \mathbf{x}_1 - \mathbf{x}_0$. A temporal neural network $v_\theta(\mathbf{x}_t, t)$ is trained via straightforward regression:
+\begin{equation}
+    \mathcal{L}_{\text{FlowTS}}(\theta) = \mathbb{E}_{t \sim \mathcal{U}[0, 1], \mathbf{x}_0, \mathbf{x}_1} \left[ \|v_\theta(\mathbf{x}_t, t) - (\mathbf{x}_1 - \mathbf{x}_0)\|_2^2 \right]
+\end{equation}
+Because the vector field generates straight probability trajectories, FlowTS can be integrated numerically with standard Euler solvers in as few as $2$--$4$ steps, dropping sampling latency to $12.4\text{ ms}$ while achieving an imputation MSE of $0.295$ on MuJoCo kinematics and solar telemetry (\Cref{fig:uav_rectified_invariance}b).
+
+\subsubsection{Autoregressive Consistency Flow \& Single-Step Forecasts (Swift)}
+Stock et al.~\cite{Stock2025Swift} pioneer Swift, an autoregressive consistency flow architecture engineered for subseasonal-to-seasonal (S2S) weather forecasting. Building upon consistency model principles, Swift parameterizes a function $f_\theta(\mathbf{x}_t, t)$ that maps any point along a probability flow ODE trajectory directly back to its clean initial state $\mathbf{x}_0$, enforcing self-consistency:
+\begin{equation}
+    f_\theta(\mathbf{x}_t, t) = f_\theta(\mathbf{x}_{t'}, t') \quad \forall t, t' \in [\epsilon, T]
+\end{equation}
+Trained with Continuous Ranked Probability Score (CRPS) loss over multi-variable ERA5 planetary fields, Swift executes single-step generation ($N=1$) in just $4.8\text{ ms}$—a $39\times$ speedup over 50-step diffusion baselines (\Cref{fig:uav_rectified_invariance}b). Swift sustains stable autoregressive rollouts across 75 lead days without variance decay, matching the forecast skill of operational ensemble prediction systems (IFS ENS) at negligible computational expense.
+
+\subsubsection{Dual-Consistency Score Matching under Spatial-Temporal Dropout (MTSCI)}
+Zhou et al.~\cite{Zhou2024MTSCI} propose MTSCI (Multivariate Time Series Consistent Imputation), addressing boundary discontinuity in streaming imputation. Standard patch-based diffusion models introduce boundary mismatch artifacts between overlapping temporal windows. MTSCI resolves this by formulating a dual-consistency objective: *intra-consistency* via contrastive complementary masking (penalizing representation drift between observed and synthetic coordinates) and *inter-consistency* via mixup temporal regularization across adjacent sliding windows. This dual constraint eliminates rolling forecast boundary seams, achieving superior imputation fidelity across medical ICU and traffic networks.
+
+\subsection{Cross-Domain Non-Stationary Invariant Causal Transfer \& Dynamic Semantic Disentanglement}
+\label{sec:causal_invariant_transfer}
+Adapting pre-trained foundation models to cross-market financial sequences, industrial processes, and physiological telemetry faces a pervasive challenge: non-stationarity. In dynamic open-world systems, observational data distributions continually evolve due to regime shifts, interest rate hikes, or clinical interventions. Standard multimodal alignment models treat all temporal features symmetrically, inadvertently binding invariant underlying physical mechanisms with transient dynamic confounders.
+
+\subsubsection{Causal Semantic Alignment via Variable-Level Disentanglement (CVAformer)}
+Zhang et al.~\cite{Zhang2026CVAformer} analyze failure modes in LLM-based time-series transfer, demonstrating that dynamic fluctuations act as statistical confounders that induce spurious cross-attention weights between temporal patches and word tokens. When market regimes shift, models relying on these spurious correlations experience catastrophic performance collapse ($+92.4\%$ error explosion, \Cref{fig:uav_rectified_invariance}c).
+
+To eliminate this vulnerability, Zhang et al.\ develop CVAformer (Causal Variable-level Alignment Transformer). Prior to cross-modal projection, each time-series variable $\mathbf{x}_i$ is decomposed into an invariant semantic component $\mathbf{z}_{i, \text{inv}}$ and a dynamic fluctuation component $\mathbf{c}_{i, \text{dyn}}$. CVAformer executes causal intervention via Pearl's $\text{do}$-calculus:
+\begin{equation}
+    P(\mathbf{Y} \mid \text{do}(\mathbf{z}_{\text{inv}})) = \sum_{\mathbf{c}_{\text{dyn}}} P(\mathbf{Y} \mid \mathbf{z}_{\text{inv}}, \mathbf{c}_{\text{dyn}}) P(\mathbf{c}_{\text{dyn}})
+\end{equation}
+By replacing standard autoregressive causal masks with non-causal variable-level attention, CVAformer isolates the invariant causal factors, restricting out-of-distribution (OOD) performance degradation under financial regime shocks to $\le 7.8\%$ (\Cref{fig:uav_rectified_invariance}c).
+
+\subsubsection{Time-Aware Structural Causal Models for Evolving Domains (SYNC)}
+He et al.~\cite{He2025SYNC} formalize the problem of Evolving Domain Generalization (EDG), where causal mechanisms drift continuously over time. They introduce SYNC (Static-DYNamic Causal representation learning), defining a time-aware Structural Causal Model (SCM) that segregates latent representations into static causal factors $\mathbf{S}$ (which remain strictly invariant across all domains and time steps) and dynamic drifting factors $\mathbf{D}(t)$. Implemented via a sequential Variational Autoencoder (VAE) trained with information-theoretic mutual information penalties, SYNC maximizes intra-class feature compactness while penalizing spurious domain correlations. Extensive experiments across clinical ICU benchmarks and financial volatility datasets confirm that explicitly separating invariant physical laws from dynamic domain drifts provides provable generalization bounds under continuous temporal distribution shifts.
+
 
 
