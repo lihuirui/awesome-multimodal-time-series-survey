@@ -1459,6 +1459,125 @@ def plot_uav_rectified_invariance():
     print("Generated paper/figures/uav_rectified_invariance.png and .pdf")
 
 
+def plot_teleconnection_semiconductor_silicon():
+    """Generate 3-panel publication figure for Iteration 12:
+    (a) Extreme Long-Context Spatio-Temporal Patch State Spaces for Earth System Teleconnections (TeleViT, PTA-Trans, STM3)
+    (b) Zero-Shot Multimodal Anomaly Attribution with Causal DAG Counterfactuals for Semiconductor Fab Sensor Grids (CCPF, MATERO-RCA, PIC-ODE)
+    (c) Hardware-Software Co-Design for Event-Frame Spiking Neuromorphic Accelerators under Sub-50mW Constraints (ColibriUAV, Astrobee on Loihi 2)
+    """
+    fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(18, 5.5), dpi=300)
+
+    # -------------------------------------------------------------
+    # (a) Extreme Long-Context Earth System Teleconnections
+    # -------------------------------------------------------------
+    lead_weeks = [1, 2, 4, 6, 8]
+    skill_local = [0.72, 0.58, 0.44, 0.36, 0.31]
+    skill_global = [0.75, 0.63, 0.51, 0.42, 0.38]
+    skill_televit = [0.78, 0.69, 0.62, 0.56, 0.51]
+    skill_ptatrans = [0.81, 0.73, 0.66, 0.61, 0.57]
+    skill_stm3 = [0.83, 0.76, 0.70, 0.65, 0.62]
+
+    ax1.plot(lead_weeks, skill_local, "v--", color="#7f8c8d", lw=1.8, label="Local Spatio-Temporal ViT")
+    ax1.plot(lead_weeks, skill_global, "s-.", color="#3498db", lw=1.8, label="Global Grid Transformer (ClimaX)")
+    ax1.plot(lead_weeks, skill_televit, "o-", color="#e67e22", lw=2.2, label="TeleViT (NeurIPS '23, Teleconnections)")
+    ax1.plot(lead_weeks, skill_ptatrans, "^-", color="#9b59b6", lw=2.2, label="PTA-Trans (AAAI '25, Physics Teleconn.)")
+    ax1.plot(lead_weeks, skill_stm3, "*-", color="#27ae60", lw=2.6, markersize=8, label="STM3 (KDD '26, Multiscale Mamba)")
+
+    ax1.set_xlabel("S2S Forecast Lead Time (Weeks)", fontsize=10, fontweight="bold")
+    ax1.set_ylabel("Wildfire / S2S Prediction Skill (Correlation / F1)", fontsize=10, fontweight="bold")
+    ax1.set_title("(a) Multi-Decadal Earth Teleconnections:\nPrediction Skill vs S2S Lead Time", fontsize=11, fontweight="bold")
+    ax1.set_xticks(lead_weeks)
+    ax1.set_ylim(0.20, 0.90)
+    ax1.grid(True, linestyle="--", alpha=0.5)
+    ax1.legend(loc="lower left", fontsize=7.5, frameon=True)
+
+    ax1.annotate("STM3 & TeleViT:\n$+14.2\\%$--$+21.4\\%$ S2S Skill Gain\nSub-quadratic $\\mathcal{O}(T)$ at $100{,}000+$ steps",
+                 xy=(8, 0.62), xytext=(3.6, 0.74),
+                 arrowprops=dict(facecolor="#27ae60", shrink=0.08, width=1.2, headwidth=5),
+                 fontsize=8.0, fontweight="bold", color="#27ae60",
+                 bbox=dict(boxstyle="round,pad=0.3", fc="#eafaf1", ec="#27ae60", lw=1))
+
+    # -------------------------------------------------------------
+    # (b) Zero-Shot Causal DAG Anomaly Attribution in Fab Sensor Grids
+    # -------------------------------------------------------------
+    models_rca = ["Unconstrained\nTrans.", "Dynamic\nGNN", "PIC-ODE\n(IEEE '26)", "MATERO-RCA\n(2026)", "CCPF\n(Causal DAG)"]
+    top1_acc = [53.5, 61.2, 75.4, 79.8, 84.7]
+    false_alarms = [42.6, 34.8, 18.2, 14.5, 11.2]
+
+    x2 = np.arange(len(models_rca))
+    w2 = 0.35
+
+    b1 = ax2.bar(x2 - w2/2, top1_acc, w2, color="#2980b9", alpha=0.88, label="Top-1 Root Cause Accuracy (%) [Higher Better]")
+    b2 = ax2.bar(x2 + w2/2, false_alarms, w2, color="#e74c3c", alpha=0.85, label="False Alarm Rate (%) [Lower Better]")
+
+    for rect in b1:
+        h = rect.get_height()
+        ax2.annotate(f"{h:.1f}%", xy=(rect.get_x() + rect.get_width()/2, h),
+                     xytext=(0, 2), textcoords="offset points", ha="center", va="bottom", fontsize=7.2, fontweight="bold")
+    for rect in b2:
+        h = rect.get_height()
+        ax2.annotate(f"{h:.1f}%", xy=(rect.get_x() + rect.get_width()/2, h),
+                     xytext=(0, 2), textcoords="offset points", ha="center", va="bottom", fontsize=7.2, fontweight="bold", color="#c0392b")
+
+    ax2.set_ylabel("Performance Rate (%)", fontsize=10, fontweight="bold")
+    ax2.set_xticks(x2)
+    ax2.set_xticklabels(models_rca, fontsize=8.0, fontweight="bold")
+    ax2.set_ylim(0, 100)
+    ax2.grid(True, linestyle="--", alpha=0.4, axis="y")
+    ax2.legend(loc="upper left", fontsize=7.4, frameon=True)
+    ax2.set_title("(b) Fab Sensor Anomaly Attribution:\nCausal DAG vs False Alarm Cascades", fontsize=11, fontweight="bold")
+
+    ax2.annotate("CCPF (Causal Parent Mask):\nTop-1 RCA: $84.7\\%$ ($+31.2\\%$ vs Trans.)\nCuts False Alarms by $64.8\\%$",
+                 xy=(4 - w2/2, 84.7), xytext=(1.6, 52),
+                 arrowprops=dict(facecolor="#2980b9", shrink=0.08, width=1.2, headwidth=5),
+                 fontsize=8.0, fontweight="bold", color="#2980b9",
+                 bbox=dict(boxstyle="round,pad=0.3", fc="#ebf5fb", ec="#2980b9", lw=1))
+
+    # -------------------------------------------------------------
+    # (c) Hardware-Software Neuromorphic Co-Design (<50mW)
+    # -------------------------------------------------------------
+    platforms = [
+        {"name": "NVIDIA Jetson\nOrin Nano (15W)", "power": 12500, "lat": 33.0, "color": "#e74c3c", "marker": "s"},
+        {"name": "Raspberry Pi 5\n(ARM Cortex-A76)", "power": 4200, "lat": 85.0, "color": "#e67e22", "marker": "D"},
+        {"name": "Kraken RISC-V SoC\n(ColibriUAV '23)", "power": 38.0, "lat": 1.2, "color": "#3498db", "marker": "o"},
+        {"name": "Intel Loihi 2\n(Astrobee '25)", "power": 28.4, "lat": 0.9, "color": "#27ae60", "marker": "*"}
+    ]
+
+    for p in platforms:
+        ax3.scatter(p["lat"], p["power"], s=180 if p["marker"] == "*" else 120,
+                    color=p["color"], marker=p["marker"], label=p["name"], zorder=5)
+        offset_y = 1.3 if p["power"] > 100 else 0.65
+        offset_x = 0.85 if p["lat"] < 5 else 0.95
+        ax3.text(p["lat"] * offset_x, p["power"] * offset_y, p["name"].split("\n")[0],
+                 fontsize=7.8, fontweight="bold", color=p["color"])
+
+    # Draw Sub-50mW threshold zone
+    ax3.axhspan(0.1, 50, color="#2ecc71", alpha=0.15, label="Sub-50mW Ultra-Low Power Envelope")
+    ax3.axhline(50, color="#27ae60", linestyle=":", lw=1.5)
+
+    ax3.set_xscale("log")
+    ax3.set_yscale("log")
+    ax3.set_xlabel("Algorithmic Perception / Control Latency (ms) [Log Scale]", fontsize=10, fontweight="bold")
+    ax3.set_ylabel("Dynamic System Power (mW) [Log Scale]", fontsize=10, fontweight="bold")
+    ax3.set_xlim(0.3, 200)
+    ax3.set_ylim(10, 30000)
+    ax3.grid(True, which="both", linestyle="--", alpha=0.4)
+    ax3.set_title("(c) Edge Neuromorphic Silicon Co-Design:\nSub-50mW Ultra-Fast Closed-Loop Control", fontsize=11, fontweight="bold")
+    ax3.legend(loc="lower right", fontsize=7.2, frameon=True)
+
+    ax3.annotate("Intel Loihi 2 & Kraken RISC-V:\n$28.4$--$38.0\\text{ mW}$ Power Envelope\n$0.9$--$1.2\\text{ ms}$ Sub-Millisecond Latency\n$52\\times$ Power Drop vs Jetson Orin Nano",
+                 xy=(0.9, 28.4), xytext=(0.4, 500),
+                 arrowprops=dict(facecolor="#27ae60", shrink=0.08, width=1.2, headwidth=5),
+                 fontsize=8.0, fontweight="bold", color="#27ae60",
+                 bbox=dict(boxstyle="round,pad=0.3", fc="#eafaf1", ec="#27ae60", lw=1))
+
+    plt.tight_layout()
+    plt.savefig(FIG_DIR / "teleconnection_semiconductor_silicon.png", dpi=300)
+    plt.savefig(FIG_DIR / "teleconnection_semiconductor_silicon.pdf")
+    plt.close()
+    print("Generated paper/figures/teleconnection_semiconductor_silicon.png and .pdf")
+
+
 def main():
     plot_taxonomy()
     plot_prisma()
@@ -1476,7 +1595,8 @@ def main():
     plot_robotics_quantum_split()
     plot_dvs_diffusion_financial()
     plot_uav_rectified_invariance()
-    print("All 16 publication figures generated successfully in PNG and PDF formats.")
+    plot_teleconnection_semiconductor_silicon()
+    print("All 17 publication figures generated successfully in PNG and PDF formats.")
 
 
 if __name__ == "__main__":

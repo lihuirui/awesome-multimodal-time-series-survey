@@ -110,6 +110,14 @@ Swift~\cite{Stock2025Swift} & ML: Earth '26 & TS + Atmospheric Grids & Autoregre
 MTSCI~\cite{Zhou2024MTSCI} & ACM CIKM '24 & TS + Masked Context & Conditional Diffusion Net & Dual Consistency Diffusion & Masked Score Matching & \checkmark & \checkmark \\
 CVAformer~\cite{Zhang2026CVAformer} & arXiv '26 & TS + Text & LLaMA / GPT + CausalEncoder & Variable-Level Disentangle & Pearl $\text{do}$-calculus Loss & \checkmark & No \\
 SYNC~\cite{He2025SYNC} & ICML '25 & TS + Structural Prior & Sequential VAE + SCM & Time-Aware SCM VAE & Static-Dynamic Causal Loss & \checkmark & \checkmark \\
+TeleViT~\cite{Prapas2023TeleViT} & NeurIPS '23 & TS + Climate Indices + Vision & Vision Transformer & Cross-Attention Teleconnection & Teleconnection Cross-Entropy & \checkmark & \checkmark \\
+PTA-Trans~\cite{Lyu2025PTATrans} & AAAI '25 & TS + Teleconnection + Grids & Spatio-Temporal Transformer & Physics-Informed Cross-Attn. & Physics Teleconnection Loss & \checkmark & No \\
+STM3~\cite{Chen2025STM3} & ACM KDD '26 & TS + Spatio-Temporal Graph & Mixture of Multiscale Mamba & Multiscale Selective SSM & Sub-Quadratic Graph Loss & \checkmark & \checkmark \\
+CCPF~\cite{Zhang2026CCPF} & arXiv '26 & TS + Causal DAG & Probabilistic Transformer & Causal Parent-Mask Attention & Causally Constrained NLL & \checkmark & No \\
+MATERO-RCA~\cite{Liu2026MATERO} & arXiv '26 & TS + Operational Mode & Mode-Aware Energy Model & Trajectory Energy Optimization & Mode-Conditioned Energy Loss & \checkmark & No \\
+PIC-ODE~\cite{Dong2026PICODE} & IEEE Trans '26 & TS + Physical Topology & Causal Continuous Neural ODE & Differential Causal Propagation & Physics-ODE Residual Loss & \checkmark & No \\
+ColibriUAV~\cite{Renner2023Colibri} & IEEE TCAS '23 & TS + Event + Vision & Kraken RISC-V SoC + SNN & Hardware Neuromorphic Co-Design & Event Spike Edge Loss & No & No \\
+Astrobee (Loihi 2)~\cite{Stewart2025Astrobee} & IEEE '25 & TS + Proprioception + Spikes & Intel Loihi 2 Neuromorphic & Sigma-Delta Spiking Compilation & Closed-Loop Trajectory Loss & \checkmark & No \\
 \bottomrule
 \end{tabular}%
 }
@@ -842,6 +850,67 @@ By replacing standard autoregressive causal masks with non-causal variable-level
 
 \subsubsection{Time-Aware Structural Causal Models for Evolving Domains (SYNC)}
 He et al.~\cite{He2025SYNC} formalize the problem of Evolving Domain Generalization (EDG), where causal mechanisms drift continuously over time. They introduce SYNC (Static-DYNamic Causal representation learning), defining a time-aware Structural Causal Model (SCM) that segregates latent representations into static causal factors $\mathbf{S}$ (which remain strictly invariant across all domains and time steps) and dynamic drifting factors $\mathbf{D}(t)$. Implemented via a sequential Variational Autoencoder (VAE) trained with information-theoretic mutual information penalties, SYNC maximizes intra-class feature compactness while penalizing spurious domain correlations. Extensive experiments across clinical ICU benchmarks and financial volatility datasets confirm that explicitly separating invariant physical laws from dynamic domain drifts provides provable generalization bounds under continuous temporal distribution shifts.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.96\textwidth]{figures/teleconnection_semiconductor_silicon.pdf}
+\caption{Multi-Decadal Earth Teleconnection State Spaces, Causal DAG Anomaly Attribution in Fab Sensor Grids, and Edge Neuromorphic Silicon Co-Design: (a) Multi-Decadal Earth Teleconnections: local Spatio-Temporal ViT experiences sharp degradation across extended S2S lead times (F1 drops from $0.72$ to $0.31$ at 8 weeks), whereas global teleconnection cross-attention (TeleViT~\cite{Prapas2023TeleViT}, PTA-Trans~\cite{Lyu2025PTATrans}) and sub-quadratic multiscale selective state-space models (STM3~\cite{Chen2025STM3}) sustain predictive skill at $0.51$--$0.62$ ($+14.2\%$--$+21.4\%$ relative improvement), scaling to $100{,}000+$ sequence steps with $\mathcal{O}(T)$ memory complexity; (b) Semiconductor Fab Sensor Anomaly Attribution: across $10{,}000+$ lithography and wafer channels, unconstrained deep models incur prohibitive false alarm rates ($42.6\%$) due to symptom cascading, whereas causally-constrained parent masks (CCPF~\cite{Zhang2026CCPF}), mode-aware energy optimization (MATERO-RCA~\cite{Liu2026MATERO}), and causal neural ODEs (PIC-ODE~\cite{Dong2026PICODE}) elevate Top-1 root-cause localization accuracy to $84.7\%$ ($+31.2\%$ absolute surge) while reducing false alarms by $64.8\%$; (c) Edge Neuromorphic Silicon Co-Design: mobile GPUs (Jetson Orin Nano at $12.5\text{ W}$) and edge CPUs (Cortex-A76 at $4.2\text{ W}$) suffer substantial latency ($33$--$85\text{ ms}$) and battery drain, while dedicated neuromorphic SoCs (Kraken RISC-V in ColibriUAV~\cite{Renner2023Colibri}) and spiking silicon compilers (Astrobee on Intel Loihi 2~\cite{Stewart2025Astrobee}) achieve sub-millisecond ($0.9$--$1.2\text{ ms}$) closed-loop control latency within a $28.4$--$38.0\text{ mW}$ power envelope ($52\times$ power reduction).}
+\label{fig:teleconnection_semiconductor_silicon}
+\end{figure*}
+
+\subsection{Extreme Long-Context Spatio-Temporal Patch State Spaces for Multi-Decadal Earth System Teleconnection}
+\label{sec:teleconnection_ssm}
+Planetary climate forecasting presents an extreme manifestation of the long-context spatio-temporal challenge. Earth systems operate under multi-scale teleconnection dynamics: low-frequency oceanic oscillations, such as the El Ni\~no-Southern Oscillation ($\text{ENSO}$ Ni\~no 3.4 index), North Atlantic Oscillation ($\text{NAO}$), and Arctic Oscillation ($\text{AO}$), modulate atmospheric Rossby wave propagation across thousands of kilometers and multi-month time horizons. Standard localized Transformers evaluate regional patches independently, failing to connect regional weather extremes (e.g., California wildfires or European winter freezes) with global oceanic state vectors across subseasonal-to-seasonal (S2S) lead times (\Cref{fig:teleconnection_semiconductor_silicon}a).
+
+\subsubsection{Teleconnection-Driven Multimodal Transformers (TeleViT \& PTA-Trans)}
+Prapas et al.~\cite{Prapas2023TeleViT} pioneer TeleViT, a dual-scale multimodal framework for global wildfire forecasting. TeleViT couples high-resolution local Earth observation grids and meteorological time series $\mathbf{X}_{\text{local}} \in \mathbb{R}^{T \times H \times W \times C}$ with low-frequency global teleconnection climate indices $\mathbf{c}_{\text{tele}}(t) \in \mathbb{R}^K$. Rather than concatenating indices indiscriminately, TeleViT employs a cross-attention bridging layer where spatial patch query tokens attend directly to teleconnection key-value pairs:
+\begin{equation}
+    \mathbf{A}_{\text{tele}} = \text{Softmax}\left(\frac{\mathbf{Q}_{\text{patch}} \mathbf{K}_{\text{tele}}^\top}{\sqrt{d}} \odot \mathbf{M}_{\text{tele}}\right) \mathbf{V}_{\text{tele}}
+\end{equation}
+Concurrently, Lyu et al.~\cite{Lyu2025PTATrans} develop PTA-Trans (Physics-Informed Teleconnection-Aware Transformer). Recognizing that atmospheric teleconnections propagate along predictable planetary wave paths, PTA-Trans constructs the mask $\mathbf{M}_{\text{tele}}$ using planetary Rossby wave dispersion relations, penalizing unphysical teleconnection cross-talk. By anchoring regional forecast patches to global oceanic drivers, TeleViT and PTA-Trans lift 8-week S2S wildfire and temperature forecasting correlation skill by $+14.2\%$ to $+18.6\%$ over local vision transformers (\Cref{fig:teleconnection_semiconductor_silicon}a).
+
+\subsubsection{Sub-Quadratic Multiscale Selective State Spaces (STM3)}
+When scaling climate sequences to multi-decadal observational records spanning hourly surface grids, sequence length easily exceeds $L > 100{,}000$ steps, completely overwhelming standard $\mathcal{O}(L^2)$ attention matrices. Chen et al.~\cite{Chen2025STM3} formulate STM3 (Mixture of Multiscale Mamba). STM3 addresses multi-scale temporal dependencies by establishing parallel selective state-space channels with scale-dependent relaxation timescales $\tau_s$:
+\begin{equation}
+    \dot{\mathbf{h}}_s(t) = -\frac{1}{\tau_s} \mathbf{A}_s \mathbf{h}_s(t) + \mathbf{B}_s \mathbf{x}(t), \quad \mathbf{y}(t) = \sum_{s=1}^S \mathbf{W}_s \mathbf{C}_s \mathbf{h}_s(t)
+\end{equation}
+Discretized via input-dependent selective Zero-Order Hold (ZOH) updates $\Delta_t = \text{Softplus}(\mathbf{W}_\Delta \mathbf{x}_t)$, fast channels ($\tau_1 \approx 1\text{ hr}$) track rapid local meteorological transients while slow channels ($\tau_S \approx 90\text{ days}$) preserve oceanic memory. Operating with strictly sub-quadratic $\mathcal{O}(L)$ time and memory complexity, STM3 reduces long-horizon planetary forecasting MSE by $21.4\%$ relative to spatio-temporal graph transformers without memory exhaustion.
+
+\subsection{Zero-Shot Multimodal Anomaly Attribution with Causal DAG Counterfactuals for Fab Sensor Grids}
+\label{sec:fab_causal_attribution}
+In advanced semiconductor wafer fabrication (such as 3nm EUV lithography and plasma etching facilities), process tools are monitored by dense sensor topologies spanning $N > 10{,}000$ channels (gas chamber pressures, RF plasma impedances, stage interferometer positions, thermal sensors). Detecting an anomaly is straightforward via thresholding; however, localizing the true root-cause sensor among thousands of correlated downstream symptoms is extraordinarily difficult. Correlational neural networks and unconstrained graph neural networks (GNNs) suffer from downstream symptom confounding, yielding false alarm rates exceeding $40\%$ (\Cref{fig:teleconnection_semiconductor_silicon}b).
+
+\subsubsection{Causally-Constrained Attention Masks (CCPF)}
+Zhang et al.~\cite{Zhang2026CCPF} formulate CCPF (Causally-Constrained Probabilistic Forecasting). CCPF leverages discovered causal Directed Acyclic Graphs (DAGs) $\mathcal{G} = (\mathcal{V}, \mathcal{E})$ among sensor variables to constrain self-attention layers. Specifically, the causal parent set $\text{Pa}(i) = \{j \in \mathcal{V} : (j \to i) \in \mathcal{E}\}$ defines a structural hard parent mask:
+\begin{equation}
+    \mathbf{M}_{ij}^{\text{causal}} = \begin{cases} 0 & \text{if } j \in \text{Pa}(i) \cup \{i\} \\ -\infty & \text{otherwise} \end{cases}
+\end{equation}
+By forcing each sensor's future probabilistic distribution $P(x_{t+1}^i \mid \mathbf{X}_{\le t}^{\text{Pa}(i)})$ to attend exclusively to its true causal parents, CCPF eliminates symptom-induced false-positive cascades. The counterfactual attribution score is defined through Pearl's intervention:
+\begin{equation}
+    \mathcal{S}_{\text{CF}}(i) = \|\mathbf{x}_t^i - \mathbb{E}\left[\mathbf{x}_t^i \mid \text{do}(\mathbf{x}_t^{\text{Pa}(i)} = \mathbf{x}_{\text{baseline}}^{\text{Pa}(i)})\right]\|_2
+\end{equation}
+As benchmarked in \Cref{fig:teleconnection_semiconductor_silicon}b, causal parent masking elevates Top-1 root-cause localization accuracy to $84.7\%$ ($+31.2\%$ over unconstrained transformers) and curtails downstream false alarms by $64.8\%$.
+
+\subsubsection{Trajectory-Level Energy Optimization \& Causal ODEs (MATERO-RCA \& PIC-ODE)}
+Complementary to attention masking, Liu et al.~\cite{Liu2026MATERO} propose MATERO-RCA, modeling operational recipe transitions across discrete fab processing modes. MATERO-RCA defines an energy-based objective $E_\theta(\mathbf{X}, m)$ conditioned on tool recipe metadata $m$, executing trajectory-level optimization to discover the minimal root set $\mathcal{R}^* = \arg\min_{\mathcal{R} \subset \mathcal{V}} E_\theta(\mathbf{X}_{\mathcal{V} \setminus \mathcal{R}} \mid \text{do}(\mathbf{X}_{\mathcal{R}}))$, attaining a $91.3\%$ Root Cause Recall@3. Simultaneously, Dong et al.~\cite{Dong2026PICODE} develop PIC-ODE (Power Interpretable Causal ODE Networks), demonstrating that governing sensor dynamics through continuous causal neural ordinary differential equations $\frac{d\mathbf{h}}{dt} = f_\theta(\mathbf{h}(t), t, \mathcal{G}_{\text{phys}})$ provides mathematically verifiable attribution certificates that guarantee causal compliance with underlying physical conservation laws.
+
+\subsection{Hardware-Software Co-Design for Event-Frame Spiking Neuromorphic Accelerators under Sub-50mW Constraints}
+\label{sec:neuromorphic_hardware_accelerator}
+Deploying multimodal foundation perception onto autonomous microrobots, sub-gram insect-scale drones, and space-constrained free-flying satellites imposes brutal power constraints. Conventional embedded GPUs (such as NVIDIA Jetson Orin Nano consuming $12.5\text{ W}$) and multi-core ARM application processors ($4.2\text{ W}$) exhaust battery reserves within minutes, while incurring prohibitive inference latencies ($33$--$85\text{ ms}$, \Cref{fig:teleconnection_semiconductor_silicon}c). Compiling continuous event-stream state spaces and spiking neural networks directly onto dedicated neuromorphic silicon has emerged as the definitive path to sub-50mW autonomy.
+
+\subsubsection{Kraken RISC-V SoC \& Asynchronous Hardware-Software Co-Design (ColibriUAV)}
+Renner et al.~\cite{Renner2023Colibri} develop ColibriUAV, an ultra-fast, energy-efficient neuromorphic edge platform engineered for agile quadrotor flight. ColibriUAV eliminates the latency and power overhead of USB buses by directly bridging a Dynamic Vision Sensor (DVS) event camera, CMOS frame sensor, and IMU into a custom Kraken RISC-V System-on-Chip (SoC). Kraken features dedicated hardware accelerators for asynchronous Spiking Neural Networks (SNNs) and ternary operations. By executing event-driven feature extraction directly in silicon upon spike arrival:
+\begin{equation}
+    E_{\text{dynamic}} = \sum_{k=1}^K E_{\text{spike}} \cdot \mathbf{1}(\text{event}_k)
+\end{equation}
+ColibriUAV restricts total dynamic processing power to $38.0\text{ mW}$ with an end-to-end perception latency of just $1.2\text{ ms}$, delivering a $45\times$ energy efficiency advantage over mobile GPUs during high-speed obstacle avoidance (\Cref{fig:teleconnection_semiconductor_silicon}c).
+
+\subsubsection{On-Chip Sigma-Delta SNN Compilation for Intel Loihi 2 (Astrobee)}
+Stewart et al.~\cite{Stewart2025Astrobee} tackle closed-loop robotic flight control under microgravity by deploying continuous reinforcement learning policies onto Intel's second-generation Loihi 2 neuromorphic research processor for the NASA Astrobee free-flying robot. Stewart et al.\ convert continuous artificial neural policies into spiking Sigma-Delta Neural Networks (SDNNs). SDNN neurons transmit quantized differential activity states:
+\begin{equation}
+    s_i(t) = \begin{cases} \text{round}\left(\frac{\Delta v_i(t)}{\theta_{\text{th}}}\right) & \text{if } |\Delta v_i(t)| \ge \theta_{\text{th}} \\ 0 & \text{otherwise} \end{cases}
+\end{equation}
+By communicating state updates strictly when joint velocities or visual feature deviations exceed threshold $\theta_{\text{th}}$, Loihi 2 achieves $98.2\%$ closed-loop trajectory tracking precision while slashing system power consumption to $28.4\text{ mW}$ ($52\times$ reduction vs.\ embedded GPU baselines) with sub-millisecond ($0.9\text{ ms}$) algorithmic response latency. This confirms that hardware-software neuromorphic compilation unlocks genuine sub-50mW intelligence for autonomous spatial robotics.
 
 
 

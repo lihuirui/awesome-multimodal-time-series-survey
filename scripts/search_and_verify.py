@@ -1506,6 +1506,118 @@ CORE_PAPERS = [
         "code_url": "https://github.com/BIT-DA/SYNC",
         "quality_score": 11,
         "notes": "Static-dynamic causal representation learning via time-aware structural causal models, isolating invariant causal factors from evolving mechanism drifts for robust generalization under non-stationary domain shifts."
+    },
+    {
+        "arxiv_id": "2306.10940",
+        "bibkey": "Prapas2023TeleViT",
+        "venue": "NeurIPS 2023",
+        "modality_pair": "TS+Climate Indices+Earth Observation Grids",
+        "role_of_non_ts": "teleconnection_coupling_prior",
+        "fusion_mechanism": "cross_attention_vit_patching",
+        "backbone": "Vision Transformer + Teleconnection Cross-Attention",
+        "tasks": ["subseasonal_wildfire_forecasting", "climate_teleconnection_modeling"],
+        "domains": ["meteorology_climate", "wildfire_earth_systems"],
+        "code_url": "https://github.com/Orion-AI-Lab/televit",
+        "quality_score": 11,
+        "notes": "Pioneering teleconnection-driven multimodal architecture linking planetary climatic modes (ENSO, NAO, AO) with regional meteorological time series and Earth observation grids for subseasonal wildfire forecasting."
+    },
+    {
+        "arxiv_id": "2506.08049",
+        "bibkey": "Lyu2025PTATrans",
+        "venue": "AAAI 2025",
+        "modality_pair": "TS+Teleconnection Indices+Atmospheric Grids",
+        "role_of_non_ts": "physics_teleconnection_prior",
+        "fusion_mechanism": "physics_informed_cross_attention",
+        "backbone": "Physics-Informed Spatio-Temporal Transformer",
+        "tasks": ["s2s_weather_forecasting", "temperature_anomaly_prediction"],
+        "domains": ["meteorology_climate", "planetary_earth_systems"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Physics-informed teleconnection-aware transformer encoding atmospheric Rossby wave dispersion into cross-attention masks, capturing multi-week lagged interactions between tropical SSTs and mid-latitude weather extremes."
+    },
+    {
+        "arxiv_id": "2508.12247",
+        "bibkey": "Chen2025STM3",
+        "venue": "ACM KDD 2026",
+        "modality_pair": "TS+Spatio-Temporal Graph",
+        "role_of_non_ts": "multiscale_spatial_context",
+        "fusion_mechanism": "multiscale_selective_ssm",
+        "backbone": "Mixture of Multiscale Mamba (STM3)",
+        "tasks": ["long_term_spatio_temporal_forecasting"],
+        "domains": ["meteorology_climate", "traffic_mobility", "general_ts"],
+        "code_url": "https://github.com/IfReasonable/STM3_KDD26",
+        "quality_score": 11,
+        "notes": "Sub-quadratic multiscale selective state space model scaling to 100,000+ step spatio-temporal sequences without memory explosion, capturing both high-frequency localized dynamics and multi-decadal teleconnections."
+    },
+    {
+        "arxiv_id": "2604.17998",
+        "bibkey": "Zhang2026CCPF",
+        "venue": "arXiv 2026",
+        "modality_pair": "TS+Causal Directed Graph",
+        "role_of_non_ts": "causal_parent_mask_constraint",
+        "fusion_mechanism": "causally_constrained_transformer",
+        "backbone": "Causally Guided Probabilistic Transformer",
+        "tasks": ["anomaly_detection", "causal_root_cause_attribution"],
+        "domains": ["semiconductor_manufacturing", "industrial_sensor_grids"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Causally-constrained probabilistic forecasting framework embedding discovered causal DAG parent masks into Transformer attention layers, eliminating false-positive anomaly propagation across 10,000+ sensor channels."
+    },
+    {
+        "arxiv_id": "2607.29092",
+        "bibkey": "Liu2026MATERO",
+        "venue": "arXiv 2026",
+        "modality_pair": "TS+Operational Mode Metadata",
+        "role_of_non_ts": "mode_dependent_energy_prior",
+        "fusion_mechanism": "trajectory_energy_based_optimization",
+        "backbone": "Mode-Aware Energy-Based Model + Causal DAG",
+        "tasks": ["root_cause_analysis", "anomaly_attribution"],
+        "domains": ["industrial_iot", "semiconductor_wafer_lithography"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Mode-aware trajectory-level energy-based root-set optimization for complex multi-sensor industrial grids, isolating minimal counterfactual root-cause sets under non-linear operational regime transitions."
+    },
+    {
+        "arxiv_id": "2602.12592",
+        "bibkey": "Dong2026PICODE",
+        "venue": "IEEE Transactions 2026",
+        "modality_pair": "TS+Physical Topology Graph",
+        "role_of_non_ts": "physical_causal_differential_prior",
+        "fusion_mechanism": "causal_continuous_neural_ode",
+        "backbone": "Causal Continuous Neural ODE Network",
+        "tasks": ["anomaly_detection", "root_cause_analysis"],
+        "domains": ["energy_power_grid", "industrial_cyber_physical"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Unified explainable anomaly detection and root cause analysis architecture unifying continuous Neural ODEs with physical topology graphs and structural causal models, generating counterfactual trajectories with formal differential guarantees."
+    },
+    {
+        "arxiv_id": "2305.18371",
+        "bibkey": "Renner2023Colibri",
+        "venue": "IEEE TCAS 2023",
+        "modality_pair": "TS+Event Stream+Visual Frames",
+        "role_of_non_ts": "asynchronous_event_accelerator_trigger",
+        "fusion_mechanism": "hardware_software_neuromorphic_co_design",
+        "backbone": "Kraken RISC-V SoC + Spiking Neural Network Accelerators",
+        "tasks": ["edge_robotic_perception", "high_speed_obstacle_avoidance"],
+        "domains": ["robotics_uav", "edge_neuromorphic_silicon"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Ultra-fast neuromorphic edge computing platform integrating an asynchronous DVS event camera, CMOS frame camera, and IMU telemetry onto a dedicated Kraken RISC-V SoC with on-chip SNN accelerators operating strictly under 50mW."
+    },
+    {
+        "arxiv_id": "2512.03911",
+        "bibkey": "Stewart2025Astrobee",
+        "venue": "IEEE 2025",
+        "modality_pair": "TS+Proprioceptive Telemetry+Event Spikes",
+        "role_of_non_ts": "on_chip_neuromorphic_state",
+        "fusion_mechanism": "sigma_delta_spiking_compilation",
+        "backbone": "Intel Loihi 2 Neuromorphic Research Chip + Sigma-Delta Spiking Networks",
+        "tasks": ["closed_loop_robotic_control", "free_flying_space_telemetry"],
+        "domains": ["robotics_spacecraft", "neuromorphic_silicon"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Direct compilation of continuous reinforcement learning policies into spiking Sigma-Delta Neural Networks executing on Intel's Loihi 2 neuromorphic silicon for Astrobee free-flying robot closed-loop motion control at 28.4 mW."
     }
 ]
 
@@ -1846,6 +1958,20 @@ EXCLUDED_PAPERS = [
         "status": "excluded_fulltext",
         "exclusion_reason": "Static bipartite user-item graph recommendation without continuous temporal sequences or time series modeling (EC2)",
         "screen_date": "2026-09-27"
+    },
+    {
+        "arxiv_id": "2608.21117",
+        "title": "Root cause analysis via difference graph discovery from linear time-series data",
+        "status": "excluded_fulltext",
+        "exclusion_reason": "Evaluates root cause difference graph discovery on purely unimodal linear time series without multimodal text, vision, or foundation model interactions (EC1)",
+        "screen_date": "2026-09-27"
+    },
+    {
+        "arxiv_id": "2609.13506",
+        "title": "nBMS, a Neuromorphic Battery Management System with a Silicon-Validated Spiking State-of-Charge Core for eVTOL Aircraft",
+        "status": "excluded_fulltext",
+        "exclusion_reason": "Evaluates unimodal battery electrochemical cell voltage/current telemetry on spiking hardware without cross-modal sequence modeling or multi-sensor cross-attention (EC1)",
+        "screen_date": "2026-09-27"
     }
 ]
 
@@ -1991,22 +2117,22 @@ def main():
 
     # 3. Write prisma_counts.json
     prisma_counts = {
-        "iteration": 11,
+        "iteration": 12,
         "date": "2026-09-27",
         "identification": {
-            "database_searches": 461,
-            "citation_snowballing": 245,
-            "total_identified": 706
+            "database_searches": 495,
+            "citation_snowballing": 263,
+            "total_identified": 758
         },
         "screening": {
-            "records_screened": 573,
-            "duplicates_removed": 133,
-            "records_after_dedup": 573,
-            "excluded_title_abstract": 432,
-            "fulltext_assessed": 141,
-            "excluded_fulltext": 35,
+            "records_screened": 613,
+            "duplicates_removed": 145,
+            "records_after_dedup": 613,
+            "excluded_title_abstract": 462,
+            "fulltext_assessed": 151,
+            "excluded_fulltext": 37,
             "exclusion_reasons": {
-                "unimodal_only": 20,
+                "unimodal_only": 22,
                 "static_data_no_ts": 11,
                 "unverifiable_metadata": 4
             }
@@ -2023,15 +2149,15 @@ def main():
     # 4. Append to search_log.jsonl
     search_log_path = DATA_DIR / "search_log.jsonl"
     queries = [
-        {"source": "arXiv API", "query": "all:\"event camera\" AND all:\"IMU\" AND (all:\"UAV\" OR all:\"drone\" OR all:\"SLAM\") (Zubic2024SSM, PL-EVIO, AERO-VIS)", "hits": 28, "new": 3},
-        {"source": "arXiv API", "query": "all:\"rectified flow\" OR (all:\"consistency model\" AND all:\"time series\") (FlowTS, Swift, MTSCI)", "hits": 22, "new": 3},
-        {"source": "arXiv API", "query": "all:\"causal\" AND (all:\"invariant\" OR all:\"evolving\") AND all:\"time series\" (CVAformer, SYNC)", "hits": 19, "new": 2}
+        {"source": "arXiv API", "query": "all:\"teleconnection\" AND (all:\"transformer\" OR all:\"state space\" OR all:\"Mamba\") (Prapas2023TeleViT, Lyu2025PTATrans, Chen2025STM3)", "hits": 32, "new": 3},
+        {"source": "arXiv API", "query": "(all:\"anomaly attribution\" OR all:\"root cause\") AND all:causal AND all:\"time series\" (Zhang2026CCPF, Liu2026MATERO, Dong2026PICODE)", "hits": 24, "new": 3},
+        {"source": "arXiv API", "query": "all:neuromorphic AND (all:accelerator OR all:silicon OR all:Loihi) AND (all:\"event camera\" OR all:spiking) (Renner2023Colibri, Stewart2025Astrobee)", "hits": 21, "new": 2}
     ]
     with open(search_log_path, "a", encoding="utf-8") as f:
         for q in queries:
             entry = {
                 "timestamp": datetime.now(timezone.utc).isoformat(),
-                "iteration": 11,
+                "iteration": 12,
                 "source": q["source"],
                 "query": q["query"],
                 "hits": q["hits"],

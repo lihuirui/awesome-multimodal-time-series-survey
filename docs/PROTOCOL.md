@@ -1,6 +1,6 @@
 # Systematic Review Protocol: Multimodal Time Series Models (PRISMA 2020)
 
-**Protocol Version:** 1.7.0  
+**Protocol Version:** 1.8.0  
 **Initial Date:** 2026-09-24  
 **Last Updated:** 2026-09-27  
 **Scope Time Window:** 2021-01-01 to 2026-09-27 (continuous updating)  
@@ -51,6 +51,10 @@ Searches are systematically conducted across:
 
 ### String 7: Agile UAV Event-Frame-IMU Hybrid Fusion, One-Step Rectified Flow Imputation & Cross-Domain Non-Stationary Invariant Causal Transfer (Iteration 11)
 `("event camera" OR "event-inertial" OR "PL-EVIO" OR "AERO-VIS" OR "rectified flow" OR "consistency distillation" OR "FlowTS" OR "Swift" OR "MTSCI" OR "causal transfer" OR "CVAformer" OR "SYNC") AND ("time series" OR "state space" OR "continuous-timescale" OR "imputation" OR "non-stationary")`
+
+### String 8: Multi-Decadal Earth Teleconnection, Fab Causal DAG Anomaly Attribution & Sub-50mW Neuromorphic Silicon Co-Design (Iteration 12)
+`("teleconnection" OR "TeleViT" OR "PTA-Trans" OR "STM3" OR "multiscale mamba" OR "causal attribution" OR "CCPF" OR "MATERO" OR "PIC-ODE" OR "neuromorphic accelerator" OR "ColibriUAV" OR "Loihi" OR "Kraken") AND ("time series" OR "spatio-temporal" OR "causal DAG" OR "root cause" OR "sub-50mW" OR "SNN")`
+
 
 ---
 
@@ -182,6 +186,12 @@ To evaluate the empirical validity of reported multimodal performance gains, a s
   - Formulated continuous linear differential state-space matrix exponentials $\bar{\mathbf{A}}_k = \exp(-\Delta t_k \mathbf{A}/\tau_k)$ under adaptive timescales, straight-line probability flow velocity fields $v_\theta(\mathbf{x}_t, t) = \mathbf{x}_1 - \mathbf{x}_0$, single-step autoregressive consistency self-mapping $f_\theta(\mathbf{x}_t, t) = f_\theta(\mathbf{x}_{t'}, t')$, and Pearl's $\text{do}$-calculus causal intervention $P(\mathbf{Y} \mid \text{do}(\mathbf{z}_{\text{inv}}))$.
   - Generated 3-panel publication figure `paper/figures/uav_rectified_invariance.png` (300 dpi) and vector `paper/figures/uav_rectified_invariance.pdf` (Figure 16).
   - Expanded verified corpus from 98 to 106 milestone papers (2021--2026) with 100% real API verification cached in `data/raw/` and strict PRISMA arithmetic closure ($706 - 133 = 573$; $573 - 432 = 141$; $141 - 35 = 106 = 106$).
+- **2026-09-27 (v1.8.0):** Iteration 12 expansion:
+  - Added Search String 8 covering multi-decadal Earth system teleconnection with long-context state spaces (`TeleViT`, `PTA-Trans`, `STM3`), zero-shot multimodal anomaly attribution with causal DAG counterfactuals for semiconductor fab sensor grids (`CCPF`, `MATERO-RCA`, `PIC-ODE`), and hardware-software co-design for event-frame spiking neuromorphic accelerators under sub-50mW constraints (`ColibriUAV` on Kraken RISC-V SoC, Astrobee RL on Intel Loihi 2).
+  - Formulated planetary Rossby wave dispersion masks $\mathbf{M}_{\text{tele}}$ with cross-attention bridging, scale-dependent selective state-space relaxation timescales $\tau_s$, causal DAG hard parent attention masks $\mathbf{M}_{ij}^{\text{causal}}$, Pearl counterfactual intervention score $\mathcal{S}_{\text{CF}}(i)$, dynamic event spike power budgeting $E_{\text{dynamic}} = \sum E_{\text{spike}} \cdot \mathbf{1}(\text{event}_k)$, and Sigma-Delta neural network (SDNN) threshold quantization.
+  - Generated 3-panel publication figure `paper/figures/teleconnection_semiconductor_silicon.png` (300 dpi) and vector `paper/figures/teleconnection_semiconductor_silicon.pdf` (Figure 17).
+  - Expanded verified corpus from 106 to 114 milestone papers (2021--2026) with 100% real API verification cached in `data/raw/` and strict PRISMA arithmetic closure ($758 - 145 = 613$; $613 - 462 = 151$; $151 - 37 = 114 = 114$).
+
 
 
 

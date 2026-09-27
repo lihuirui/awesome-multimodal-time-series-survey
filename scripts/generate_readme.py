@@ -44,7 +44,7 @@ def main():
             categories["Multimodal Datasets & Evaluation Benchmarks"].append(p)
         elif "Audio" in mod or "Waveform" in mod or "Spike" in mod or "Neuromorphic" in mod or "Event" in mod or aid in ["2601.02411", "2402.05423", "2503.05108", "2609.19204", "2503.09985", "2307.11349", "2402.15584", "2209.12160", "2605.07885"]:
             categories["Acoustic, Seismic & Neuromorphic SNN Models"].append(p)
-        elif "Grid" in mod or "Planetary" in mod or "Physics" in mod or "Quantum" in mod or "Diffusion" in mech or "Spectrum" in mod or "Flow" in mech or "Vector" in mod or aid in ["2301.10343", "2409.13598", "2405.13063", "2403.00813", "2408.10269", "2608.10941", "2504.19669", "2509.00259", "2512.13745", "2107.03502", "2512.15116", "2503.01737", "2411.07506", "2509.25631", "2408.05740"]:
+        elif "Grid" in mod or "Planetary" in mod or "Physics" in mod or "Quantum" in mod or "Diffusion" in mech or "Spectrum" in mod or "Flow" in mech or "Vector" in mod or "Teleconnection" in mod or "Indices" in mod or aid in ["2301.10343", "2409.13598", "2405.13063", "2403.00813", "2408.10269", "2608.10941", "2504.19669", "2509.00259", "2512.13745", "2107.03502", "2512.15116", "2503.01737", "2411.07506", "2509.25631", "2408.05740", "2306.10940", "2506.08049", "2508.12247", "2602.12592"]:
             categories["Physics-Informed & Planetary Earth Foundation Models"].append(p)
         elif mech in ["visual_rendering", "two_stage_vision_language_screening"] or "Vision" in mod or "CXR" in mod:
             categories["Vision-Language & Visual Transcoding"].append(p)
@@ -60,7 +60,7 @@ def main():
     lines.append("")
     lines.append("[![Survey Paper](https://img.shields.io/badge/Paper-PDF-red.svg)](paper/main.pdf) ")
     lines.append("[![PRISMA 2020](https://img.shields.io/badge/PRISMA-2020%20Compliant-blue.svg)](docs/PROTOCOL.md) ")
-    lines.append("[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%2011-brightgreen.svg)](docs/STATE.md) ")
+    lines.append("[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%2012-brightgreen.svg)](docs/STATE.md) ")
     lines.append("[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) ")
     lines.append("")
     lines.append("> **Bilingual Repository** / **中英文双语前沿综述与开源精选仓库**  ")
@@ -73,6 +73,9 @@ def main():
     lines.append("时序数据在气象、金融、医疗电子病历、交通和工业物联网中无处不在。传统的单模态时序模型（如统计方法或纯数值Transformer）往往受限于单一维度的数值波动，无法捕获高阶语义背景、事件影响与多模态因果关联。")
     lines.append("")
     lines.append("本综述全面梳理了 **2021年至今的多模态时序前沿工作**，深入探讨了将时序信号与**自然语言文本（新闻、报告、指令提示）**、**视觉图像（折线图、频谱图、卫星影像）**、**脉冲神经形态与事件相机（SNN / DVS）**、**具身本体感受遥测（本体姿态、受力）**及**物理场约束**协同建模的新范式。核心内容涵盖：")
+    lines.append("- **多年代际行星遥相关与超长程分块状态空间（Multi-Decadal Earth Teleconnection & STM3）：** 如 TeleViT (Prapas et al. 2023, NeurIPS 2023)、PTA-Trans (Lyu et al. 2025, AAAI 2025)、STM3 (Chen et al. 2025/2026, ACM KDD 2026)，将全球海洋-大气长程遥相关模式（ENSO、NAO、AO）与高分辨率局部气象和地球观测网格跨尺度对齐，利用多尺度选择性状态空间（STM3）突破二次方内存瓶颈，在 $100{,}000+$ 超长步长下保持 $\\mathcal{O}(T)$ 线性推断，将 8 周次季节野火与气温预测技巧提升 14.2%--21.4%；")
+    lines.append("- **半导体晶圆厂万级传感网因果DAG异常归因（Semiconductor Fab Causal DAG Anomaly Attribution & CCPF）：** 如 CCPF (Zhang et al. 2026)、MATERO-RCA (Liu et al. 2026)、PIC-ODE (Dong et al. 2026, IEEE Trans 2026)，在 3nm EUV 光刻与等离子刻蚀逾万维传感拓扑中，通过将因果 DAG 父节点集硬掩码直接嵌入注意力机制，彻底切断下游虚假报警级联，将 Top-1 根因定位准确率拔高至 84.7%（较无约束大模型提升 31.2%），并过滤 64.8% 的伪异常误报；")
+    lines.append("- **亚50毫瓦仿生事件-帧神经形态边缘硅基协同设计（Sub-50mW Neuromorphic Silicon Co-Design & Loihi 2 / ColibriUAV）：** 如 ColibriUAV (Renner et al. 2023, IEEE TCAS 2023)、Astrobee 强化学习飞行控制 (Stewart et al. 2025, IEEE 2025)，将微秒级 DVS 事件相机与 IMU 遥测直接编译固化至 Kraken RISC-V SoC 专用脉冲加速器与 Intel Loihi 2 神经形态芯片，在 $28.4$--$38.0\\text{ mW}$ 极低功耗下取得 $0.9$--$1.2\\text{ ms}$ 亚毫秒级闭环感知与飞控，较移动 GPU 能耗削减 52 倍；")
     lines.append("- **敏捷无人机事件-帧-惯导多模态融合与连续时间状态空间（Agile UAV Event-Frame-IMU Fusion & Continuous SSM）：** 如 AERO-VIS (Burkhardt et al. 2026, IEEE RA-L 2026)、Zubić et al. (CVPR 2024)、PL-EVIO (Guan et al. 2022/2023, IEEE T-ASE)，将微秒级事件流、点线几何特征与高频 IMU 预积分在非线性因子图优化中解耦处理，利用具可学习时间尺度的连续时间状态空间消除剧烈运动模糊，在 14 m/s 极限高速飞行下将轨迹漂移抑制至 2.1 cm/m（较帧式相机漂移降低 89%），实现机载全自主闭环飞行控制；")
     lines.append("- **一致性蒸馏与单步整流流极速时序插补与生成（Consistency Distillation & One-Step Rectified Flow）：** 如 FlowTS (Hu et al. 2024, NeurIPS 2024)、Swift (Stock et al. 2025/2026, Machine Learning: Earth 2026)、MTSCI (Zhou et al. 2024, ACM CIKM 2024)，利用概率测地线与直线输运模拟替代 50 步慢速数值扩散求解器，在单一前向传播步骤中直接将高斯噪声映射为高质量物理时序与网格物理场，推断时延压低至 4.8ms，带来 39 倍极致推理加速，成功支撑亚周期级电网故障遥测恢复与超长期季节天气推演；")
     lines.append("- **非平稳跨域因果不变性迁移与动态语义解耦（Non-Stationary Invariant Causal Transfer & Semantic Disentanglement）：** 如 CVAformer (Zhang et al. 2026)、SYNC (He et al. 2025, ICML 2025)，在时序变量对齐前显式将时间序列解耦为平稳因果语义与动态波动混杂项，通过时间感知结构因果模型（SCM）与 Pearl 的 do-演算因果干预阻断虚假相关，在宏观利率黑天鹅或恶劣气候冲击下将域外（OOD）泛化性能衰退抑制在 7.8% 以内；")
@@ -122,6 +125,10 @@ def main():
     lines.append("")
     lines.append("![PRISMA 2020 Flow](paper/figures/prisma_flow.png)")
     lines.append("")
+    lines.append("### 🌍 Earth Teleconnections, Fab Anomaly Attribution & Sub-50mW Neuromorphic Silicon")
+    lines.append("")
+    lines.append("![Multi-Decadal Teleconnections, Fab Causal DAG Attribution and Sub-50mW Silicon](paper/figures/teleconnection_semiconductor_silicon.png)")
+    lines.append("")
     lines.append("### 🛩️ Agile UAV Event-Frame-IMU Fusion, Ultra-Fast Rectified Flow & Non-Stationary Causal Transfer")
     lines.append("")
     lines.append("![Agile UAV Event-Frame-IMU Fusion, Rectified Flow and Non-Stationary Causal Transfer](paper/figures/uav_rectified_invariance.png)")
@@ -131,8 +138,6 @@ def main():
     lines.append("![Neuromorphic DVS, Diffusion Imputation and Causal Hypergraphs](paper/figures/dvs_diffusion_financial.png)")
     lines.append("")
     lines.append("### 🤖 Embodied Robotics Telemetry, Quantum State Spaces & Wireless Split Computing")
-    lines.append("")
-    lines.append("![Embodied Robotics Telemetry, Quantum State Spaces and Wireless Split Computing](paper/figures/robotics_quantum_split.png)")
     lines.append("")
     lines.append("![Embodied Robotics Telemetry, Quantum State Spaces and Wireless Split Computing](paper/figures/robotics_quantum_split.png)")
     lines.append("")

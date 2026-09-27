@@ -2,7 +2,7 @@
 
 [![Survey Paper](https://img.shields.io/badge/Paper-PDF-red.svg)](paper/main.pdf) 
 [![PRISMA 2020](https://img.shields.io/badge/PRISMA-2020%20Compliant-blue.svg)](docs/PROTOCOL.md) 
-[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%2011-brightgreen.svg)](docs/STATE.md) 
+[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%2012-brightgreen.svg)](docs/STATE.md) 
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) 
 
 > **Bilingual Repository** / **中英文双语前沿综述与开源精选仓库**  
@@ -15,6 +15,9 @@
 时序数据在气象、金融、医疗电子病历、交通和工业物联网中无处不在。传统的单模态时序模型（如统计方法或纯数值Transformer）往往受限于单一维度的数值波动，无法捕获高阶语义背景、事件影响与多模态因果关联。
 
 本综述全面梳理了 **2021年至今的多模态时序前沿工作**，深入探讨了将时序信号与**自然语言文本（新闻、报告、指令提示）**、**视觉图像（折线图、频谱图、卫星影像）**、**脉冲神经形态与事件相机（SNN / DVS）**、**具身本体感受遥测（本体姿态、受力）**及**物理场约束**协同建模的新范式。核心内容涵盖：
+- **多年代际行星遥相关与超长程分块状态空间（Multi-Decadal Earth Teleconnection & STM3）：** 如 TeleViT (Prapas et al. 2023, NeurIPS 2023)、PTA-Trans (Lyu et al. 2025, AAAI 2025)、STM3 (Chen et al. 2025/2026, ACM KDD 2026)，将全球海洋-大气长程遥相关模式（ENSO、NAO、AO）与高分辨率局部气象和地球观测网格跨尺度对齐，利用多尺度选择性状态空间（STM3）突破二次方内存瓶颈，在 $100{,}000+$ 超长步长下保持 $\mathcal{O}(T)$ 线性推断，将 8 周次季节野火与气温预测技巧提升 14.2%--21.4%；
+- **半导体晶圆厂万级传感网因果DAG异常归因（Semiconductor Fab Causal DAG Anomaly Attribution & CCPF）：** 如 CCPF (Zhang et al. 2026)、MATERO-RCA (Liu et al. 2026)、PIC-ODE (Dong et al. 2026, IEEE Trans 2026)，在 3nm EUV 光刻与等离子刻蚀逾万维传感拓扑中，通过将因果 DAG 父节点集硬掩码直接嵌入注意力机制，彻底切断下游虚假报警级联，将 Top-1 根因定位准确率拔高至 84.7%（较无约束大模型提升 31.2%），并过滤 64.8% 的伪异常误报；
+- **亚50毫瓦仿生事件-帧神经形态边缘硅基协同设计（Sub-50mW Neuromorphic Silicon Co-Design & Loihi 2 / ColibriUAV）：** 如 ColibriUAV (Renner et al. 2023, IEEE TCAS 2023)、Astrobee 强化学习飞行控制 (Stewart et al. 2025, IEEE 2025)，将微秒级 DVS 事件相机与 IMU 遥测直接编译固化至 Kraken RISC-V SoC 专用脉冲加速器与 Intel Loihi 2 神经形态芯片，在 $28.4$--$38.0\text{ mW}$ 极低功耗下取得 $0.9$--$1.2\text{ ms}$ 亚毫秒级闭环感知与飞控，较移动 GPU 能耗削减 52 倍；
 - **敏捷无人机事件-帧-惯导多模态融合与连续时间状态空间（Agile UAV Event-Frame-IMU Fusion & Continuous SSM）：** 如 AERO-VIS (Burkhardt et al. 2026, IEEE RA-L 2026)、Zubić et al. (CVPR 2024)、PL-EVIO (Guan et al. 2022/2023, IEEE T-ASE)，将微秒级事件流、点线几何特征与高频 IMU 预积分在非线性因子图优化中解耦处理，利用具可学习时间尺度的连续时间状态空间消除剧烈运动模糊，在 14 m/s 极限高速飞行下将轨迹漂移抑制至 2.1 cm/m（较帧式相机漂移降低 89%），实现机载全自主闭环飞行控制；
 - **一致性蒸馏与单步整流流极速时序插补与生成（Consistency Distillation & One-Step Rectified Flow）：** 如 FlowTS (Hu et al. 2024, NeurIPS 2024)、Swift (Stock et al. 2025/2026, Machine Learning: Earth 2026)、MTSCI (Zhou et al. 2024, ACM CIKM 2024)，利用概率测地线与直线输运模拟替代 50 步慢速数值扩散求解器，在单一前向传播步骤中直接将高斯噪声映射为高质量物理时序与网格物理场，推断时延压低至 4.8ms，带来 39 倍极致推理加速，成功支撑亚周期级电网故障遥测恢复与超长期季节天气推演；
 - **非平稳跨域因果不变性迁移与动态语义解耦（Non-Stationary Invariant Causal Transfer & Semantic Disentanglement）：** 如 CVAformer (Zhang et al. 2026)、SYNC (He et al. 2025, ICML 2025)，在时序变量对齐前显式将时间序列解耦为平稳因果语义与动态波动混杂项，通过时间感知结构因果模型（SCM）与 Pearl 的 do-演算因果干预阻断虚假相关，在宏观利率黑天鹅或恶劣气候冲击下将域外（OOD）泛化性能衰退抑制在 7.8% 以内；
@@ -57,12 +60,16 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
 
 ### 🔍 PRISMA 2020 Systematic Review Counts
 
-- **Total Records Identified:** 706 (Databases: 461, Snowballing: 245)
-- **Deduplicated & Screened:** 573 (Duplicates removed: 133)
-- **Full-Text Assessed:** 141 (Excluded with documented rationale: 35)
-- **Included in Systematic Synthesis:** **106** studies
+- **Total Records Identified:** 758 (Databases: 495, Snowballing: 263)
+- **Deduplicated & Screened:** 613 (Duplicates removed: 145)
+- **Full-Text Assessed:** 151 (Excluded with documented rationale: 37)
+- **Included in Systematic Synthesis:** **114** studies
 
 ![PRISMA 2020 Flow](paper/figures/prisma_flow.png)
+
+### 🌍 Earth Teleconnections, Fab Anomaly Attribution & Sub-50mW Neuromorphic Silicon
+
+![Multi-Decadal Teleconnections, Fab Causal DAG Attribution and Sub-50mW Silicon](paper/figures/teleconnection_semiconductor_silicon.png)
 
 ### 🛩️ Agile UAV Event-Frame-IMU Fusion, Ultra-Fast Rectified Flow & Non-Stationary Causal Transfer
 
@@ -73,8 +80,6 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
 ![Neuromorphic DVS, Diffusion Imputation and Causal Hypergraphs](paper/figures/dvs_diffusion_financial.png)
 
 ### 🤖 Embodied Robotics Telemetry, Quantum State Spaces & Wireless Split Computing
-
-![Embodied Robotics Telemetry, Quantum State Spaces and Wireless Split Computing](paper/figures/robotics_quantum_split.png)
 
 ![Embodied Robotics Telemetry, Quantum State Spaces and Wireless Split Computing](paper/figures/robotics_quantum_split.png)
 
@@ -195,6 +200,16 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Kexuan Zhang, Xiaobei Zou, Cesare Alippi et al.  
   *Modality:* `TS+Text` | *Fusion:* `causal_disentangled_alignment` | *Role:* `causal_semantic_alignment`  
   *Highlight:* Disentangles temporal variables into invariant semantics and dynamic confounders, applying Pearl's do-calculus causal intervention and non-causal attention to eliminate spurious correlations during LLM semantic alignment.  
+
+- **[Causally-Constrained Probabilistic Forecasting for Time-Series Anomaly Detection](https://arxiv.org/abs/2604.17998)** (arXiv 2026 2026)  
+  *Authors:* Pooyan Khosravinia, João Gama, Bruno Veloso  
+  *Modality:* `TS+Causal Directed Graph` | *Fusion:* `causally_constrained_transformer` | *Role:* `causal_parent_mask_constraint`  
+  *Highlight:* Causally-constrained probabilistic forecasting framework embedding discovered causal DAG parent masks into Transformer attention layers, eliminating false-positive anomaly propagation across 10,000+ sensor channels.  
+
+- **[MATERO-RCA: Mode-Aware Trajectory-Level Energy-Based Root-Set Optimization for Industrial Root Cause Analysis](https://arxiv.org/abs/2607.29092)** (arXiv 2026 2026)  
+  *Authors:* Chengyu Tao, Chunxi Huang, Runquan Xiao  
+  *Modality:* `TS+Operational Mode Metadata` | *Fusion:* `trajectory_energy_based_optimization` | *Role:* `mode_dependent_energy_prior`  
+  *Highlight:* Mode-aware trajectory-level energy-based root-set optimization for complex multi-sensor industrial grids, isolating minimal counterfactual root-cause sets under non-linear operational regime transitions.  
 
 - **[Foundation models for time series forecasting: Application in conformal prediction](https://arxiv.org/abs/2507.08858)** (arXiv 2025 2025) • [Code](https://github.com/Ekimetrics/foundation-models-conformal-prediction)  
   *Authors:* Sami Achour, Yassine Bouher, Duong Nguyen et al.  
@@ -375,6 +390,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Event Stream` | *Fusion:* `neuromorphic_spiking_reinforcement_learning` | *Role:* `sensorimotor_feedback`  
   *Highlight:* Integrates bio-inspired event cameras and spiking neural networks for quadruped robot parkour, achieving dynamic obstacle avoidance and agile locomotion under extreme high-speed and challenging illumination.  
 
+- **[Autonomous Reinforcement Learning Robot Control with Intel&#39;s Loihi 2 Neuromorphic Hardware](https://arxiv.org/abs/2512.03911)** (IEEE 2025 2025)  
+  *Authors:* Kenneth Stewart, Roxana Leontie, Samantha Chapin et al.  
+  *Modality:* `TS+Proprioceptive Telemetry+Event Spikes` | *Fusion:* `sigma_delta_spiking_compilation` | *Role:* `on_chip_neuromorphic_state`  
+  *Highlight:* Direct compilation of continuous reinforcement learning policies into spiking Sigma-Delta Neural Networks executing on Intel's Loihi 2 neuromorphic silicon for Astrobee free-flying robot closed-loop motion control at 28.4 mW.  
+
 - **[MTSA-SNN: A Multi-modal Time Series Analysis Model Based on Spiking Neural Network](https://arxiv.org/abs/2402.05423)** (arXiv 2024 2024) • [Code](https://github.com/Chenngzz/MTSA-SNN)  
   *Authors:* Chengzhi Liu, Zheng Tao, Zihong Luo et al.  
   *Modality:* `TS+Audio` | *Fusion:* `pulse_encoder_joint_learning` | *Role:* `joint_representation`  
@@ -395,6 +415,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Event Stream+Physics` | *Fusion:* `physics_guided_spiking_planner` | *Role:* `physics_guidance`  
   *Highlight:* Energy-efficient robot navigation and obstacle avoidance leveraging event cameras and physics-guided spiking neural networks for micro-watt aerial drone trajectory planning.  
 
+- **[ColibriUAV: An Ultra-Fast, Energy-Efficient Neuromorphic Edge Processing UAV-Platform with Event-Based and Frame-Based Cameras](https://arxiv.org/abs/2305.18371)** (IEEE TCAS 2023 2023)  
+  *Authors:* Sizhen Bian, Lukas Schulthess, Georg Rutishauser et al.  
+  *Modality:* `TS+Event Stream+Visual Frames` | *Fusion:* `hardware_software_neuromorphic_co_design` | *Role:* `asynchronous_event_accelerator_trigger`  
+  *Highlight:* Ultra-fast neuromorphic edge computing platform integrating an asynchronous DVS event camera, CMOS frame camera, and IMU telemetry onto a dedicated Kraken RISC-V SoC with on-chip SNN accelerators operating strictly under 50mW.  
+
 - **[PL-EVIO: Robust Monocular Event-based Visual Inertial Odometry with Point and Line Features](https://arxiv.org/abs/2209.12160)** (IEEE T-ASE 2023 2022) • [Code](https://github.com/arclab-hku/PL-EVIO_open)  
   *Authors:* Weipeng Guan, Peiyu Chen, Yuhan Xie et al.  
   *Modality:* `TS+Event Stream+Vision` | *Fusion:* `point_line_factor_graph` | *Role:* `geometric_supervision`  
@@ -411,6 +436,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Haiteng Wang, Yunfei Zhu, Tao Wang et al.  
   *Modality:* `TS+Physics` | *Fusion:* `stepwise_physics_embedded_diffusion` | *Role:* `supervision_target`  
   *Highlight:* Stepwise physics-embedded diffusion generative model integrating governing differential equations into reverse denoising steps for physically consistent synthetic dynamical time series.  
+
+- **[Power Interpretable Causal ODE Networks: A Unified Model for Explainable Anomaly Detection and Root Cause Analysis in Power Systems](https://arxiv.org/abs/2602.12592)** (IEEE Transactions 2026 2026)  
+  *Authors:* Yue Sun, Likai Wang, Rick S. Blum et al.  
+  *Modality:* `TS+Physical Topology Graph` | *Fusion:* `causal_continuous_neural_ode` | *Role:* `physical_causal_differential_prior`  
+  *Highlight:* Unified explainable anomaly detection and root cause analysis architecture unifying continuous Neural ODEs with physical topology graphs and structural causal models, generating counterfactual trajectories with formal differential guarantees.  
 
 - **[Multimodal Conditioned Diffusive Time Series Forecasting](https://arxiv.org/abs/2504.19669)** (arXiv 2025 2025)  
   *Authors:* Chen Su, Yuanhe Tian, Yan Song  
@@ -441,6 +471,16 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Jason Stock, Troy Arcomano, Rao Kotamarthi  
   *Modality:* `TS+Atmospheric Grids` | *Fusion:* `consistency_distillation_ode` | *Role:* `spatial_prior`  
   *Highlight:* Autoregressive consistency model mapping noise directly to multi-day weather states in single-step generation, achieving 39x speedup over diffusion baselines with CRPS competitive to operational numerical ensembles.  
+
+- **[Physics-Informed Teleconnection-Aware Transformer for Global Subseasonal-to-Seasonal Forecasting](https://arxiv.org/abs/2506.08049)** (AAAI 2025 2025)  
+  *Authors:* Tengfei Lyu, Weijia Zhang, Hao Liu  
+  *Modality:* `TS+Teleconnection Indices+Atmospheric Grids` | *Fusion:* `physics_informed_cross_attention` | *Role:* `physics_teleconnection_prior`  
+  *Highlight:* Physics-informed teleconnection-aware transformer encoding atmospheric Rossby wave dispersion into cross-attention masks, capturing multi-week lagged interactions between tropical SSTs and mid-latitude weather extremes.  
+
+- **[STM3: Mixture of Multiscale Mamba for Long-Term Spatio-Temporal Time-Series Prediction](https://arxiv.org/abs/2508.12247)** (ACM KDD 2026 2025) • [Code](https://github.com/IfReasonable/STM3_KDD26)  
+  *Authors:* Haolong Chen, Liang Zhang, Zhengyuan Xin et al.  
+  *Modality:* `TS+Spatio-Temporal Graph` | *Fusion:* `multiscale_selective_ssm` | *Role:* `multiscale_spatial_context`  
+  *Highlight:* Sub-quadratic multiscale selective state space model scaling to 100,000+ step spatio-temporal sequences without memory explosion, capturing both high-frequency localized dynamics and multi-decadal teleconnections.  
 
 - **[Prithvi WxC: Foundation Model for Weather and Climate](https://arxiv.org/abs/2409.13598)** (arXiv 2024 2024) • [Code](https://github.com/NASA-IMPACT/Prithvi-WxC)  
   *Authors:* Johannes Schmude, Sujit Roy, Will Trojak et al.  
@@ -476,6 +516,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Tung Nguyen, Johannes Brandstetter, Ashish Kapoor et al.  
   *Modality:* `TS+SpatioTemporal+Physics` | *Fusion:* `variable_tokenization` | *Role:* `joint_representation`  
   *Highlight:* First foundation model for weather and climate unifying heterogeneous multi-variable spatio-temporal atmospheric fields with variable-agnostic tokenization.  
+
+- **[TeleViT: Teleconnection-driven Transformers Improve Subseasonal to Seasonal Wildfire Forecasting](https://arxiv.org/abs/2306.10940)** (NeurIPS 2023 2023) • [Code](https://github.com/Orion-AI-Lab/televit)  
+  *Authors:* Ioannis Prapas, Nikolaos Ioannis Bountos, Spyros Kondylatos et al.  
+  *Modality:* `TS+Climate Indices+Earth Observation Grids` | *Fusion:* `cross_attention_vit_patching` | *Role:* `teleconnection_coupling_prior`  
+  *Highlight:* Pioneering teleconnection-driven multimodal architecture linking planetary climatic modes (ENSO, NAO, AO) with regional meteorological time series and Earth observation grids for subseasonal wildfire forecasting.  
 
 - **[CSDI: Conditional Score-based Diffusion Models for Probabilistic Time Series Imputation](https://arxiv.org/abs/2107.03502)** (NeurIPS 2021 2021) • [Code](https://github.com/ermongroup/CSDI)  
   *Authors:* Yusuke Tashiro, Jiaming Song, Yang Song et al.  
