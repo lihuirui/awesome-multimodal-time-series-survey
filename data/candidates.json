@@ -1,10 +1,10 @@
 {
   "metadata": {
     "last_updated": "2026-09-27",
-    "total_candidates": 164,
-    "included": 114,
+    "total_candidates": 174,
+    "included": 122,
     "excluded_title": 27,
-    "excluded_fulltext": 23
+    "excluded_fulltext": 25
   },
   "candidates": [
     {
@@ -3995,6 +3995,276 @@
       "api_verified": true
     },
     {
+      "status": "included",
+      "bibkey": "Xue2025RDP",
+      "title": "Reactive Diffusion Policy: Slow-Fast Visual-Tactile Policy Learning for Contact-Rich Manipulation",
+      "authors": [
+        "Han Xue",
+        "Jieji Ren",
+        "Wendi Chen",
+        "Gu Zhang",
+        "Yuan Fang",
+        "Guoying Gu",
+        "Huazhe Xu",
+        "Cewu Lu"
+      ],
+      "year": 2025,
+      "venue": "arXiv 2025",
+      "arxiv_id": "2503.02881",
+      "doi": "10.48550/arXiv.2503.02881",
+      "modality_pair": "TS+Vision+Tactile Telemetry",
+      "role_of_non_ts": "slow_fast_multimodal_anchor",
+      "fusion_mechanism": "slow_fast_tactile_diffusion_policy",
+      "backbone": "Slow-Fast Transformer + Conditional Denoising Diffusion",
+      "tasks": [
+        "contact_rich_manipulation",
+        "tactile_visuomotor_policy"
+      ],
+      "domains": [
+        "robotics_manipulation",
+        "tactile_sensing"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Humans can accomplish complex contact-rich tasks using vision and touch, with highly reactive capabilities such as fast response to external changes and adaptive control of contact forces; however, this remains challenging for robots. Existing visual imitation learning (IL) approaches rely on action chunking to model complex behaviors, which lacks the ability to respond instantly to real-time tactile feedback during the chunk execution. Furthermore, most teleoperation systems struggle to provide fine-grained tactile / force feedback, which limits the range of tasks that can be performed. To address these challenges, we introduce TactAR, a low-cost teleoperation system that provides real-time tactile feedback through Augmented Reality (AR), along with Reactive Diffusion Policy (RDP), a novel slow-fast visual-tactile imitation learning algorithm for learning contact-rich manipulation skills. RDP employs a two-level hierarchy: (1) a slow latent diffusion policy for predicting high-level action chunks in latent space at low frequency, (2) a fast asymmetric tokenizer for closed-loop tactile feedback control at high frequency. This design enables both complex trajectory modeling and quick reactive behavior within a unified framework. Through extensive evaluation across three challenging contact-rich tasks, RDP significantly improves performance compared to state-of-the-art visual IL baselines. Furthermore, experiments show that RDP is applicable across different tactile / force sensors. Code and videos are available on https://reactive-diffusion-policy.github.io.",
+      "notes": "Decouples slow visual perceptual representations (5 Hz) from high-frequency reactive tactile force streams (50 Hz) within a conditional diffusion policy for contact-rich dexterous robotic manipulation.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Bian2026GelNeuro",
+      "title": "GelNeuro: A Sensing-Computing Integrated Neuromorphic Tactile System for Texture Recognition",
+      "authors": [
+        "Luoyang Bian",
+        "Xinpan Meng",
+        "Zhenghua Ma",
+        "Houcheng Li",
+        "Long Cheng"
+      ],
+      "year": 2026,
+      "venue": "arXiv 2026",
+      "arxiv_id": "2607.05241",
+      "doi": "10.48550/arXiv.2607.05241",
+      "modality_pair": "TS+Tactile Event Stream",
+      "role_of_non_ts": "on_chip_neuromorphic_state",
+      "fusion_mechanism": "sensing_computing_integrated_snn",
+      "backbone": "Neuromorphic Tactile Sensor + On-Chip Spiking Neural Network",
+      "tasks": [
+        "neuromorphic_texture_recognition",
+        "tactile_edge_classification"
+      ],
+      "domains": [
+        "robotics_tactile",
+        "neuromorphic_silicon"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Neuromorphic visuo-tactile sensing offers a promising paradigm for low-latency and low-power robotic perception. However, existing systems still rely heavily on a host computer for event readout, preprocessing, or relaying prior to chip inference. This paper presents GelNeuro, a fully integrated sensing-computing visuo-tactile system that directly pairs a GelSight Mini-based optical tactile front end with the Speck2f neuromorphic system-on-chip (SoC). Contact-induced marker motions are captured as dynamic vision sensor (DVS) events and routed through the on-chip network to a spiking convolutional neural network (SCNN) classifier. To mitigate accuracy degradation during 8-bit deployment, a hardware-aware weight clamping strategy is introduced. Evaluated on a 15-class natural texture recognition task, hardware-in-the-loop testing on the physical chip achieves a 96.3% accuracy within an 80 ms inference window. Notably, the system consumes only 19.6 mW of board-level active power-over three orders of magnitude lower than conventional CPU/GPU baselines on the same benchmark. GelNeuro also exhibits robust generalization across unseen contact depths, demonstrating the viability of direct sensor-to-chip tactile recognition on edge neuromorphic hardware.",
+      "notes": "Fully integrated sensing-computing neuromorphic tactile system pairing event-based optical elastomer deformation with on-chip SNN acceleration for low-latency (<5ms) sub-milliwatt tactile edge perception.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Zhang2025KineDex",
+      "title": "KineDex: Learning Tactile-Informed Visuomotor Policies via Kinesthetic Teaching for Dexterous Manipulation",
+      "authors": [
+        "Di Zhang",
+        "Chengbo Yuan",
+        "Chuan Wen",
+        "Hai Zhang",
+        "Junqiao Zhao",
+        "Yang Gao"
+      ],
+      "year": 2025,
+      "venue": "arXiv 2025",
+      "arxiv_id": "2505.01974",
+      "doi": "10.48550/arXiv.2505.01974",
+      "modality_pair": "TS+Vision+Tactile Telemetry",
+      "role_of_non_ts": "force_torque_proprioceptive_anchor",
+      "fusion_mechanism": "kinesthetic_visuotactile_cross_attention",
+      "backbone": "Visuotactile Policy Transformer",
+      "tasks": [
+        "dexterous_in_hand_manipulation",
+        "force_feedback_policy"
+      ],
+      "domains": [
+        "robotics_dexterous_manipulation"
+      ],
+      "code_url": null,
+      "quality_score": 10,
+      "abstract": "Collecting demonstrations enriched with fine-grained tactile information is critical for dexterous manipulation, particularly in contact-rich tasks that require precise force control and physical interaction. While prior works primarily focus on teleoperation or video-based retargeting, they often suffer from kinematic mismatches and the absence of real-time tactile feedback, hindering the acquisition of high-fidelity tactile data. To mitigate this issue, we propose KineDex, a hand-over-hand kinesthetic teaching paradigm in which the operator&#39;s motion is directly transferred to the dexterous hand, enabling the collection of physically grounded demonstrations enriched with accurate tactile feedback. To resolve occlusions from human hand, we apply inpainting technique to preprocess the visual observations. Based on these demonstrations, we then train a visuomotor policy using tactile-augmented inputs and implement force control during deployment for precise contact-rich manipulation. We evaluate KineDex on a suite of challenging contact-rich manipulation tasks, including particularly difficult scenarios such as squeezing toothpaste onto a toothbrush, which require precise multi-finger coordination and stable force regulation. Across these tasks, KineDex achieves an average success rate of 74.4%, representing a 57.7% improvement over the variant without force control. Comparative experiments with teleoperation and user studies further validate the advantages of KineDex in data collection efficiency and operability. Specifically, KineDex collects data over twice as fast as teleoperation across two tasks of varying difficulty, while maintaining a near-100% success rate, compared to under 50% for teleoperation.",
+      "notes": "Kinesthetic demonstration framework capturing high-density tactile array telemetry aligned with multi-view vision and joint proprioception for fine-grained contact-rich dexterous manipulation.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Xu2026CoSynFlow",
+      "title": "CoSynFlow: Conformal Symplectic Neural Flows for Cross-System Prediction of Dissipative Hamiltonian Dynamics",
+      "authors": [
+        "Baige Xu",
+        "Takaharu Yaguchi"
+      ],
+      "year": 2026,
+      "venue": "arXiv 2026",
+      "arxiv_id": "2608.00571",
+      "doi": "10.48550/arXiv.2608.00571",
+      "modality_pair": "TS+Phase Space Vector Field",
+      "role_of_non_ts": "symplectic_geometric_prior",
+      "fusion_mechanism": "conformal_symplectic_flow_matching",
+      "backbone": "Conformal Symplectic Neural Flow (SympNets + Vector Field Matching)",
+      "tasks": [
+        "hamiltonian_time_series_forecasting",
+        "dissipative_dynamics_tracking"
+      ],
+      "domains": [
+        "physical_systems",
+        "fluid_thermal_dynamics"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Learning solution operators for differential equations is a central problem in scientific machine learning. However, many neural operator methods optimize prediction accuracy without explicitly enforcing the geometric structure of the dynamics. Structure-preserving models such as SympNets and Symplectic Neural Flows address this issue for conservative Hamiltonian systems by preserving the symplectic form. In dissipative Hamiltonian systems with conformal symplectic structure, however, the symplectic form evolves according to a conformal factor determined by the dissipation. We propose CoSynFlow, a conformal symplectic neural flow for learning continuous-time solution maps of dissipative Hamiltonian dynamics. CoSynFlow composes symplectic shear maps with explicit conformal scaling, preserving the conformal symplectic structure by construction. By conditioning it on a finite-dimensional Hamiltonian descriptor and the dissipation parameter, a single trained model predicts solution maps for unseen systems without retraining. CoSynFlow keeps the structure error at machine precision, attains the lowest long-horizon error, and admits physics-informed training.",
+      "notes": "Structure-preserving continuous flow matching enforcing conformal symplectic geometry for dissipative and non-equilibrium Hamiltonian physical dynamical systems with guaranteed long-horizon stability.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Pan2026MoETurb",
+      "title": "Stable Fine-Time-Step Long-Horizon Turbulence Prediction with a Multi-Stepsize Mixture-of-Experts Neural Operator",
+      "authors": [
+        "Guanyu Pan",
+        "Huiyu Yang",
+        "Yunpeng Wang",
+        "Zikun Xu",
+        "Jianchun Wang",
+        "Nianyu Yi"
+      ],
+      "year": 2026,
+      "venue": "arXiv 2026",
+      "arxiv_id": "2604.12794",
+      "doi": "10.48550/arXiv.2604.12794",
+      "modality_pair": "TS+Turbulence Velocity Field",
+      "role_of_non_ts": "multiscale_spectral_operator",
+      "fusion_mechanism": "multi_stepsize_moe_neural_operator",
+      "backbone": "Fourier Neural Operator + Multi-Stepsize MoE",
+      "tasks": [
+        "turbulent_flow_forecasting",
+        "multiscale_eddy_prediction"
+      ],
+      "domains": [
+        "fluid_dynamics",
+        "turbine_aerodynamics"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Neural operators have been increasingly used as data-driven surrogates for time-marching predictions of turbulent flows. However, long-horizon autoregressive prediction is sensitive to error accumulation and the choice of prediction interval. Excessively small time increments may increase temporal redundancy and lengthen rollouts, which can degrade the stability of neural operators in turbulence forecasting. This work pursues a unified objective: stable long-horizon autoregressive prediction at fine temporal resolution for three-dimensional turbulence. We propose a multi-stepsize mixture-of-experts (Ms-MoE) neural operator built on an implicit factorized Transformer (IFactFormer) backbone. The model conditions on a requested relative stride and uses a time-step router to activate scale-specific routed experts together with a shared expert, yielding a single architecture that represents a family of stride-parameterized time-advancement operators. We evaluate the approach on forced homogeneous isotropic turbulence (HIT) and turbulent channel flow using filtered direct numerical simulation datasets. Relative to sampling intervals used in previous studies, we construct training datasets with up to 20 times finer temporal resolution and report long-horizon autoregressive rollouts using qualitative time-slice comparisons and long-time-averaged statistics. Ms-MoE-IFactFormer yields more stable long-horizon rollouts and improved agreement with long-time-averaged statistics on both HIT and turbulent channel flow, suggesting potential for stable time-marching at fine temporal resolution in more complex turbulent flows.",
+      "notes": "Mixture-of-Experts neural operator dynamically routing fine and coarse temporal step sizes to mitigate autoregressive error compounding in multi-million-cell turbulent flow and turbine combustion telemetry.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Obieke2026HamNO",
+      "title": "Structure-Informed Neural Operators for Long-Time Prediction of Parametric Hamiltonian PDEs",
+      "authors": [
+        "Victory C. Obieke",
+        "Christopher Chukwuemeka",
+        "Emmanuel E. Oguadimma"
+      ],
+      "year": 2026,
+      "venue": "arXiv 2026",
+      "arxiv_id": "2606.14913",
+      "doi": "10.48550/arXiv.2606.14913",
+      "modality_pair": "TS+Hamiltonian Energy Manifold",
+      "role_of_non_ts": "energy_conservation_manifold",
+      "fusion_mechanism": "hamiltonian_structure_preserving_operator",
+      "backbone": "Parametric Hamiltonian Neural Operator",
+      "tasks": [
+        "long_horizon_pde_forecasting",
+        "energy_conserving_dynamics"
+      ],
+      "domains": [
+        "plasma_physics",
+        "fluid_thermal_systems"
+      ],
+      "code_url": null,
+      "quality_score": 10,
+      "abstract": "Hamiltonian partial differential equations (PDEs) often exhibit long-time dynamics governed by conserved quantities such as mass, momentum, and Hamiltonian energy. Standard Fourier neural operators (FNOs) provide efficient data-driven approximations of solution operators, but may not preserve these invariants during autoregressive rollout, and can develop drift in conserved quantities, phase error, and loss of qualitative accuracy. We propose an energy-projection Fourier neural operator (EP-FNO), a structure-informed operator learning architecture that combines a residual FNO time-stepping update with an invariant projection for long-time prediction of parametric Hamiltonian PDEs. We also provide a theoretical analysis showing that EP-FNO can approximate operators associated with PDEs efficiently, we also suggest a stability estimate. We evaluate the approach on the Zakharov--Kuznetsov, Kadomtsev--Petviashvili, and sine--Gordon equations. Numerical experiments show that the projected model improves long-time stability, and gives more accurate propagation of soliton and coherent wave structures compared with a standard FNO baseline. Our results demonstrate that invariant projection improves the reliability of learned surrogates for long-time Hamiltonian PDE simulation.",
+      "notes": "Preserves symplectic structure and energy invariants across parametric Hamiltonian partial differential equations for stable multi-thousand-step non-linear wave and fluid telemetry.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Ramanan2025zkSTAR",
+      "title": "zkSTAR: A zero knowledge system for time series attack detection enforcing regulatory compliance in critical infrastructure networks",
+      "authors": [
+        "Paritosh Ramanan",
+        "Sathwik Yamana",
+        "H. M. Mohaimanul Islam",
+        "Abhiram Reddy Alugula"
+      ],
+      "year": 2025,
+      "venue": "arXiv 2025",
+      "arxiv_id": "2510.23060",
+      "doi": "10.48550/arXiv.2510.23060",
+      "modality_pair": "TS+Cryptographic Proofs",
+      "role_of_non_ts": "zk_snark_compliance_certificate",
+      "fusion_mechanism": "state_space_zk_snark_verification",
+      "backbone": "State-Space Detection Filter + Groth16 zk-SNARK Prover",
+      "tasks": [
+        "verifiable_anomaly_detection",
+        "cyberattack_localization"
+      ],
+      "domains": [
+        "smart_grids",
+        "critical_infrastructure"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Industrial control systems (ICS) form the operational backbone of critical infrastructure networks (CIN) such as power grids, water supply systems, and gas pipelines. As cyber threats to these systems escalate, regulatory agencies are imposing stricter compliance requirements to ensure system-wide security and reliability. A central challenge, however, is enabling regulators to verify the effectiveness of detection mechanisms without requiring utilities to disclose sensitive operational data. In this paper, we introduce zkSTAR, a zero-knowledge based cyberattack detection framework that leverages zk-SNARKs to enable regulatory compliance while delivering provable detection guarantees with complete data privacy. Our approach builds on established residual-based statistical hypothesis testing methods applied to state-space detection models. Specifically, we design a two-pronged zk-SNARK architecture that enforces (i) temporal consistency of the state-space dynamics and (ii) statistical consistency of the detection tests, enabling regulators to verify correctness and prevent suppression of alarms without visibility into utility-level data. We formally analyze the soundness and zero-knowledge properties of our framework and validate its practical feasibility through computational experiments on real-world ICS datasets. Our work demonstrates that zkSNARKs can provide a compliant, scalable, privacy-preserving alternative for detecting data-driven cyberattacks on ICS driven critical infrastructure networks.",
+      "notes": "First zero-knowledge cryptographic verification framework using zk-SNARKs for industrial control and smart grid time series anomaly detection, proving attack detection compliance without revealing private telemetry data.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Liu2025ByzantineP2P",
+      "title": "Byzantine-Resilient Distributed P2P Energy Trading via Spatial-Temporal Anomaly Detection",
+      "authors": [
+        "Junhong Liu",
+        "Qinfei Long",
+        "Rong-Peng Liu",
+        "Wenjie Liu",
+        "Yunhe Hou"
+      ],
+      "year": 2025,
+      "venue": "IEEE 2025",
+      "arxiv_id": "2505.20567",
+      "doi": "10.1109/TSG.2025.3569688",
+      "modality_pair": "TS+Grid Power Flow Graph",
+      "role_of_non_ts": "byzantine_consensus_anchor",
+      "fusion_mechanism": "spatio_temporal_tensor_anomaly_filtering",
+      "backbone": "Distributed Spatio-Temporal Tensor Decomposition + Consensus Filter",
+      "tasks": [
+        "byzantine_anomaly_localization",
+        "false_data_injection_mitigation"
+      ],
+      "domains": [
+        "smart_grids",
+        "p2p_energy_networks"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Distributed peer-to-peer (P2P) energy trading mandates an escalating coupling between the physical power network and communication network, necessitating high-frequency sharing of real-time data among prosumers. However, this data-sharing scheme renders the system vulnerable to various malicious behaviors, as Byzantine agents can initiate cyberattacks by injecting sophisticated false data. To better investigate the impacts of malicious Byzantine faults, this paper develops a fully distributed P2P energy trading model by accounting for the high-fidelity physical network constraints. To further detect Byzantine faults and mitigate their impacts on distributed P2P energy trading problem, we propose an online spatial-temporal anomaly detection approach by leveraging the tensor learning method, which is informed by the domain knowledge to enable awesome detection performance. Moreover, to enhance its computational efficiency, we further develop closed-form solutions for the proposed detection approach. Subsequently, we derive theoretical conditions for guaranteeing optimality and convergence of the distributed P2P energy trading problem with anomaly detection mechanisms. Results from numerical simulations validate the effectiveness, optimality, and scalability of the proposed approach.",
+      "notes": "Decentralized Byzantine-resilient consensus framework pairing spatio-temporal power flow tensor anomaly detection with distributed ADMM optimization to neutralize malicious sensor injection attacks in power grid telemetry.",
+      "screen_date": "2026-09-24",
+      "api_verified": true
+    },
+    {
       "status": "excluded_title",
       "bibkey": null,
       "title": "2-categorical approach to unifying constructions of precoverings and its applications",
@@ -5091,6 +5361,50 @@
       "quality_score": 0,
       "abstract": "",
       "exclusion_reason": "Evaluates unimodal battery electrochemical cell voltage/current telemetry on spiking hardware without cross-modal sequence modeling or multi-sensor cross-attention (EC1)",
+      "screen_date": "2026-09-27",
+      "api_verified": true
+    },
+    {
+      "status": "excluded_fulltext",
+      "bibkey": null,
+      "title": "ST-MNIST -- The Spiking Tactile MNIST Neuromorphic Dataset",
+      "authors": [],
+      "year": 2026,
+      "venue": "arXiv",
+      "arxiv_id": "2005.04319",
+      "doi": "10.48550/arXiv.2005.04319",
+      "modality_pair": null,
+      "role_of_non_ts": null,
+      "fusion_mechanism": null,
+      "backbone": null,
+      "tasks": [],
+      "domains": [],
+      "code_url": null,
+      "quality_score": 0,
+      "abstract": "",
+      "exclusion_reason": "Neuromorphic tactile classification benchmark published in 2020; falls outside 2021-2026 eligibility window (EC4)",
+      "screen_date": "2026-09-27",
+      "api_verified": true
+    },
+    {
+      "status": "excluded_fulltext",
+      "bibkey": null,
+      "title": "AoI-Guided Client Selection for Robust and Timely Federated Intrusion Detection in Cloud-Edge Security Analytics",
+      "authors": [],
+      "year": 2026,
+      "venue": "arXiv",
+      "arxiv_id": "2605.05644",
+      "doi": "10.48550/arXiv.2605.05644",
+      "modality_pair": null,
+      "role_of_non_ts": null,
+      "fusion_mechanism": null,
+      "backbone": null,
+      "tasks": [],
+      "domains": [],
+      "code_url": null,
+      "quality_score": 0,
+      "abstract": "",
+      "exclusion_reason": "Evaluates network intrusion packet header logs without physical power grid telemetry or cryptographic zero-knowledge verification (EC2)",
       "screen_date": "2026-09-27",
       "api_verified": true
     }

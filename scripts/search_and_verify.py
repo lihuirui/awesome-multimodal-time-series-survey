@@ -1618,6 +1618,118 @@ CORE_PAPERS = [
         "code_url": None,
         "quality_score": 11,
         "notes": "Direct compilation of continuous reinforcement learning policies into spiking Sigma-Delta Neural Networks executing on Intel's Loihi 2 neuromorphic silicon for Astrobee free-flying robot closed-loop motion control at 28.4 mW."
+    },
+    {
+        "arxiv_id": "2503.02881",
+        "bibkey": "Xue2025RDP",
+        "venue": "arXiv 2025",
+        "modality_pair": "TS+Vision+Tactile Telemetry",
+        "role_of_non_ts": "slow_fast_multimodal_anchor",
+        "fusion_mechanism": "slow_fast_tactile_diffusion_policy",
+        "backbone": "Slow-Fast Transformer + Conditional Denoising Diffusion",
+        "tasks": ["contact_rich_manipulation", "tactile_visuomotor_policy"],
+        "domains": ["robotics_manipulation", "tactile_sensing"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Decouples slow visual perceptual representations (5 Hz) from high-frequency reactive tactile force streams (50 Hz) within a conditional diffusion policy for contact-rich dexterous robotic manipulation."
+    },
+    {
+        "arxiv_id": "2607.05241",
+        "bibkey": "Bian2026GelNeuro",
+        "venue": "arXiv 2026",
+        "modality_pair": "TS+Tactile Event Stream",
+        "role_of_non_ts": "on_chip_neuromorphic_state",
+        "fusion_mechanism": "sensing_computing_integrated_snn",
+        "backbone": "Neuromorphic Tactile Sensor + On-Chip Spiking Neural Network",
+        "tasks": ["neuromorphic_texture_recognition", "tactile_edge_classification"],
+        "domains": ["robotics_tactile", "neuromorphic_silicon"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Fully integrated sensing-computing neuromorphic tactile system pairing event-based optical elastomer deformation with on-chip SNN acceleration for low-latency (<5ms) sub-milliwatt tactile edge perception."
+    },
+    {
+        "arxiv_id": "2505.01974",
+        "bibkey": "Zhang2025KineDex",
+        "venue": "arXiv 2025",
+        "modality_pair": "TS+Vision+Tactile Telemetry",
+        "role_of_non_ts": "force_torque_proprioceptive_anchor",
+        "fusion_mechanism": "kinesthetic_visuotactile_cross_attention",
+        "backbone": "Visuotactile Policy Transformer",
+        "tasks": ["dexterous_in_hand_manipulation", "force_feedback_policy"],
+        "domains": ["robotics_dexterous_manipulation"],
+        "code_url": None,
+        "quality_score": 10,
+        "notes": "Kinesthetic demonstration framework capturing high-density tactile array telemetry aligned with multi-view vision and joint proprioception for fine-grained contact-rich dexterous manipulation."
+    },
+    {
+        "arxiv_id": "2608.00571",
+        "bibkey": "Xu2026CoSynFlow",
+        "venue": "arXiv 2026",
+        "modality_pair": "TS+Phase Space Vector Field",
+        "role_of_non_ts": "symplectic_geometric_prior",
+        "fusion_mechanism": "conformal_symplectic_flow_matching",
+        "backbone": "Conformal Symplectic Neural Flow (SympNets + Vector Field Matching)",
+        "tasks": ["hamiltonian_time_series_forecasting", "dissipative_dynamics_tracking"],
+        "domains": ["physical_systems", "fluid_thermal_dynamics"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Structure-preserving continuous flow matching enforcing conformal symplectic geometry for dissipative and non-equilibrium Hamiltonian physical dynamical systems with guaranteed long-horizon stability."
+    },
+    {
+        "arxiv_id": "2604.12794",
+        "bibkey": "Pan2026MoETurb",
+        "venue": "arXiv 2026",
+        "modality_pair": "TS+Turbulence Velocity Field",
+        "role_of_non_ts": "multiscale_spectral_operator",
+        "fusion_mechanism": "multi_stepsize_moe_neural_operator",
+        "backbone": "Fourier Neural Operator + Multi-Stepsize MoE",
+        "tasks": ["turbulent_flow_forecasting", "multiscale_eddy_prediction"],
+        "domains": ["fluid_dynamics", "turbine_aerodynamics"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Mixture-of-Experts neural operator dynamically routing fine and coarse temporal step sizes to mitigate autoregressive error compounding in multi-million-cell turbulent flow and turbine combustion telemetry."
+    },
+    {
+        "arxiv_id": "2606.14913",
+        "bibkey": "Obieke2026HamNO",
+        "venue": "arXiv 2026",
+        "modality_pair": "TS+Hamiltonian Energy Manifold",
+        "role_of_non_ts": "energy_conservation_manifold",
+        "fusion_mechanism": "hamiltonian_structure_preserving_operator",
+        "backbone": "Parametric Hamiltonian Neural Operator",
+        "tasks": ["long_horizon_pde_forecasting", "energy_conserving_dynamics"],
+        "domains": ["plasma_physics", "fluid_thermal_systems"],
+        "code_url": None,
+        "quality_score": 10,
+        "notes": "Preserves symplectic structure and energy invariants across parametric Hamiltonian partial differential equations for stable multi-thousand-step non-linear wave and fluid telemetry."
+    },
+    {
+        "arxiv_id": "2510.23060",
+        "bibkey": "Ramanan2025zkSTAR",
+        "venue": "arXiv 2025",
+        "modality_pair": "TS+Cryptographic Proofs",
+        "role_of_non_ts": "zk_snark_compliance_certificate",
+        "fusion_mechanism": "state_space_zk_snark_verification",
+        "backbone": "State-Space Detection Filter + Groth16 zk-SNARK Prover",
+        "tasks": ["verifiable_anomaly_detection", "cyberattack_localization"],
+        "domains": ["smart_grids", "critical_infrastructure"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "First zero-knowledge cryptographic verification framework using zk-SNARKs for industrial control and smart grid time series anomaly detection, proving attack detection compliance without revealing private telemetry data."
+    },
+    {
+        "arxiv_id": "2505.20567",
+        "bibkey": "Liu2025ByzantineP2P",
+        "venue": "IEEE 2025",
+        "modality_pair": "TS+Grid Power Flow Graph",
+        "role_of_non_ts": "byzantine_consensus_anchor",
+        "fusion_mechanism": "spatio_temporal_tensor_anomaly_filtering",
+        "backbone": "Distributed Spatio-Temporal Tensor Decomposition + Consensus Filter",
+        "tasks": ["byzantine_anomaly_localization", "false_data_injection_mitigation"],
+        "domains": ["smart_grids", "p2p_energy_networks"],
+        "code_url": None,
+        "quality_score": 11,
+        "notes": "Decentralized Byzantine-resilient consensus framework pairing spatio-temporal power flow tensor anomaly detection with distributed ADMM optimization to neutralize malicious sensor injection attacks in power grid telemetry."
     }
 ]
 
@@ -1972,6 +2084,20 @@ EXCLUDED_PAPERS = [
         "status": "excluded_fulltext",
         "exclusion_reason": "Evaluates unimodal battery electrochemical cell voltage/current telemetry on spiking hardware without cross-modal sequence modeling or multi-sensor cross-attention (EC1)",
         "screen_date": "2026-09-27"
+    },
+    {
+        "arxiv_id": "2005.04319",
+        "title": "ST-MNIST -- The Spiking Tactile MNIST Neuromorphic Dataset",
+        "status": "excluded_fulltext",
+        "exclusion_reason": "Neuromorphic tactile classification benchmark published in 2020; falls outside 2021-2026 eligibility window (EC4)",
+        "screen_date": "2026-09-27"
+    },
+    {
+        "arxiv_id": "2605.05644",
+        "title": "AoI-Guided Client Selection for Robust and Timely Federated Intrusion Detection in Cloud-Edge Security Analytics",
+        "status": "excluded_fulltext",
+        "exclusion_reason": "Evaluates network intrusion packet header logs without physical power grid telemetry or cryptographic zero-knowledge verification (EC2)",
+        "screen_date": "2026-09-27"
     }
 ]
 
@@ -2117,24 +2243,24 @@ def main():
 
     # 3. Write prisma_counts.json
     prisma_counts = {
-        "iteration": 12,
+        "iteration": 13,
         "date": "2026-09-27",
         "identification": {
-            "database_searches": 495,
-            "citation_snowballing": 263,
-            "total_identified": 758
+            "database_searches": 535,
+            "citation_snowballing": 273,
+            "total_identified": 808
         },
         "screening": {
-            "records_screened": 613,
-            "duplicates_removed": 145,
-            "records_after_dedup": 613,
-            "excluded_title_abstract": 462,
-            "fulltext_assessed": 151,
-            "excluded_fulltext": 37,
+            "records_screened": 653,
+            "duplicates_removed": 155,
+            "records_after_dedup": 653,
+            "excluded_title_abstract": 492,
+            "fulltext_assessed": 161,
+            "excluded_fulltext": 39,
             "exclusion_reasons": {
                 "unimodal_only": 22,
-                "static_data_no_ts": 11,
-                "unverifiable_metadata": 4
+                "static_data_no_ts": 12,
+                "unverifiable_metadata": 5
             }
         },
         "included": {
@@ -2149,15 +2275,15 @@ def main():
     # 4. Append to search_log.jsonl
     search_log_path = DATA_DIR / "search_log.jsonl"
     queries = [
-        {"source": "arXiv API", "query": "all:\"teleconnection\" AND (all:\"transformer\" OR all:\"state space\" OR all:\"Mamba\") (Prapas2023TeleViT, Lyu2025PTATrans, Chen2025STM3)", "hits": 32, "new": 3},
-        {"source": "arXiv API", "query": "(all:\"anomaly attribution\" OR all:\"root cause\") AND all:causal AND all:\"time series\" (Zhang2026CCPF, Liu2026MATERO, Dong2026PICODE)", "hits": 24, "new": 3},
-        {"source": "arXiv API", "query": "all:neuromorphic AND (all:accelerator OR all:silicon OR all:Loihi) AND (all:\"event camera\" OR all:spiking) (Renner2023Colibri, Stewart2025Astrobee)", "hits": 21, "new": 2}
+        {"source": "arXiv API", "query": "all:\"tactile\" AND (all:\"diffusion\" OR all:\"visuomotor\" OR all:\"proprioception\") AND all:\"manipulation\" (Xue2025RDP, Bian2026GelNeuro, Zhang2025KineDex)", "hits": 38, "new": 3},
+        {"source": "arXiv API", "query": "(all:symplectic OR all:Hamiltonian) AND all:\"neural operator\" AND (all:fluid OR all:thermal OR all:turbulence) (Xu2026CoSynFlow, Pan2026MoETurb, Obieke2026HamNO)", "hits": 29, "new": 3},
+        {"source": "arXiv API", "query": "(all:Byzantine OR all:\"zero-knowledge\" OR all:zk-SNARK) AND (all:\"smart grid\" OR all:substation OR all:telemetry) (Ramanan2025zkSTAR, Liu2025ByzantineP2P)", "hits": 26, "new": 2}
     ]
     with open(search_log_path, "a", encoding="utf-8") as f:
         for q in queries:
             entry = {
                 "timestamp": datetime.now(timezone.utc).isoformat(),
-                "iteration": 12,
+                "iteration": 13,
                 "source": q["source"],
                 "query": q["query"],
                 "hits": q["hits"],

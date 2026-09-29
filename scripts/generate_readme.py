@@ -42,9 +42,9 @@ def main():
             categories["Foundational Baselines & Reference Surveys"].append(p)
         elif role in ["benchmark", "evaluator_judge", "multi_modal_benchmark"] or aid in ["2406.08627", "2606.16173", "2506.05019", "2509.24789", "2503.16858"]:
             categories["Multimodal Datasets & Evaluation Benchmarks"].append(p)
-        elif "Audio" in mod or "Waveform" in mod or "Spike" in mod or "Neuromorphic" in mod or "Event" in mod or aid in ["2601.02411", "2402.05423", "2503.05108", "2609.19204", "2503.09985", "2307.11349", "2402.15584", "2209.12160", "2605.07885"]:
+        elif "Audio" in mod or "Waveform" in mod or "Spike" in mod or "Neuromorphic" in mod or "Event" in mod or "Tactile" in mod or aid in ["2601.02411", "2402.05423", "2503.05108", "2609.19204", "2503.09985", "2307.11349", "2402.15584", "2209.12160", "2605.07885", "2503.02881", "2607.05241", "2505.01974"]:
             categories["Acoustic, Seismic & Neuromorphic SNN Models"].append(p)
-        elif "Grid" in mod or "Planetary" in mod or "Physics" in mod or "Quantum" in mod or "Diffusion" in mech or "Spectrum" in mod or "Flow" in mech or "Vector" in mod or "Teleconnection" in mod or "Indices" in mod or aid in ["2301.10343", "2409.13598", "2405.13063", "2403.00813", "2408.10269", "2608.10941", "2504.19669", "2509.00259", "2512.13745", "2107.03502", "2512.15116", "2503.01737", "2411.07506", "2509.25631", "2408.05740", "2306.10940", "2506.08049", "2508.12247", "2602.12592"]:
+        elif "Grid" in mod or "Planetary" in mod or "Physics" in mod or "Quantum" in mod or "Diffusion" in mech or "Spectrum" in mod or "Flow" in mech or "Vector" in mod or "Teleconnection" in mod or "Indices" in mod or "Turbulence" in mod or "Hamiltonian" in mod or "Cryptographic" in mod or "Proof" in mod or aid in ["2301.10343", "2409.13598", "2405.13063", "2403.00813", "2408.10269", "2608.10941", "2504.19669", "2509.00259", "2512.13745", "2107.03502", "2512.15116", "2503.01737", "2411.07506", "2509.25631", "2408.05740", "2306.10940", "2506.08049", "2508.12247", "2602.12592", "2608.00571", "2604.12794", "2606.14913", "2510.23060", "2505.20567"]:
             categories["Physics-Informed & Planetary Earth Foundation Models"].append(p)
         elif mech in ["visual_rendering", "two_stage_vision_language_screening"] or "Vision" in mod or "CXR" in mod:
             categories["Vision-Language & Visual Transcoding"].append(p)
@@ -60,7 +60,7 @@ def main():
     lines.append("")
     lines.append("[![Survey Paper](https://img.shields.io/badge/Paper-PDF-red.svg)](paper/main.pdf) ")
     lines.append("[![PRISMA 2020](https://img.shields.io/badge/PRISMA-2020%20Compliant-blue.svg)](docs/PROTOCOL.md) ")
-    lines.append("[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%2012-brightgreen.svg)](docs/STATE.md) ")
+    lines.append("[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%2013-brightgreen.svg)](docs/STATE.md) ")
     lines.append("[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) ")
     lines.append("")
     lines.append("> **Bilingual Repository** / **中英文双语前沿综述与开源精选仓库**  ")
@@ -72,7 +72,10 @@ def main():
     lines.append("")
     lines.append("时序数据在气象、金融、医疗电子病历、交通和工业物联网中无处不在。传统的单模态时序模型（如统计方法或纯数值Transformer）往往受限于单一维度的数值波动，无法捕获高阶语义背景、事件影响与多模态因果关联。")
     lines.append("")
-    lines.append("本综述全面梳理了 **2021年至今的多模态时序前沿工作**，深入探讨了将时序信号与**自然语言文本（新闻、报告、指令提示）**、**视觉图像（折线图、频谱图、卫星影像）**、**脉冲神经形态与事件相机（SNN / DVS）**、**具身本体感受遥测（本体姿态、受力）**及**物理场约束**协同建模的新范式。核心内容涵盖：")
+    lines.append("本综述全面梳理了 **2021年至今的多模态时序前沿工作**，深入探讨了将时序信号与**自然语言文本（新闻、报告、指令提示）**、**视觉图像（折线图、频谱图、卫星影像）**、**仿生触觉皮肤阵列（GelSight / 触觉力觉遥测）**、**脉冲神经形态与事件相机（SNN / DVS）**、**具身本体感受遥测（本体姿态、受力）**、**哈密顿保形物理场**及**零知识密码学证明**协同建模的新范式。核心内容涵盖：")
+    lines.append("- **仿生触觉阵列遥测与慢-快视触扩散策略（Visuotactile Slow-Fast Diffusion & Neuromorphic Skin）：** 如 RDP (Xue et al. 2025)、GelNeuro (Bian et al. 2026)、KineDex (Zhang et al. 2025)，将低频视觉全局观测（5Hz）与高频触觉力学遥测（50Hz）在条件扩散策略中解耦，实现 20ms 级亚周期接触反射，将富接触精密抓取与工具装配成功率提升至 92.4%，接触冲击力超调削减 85.8%（峰值力仅 2.1N），并结合端侧仿生事件弹性体传感器（GelNeuro）实现 sub-5ms 亚毫秒微纹理边缘识别与 sub-1mW 超低功耗；")
+    lines.append("- **物理保形辛神经算子流与多相湍流燃烧遥测（Physics-Preserving Symplectic Neural Operator Flows for Turbulence）：** 如 CoSynFlow (Xu et al. 2026)、MoETurb (Pan et al. 2026)、HamNO (Obieke et al. 2026)，在多相流体动力学与透平燃烧超长程模拟（10,000 步）中显式保留耗散动力学的保形辛几何结构（Conformal Symplectic Geometry），将长时间累积相对能量漂移严格约束在 $\\leq 0.029$（较标准 ResNet 漂移降低 39 倍），彻底杜绝非物理能量发散，并利用多时间步长混合专家（MoETurb）动态路由高涡量剪切层；")
+    lines.append("- **去中心化拜占庭共识与零知识可验证电网防线（Decentralized Byzantine Consensus & Zero-Knowledge Proofs for Power Grids）：** 如 zkSTAR (Ramanan et al. 2025)、ByzantineP2P (Liu et al. 2025)，针对智能电网虚假数据注入攻击（FDIA），提出基于 Groth16 zk-SNARKs 的状态空间零知识密码学验证架构，公用事业单位在无需泄露任何私有功率遥测数据的前提下向监管机构证明检测有效性与报警无遗漏（常数验证时间仅 18ms），并在高达 40% 的恶意拜占庭共谋节点攻击下维持 89.4%--93.8% 的高准确率时序攻击定位；")
     lines.append("- **多年代际行星遥相关与超长程分块状态空间（Multi-Decadal Earth Teleconnection & STM3）：** 如 TeleViT (Prapas et al. 2023, NeurIPS 2023)、PTA-Trans (Lyu et al. 2025, AAAI 2025)、STM3 (Chen et al. 2025/2026, ACM KDD 2026)，将全球海洋-大气长程遥相关模式（ENSO、NAO、AO）与高分辨率局部气象和地球观测网格跨尺度对齐，利用多尺度选择性状态空间（STM3）突破二次方内存瓶颈，在 $100{,}000+$ 超长步长下保持 $\\mathcal{O}(T)$ 线性推断，将 8 周次季节野火与气温预测技巧提升 14.2%--21.4%；")
     lines.append("- **半导体晶圆厂万级传感网因果DAG异常归因（Semiconductor Fab Causal DAG Anomaly Attribution & CCPF）：** 如 CCPF (Zhang et al. 2026)、MATERO-RCA (Liu et al. 2026)、PIC-ODE (Dong et al. 2026, IEEE Trans 2026)，在 3nm EUV 光刻与等离子刻蚀逾万维传感拓扑中，通过将因果 DAG 父节点集硬掩码直接嵌入注意力机制，彻底切断下游虚假报警级联，将 Top-1 根因定位准确率拔高至 84.7%（较无约束大模型提升 31.2%），并过滤 64.8% 的伪异常误报；")
     lines.append("- **亚50毫瓦仿生事件-帧神经形态边缘硅基协同设计（Sub-50mW Neuromorphic Silicon Co-Design & Loihi 2 / ColibriUAV）：** 如 ColibriUAV (Renner et al. 2023, IEEE TCAS 2023)、Astrobee 强化学习飞行控制 (Stewart et al. 2025, IEEE 2025)，将微秒级 DVS 事件相机与 IMU 遥测直接编译固化至 Kraken RISC-V SoC 专用脉冲加速器与 Intel Loihi 2 神经形态芯片，在 $28.4$--$38.0\\text{ mW}$ 极低功耗下取得 $0.9$--$1.2\\text{ ms}$ 亚毫秒级闭环感知与飞控，较移动 GPU 能耗削减 52 倍；")

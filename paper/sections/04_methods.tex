@@ -118,6 +118,14 @@ MATERO-RCA~\cite{Liu2026MATERO} & arXiv '26 & TS + Operational Mode & Mode-Aware
 PIC-ODE~\cite{Dong2026PICODE} & IEEE Trans '26 & TS + Physical Topology & Causal Continuous Neural ODE & Differential Causal Propagation & Physics-ODE Residual Loss & \checkmark & No \\
 ColibriUAV~\cite{Renner2023Colibri} & IEEE TCAS '23 & TS + Event + Vision & Kraken RISC-V SoC + SNN & Hardware Neuromorphic Co-Design & Event Spike Edge Loss & No & No \\
 Astrobee (Loihi 2)~\cite{Stewart2025Astrobee} & IEEE '25 & TS + Proprioception + Spikes & Intel Loihi 2 Neuromorphic & Sigma-Delta Spiking Compilation & Closed-Loop Trajectory Loss & \checkmark & No \\
+RDP~\cite{Xue2025RDP} & arXiv '25 & TS + Vision + Tactile & Slow-Fast Transformer + Diff. & Slow-Fast Visuotactile Policy & Denoising Contact Loss & \checkmark & No \\
+GelNeuro~\cite{Bian2026GelNeuro} & arXiv '26 & TS + Tactile Event Stream & Neuromorphic Optical Tactile SNN & Sensing-Computing SNN Scan & Event Spike Texture Loss & No & No \\
+KineDex~\cite{Zhang2025KineDex} & arXiv '25 & TS + Vision + Tactile & Visuotactile Policy Trans. & Kinesthetic Visuotactile Attn. & Contact Force Impedance Loss & \checkmark & No \\
+CoSynFlow~\cite{Xu2026CoSynFlow} & arXiv '26 & TS + Phase Space Vectors & Conformal Symplectic Flow & SympNets Flow Matching & Symplectic Invariant Loss & \checkmark & No \\
+MoETurb~\cite{Pan2026MoETurb} & arXiv '26 & TS + Turbulence Velocity & Multi-Stepsize MoE + FNO & Mixture-of-Stepsize Routing & Multi-Scale Eddy Loss & \checkmark & No \\
+HamNO~\cite{Obieke2026HamNO} & arXiv '26 & TS + Hamiltonian Manifold & Parametric Hamiltonian NO & Symplectic Invariant Operator & Hamiltonian Energy Loss & \checkmark & No \\
+zkSTAR~\cite{Ramanan2025zkSTAR} & arXiv '25 & TS + Cryptographic Proofs & State-Space Filter + zk-SNARK & Groth16 Prover Verification & Verifiable Compliance Loss & \checkmark & No \\
+ByzantineP2P~\cite{Liu2025ByzantineP2P} & IEEE '25 & TS + Grid Power Flow Graph & Spatio-Temporal Tensor Model & ADMM Byzantine Tensor Filter & Distributed Consensus Loss & \checkmark & No \\
 \bottomrule
 \end{tabular}%
 }
@@ -911,6 +919,64 @@ Stewart et al.~\cite{Stewart2025Astrobee} tackle closed-loop robotic flight cont
     s_i(t) = \begin{cases} \text{round}\left(\frac{\Delta v_i(t)}{\theta_{\text{th}}}\right) & \text{if } |\Delta v_i(t)| \ge \theta_{\text{th}} \\ 0 & \text{otherwise} \end{cases}
 \end{equation}
 By communicating state updates strictly when joint velocities or visual feature deviations exceed threshold $\theta_{\text{th}}$, Loihi 2 achieves $98.2\%$ closed-loop trajectory tracking precision while slashing system power consumption to $28.4\text{ mW}$ ($52\times$ reduction vs.\ embedded GPU baselines) with sub-millisecond ($0.9\text{ ms}$) algorithmic response latency. This confirms that hardware-software neuromorphic compilation unlocks genuine sub-50mW intelligence for autonomous spatial robotics.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.96\textwidth]{figures/tactile_turbulence_byzantine.pdf}
+\caption{Neuromorphic Tactile-Skin Array Telemetry, Physics-Preserving Symplectic Turbulence Flows, and Decentralized Byzantine Zero-Knowledge Power Grid Verification: (a) Contact-Rich Robot Manipulation: vision-only diffusion policies (DP~\cite{Chi2023DiffusionPolicy}) suffer low success ($58.2\%$) and severe contact force overshoot ($14.8\text{ N}$), while decoupled slow-fast visual-tactile architectures (RDP~\cite{Xue2025RDP}) and kinesthetic demonstrations (KineDex~\cite{Zhang2025KineDex}) elevate success to $92.4\%$ and restrict force spikes to $2.1\text{ N}$, complemented by on-chip neuromorphic event-tactile classification (GelNeuro~\cite{Bian2026GelNeuro}); (b) Multi-Phase Fluid-Thermal Turbulence Telemetry: standard autoregressive ResNets and unconstrained FNOs undergo catastrophic energy explosion (drift $> 1.45$--$6.10$), whereas conformal symplectic flows (CoSynFlow~\cite{Xu2026CoSynFlow}), Hamiltonian operators (HamNO~\cite{Obieke2026HamNO}), and multi-stepsize mixture-of-experts (MoETurb~\cite{Pan2026MoETurb}) enforce exact symplectic volume preservation, bounding relative energy drift to $\leq 0.029$ across $10^4$ simulation time steps; (c) Decentralized Smart Grid Telemetry: under escalating Byzantine adversarial node fractions ($0\%$ to $40\%$), unprotected centralized models collapse (F1 drops to $34.0\%$), whereas tensor anomaly filtering (ByzantineP2P~\cite{Liu2025ByzantineP2P}) and state-space Groth16 zk-SNARK verification (zkSTAR~\cite{Ramanan2025zkSTAR}) maintain $\ge 89.4\%$--$93.8\%$ attack detection F1 with zero disclosure of private grid telemetry.}
+\label{fig:tactile_turbulence_byzantine}
+\end{figure*}
+
+\subsection{Neuromorphic Tactile-Skin Array Telemetry and Visuotactile Diffusion Policy for Dexterous Dynamic Manipulation}
+\label{sec:visuotactile_diffusion_skin}
+Contact-rich robotic manipulation (such as precision assembly, in-hand tool reorientation, and dynamic slippage compensation) requires sensing and acting under distinct temporal regimes. Visual observations provide broad spatial geometry but update at low frame rates ($5$--$30\text{ Hz}$) and suffer severe occlusion when the gripper closes on an object. Conversely, physical contact forces and micro-vibrations propagate on millisecond timescales ($50$--$1000\text{ Hz}$). Feeding high-dimensional multi-camera video and dense tactile array telemetry into a monolithic imitation learning network leads to severe temporal mismatch and excessive contact force overshoots (\Cref{fig:tactile_turbulence_byzantine}a).
+
+\subsubsection{Slow-Fast Visuotactile Decoupling \& Diffusion Policies (RDP \& KineDex)}
+Xue et al.~\cite{Xue2025RDP} formulate the Reactive Diffusion Policy (RDP), establishing a decoupled slow-fast architecture for contact-rich visuomotor control. Let $\mathbf{o}_t^v \in \mathbb{R}^{H \times W \times 3}$ denote multi-view visual frames sampled at low frequency $f_v = 5\text{ Hz}$, and $\mathbf{\tau}_t \in \mathbb{R}^{M \times 3}$ denote high-frequency 3D contact wrench vectors from dense tactile skin arrays operating at $f_\tau = 50\text{ Hz}$. RDP decouples control into: (1) a Slow Visual Policy generating macro spatial goal embeddings $\mathbf{z}_v = \phi_v(\mathbf{o}_{t-K:t}^v)$; and (2) a Fast Tactile Diffusion Policy executing conditional denoising over short action chunks $\mathbf{A}_t = (\mathbf{a}_t, \dots, \mathbf{a}_{t+H-1})$:
+\begin{equation}
+    \mathcal{L}_{\text{diff}}(\theta) = \mathbb{E}_{k, \mathbf{\epsilon}, \mathbf{A}_t} \left[ \|\mathbf{\epsilon} - \mathbf{\epsilon}_\theta(\mathbf{A}_t^{(k)}, k, \mathbf{z}_v, \mathbf{\tau}_{t-L:t}, \mathbf{q}_t)\|_2^2 \right]
+\end{equation}
+By conditioning action denoising on high-frequency tactile force derivatives $\dot{\mathbf{\tau}}_t$, RDP achieves instant reflex responses to unexpected slippage within $20\text{ ms}$, curbing peak force overshoot from $14.8\text{ N}$ down to $2.1\text{ N}$ and elevating contact-rich peg insertion success to $92.4\%$ (\Cref{fig:tactile_turbulence_byzantine}a). Complementing this, Zhang et al.~\cite{Zhang2025KineDex} introduce KineDex, capturing synchronized visuotactile demonstrations through kinesthetic teaching. By aligning spatial transformer queries with joint impedance feedback and force-torque telemetry, KineDex enables multi-fingered dexterous hands to perform delicate in-hand tool rotation without dropping fragile objects.
+
+\subsubsection{Sensing-Computing Integrated Neuromorphic Tactile Elastomers (GelNeuro)}
+Conventional optical tactile sensors (such as GelSight) rely on power-hungry CMOS cameras and USB frame-grabbers that stream raw megapixel images to external GPUs, imposing $30$--$50\text{ ms}$ processing latencies. Bian et al.~\cite{Bian2026GelNeuro} break this bottleneck with GelNeuro, a sensing-computing integrated neuromorphic tactile system. GelNeuro replaces standard frame sensors with an event-based optical elastomer interface that emits asynchronous polarity events $\mathcal{E} = \{(x_k, y_k, t_k, p_k)\}$ strictly upon micro-surface shear or normal strain. These spike streams feed directly into an on-chip Spiking Neural Network (SNN) accelerator with continuous membrane voltage dynamics:
+\begin{equation}
+    \tau_m \frac{dv_i}{dt} = -(v_i(t) - v_{\text{rest}}) + \sum_j W_{ij} \sum_k \delta(t - t_j^k)
+\end{equation}
+Operating without external host computer relaying, GelNeuro accomplishes micro-texture recognition and slippage detection with $<5\text{ ms}$ latency while consuming $<0.8\text{ mW}$ of power, demonstrating seamless event-driven edge neuromorphic tactile intelligence.
+
+\subsection{Physics-Preserving Symplectic Neural Operator Flow for Multi-Phase Fluid-Thermal Turbulence Telemetry}
+\label{sec:symplectic_neural_operator}
+Surrogate modeling of high-dimensional multi-phase fluid dynamics, turbine combustion, and thermal turbulence requires autoregressive rollouts across thousands of time steps. Standard neural operators (such as FNO-3D or U-Net surrogates) minimize instantaneous $L_2$ prediction loss without enforcing geometric or thermodynamic invariants. Over extended rollout horizons ($T > 10^3$), small non-conservative errors compound exponentially, causing unphysical numerical dissipation or catastrophic energy divergence (\Cref{fig:tactile_turbulence_byzantine}b).
+
+\subsubsection{Conformal Symplectic Neural Flows (CoSynFlow \& HamNO)}
+Xu et al.~\cite{Xu2026CoSynFlow} propose CoSynFlow (Conformal Symplectic Neural Flows) to guarantee long-horizon stability in dissipative and non-equilibrium Hamiltonian systems. In classical Hamiltonian mechanics, the phase-space trajectory $\mathbf{z} = (\mathbf{q}, \mathbf{p})^\top \in \mathbb{R}^{2d}$ satisfies $\dot{\mathbf{z}} = \mathbf{J} \nabla H(\mathbf{z})$ with symplectic matrix $\mathbf{J} = \begin{bmatrix} \mathbf{0} & \mathbf{I} \\ -\mathbf{I} & \mathbf{0} \end{bmatrix}$. In real-world thermal turbulence and damped fluid flows, energy dissipates at a uniform rate $\gamma > 0$, yielding conformal Hamiltonian dynamics:
+\begin{equation}
+    \dot{\mathbf{z}}(t) = \mathbf{J} \nabla H(\mathbf{z}(t)) - \gamma \begin{bmatrix} \mathbf{0} \\ \mathbf{p}(t) \end{bmatrix}
+\end{equation}
+CoSynFlow parameterizes the time-dependent velocity field through symplectic neural networks (SympNets) combined with continuous flow matching. By design, the transformation preserves the conformal symplectic structure:
+\begin{equation}
+    \left(\frac{\partial \mathbf{z}(t)}{\partial \mathbf{z}(0)}\right)^\top \mathbf{J} \left(\frac{\partial \mathbf{z}(t)}{\partial \mathbf{z}(0)}\right) = e^{-\gamma t} \mathbf{J}
+\end{equation}
+As benchmarked in \Cref{fig:tactile_turbulence_byzantine}b, while standard ResNets experience catastrophic energy drift exceeding $6.10$, CoSynFlow strictly bounds relative energy drift to $\leq 0.029$ across $10^4$ simulation time steps. In parallel, Obieke et al.~\cite{Obieke2026HamNO} develop HamNO (Parametric Hamiltonian Neural Operators), embedding Poisson bracket conservation directly into continuous operator kernel convolutions for stable multi-thousand-step non-linear wave simulations.
+
+\subsubsection{Multi-Stepsize Mixture-of-Experts Neural Operators (MoETurb)}
+Compounding errors in multi-scale turbulent flows also stem from fixed temporal discretization. Excessively fine step sizes incur severe autoregressive error accumulation, while coarse step sizes miss high-frequency turbulent eddy cascades. Pan et al.~\cite{Pan2026MoETurb} develop MoETurb, a multi-stepsize mixture-of-experts Fourier neural operator. MoETurb deploys parallel neural operator experts trained on discrete temporal increments $\{\Delta t_1, \Delta t_2, \dots, \Delta t_M\}$ and dynamically routes spatial regions via a gating network $\mathbf{g}(\mathbf{X}_t) = \text{Softmax}(\mathbf{W}_g \mathcal{F}(\mathbf{X}_t))$. Fine step sizes are allocated exclusively to high-vorticity shear layers, while quiescent zones advance via large time strides, reducing cumulative rollout error by $41.8\%$ over standard FNO baselines.
+
+\subsection{Decentralized Multi-Agent Byzantine Consensus and Zero-Knowledge Proofs for Autonomous Power Substation Grids}
+\label{sec:byzantine_zk_substation}
+Modern power distribution networks and substations rely on distributed phasor measurement units (PMUs) and prosumer telemetry to maintain grid stability. However, open communication channels render power grids susceptible to false data injection attacks (FDIA), where compromised sensors inject stealthy perturbations $\tilde{\mathbf{x}}_t = \mathbf{x}_t + \mathbf{a}_t$ that mimic physical power flows while triggering generator tripping. Furthermore, utilities cannot share raw telemetry across corporate or regulatory boundaries due to commercial confidentiality and critical infrastructure privacy mandates (\Cref{fig:tactile_turbulence_byzantine}c).
+
+\subsubsection{State-Space zk-SNARK Verification for Critical Infrastructure (zkSTAR)}
+Ramanan et al.~\cite{Ramanan2025zkSTAR} resolve this tension by formulating zkSTAR, a zero-knowledge cryptographic verification framework for time-series cyberattack detection. Building on residual-based state-space detection filters $\mathbf{x}_{t+1} = \mathbf{A}\mathbf{x}_t + \mathbf{B}\mathbf{u}_t + \mathbf{w}_t$, zkSTAR constructs arithmetic circuits that prove two mathematical statements in zero knowledge via Groth16 zk-SNARKs:
+\begin{enumerate}
+    \item \textbf{Temporal Dynamic Consistency:} The estimated state sequence strictly satisfies physical state-space propagation $\|\hat{\mathbf{x}}_{t+1} - (\mathbf{A}\hat{\mathbf{x}}_t + \mathbf{B}\mathbf{u}_t)\|_2^2 \le \epsilon_{\text{dyn}}$.
+    \item \textbf{Statistical Test Integrity:} The normalized innovation residual $\mathcal{R}_t = (\mathbf{y}_t - \mathbf{C}\hat{\mathbf{x}}_t)^\top \mathbf{\Sigma}^{-1} (\mathbf{y}_t - \mathbf{C}\hat{\mathbf{x}}_t)$ was correctly evaluated against regulatory detection threshold $\gamma_{\text{th}}$, and no alarm was suppressed.
+\end{enumerate}
+Crucially, the regulatory agency verifies the zero-knowledge proof $\pi_{\text{zk}}$ in $O(1)$ constant time ($18\text{ ms}$) without observing the utility's private telemetry $\mathbf{y}_{1:T}$ or grid topology matrices. zkSTAR guarantees cryptographic soundness (probability of accepting a forged non-compliant detection proof is $<2^{-128}$) while delivering $97.4\%$ attack detection F1 (\Cref{fig:tactile_turbulence_byzantine}c).
+
+\subsubsection{Distributed Byzantine-Resilient Spatio-Temporal Tensor Consensus (ByzantineP2P)}
+In decentralized peer-to-peer energy trading networks without central coordinators, malicious agents may collude to manipulate local trading prices. Liu et al.~\cite{Liu2025ByzantineP2P} develop a distributed spatio-temporal tensor anomaly detection framework. By formulating power flow telemetry as a low-rank spatio-temporal tensor $\mathbf{\mathcal{X}} \in \mathbb{R}^{N \times T \times C}$, ByzantineP2P decomposes measurements into low-rank normal power flows $\mathbf{\mathcal{L}}$ and sparse anomaly injections $\mathbf{\mathcal{S}}$ via alternating direction method of multipliers (ADMM). Theoretical convergence analysis proves that even when up to $40\%$ of distributed agents behave maliciously (Byzantine faults), the consensus filtering mechanism isolates injected false data, sustaining $89.4\%$ anomaly detection F1 and guaranteeing optimal power flow convergence without central single-point vulnerabilities (\Cref{fig:tactile_turbulence_byzantine}c).
 
 
 
