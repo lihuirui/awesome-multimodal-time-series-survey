@@ -2,8 +2,8 @@
 
 **Project:** Multimodal Time Series Models: A Survey and Outlook  
 **Current Phase:** P4/P5 (Comprehensive Writing, Benchmarking & Continuous Review)  
-**Iteration:** 12 (Multi-Decadal Earth Teleconnection, Fab Causal DAG Anomaly Attribution, Sub-50mW Neuromorphic Silicon Co-Design & 114 Verified Papers)  
-**Date:** 2026-09-27  
+**Iteration:** 13 (Visuotactile Diffusion Policy, Symplectic Turbulence Neural Operators, Byzantine ZK-SNARK Power Grid & 122 Verified Papers)  
+**Date:** 2026-09-29  
 
 ---
 
