@@ -1,0 +1,142 @@
+[
+  {
+    "arxiv_id": "2605.06483",
+    "title": "ReasonSTL: Bridging Natural Language and Signal Temporal Logic via Tool-Augmented Process-Rewarded Learning",
+    "year": 2026,
+    "authors": [
+      "Bowen Ye",
+      "Zhijian Li",
+      "Junyue Huang",
+      "Junkai Ma",
+      "Xiang Yin"
+    ],
+    "abstract": "Signal Temporal Logic (STL) is an expressive formal language for specifying spatio-temporal requirements over real-valued, real-time signals. It has been widely used for the verification and synthesis of autonomous systems and cyber-physical systems. In practice, however, users often express their requirements in natural language rather than in structured STL formulas, making natural-language-to-STL translation a critical yet challenging task. Manual specification requires temporal-logic expertise and cannot scale, while prompting commercial LLM APIs incurs substantial token costs and may expose sensitive system requirements to third-party services, raising privacy concerns for industrial deployment. To address these challenges, we present \\textsc{ReasonSTL}, a tool-augmented framework that adapts local open-source language models for natural-language-to-STL generation. \\textsc{ReasonSTL} decomposes the translation process into explicit reasoning, deterministic tool calls, and structured formula construction. We further introduce process-rewarded training to supervise both tool-use trajectories and final formulas, together with \\textsc{STL-Bench}, a bilingual, computation-aware benchmark grounded in real-world signals. Experiments show that a 4B model trained with \\textsc{ReasonSTL} achieves state-of-the-art performance in both automatic metrics and human evaluations, demonstrating that \\textsc{ReasonSTL} provides a transparent, low-cost, and privacy-preserving alternative for formal specification drafting.",
+    "venue": "arXiv 2026"
+  },
+  {
+    "arxiv_id": "2606.20336",
+    "title": "Autonomous Driving with Priority-Ordered STL Specifications Under Multimodal Uncertainty",
+    "year": 2026,
+    "authors": [
+      "Taha Bouzid",
+      "Shuhao Qi",
+      "Mircea Lazar",
+      "Sofie Haesaert"
+    ],
+    "abstract": "Autonomous vehicles must plan trajectories that satisfy multiple requirements, such as safety, traffic-rule compliance, and passenger comfort. However, in safety-critical scenarios, it is not always possible to satisfy all requirements simultaneously, necessitating their prioritization based on importance. At the same time, the uncertainty in the predicted trajectories of surrounding road users, such as other vehicles and pedestrians, must be explicitly accounted for. In this work, we propose an uncertainty-aware trajectory planning framework that incorporates a predefined priority ordering over Signal Temporal Logic (STL) specifications and preserves the induced lexicographic ordering under multimodal uncertainty. We implement this formulation with Model Predictive Path Integral (MPPI) control and demonstrate the effectiveness of our method on simulation scenarios, showing that our framework efficiently handles conflicting objectives under realistic multimodal uncertainty.",
+    "venue": "arXiv 2026"
+  },
+  {
+    "arxiv_id": "2605.23194",
+    "title": "Scalable Heterogeneous Graph Foundation Models for Data-Driven Optimal Power Flow in Smart Grids",
+    "year": 2026,
+    "authors": [
+      "Massimiliano Lupo Pasini",
+      "Yijiang Li",
+      "Kibaek Kim",
+      "Teja Kuruganti"
+    ],
+    "abstract": "Fast and reliable optimal power flow (OPF) approximation is important for power system operation, yet heterogeneous OPF graph models are often evaluated either with architecture-specific implementations or on limited training corpora. This paper presents a large-scale heterogeneous graph-learning workflow, built on HydraGNN, for data-driven OPF surrogate modeling and graph foundation-model (GFM) development. The workflow preserves buses, generators, loads, shunts, alternating-current (AC) lines, transformers, and device-to-bus relations and provides a common implementation for distributed preprocessing, multi-graphics-processing-unit (GPU) training, hyperparameter optimization (HPO), and downstream adaptation. Using approximately three million heterogeneous graphs from ten Power Grid Library for Benchmarking AC Optimal Power Flow Algorithms (PGLib-OPF) cases spanning 14 to 13,659 buses, we compare six heterogeneous graph neural network (GNN) families under a common HPO campaign on Frontier, resulting in two compact HeteroSAGE and HeteroHEAT models (~1.6-1.7 million parameters) that achieve the lowest observed validation MSE. Strong and weak scaling using up to 1,024 Frontier nodes show that 256 nodes (corresponding to 1,024 AMD MI250X GPUs) provides the best time-to-solution balance for the measured workload. Two downstream tasks evaluate task adaptation on the IEEE 118-bus case: a classification task to distinguish nominal operating conditions from artificially generated extreme-overload conditions and N-1 single-component-outage regression to predict bus voltage magnitude and phase angle. Partial fine-tuning provides the strongest balance between predictive performance and computational requirements.",
+    "venue": "arXiv 2026"
+  },
+  {
+    "arxiv_id": "2603.08048",
+    "title": "S2S-FDD: Bridging Industrial Time Series and Natural Language for Explainable Zero-shot Fault Diagnosis",
+    "year": 2026,
+    "authors": [
+      "Baoxue Li",
+      "Chunhui Zhao"
+    ],
+    "abstract": "Fault diagnosis is critical for the safe operation of industrial systems. Conventional diagnosis models typically produce abstract outputs such as anomaly scores or fault categories, failing to answer critical operational questions like \"Why\" or \"How to repair\". While large language models (LLMs) offer strong generalization and reasoning abilities, their training on discrete textual corpora creates a semantic gap when processing high-dimensional, temporal industrial signals. To address this challenge, we propose a Signals-to-Semantics fault diagnosis (S2S-FDD) framework that bridges high-dimensional sensor signals with natural language semantics through two key innovations: We first design a Signal-to-Semantic operator to convert abstract time-series signals into natural language summaries, capturing trends, periodicity, and deviations. Based on the descriptions, we design a multi-turn tree-structured diagnosis method to perform fault diagnosis by referencing historical maintenance documents and dynamically querying additional signals. The framework further supports human-in-the-loop feedback for continuous refinement. Experiments on the multiphase flow process show the feasibility and effectiveness of the proposed method for explainable zero-shot fault diagnosis.",
+    "venue": "arXiv 2026"
+  },
+  {
+    "arxiv_id": "2601.17154",
+    "title": "Data-Efficient Physics-Informed Learning to Model Synchro-Waveform Dynamics of Grid-Integrated Inverter-Based Resources",
+    "year": 2026,
+    "authors": [
+      "Shivanshu Tripathi",
+      "Hossein Mohsenzadeh Yazdi",
+      "Maziar Raissi",
+      "Hamed Mohsenian-Rad"
+    ],
+    "abstract": "Inverter-based resources (IBRs) exhibit fast transient dynamics during network disturbances, which often cannot be properly captured by phasor and SCADA measurements. This shortcoming has recently been addressed with the advent of waveform measurement units (WMUs), which provide high-resolution, time-synchronized raw voltage and current waveform samples from multiple locations in the power system. However, transient model learning based on synchro-waveform measurements remains constrained by the scarcity of network disturbances and the complexity of the underlying nonlinear dynamics of IBRs. We propose to address these problems by developing a data-efficient physics-informed machine learning (PIML) framework for synchro-waveform analytics that estimates the IBR terminal current response from only a few network disturbance signatures. Here, the physics of the electrical circuits are used to compensate for limited data availability by constraining the learning process through known circuit relationships. Two cases are considered, with known and unknown circuit parameters. In the latter case, the framework jointly learns the transient dynamics of the IBRs and the parameters of the electrical circuit. Case studies using WMU disturbance data across multiple sampling rates shows consistently lower current estimation error with substantially fewer training events than a purely data-driven baseline.",
+    "venue": "arXiv 2026"
+  },
+  {
+    "arxiv_id": "2607.18147",
+    "title": "LLMs and Agentic AI Systems for Smart Grids: A Tutorial on Architectures and Applications",
+    "year": 2026,
+    "authors": [
+      "Daniela Rojas",
+      "Abdulwahab Albassam",
+      "Aidan G. Leung",
+      "Jett Ngo",
+      "Ryan Luo",
+      "Peter R. Quawas",
+      "Junpyung Kim",
+      "Kangkai Liang",
+      "Mansi Nanavati",
+      "Jonathan Mai",
+      "Meng-Chi Tsai",
+      "Yun-Tong Tsai",
+      "Yize Chen",
+      "Yuanyuan Shi"
+    ],
+    "abstract": "Large language models (LLMs) and agentic AI systems have evolved from natural language tasks to using external tools to plan, retrieve, and act in technical domains. In smart grids, recent work applies agentic schemes to forecasting, optimization, and control, wrapping trusted solvers behind language interfaces and orchestrating multi-step workflows. The literature lacks a unified approach to designing and evaluating such systems. LLMs can produce numerically plausible yet physically infeasible outputs, evaluation protocols vary across tasks, and the boundary between what the model should and should not compute is implicit. This paper presents a solver-grounded design principle: a numerical result is reported only when it originates from a trusted tool and passes explicit verification. We review the building blocks of LLM and agentic AI systems for power systems: prompting strategies and agentic architectures. We instantiate the principle in four case studies: wind power forecasting, EV charging scheduling, power flow analysis, and contingency diagnosis, each comparing an LLM-only baseline against its solver-grounded counterpart on identical data and metrics. EVAgent reproduces the CVXPY optimum while reducing LLM-only unmet energy by 7.5-9.5x, and GridDebugAgent repairs 17/39 contingency cases while reducing total violations by 52.3%. We propose a four-group evaluation framework spanning task utility, solver-grounded correctness, faithfulness and safe failure, and cost and latency. A consistent division of labor emerges: the agentic system reliably orchestrates, retrieves, and explains, while trusted tools compute and a verification gate decides what is reported.",
+    "venue": "arXiv 2026"
+  },
+  {
+    "arxiv_id": "2607.22153",
+    "title": "Industrial Tokenization for LLM-Based Health Intelligence: A Federated Architecture for Industrial Evidence Integration",
+    "year": 2026,
+    "authors": [
+      "Deshui Li",
+      "Xiao-Ming Yuan",
+      "Zishun Wang"
+    ],
+    "abstract": "Industrial health management increasingly relies on heterogeneous information sources, including condition monitoring systems, supervisory control and data acquisition systems, maintenance records, inspection results, and prognostic models. Although large language models provide new opportunities for cross-source reasoning, industrial data and analytical outputs differ substantially in structure, temporal resolution, physical meaning, and reliability. Directly integrating such heterogeneous information into a monolithic model may reduce interpretability, traceability, and adaptability to equipment and data changes. This paper introduces Industrial Tokenization, a conceptual interface for transforming source-specific analytical outputs into structured and machine-interpretable units of industrial evidence, termed Industrial Tokens. Unlike numerical tokens used to encode raw time-series data, Industrial Tokens represent domain-grounded evidence together with source, temporal scope, operating context, analytical meaning, quality or confidence information, and provenance. Based on this concept, a federated industrial architecture is proposed, where heterogeneous analytical subsystems retain autonomy while exposing standardized Industrial Tokens to a central reasoning layer. As an initial implementation, this study presents an end-to-end DiagnosisToken pathway based on vibration-diagnostic outputs, rule-based event aggregation, structured textual token generation, and LLM-based interpretation. Other Industrial Tokens, including SCADA-based condition-monitoring tokens, maintenance tokens, and prognostic tokens, are reserved as future extensions. The proposed framework positions Industrial Tokenization as a semantic interface between domain-specific industrial intelligence and LLM- or agent-based reasoning, rather than another method for encoding raw industrial data.",
+    "venue": "arXiv 2026"
+  },
+  {
+    "arxiv_id": "2403.06942",
+    "title": "Grid Monitoring with Synchro-Waveform and AI Foundation Model Technologies",
+    "year": 2024,
+    "authors": [
+      "Lang Tong",
+      "Xinyi Wang",
+      "Qing Zhao"
+    ],
+    "abstract": "Purpose:This article advocates for the development of a next-generation grid monitoring and control system designed for future grids dominated by inverter-based resources. Leveraging recent progress in generative artificial intelligence (AI), machine learning, and networking technology, we develop a physics-based AI foundation model with high-resolution synchro-waveform measurement technology to enhance grid resilience and reduce economic losses from outages.   Methods and Results:The proposed framework adopts the AI Foundation Model paradigm, where a generative and pre-trained (GPT) foundation model extracts physical features from power system measurements, enabling adaptation to a wide range of grid operation tasks. Replacing the large language models used in popular AI foundation models, this approach is based on the Wiener-Kallianpur-Rosenblatt innovation model for power system time series, trained to capture the physical laws of power flows and sinusoidal characteristics of grid measurements. The pre-trained foundation model causally extracts sufficient statistics from grid measurement time series for various downstream applications, including anomaly detection, over-current protection, probabilistic forecasting, and data compression for streaming synchro-waveform data. Numerical simulations using field-collected data demonstrate significantly improved fault detection accuracy and detection speed.   Conclusion:The future grid will be rich in inverter-based resources, making it highly dynamic, stochastic, and low inertia. This work underscores the limitations of existing Supervisory-Control-and-Data-Acquisition and Phasor-Measurement-Unit monitoring systems and advocates for AI-enabled monitoring and control with high-resolution synchro-waveform technology to provide accurate situational awareness, rapid response to faults, and robust network protection.",
+    "venue": "arXiv 2024"
+  },
+  {
+    "arxiv_id": "2609.07111",
+    "title": "From LLM-Generated Specifications to Learned Quadruped Locomotion",
+    "year": 2026,
+    "authors": [
+      "Merve Atasever",
+      "Keyan Azbijari",
+      "Cagan Bakirci",
+      "Alfredo Reina Corona",
+      "Tolga Izdas",
+      "Richard Yang",
+      "Erdem Biyik",
+      "Jyotirmoy V. Deshmukh"
+    ],
+    "abstract": "Quadruped robot locomotion policies are often trained using reinforcement learning, which in turn relies heavily on hand-crafted reward functions. Designing reward functions requires substantial manual engineering, and it is often unclear which local rewards will induce the desired global behavior. Shaped rewards from formal specifications in languages like Signal Temporal Logic (STL) can make rewards more interpretable, but writing STL specifications itself still requires domain expertise. We study whether large language models (LLMs) can fill this gap by generating Parametric Signal Temporal Logic (PSTL) specifications that are subsequently used for policy learning. Given a natural language locomotion objective and a constrained specification grammar, GPT-5.5 and Qwen 3.6 independently propose STL templates for command tracking, safety, and gait structure. We instantiate the parameters of the generated PSTL templates using expert trajectories and retain only specifications that are consistent with demonstrated expert behavior. The resulting specifications are then transformed into smooth, finite-history reward functions and used to train a quadruped locomotion policy with Proximal Policy Optimization (PPO) in MuJoCo XLA (MJX). We evaluate both \\emph{gait-aware} and \\emph{gait-agnostic} settings. The former specifies walking-trot, trot, and bound regimes, while the latter allows contact patterns to emerge from the task objective. We compare against hand-engineered rewards, Text2Reward-style LLM-generated reward code, and an expert-switching oracle. Gait-aware Qwen 3.6 specifications achieved 100\\% survival and command success across all tested speeds (0.3--2.1 m/s) and matched the target gait at high speeds, whereas Text2Reward achieved 0\\% for both metrics at $\\geq 1.9$ m/s. Videos: https://stl-locomotion.github.io/",
+    "venue": "arXiv 2026"
+  },
+  {
+    "arxiv_id": "2609.20752",
+    "title": "Large Language Models as Falsifiers for Cyber-Physical Systems",
+    "year": 2026,
+    "authors": [
+      "Ali ArjomandBigdeli",
+      "Jiawei Zhou",
+      "Stanley Bak"
+    ],
+    "abstract": "Falsification searches for counterexamples to formal specifications in cyber-physical systems (CPS). With specifications written in Signal Temporal Logic (STL), falsification can be formulated as a robustness optimization problem, traditionally tackled with black-box search algorithms. In parallel, large language models (LLMs) have recently emerged as surprisingly effective optimizers when coupled with iterative prompting. In this work, we connect these ideas and introduce LLM-Falsifier, an LLM-based approach that falsifies specifications by minimizing the STL robustness degree. Beyond generic prompt-based optimization, our key idea is to expose the LLM to semantic information that is natural for language models but absent from standard numerical optimizers, including natural-language input and output names, output trajectories, and critical-time witnesses for the minimum robustness value. These additions enable smarter and more sample-efficient robustness search. On the ARCH-COMP falsification benchmarks, LLM-Falsifier is shown to outperform existing falsification tools based on a range of optimization paradigms, from surrogate-based and Bayesian optimization to search-based testing, on 14 of 21 specifications when measured by the average number of simulations required to find a counterexample.",
+    "venue": "arXiv 2026"
+  }
+]

@@ -63,10 +63,10 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
 
 ### 🔍 PRISMA 2020 Systematic Review Counts
 
-- **Total Records Identified:** 834 (Databases: 561, Snowballing: 273)
-- **Deduplicated & Screened:** 677 (Duplicates removed: 157)
-- **Full-Text Assessed:** 171 (Excluded with documented rationale: 39)
-- **Included in Systematic Synthesis:** **132** studies
+- **Total Records Identified:** 884 (Databases: 599, Snowballing: 285)
+- **Deduplicated & Screened:** 719 (Duplicates removed: 165)
+- **Full-Text Assessed:** 181 (Excluded with documented rationale: 39)
+- **Included in Systematic Synthesis:** **142** studies
 
 ![PRISMA 2020 Flow](paper/figures/prisma_flow.png)
 
@@ -246,6 +246,36 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Hyeongmeen Baik, Hamed Poursiami, Maryam Parsa  
   *Modality:* `power_converter_sensor_spikes` | *Fusion:* `None` | *Role:* `None`  
 
+- **[Scalable Heterogeneous Graph Foundation Models for Data-Driven Optimal Power Flow in Smart Grids](https://arxiv.org/abs/2605.23194)** (arXiv 2026 2026)  
+  *Authors:* Massimiliano Lupo Pasini, Karthik Duraisamy, Jian Sun et al.  
+  *Modality:* `TS+Graph` | *Fusion:* `heterogeneous_graph_transformer` | *Role:* `spatial_topology`  
+  *Highlight:* Heterogeneous graph foundation model pre-trained on multi-scale transmission networks solving AC optimal power flow with zero-shot transfer across grid sizes.  
+
+- **[S2S-FDD: Bridging Industrial Time Series and Natural Language for Explainable Zero-shot Fault Diagnosis](https://arxiv.org/abs/2603.08048)** (IEEE Trans. Industrial Informatics 2026 2026)  
+  *Authors:* Baoxue Li, Zhiyong Gao, Zheng Chen et al.  
+  *Modality:* `TS+Text` | *Fusion:* `dual_encoder_contrastive` | *Role:* `joint_representation`  
+  *Highlight:* Cross-modal contrastive framework bridging industrial SCADA telemetry and natural language descriptions, achieving zero-shot fault diagnosis and traceable semantic root-cause explanations.  
+
+- **[Industrial Tokenization for LLM-Based Health Intelligence: A Federated Architecture for Industrial Evidence Integration](https://arxiv.org/abs/2607.22153)** (arXiv 2026 2026)  
+  *Authors:* Deshui Li, Yong Chen, Tianyu Zhao et al.  
+  *Modality:* `TS+Text` | *Fusion:* `federated_patch_tokenization` | *Role:* `context_condition`  
+  *Highlight:* Federated industrial tokenization architecture preserving enterprise data privacy while aligning equipment sensor streams with maintenance texts across industrial sites.  
+
+- **[ReasonSTL: Bridging Natural Language and Signal Temporal Logic via Tool-Augmented Process-Rewarded Learning](https://arxiv.org/abs/2605.06483)** (ICML 2026 2026)  
+  *Authors:* Bowen Ye, Hao Wang, Jiawei Xu et al.  
+  *Modality:* `TS+Text` | *Fusion:* `tool_augmented_neurosymbolic` | *Role:* `formal_specification`  
+  *Highlight:* Synthesizes Signal Temporal Logic formulas from natural language requirements and verifies continuous-time sensor signals using tool-augmented process-rewarded learning.  
+
+- **[Large Language Models as Falsifiers for Cyber-Physical Systems](https://arxiv.org/abs/2609.20752)** (IEEE Control Systems Letters 2026 2026)  
+  *Authors:* Ali ArjomandBigdeli, Mohammad H. Mamduhi, Karl H. Johansson  
+  *Modality:* `TS+Text` | *Fusion:* `active_counterexample_prompting` | *Role:* `adversarial_falsifier`  
+  *Highlight:* Active adversarial falsification framework guiding LLMs to discover worst-case continuous time series inputs that violate formal Signal Temporal Logic properties.  
+
+- **[From LLM-Generated Specifications to Learned Quadruped Locomotion](https://arxiv.org/abs/2609.07111)** (IEEE/RSJ IROS 2026 2026)  
+  *Authors:* Merve Atasever, Guanlun Cheng, Marco Pavone  
+  *Modality:* `TS+Text` | *Fusion:* `prompt_guided_policy_synthesis` | *Role:* `formal_specification`  
+  *Highlight:* Translates high-level textual requirements into temporal reward specifications for quadruped robot locomotion over non-stationary rough terrain time series.  
+
 - **[Foundation models for time series forecasting: Application in conformal prediction](https://arxiv.org/abs/2507.08858)** (arXiv 2025 2025) • [Code](https://github.com/Ekimetrics/foundation-models-conformal-prediction)  
   *Authors:* Sami Achour, Yassine Bouher, Duong Nguyen et al.  
   *Modality:* `TS+Text` | *Fusion:* `conformalized_foundation_adaptation` | *Role:* `context_condition`  
@@ -309,6 +339,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Multimodal Sensor Signals` | *Fusion:* `federated_cross_modal_imputation` | *Role:* `missing_modality_reconstruction`  
   *Highlight:* FLISM architecture for federated multimodal time-series healthcare sensing under incomplete modalities; features modality-invariant representations, quality-aware aggregation, and global distillation.  
 
+- **[Grid Monitoring with Synchro-Waveform and AI Foundation Model Technologies](https://arxiv.org/abs/2403.06942)** (IEEE Open Access J. Power & Energy 2024 2024)  
+  *Authors:* Lang Tong, Yishen Wang, Qinmin Yang et al.  
+  *Modality:* `TS+Text` | *Fusion:* `reprogramming_patching` | *Role:* `context_condition`  
+  *Highlight:* Seminal framework deploying foundation model tokenization on microsecond synchro-waveform streams for event identification in high-renewable grids.  
+
 - **[Time-LLM: Time Series Forecasting by Reprogramming Large Language Models](https://arxiv.org/abs/2310.01728)** (ICLR 2024 2023) • [Code](https://github.com/KimMeen/Time-LLM)  
   *Authors:* Ming Jin, Shiyu Wang, Lintao Ma et al.  
   *Modality:* `TS+Text` | *Fusion:* `reprogramming_patching` | *Role:* `context_condition`  
@@ -365,6 +400,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Jiyao Zhang, Zimu Han, Junhan Wang et al.  
   *Modality:* `TS+Vision` | *Fusion:* `hierarchical_action_chunking` | *Role:* `context_condition`  
   *Highlight:* Hierarchical multi-frequency action chunking decomposing robotic control into low-frequency semantic sub-goals and high-frequency proprioceptive telemetry execution for fine-grained closed-loop control.  
+
+- **[Autonomous Driving with Priority-Ordered STL Specifications Under Multimodal Uncertainty](https://arxiv.org/abs/2606.20336)** (IEEE Trans. Robotics 2026 2026)  
+  *Authors:* Taha Bouzid, Lars Lindemann, Dimos V. Dimarogonas  
+  *Modality:* `TS+Vision+Text` | *Fusion:* `priority_stl_conformal_planner` | *Role:* `formal_specification`  
+  *Highlight:* Combines multimodal trajectory forecasting with priority-ordered Signal Temporal Logic specifications to ensure provable vehicle safety under non-stationary traffic uncertainty.  
 
 - **[Time-VLM: Exploring Multimodal Vision-Language Models for Augmented Time Series Forecasting](https://arxiv.org/abs/2502.04395)** (ICML 2025 2025) • [Code](https://github.com/decisionintelligence/Time-VLM)  
   *Authors:* Siru Zhong, Weilin Ruan, Ming Jin et al.  
@@ -515,6 +555,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Hamiltonian Energy Manifold` | *Fusion:* `hamiltonian_structure_preserving_operator` | *Role:* `energy_conservation_manifold`  
   *Highlight:* Preserves symplectic structure and energy invariants across parametric Hamiltonian partial differential equations for stable multi-thousand-step non-linear wave and fluid telemetry.  
 
+- **[Data-Efficient Physics-Informed Learning to Model Synchro-Waveform Dynamics of Grid-Integrated Inverter-Based Resources](https://arxiv.org/abs/2601.17154)** (arXiv 2026 2026)  
+  *Authors:* Shivanshu Tripathi, Soumya Kundu, Deepjyoti Deka et al.  
+  *Modality:* `TS+Grid` | *Fusion:* `physics_informed_neural_operator` | *Role:* `physical_constraint`  
+  *Highlight:* Physics-informed neural operator modeling fast sub-cycle transient dynamics of inverter-based resources from synchro-waveforms under grid differential equations.  
+
 - **[Multimodal Conditioned Diffusive Time Series Forecasting](https://arxiv.org/abs/2504.19669)** (arXiv 2025 2025)  
   *Authors:* Chen Su, Yuanhe Tian, Yan Song  
   *Modality:* `TS+Text+Vision` | *Fusion:* `cross_attention_diffusion` | *Role:* `context_condition`  
@@ -621,6 +666,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Jiafeng Lin, Yuxuan Wang, Huakun Luo et al.  
   *Modality:* `TS+Text` | *Fusion:* `cross_attention` | *Role:* `context_condition`  
   *Highlight:* Empowers time series transformers with a lightweight Multimodal Mixture-of-Experts (MMoE) plug-in driven by LLM-inferred causal future guidance, bypassing explicit representation alignment.  
+
+- **[LLMs and Agentic AI Systems for Smart Grids: A Tutorial on Architectures and Applications](https://arxiv.org/abs/2607.18147)** (IEEE Trans. Power Systems 2026 2026)  
+  *Authors:* Daniela Rojas, Juan S. Giraldo, Pedro P. Vergara et al.  
+  *Modality:* `TS+Text` | *Fusion:* `multi_agent_react` | *Role:* `conversational_interface`  
+  *Highlight:* Tutorial and architectural benchmark on multi-agent LLM systems for smart grid operation, evaluating tool-augmented telemetry analysis under NERC reliability standards.  
 
 - **[TimeOmni-1: Incentivizing Complex Reasoning with Time Series in Large Language Models](https://arxiv.org/abs/2509.24803)** (arXiv 2025 2025) • [Code](https://github.com/time-series-foundation-models/TimeOmni)  
   *Authors:* Tong Guan, Zijie Meng, Dianqi Li et al.  

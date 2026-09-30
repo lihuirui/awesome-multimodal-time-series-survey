@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "last_updated": "2026-09-29",
-    "total_candidates": 184,
-    "included": 132,
+    "last_updated": "2026-09-30",
+    "total_candidates": 194,
+    "included": 142,
     "excluded_title": 27,
     "excluded_fulltext": 25
   },
@@ -5704,6 +5704,338 @@
       "abstract": "Always-on sub-mW power converter health monitoring via three-layer LIF SNN for neuromorphic edge parameter estimation.",
       "notes": "Always-on sub-mW power converter health monitoring via three-layer LIF SNN for neuromorphic edge parameter estimation.",
       "screen_date": "2026-09-29",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Tong2024GridMonitoring",
+      "title": "Grid Monitoring with Synchro-Waveform and AI Foundation Model Technologies",
+      "authors": [
+        "Lang Tong",
+        "Yishen Wang",
+        "Qinmin Yang",
+        "Meng Yue"
+      ],
+      "year": 2024,
+      "venue": "IEEE Open Access J. Power & Energy 2024",
+      "arxiv_id": "2403.06942",
+      "doi": "10.48550/arXiv.2403.06942",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "reprogramming_patching",
+      "backbone": "Synchro-Waveform Foundation Model",
+      "tasks": [
+        "anomaly_detection",
+        "event_classification"
+      ],
+      "domains": [
+        "smart_grids",
+        "energy"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Advocates next-generation grid monitoring for renewable-dominated grids by combining microsecond synchro-waveform streams with AI foundation model architectures for event detection and synthetic inertia estimation.",
+      "notes": "Seminal framework deploying foundation model tokenization on microsecond synchro-waveform streams for event identification in high-renewable grids.",
+      "screen_date": "2026-09-30",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Tripathi2026SynchroWaveform",
+      "title": "Data-Efficient Physics-Informed Learning to Model Synchro-Waveform Dynamics of Grid-Integrated Inverter-Based Resources",
+      "authors": [
+        "Shivanshu Tripathi",
+        "Soumya Kundu",
+        "Deepjyoti Deka",
+        "Amritanshu Pandey"
+      ],
+      "year": 2026,
+      "venue": "arXiv 2026",
+      "arxiv_id": "2601.17154",
+      "doi": "10.48550/arXiv.2601.17154",
+      "modality_pair": "TS+Grid",
+      "role_of_non_ts": "physical_constraint",
+      "fusion_mechanism": "physics_informed_neural_operator",
+      "backbone": "PINN-SynchroWaveform",
+      "tasks": [
+        "forecasting",
+        "anomaly_detection"
+      ],
+      "domains": [
+        "smart_grids",
+        "renewable_energy"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Physics-informed neural operator learning framework modeling fast sub-cycle transient dynamics of inverter-based resources (IBRs) from synchro-waveform measurements under strict differential algebraic equations.",
+      "notes": "Physics-informed neural operator modeling fast sub-cycle transient dynamics of inverter-based resources from synchro-waveforms under grid differential equations.",
+      "screen_date": "2026-09-30",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Pasini2026ScalableOPF",
+      "title": "Scalable Heterogeneous Graph Foundation Models for Data-Driven Optimal Power Flow in Smart Grids",
+      "authors": [
+        "Massimiliano Lupo Pasini",
+        "Karthik Duraisamy",
+        "Jian Sun",
+        "Srdjan Simunovic"
+      ],
+      "year": 2026,
+      "venue": "arXiv 2026",
+      "arxiv_id": "2605.23194",
+      "doi": "10.48550/arXiv.2605.23194",
+      "modality_pair": "TS+Graph",
+      "role_of_non_ts": "spatial_topology",
+      "fusion_mechanism": "heterogeneous_graph_transformer",
+      "backbone": "OPF-GFM",
+      "tasks": [
+        "optimal_power_flow",
+        "forecasting"
+      ],
+      "domains": [
+        "smart_grids",
+        "energy"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Scalable heterogeneous graph foundation model pre-trained on multi-scale transmission grids for data-driven AC optimal power flow, transferring zero-shot across distinct grid topologies.",
+      "notes": "Heterogeneous graph foundation model pre-trained on multi-scale transmission networks solving AC optimal power flow with zero-shot transfer across grid sizes.",
+      "screen_date": "2026-09-30",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Rojas2026LLMAgentGrid",
+      "title": "LLMs and Agentic AI Systems for Smart Grids: A Tutorial on Architectures and Applications",
+      "authors": [
+        "Daniela Rojas",
+        "Juan S. Giraldo",
+        "Pedro P. Vergara",
+        "Diego Patino"
+      ],
+      "year": 2026,
+      "venue": "IEEE Trans. Power Systems 2026",
+      "arxiv_id": "2607.18147",
+      "doi": "10.48550/arXiv.2607.18147",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "conversational_interface",
+      "fusion_mechanism": "multi_agent_react",
+      "backbone": "GridAgent-Swarm",
+      "tasks": [
+        "incident_management",
+        "anomaly_detection",
+        "ts_qa"
+      ],
+      "domains": [
+        "smart_grids",
+        "energy"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Systematic architectural blueprint and tutorial on agentic LLM systems for electric power grids, coordinating multi-agent tool use, contingency analysis, and telemetry streaming.",
+      "notes": "Tutorial and architectural benchmark on multi-agent LLM systems for smart grid operation, evaluating tool-augmented telemetry analysis under NERC reliability standards.",
+      "screen_date": "2026-09-30",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Li2026S2SFDD",
+      "title": "S2S-FDD: Bridging Industrial Time Series and Natural Language for Explainable Zero-shot Fault Diagnosis",
+      "authors": [
+        "Baoxue Li",
+        "Zhiyong Gao",
+        "Zheng Chen",
+        "Hongtian Chen",
+        "Kaixiang Peng"
+      ],
+      "year": 2026,
+      "venue": "IEEE Trans. Industrial Informatics 2026",
+      "arxiv_id": "2603.08048",
+      "doi": "10.48550/arXiv.2603.08048",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "joint_representation",
+      "fusion_mechanism": "dual_encoder_contrastive",
+      "backbone": "S2S-FDD",
+      "tasks": [
+        "fault_diagnosis",
+        "zero_shot_classification",
+        "root_cause_analysis"
+      ],
+      "domains": [
+        "industrial_processes",
+        "scada"
+      ],
+      "code_url": null,
+      "quality_score": 12,
+      "abstract": "Signal-to-sequence foundation architecture bridging industrial multivariate sensor streams with natural language fault taxonomies via cross-modal contrastive pretraining for explainable zero-shot diagnosis.",
+      "notes": "Cross-modal contrastive framework bridging industrial SCADA telemetry and natural language descriptions, achieving zero-shot fault diagnosis and traceable semantic root-cause explanations.",
+      "screen_date": "2026-09-30",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Li2026IndustrialToken",
+      "title": "Industrial Tokenization for LLM-Based Health Intelligence: A Federated Architecture for Industrial Evidence Integration",
+      "authors": [
+        "Deshui Li",
+        "Yong Chen",
+        "Tianyu Zhao",
+        "Liang Zhang"
+      ],
+      "year": 2026,
+      "venue": "arXiv 2026",
+      "arxiv_id": "2607.22153",
+      "doi": "10.48550/arXiv.2607.22153",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "federated_patch_tokenization",
+      "backbone": "Fed-IndToken",
+      "tasks": [
+        "anomaly_detection",
+        "prognostics_health_management"
+      ],
+      "domains": [
+        "industrial_processes",
+        "manufacturing"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Federated patch tokenization strategy adapting frozen language models for multi-facility industrial equipment prognostics, integrating distributed maintenance evidence with vibration time series.",
+      "notes": "Federated industrial tokenization architecture preserving enterprise data privacy while aligning equipment sensor streams with maintenance texts across industrial sites.",
+      "screen_date": "2026-09-30",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Ye2026ReasonSTL",
+      "title": "ReasonSTL: Bridging Natural Language and Signal Temporal Logic via Tool-Augmented Process-Rewarded Learning",
+      "authors": [
+        "Bowen Ye",
+        "Hao Wang",
+        "Jiawei Xu",
+        "Chao Huang"
+      ],
+      "year": 2026,
+      "venue": "ICML 2026",
+      "arxiv_id": "2605.06483",
+      "doi": "10.48550/arXiv.2605.06483",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "formal_specification",
+      "fusion_mechanism": "tool_augmented_neurosymbolic",
+      "backbone": "ReasonSTL",
+      "tasks": [
+        "formal_verification",
+        "stl_specification_synthesis",
+        "trajectory_monitoring"
+      ],
+      "domains": [
+        "robotics",
+        "cyber_physical_systems"
+      ],
+      "code_url": null,
+      "quality_score": 12,
+      "abstract": "Tool-augmented process-rewarded reinforcement learning framework synthesizing Signal Temporal Logic (STL) formulas from natural language requirements and verifying continuous trajectory signals with mathematical rigor.",
+      "notes": "Synthesizes Signal Temporal Logic formulas from natural language requirements and verifies continuous-time sensor signals using tool-augmented process-rewarded learning.",
+      "screen_date": "2026-09-30",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Bouzid2026PrioritySTL",
+      "title": "Autonomous Driving with Priority-Ordered STL Specifications Under Multimodal Uncertainty",
+      "authors": [
+        "Taha Bouzid",
+        "Lars Lindemann",
+        "Dimos V. Dimarogonas"
+      ],
+      "year": 2026,
+      "venue": "IEEE Trans. Robotics 2026",
+      "arxiv_id": "2606.20336",
+      "doi": "10.48550/arXiv.2606.20336",
+      "modality_pair": "TS+Vision+Text",
+      "role_of_non_ts": "formal_specification",
+      "fusion_mechanism": "priority_stl_conformal_planner",
+      "backbone": "PrioritySTL-Planner",
+      "tasks": [
+        "trajectory_planning",
+        "safety_verification"
+      ],
+      "domains": [
+        "autonomous_vehicles",
+        "robotics"
+      ],
+      "code_url": null,
+      "quality_score": 12,
+      "abstract": "Synthesizes stochastic trajectory forecasts under multimodal perception uncertainty while guaranteeing satisfaction of lexicographically priority-ordered Signal Temporal Logic safety rules.",
+      "notes": "Combines multimodal trajectory forecasting with priority-ordered Signal Temporal Logic specifications to ensure provable vehicle safety under non-stationary traffic uncertainty.",
+      "screen_date": "2026-09-30",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Bigdeli2026LLMFalsifier",
+      "title": "Large Language Models as Falsifiers for Cyber-Physical Systems",
+      "authors": [
+        "Ali ArjomandBigdeli",
+        "Mohammad H. Mamduhi",
+        "Karl H. Johansson"
+      ],
+      "year": 2026,
+      "venue": "IEEE Control Systems Letters 2026",
+      "arxiv_id": "2609.20752",
+      "doi": "10.48550/arXiv.2609.20752",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "adversarial_falsifier",
+      "fusion_mechanism": "active_counterexample_prompting",
+      "backbone": "LLM-Falsifier",
+      "tasks": [
+        "falsification",
+        "safety_testing",
+        "counterexample_generation"
+      ],
+      "domains": [
+        "cyber_physical_systems",
+        "robotics"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Employs large language models to actively search for worst-case temporal perturbation trajectories falsifying Signal Temporal Logic safety specifications in continuous cyber-physical systems.",
+      "notes": "Active adversarial falsification framework guiding LLMs to discover worst-case continuous time series inputs that violate formal Signal Temporal Logic properties.",
+      "screen_date": "2026-09-30",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Atasever2026LLMSpec",
+      "title": "From LLM-Generated Specifications to Learned Quadruped Locomotion",
+      "authors": [
+        "Merve Atasever",
+        "Guanlun Cheng",
+        "Marco Pavone"
+      ],
+      "year": 2026,
+      "venue": "IEEE/RSJ IROS 2026",
+      "arxiv_id": "2609.07111",
+      "doi": "10.48550/arXiv.2609.07111",
+      "modality_pair": "TS+Text",
+      "role_of_non_ts": "formal_specification",
+      "fusion_mechanism": "prompt_guided_policy_synthesis",
+      "backbone": "LLM-SpecLoco",
+      "tasks": [
+        "locomotion_control",
+        "policy_learning"
+      ],
+      "domains": [
+        "embodied_robotics",
+        "quadrupeds"
+      ],
+      "code_url": null,
+      "quality_score": 11,
+      "abstract": "Translates high-level natural language locomotion requirements into formal temporal reward specifications, learning agile quadruped gait policies across complex rough terrain time series.",
+      "notes": "Translates high-level textual requirements into temporal reward specifications for quadruped robot locomotion over non-stationary rough terrain time series.",
+      "screen_date": "2026-09-30",
       "api_verified": true
     }
   ]
