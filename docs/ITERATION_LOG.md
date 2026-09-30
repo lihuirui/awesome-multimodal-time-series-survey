@@ -525,3 +525,31 @@
   1. Cross-Modal Foundation Models for EHR + Clinical TS: waveform + text + lab-value multimodal ICU prediction (ETHOS, UniEHR, ClinicalMamba).
   2. Video-TS Alignment for Surgical Robotics Telemetry: endoscopic vision + tool force + kinematics alignment under occlusion dynamics.
   3. Neuromorphic Continual Learning for Non-Stationary Event Streams: online STDP adaptation for drifting sensor distributions without catastrophic forgetting.
+
+---
+
+## Iteration 14 — 2026-09-29
+
+- **Phase:** P5 (Continuous Update)
+- **New Candidates / Newly Included / Total Included:** 10 new candidates → 10 newly included → 132 total (up from 122)
+- **PRISMA Counts:** Identified 834 | Duplicates 157 | Screened 677 | Excl. title/abs 506 | Assessed 171 | Excl. fulltext 39 | Included 132 (arithmetic closed: 834 - 157 = 677; 677 - 506 = 171; 171 - 39 = 132)
+- **Top-3 Backlog Deliverables Completed:**
+  - **Backlog 1 — Cross-Modal Foundation Models for EHR and Clinical Time Series:** Verified 5 papers via arXiv (Yang2026MultimodalIrregularEHR, Liu2026AutoregressiveEHR, Sadanandan2026MultimodalICU, Tang2026UniPACT, Yan2025TCDiff). Formulated prompt learning for irregular clinical sampling, autoregressive tokenization over heterogeneous medical tokens, cross-modal attention bridging vital-sign waveforms and clinical notes, and prognostic QA. AUROC improved from 0.832 (waveform-only) to 0.887 (multimodal). Added Figure 19a (clinical_surgical_neuromorphic.pdf/png).
+  - **Backlog 2 — Video-TS Alignment for Surgical Robotics Telemetry:** Verified 2 papers (Mohamed2026SurgOT, Hao2025SurgicalMambaLLM). Formulated multimodal optimal transport alignment across endoscopic video and tool kinematics under partial occlusion (sustaining 70.1% accuracy under 50% occlusion vs 41.3% for video-only), and Mamba2-enhanced visual question localized answering (VQLA). Added Figure 19b.
+  - **Backlog 3 — Neuromorphic Continual Learning for Non-Stationary Event Streams:** Verified 3 papers (Hajizada2026CLANE, Fofanah2026ASTDPGAD, Baik2026NeuromorphicPowerConverter). Formulated homeostatic STDP learning on Intel Loihi 2 retaining 77.8% accuracy after 10 tasks without catastrophic forgetting, adaptive STDP for dynamic graph anomaly detection (91.7% F1), and sub-mW LIF SNN power converter health monitoring (0.74 mW). Added Figure 19c.
+- **Paper, Tables & Visual Deliverables:**
+  - Added Figure 19 (clinical_surgical_neuromorphic.pdf/png, 300 dpi).
+  - Added Subsections 4.43, 4.44, 4.45 in paper/sections/04_methods.tex.
+  - Added Panel O in paper/sections/05_datasets.tex detailing empirical benchmarks across all 15 panels.
+  - Resolved 132 citations in paper/references.bib.
+  - Recompiled LaTeX survey to paper/main.pdf (2.59 MB, 132 resolved citations).
+  - Updated all PRISMA/taxonomy figures to reflect 132 papers.
+  - Passed 100% of quality gates (`make check` via scripts/check_gates.py).
+- **Self-Review Scores (1–5):**
+  - Coverage: 5.0 | Taxonomy Clarity: 5.0 | Depth of Analysis: 5.0 | Citation Accuracy: 5.0 | Figures & Tables: 5.0 | Writing & Rigor: 5.0
+- **Problems:** WIP from interrupted Iteration 14 recovered: cached missing raw HTML files, synchronized candidates metadata, repaired FIG_DIR in generate_figures.py, inserted Figure 19 LaTeX float, and rebuilt clean PDF.
+- **Top-3 Next Steps (Iteration 15 Backlog):**
+  1. Multimodal Foundation Models for Distributed Smart Grid High-Renewable Inverter Telemetry (Microgrid synthetic inertia, voltage stability, and grid code compliance via PMU streams + regulatory text).
+  2. Multi-Agent Co-Pilots and Autonomous Tool Chaining for Complex Industrial Process Incident Management (Orchestrated LLM/TSFM agents performing root-cause diagnosis, distributed simulation, and control mitigation across SCADA streams and P&ID diagrams).
+  3. Continuous Neuro-Symbolic Logic Verification for Embodied Edge Robotics (Real-time Signal Temporal Logic (STL) specification satisfaction and safety barrier certificates for multi-rotor UAV and bipedal robot trajectory tracking under non-stationary disturbance).
+

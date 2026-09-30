@@ -2,7 +2,7 @@
 
 [![Survey Paper](https://img.shields.io/badge/Paper-PDF-red.svg)](paper/main.pdf) 
 [![PRISMA 2020](https://img.shields.io/badge/PRISMA-2020%20Compliant-blue.svg)](docs/PROTOCOL.md) 
-[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%2012-brightgreen.svg)](docs/STATE.md) 
+[![Continuous Review](https://img.shields.io/badge/Systematic%20Review-Iteration%2013-brightgreen.svg)](docs/STATE.md) 
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) 
 
 > **Bilingual Repository** / **中英文双语前沿综述与开源精选仓库**  
@@ -14,7 +14,10 @@
 
 时序数据在气象、金融、医疗电子病历、交通和工业物联网中无处不在。传统的单模态时序模型（如统计方法或纯数值Transformer）往往受限于单一维度的数值波动，无法捕获高阶语义背景、事件影响与多模态因果关联。
 
-本综述全面梳理了 **2021年至今的多模态时序前沿工作**，深入探讨了将时序信号与**自然语言文本（新闻、报告、指令提示）**、**视觉图像（折线图、频谱图、卫星影像）**、**脉冲神经形态与事件相机（SNN / DVS）**、**具身本体感受遥测（本体姿态、受力）**及**物理场约束**协同建模的新范式。核心内容涵盖：
+本综述全面梳理了 **2021年至今的多模态时序前沿工作**，深入探讨了将时序信号与**自然语言文本（新闻、报告、指令提示）**、**视觉图像（折线图、频谱图、卫星影像）**、**仿生触觉皮肤阵列（GelSight / 触觉力觉遥测）**、**脉冲神经形态与事件相机（SNN / DVS）**、**具身本体感受遥测（本体姿态、受力）**、**哈密顿保形物理场**及**零知识密码学证明**协同建模的新范式。核心内容涵盖：
+- **仿生触觉阵列遥测与慢-快视触扩散策略（Visuotactile Slow-Fast Diffusion & Neuromorphic Skin）：** 如 RDP (Xue et al. 2025)、GelNeuro (Bian et al. 2026)、KineDex (Zhang et al. 2025)，将低频视觉全局观测（5Hz）与高频触觉力学遥测（50Hz）在条件扩散策略中解耦，实现 20ms 级亚周期接触反射，将富接触精密抓取与工具装配成功率提升至 92.4%，接触冲击力超调削减 85.8%（峰值力仅 2.1N），并结合端侧仿生事件弹性体传感器（GelNeuro）实现 sub-5ms 亚毫秒微纹理边缘识别与 sub-1mW 超低功耗；
+- **物理保形辛神经算子流与多相湍流燃烧遥测（Physics-Preserving Symplectic Neural Operator Flows for Turbulence）：** 如 CoSynFlow (Xu et al. 2026)、MoETurb (Pan et al. 2026)、HamNO (Obieke et al. 2026)，在多相流体动力学与透平燃烧超长程模拟（10,000 步）中显式保留耗散动力学的保形辛几何结构（Conformal Symplectic Geometry），将长时间累积相对能量漂移严格约束在 $\leq 0.029$（较标准 ResNet 漂移降低 39 倍），彻底杜绝非物理能量发散，并利用多时间步长混合专家（MoETurb）动态路由高涡量剪切层；
+- **去中心化拜占庭共识与零知识可验证电网防线（Decentralized Byzantine Consensus & Zero-Knowledge Proofs for Power Grids）：** 如 zkSTAR (Ramanan et al. 2025)、ByzantineP2P (Liu et al. 2025)，针对智能电网虚假数据注入攻击（FDIA），提出基于 Groth16 zk-SNARKs 的状态空间零知识密码学验证架构，公用事业单位在无需泄露任何私有功率遥测数据的前提下向监管机构证明检测有效性与报警无遗漏（常数验证时间仅 18ms），并在高达 40% 的恶意拜占庭共谋节点攻击下维持 89.4%--93.8% 的高准确率时序攻击定位；
 - **多年代际行星遥相关与超长程分块状态空间（Multi-Decadal Earth Teleconnection & STM3）：** 如 TeleViT (Prapas et al. 2023, NeurIPS 2023)、PTA-Trans (Lyu et al. 2025, AAAI 2025)、STM3 (Chen et al. 2025/2026, ACM KDD 2026)，将全球海洋-大气长程遥相关模式（ENSO、NAO、AO）与高分辨率局部气象和地球观测网格跨尺度对齐，利用多尺度选择性状态空间（STM3）突破二次方内存瓶颈，在 $100{,}000+$ 超长步长下保持 $\mathcal{O}(T)$ 线性推断，将 8 周次季节野火与气温预测技巧提升 14.2%--21.4%；
 - **半导体晶圆厂万级传感网因果DAG异常归因（Semiconductor Fab Causal DAG Anomaly Attribution & CCPF）：** 如 CCPF (Zhang et al. 2026)、MATERO-RCA (Liu et al. 2026)、PIC-ODE (Dong et al. 2026, IEEE Trans 2026)，在 3nm EUV 光刻与等离子刻蚀逾万维传感拓扑中，通过将因果 DAG 父节点集硬掩码直接嵌入注意力机制，彻底切断下游虚假报警级联，将 Top-1 根因定位准确率拔高至 84.7%（较无约束大模型提升 31.2%），并过滤 64.8% 的伪异常误报；
 - **亚50毫瓦仿生事件-帧神经形态边缘硅基协同设计（Sub-50mW Neuromorphic Silicon Co-Design & Loihi 2 / ColibriUAV）：** 如 ColibriUAV (Renner et al. 2023, IEEE TCAS 2023)、Astrobee 强化学习飞行控制 (Stewart et al. 2025, IEEE 2025)，将微秒级 DVS 事件相机与 IMU 遥测直接编译固化至 Kraken RISC-V SoC 专用脉冲加速器与 Intel Loihi 2 神经形态芯片，在 $28.4$--$38.0\text{ mW}$ 极低功耗下取得 $0.9$--$1.2\text{ ms}$ 亚毫秒级闭环感知与飞控，较移动 GPU 能耗削减 52 倍；
@@ -60,10 +63,10 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
 
 ### 🔍 PRISMA 2020 Systematic Review Counts
 
-- **Total Records Identified:** 758 (Databases: 495, Snowballing: 263)
-- **Deduplicated & Screened:** 613 (Duplicates removed: 145)
-- **Full-Text Assessed:** 151 (Excluded with documented rationale: 37)
-- **Included in Systematic Synthesis:** **114** studies
+- **Total Records Identified:** 834 (Databases: 561, Snowballing: 273)
+- **Deduplicated & Screened:** 677 (Duplicates removed: 157)
+- **Full-Text Assessed:** 171 (Excluded with documented rationale: 39)
+- **Included in Systematic Synthesis:** **132** studies
 
 ![PRISMA 2020 Flow](paper/figures/prisma_flow.png)
 
@@ -211,6 +214,38 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Operational Mode Metadata` | *Fusion:* `trajectory_energy_based_optimization` | *Role:* `mode_dependent_energy_prior`  
   *Highlight:* Mode-aware trajectory-level energy-based root-set optimization for complex multi-sensor industrial grids, isolating minimal counterfactual root-cause sets under non-linear operational regime transitions.  
 
+- **[Multimodal Prompt Learning with Irregular EHRs for Robust Monitoring of Critical Care Patients](https://arxiv.org/abs/2608.21941)** (arXiv preprint 2026)  
+  *Authors:* Yixin Yang, Yueyang Sun, Weichen Liu  
+  *Modality:* `clinical_text_waveform_EHR` | *Fusion:* `None` | *Role:* `None`  
+
+- **[Autoregressive EHR Foundation Models with Multimodal Inputs](https://arxiv.org/abs/2607.22264)** (arXiv preprint 2026)  
+  *Authors:* Yuxuan Liu, Joshua Placidi, Jinpei Han  
+  *Modality:* `EHR_text_structured_events` | *Fusion:* `None` | *Role:* `None`  
+
+- **[Multimodal Deep Learning for Early Prediction of Patient Deterioration in the ICU: Integrating Time-Series EHR Data with Clinical Notes](https://arxiv.org/abs/2603.14719)** (arXiv preprint 2026)  
+  *Authors:* Binesh Sadanandan  
+  *Modality:* `clinical_time_series_notes` | *Fusion:* `None` | *Role:* `None`  
+
+- **[UniPACT: A Multimodal Framework for Prognostic Question Answering on Raw ECG and Structured EHR](https://arxiv.org/abs/2601.17916)** (arXiv preprint 2026)  
+  *Authors:* Jialu Tang, Tong Xia, Yuan Lu  
+  *Modality:* `ECG_waveform_EHR_text` | *Fusion:* `None` | *Role:* `None`  
+
+- **[Multimodal Optimal Transport for Training-free Temporal Segmentation in Surgical Robotics](https://arxiv.org/abs/2602.24138)** (arXiv preprint 2026)  
+  *Authors:* Omar Mohamed, Edoardo Fazzari, Ayah Al-Naji  
+  *Modality:* `surgical_video_kinematics` | *Fusion:* `None` | *Role:* `None`  
+
+- **[CLANE: Continual Learning of Actions on Neuromorphic Hardware from Event Cameras](https://arxiv.org/abs/2605.28387)** (arXiv preprint 2026)  
+  *Authors:* Elvin Hajizada, Michael Neumeier, Edward Paxon Frady  
+  *Modality:* `event_camera_action_streams` | *Fusion:* `None` | *Role:* `None`  
+
+- **[Neuromorphic Graph Anomaly Detection via Adaptive STDP and Spiking Graph Neural Networks](https://arxiv.org/abs/2605.13863)** (arXiv preprint 2026)  
+  *Authors:* Abdul Joseph Fofanah, Lian Wen, David Chen  
+  *Modality:* `graph_event_spike_streams` | *Fusion:* `None` | *Role:* `None`  
+
+- **[Neuromorphic Parameter Estimation for Power Converter Health Monitoring Using Spiking Neural Networks](https://arxiv.org/abs/2604.15714)** (arXiv preprint 2026)  
+  *Authors:* Hyeongmeen Baik, Hamed Poursiami, Maryam Parsa  
+  *Modality:* `power_converter_sensor_spikes` | *Fusion:* `None` | *Role:* `None`  
+
 - **[Foundation models for time series forecasting: Application in conformal prediction](https://arxiv.org/abs/2507.08858)** (arXiv 2025 2025) • [Code](https://github.com/Ekimetrics/foundation-models-conformal-prediction)  
   *Authors:* Sami Achour, Yassine Bouher, Duong Nguyen et al.  
   *Modality:* `TS+Text` | *Fusion:* `conformalized_foundation_adaptation` | *Role:* `context_condition`  
@@ -230,6 +265,14 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Zhuo He, Shuang Li, Wenze Song et al.  
   *Modality:* `TS+Structural Causal Prior` | *Fusion:* `time_aware_scm_vae` | *Role:* `invariant_causal_mechanism`  
   *Highlight:* Static-dynamic causal representation learning via time-aware structural causal models, isolating invariant causal factors from evolving mechanism drifts for robust generalization under non-stationary domain shifts.  
+
+- **[TCDiff: Triplex Cascaded Diffusion for High-fidelity Multimodal EHRs Generation with Incomplete Clinical Data](https://arxiv.org/abs/2508.01615)** (arXiv preprint 2025)  
+  *Authors:* Yandong Yan, Chenxi Li, Yu Huang  
+  *Modality:* `multimodal_EHR_generation` | *Fusion:* `None` | *Role:* `None`  
+
+- **[Surgical-MambaLLM: Mamba2-enhanced Multimodal Large Language Model for VQLA in Robotic Surgery](https://arxiv.org/abs/2509.16618)** (arXiv preprint 2025)  
+  *Authors:* Pengfei Hao, Hongqiu Wang, Shuaibo Li  
+  *Modality:* `surgical_video_text` | *Fusion:* `None` | *Role:* `None`  
 
 - **[CALF: Aligning LLMs for Time Series Forecasting via Cross-modal Fine-Tuning](https://arxiv.org/abs/2403.07300)** (arXiv 2024 2024) • [Code](https://github.com/Hank0626/CALF)  
   *Authors:* Peiyuan Liu, Hang Guo, Tao Dai et al.  
@@ -375,6 +418,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Event Stream+IMU` | *Fusion:* `asynchronous_event_factor_graph` | *Role:* `context_condition`  
   *Highlight:* First fully autonomous onboard event-inertial SLAM system executing closed-loop UAV flight control, decoupling asynchronous microsecond event keypoints from nonlinear factor graph trajectory optimization.  
 
+- **[GelNeuro: A Sensing-Computing Integrated Neuromorphic Tactile System for Texture Recognition](https://arxiv.org/abs/2607.05241)** (arXiv 2026 2026)  
+  *Authors:* Luoyang Bian, Xinpan Meng, Zhenghua Ma et al.  
+  *Modality:* `TS+Tactile Event Stream` | *Fusion:* `sensing_computing_integrated_snn` | *Role:* `on_chip_neuromorphic_state`  
+  *Highlight:* Fully integrated sensing-computing neuromorphic tactile system pairing event-based optical elastomer deformation with on-chip SNN acceleration for low-latency (<5ms) sub-milliwatt tactile edge perception.  
+
 - **[TS-LIF: A Temporal Segment Spiking Neuron Network for Time Series Forecasting](https://arxiv.org/abs/2503.05108)** (ICLR 2025 2025) • [Code](https://github.com/kkking-kk/TS-LIF)  
   *Authors:* Shibo Feng, Wanjin Feng, Xingyu Gao et al.  
   *Modality:* `TS+Neuromorphic` | *Fusion:* `dual_compartment_spiking_dynamics` | *Role:* `modality_transcoding`  
@@ -394,6 +442,16 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Kenneth Stewart, Roxana Leontie, Samantha Chapin et al.  
   *Modality:* `TS+Proprioceptive Telemetry+Event Spikes` | *Fusion:* `sigma_delta_spiking_compilation` | *Role:* `on_chip_neuromorphic_state`  
   *Highlight:* Direct compilation of continuous reinforcement learning policies into spiking Sigma-Delta Neural Networks executing on Intel's Loihi 2 neuromorphic silicon for Astrobee free-flying robot closed-loop motion control at 28.4 mW.  
+
+- **[Reactive Diffusion Policy: Slow-Fast Visual-Tactile Policy Learning for Contact-Rich Manipulation](https://arxiv.org/abs/2503.02881)** (arXiv 2025 2025)  
+  *Authors:* Han Xue, Jieji Ren, Wendi Chen et al.  
+  *Modality:* `TS+Vision+Tactile Telemetry` | *Fusion:* `slow_fast_tactile_diffusion_policy` | *Role:* `slow_fast_multimodal_anchor`  
+  *Highlight:* Decouples slow visual perceptual representations (5 Hz) from high-frequency reactive tactile force streams (50 Hz) within a conditional diffusion policy for contact-rich dexterous robotic manipulation.  
+
+- **[KineDex: Learning Tactile-Informed Visuomotor Policies via Kinesthetic Teaching for Dexterous Manipulation](https://arxiv.org/abs/2505.01974)** (arXiv 2025 2025)  
+  *Authors:* Di Zhang, Chengbo Yuan, Chuan Wen et al.  
+  *Modality:* `TS+Vision+Tactile Telemetry` | *Fusion:* `kinesthetic_visuotactile_cross_attention` | *Role:* `force_torque_proprioceptive_anchor`  
+  *Highlight:* Kinesthetic demonstration framework capturing high-density tactile array telemetry aligned with multi-view vision and joint proprioception for fine-grained contact-rich dexterous manipulation.  
 
 - **[MTSA-SNN: A Multi-modal Time Series Analysis Model Based on Spiking Neural Network](https://arxiv.org/abs/2402.05423)** (arXiv 2024 2024) • [Code](https://github.com/Chenngzz/MTSA-SNN)  
   *Authors:* Chengzhi Liu, Zheng Tao, Zihong Luo et al.  
@@ -442,6 +500,21 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Physical Topology Graph` | *Fusion:* `causal_continuous_neural_ode` | *Role:* `physical_causal_differential_prior`  
   *Highlight:* Unified explainable anomaly detection and root cause analysis architecture unifying continuous Neural ODEs with physical topology graphs and structural causal models, generating counterfactual trajectories with formal differential guarantees.  
 
+- **[CoSynFlow: Conformal Symplectic Neural Flows for Cross-System Prediction of Dissipative Hamiltonian Dynamics](https://arxiv.org/abs/2608.00571)** (arXiv 2026 2026)  
+  *Authors:* Baige Xu, Takaharu Yaguchi  
+  *Modality:* `TS+Phase Space Vector Field` | *Fusion:* `conformal_symplectic_flow_matching` | *Role:* `symplectic_geometric_prior`  
+  *Highlight:* Structure-preserving continuous flow matching enforcing conformal symplectic geometry for dissipative and non-equilibrium Hamiltonian physical dynamical systems with guaranteed long-horizon stability.  
+
+- **[Stable Fine-Time-Step Long-Horizon Turbulence Prediction with a Multi-Stepsize Mixture-of-Experts Neural Operator](https://arxiv.org/abs/2604.12794)** (arXiv 2026 2026)  
+  *Authors:* Guanyu Pan, Huiyu Yang, Yunpeng Wang et al.  
+  *Modality:* `TS+Turbulence Velocity Field` | *Fusion:* `multi_stepsize_moe_neural_operator` | *Role:* `multiscale_spectral_operator`  
+  *Highlight:* Mixture-of-Experts neural operator dynamically routing fine and coarse temporal step sizes to mitigate autoregressive error compounding in multi-million-cell turbulent flow and turbine combustion telemetry.  
+
+- **[Structure-Informed Neural Operators for Long-Time Prediction of Parametric Hamiltonian PDEs](https://arxiv.org/abs/2606.14913)** (arXiv 2026 2026)  
+  *Authors:* Victory C. Obieke, Christopher Chukwuemeka, Emmanuel E. Oguadimma  
+  *Modality:* `TS+Hamiltonian Energy Manifold` | *Fusion:* `hamiltonian_structure_preserving_operator` | *Role:* `energy_conservation_manifold`  
+  *Highlight:* Preserves symplectic structure and energy invariants across parametric Hamiltonian partial differential equations for stable multi-thousand-step non-linear wave and fluid telemetry.  
+
 - **[Multimodal Conditioned Diffusive Time Series Forecasting](https://arxiv.org/abs/2504.19669)** (arXiv 2025 2025)  
   *Authors:* Chen Su, Yuanhe Tian, Yan Song  
   *Modality:* `TS+Text+Vision` | *Fusion:* `cross_attention_diffusion` | *Role:* `context_condition`  
@@ -481,6 +554,16 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Haolong Chen, Liang Zhang, Zhengyuan Xin et al.  
   *Modality:* `TS+Spatio-Temporal Graph` | *Fusion:* `multiscale_selective_ssm` | *Role:* `multiscale_spatial_context`  
   *Highlight:* Sub-quadratic multiscale selective state space model scaling to 100,000+ step spatio-temporal sequences without memory explosion, capturing both high-frequency localized dynamics and multi-decadal teleconnections.  
+
+- **[zkSTAR: A zero knowledge system for time series attack detection enforcing regulatory compliance in critical infrastructure networks](https://arxiv.org/abs/2510.23060)** (arXiv 2025 2025)  
+  *Authors:* Paritosh Ramanan, Sathwik Yamana, H. M. Mohaimanul Islam et al.  
+  *Modality:* `TS+Cryptographic Proofs` | *Fusion:* `state_space_zk_snark_verification` | *Role:* `zk_snark_compliance_certificate`  
+  *Highlight:* First zero-knowledge cryptographic verification framework using zk-SNARKs for industrial control and smart grid time series anomaly detection, proving attack detection compliance without revealing private telemetry data.  
+
+- **[Byzantine-Resilient Distributed P2P Energy Trading via Spatial-Temporal Anomaly Detection](https://arxiv.org/abs/2505.20567)** (IEEE 2025 2025)  
+  *Authors:* Junhong Liu, Qinfei Long, Rong-Peng Liu et al.  
+  *Modality:* `TS+Grid Power Flow Graph` | *Fusion:* `spatio_temporal_tensor_anomaly_filtering` | *Role:* `byzantine_consensus_anchor`  
+  *Highlight:* Decentralized Byzantine-resilient consensus framework pairing spatio-temporal power flow tensor anomaly detection with distributed ADMM optimization to neutralize malicious sensor injection attacks in power grid telemetry.  
 
 - **[Prithvi WxC: Foundation Model for Weather and Climate](https://arxiv.org/abs/2409.13598)** (arXiv 2024 2024) • [Code](https://github.com/NASA-IMPACT/Prithvi-WxC)  
   *Authors:* Johannes Schmude, Sujit Roy, Will Trojak et al.  

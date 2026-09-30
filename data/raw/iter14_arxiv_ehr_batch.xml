@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/D7iFhzJ74HUHFhy57VS11bNaj24</id>
+  <title>arXiv Query: search_query=&amp;id_list=2608.21941,2607.22264,2603.14719,2601.17916,2508.01615&amp;start=0&amp;max_results=10</title>
+  <updated>2026-09-29T12:39:47Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=&amp;start=0&amp;max_results=10&amp;id_list=2608.21941,2607.22264,2603.14719,2601.17916,2508.01615" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>10</opensearch:itemsPerPage>
+  <opensearch:totalResults>5</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2601.17916v1</id>
+    <title>UniPACT: A Multimodal Framework for Prognostic Question Answering on Raw ECG and Structured EHR</title>
+    <updated>2026-01-25T17:35:52Z</updated>
+    <link href="https://arxiv.org/abs/2601.17916v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2601.17916v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Accurate clinical prognosis requires synthesizing structured Electronic Health Records (EHRs) with real-time physiological signals like the Electrocardiogram (ECG). Large Language Models (LLMs) offer a powerful reasoning engine for this task but struggle to natively process these heterogeneous, non-textual data types. To address this, we propose UniPACT (Unified Prognostic Question Answering for Clinical Time-series), a unified framework for prognostic question answering that bridges this modality gap. UniPACT's core contribution is a structured prompting mechanism that converts numerical EHR data into semantically rich text. This textualized patient context is then fused with representations learned directly from raw ECG waveforms, enabling an LLM to reason over both modalities holistically. We evaluate UniPACT on the comprehensive MDS-ED benchmark, it achieves a state-of-the-art mean AUROC of 89.37% across a diverse set of prognostic tasks including diagnosis, deterioration, ICU admission, and mortality, outperforming specialized baselines. Further analysis demonstrates that our multimodal, multi-task approach is critical for performance and provides robustness in missing data scenarios.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-01-25T17:35:52Z</published>
+    <arxiv:comment>Accepted to IEEE ICASSP 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Jialu Tang</name>
+    </author>
+    <author>
+      <name>Tong Xia</name>
+    </author>
+    <author>
+      <name>Yuan Lu</name>
+    </author>
+    <author>
+      <name>Aaqib Saeed</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2508.01615v1</id>
+    <title>TCDiff: Triplex Cascaded Diffusion for High-fidelity Multimodal EHRs Generation with Incomplete Clinical Data</title>
+    <updated>2025-08-03T06:24:20Z</updated>
+    <link href="https://arxiv.org/abs/2508.01615v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2508.01615v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The scarcity of large-scale and high-quality electronic health records (EHRs) remains a major bottleneck in biomedical research, especially as large foundation models become increasingly data-hungry. Synthesizing substantial volumes of de-identified and high-fidelity data from existing datasets has emerged as a promising solution. However, existing methods suffer from a series of limitations: they struggle to model the intrinsic properties of heterogeneous multimodal EHR data (e.g., continuous, discrete, and textual modalities), capture the complex dependencies among them, and robustly handle pervasive data incompleteness. These challenges are particularly acute in Traditional Chinese Medicine (TCM). To this end, we propose TCDiff (Triplex Cascaded Diffusion Network), a novel EHR generation framework that cascades three diffusion networks to learn the features of real-world EHR data, formatting a multi-stage generative process: Reference Modalities Diffusion, Cross-Modal Bridging, and Target Modality Diffusion. Furthermore, to validate our proposed framework, besides two public datasets, we also construct and introduce TCM-SZ1, a novel multimodal EHR dataset for benchmarking. Experimental results show that TCDiff consistently outperforms state-of-the-art baselines by an average of 10% in data fidelity under various missing rate, while maintaining competitive privacy guarantees. This highlights the effectiveness, robustness, and generalizability of our approach in real-world healthcare scenarios.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-08-03T06:24:20Z</published>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Yandong Yan</name>
+    </author>
+    <author>
+      <name>Chenxi Li</name>
+    </author>
+    <author>
+      <name>Yu Huang</name>
+    </author>
+    <author>
+      <name>Dexuan Xu</name>
+    </author>
+    <author>
+      <name>Jiaqi Zhu</name>
+    </author>
+    <author>
+      <name>Zhongyan Chai</name>
+    </author>
+    <author>
+      <name>Huamin Zhang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2603.14719v1</id>
+    <title>Multimodal Deep Learning for Early Prediction of Patient Deterioration in the ICU: Integrating Time-Series EHR Data with Clinical Notes</title>
+    <updated>2026-03-16T01:50:08Z</updated>
+    <link href="https://arxiv.org/abs/2603.14719v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2603.14719v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Early identification of patients at risk for clinical deterioration in the intensive care unit (ICU) remains a critical challenge. Delayed recognition of impending adverse events, including mortality, vasopressor initiation, and mechanical ventilation, contributes to preventable morbidity and mortality. We present a multimodal deep learning approach that combines structured time-series data (vital signs and laboratory values) with unstructured clinical notes to predict patient deterioration within 24 hours. Using the MIMIC-IV database, we constructed a cohort of 74,822 ICU stays and generated 5.7 million hourly prediction samples. Our architecture employs a bidirectional LSTM encoder for temporal patterns in physiologic data and ClinicalBERT embeddings for clinical notes, fused through a cross-modal attention mechanism. We also present a systematic review of existing approaches to ICU deterioration prediction, identifying 31 studies published between 2015 and 2024. Most existing models rely solely on structured data and achieve area under the curve (AUC) values between 0.70 and 0.85. Studies incorporating clinical notes remain rare but show promise for capturing information not present in structured fields. Our multimodal model achieves a test AUROC of 0.7857 and AUPRC of 0.1908 on 823,641 held-out samples, with a validation-to-test gap of only 0.6 percentage points. Ablation analysis validates the multimodal approach: clinical notes improve AUROC by 2.5 percentage points and AUPRC by 39.2% relative to a structured-only baseline, while deep learning models consistently outperform classical baselines (XGBoost AUROC: 0.7486, logistic regression: 0.7171). This work contributes both a thorough review of the field and a reproducible multimodal framework for clinical deterioration prediction.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-03-16T01:50:08Z</published>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Binesh Sadanandan</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.22264v1</id>
+    <title>Autoregressive EHR Foundation Models with Multimodal Inputs</title>
+    <updated>2026-07-24T12:59:20Z</updated>
+    <link href="https://arxiv.org/abs/2607.22264v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.22264v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Autoregressive foundation models trained on tokenized electronic health records (EHRs) can support zero-shot clinical prediction, yet most operate on structured event codes alone, and do not incorporate multiple modalities in a principled way. We present a framework for conditioning such models on auxiliary clinical modalities, including ECG waveforms, chest X-ray images, and clinical notes, using modality-specific latent compression and gated cross-attention with temporal alignment. We investigate two key design choices: (1) how to compress long per-modality sequences (e.g., ECG time series) before they enter the multi-modal cross-attention. This feature may be essential to reduce compute overheads and may be beneficial for generalization; (2) how the choice of pretrained encoder for each modality impacts downstream performance. Through controlled ablations on MIMIC-IV, we show that the best latent-compression configurations outperforms both uncompressed cross-attention and mean pooling. Encoder choice has a clear within-modality effect, with stronger pretrained encoders consistently outperforming weaker alternatives. We further show that merely adding auxiliary modalities does not guarantee improvement on ICU mortality prediction over an EHR-only baseline. This implies that careful design of the fusion architecture and an appropriate evaluation in the clinical context are required.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-24T12:59:20Z</published>
+    <arxiv:comment>5 pages excluding references and supplements, 2 figures and 2 tables, Proceedings of the Workshop on Structured Data for Health at the 43rd International Conference on Machine Learning, Seoul, South Korea</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <arxiv:journal_ref>ICML2026 workshop on Structured Data for Health (SD4H)</arxiv:journal_ref>
+    <author>
+      <name>Yuxuan Liu</name>
+    </author>
+    <author>
+      <name>Joshua Placidi</name>
+    </author>
+    <author>
+      <name>Jinpei Han</name>
+    </author>
+    <author>
+      <name>Alfred John Balston</name>
+    </author>
+    <author>
+      <name>Marek Rei</name>
+    </author>
+    <author>
+      <name>A. Aldo Faisal</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.21941v1</id>
+    <title>Multimodal Prompt Learning with Irregular EHRs for Robust Monitoring of Critical Care Patients</title>
+    <updated>2026-08-22T12:49:01Z</updated>
+    <link href="https://arxiv.org/abs/2608.21941v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.21941v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Accurate assessment of patients in intensive care units (ICUs) is essential for timely clinical intervention and improved patient outcomes. Multimodal electronic health records (EHRs), including structured physiological time series and longitudinal clinical notes, provide complementary information for critical care prediction. However, in real-world clinical settings, individual modalities may be partially observed or entirely unavailable, resulting in substantial performance degradation for existing multimodal models. To address this challenge, we propose a multimodal prompt-learning framework for robust clinical prediction under diverse missing-modality scenarios. The proposed framework introduces four complementary types of prompts: generative prompts, missing-signal prompts, missing-type prompts, and temporal prompts. Generative prompts construct surrogate latent representations for unavailable modalities, while missing-signal prompts distinguish observed representations from generated ones. Missing-type prompts condition the model on different modality-availability configurations, whereas temporal prompts perform condition-specific aggregation over temporally encoded clinical sequences. Together, these prompts enable the model to capture missingness-aware intramodal dependencies and cross-modal interactions within a unified architecture. Extensive experiments demonstrate that our method outperforms existing approaches across evaluation metrics on two missingness settings. Ablation and robustness analyses further verify the complementary contributions of the four prompt types and the effectiveness of the proposed framework for clinical prediction from incomplete multimodal EHR data.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-22T12:49:01Z</published>
+    <arxiv:comment>13 pages, 6 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Yixin Yang</name>
+    </author>
+    <author>
+      <name>Yueyang Sun</name>
+    </author>
+    <author>
+      <name>Weichen Liu</name>
+    </author>
+    <author>
+      <name>Xianbing Zhao</name>
+    </author>
+    <author>
+      <name>Sicen Liu</name>
+    </author>
+  </entry>
+</feed>

@@ -48,3 +48,6 @@
 {"timestamp": "2026-09-27T15:21:21.396599+00:00", "iteration": 13, "source": "arXiv API", "query": "all:\"tactile\" AND (all:\"diffusion\" OR all:\"visuomotor\" OR all:\"proprioception\") AND all:\"manipulation\" (Xue2025RDP, Bian2026GelNeuro, Zhang2025KineDex)", "hits": 38, "new_candidates": 3}
 {"timestamp": "2026-09-27T15:21:21.396622+00:00", "iteration": 13, "source": "arXiv API", "query": "(all:symplectic OR all:Hamiltonian) AND all:\"neural operator\" AND (all:fluid OR all:thermal OR all:turbulence) (Xu2026CoSynFlow, Pan2026MoETurb, Obieke2026HamNO)", "hits": 29, "new_candidates": 3}
 {"timestamp": "2026-09-27T15:21:21.396634+00:00", "iteration": 13, "source": "arXiv API", "query": "(all:Byzantine OR all:\"zero-knowledge\" OR all:zk-SNARK) AND (all:\"smart grid\" OR all:substation OR all:telemetry) (Ramanan2025zkSTAR, Liu2025ByzantineP2P)", "hits": 26, "new_candidates": 2}
+{"date": "2026-09-29", "source": "arXiv", "query": "ti:multimodal AND ti:EHR AND ti:time series", "hits": 7, "new_candidates": 5, "iteration": 14}
+{"date": "2026-09-29", "source": "arXiv", "query": "ti:surgical AND ti:robot AND ti:multimodal", "hits": 5, "new_candidates": 3, "iteration": 14}
+{"date": "2026-09-29", "source": "arXiv", "query": "ti:neuromorphic AND ti:continual learning AND ti:spiking", "hits": 10, "new_candidates": 5, "iteration": 14}

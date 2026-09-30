@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/PlZ3oOGJ7J2Ua4YzVN3uIbn+KMI</id>
+  <title>arXiv Query: search_query=&amp;id_list=2605.28387,2605.13863,2608.22729,2606.01135,2604.15714&amp;start=0&amp;max_results=10</title>
+  <updated>2026-09-29T12:40:33Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=&amp;start=0&amp;max_results=10&amp;id_list=2605.28387,2605.13863,2608.22729,2606.01135,2604.15714" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>10</opensearch:itemsPerPage>
+  <opensearch:totalResults>5</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2605.28387v1</id>
+    <title>CLANE: Continual Learning of Actions on Neuromorphic Hardware from Event Cameras</title>
+    <updated>2026-05-27T12:24:04Z</updated>
+    <link href="https://arxiv.org/abs/2605.28387v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2605.28387v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Recognizing and continuously learning novel human actions without forgetting prior classes is a requirement for emerging AR/VR and robotics applications. For these applications, both on-device processing and learning are essential for privacy and low-latency adaptation. Event cameras address the efficiency of visual sensing with sparse, asynchronous output that is naturally compatible with neuromorphic processing. Yet no prior system has deployed a continual on-device learning pipeline for event-based action recognition using neuromorphic hardware. We present CLANE, Continual Learning of Actions on Neuromorphic Hardware from Event Cameras, deployed end-to-end on Intel Loihi 2. CLANE combines a spiking 2D CNN for spatiotemporal feature extraction with CLP-SNN as its on-chip learning head, extended to action clips via a Temporal Aggregation Layer and a fixed-point Normalization Layer, both novel Loihi 2 modules. On THU E-ACT-50, a 50-class dataset captured under real-world conditions, CLANE achieves 70.4% accuracy in a continual learning task while delivering more than 100x energy reduction and 16x lower latency over a sequential CNN+GRU+CLP edge GPU baseline, validated through iso-algorithm cross-platform benchmarking across three evaluation levels.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.NE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-05-27T12:24:04Z</published>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Elvin Hajizada</name>
+    </author>
+    <author>
+      <name>Michael Neumeier</name>
+    </author>
+    <author>
+      <name>Edward Paxon Frady</name>
+    </author>
+    <author>
+      <name>Yulia Sandamirskaya</name>
+    </author>
+    <author>
+      <name>Axel von Arnim</name>
+    </author>
+    <author>
+      <name>Bing Li</name>
+    </author>
+    <author>
+      <name>Eyke Hüllermeier</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2605.13863v1</id>
+    <title>Neuromorphic Graph Anomaly Detection via Adaptive STDP and Spiking Graph Neural Networks</title>
+    <updated>2026-04-29T04:45:11Z</updated>
+    <link href="https://arxiv.org/abs/2605.13863v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2605.13863v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Anomaly detection in dynamic networks is critical for applications from cybersecurity to industrial monitoring, yet existing methods face challenges in energy efficiency, temporal precision, and adaptability. This paper introduces ASTDP-GAD, a novel Adaptive Spiking Temporal Dynamics Plasticity framework for Graph Anomaly Detection that integrates spiking graph neural networks with STDP learning for energy-efficient neuromorphic detection in dynamic networks. Our framework unifies spiking neural computation, STDP learning, and graph-based anomaly detection through the following key innovations: temporal spike graph encoding with adaptive Leaky Integrate-and-Fire (LIF) dynamics; LIF-based graph attention with lateral inhibition; event-driven hypergraph memory with STDP-inspired prototype updates; spike rate contrast pooling based on spiking irregularity; adaptive STDP layers capturing causal temporal relationships; and multi-scale temporal convolution with multi-factor anomaly fusion. Theoretical analysis provides rigorous guarantees: spike encoding preserves input information with resolution scaling linearly in simulation steps and hidden dimension; LIFGAT approximates any continuous attention function; hypergraph memory converges to optimal prototypes; contrast pooling achieves provable anomaly selection bounds; STDP learning converges stably; and multi-factor fusion produces calibrated scores with up to $5\times$ variance reduction. Extensive experiments on nine datasets on both dynamic and static graphs demonstrate superior anomaly detection accuracy while maintaining biological plausibility and energy efficiency for neuromorphic deployment.</summary>
+    <category term="cs.NE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-04-29T04:45:11Z</published>
+    <arxiv:primary_category term="cs.NE"/>
+    <author>
+      <name>Abdul Joseph Fofanah</name>
+    </author>
+    <author>
+      <name>Lian Wen</name>
+    </author>
+    <author>
+      <name>David Chen</name>
+    </author>
+    <author>
+      <name>Tsungcheng Yao</name>
+    </author>
+    <author>
+      <name>Kwabena Sarpong</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.01135v1</id>
+    <title>Spiking and Event-driven Neuromorphic Mamba Models for Efficient Speech Recognition</title>
+    <updated>2026-05-31T10:15:08Z</updated>
+    <link href="https://arxiv.org/abs/2606.01135v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.01135v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Deep learning has greatly advanced automatic speech recognition (ASR), enabling widespread deployment on edge devices such as smartphones and smart home systems. However, the computational and energy demands of deep neural networks pose significant challenges for such resource-constrained deployments, introducing latency and limiting real-time interaction. Neuromorphic computing offers a promising solution by introducing activation sparsity through spiking neural networks (SNNs) and event-driven neural networks, converting dense operations into sparse computations. However, a study that evaluates the hardware benefits of different neuromorphic strategies remains lacking for ASR. This paper explores spiking and event-driven neuromorphic neural networks to improve activation sparsity in the state-of-the-art SpeechMamba model for ASR. We introduce an event-driven SpeechMamba with FATReLU activation, achieving over 60% activation sparsity with less than 1% accuracy degradation on LibriSpeech. We also propose a spiking SpeechMamba that attains over 70% sparsity while using 30% fewer parameters than comparable SNNs. Finally, we develop a cycle-accurate event-driven simulator enabling flexible algorithm-hardware co-exploration, which helps us identify computational bottlenecks and yields over 10% additional efficiency improvements.</summary>
+    <category term="cs.NE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SD" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-05-31T10:15:08Z</published>
+    <arxiv:comment>Accepted at IJCNN2026</arxiv:comment>
+    <arxiv:primary_category term="cs.NE"/>
+    <author>
+      <name>Tauseef Ahmed</name>
+    </author>
+    <author>
+      <name>Tao Sun</name>
+    </author>
+    <author>
+      <name>Jeronimo Castrillon</name>
+    </author>
+    <author>
+      <name>Kanishkan Vadivel</name>
+    </author>
+    <author>
+      <name>Guangzhi Tang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.22729v1</id>
+    <title>Spiking Neural Networks for Continuous Control: Neuromorphic Reinforcement Learning in Conventional Computing</title>
+    <updated>2026-08-24T02:34:22Z</updated>
+    <link href="https://arxiv.org/abs/2608.22729v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.22729v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Reinforcement learning (RL) algorithms have made strides over the past decade applying them to a wide range of problems and control tasks. However, the deployment of RL on neuromorphic hardware for continuous control tasks remains under-validated. Namely it is unclear whether replacing a conventional actor network with a spiking neural network (SNN) affects the performance of an agent before any hardware-specific benefits manifest. We provide a systematic validation of a minimal, neuromorphically viable spiking actor variant of Soft Actor-Critic (SAC) on conventional hardware, establishing a baseline for future neuromorphic RL research. In this paper, we propose the Spiking Actor Network Soft Actor Critic (SANSAC) to address the use of RL frameworks in continuous environments, designed as a framework that can be implemented on neuromorphic hardware. We compare a traditional Soft Actor Critic (SAC) network to SANSAC in a traditional computer. We demonstrate the near equivalent performance of SANSAC and SAC, while addressing the impact of hidden dimensions. Our results demonstrate the viability of SNN based algorithms in complex continuous environments, as well as competitive performance to traditional neural networks in traditional computers, providing a basis to continue exploring the use of SNNs in continuous RL frameworks.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.NE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-24T02:34:22Z</published>
+    <arxiv:primary_category term="cs.LG"/>
+    <arxiv:journal_ref>ICLR 2026 2nd Workshop on World Models</arxiv:journal_ref>
+    <author>
+      <name>Jessica Hunter</name>
+    </author>
+    <author>
+      <name>Md Maruf Hossain Shuvo</name>
+    </author>
+    <author>
+      <name>Krishna Roy</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2604.15714v1</id>
+    <title>Neuromorphic Parameter Estimation for Power Converter Health Monitoring Using Spiking Neural Networks</title>
+    <updated>2026-04-17T05:34:53Z</updated>
+    <link href="https://arxiv.org/abs/2604.15714v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2604.15714v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Always-on converter health monitoring demands sub-mW edge inference, a regime inaccessible to GPU-based physics-informed neural networks. This work separates spiking temporal processing from physics enforcement: a three-layer leaky integrate-and-fire SNN estimates passive component parameters while a differentiable ODE solver provides physics-consistent training by decoupling the ODE physics loss from the unrolled spiking loop. On an EMI-corrupted synchronous buck converter benchmark, the SNN reduces lumped resistance error from $25.8\%$ to $10.2\%$ versus a feedforward baseline, within the $\pm 10\%$ manufacturing tolerance of passive components, at a projected ${\sim}270\times$ energy reduction on neuromorphic hardware. Persistent membrane states further enable degradation tracking and event-driven fault detection via a $+5.5$ percentage-point spike-rate jump at abrupt faults. With $93\%$ spike sparsity, the architecture is suited for always-on deployment on Intel Loihi 2 or BrainChip Akida.</summary>
+    <category term="cs.NE" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="eess.SY" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-04-17T05:34:53Z</published>
+    <arxiv:comment>10 pages, 11 figures, 4 tables. Submitted to ICONS 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.NE"/>
+    <arxiv:journal_ref>Proceedings of the International Conference on Neuromorphic Systems (ICONS 2026), pp. 8-14, 2026</arxiv:journal_ref>
+    <author>
+      <name>Hyeongmeen Baik</name>
+    </author>
+    <author>
+      <name>Hamed Poursiami</name>
+    </author>
+    <author>
+      <name>Maryam Parsa</name>
+    </author>
+    <author>
+      <name>Jinia Roy</name>
+    </author>
+    <arxiv:doi>10.1145/3822454.3822481</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1145/3822454.3822481" title="doi"/>
+  </entry>
+</feed>

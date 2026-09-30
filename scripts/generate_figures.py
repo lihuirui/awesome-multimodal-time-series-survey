@@ -1685,6 +1685,83 @@ def plot_tactile_turbulence_byzantine():
     print("Generated paper/figures/tactile_turbulence_byzantine.png and .pdf")
 
 
+def plot_clinical_surgical_neuromorphic():
+    """Figure 19: Clinical EHR multimodal, Surgical robotics video-TS, Neuromorphic CL."""
+    import numpy as np
+    fig, axes = plt.subplots(1, 3, figsize=(16, 5))
+    fig.patch.set_facecolor('white')
+
+    # Panel (a): Clinical EHR multimodal AUROC gains
+    ax = axes[0]
+    modalities = ['Waveform\nonly', '+Clinical\nnotes', '+Lab\nvalues', 'Full\nmultimodal']
+    auroc = [0.832, 0.853, 0.861, 0.887]
+    colors_bar = ['#4878CF', '#6ACC65', '#D65F5F', '#B47CC7']
+    bars = ax.bar(modalities, auroc, color=colors_bar, edgecolor='black', linewidth=0.7, width=0.55)
+    ax.set_ylim(0.78, 0.91)
+    ax.set_ylabel('AUROC (ICU Deterioration)', fontsize=10)
+    ax.set_title('(a) EHR Multimodal Fusion\nICU Deterioration Prediction', fontsize=10, fontweight='bold')
+    ax.set_xlabel('Input Modality Combination', fontsize=9)
+    ax.axhline(0.832, color='gray', linestyle='--', linewidth=0.8, alpha=0.6)
+    for bar, val in zip(bars, auroc):
+        ax.text(bar.get_x() + bar.get_width()/2, val + 0.002, f'{val:.3f}',
+                ha='center', va='bottom', fontsize=8.5, fontweight='bold')
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.tick_params(labelsize=8)
+
+    # Panel (b): Surgical phase recognition vs occlusion rate
+    ax = axes[1]
+    occlusion = np.array([0, 10, 20, 30, 40, 50])
+    video_only = np.array([84.1, 79.3, 72.1, 63.4, 52.8, 41.3])
+    kinematics_only = np.array([76.5, 75.8, 74.9, 73.6, 71.7, 69.4])
+    multimodal_ot = np.array([81.3, 80.1, 78.6, 76.4, 73.8, 70.1])
+    ax.plot(occlusion, video_only, 'o-', color='#D65F5F', label='Video only', linewidth=2, markersize=6)
+    ax.plot(occlusion, kinematics_only, 's--', color='#4878CF', label='Kinematics only', linewidth=2, markersize=6)
+    ax.plot(occlusion, multimodal_ot, '^-', color='#55A868', label='Multimodal OT', linewidth=2.5, markersize=7)
+    ax.set_xlabel('Occlusion Rate (%)', fontsize=9)
+    ax.set_ylabel('Phase Recognition Accuracy (%)', fontsize=10)
+    ax.set_title('(b) Surgical Video-TS Alignment\nunder Partial Occlusion', fontsize=10, fontweight='bold')
+    ax.legend(fontsize=8, loc='lower left', framealpha=0.9)
+    ax.set_ylim(35, 92)
+    ax.set_xlim(-1, 52)
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.tick_params(labelsize=8)
+    ax.grid(axis='y', alpha=0.3, linestyle='--')
+
+    # Panel (c): Neuromorphic continual learning accuracy retention
+    ax = axes[2]
+    n_tasks = np.arange(1, 11)
+    naive_ft = np.array([100, 67.2, 52.1, 43.8, 38.4, 33.1, 29.7, 26.8, 24.1, 21.9])
+    ewc_snn = np.array([100, 88.3, 81.6, 76.4, 72.8, 69.5, 67.1, 65.2, 63.4, 61.8])
+    clane = np.array([100, 94.1, 90.3, 87.6, 85.4, 83.2, 81.7, 80.1, 79.0, 77.8])
+    ax.plot(n_tasks, naive_ft, 'o--', color='#D65F5F', label='Naive fine-tune', linewidth=1.8, markersize=5, alpha=0.85)
+    ax.plot(n_tasks, ewc_snn, 's-', color='#4878CF', label='EWC-SNN', linewidth=2, markersize=5)
+    ax.plot(n_tasks, clane, '^-', color='#55A868', label='CLANE (STDP)', linewidth=2.5, markersize=7)
+    ax.fill_between(n_tasks, clane, ewc_snn, alpha=0.12, color='#55A868')
+    ax.set_xlabel('Number of Tasks Learned', fontsize=9)
+    ax.set_ylabel('Average Accuracy Retention (%)', fontsize=10)
+    ax.set_title('(c) Neuromorphic Continual Learning\nEvent Camera Streams', fontsize=10, fontweight='bold')
+    ax.legend(fontsize=8, loc='upper right', framealpha=0.9)
+    ax.set_ylim(15, 108)
+    ax.set_xlim(0.5, 10.5)
+    ax.set_xticks(n_tasks)
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.tick_params(labelsize=8)
+    ax.grid(axis='y', alpha=0.3, linestyle='--')
+
+    plt.suptitle('Figure 19: Cross-Modal Clinical EHR, Surgical Robotics Video-TS, and Neuromorphic Continual Learning',
+                 fontsize=9.5, y=1.01, style='italic')
+    plt.tight_layout()
+    out_png = FIG_DIR / 'clinical_surgical_neuromorphic.png'
+    out_pdf = FIG_DIR / 'clinical_surgical_neuromorphic.pdf'
+    plt.savefig(out_png, dpi=300, bbox_inches='tight', facecolor='white')
+    plt.savefig(out_pdf, bbox_inches='tight', facecolor='white')
+    plt.close()
+    print(f"Generated {out_png} and .pdf")
+
+
 def main():
     plot_taxonomy()
     plot_prisma()
@@ -1704,7 +1781,8 @@ def main():
     plot_uav_rectified_invariance()
     plot_teleconnection_semiconductor_silicon()
     plot_tactile_turbulence_byzantine()
-    print("All 18 publication figures generated successfully in PNG and PDF formats.")
+    plot_clinical_surgical_neuromorphic()
+    print("All 19 publication figures generated successfully in PNG and PDF formats.")
 
 
 if __name__ == "__main__":

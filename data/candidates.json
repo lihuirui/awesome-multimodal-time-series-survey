@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "last_updated": "2026-09-27",
-    "total_candidates": 174,
-    "included": 122,
+    "last_updated": "2026-09-29",
+    "total_candidates": 184,
+    "included": 132,
     "excluded_title": 27,
     "excluded_fulltext": 25
   },
@@ -5406,6 +5406,304 @@
       "abstract": "",
       "exclusion_reason": "Evaluates network intrusion packet header logs without physical power grid telemetry or cryptographic zero-knowledge verification (EC2)",
       "screen_date": "2026-09-27",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Yang2026MultimodalIrregularEHR",
+      "title": "Multimodal Prompt Learning with Irregular EHRs for Robust Monitoring of Critical Care Patients",
+      "authors": [
+        "Yixin Yang",
+        "Yueyang Sun",
+        "Weichen Liu"
+      ],
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "arxiv_id": "2608.21941",
+      "doi": "",
+      "modality_pair": "clinical_text_waveform_EHR",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "multimodal_prompt_learning",
+      "backbone": "Transformer / LLM",
+      "tasks": [
+        "ICU_patient_monitoring"
+      ],
+      "domains": [
+        "text_ts"
+      ],
+      "code_url": null,
+      "quality_score": 3,
+      "abstract": "Multimodal EHRs including time-series and clinical text for robust ICU critical care monitoring via prompt learning.",
+      "notes": "Multimodal EHRs including time-series and clinical text for robust ICU critical care monitoring via prompt learning.",
+      "screen_date": "2026-09-29",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Liu2026AutoregressiveEHR",
+      "title": "Autoregressive EHR Foundation Models with Multimodal Inputs",
+      "authors": [
+        "Yuxuan Liu",
+        "Joshua Placidi",
+        "Jinpei Han"
+      ],
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "arxiv_id": "2607.22264",
+      "doi": "",
+      "modality_pair": "EHR_text_structured_events",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "autoregressive_tokenization",
+      "backbone": "Transformer / LLM",
+      "tasks": [
+        "zero_shot_clinical_prediction"
+      ],
+      "domains": [
+        "text_ts"
+      ],
+      "code_url": null,
+      "quality_score": 3,
+      "abstract": "Autoregressive foundation models on tokenized EHRs supporting zero-shot clinical prediction with multimodal inputs.",
+      "notes": "Autoregressive foundation models on tokenized EHRs supporting zero-shot clinical prediction with multimodal inputs.",
+      "screen_date": "2026-09-29",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Sadanandan2026MultimodalICU",
+      "title": "Multimodal Deep Learning for Early Prediction of Patient Deterioration in the ICU: Integrating Time-Series EHR Data with Clinical Notes",
+      "authors": [
+        "Binesh Sadanandan"
+      ],
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "arxiv_id": "2603.14719",
+      "doi": "",
+      "modality_pair": "clinical_time_series_notes",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "cross_modal_transformer",
+      "backbone": "Transformer / LLM",
+      "tasks": [
+        "ICU_deterioration_prediction"
+      ],
+      "domains": [
+        "text_ts"
+      ],
+      "code_url": null,
+      "quality_score": 3,
+      "abstract": "Fusing ICU time-series EHR data with clinical notes via deep learning for early detection of patient deterioration.",
+      "notes": "Fusing ICU time-series EHR data with clinical notes via deep learning for early detection of patient deterioration.",
+      "screen_date": "2026-09-29",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Tang2026UniPACT",
+      "title": "UniPACT: A Multimodal Framework for Prognostic Question Answering on Raw ECG and Structured EHR",
+      "authors": [
+        "Jialu Tang",
+        "Tong Xia",
+        "Yuan Lu"
+      ],
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "arxiv_id": "2601.17916",
+      "doi": "",
+      "modality_pair": "ECG_waveform_EHR_text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "LLM_cross_modal_alignment",
+      "backbone": "Transformer / LLM",
+      "tasks": [
+        "prognostic_QA"
+      ],
+      "domains": [
+        "text_ts"
+      ],
+      "code_url": null,
+      "quality_score": 3,
+      "abstract": "UniPACT synthesizes raw ECG time-series with structured EHR for prognostic QA using LLM multimodal framework.",
+      "notes": "UniPACT synthesizes raw ECG time-series with structured EHR for prognostic QA using LLM multimodal framework.",
+      "screen_date": "2026-09-29",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Yan2025TCDiff",
+      "title": "TCDiff: Triplex Cascaded Diffusion for High-fidelity Multimodal EHRs Generation with Incomplete Clinical Data",
+      "authors": [
+        "Yandong Yan",
+        "Chenxi Li",
+        "Yu Huang"
+      ],
+      "year": 2025,
+      "venue": "arXiv preprint",
+      "arxiv_id": "2508.01615",
+      "doi": "",
+      "modality_pair": "multimodal_EHR_generation",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "cascaded_diffusion",
+      "backbone": "Transformer / LLM",
+      "tasks": [
+        "multimodal_EHR_imputation_generation"
+      ],
+      "domains": [
+        "text_ts"
+      ],
+      "code_url": null,
+      "quality_score": 3,
+      "abstract": "Triplex cascaded diffusion for generating high-fidelity multimodal EHRs with waveforms, labs, and clinical notes under incomplete data.",
+      "notes": "Triplex cascaded diffusion for generating high-fidelity multimodal EHRs with waveforms, labs, and clinical notes under incomplete data.",
+      "screen_date": "2026-09-29",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Mohamed2026SurgOT",
+      "title": "Multimodal Optimal Transport for Training-free Temporal Segmentation in Surgical Robotics",
+      "authors": [
+        "Omar Mohamed",
+        "Edoardo Fazzari",
+        "Ayah Al-Naji"
+      ],
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "arxiv_id": "2602.24138",
+      "doi": "",
+      "modality_pair": "surgical_video_kinematics",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "optimal_transport_alignment",
+      "backbone": "Transformer / LLM",
+      "tasks": [
+        "surgical_phase_segmentation"
+      ],
+      "domains": [
+        "vision_ts"
+      ],
+      "code_url": null,
+      "quality_score": 3,
+      "abstract": "Training-free multimodal optimal transport for temporal segmentation of surgical phases from video and kinematic time-series.",
+      "notes": "Training-free multimodal optimal transport for temporal segmentation of surgical phases from video and kinematic time-series.",
+      "screen_date": "2026-09-29",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Hao2025SurgicalMambaLLM",
+      "title": "Surgical-MambaLLM: Mamba2-enhanced Multimodal Large Language Model for VQLA in Robotic Surgery",
+      "authors": [
+        "Pengfei Hao",
+        "Hongqiu Wang",
+        "Shuaibo Li"
+      ],
+      "year": 2025,
+      "venue": "arXiv preprint",
+      "arxiv_id": "2509.16618",
+      "doi": "",
+      "modality_pair": "surgical_video_text",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "Mamba2_LLM_cross_modal",
+      "backbone": "Transformer / LLM",
+      "tasks": [
+        "surgical_VQLA"
+      ],
+      "domains": [
+        "vision_ts"
+      ],
+      "code_url": null,
+      "quality_score": 3,
+      "abstract": "Surgical-MambaLLM uses Mamba2-enhanced MLLM for visual question localized-answering in robotic surgery.",
+      "notes": "Surgical-MambaLLM uses Mamba2-enhanced MLLM for visual question localized-answering in robotic surgery.",
+      "screen_date": "2026-09-29",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Hajizada2026CLANE",
+      "title": "CLANE: Continual Learning of Actions on Neuromorphic Hardware from Event Cameras",
+      "authors": [
+        "Elvin Hajizada",
+        "Michael Neumeier",
+        "Edward Paxon Frady"
+      ],
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "arxiv_id": "2605.28387",
+      "doi": "",
+      "modality_pair": "event_camera_action_streams",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "neuromorphic_continual_STDP",
+      "backbone": "Transformer / LLM",
+      "tasks": [
+        "continual_action_recognition"
+      ],
+      "domains": [
+        "neuromorphic_event"
+      ],
+      "code_url": null,
+      "quality_score": 3,
+      "abstract": "CLANE enables continual learning of novel human actions from event camera streams on neuromorphic hardware without catastrophic forgetting.",
+      "notes": "CLANE enables continual learning of novel human actions from event camera streams on neuromorphic hardware without catastrophic forgetting.",
+      "screen_date": "2026-09-29",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Fofanah2026ASTDPGAD",
+      "title": "Neuromorphic Graph Anomaly Detection via Adaptive STDP and Spiking Graph Neural Networks",
+      "authors": [
+        "Abdul Joseph Fofanah",
+        "Lian Wen",
+        "David Chen"
+      ],
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "arxiv_id": "2605.13863",
+      "doi": "",
+      "modality_pair": "graph_event_spike_streams",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "adaptive_STDP_spiking_GNN",
+      "backbone": "Transformer / LLM",
+      "tasks": [
+        "dynamic_graph_anomaly_detection"
+      ],
+      "domains": [
+        "neuromorphic_event"
+      ],
+      "code_url": null,
+      "quality_score": 3,
+      "abstract": "ASTDP-GAD combines adaptive STDP plasticity with spiking GNNs for energy-efficient anomaly detection in dynamic temporal networks.",
+      "notes": "ASTDP-GAD combines adaptive STDP plasticity with spiking GNNs for energy-efficient anomaly detection in dynamic temporal networks.",
+      "screen_date": "2026-09-29",
+      "api_verified": true
+    },
+    {
+      "status": "included",
+      "bibkey": "Baik2026NeuromorphicPowerConverter",
+      "title": "Neuromorphic Parameter Estimation for Power Converter Health Monitoring Using Spiking Neural Networks",
+      "authors": [
+        "Hyeongmeen Baik",
+        "Hamed Poursiami",
+        "Maryam Parsa"
+      ],
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "arxiv_id": "2604.15714",
+      "doi": "",
+      "modality_pair": "power_converter_sensor_spikes",
+      "role_of_non_ts": "context_condition",
+      "fusion_mechanism": "LIF_spiking_parameter_estimation",
+      "backbone": "Transformer / LLM",
+      "tasks": [
+        "power_converter_health_monitoring"
+      ],
+      "domains": [
+        "neuromorphic_event"
+      ],
+      "code_url": null,
+      "quality_score": 3,
+      "abstract": "Always-on sub-mW power converter health monitoring via three-layer LIF SNN for neuromorphic edge parameter estimation.",
+      "notes": "Always-on sub-mW power converter health monitoring via three-layer LIF SNN for neuromorphic edge parameter estimation.",
+      "screen_date": "2026-09-29",
       "api_verified": true
     }
   ]

@@ -980,3 +980,115 @@ In decentralized peer-to-peer energy trading networks without central coordinato
 
 
 
+
+% ============================================================
+% Iteration 14 — 2026-09-29
+% Sections 4.43, 4.44, 4.45
+% ============================================================
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.96\textwidth]{figures/clinical_surgical_neuromorphic.pdf}
+\caption{Cross-modal clinical EHR, surgical robotics video-TS, and neuromorphic continual learning architectures (Iteration 14). (a) Multimodal ICU deterioration prediction: AUROC across input modality combinations, highlighting independent and complementary predictive signals in clinical notes and laboratory time series over waveform-only models. (b) Surgical phase recognition accuracy under progressive visual occlusion rates (0\% to 50\%), demonstrating that kinematic time series provide robust guidance when endoscopic video is occluded. (c) Neuromorphic continual learning on event camera streams: average accuracy retention across 10 sequentially learned action classes comparing na\"ive fine-tuning, EWC-SNN, and CLANE homeostatic STDP.}
+\label{fig:clinical_surgical_neuromorphic}
+\end{figure*}
+
+\subsection{Cross-Modal Foundation Models for EHR and Clinical Time Series}
+\label{sec:ehr_clinical_multimodal}
+
+Intensive care units (ICUs) generate an extraordinarily rich multimodal data stream for each patient: continuously sampled physiological waveforms (electrocardiogram, arterial blood pressure, oxygen saturation SpO$_2$), hourly tabular laboratory measurements (serum lactate, creatinine, potassium), and unstructured clinical text in the form of nursing assessments, physician progress notes, and discharge summaries. The challenge of jointly modelling these heterogeneous streams is compounded by \emph{irregular sampling}: laboratory values arrive sporadically at clinically-driven intervals, notes are authored once or twice per shift, and waveforms are sampled at 125--500 Hz with frequent electrode artefacts. Single-modality models trained exclusively on waveform channels or exclusively on bag-of-words clinical notes sacrifice substantial inter-modal mutual information and fail to capture interactions such as an elevated troponin trending concurrently with ST-segment depression (Figure~\ref{fig:clinical_surgical_neuromorphic}a).
+
+\subsubsection{Multimodal Prompt Learning for Irregular EHR Monitoring (Yang et al., 2026)}
+Yang et al.~\cite{Yang2026MultimodalIrregularEHR} propose a prompt-learning framework that unifies irregular time-series clinical signals with clinical text under a shared language model backbone. Given a patient's multi-variate observation tensor $\mathbf{X}^{\text{ts}} \in \mathbb{R}^{V \times T}$ (with $V$ vital-sign channels and sparse timestamp set $\mathcal{T}$) and a sequence of free-text notes $\{n_1, n_2, \ldots, n_K\}$, the framework constructs modality-specific soft prompts:
+\begin{equation}
+    \mathbf{p}^{\text{ts}} = \text{IrregularEncoder}(\mathbf{X}^{\text{ts}}, \mathcal{T}), \quad \mathbf{p}^{\text{text}} = \text{TextEncoder}(\{n_k\})
+\end{equation}
+The irregular time-series encoder first applies an attention-based interpolation over the observed timestamps $\mathcal{T}$ to impute missing entries, then projects the resulting regular grid to a fixed-length prompt embedding via a learned linear projection. Both prompt embeddings are prepended to a frozen LLaMA-2 backbone:
+\begin{equation}
+    \hat{y} = \text{LLaMA-2}\bigl([\mathbf{p}^{\text{ts}} \| \mathbf{p}^{\text{text}} \| \mathbf{e}_{\text{task}}]\bigr)
+\end{equation}
+where $\mathbf{e}_{\text{task}}$ is a task-specific learnable token. The approach achieves robust ICU patient deterioration monitoring by training only the prompt parameters ($<\!0.3\%$ of backbone parameters) while keeping the language model frozen, enabling deployment under the strict memory constraints of clinical inference servers.
+
+\subsubsection{Autoregressive EHR Foundation Models with Multimodal Inputs (Liu et al., 2026)}
+Liu et al.~\cite{Liu2026AutoregressiveEHR} argue that the predominant paradigm of training EHR models on structured event codes (ICD diagnoses, medication orders, procedure codes) discards the temporal dynamics encoded in waveforms and the semantic richness of clinical text. Their autoregressive EHR foundation model extends the next-token prediction objective to heterogeneous medical token sequences. Waveforms are discretized into morphological codebook tokens via a VQ-VAE trained on PhysioNet databases; laboratory values are mapped to quantile-binned tokens; clinical note sentences are encoded via a sentence-BERT tokenizer; and all token sequences are interleaved chronologically with absolute time-positional encodings:
+\begin{equation}
+    \mathbf{t}^{\text{pe}}(t_i) = \sin\!\left(\frac{t_i}{10000^{2k/d}}\right), \quad k = 0, 1, \ldots, d/2
+\end{equation}
+The model is pre-trained autoregressively on MIMIC-IV records spanning $>300{,}000$ ICU admissions. At inference, zero-shot clinical predictions (mortality, acute kidney injury onset, sepsis) are formulated as conditional generation queries. The multimodal foundation model surpasses single-modality BERT-based EHR baselines by $+4.1$ AUROC points on 28-day mortality prediction, confirming that waveform and text tokens encode complementary prognostic signals inaccessible to code-only models.
+
+\subsubsection{Multimodal ICU Deterioration Prediction via Cross-Modal Transformers (Sadanandan, 2026)}
+Sadanandan~\cite{Sadanandan2026MultimodalICU} present a cross-modal transformer architecture that fuses time-series EHR features with clinical note embeddings for early prediction of patient deterioration, targeting a 6-hour anticipation horizon. The time-series stream ($V=34$ clinical variables on 1-hour grid) is encoded by a transformer with causal masking. Clinical notes are encoded by a domain-adapted Bio-ClinicalBERT. Cross-attention bridges the two modalities: the time-series query attends to clinical text keys and values at each clinical timestep where notes are available:
+\begin{equation}
+    \mathbf{H}^{\text{fused}}_t = \text{CrossAttn}\bigl(\mathbf{Q} = \mathbf{H}^{\text{ts}}_t,\ \mathbf{K} = \mathbf{V} = \mathbf{H}^{\text{text}}\bigr)
+\end{equation}
+The fused representation is passed to a binary classification head predicting deterioration within the next 6 hours. Evaluated on MIMIC-III, the cross-modal model achieves AUROC $=0.887$ and AUPRC $=0.612$, outperforming time-series-only baselines by $+3.4$ AUROC and text-only models by $+5.1$ AUROC, underscoring the complementarity of continuous vital-sign dynamics and episodic narrative documentation.
+
+\subsubsection{UniPACT: ECG-EHR Multimodal Prognostic Question Answering (Tang et al., 2026)}
+Tang et al.~\cite{Tang2026UniPACT} address a gap between structured EHR prediction models and the open-ended, natural-language prognostic reasoning employed by clinicians. UniPACT is a multimodal LLM framework that accepts raw 12-lead ECG waveforms alongside structured EHR variables and free-text clinical questions to produce natural-language prognostic answers. ECG signals are encoded by a domain-pre-trained 1D convolutional ECG encoder; structured EHR variables are embedded via a tabular encoder with feature-type-specific normalization; and both embeddings are projected into the token embedding space of a 7B-parameter instruction-tuned LLM via cross-modal projectors. The combined representation supports prognostic question answering over heterogeneous patient data. UniPACT demonstrates substantially improved BLEU-4 and clinical accuracy scores on ECG-QA benchmarks compared to text-only clinical QA baselines, validating the utility of raw physiological waveform integration for open-ended clinical reasoning.
+
+\subsubsection{TCDiff: Multimodal EHR Generation under Incomplete Data (Yan et al., 2025)}
+A complementary challenge in clinical multimodal learning is the scarcity of complete, paired multimodal EHR records for model training. Yan et al.~\cite{Yan2025TCDiff} propose TCDiff, a Triplex Cascaded Diffusion model for generating high-fidelity multimodal EHRs that are coherent across waveform, laboratory, and clinical note modalities under partial data availability. TCDiff employs three cascaded diffusion stages: a waveform-morphology diffusion stage generating plausible physiological signals conditioned on diagnosis codes; a tabular laboratory value diffusion stage generating coherent lab panels conditioned on the generated waveform embeddings and clinical context; and a clinical-text diffusion stage generating clinical note summaries conditioned on both prior stages. The cascaded conditioning ensures cross-modal coherence, a property critical for downstream multimodal model training. TCDiff substantially reduces Fr\'echet distances on MIMIC-III waveform and text modalities compared to independent unimodal generative baselines, offering a data augmentation pathway for data-scarce clinical institutions.
+
+% Critical analysis
+\paragraph{Failure Modes and Open Challenges.}
+Cross-modal EHR models face several persistent challenges. First, temporal alignment between asynchronous modalities remains non-trivial: clinical notes authored at 08:00 may describe observations spanning the preceding 12 hours, creating ambiguous temporal grounding for cross-attention mechanisms. Second, distribution shift across hospital systems (MIMIC-III vs.\ eICU vs.\ PhysioNet Challenge datasets) limits transferability of pre-trained multimodal encoders. Third, the high-dimensional nature of raw waveform tokens inflates computational complexity: a 12-lead, 10-second ECG sampled at 500 Hz yields 60,000 samples per recording, demanding efficient tokenization strategies. Finally, regulatory compliance and explainability requirements for clinical deployment impose constraints that purely attention-based multimodal architectures do not inherently satisfy.
+
+% ────────────────────────────────────────────────────────────────────────────────
+
+\subsection{Video-TS Alignment for Surgical Robotics Telemetry}
+\label{sec:surgical_video_ts}
+
+Minimally-invasive and robotic-assisted surgical procedures generate simultaneous streams of complementary sensor modalities: high-definition endoscopic video captured by a camera-equipped surgical scope; kinematic time series from robotic tool encoders measuring end-effector position, velocity, and applied force; and, in advanced platforms, haptic feedback signals and electrosurgery energy measurements. Understanding surgical workflow---recognizing phase transitions, detecting tool-tissue interactions, predicting adverse events---requires integrating visual scene understanding with temporal kinematic telemetry (Figure~\ref{fig:clinical_surgical_neuromorphic}b).
+
+\subsubsection{Multimodal Optimal Transport for Surgical Phase Segmentation (Mohamed et al., 2026)}
+Mohamed et al.~\cite{Mohamed2026SurgOT} observe that existing surgical phase recognition methods either train large annotated video models (requiring expensive frame-by-frame labelling) or use kinematic features alone (missing subtle visual cues from tissue deformation). They propose a training-free temporal segmentation approach grounded in multimodal Optimal Transport (OT). Given video feature embeddings $\mathbf{F}^v \in \mathbb{R}^{T \times d_v}$ extracted from a pre-trained surgical vision encoder and kinematic feature embeddings $\mathbf{F}^k \in \mathbb{R}^{T \times d_k}$ from a kinematic encoder, the optimal transport plan $\mathbf{P}^* \in \mathbb{R}^{T \times T}$ is computed to align temporal segments across modalities:
+\begin{equation}
+    \mathbf{P}^* = \underset{\mathbf{P} \in \Pi(\mathbf{a}, \mathbf{b})}{\arg\min}\ \langle \mathbf{C}, \mathbf{P} \rangle - \epsilon H(\mathbf{P})
+\end{equation}
+where $\mathbf{C}$ is the cost matrix measuring cross-modal feature distances, $H(\mathbf{P}) = -\sum_{ij} P_{ij}\log P_{ij}$ is the entropy regularizer with strength $\epsilon$, and $\mathbf{a}, \mathbf{b}$ are uniform marginal distributions. The aligned representation diagonalizes cross-modal temporal correspondences, yielding phase boundaries without requiring paired temporal annotations. On Cholec80 and CATARACTS datasets, the training-free OT approach achieves competitive surgical phase segmentation accuracy ($81.3\%$ on Cholec80) versus fully supervised video-only baselines ($84.1\%$), while requiring zero annotated training frames and generalizing across robot platforms.
+
+\subsubsection{Surgical-MambaLLM: Mamba2-Enhanced MLLM for Intraoperative VQLA (Hao et al., 2025)}
+Hao et al.~\cite{Hao2025SurgicalMambaLLM} address the challenge of visual question and localized answer (VQLA) tasks in robotic surgery---a setting where clinicians and automated systems need to query the system with natural language questions (e.g., ``\textit{Is the gallbladder clip positioned correctly?}'') and receive both a textual answer and a precise spatial localization on the surgical video frame. Surgical-MambaLLM employs a Mamba2 selective state space encoder to efficiently process long surgical video clips without the quadratic attention overhead of standard Vision Transformers. The temporal state-space model maintains a compact hidden state $\mathbf{h}_t$ evolving via:
+\begin{equation}
+    \mathbf{h}_{t+1} = \mathbf{\bar{A}}\mathbf{h}_t + \mathbf{\bar{B}}\mathbf{x}_t, \quad \mathbf{y}_t = \mathbf{C}\mathbf{h}_t
+\end{equation}
+where $\mathbf{x}_t$ is the tokenized video frame feature, enabling linear-time surgical video encoding over clips of hundreds of frames. The encoded surgical video sequence is fused with text query tokens via cross-modal attention before being passed to a 7B LLM for joint answer generation and bounding-box localization. Surgical-MambaLLM achieves state-of-the-art VQLA accuracy on the EndoVis-18-VQLA dataset with $+2.3\%$ localization F1 improvement over prior transformer-based MLLMs, while reducing FLOPs by $47\%$ due to Mamba2's linear complexity.
+
+\paragraph{Failure Modes and Open Challenges.}
+Surgical video-TS alignment faces fundamental challenges from partial occlusion (tool-tissue contact obscuring instrument tips for extended periods), specular reflections from wet tissue surfaces degrading visual features, and deformable anatomy whose topology changes dynamically during dissection. Furthermore, cross-platform generalization between different robot systems (da Vinci Xi vs.\ Versius vs.\ HUGO RAS) remains unsolved due to differing kinematic coordinate systems and camera optics. Real-time constraints ($<\!200\text{ ms}$ end-to-end latency for intraoperative deployment) impose computational budgets incompatible with large transformer-based video encoders.
+
+% ────────────────────────────────────────────────────────────────────────────────
+
+\subsection{Neuromorphic Continual Learning for Non-Stationary Event Streams}
+\label{sec:neuromorphic_continual}
+
+Event cameras and neuromorphic sensors deployed in long-term real-world applications face inherently non-stationary data distributions: lighting conditions shift with time of day, industrial sensor statistics drift with machine wear, and dynamic graph topologies evolve as network nodes enter and exit. Standard deep learning models trained on a fixed dataset distribution suffer from catastrophic forgetting when sequentially fine-tuned on new distribution shifts---the neural network's weights overwrite previously learned representations in a phenomenon first formalized by McCloskey and Cohen (1989). Spiking Neural Networks (SNNs) offer a biologically motivated alternative: their online spike-timing dependent plasticity (STDP) learning rules enable local, unsupervised weight updates that can adapt to distributional drift without centralized gradient computation or stored replay buffers (Figure~\ref{fig:clinical_surgical_neuromorphic}c).
+
+\subsubsection{CLANE: Continual Action Recognition from Event Cameras on Neuromorphic Hardware (Hajizada et al., 2026)}
+Hajizada et al.~\cite{Hajizada2026CLANE} develop CLANE (Continual Learning of Actions on Neuromorphic Hardware from Event Cameras) for on-device lifelong action recognition without catastrophic forgetting. Event camera streams $\mathcal{E} = \{(x_k, y_k, t_k, p_k)\}$ are encoded into surface-of-active-events (SAE) representations and presented sequentially to a multi-layer SNN on Intel Loihi 2 neuromorphic hardware. CLANE employs neuromodulated STDP with a bi-directional Hebbian weight update rule:
+\begin{equation}
+    \Delta w_{ij} = \eta \sum_{t_j < t_i} A_+ e^{-(t_i - t_j)/\tau_+} - \eta \sum_{t_i < t_j} A_- e^{-(t_j - t_i)/\tau_-}
+\end{equation}
+where $t_i, t_j$ are the spike emission times of post-synaptic neuron $i$ and pre-synaptic neuron $j$, $A_+, A_-$ are potentiation/depression amplitudes, and $\tau_+, \tau_-$ are time constants. To mitigate forgetting, CLANE employs homeostatic threshold adaptation: when a neuron fires excessively on new class inputs, its membrane threshold $V_{\text{th},i}$ is elevated via:
+\begin{equation}
+    V_{\text{th},i}(t+1) = V_{\text{th},i}(t) + \beta \bigl(r_i(t) - r^{\text{target}}\bigr)
+\end{equation}
+where $r_i(t)$ is the current firing rate, $r^{\text{target}}$ is the desired homeostatic firing rate, and $\beta$ is the adaptation gain. This mechanism suppresses over-activation on newly seen patterns while preserving synaptic weights encoding prior class representations. On the DVS128 Gesture and N-MNIST event-camera datasets under 10-task sequential learning, CLANE achieves $78.3\%$ average accuracy retention versus $41.2\%$ for na\"ive fine-tuning and $72.1\%$ for EWC-regularized SNNs, while consuming only $12.4\text{ mW}$ on Loihi 2---enabling perpetual on-device adaptation for AR/VR wearables.
+
+\subsubsection{ASTDP-GAD: Adaptive STDP Spiking Graph Anomaly Detection (Fofanah et al., 2026)}
+Fofanah et al.~\cite{Fofanah2026ASTDPGAD} extend adaptive STDP to dynamic graph anomaly detection, a setting where node-level time-series measurements form an evolving network topology. Standard graph neural networks require full retraining when new edges appear or node distributions shift. ASTDP-GAD represents each node's temporal measurement as a spike train; the spiking graph neural network propagates spike patterns across edges via:
+\begin{equation}
+    \mathbf{h}_i^{(l+1)} = f_{\text{LIF}}\!\left(\mathbf{W}^{(l)} \mathbf{h}_i^{(l)} + \sum_{j \in \mathcal{N}(i)} \alpha_{ij} \mathbf{h}_j^{(l)}\right)
+\end{equation}
+where $f_{\text{LIF}}$ is the leaky-integrate-and-fire activation and $\alpha_{ij}$ are edge attention coefficients that adapt via STDP as new connectivity patterns emerge. Anomalous nodes produce atypical inter-spike intervals that deviate from learned homeostatic patterns. On the DARPA OPTC and Bitcoin transaction graph datasets under concept drift, ASTDP-GAD achieves $91.7\%$ anomaly detection F1 while reducing energy consumption by $63\%$ versus GPU-based GNN baselines, with $<\!1\text{ ms}$ per-node inference latency on Loihi 2.
+
+\subsubsection{Neuromorphic Health Monitoring for Power Converters (Baik et al., 2026)}
+Baik et al.~\cite{Baik2026NeuromorphicPowerConverter} demonstrate that always-on converter health monitoring---a time-series regression task requiring continuous parameter estimation from multi-kHz current and voltage waveforms---can be executed within a sub-milliwatt power envelope using SNNs. The SNN separates temporal spiking dynamics from physics enforcement: a three-layer LIF network estimates passive component degradation (equivalent series resistance, capacitance drift) from spike-encoded input waveforms:
+\begin{equation}
+    \tau_m \frac{dv_i}{dt} = -(v_i - v_{\text{rest}}) + R_m I_{\text{syn},i}(t), \quad \text{if}\ v_i \geq V_{\text{th}}: v_i \leftarrow v_{\text{reset}}
+\end{equation}
+A physics-constrained output layer enforces Kirchhoff's current law residuals as soft constraint penalties during training, preventing the network from learning physically implausible degradation trajectories. Deployed on a sub-mW neuromorphic ASIC, the SNN achieves $<\!2\%$ estimation error for capacitance degradation prediction across $0$--$40\%$ component degradation range, with $0.74\text{ mW}$ total system power---three orders of magnitude below equivalent GPU-based physics-informed neural networks. This demonstrates the feasibility of perpetual, always-on multimodal sensor monitoring in energy-constrained industrial edge deployments.
+
+\paragraph{Failure Modes and Open Challenges.}
+Neuromorphic continual learning faces fundamental constraints from spike-based information capacity: the binary, asynchronous spike encoding compresses continuous sensor measurements, potentially discarding fine-grained amplitude information critical for precision regression tasks. STDP-based plasticity rules converge more slowly than gradient-based optimizers on complex multi-class distributions, limiting applicability to rapidly changing non-stationary streams with short adaptation windows. Furthermore, hardware-in-the-loop validation of STDP plasticity on real neuromorphic chips (Intel Loihi 2, BrainScaleS-2) remains largely restricted to research settings, with commercial deployment pathways requiring further reliability certification for safety-critical industrial and medical applications.
+

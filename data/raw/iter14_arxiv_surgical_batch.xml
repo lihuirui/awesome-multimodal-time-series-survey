@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api//1PBSzHctjqJg+XWatSNGXEepBM</id>
+  <title>arXiv Query: search_query=&amp;id_list=2607.04378,2602.24138,2509.16618&amp;start=0&amp;max_results=10</title>
+  <updated>2026-09-29T12:40:15Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=&amp;start=0&amp;max_results=10&amp;id_list=2607.04378,2602.24138,2509.16618" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>10</opensearch:itemsPerPage>
+  <opensearch:totalResults>3</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2509.16618v1</id>
+    <title>Surgical-MambaLLM: Mamba2-enhanced Multimodal Large Language Model for VQLA in Robotic Surgery</title>
+    <updated>2025-09-20T10:42:29Z</updated>
+    <link href="https://arxiv.org/abs/2509.16618v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2509.16618v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In recent years, Visual Question Localized-Answering in robotic surgery (Surgical-VQLA) has gained significant attention for its potential to assist medical students and junior doctors in understanding surgical scenes. Recently, the rapid development of Large Language Models (LLMs) has provided more promising solutions for this task. However, current methods struggle to establish complex dependencies between text and visual details, and have difficulty perceiving the spatial information of surgical scenes. To address these challenges, we propose a novel method, Surgical-MambaLLM, which is the first to combine Mamba2 with LLM in the surgical domain, that leverages Mamba2's ability to effectively capture cross-modal dependencies and perceive spatial information in surgical scenes, thereby enhancing the LLMs' understanding of surgical images. Specifically, we propose the Cross-modal Bidirectional Mamba2 Integration (CBMI) module to leverage Mamba2 for effective multimodal fusion, with its cross-modal integration capabilities. Additionally, tailored to the geometric characteristics of surgical scenes, we design the Surgical Instrument Perception (SIP) scanning mode for Mamba2 to scan the surgical images, enhancing the model's spatial understanding of the surgical scene. Extensive experiments demonstrate that our Surgical-MambaLLM model outperforms the state-of-the-art methods on the EndoVis17-VQLA and EndoVis18-VQLA datasets, significantly improving the performance of the Surgical-VQLA task.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-09-20T10:42:29Z</published>
+    <arxiv:comment>Early accepted by MICCAI2025</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Pengfei Hao</name>
+    </author>
+    <author>
+      <name>Hongqiu Wang</name>
+    </author>
+    <author>
+      <name>Shuaibo Li</name>
+    </author>
+    <author>
+      <name>Zhaohu Xing</name>
+    </author>
+    <author>
+      <name>Guang Yang</name>
+    </author>
+    <author>
+      <name>Kaishun Wu</name>
+    </author>
+    <author>
+      <name>Lei Zhu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2607.04378v1</id>
+    <title>SurgAM: Surgical Affordance Map Prediction with Multimodal Feature Fusion for Robot Autonomy</title>
+    <updated>2026-07-05T16:12:01Z</updated>
+    <link href="https://arxiv.org/abs/2607.04378v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2607.04378v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Surgical automation is being increasingly studied, yet bridging visual scene understanding with autonomous action planning remains a fundamental challenge. While much research effort has been made on scene perception (e.g., tool recognition and scene segmentation), understanding and predicting actionable possibilities for surgical automation is still underexplored. In this paper, we introduce surgical affordance prediction, which identifies actionable regions for fundamental surgical actions from visual data. Specifically, a novel adaptive feature fusion framework is proposed that leverages the complementary strengths of a self-supervised vision transformer encoder for its superior semantic understanding and a large-scale generative model encoder for its spatially-aware capability. Furthermore, we introduce a hierarchical prompt learning mechanism to adapt to varying procedural contexts. Finally, a scene-guided attention decoder is proposed to focus on critical surgical areas while suppressing background distractions. To validate the effectiveness, we established a new dataset, derived from publicly available surgical datasets with affordance annotations for three basic surgical actions: aspiration, clipping, and retraction. Extensive experiments demonstrate that our approach achieves state-of-the-art performance. Moreover, we validate our framework's applicability for downstream automation on a realistic lung and prostate phantom, and results show that the predicted affordance maps successfully enable autonomous surgical actions.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-07-05T16:12:01Z</published>
+    <arxiv:comment>ICRA 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Lei Song</name>
+    </author>
+    <author>
+      <name>Yonghao Long</name>
+    </author>
+    <author>
+      <name>Mengya Xu</name>
+    </author>
+    <author>
+      <name>Jiayi Geng</name>
+    </author>
+    <author>
+      <name>Xiuyuan Chen</name>
+    </author>
+    <author>
+      <name>Qi Dou</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2602.24138v2</id>
+    <title>Multimodal Optimal Transport for Training-free Temporal Segmentation in Surgical Robotics</title>
+    <updated>2026-05-20T06:04:15Z</updated>
+    <link href="https://arxiv.org/abs/2602.24138v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2602.24138v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Automated recognition of surgical phases and steps is a fundamental capability for intraoperative decision support, workflow automation, and skill assessment in robotic-assisted surgery. Existing approaches either depend on large-scale annotated surgical datasets or require expensive domain-specific pretraining on thousands of labeled videos, limiting their practical deployability across diverse robotic platforms and clinical environments. In this work, we propose TASOT (Text-Augmented Action Segmentation Optimal Transport), an annotation-free framework for surgical temporal segmentation that requires no task-specific annotations or surgical-domain pretraining. TASOT extends the Action Segmentation Optimal Transport (ASOT) formulation by incorporating temporally aligned textual descriptions generated directly from the input video, fusing visual and semantic cues within a unified unbalanced Gromov-Wasserstein optimal transport objective. Visual representations are extracted using DINOv3, while temporal captions produced by a vision-language model are encoded via CLIP and temporally aligned to individual frames, providing complementary semantic structure to the transport cost. We evaluate TASOT on three public surgical datasets and four benchmark settings spanning laparoscopic and robotic procedures, showing substantial improvements over the strongest zero-shot baselines: +18.9 F1 on Cholec80, +33.7 on AutoLaparo, +23.7 on StrasByPass70, and +4.5 on BernByPass70. These results suggest that fine-grained surgical workflow understanding in robotic settings can be achieved without manual training annotations or surgical-specific pretraining pipelines, offering a promising alternative for real-world robotic surgical systems.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-02-27T16:15:58Z</published>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Omar Mohamed</name>
+    </author>
+    <author>
+      <name>Edoardo Fazzari</name>
+    </author>
+    <author>
+      <name>Ayah Al-Naji</name>
+    </author>
+    <author>
+      <name>Hamdan Alhadhrami</name>
+    </author>
+    <author>
+      <name>Khalfan Hableel</name>
+    </author>
+    <author>
+      <name>Saif Alkindi</name>
+    </author>
+    <author>
+      <name>Ivan Laptev</name>
+    </author>
+    <author>
+      <name>Cesare Stefanini</name>
+    </author>
+  </entry>
+</feed>
