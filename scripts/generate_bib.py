@@ -35,9 +35,9 @@ def main():
         title = escape_bib(p.get("title", ""))
         authors = " and ".join(p.get("authors", ["Anonymous"]))
         year = p.get("year", 2024)
-        venue = p.get("venue", "arXiv")
+        venue = escape_bib(p.get("venue", "arXiv"))
         aid = p.get("arxiv_id", "")
-        doi = p.get("doi", "")
+        doi = escape_bib(p.get("doi", ""))
 
         entry_type = "article"
         if "arXiv" in venue or not venue:

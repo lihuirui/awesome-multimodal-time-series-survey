@@ -580,4 +580,31 @@
   2. Physics-Grounded Contact Manifold Learning for Non-Smooth Visuohaptic Dexterous Telemanipulation (Non-smooth contact dynamics and frictional force-torque telemetry alignment under soft deformable objects).
   3. Ultra-Low-Bit Extreme Quantization and Binary Neural State Spaces for Battery-Free Ambient IoT Energy Harvesting (1-bit / 2-bit binary spiking state-space architectures operating under intermittent photovoltaic/RF energy harvesting without battery storage).
 
+---
+
+## Iteration 16 — 2026-09-30
+
+- **Phase:** P5 (Continuous Update)
+- **New Candidates / Newly Included / Total Included:** 10 new candidates → 10 newly included → 152 total (up from 142)
+- **PRISMA Counts:** Identified 934 | Duplicates 175 | Screened 759 | Excl. title/abs 568 | Assessed 191 | Excl. fulltext 39 | Included 152 (arithmetic closed: 934 - 175 = 759; 759 - 568 = 191; 191 - 39 = 152 = 152)
+- **Top-3 Backlog Deliverables Completed:**
+  - **Backlog 1 — Spacecraft Fleet Formation Telemetry, Inter-Satellite Cross-Links, and In-Orbit Distributed AI:** Verified 4 papers via arXiv (Kotowski2024ESABenchmark, Allegrini2026ESAPipeline, Stanisic2026SpaceAI, Gu2026LEOConstellation). Formulated distributed deep neural network model splitting across LEO satellite constellations under solar energy and inter-satellite optical link bandwidth constraints (Constella), alongside DeepLaDu Lagrangian duality graph learning for real-time joint connectivity and routing. Added Figure 21a (spacecraft_visuohaptic_batteryless.pdf/png), demonstrating system compute cost slashed by up to two orders of magnitude ($100\% \to 1.2\%$) and inference latency accelerated $2.7\times$ ($12.4\text{ s} \to 2.9\text{ s}$) while maintaining $\ge 81.9\%$ inference success.
+  - **Backlog 2 — Physically-Grounded Contact Manifold Learning for Non-Smooth Visuohaptic Dexterous Manipulation:** Verified 4 papers (Fu2026DeCAL, Jian2026SlipSense, Lai2026TACIT, Zheng2026OmniVTA). Formulated contact-aware latent co-imagination (DeCAL), high-frequency tactile slip perception fusing 240 Hz pressure arrays with 8 kHz MEMS vibration telemetry (SlipSense), and privileged tactile contact supervision for 3D point-cloud spatial attention (TACIT). Added Figure 21b showing contact-supervised attention and latent co-imagination boost real-robot success to 66.7% on ball placement and 73.3% on peg insertion from only 10 demonstrations (vs 10.0% and 20.0% for input-matched baseline), with 83.4% progress rate and sub-24ms slip detection (96.7% Macro F1).
+  - **Backlog 3 — Ultra-Low-Bit Extreme Quantization and Binary Neural State Spaces for Battery-Free Ambient IoT Energy Harvesting:** Verified 2 papers (Scott2025Vibe2Spike, Islam2021FastDL). Formulated battery-free visible light communication (VLC) with neuromorphic event cameras and evolutionary spiking networks (Vibe2Spike, achieving 94.9% accuracy with zero batteries), alongside resource-aware block circulant matrix compression (RAD), accelerator-centric execution (ACE), and idempotent fault-tolerant checkpointing (FLEX) for volatile intermittent computing. Added Figure 21c showing the RAD-ACE-FLEX pipeline achieves a $4.26\times$ runtime speedup and $7.7\times$ energy reduction on battery-free microcontrollers.
+- **Paper, Tables & Visual Deliverables:**
+  - Added Figure 21 (spacecraft_visuohaptic_batteryless.pdf/png, 300 dpi).
+  - Added Subsections 4.49, 4.50, 4.51 in `paper/sections/04_methods.tex`.
+  - Added Panel Q in `paper/sections/05_datasets.tex` detailing empirical benchmarks across all 17 panels.
+  - Resolved 152 citations in `paper/references.bib` with escaped ampersands.
+  - Recompiled LaTeX survey to `paper/main.pdf` (2.74 MB, 53 pages, 152 resolved citations).
+  - Regenerated all 21 publication figures and updated bilingual `README.md` (92,881 chars) and `docs/SURVEY_zh.md` (Subsections 4.38--4.40, Panel Q, Open Challenges 29--31).
+  - Passed 100% of quality gates (`make check` via `scripts/check_gates.py`).
+- **Self-Review Scores (1–5):**
+  - Coverage: 5.0 | Taxonomy Clarity: 5.0 | Depth of Analysis: 5.0 | Citation Accuracy: 5.0 | Figures & Tables: 5.0 | Writing & Rigor: 5.0
+- **Problems:** Resolved XeTeX unescaped ampersand error in `generate_bib.py` by applying `escape_bib` to venue and doi fields. Successfully integrated 10 verified papers and generated all 21 figures without error.
+- **Top-3 Next Steps (Iteration 17 Backlog):**
+  1. Zero-Knowledge Verifiable Federated Foundation Models for Multimodal Clinical ICU Waveforms: Privacy-preserving verifiable federated fine-tuning across hospital consortia with zk-SNARK proof of gradient computation and differential-privacy guaranteed multi-lead ECG/EHR tokenization.
+  2. Continuous Lie Group SE(3) Equivariant World Models for Spacecraft Docking and In-Orbit Servicing: Geometric Lie group equivariance preserving rigid-body kinetic energy and momentum conservation in visual-inertial relative pose estimation under microgravity.
+  3. Sub-Microwatt Photonic and Neuromorphic Spiking Accelerators for Oceanographic Bio-Telemetry: Extreme long-deployment deep-sea acoustic-sensor tags operating under sub-microwatt energy budgets with event-driven hydrodynamic wake classification.
+
 

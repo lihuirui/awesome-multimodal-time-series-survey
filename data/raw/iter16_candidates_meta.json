@@ -1,0 +1,362 @@
+[
+  {
+    "arxiv_id": "2406.17826",
+    "bibkey": "Kotowski2024ESABenchmark",
+    "title": "European Space Agency Benchmark for Anomaly Detection in Satellite Telemetry",
+    "authors": [
+      "Krzysztof Kotowski",
+      "Christoph Haskamp",
+      "Jacek Andrzejewski",
+      "Bogdan Ruszczak",
+      "Jakub Nalepa",
+      "Daniel Lakey",
+      "Peter Collins",
+      "Aybike Kolmas",
+      "Mauro Bartesaghi",
+      "Jose Martinez-Heras",
+      "Gabriele De Canio"
+    ],
+    "year": 2024,
+    "venue": "arXiv 2024",
+    "doi": "10.48550/arXiv.2406.17826",
+    "modality_pair": "TS+Metadata",
+    "role_of_non_ts": "diagnostic_supervision",
+    "fusion_mechanism": "hierarchical_telemetry_stacking",
+    "backbone": "ESA-ADB Suite",
+    "tasks": [
+      "anomaly_detection",
+      "benchmark"
+    ],
+    "domains": [
+      "aerospace",
+      "satellite_telemetry"
+    ],
+    "code_url": "https://github.com/kplabs-pl/ESA-ADB",
+    "quality_score": 12,
+    "abstract": "Machine learning has vast potential to improve anomaly detection in satellite telemetry which is a crucial task for spacecraft operations. The European Space Agency Benchmark for Anomaly Detection in Satellite Telemetry (ESA-ADB) introduces real-life telemetry from ESA operational missions, establishing standardized evaluation protocols for multivariate spacecraft telemetry anomaly detection.",
+    "notes": "Introduces the official European Space Agency Benchmark (ESA-ADB) across multi-mission spacecraft telemetry, evaluating hierarchical anomaly detection protocols on operational satellite time series.",
+    "screen_date": "2026-09-30",
+    "status": "included",
+    "api_verified": true
+  },
+  {
+    "arxiv_id": "2605.06681",
+    "bibkey": "Allegrini2026ESAPipeline",
+    "title": "A Hierarchical Ensemble Pipeline for Anomaly Detection in ESA Satellite Telemetry",
+    "authors": [
+      "Lorenzo Riccardo Allegrini",
+      "Geremia Pompei"
+    ],
+    "year": 2026,
+    "venue": "arXiv 2026",
+    "doi": "10.48550/arXiv.2605.06681",
+    "modality_pair": "TS+Metadata",
+    "role_of_non_ts": "structural_decomposition",
+    "fusion_mechanism": "intra_cross_channel_ensemble",
+    "backbone": "Hierarchical-ESA-Ensemble",
+    "tasks": [
+      "anomaly_detection"
+    ],
+    "domains": [
+      "aerospace",
+      "satellite_telemetry"
+    ],
+    "code_url": null,
+    "quality_score": 11,
+    "abstract": "A hierarchical ensemble pipeline is introduced to address anomaly detection in multivariate telemetry data provided by European Space Agency (ESA). The method integrates shapelet-based and statistical feature extraction, per-channel modeling, intra-channel stacking, and cross-channel aggregation with two-level masking to prevent leakage.",
+    "notes": "Proposes hierarchical shapelet and statistical feature stacking with two-level leakage-preventing temporal masking for multi-channel spacecraft telemetry on ESA-ADB.",
+    "screen_date": "2026-09-30",
+    "status": "included",
+    "api_verified": true
+  },
+  {
+    "arxiv_id": "2609.05427",
+    "bibkey": "Stanisic2026SpaceAI",
+    "title": "Constella: A Novel Framework for Cost-Efficient Distributed AI Inference in LEO Space Data Centers",
+    "authors": [
+      "Andrija Stanisic",
+      "Milos Gravara",
+      "Juan Luis Herrera",
+      "Stefan Nastic"
+    ],
+    "year": 2026,
+    "venue": "arXiv 2026",
+    "doi": "10.48550/arXiv.2609.05427",
+    "modality_pair": "TS+Graph",
+    "role_of_non_ts": "topological_constraint",
+    "fusion_mechanism": "split_inference_telemetry_routing",
+    "backbone": "Constella-SplitNet",
+    "tasks": [
+      "distributed_inference",
+      "telemetry_routing"
+    ],
+    "domains": [
+      "aerospace",
+      "space_data_centers"
+    ],
+    "code_url": null,
+    "quality_score": 11,
+    "abstract": "Low-Earth Orbit (LEO) satellite constellations running in-orbit AI workloads face severe solar energy and inter-satellite link bandwidth constraints. Constella leverages DNN model splitting across processor and communicator satellites, optimizing in-orbit telemetry routing to reduce cost by up to two orders of magnitude and lower inference latency by up to 2.7x while maintaining >=81.9% inference success rate.",
+    "notes": "Distributes deep neural network inference across heterogeneous LEO satellite constellations under dynamic orbital telemetry and solar power constraints.",
+    "screen_date": "2026-09-30",
+    "status": "included",
+    "api_verified": true
+  },
+  {
+    "arxiv_id": "2601.21921",
+    "bibkey": "Gu2026LEOConstellation",
+    "title": "Duality-Guided Graph Learning for Real-Time Joint Connectivity and Routing in LEO Mega-Constellations",
+    "authors": [
+      "Zhouyou Gu",
+      "Jinho Choi",
+      "Tony Q. S. Quek",
+      "Jihong Park"
+    ],
+    "year": 2026,
+    "venue": "arXiv 2026",
+    "doi": "10.48550/arXiv.2601.21921",
+    "modality_pair": "TS+Graph",
+    "role_of_non_ts": "topological_constraint",
+    "fusion_mechanism": "lagrangian_duality_gnn",
+    "backbone": "DeepLaDu-GNN",
+    "tasks": [
+      "dynamic_routing",
+      "network_optimization"
+    ],
+    "domains": [
+      "aerospace",
+      "mega_constellations"
+    ],
+    "code_url": null,
+    "quality_score": 11,
+    "abstract": "Laser inter-satellite links (LISLs) of LEO mega-constellations experience rapid topological variations and pointing constraints. DeepLaDu proposes a Lagrangian duality-guided GNN that directly infers edge-level congestion prices in a single forward pass, boosting throughput by up to 20% over heuristic baselines with orders-of-magnitude faster computation.",
+    "notes": "Lagrangian duality-guided graph neural network inferring edge-level congestion prices for inter-satellite link telemetry and routing in dynamic LEO constellations.",
+    "screen_date": "2026-09-30",
+    "status": "included",
+    "api_verified": true
+  },
+  {
+    "arxiv_id": "2609.09119",
+    "bibkey": "Fu2026DeCAL",
+    "title": "DeCAL: Towards Physically-Grounded Dexterous Vision-Language-Action Models via Contact-Aware Latent Co-Imagination",
+    "authors": [
+      "Yankai Fu",
+      "Ning Chen",
+      "Junkai Zhao",
+      "Heng Zhang",
+      "Guocai Yao",
+      "Pengwei Wang",
+      "Zhongyuan Wang",
+      "Shanghang Zhang"
+    ],
+    "year": 2026,
+    "venue": "arXiv 2026",
+    "doi": "10.48550/arXiv.2609.09119",
+    "modality_pair": "TS+Vision+Text",
+    "role_of_non_ts": "multimodal_conditioning",
+    "fusion_mechanism": "contact_aware_gating_coimagination",
+    "backbone": "DeCAL-MoT",
+    "tasks": [
+      "robotic_manipulation",
+      "policy_learning"
+    ],
+    "domains": [
+      "embodied_robotics",
+      "dexterous_manipulation"
+    ],
+    "code_url": "https://github.com/aureleopku/DeCAL",
+    "quality_score": 12,
+    "abstract": "Dexterous manipulation involves contact-rich interactions with severe visual occlusions and non-smooth contact dynamics. DeCAL presents a Mixture-of-Transformers vision-language-action framework integrating adaptive contact-aware gating and visuo-tactile latent co-imagination, achieving 71% average success rate and 83.4% progress rate on challenging manipulation tasks.",
+    "notes": "Mixture-of-Transformers VLA integrating adaptive contact-aware gating and visuo-tactile latent co-imagination to resolve occlusions and contact non-smoothness in dexterous manipulation.",
+    "screen_date": "2026-09-30",
+    "status": "included",
+    "api_verified": true
+  },
+  {
+    "arxiv_id": "2609.15910",
+    "bibkey": "Jian2026SlipSense",
+    "title": "SlipSense: Multimodal Tactile Learning for Low-Latency and Generalized Slip Detection",
+    "authors": [
+      "Tong Jian",
+      "Aditya Thurvas Senthil Kumar",
+      "Xinyi Li",
+      "Ziling Chen",
+      "Tianyu Dai",
+      "Ali Sengul",
+      "Matteo Grimaldi",
+      "Wenjie Lu",
+      "Saleh Nabi",
+      "Tao Yu"
+    ],
+    "year": 2026,
+    "venue": "arXiv 2026",
+    "doi": "10.48550/arXiv.2609.15910",
+    "modality_pair": "TS+Vibration+Spatial",
+    "role_of_non_ts": "cross_frequency_fusion",
+    "fusion_mechanism": "causal_temporal_attention",
+    "backbone": "SlipSense-TacV5",
+    "tasks": [
+      "slip_detection",
+      "tactile_perception"
+    ],
+    "domains": [
+      "embodied_robotics",
+      "in_hand_manipulation"
+    ],
+    "code_url": null,
+    "quality_score": 12,
+    "abstract": "SlipSense fuses 240 Hz piezoresistive pressure arrays with 8 kHz 3-axis MEMS accelerometer vibration telemetry for low-latency slip detection. Evaluated on 1.4 million frames across 37 objects, it achieves 96.7% Macro F1 with false-positive rate <1.6%, detecting 76% of slip events within 23.1 ms with zero-shot transfer across robotic hands.",
+    "notes": "Fuses 240 Hz spatial piezoresistive arrays and 8 kHz MEMS accelerometer vibration time series via causal attention, achieving 96.7% Macro F1 and sub-24ms slip detection.",
+    "screen_date": "2026-09-30",
+    "status": "included",
+    "api_verified": true
+  },
+  {
+    "arxiv_id": "2609.24507",
+    "bibkey": "Lai2026TACIT",
+    "title": "TACIT: Tactile Contact Supervision for Spatial Attention in Dexterous Manipulation",
+    "authors": [
+      "Yanhou Lai",
+      "Fucai Zhu",
+      "Ruiqiang Wang",
+      "Koichi Hashimoto"
+    ],
+    "year": 2026,
+    "venue": "arXiv 2026",
+    "doi": "10.48550/arXiv.2609.24507",
+    "modality_pair": "TS+PointClouds",
+    "role_of_non_ts": "spatial_attention_supervision",
+    "fusion_mechanism": "contact_supervised_diffusion_policy",
+    "backbone": "TACIT-DP3",
+    "tasks": [
+      "dexterous_manipulation",
+      "spatial_attention"
+    ],
+    "domains": [
+      "embodied_robotics",
+      "visuotactile_manipulation"
+    ],
+    "code_url": null,
+    "quality_score": 11,
+    "abstract": "TACIT uses measured tactile contacts from teleoperation demonstrations to supervise Gaussian spatial attention targets over camera point clouds during training. Conditioning a visuotactile diffusion policy on the attended features boosts real-robot ball placement success from 10% to 66.7% and peg insertion from 20% to 73.3% from only ten demonstrations.",
+    "notes": "Supervises visual point-cloud spatial attention using measured tactile contact force events, increasing few-demonstration dexterous task success up to 73.3%.",
+    "screen_date": "2026-09-30",
+    "status": "included",
+    "api_verified": true
+  },
+  {
+    "arxiv_id": "2603.19201",
+    "bibkey": "Zheng2026OmniVTA",
+    "title": "OmniVTA: Visuo-Tactile World Modeling for Contact-Rich Robotic Manipulation",
+    "authors": [
+      "Yuhang Zheng",
+      "Songen Gu",
+      "Yupeng Zheng",
+      "Weize Li",
+      "Yujie Zang",
+      "Shuai Tian",
+      "Xiang Li",
+      "Ce Hao",
+      "Chen Gao",
+      "Si Liu",
+      "Haoran Li",
+      "Yilun Chen",
+      "Shuicheng Yan",
+      "Wenchao Ding"
+    ],
+    "year": 2026,
+    "venue": "arXiv 2026",
+    "doi": "10.48550/arXiv.2603.19201",
+    "modality_pair": "TS+Vision",
+    "role_of_non_ts": "world_model_state_prediction",
+    "fusion_mechanism": "two_stream_world_model",
+    "backbone": "OmniVTA-WM",
+    "tasks": [
+      "world_modeling",
+      "contact_rich_manipulation"
+    ],
+    "domains": [
+      "embodied_robotics",
+      "visuotactile_manipulation"
+    ],
+    "code_url": "https://github.com/mrsecant/OmniVTA",
+    "quality_score": 12,
+    "abstract": "OmniVTA introduces a predictive world-model framework for contact-rich robotic manipulation, accompanied by OmniViTac (21,000+ trajectories across 86 tasks). Integrates a self-supervised tactile encoder, a two-stream visuo-tactile dynamics world model, and a 60 Hz reflexive controller correcting tactile prediction deviations in closed-loop.",
+    "notes": "Visuo-tactile world model combining two-stream contact evolution forecasting with a 60 Hz closed-loop reflexive feedback controller evaluated on 21,000+ robotic trajectories.",
+    "screen_date": "2026-09-30",
+    "status": "included",
+    "api_verified": true
+  },
+  {
+    "arxiv_id": "2508.11640",
+    "bibkey": "Scott2025Vibe2Spike",
+    "title": "Vibe2Spike: Batteryless Wireless Tags for Vibration Sensing with Event Cameras and Spiking Networks",
+    "authors": [
+      "Danny Scott",
+      "William LaForest",
+      "Hritom Das",
+      "Ioannis Polykretis",
+      "Catherine D. Schuman",
+      "Charles Rizzo",
+      "James Plank",
+      "Sai Swaminathan"
+    ],
+    "year": 2025,
+    "venue": "arXiv 2025",
+    "doi": "10.48550/arXiv.2508.11640",
+    "modality_pair": "TS+EventStream",
+    "role_of_non_ts": "optical_spike_transduction",
+    "fusion_mechanism": "neuromorphic_vlc_snn",
+    "backbone": "Vibe2Spike-EONS",
+    "tasks": [
+      "vibration_sensing",
+      "activity_recognition"
+    ],
+    "domains": [
+      "ambient_iot",
+      "neuromorphic_sensing"
+    ],
+    "code_url": null,
+    "quality_score": 11,
+    "abstract": "Vibe2Spike introduces a batteryless vibration sensing tag using piezoelectric energy harvesting and LED visible light communication (VLC). Optical spikes are captured by neuromorphic event cameras and decoded via evolutionary spiking neural networks (SNNs), attaining 94.9% classification fitness across five industrial device classes with zero battery maintenance.",
+    "notes": "Batteryless piezoelectric vibration sensor transmitting optical pulse time series to neuromorphic event cameras for spiking neural network decoding.",
+    "screen_date": "2026-09-30",
+    "status": "included",
+    "api_verified": true
+  },
+  {
+    "arxiv_id": "2111.14051",
+    "bibkey": "Islam2021FastDL",
+    "title": "Enabling Fast Deep Learning on Tiny Energy-Harvesting IoT Devices",
+    "authors": [
+      "Sahidul Islam",
+      "Jieren Deng",
+      "Shanglin Zhou",
+      "Chen Pan",
+      "Caiwen Ding",
+      "Mimi Xie"
+    ],
+    "year": 2021,
+    "venue": "IEEE/ACM CODES+ISSS 2021",
+    "doi": "10.48550/arXiv.2111.14051",
+    "modality_pair": "TS+Power",
+    "role_of_non_ts": "energy_state_preservation",
+    "fusion_mechanism": "intermittent_structured_compression",
+    "backbone": "RAD-ACE-FLEX",
+    "tasks": [
+      "intermittent_computing",
+      "edge_inference"
+    ],
+    "domains": [
+      "ambient_iot",
+      "energy_harvesting"
+    ],
+    "code_url": null,
+    "quality_score": 11,
+    "abstract": "Addresses intermittent computing challenges for deep neural networks on battery-free energy-harvesting IoT devices. Combines RAD (block circulant structured pruning), ACE (low-energy vector accelerator mapping), and FLEX (intermittent execution state support), achieving up to 4.26x runtime reduction and 7.7x energy savings under volatile power supply.",
+    "notes": "Structured matrix compression and intermittent execution state management for deep sensor time series inference on batteryless energy-harvesting microcontrollers.",
+    "screen_date": "2026-09-30",
+    "status": "included",
+    "api_verified": true
+  }
+]

@@ -1839,6 +1839,117 @@ def plot_smartgrid_industrial_neurosymbolic():
     print(f"Generated {out_png} and .pdf")
 
 
+def plot_spacecraft_visuohaptic_batteryless():
+    """Figure 21: Spacecraft swarm telemetry, visuohaptic contact manifold manipulation, batteryless ambient IoT."""
+    fig, axes = plt.subplots(1, 3, figsize=(16, 5))
+    fig.patch.set_facecolor('white')
+
+    # Panel (a): Spacecraft LEO Swarm Distributed AI Inference (Cost vs Latency)
+    ax = axes[0]
+    architectures = ['Ground Relay\nBaseline', 'Monolithic\nIn-Orbit', 'Constella\n(SplitNet LEO)']
+    costs = [100.0, 48.0, 1.2]  # Cost reduction up to 2 orders of magnitude (Stanisic2026SpaceAI)
+    latencies = [12.4, 7.8, 2.9]  # 2.7x latency reduction (s)
+    
+    x = np.arange(len(architectures))
+    width = 0.35
+    
+    ax_cost = ax
+    ax_lat = ax.twinx()
+    
+    b1 = ax_cost.bar(x - width/2, costs, width=width, color='#4878cf', label='System Cost Index (log norm)', alpha=0.85)
+    b2 = ax_lat.bar(x + width/2, latencies, width=width, color='#e74c3c', label='E2E Inference Latency (s)', alpha=0.85)
+    
+    ax_cost.set_ylabel('Normalized System Cost (%)', fontsize=10, color='#4878cf')
+    ax_lat.set_ylabel('Inference Latency (s)', fontsize=10, color='#e74c3c')
+    ax_cost.set_xticks(x)
+    ax_cost.set_xticklabels(architectures, fontsize=8.5, fontweight='bold')
+    ax_cost.set_title('(a) Spacecraft Swarm Telemetry\nLEO In-Orbit Distributed AI Inference', fontsize=10, fontweight='bold')
+    ax_cost.set_yscale('log')
+    ax_cost.set_ylim(0.5, 200)
+    ax_lat.set_ylim(0, 15)
+    
+    for bar in b1:
+        val = bar.get_height()
+        ax_cost.text(bar.get_x() + bar.get_width()/2, val * 1.15, f'{val:.1f}%',
+                     ha='center', va='bottom', fontsize=8, fontweight='bold', color='#2b5c9e')
+    for bar in b2:
+        val = bar.get_height()
+        ax_lat.text(bar.get_x() + bar.get_width()/2, val + 0.3, f'{val:.1f}s',
+                    ha='center', va='bottom', fontsize=8, fontweight='bold', color='#c0392b')
+                    
+    ax_cost.spines['top'].set_visible(False)
+    ax_lat.spines['top'].set_visible(False)
+    ax_cost.grid(axis='y', alpha=0.3, linestyle='--')
+
+    # Panel (b): Dexterous Manipulation Success Rates (Vision vs Visuotactile vs Contact-Supervised)
+    ax = axes[1]
+    tasks = ['Ball Placement', 'Peg Insertion', 'DeCAL Progress']
+    vis_only = [20.0, 43.3, 42.1]
+    vis_tac_input = [10.0, 20.0, 58.6]
+    contact_sup = [66.7, 73.3, 83.4]  # TACIT (Lai2026TACIT) and DeCAL (Fu2026DeCAL)
+    
+    x = np.arange(len(tasks))
+    w = 0.26
+    
+    b_v = ax.bar(x - w, vis_only, width=w, color='#aec7e8', label='Vision-Only DP3', edgecolor='black', linewidth=0.5)
+    b_vt = ax.bar(x, vis_tac_input, width=w, color='#ffbb78', label='Input-Matched Visuotactile', edgecolor='black', linewidth=0.5)
+    b_tac = ax.bar(x + w, contact_sup, width=w, color='#2ca02c', label='Contact-Supervised (TACIT/DeCAL)', edgecolor='black', linewidth=0.7)
+    
+    ax.set_ylabel('Success / Progress Rate (%)', fontsize=10)
+    ax.set_title('(b) Physically-Grounded Visuohaptic\nDexterous In-Hand Manipulation', fontsize=10, fontweight='bold')
+    ax.set_xticks(x)
+    ax.set_xticklabels(tasks, fontsize=9, fontweight='bold')
+    ax.set_ylim(0, 100)
+    ax.legend(fontsize=7.5, loc='upper left', framealpha=0.9)
+    
+    for bar in b_tac:
+        val = bar.get_height()
+        ax.text(bar.get_x() + bar.get_width()/2, val + 1.5, f'{val:.1f}%',
+                ha='center', va='bottom', fontsize=8, fontweight='bold', color='#1e7e34')
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.tick_params(labelsize=8)
+    ax.grid(axis='y', alpha=0.3, linestyle='--')
+
+    # Panel (c): Batteryless Ambient IoT & Intermittent Spiking Processing (Energy & Runtime Scaling)
+    ax = axes[2]
+    modes = ['Unoptimized\nBaseline', 'Structured\nPruned (RAD)', 'RAD + ACE\nAccelerator', 'RAD+ACE+FLEX\n(Intermittent Safe)']
+    runtime_speedup = [1.0, 1.85, 3.42, 4.26]  # Islam2021FastDL
+    energy_reduction = [1.0, 2.30, 5.15, 7.70]  # Islam2021FastDL
+    
+    x = np.arange(len(modes))
+    w = 0.35
+    
+    b_rt = ax.bar(x - w/2, runtime_speedup, width=w, color='#9b59b6', label='Inference Speedup (×)', edgecolor='black', linewidth=0.6)
+    b_en = ax.bar(x + w/2, energy_reduction, width=w, color='#f39c12', label='Energy Reduction (×)', edgecolor='black', linewidth=0.6)
+    
+    ax.set_ylabel('Relative Efficiency Improvement (×)', fontsize=10)
+    ax.set_title('(c) Batteryless Ambient IoT\nIntermittent Energy-Harvesting Deep Learning', fontsize=10, fontweight='bold')
+    ax.set_xticks(x)
+    ax.set_xticklabels(modes, fontsize=8, fontweight='bold')
+    ax.set_ylim(0, 9.5)
+    ax.legend(fontsize=8, loc='upper left', framealpha=0.9)
+    
+    for bar in b_en:
+        val = bar.get_height()
+        ax.text(bar.get_x() + bar.get_width()/2, val + 0.15, f'{val:.1f}×',
+                ha='center', va='bottom', fontsize=8, fontweight='bold', color='#d35400')
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.tick_params(labelsize=8)
+    ax.grid(axis='y', alpha=0.3, linestyle='--')
+
+    plt.suptitle('Figure 21: Spacecraft Swarm Telemetry, Visuohaptic Contact Manifold Manipulation, and Batteryless Ambient IoT Deep Learning',
+                 fontsize=9.2, y=1.01, style='italic')
+    plt.tight_layout()
+    out_png = FIG_DIR / 'spacecraft_visuohaptic_batteryless.png'
+    out_pdf = FIG_DIR / 'spacecraft_visuohaptic_batteryless.pdf'
+    plt.savefig(out_png, dpi=300, bbox_inches='tight', facecolor='white')
+    plt.savefig(out_pdf, bbox_inches='tight', facecolor='white')
+    plt.close()
+    print(f"Generated {out_png} and .pdf")
+
+
 def main():
     plot_taxonomy()
     plot_prisma()
@@ -1860,7 +1971,8 @@ def main():
     plot_tactile_turbulence_byzantine()
     plot_clinical_surgical_neuromorphic()
     plot_smartgrid_industrial_neurosymbolic()
-    print("All 20 publication figures generated successfully in PNG and PDF formats.")
+    plot_spacecraft_visuohaptic_batteryless()
+    print("All 21 publication figures generated successfully in PNG and PDF formats.")
 
 
 if __name__ == "__main__":

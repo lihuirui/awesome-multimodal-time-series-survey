@@ -63,10 +63,10 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
 
 ### 🔍 PRISMA 2020 Systematic Review Counts
 
-- **Total Records Identified:** 884 (Databases: 599, Snowballing: 285)
-- **Deduplicated & Screened:** 719 (Duplicates removed: 165)
-- **Full-Text Assessed:** 181 (Excluded with documented rationale: 39)
-- **Included in Systematic Synthesis:** **142** studies
+- **Total Records Identified:** 934 (Databases: 634, Snowballing: 300)
+- **Deduplicated & Screened:** 759 (Duplicates removed: 175)
+- **Full-Text Assessed:** 191 (Excluded with documented rationale: 39)
+- **Included in Systematic Synthesis:** **152** studies
 
 ![PRISMA 2020 Flow](paper/figures/prisma_flow.png)
 
@@ -276,6 +276,31 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Text` | *Fusion:* `prompt_guided_policy_synthesis` | *Role:* `formal_specification`  
   *Highlight:* Translates high-level textual requirements into temporal reward specifications for quadruped robot locomotion over non-stationary rough terrain time series.  
 
+- **[A Hierarchical Ensemble Pipeline for Anomaly Detection in ESA Satellite Telemetry](https://arxiv.org/abs/2605.06681)** (arXiv 2026 2026)  
+  *Authors:* Lorenzo Riccardo Allegrini, Geremia Pompei  
+  *Modality:* `TS+Metadata` | *Fusion:* `intra_cross_channel_ensemble` | *Role:* `structural_decomposition`  
+  *Highlight:* Proposes hierarchical shapelet and statistical feature stacking with two-level leakage-preventing temporal masking for multi-channel spacecraft telemetry on ESA-ADB.  
+
+- **[Constella: A Novel Framework for Cost-Efficient Distributed AI Inference in LEO Space Data Centers](https://arxiv.org/abs/2609.05427)** (arXiv 2026 2026)  
+  *Authors:* Andrija Stanisic, Milos Gravara, Juan Luis Herrera et al.  
+  *Modality:* `TS+Graph` | *Fusion:* `split_inference_telemetry_routing` | *Role:* `topological_constraint`  
+  *Highlight:* Distributes deep neural network inference across heterogeneous LEO satellite constellations under dynamic orbital telemetry and solar power constraints.  
+
+- **[Duality-Guided Graph Learning for Real-Time Joint Connectivity and Routing in LEO Mega-Constellations](https://arxiv.org/abs/2601.21921)** (arXiv 2026 2026)  
+  *Authors:* Zhouyou Gu, Jinho Choi, Tony Q. S. Quek et al.  
+  *Modality:* `TS+Graph` | *Fusion:* `lagrangian_duality_gnn` | *Role:* `topological_constraint`  
+  *Highlight:* Lagrangian duality-guided graph neural network inferring edge-level congestion prices for inter-satellite link telemetry and routing in dynamic LEO constellations.  
+
+- **[SlipSense: Multimodal Tactile Learning for Low-Latency and Generalized Slip Detection](https://arxiv.org/abs/2609.15910)** (arXiv 2026 2026)  
+  *Authors:* Tong Jian, Aditya Thurvas Senthil Kumar, Xinyi Li et al.  
+  *Modality:* `TS+Vibration+Spatial` | *Fusion:* `causal_temporal_attention` | *Role:* `cross_frequency_fusion`  
+  *Highlight:* Fuses 240 Hz spatial piezoresistive arrays and 8 kHz MEMS accelerometer vibration time series via causal attention, achieving 96.7% Macro F1 and sub-24ms slip detection.  
+
+- **[TACIT: Tactile Contact Supervision for Spatial Attention in Dexterous Manipulation](https://arxiv.org/abs/2609.24507)** (arXiv 2026 2026)  
+  *Authors:* Yanhou Lai, Fucai Zhu, Ruiqiang Wang et al.  
+  *Modality:* `TS+PointClouds` | *Fusion:* `contact_supervised_diffusion_policy` | *Role:* `spatial_attention_supervision`  
+  *Highlight:* Supervises visual point-cloud spatial attention using measured tactile contact force events, increasing few-demonstration dexterous task success up to 73.3%.  
+
 - **[Foundation models for time series forecasting: Application in conformal prediction](https://arxiv.org/abs/2507.08858)** (arXiv 2025 2025) • [Code](https://github.com/Ekimetrics/foundation-models-conformal-prediction)  
   *Authors:* Sami Achour, Yassine Bouher, Duong Nguyen et al.  
   *Modality:* `TS+Text` | *Fusion:* `conformalized_foundation_adaptation` | *Role:* `context_condition`  
@@ -344,6 +369,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Text` | *Fusion:* `reprogramming_patching` | *Role:* `context_condition`  
   *Highlight:* Seminal framework deploying foundation model tokenization on microsecond synchro-waveform streams for event identification in high-renewable grids.  
 
+- **[European Space Agency Benchmark for Anomaly Detection in Satellite Telemetry](https://arxiv.org/abs/2406.17826)** (arXiv 2024 2024) • [Code](https://github.com/kplabs-pl/ESA-ADB)  
+  *Authors:* Krzysztof Kotowski, Christoph Haskamp, Jacek Andrzejewski et al.  
+  *Modality:* `TS+Metadata` | *Fusion:* `hierarchical_telemetry_stacking` | *Role:* `diagnostic_supervision`  
+  *Highlight:* Introduces the official European Space Agency Benchmark (ESA-ADB) across multi-mission spacecraft telemetry, evaluating hierarchical anomaly detection protocols on operational satellite time series.  
+
 - **[Time-LLM: Time Series Forecasting by Reprogramming Large Language Models](https://arxiv.org/abs/2310.01728)** (ICLR 2024 2023) • [Code](https://github.com/KimMeen/Time-LLM)  
   *Authors:* Ming Jin, Shiyu Wang, Lintao Ma et al.  
   *Modality:* `TS+Text` | *Fusion:* `reprogramming_patching` | *Role:* `context_condition`  
@@ -379,6 +409,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Modality:* `TS+Text` | *Fusion:* `reprogramming_patching` | *Role:* `context_condition`  
   *Highlight:* Language-empowered cross-domain foundation model masking and learning domain-specific language prompts to unify multi-source forecasting.  
 
+- **[Enabling Fast Deep Learning on Tiny Energy-Harvesting IoT Devices](https://arxiv.org/abs/2111.14051)** (IEEE/ACM CODES+ISSS 2021 2021)  
+  *Authors:* Sahidul Islam, Jieren Deng, Shanglin Zhou et al.  
+  *Modality:* `TS+Power` | *Fusion:* `intermittent_structured_compression` | *Role:* `energy_state_preservation`  
+  *Highlight:* Structured matrix compression and intermittent execution state management for deep sensor time series inference on batteryless energy-harvesting microcontrollers.  
+
 ### Vision-Language & Visual Transcoding
 
 - **[TriTS: Time Series Forecasting from a Multimodal Perspective](https://arxiv.org/abs/2604.16748)** (arXiv 2026 2026) • [Code](https://github.com/XiangAo/TriTS)  
@@ -405,6 +440,16 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Taha Bouzid, Lars Lindemann, Dimos V. Dimarogonas  
   *Modality:* `TS+Vision+Text` | *Fusion:* `priority_stl_conformal_planner` | *Role:* `formal_specification`  
   *Highlight:* Combines multimodal trajectory forecasting with priority-ordered Signal Temporal Logic specifications to ensure provable vehicle safety under non-stationary traffic uncertainty.  
+
+- **[DeCAL: Towards Physically-Grounded Dexterous Vision-Language-Action Models via Contact-Aware Latent Co-Imagination](https://arxiv.org/abs/2609.09119)** (arXiv 2026 2026) • [Code](https://github.com/aureleopku/DeCAL)  
+  *Authors:* Yankai Fu, Ning Chen, Junkai Zhao et al.  
+  *Modality:* `TS+Vision+Text` | *Fusion:* `contact_aware_gating_coimagination` | *Role:* `multimodal_conditioning`  
+  *Highlight:* Mixture-of-Transformers VLA integrating adaptive contact-aware gating and visuo-tactile latent co-imagination to resolve occlusions and contact non-smoothness in dexterous manipulation.  
+
+- **[OmniVTA: Visuo-Tactile World Modeling for Contact-Rich Robotic Manipulation](https://arxiv.org/abs/2603.19201)** (arXiv 2026 2026) • [Code](https://github.com/mrsecant/OmniVTA)  
+  *Authors:* Yuhang Zheng, Songen Gu, Yupeng Zheng et al.  
+  *Modality:* `TS+Vision` | *Fusion:* `two_stream_world_model` | *Role:* `world_model_state_prediction`  
+  *Highlight:* Visuo-tactile world model combining two-stream contact evolution forecasting with a 60 Hz closed-loop reflexive feedback controller evaluated on 21,000+ robotic trajectories.  
 
 - **[Time-VLM: Exploring Multimodal Vision-Language Models for Augmented Time Series Forecasting](https://arxiv.org/abs/2502.04395)** (ICML 2025 2025) • [Code](https://github.com/decisionintelligence/Time-VLM)  
   *Authors:* Siru Zhong, Weilin Ruan, Ming Jin et al.  
@@ -492,6 +537,11 @@ The survey synthesizes existing research across four orthogonal dimensions: **Mo
   *Authors:* Di Zhang, Chengbo Yuan, Chuan Wen et al.  
   *Modality:* `TS+Vision+Tactile Telemetry` | *Fusion:* `kinesthetic_visuotactile_cross_attention` | *Role:* `force_torque_proprioceptive_anchor`  
   *Highlight:* Kinesthetic demonstration framework capturing high-density tactile array telemetry aligned with multi-view vision and joint proprioception for fine-grained contact-rich dexterous manipulation.  
+
+- **[Vibe2Spike: Batteryless Wireless Tags for Vibration Sensing with Event Cameras and Spiking Networks](https://arxiv.org/abs/2508.11640)** (arXiv 2025 2025)  
+  *Authors:* Danny Scott, William LaForest, Hritom Das et al.  
+  *Modality:* `TS+EventStream` | *Fusion:* `neuromorphic_vlc_snn` | *Role:* `optical_spike_transduction`  
+  *Highlight:* Batteryless piezoelectric vibration sensor transmitting optical pulse time series to neuromorphic event cameras for spiking neural network decoding.  
 
 - **[MTSA-SNN: A Multi-modal Time Series Analysis Model Based on Spiking Neural Network](https://arxiv.org/abs/2402.05423)** (arXiv 2024 2024) • [Code](https://github.com/Chenngzz/MTSA-SNN)  
   *Authors:* Chengzhi Liu, Zheng Tao, Zihong Luo et al.  

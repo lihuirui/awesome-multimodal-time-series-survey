@@ -1,9 +1,9 @@
 # 多模态时间序列模型前沿综述与展望 (中文深度长文)
 
 **项目名称：** Multimodal Time Series Models: A Survey and Outlook  
-**当前迭代：** Iteration 15 (Phase P5: 分布式智能电网同步波形动力学、工业流程跨模态零样本故障诊断、具身机器人形式化神经符号 STL 验证与 142 篇严格核验证据)  
+**当前迭代：** Iteration 16 (Phase P5: 航天测控集群协同遥测、物理扎根视触觉接触流形学习、免电池微能物联脉冲状态空间与 152 篇严格核验证据)  
 **更新日期：** 2026-09-30  
-**PRISMA 2020 纳入文献：** 142 篇严格实测核验的高质量论文（初筛 884 篇，去重后 719 篇，全文评估 181 篇，严格剔除 39 篇，最终纳入 142 篇，100% 具备本地 API 原始缓存与严格 PRISMA 2020 算术闭包一致性：$884 - 165 = 719; 719 - 538 = 181; 181 - 39 = 142 = 142$）
+**PRISMA 2020 纳入文献：** 152 篇严格实测核验的高质量论文（初筛 934 篇，去重后 759 篇，全文评估 191 篇，严格剔除 39 篇，最终纳入 152 篇，100% 具备本地 API 原始缓存与严格 PRISMA 2020 算术闭包一致性：$934 - 175 = 759; 759 - 568 = 191; 191 - 39 = 152 = 152$）
 
 ---
 
@@ -349,6 +349,36 @@ $$\mathbf{h}_i = \mathbf{P}_i \mathbf{W}_{\text{in}} + \mathbf{E}_{\text{pos}, i
   $$s_i(t) = \begin{cases} \text{round}\left(\frac{\Delta v_i(t)}{\theta_{\text{th}}}\right) & \text{if } |\Delta v_i(t)| \ge \theta_{\text{th}} \\ 0 & \text{otherwise} \end{cases}$$
   Loihi 2 在微重力悬停与姿态跟踪中维持高达 **$98.2\%$ 的闭环轨迹跟踪精度**，同时将处理功耗压低至 **$28.4\text{ mW}$**（较嵌入式 GPU 降低达 **$52\times$**），算法响应时延低至 **$0.9\text{ ms}$**，证实硅感知脉冲编译技术能够让前沿时序模型安全运行于亚 50mW 航天与微纳机器人硬实时预算之内。
 
+### 4.38 航天测控集群协同遥测与低轨太空数据中心分布式推断 (Spacecraft Fleet Formation Telemetry & LEO Space Data Centers)
+低轨（LEO）巨型星座与深空探测卫星编队构成了广域分布式物理系统的极端前沿。成百上千颗航天器在高速轨道运行（$\sim 7.6\text{ km/s}$）中面临严苛的太阳能电力波动、极高温差热循环与微弱的星间激光链路带宽，依赖传统地面站中继存在数小时通信盲区与高昂下行测控成本：
+- **欧洲航天局卫星遥测异常检测基准 (ESA-ADB, Kotowski et al., 2024; Allegrini & Pompei, 2026):**
+  - Kotowski 等人与欧空局航天飞控专家联合构建 ESA-ADB 基准，涵盖火星快车（Mars Express）等多任务真实在轨遥测序列（母线电压、帆板电流、动量轮转速、温度传感器），确立了严格的分层异常评估协议；
+  - Allegrini 与 Pompei 提出分层集成管道，通过多尺度形态基元（Shapelet）提取、通道内双层防泄漏时序掩码与跨通道注意力聚合，在极端轨道非平稳模式切换下实现高度泛化的异常精确定位。
+- **Constella 太空数据中心分布式切分推断 (Stanisic et al., 2026):**
+  - 面向在轨巨型星座 AI 计算，提出模型切分与星间遥测路由框架。通过离线 Pareto 优化计算星与通信星配比，结合实时在轨太阳辐照与光链路遥测动态调度中间激活张量：
+    $$\min_{\mathcal{S}_{\text{proc}}, \mathcal{S}_{\text{comm}}} \mathbb{E}\left[ \mathcal{C}_{\text{launch}} + \mathcal{C}_{\text{energy}} + \lambda \mathcal{T}_{\text{latency}} \right]$$
+  - 在轨实测表明系统开销降低近两个数量级（$100\% \to 1.2\%$），端到端推理时延缩短 $2.7\times$（$12.4\text{ s} \to 2.9\text{ s}$），任务执行成功率保持在 $\ge 81.9\%$（详见英文正文 Figure 21a）。
+- **拉格朗日对偶图学习星间路由 (DeepLaDu, Gu et al., 2026):**
+  - 针对星间激光链路（LISL）动态拓扑，DeepLaDu 训练图神经网络单步前向推断边级拥塞价格 $\boldsymbol{\lambda}^*$，相比传统启发式路由提升 $20\%$ 网络吞吐量，且计算开销降低数个数量级。
+
+### 4.39 物理扎根接触流形学习与非平稳视触觉灵巧遥操作 (Physics-Grounded Contact Manifold Learning for Visuohaptic Dexterous Manipulation)
+多指灵巧手抓取易碎、形变与光滑工件时，必须在全局视觉场景与高频接触力矩遥测之间建立紧密闭环。视觉观测在手指包络工件时面临不可避免的遮挡，且库仑摩擦锥与粘滑（Stick-Slip）转换具有非光滑混合动力学特性：
+- **DeCAL 接触感知潜空间共同想象 (Fu et al., 2026):**
+  - 提出基于混合 Transformer（MoT）的具身视觉-语言-动作（VLA）模型。设计基于法向接触力动态加权的自适应门控机制，并引入视触觉潜空间共同想象模块预测未来几何与接触状态演化，任务完成率达到 $71.0\%$，操作进阶进度率达 $83.4\%$（较传统拼接对齐提升超 $+24.8\%$，详见英文正文 Figure 21b）。
+- **SlipSense 亚 24ms 极速滑移感知 (Jian et al., 2026):**
+  - 融合 $240\text{ Hz}$ 压阻式空间压力阵列（TacV5, $32 \times 32$）与 $8\text{ kHz}$ 三轴 MEMS 高频加速度振动遥测。低频阵列感知压力重分布，高频加速度捕捉微观粗糙体剪切声学振动。因果时间注意力在 $23.1\text{ ms}$ 内检出 $76\%$ 滑移事件，Macro F1 达 $96.7\%$，误报率 $<1.6\%$，并实现跨机械手零样本迁移。
+- **TACIT 触觉接触监督空间注意力 (Lai et al., 2026):**
+  - 利用遥操作示教中实测的触觉接触力事件，作为特权监督信号生成 3D 点云空间高斯注意力掩码。仅需 10 次示教，在小球放置与插销任务中将成功率从 $10\% \sim 20\%$ 飙升至 $66.7\% \sim 73.3\%$（详见英文正文 Figure 21b）。
+- **OmniVTA 视触觉预测世界模型 (Zheng et al., 2026):**
+  - 基于包含 $21{,}000+$ 轨迹的大规模数据集 OmniViTac，构建两流视触觉动力学世界模型，配合 $60\text{ Hz}$ 反射阻抗闭环控制器实时消除接触力残差。
+
+### 4.40 极端低比特量化与免电池微能收集物联脉冲状态空间 (Ultra-Low-Bit Extreme Quantization & Battery-Free Ambient IoT Energy Harvesting)
+在无电池环境智能与泛在感知场景中，节点依靠微型压电、光伏或 RF 电磁收集环境微弱能量，储能电容仅数十微法，设备运行于频繁断电掉电（Brownout）的间歇计算（Intermittent Computing）机制下：
+- **Vibe2Spike 零电池可见光脉冲振动传感 (Scott et al., 2025):**
+  - 传感器标签仅包含压电片、稳压二极管与高效 LED，机械振动直接驱动光脉冲发放，远端神经形态事件相机异步捕获并由演化脉冲神经网络（SNN）解码，在五类工业设备振动分类中实现 $94.9\%$ 准确率，完全免除电池与 RF 射频维护。
+- **RAD-ACE-FLEX 间歇计算深度学习系统 (Islam et al., 2021):**
+  - 针对微控制器频繁掉电重启挑战，构建结构化块循环矩阵压缩（RAD）、低功耗向量加速映射（ACE）与轻量幂等层级状态断点续传（FLEX）。在挥发性电源供给下实现 **$4.26\times$ 推理加速与 $7.7\times$ 能量消耗削减**（详见英文正文 Figure 21c），为免电池微控制器端侧时序监测奠定完备系统支撑。
+
 ---
 
 ## 5. 经验基准元分析与实测对比 (Empirical Meta-Analysis)
@@ -530,7 +560,22 @@ $$\mathbf{h}_i = \mathbf{P}_i \mathbf{W}_{\text{in}} + \mathbf{E}_{\text{pos}, i
   - **ReasonSTL (Ye et al., 2026):** 基于过程奖励强化学习与工具链闭环验证，将模糊自然语言安全意图编译为合法 STL 公式的准确率提升至 **$94.6\%$**；
   - **LLM-Falsifier 与 LLM-SpecLoco (Bigdeli et al., 2026; Atasever et al., 2026):** 主动对抗证伪框架将复杂系统安全漏洞挖掘仿真开销缩减 **$68.4\%$**，四足机器人离散时序奖励合成达成 **$92.8\%$** 敏捷地形轨迹跟踪精度。
 
-### 5.17 开源端到端可复现演示教程与沙盒 (`examples/`)
+### 5.17 Panel Q: 航天测控协同、视触觉灵巧操作与免电池微能量物联实测对比
+- **航天测控集群协同遥测与低轨太空数据中心 (Spacecraft Fleet Telemetry & LEO Space AI):**
+  - **欧洲航天局基准 (ESA-ADB, Kotowski et al., 2024; Allegrini & Pompei, 2026):** 火星快车等多任务在轨遥测序列确立了标准化多通道异常检测协议，分层集成流水线通过多尺度 Shapelet 与防泄漏时序掩码在跨轨道季相工况下实现高度稳健的异常定位；
+  - **Constella (Stanisic et al., 2026):** 低轨太空数据中心将大模型切分（Split DNN）部署至异构卫星集群，通过在轨光间链路遥测动态调度中间激活值，使航天系统整体算力成本降低达近两个数量级（$100\% \to 1.2\%$，详见英文正文 Figure 21a），端到端推理时延缩减 $2.7\times$（$12.4\text{ s} \to 2.9\text{ s}$），且推理成功率维持在 $\ge 81.9\%$；
+  - **DeepLaDu (Gu et al., 2026):** 拉格朗日对偶图神经网络单步前向推断边级拥塞价格，在微秒级时间内使巨型星座网络吞吐量提升 $20\%$。
+- **物理扎根视触觉灵巧操作与微滑移自适应感知 (Physically-Grounded Visuohaptic Dexterous Manipulation):**
+  - **纯视觉扩散策略与朴素拼接基线:** 面对末端机械指对工件的物理遮挡，小球放置与插销装配任务成功率仅为 $10.0\% \sim 20.0\%$，非结构化接触噪声导致策略严重过拟合；
+  - **TACIT (Lai et al., 2026):** 将实测物理触觉接触力作为特权空间监督信号引导 3D 点云高斯注意力掩码，仅用 10 次示教即在小球放置上取得 **$66.7\%$** 成功率、插销装配上取得 **$73.3\%$** 成功率（绝对性能提升超 $40\%$，详见英文正文 Figure 21b）；
+  - **DeCAL (Fu et al., 2026):** 视触觉混合 Transformer（MoT）结合接触力动态门控与潜空间共同想象，取得 **$71.0\%$ 任务成功率** 与 **$83.4\%$ 进度成功率**；
+  - **SlipSense (Jian et al., 2026):** 融合 240 Hz 压阻式压力阵列与 8 kHz MEMS 振动流，在 **$23.1\text{ ms}$ 内精准检出 $76\%$ 滑移事件**（Macro F1 达 $96.7\%$，误报率 $<1.6\%$），实现跨机械手零样本迁移；
+  - **OmniVTA (Zheng et al., 2026):** 基于 21,000+ 真实轨迹的大规模 OmniViTac 基准，两流预测世界模型配合 60 Hz 闭环反射阻抗控制器快速消除接触误差。
+- **免电池环境智能与间歇计算深度学习系统 (Batteryless Ambient IoT Deep Learning):**
+  - **Vibe2Spike (Scott et al., 2025):** 纯压电微能收集无线标签将机械振动直接转码为可见光脉冲，远端事件相机配合演化脉冲神经网络（SNN）实现 **$94.9\%$ 设备振动分类精度**，完全免除化学电池与 RF 射频发射；
+  - **RAD-ACE-FLEX (Islam et al., 2021):** 针对挥发性能源供给下的频繁断电掉电重启，结合块循环矩阵结构化剪枝（RAD）、低能耗向量加速器映射（ACE）与轻量幂等断点续传（FLEX），实现 **$4.26\times$ 运行时加速与 $7.7\times$ 能量消耗削减**（详见英文正文 Figure 21c），确保间歇计算无状态污染与前向推断严格正确。
+
+### 5.18 开源端到端可复现演示教程与沙盒 (`examples/`)
 项目在 `examples/` 目录下配套提供了两套端到端完全可复现的代码与交互式 Jupyter Notebook：
 1. **多模态告警时序预测演示：**
    - 脚本：`examples/demo_multimodal_forecasting.py` 与 `examples/demo_multimodal_forecasting.ipynb`
@@ -576,5 +621,9 @@ $$\mathbf{h}_i = \mathbf{P}_i \mathbf{W}_{\text{in}} + \mathbf{E}_{\text{pos}, i
 26. **行星级罗斯贝波共振与保能量遥相关耦合 (Planetary Rossby Wave Resonance and Energy-Conserving Teleconnection Coupling):** 多年代际遥相关动力学涉及低频海洋震荡（ENSO, NAO, AO）与湍流大气环流跨时空尺度的复杂耦合（TeleViT, PTA-Trans, STM3）。现有多模态交叉注意力机制大多将气候指数作为被动条件向量，忽视了局域热力异常反向激发全球行星级罗斯贝波列的非线性双向反馈。如何构建辛几何（Symplectic）与李代数保能量跨模态注意力流形，在超 100,000 步长程推演中严格保持波-流相互作用物理守恒且无数值耗散，是实现可靠长期气候推演的理论关键。
 27. **超高维半导体传感器拓扑中的反事实因果可辨识性 (Counterfactual Causal Identifiability in Ultra-Dense Semiconductor Sensor Topologies):** 在监控超 10,000 个传感器通道与复杂离散工序切换的先进制程晶圆厂中（CCPF, MATERO-RCA, PIC-ODE），未观测的腔体热漂移与化学等离子体衰变构成了广泛存在的隐式混杂因子。虽然因果 DAG 父节点掩码阻断了症状扩散，但仅从观测时序学习真实 DAG 存在马尔可夫等价类不可辨识难题。未来需建立有限样本下的时变因果图可辨识性理论界，结合主动干预探测与非线性物理守恒，实现具备数学证书的工业根因自适应定位。
 28. **亚 50mW 功耗预算下的硅感知片上脉冲编译与突触可塑性 (Silicon-Aware On-Chip Spike Compilation and Synaptic Plasticity under Sub-50mW Budgets):** 将连续微分状态空间与强化学习策略映射至神经形态硬件（ColibriUAV, Astrobee on Intel Loihi 2）时，需将浮点参数转换为离散事件脉冲时序。然而，数学连续模型与物理硬件基底之间存在巨大鸿沟（神经形态核心片上 SRAM 极其受限、异步片上网络广播拥塞）。未来需发展软硬件协同的自动化硅编译工具链，在严格 $<50\text{ mW}$ 功耗与千赫兹闭环约束下，联合优化脉冲发放稀疏度、异步路由拓扑与片上本地时序依赖突触可塑性（STDP）在线学习机制。
+29. **低轨巨型星座星载异构计算与动态光链路时空拓扑协同 (Dynamic Optical Inter-Satellite Mesh Topologies in LEO Space Foundation Models):** 伴随数千颗小卫星构建在轨太空数据中心（Constella, DeepLaDu, ESA-ADB），星间激光链路拓扑受相对角速度、云层反射与机械转动死区约束每数十秒剧烈重构。现有的模型切分（Split DNN）大多假设相对静态的通信矩阵。未来需探索拓扑时变图状态空间与非凸星载多商品流调度，在星载微控制器与辐射硬化算力芯片的严格电量边界内，实现抗链路突发中断的流式分布式在轨基础模型推断。
+30. **非光滑接触力学流形上的视触觉几何微分同胚映射 (Diffeomorphic Geometric Manifold Embeddings for Non-Smooth Contact Visuohaptics):** 在多指灵巧抓取与接触丰富型装配中（DeCAL, TACIT, SlipSense, OmniVTA），接触力学具有非光滑单边接触不连续性（Signorini 条件）与库仑摩擦锥切换。现有多模态架构主要将触觉与视觉特征投影至扁平欧氏空间，在粘滑（Stick-Slip）相变处产生剧烈梯度抖动。未来需探索非光滑变分不等式（Variational Inequalities）与接触流形拟共形微分同胚映射，在相空间中保留摩擦耗散李代数结构，为复杂柔性体灵巧操作提供具备物理力学因果可解释性的闭环控制策略。
+31. **极端无电池微能量收集物联网中的异步脉冲事件完备性理论 (Asynchronous Spike Completeness in Battery-Free Intermittent Ambient IoT):** 在依靠室内微光、环境振动或射频能量收集的免电池物联感知系统中（Vibe2Spike, RAD-ACE-FLEX），设备储能电容仅有数十微法，系统在毫秒级周期内经历随机掉电重启。当前事件驱动脉冲神经网络（SNN）多假设脉冲时间戳单调递增且不丢失。在电源断电间隙，未发射的脉冲与部分积分的膜电位丢失会导致严重的信息截断偏差。未来需深入研究非易失性铁电内存（FRAM）与模拟突触电荷保持物理机制，建立在随机间歇掉电下具备严格渐进逼近保证的连续异步脉冲代数理论。
+
 
 
